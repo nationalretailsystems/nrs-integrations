@@ -1,0 +1,90 @@
+---
+name: pncchkin
+rpgIncName: pncchkin_h
+formats:
+  Checkin_ds:
+    recordType: request
+    subfields:
+      event:
+        rpgName: event
+        type: Character
+        length: 50
+      time:
+        rpgName: time
+        type: Character
+        length: 25
+      version:
+        rpgName: version
+        type: Character
+        length: 3
+      campus:
+        rpgName: campus
+        type: Character
+        length: 6
+      event:
+        rpgName: event
+        type: Character
+        length: 50
+      checked_in:
+        rpgName: checked_in
+        type: Character
+        length: 25
+      asset_type:
+        rpgName: asset_type
+        type: Character
+        length: 25
+      rfid_tag:
+        rpgName: rfid_tag
+        type: Character
+        length: 25
+      site_code:
+        rpgName: site_code
+        type: Character
+        length: 25
+      Trailer SCAC:
+        rpgName: scac
+        type: Character
+        length: 4
+      Trailer #:
+        rpgName: trailer
+        type: Character
+        length: 25
+      container_number:
+        rpgName: container_number
+        type: Character
+        length: 25
+      movement_type:
+        rpgName: movement_type
+        type: Character
+        length: 25
+      load_status:
+        rpgName: load_status
+        type: Character
+        length: 25
+      customer_code:
+        rpgName: customer_code
+        type: Character
+        length: 25
+      fleet_code:
+        rpgName: fleet_code
+        type: Character
+        length: 25
+      tractor_scac:
+        rpgName: tractor_scac
+        type: Character
+        length: 25
+  Result:
+    recordType: response
+    subfields:
+      MessageId:
+        rpgName: MessageId
+        type: Character
+        length: 50
+      SequenceNumber:
+        rpgName: SequenceNumber
+        type: Character
+        length: 20
+      ResponseMetaData:
+        rpgName: ResponseMetaData
+        type: Character
+        length: 1024
