@@ -41,16 +41,16 @@ formats:
         rpgName: site_code
         type: Character
         length: 25
-      Trailer SCAC:
+      Trailer_SCAC:
         rpgName: scac
         type: Character
         length: 4
-      Trailer #:
+      Trailer_number:
         rpgName: trailer
         type: Character
         length: 25
       container_number:
-        rpgName: container_number
+        rpgName: container_num
         type: Character
         length: 25
       movement_type:
@@ -85,6 +85,6 @@ formats:
         type: Character
         length: 20
       ResponseMetaData:
-        rpgName: ResponseMetaData
+        rpgName: RespMetaData
         type: Character
         length: 1024
