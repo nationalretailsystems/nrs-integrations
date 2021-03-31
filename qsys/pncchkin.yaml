@@ -5,26 +5,6 @@ formats:
   Checkin_ds:
     recordType: request
     subfields:
-      event:
-        rpgName: event
-        type: Character
-        length: 50
-      time:
-        rpgName: time
-        type: Character
-        length: 25
-      version:
-        rpgName: version
-        type: Character
-        length: 3
-      campus:
-        rpgName: campus
-        type: Character
-        length: 6
-      event:
-        rpgName: event
-        type: Character
-        length: 50
       checked_in:
         rpgName: checked_in
         type: Character
@@ -73,18 +53,3 @@ formats:
         rpgName: tractor_scac
         type: Character
         length: 25
-  Result:
-    recordType: response
-    subfields:
-      MessageId:
-        rpgName: MessageId
-        type: Character
-        length: 50
-      SequenceNumber:
-        rpgName: SequenceNumber
-        type: Character
-        length: 20
-      ResponseMetaData:
-        rpgName: RespMetaData
-        type: Character
-        length: 1024

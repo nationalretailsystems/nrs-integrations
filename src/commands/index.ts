@@ -4,6 +4,7 @@ import registerTraffic from './traffic';
 import registerVehicle from './vehicle';
 import registerWeather from './weather';
 import registerShipping from './shipping';
+import registerPinc from './pinc';
 
 export default async function registerCommands(router: ECCRouter) {
     const jokes = new ECCRouter.Router();
@@ -25,6 +26,10 @@ export default async function registerCommands(router: ECCRouter) {
     const shipping = new ECCRouter.Router();
     registerShipping(shipping);
     router.use('shipping', shipping);
+
+    const pinc = new ECCRouter.Router();
+    registerPinc(pinc);
+    router.use('pinc', pinc);
 
     return router;
 }
