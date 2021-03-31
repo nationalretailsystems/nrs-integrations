@@ -2,7 +2,7 @@
 name: pncchkin
 rpgIncName: pncchkin_h
 formats:
-  Checkin_ds:
+  CheckinDS:
     recordType: request
     subfields:
       campus:

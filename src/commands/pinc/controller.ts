@@ -11,7 +11,7 @@ const axiosInstance = axios.create(pinc);
 
 export const checkin: ECCHandlerFunction = async (reqkey, data, ecc) => {
     // Get parameters from incomming data buffer
-    const rpgFields = converter.convertCheckin_dsToObject(data);
+    const rpgFields = converter.convertCheckinDSToObject(data);
 
     const reqFields = {
         event: 'yardhound.import_events.checkin',

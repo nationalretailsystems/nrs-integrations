@@ -34,33 +34,51 @@ dcl-pr  LookupRFID char(24);
    *n char(6);
 END-PR;
 
-// json array for api parameters
-dcl-ds checkin_ds qualified;
-  event varchar(50) inz('yardhound.import_events.checkin');
-  time char(25);  //timestamp
-  version char(3) inz('1.3');
-  campus char(6) inz('NRSNBR');       // this is only for NB Yard
-  dcl-ds data;
-    dcl-ds asset;
-      checked_in char(25); //timestamp
-      asset_type varchar(25);
-      rfid_tag varchar(25);
-      site_code varchar(25);
-      SCAC char(4);
-      name_SCAC varchar(50) inz('Trailer SCAC');    // rename json field to pinc name
-      trailer varchar(25);
-      name_trailer varchar(50) inz('Trailer #');    // rename json field to pinc name
-      container_number varchar(25);
-      movement_type varchar(25);
-      load_status varchar(25);
-      customer_code varchar(25);
-      fleet_code varchar(25);
-      tractor_scac varchar(25);
-    END-DS;
-  END-DS;
-END-DS;
+// Include EccSndReq & EccRcvReq prototypes
+/include ecnctc.rpgleinc
 
-dcl-s currentstmp timestamp(0);
+
+// Include data structs and buffer conversion prototypes
+/include pncchkin_h.rpgleinc
+
+dcl-ds checkin_ds likeds(CheckinDS);
+dcl-ds eccresult_ds likeds(EccResult);
+
+dcl-s command char(32);
+dcl-s datalen packed(5);
+dcl-s databuf char(1024);
+dcl-s reqkey char(6);
+dcl-s eod ind;
+dcl-s eoa ind;
+dcl-s nodata ind;
+
+// json array for api parameters
+// dcl-ds checkin_ds qualified;
+//   event varchar(50) inz('yardhound.import_events.checkin');
+//   time char(25);  //timestamp
+//   version char(3) inz('1.3');
+//   campus char(6) inz('NRSNBR');       // this is only for NB Yard
+//   dcl-ds data;
+//     dcl-ds asset;
+//       checked_in char(25); //timestamp
+//       asset_type varchar(25);
+//       rfid_tag varchar(25);
+//       site_code varchar(25);
+//       SCAC char(4);
+//       name_SCAC varchar(50) inz('Trailer SCAC');    // rename json field to pinc name
+//       trailer varchar(25);
+//       name_trailer varchar(50) inz('Trailer #');    // rename json field to pinc name
+//       container_number varchar(25);
+//       movement_type varchar(25);
+//       load_status varchar(25);
+//       customer_code varchar(25);
+//       fleet_code varchar(25);
+//       tractor_scac varchar(25);
+//     END-DS;
+//   END-DS;
+// END-DS;
+
+// dcl-s currentstmp timestamp(0);
 dcl-s checkinstmp timestamp(0);
 
 // array for data que
@@ -82,14 +100,14 @@ chain facl#y pincfacl01;
 cmpus = pinccampus;
 sitecd = pincsitecd;
 // get current timestamp for api record and convert to pinc format
-currentstmp = %timestamp(*SYS:0);
-checkin_ds.time = convertpincdate(currentstmp);
+// currentstmp = %timestamp(*SYS:0);
+// checkin_ds.time = convertpincdate(currentstmp);
 checkin_ds.campus = cmpus;
 
 // process ADD records from YARDLG (trigger program)
   clear checkin_ds.data.asset;
-  checkin_ds.data.asset.name_SCAC = 'Trailer SCAC';
-  checkin_ds.data.asset.name_trailer = 'Trailer #';
+  // checkin_ds.data.asset.name_SCAC = 'Trailer SCAC';
+  // checkin_ds.data.asset.name_trailer = 'Trailer #';
   //checkin_ds.data.asset.site_code = 'NRSNBRYRD';
   checkin_ds.data.asset.site_code = sitecd;
   exec sql select timestamp_format((substr(digits(:inbdty),2,6)||digits(:inbtmy)),'yymmddhh24mi',0)
@@ -98,7 +116,7 @@ checkin_ds.campus = cmpus;
        select;
          when etypey = 'C';
            checkin_ds.data.asset.asset_type = 'Container';
-           checkin_ds.data.asset.container_number = %trim(carrcy) + %trim(equipy);
+           checkin_ds.data.asset.container_num = %trim(carrcy) + %trim(equipy);
          when etypey = 'T';
            checkin_ds.data.asset.asset_type = 'Trailer';
            checkin_ds.data.asset.scac = carrcy;
@@ -145,18 +163,44 @@ checkin_ds.campus = cmpus;
        checkin_ds.data.asset.tractor_scac = ibcary;
      ENDIF;
 
+     // Send data structure to JavaScript
+     command = 'pinc.checkin';
+     datalen = CheckinDSLen
+     CheckinDSToBuf(checkin_ds:databuf);
+
+      // Send request
+      EccSndReq(command:datalen:databuf:reqkey);
+
+      datalen = EccResultLen;
+      databuf = '';
+      EccRcvRes(In_WaitTm:In_ReqKey:Eod:Eoa:NoData:DataLen:DataBuf);
+
+      if (eod and eoa and nodata);
+        dsply ('Timeout Waiting On Response: ' + reqkey);
+        Return;
+      ENDIF;
+
+
+      // Check the result
+      BufToEccResult(databuf:eccresult_ds);
+
+      if eccresult_ds.MsgId <> 'ECC0000';
+        dsply 'Failure calling command pinc.checkin'
+        Return;
+      ENDIF;
+
     // convert data structure to json array
-     DATA-GEN checkin_ds %DATA( dataque_data.json_data : 'renameprefix=name_')
-         %gen('YAJL72/YAJLDTAGEN');
+    // DATA-GEN checkin_ds %DATA( dataque_data.json_data : 'renameprefix=name_')
+    //     %gen('YAJL72/YAJLDTAGEN');
      //DATA-GEN checkin_ds %DATA( dataque_data.json_data)
      //    %gen('YAJL72/YAJLDTAGEN');
 
     // write json to dataq  for api call
-    exec sql call qsys2.send_data_queue(:dataque_data.data,'PINCAPIOUT','PINC_API');
+    // exec sql call qsys2.send_data_queue(:dataque_data.data,'PINCAPIOUT','PINC_API');
 
-   exec sql insert into pinc_api.pincapilog
-     (lgstamp, lgapiname, lgtrailer, lgscac, lgetype,lgrfid, lgfacl)
-     values (:checkinstmp, :carrcy, :equipy, :etypey, :rftagy, :facl#y);
+   // exec sql insert into pinc_api.pincapilog
+   //   (lgstamp, lgapiname, lgtrailer, lgscac, lgetype,lgrfid, lgfacl)
+   //   values (:checkinstmp, :carrcy, :equipy, :etypey, :rftagy, :facl#y);
 //    Exec sql fetch from C1 into :yardlg_ds;
 //  ENDDO;
 //  EXEC SQL close c1;
@@ -167,4 +211,4 @@ checkin_ds.campus = cmpus;
 
 
 
- 
+

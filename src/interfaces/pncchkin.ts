@@ -9,7 +9,7 @@ const { fromIbmiDate, fromIbmiTime, fromIbmiTimestamp, toIbmiDate, toIbmiTime, t
 /**
  * Output interface
  */
-export interface Checkin_ds {
+export interface CheckinDS {
     /**
      * @size 6 characters
      */
@@ -65,9 +65,9 @@ export interface Checkin_ds {
 }
 
 /**
- * Convert Checkin_ds record to TypeScript object
+ * Convert CheckinDS record to TypeScript object
  */
-export function convertCheckin_dsToObject(dataIn: string): Checkin_ds {
+export function convertCheckinDSToObject(dataIn: string): CheckinDS {
     const dataOut: any = {};
 
     dataOut.campus = dataIn.substring(0, 6).trimEnd();
