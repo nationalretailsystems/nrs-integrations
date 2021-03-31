@@ -11,6 +11,10 @@ const { fromIbmiDate, fromIbmiTime, fromIbmiTimestamp, toIbmiDate, toIbmiTime, t
  */
 export interface Checkin_ds {
     /**
+     * @size 6 characters
+     */
+    campus: string;
+    /**
      * @size 25 characters
      */
     checked_in: string;
@@ -66,18 +70,19 @@ export interface Checkin_ds {
 export function convertCheckin_dsToObject(dataIn: string): Checkin_ds {
     const dataOut: any = {};
 
-    dataOut.checked_in = dataIn.substring(0, 25).trimEnd();
-    dataOut.asset_type = dataIn.substring(25, 50).trimEnd();
-    dataOut.rfid_tag = dataIn.substring(50, 75).trimEnd();
-    dataOut.site_code = dataIn.substring(75, 100).trimEnd();
-    dataOut.Trailer_SCAC = dataIn.substring(100, 104).trimEnd();
-    dataOut.Trailer_number = dataIn.substring(104, 129).trimEnd();
-    dataOut.container_number = dataIn.substring(129, 154).trimEnd();
-    dataOut.movement_type = dataIn.substring(154, 179).trimEnd();
-    dataOut.load_status = dataIn.substring(179, 204).trimEnd();
-    dataOut.customer_code = dataIn.substring(204, 229).trimEnd();
-    dataOut.fleet_code = dataIn.substring(229, 254).trimEnd();
-    dataOut.tractor_scac = dataIn.substring(254, 279).trimEnd();
+    dataOut.campus = dataIn.substring(0, 6).trimEnd();
+    dataOut.checked_in = dataIn.substring(6, 31).trimEnd();
+    dataOut.asset_type = dataIn.substring(31, 56).trimEnd();
+    dataOut.rfid_tag = dataIn.substring(56, 81).trimEnd();
+    dataOut.site_code = dataIn.substring(81, 106).trimEnd();
+    dataOut.Trailer_SCAC = dataIn.substring(106, 110).trimEnd();
+    dataOut.Trailer_number = dataIn.substring(110, 135).trimEnd();
+    dataOut.container_number = dataIn.substring(135, 160).trimEnd();
+    dataOut.movement_type = dataIn.substring(160, 185).trimEnd();
+    dataOut.load_status = dataIn.substring(185, 210).trimEnd();
+    dataOut.customer_code = dataIn.substring(210, 235).trimEnd();
+    dataOut.fleet_code = dataIn.substring(235, 260).trimEnd();
+    dataOut.tractor_scac = dataIn.substring(260, 285).trimEnd();
 
     return dataOut;
 }

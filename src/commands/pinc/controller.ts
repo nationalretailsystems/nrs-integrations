@@ -17,7 +17,7 @@ export const checkin: ECCHandlerFunction = async (reqkey, data, ecc) => {
         event: 'yardhound.import_events.checkin',
         time: DateTime.now().toFormat("yyyy-MM-dd'T'TTZZ"),
         version: '1.3',
-        campus: 'NRSNBR',
+        campus: rpgFields.campus,
         data: {
             asset: {
                 checked_in: rpgFields.checked_in,

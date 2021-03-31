@@ -5,6 +5,10 @@ formats:
   Checkin_ds:
     recordType: request
     subfields:
+      campus:
+        rpgName: campus
+        type: Character
+        length: 6
       checked_in:
         rpgName: checked_in
         type: Character
