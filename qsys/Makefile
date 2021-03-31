@@ -16,16 +16,18 @@ MODS = dspjk \
        prtlbl
 
 GENMODS = icndbapi \
-            lblapi \
-            trfcapi \
-            vinapi \
-            wthfrcapi
+          lblapi \
+          trfcapi \
+          vinapi \
+          wthfrcapi \
+          pncchkin
 
 GENHDRS = icndbapi_h \
-            lblapi_h \
-            trfcapi_h \
-            vinapi_h \
-            wthfcapi_h
+          lblapi_h \
+          trfcapi_h \
+          vinapi_h \
+          wthfcapi_h \
+          pncchkin_h
 
 SRVPGMS = ecctmpgen
 
@@ -200,6 +202,12 @@ $(libdir)/qrpglesrc.file/lblapi.mbr $(libdir)/qrpglesrc.file/lblapi_h.mbr ../src
 	cp lblapi.ts ../src/interfaces/lblapi.ts
 	system "CPYFRMSTMF FROMSTMF('lblapi.rpgle') TOMBR('$(libdir)/qrpglesrc.file/lblapi.mbr') MBROPT(*REPLACE)"
 	system "CPYFRMSTMF FROMSTMF('lblapi_h.rpgleinc') TOMBR('$(libdir)/qrpglesrc.file/lblapi_h.mbr') MBROPT(*REPLACE)"
+
+$(libdir)/qrpglesrc.file/pncchkin.mbr $(libdir)/qrpglesrc.file/pncchkin_h.mbr ../src/interfaces/pncchkin.ts: pncchkin.yaml
+	npx ec-generate -f $<
+	cp pncchkin.ts ../src/interfaces/pncchkin.ts
+	system "CPYFRMSTMF FROMSTMF('pncchkin.rpgle') TOMBR('$(libdir)/qrpglesrc.file/pncchkin.mbr') MBROPT(*REPLACE)"
+	system "CPYFRMSTMF FROMSTMF('pncchkin_h.rpgleinc') TOMBR('$(libdir)/qrpglesrc.file/pncchkin_h.mbr') MBROPT(*REPLACE)"
 
 
 .PHONY: library
