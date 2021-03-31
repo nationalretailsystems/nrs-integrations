@@ -47,6 +47,7 @@ dcl-ds eccresult_ds likeds(EccResult);
 dcl-s command char(32);
 dcl-s datalen packed(5);
 dcl-s databuf char(1024);
+dcl-s waittm packed(5) inz(10);
 dcl-s reqkey char(6);
 dcl-s eod ind;
 dcl-s eoa ind;
@@ -173,7 +174,7 @@ checkin_ds.campus = cmpus;
 
       datalen = EccResultLen;
       databuf = '';
-      EccRcvRes(In_WaitTm:In_ReqKey:Eod:Eoa:NoData:DataLen:DataBuf);
+      EccRcvRes(waittm:reqkey:eod:eoa:nodata:datalen:databuf);
 
       if (eod and eoa and nodata);
         dsply ('Timeout Waiting On Response: ' + reqkey);
