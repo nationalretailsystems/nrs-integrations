@@ -7,7 +7,7 @@
       /copy ecnctc
 
       * Include data structs and buffer conversion prototypes
-      /copy pncckhin_h
+      /copy pncchkin_h
 
       *
       * Passed Parameters - Request
@@ -73,7 +73,7 @@
       // Assign Data To Variables
 
          FullCmd = Cmd;
-         MyReqData.msg_grp_id = 'nrs-test-1'
+         MyReqData.msg_grp_id = 'nrs-test-1';
          MyReqData.campus = '';
          MyReqData.checked_in = '';
          MyReqData.asset_type = '';
@@ -134,6 +134,28 @@
          endif;
 
          Return;
+
+      ***-----------------------------------------------------------***
+      * Procedure Name:   Write_Msg1
+      * Purpose.......:   Write Message
+      * Returns.......:   None
+      * Parameters....:   Message Data
+      ***-----------------------------------------------------------***
+     P Write_Msg1      B
+
+     D Write_Msg1      PI
+     D  MsgDta                      132A   Const
+
+     D Text            DS           132
+     D  Msg                         132A
+
+       Msg = MsgDta;
+
+       Write QSysPrt Text;
+
+       Return;
+
+     P Write_Msg1      E
 
       ***-----------------------------------------------------------***
       * Procedure Name:   Write_EccMsg
