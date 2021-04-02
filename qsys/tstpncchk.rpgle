@@ -74,19 +74,19 @@
 
          FullCmd = Cmd;
          MyReqData.msg_grp_id = 'nrs-test-1';
-         MyReqData.campus = '';
-         MyReqData.checked_in = '';
-         MyReqData.asset_type = '';
-         MyReqData.rfid_tag = '';
-         MyReqData.site_code = '';
-         MyReqData.scac = '';
-         MyReqData.trailer = '';
-         MyReqData.container_num = '';
-         MyReqData.movement_type = '';
-         MyReqData.load_status = '';
-         MyReqData.customer_code = '';
-         MyReqData.fleet_code = '';
-         MyReqData.tractor_scac = '';
+         MyReqData.campus = 'aaaaaa';
+         MyReqData.checked_in = 'bbbbbbbbbbbbbbbbbbbbbbbbb';
+         MyReqData.asset_type = 'ccccccccccccccccccccccccc';
+         MyReqData.rfid_tag = 'ddddddddddddddddddddddddd';
+         MyReqData.site_code = 'eeeeeeeeeeeeeeeeeeeeeeeee';
+         MyReqData.scac = 'ffff';
+         MyReqData.trailer = 'ggggggggggggggggggggggggg';
+         MyReqData.container_num = 'hhhhhhhhhhhhhhhhhhhhhhhhh';
+         MyReqData.movement_type = 'iiiiiiiiiiiiiiiiiiiiiiiii';
+         MyReqData.load_status = 'jjjjjjjjjjjjjjjjjjjjjjjjj';
+         MyReqData.customer_code = 'kkkkkkkkkkkkkkkkkkkkkkkkk';
+         MyReqData.fleet_code = 'lllllllllllllllllllllllll';
+         MyReqData.tractor_scac = 'mmmmmmmmmmmmmmmmmmmmmmmmm';
          DataLen = CheckinDSLen;
          CheckinDSToBuf(MyReqData:DataBuf);
 
