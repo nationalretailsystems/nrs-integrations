@@ -1,4 +1,14 @@
 {
+    "pinc": {
+        "sns": {
+            "prdTargetArn": "arn:aws:sns:xxxxxxxxx:000000000000:xxxxxxxxxxxxxxxxxxxxxxxxxx.fifo",
+            "accessKeyId": "XXXXXXXXXXXXXXXXXXXX",
+            "secretAccessKey": "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx",
+            "region": "xxxxxxxxx",
+            "apiVersion": "2010-03-31"
+        }
+    },
+
     "icndb": {
         "baseURL": "https://api.icndb.com",
         "responseType": "json"
