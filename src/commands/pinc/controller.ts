@@ -1,6 +1,7 @@
 import { ECCHandlerFunction } from '@eradani-inc/ecc-router/types';
 import { DateTime } from 'luxon';
 import AWS from 'aws-sdk';
+import { v4 as uuidv4 } from 'uuid';
 import config from 'config';
 import createLogger from 'src/services/logger';
 const logger = createLogger('commands/pinc');
@@ -46,7 +47,7 @@ export const checkin: ECCHandlerFunction = async (reqkey, data, ecc) => {
         const params = {
             Message: JSON.stringify(reqFields),
             MessageGroupId: rpgFields.message_group_id,
-            MessageDeduplicationId: '' + Date.now(), /** @todo use UUID */
+            MessageDeduplicationId: uuidv4(),
             TopicArn: pinc.sns.prdTargetArn
         };
 
