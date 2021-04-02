@@ -13,7 +13,8 @@ MODS = dspjk \
        dsptrfc \
        dspvhcl \
        dspwf \
-       prtlbl
+       prtlbl \
+	   tstpncchk
 
 GENMODS = icndbapi \
           lblapi \
@@ -35,13 +36,17 @@ PGMS = dspjk \
        dsptrfc \
        dspvhcl \
        dspwf \
-       prtlbl
+       prtlbl \
+	   tstpncchk
 
 CMDS = dspjk \
        dsptrfc \
        dspvhcl \
        dspwf \
-       prtlbl
+       prtlbl \
+	   tstpncchk
+
+INBOUNDPGMS = simplecalc
 
 INBOUNDPGMS = simplecalc
 
@@ -112,6 +117,9 @@ $(libdir)/dspwf.pgm: $(libdir)/dspwf.module $(libdir)/ecctmpgen.srvpgm
 $(libdir)/prtlbl.pgm: $(libdir)/prtlbl.module $(libdir)/ecctmpgen.srvpgm
 	system "CRTPGM PGM($(LIB)/$(basename $(@F))) MODULE(*PGM) BNDSRVPGM((ECCTMPGEN) (ECNCTC))"
 
+$(libdir)/tstpncchk.pgm: $(libdir)/tstpncchk.module $(libdir)/ecctmpgen.srvpgm
+	system "CRTPGM PGM($(LIB)/$(basename $(@F))) MODULE(*PGM) BNDSRVPGM((ECCTMPGEN) (ECNCTC))"
+
 $(libdir)/ecctmpgen.srvpgm: $(FQGENMODS)
 	system "CRTSRVPGM SRVPGM($(LIB)/$(basename $(@F))) MODULE($(NQGENMODS)) EXPORT(*ALL)"
 
@@ -138,6 +146,10 @@ $(libdir)/dspvhcl.module: $(libdir)/qrpglesrc.file/vinapi_h.mbr $(libdir)/qrpgle
 $(libdir)/dspwf.module: $(libdir)/qrpglesrc.file/wthfcapi_h.mbr $(libdir)/qrpglesrc.file/ecnctc.mbr
 
 $(libdir)/prtlbl.module: $(libdir)/qrpglesrc.file/lblapi_h.mbr $(libdir)/qrpglesrc.file/ecnctc.mbr
+
+$(libdir)/tstpncchk.module: $(libdir)/qrpglesrc.file/pncchkin_h.mbr $(libdir)/qrpglesrc.file/ecnctc.mbr
+
+$(libdir)/tstpncchk.module: $(libdir)/qrpglesrc.file/pncchkin_h.mbr $(libdir)/qrpglesrc.file/ecnctc.mbr
 
 # Inbound Programs
 
