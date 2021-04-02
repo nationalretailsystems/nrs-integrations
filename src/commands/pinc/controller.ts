@@ -45,8 +45,8 @@ export const checkin: ECCHandlerFunction = async (reqkey, data, ecc) => {
         // Create publish parameters
         const params = {
             Message: JSON.stringify(reqFields),
-            MessageGroupId: 'nrs-test-1',
-            MessageDeduplicationId: '' + Date.now(),
+            MessageGroupId: rpgFields.message_group_id,
+            MessageDeduplicationId: '' + Date.now(), /** @todo use UUID */
             TopicArn: pinc.sns.prdTargetArn
         };
 
@@ -62,7 +62,7 @@ export const checkin: ECCHandlerFunction = async (reqkey, data, ecc) => {
 
 checkin(
     100000,
-    'aaaaaabbbbbbbbbbbbbbbbbbbbbbbbbcccccccccccccccccccccccccdddddddddddddddddddddddddeeeeeeeeeeeeeeeeeeeeeeeeeffffggggggggggggggggggggggggghhhhhhhhhhhhhhhhhhhhhhhhhiiiiiiiiiiiiiiiiiiiiiiiiijjjjjjjjjjjjjjjjjjjjjjjjjkkkkkkkkkkkkkkkkkkkkkkkkklllllllllllllllllllllllllmmmmmmmmmmmmmmmmmmmmmmmmm',
+    'nrs-test-1               aaaaaabbbbbbbbbbbbbbbbbbbbbbbbbcccccccccccccccccccccccccdddddddddddddddddddddddddeeeeeeeeeeeeeeeeeeeeeeeeeffffggggggggggggggggggggggggghhhhhhhhhhhhhhhhhhhhhhhhhiiiiiiiiiiiiiiiiiiiiiiiiijjjjjjjjjjjjjjjjjjjjjjjjjkkkkkkkkkkkkkkkkkkkkkkkkklllllllllllllllllllllllllmmmmmmmmmmmmmmmmmmmmmmmmm',
     null as any,
     converter,
     {}

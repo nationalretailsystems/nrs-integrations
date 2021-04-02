@@ -5,6 +5,10 @@ formats:
   CheckinDS:
     recordType: request
     subfields:
+      message_group_id:
+        rpgName: msg_grp_id
+        type: Character
+        length: 25
       campus:
         rpgName: campus
         type: Character
