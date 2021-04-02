@@ -128,10 +128,7 @@
       // Display The Result
 
          BufToEccResult(DataBuf:MyEccResult);
-         if (MyEccResult.MsgId <> 'ECC0000');
-           Write_EccMsg(MyEccResult);
-           Return;
-         endif;
+         Write_EccMsg(MyEccResult);
 
          Return;
 
