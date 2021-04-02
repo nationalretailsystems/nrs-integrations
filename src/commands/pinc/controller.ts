@@ -60,11 +60,3 @@ export const checkin: ECCHandlerFunction = async (reqkey, data, ecc) => {
     logger.debug('SNS Message Sent', result);
     return ecc.sendEccResult('ECC0000', 'Success', nextReqKey);
 };
-
-checkin(
-    100000,
-    'nrs-test-1               aaaaaabbbbbbbbbbbbbbbbbbbbbbbbbcccccccccccccccccccccccccdddddddddddddddddddddddddeeeeeeeeeeeeeeeeeeeeeeeeeffffggggggggggggggggggggggggghhhhhhhhhhhhhhhhhhhhhhhhhiiiiiiiiiiiiiiiiiiiiiiiiijjjjjjjjjjjjjjjjjjjjjjjjjkkkkkkkkkkkkkkkkkkkkkkkkklllllllllllllllllllllllllmmmmmmmmmmmmmmmmmmmmmmmmm',
-    null as any,
-    converter,
-    {}
-);
