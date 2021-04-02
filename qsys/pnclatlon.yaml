@@ -1,0 +1,181 @@
+---
+name: pnclatlon
+rpgIncName: pnclatln_h
+formats:
+  LatLongDS:
+    recordType: request
+    subfields:
+      event:
+        rpgName: event
+        type: Character
+        length: 50
+      time:
+        rpgName: time
+        type: Character
+        length: 25
+      version:
+        rpgName: version
+        type: Character
+        length: 3
+      campus:
+        rpgName: campus
+        type: Character
+        length: 6
+      customer_facility_code:
+        rpgName: custfaccode
+        type: Character
+        length: 25
+      event_id:
+        rpgName: event_id
+        type: Character
+        length: 25
+      event_type:
+        rpgName: event_type
+        type: Character
+        length: 2
+        overlay: event_id
+      event_no:
+        rpgName: event_no
+        type: Zoned
+        length: 7
+        overlay: event_id:*next
+      reference_id:
+        rpgName: reference_id
+        type: Character
+        length: 25
+      checked_in:
+        rpgName: checked_in
+        type: Character
+        length: 26
+      checked_out:
+        rpgName: checked_out
+        type: Character
+        length: 26
+      updated_on:
+        rpgName: updated_on
+        type: Character
+        length: 26
+      check_in_agent:
+        rpgName: check_in_agent
+        type: Character
+        length: 25
+      check_out_agent:
+        rpgName: check_out_agent
+        type: Character
+        length: 25
+      purpose:
+        rpgName: purpose
+        type: Character
+        length: 25
+      spot_number:
+        rpgName: spot_number
+        type: Character
+        length: 10
+      snyard:
+        rpgName: snyard
+        type: Character
+        length: 1
+        overlay: spot_number
+      snloctype:
+        rpgName: snloctype
+        type: Character
+        length: 1
+        overlay: spot_number:*next
+      snslotnumber:
+        rpgName: snslotnumber
+        type: Character
+        length: 3
+        overlay: spot_number:*next
+      yardloc3:
+        rpgName: yardloc3
+        type: Character
+        length: 3
+        overlay: spot_number:1
+      location1:
+        rpgName: location1
+        type: Character
+        length: 1
+        overlay: spot_number:3
+      yardloc5:
+        rpgName: yardloc5
+        type: Character
+        length: 5
+        overlay: spot_number:1
+      last_move_time:
+        rpgName: last_move_time
+        type: Character
+        length: 26
+      movement_type:
+        rpgName: movement_type
+        type: Character
+        length: 15
+      load_status:
+        rpgName: load_status
+        type: Character
+        length: 15
+      trailer_SCAC:
+        rpgName: scac
+        type: Character
+        length: 4
+      trailer_number:
+        rpgName: trailer
+        type: Character
+        length: 25
+      container_number:
+        rpgName: container_num
+        type: Character
+        length: 25
+      fleet_code:
+        rpgName: fleet_code
+        type: Character
+        length: 6
+      tractor_scac:
+        rpgName: tractor_scac
+        type: Character
+        length: 4
+      customer_code:
+        rpgName: customer_code
+        type: Character
+        length: 4
+      asset_dimension:
+        rpgName: asset_dimension
+        type: Character
+        length: 15
+      asset_type:
+        rpgName: asset_type
+        type: Character
+        length: 15
+      site:
+        rpgName: site
+        type: Character
+        length: 25
+      site_code:
+        rpgName: site_code
+        type: Character
+        length: 9
+      asset_visit_id:
+        rpgName: asset_visit_id
+        type: Integer
+        length: 5
+      is_dock:
+        rpgName: is_dock
+        type: Character
+        length: 5
+      latitude:
+        rpgName: latitude
+        type: Character
+        length: 15
+      longitude:
+        rpgName: longitude
+        type: Character
+        length: 25
+      customer_code:
+        rpgName: customer_code
+        type: Character
+        length: 15
+      rfid_tag:
+        rpgName: rfid_tag
+        type: Character
+        length: 24
+
+
