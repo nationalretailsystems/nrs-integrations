@@ -36,7 +36,7 @@ export const checkin: ECCHandlerFunction = async (reqkey, data, ecc) => {
         }
     };
 
-    logger.debug('sending: ' + JSON.stringify(reqFields));
+    logger.debug('Sending SNS Message', reqFields);
 
     // Call web service
     let result;
@@ -53,9 +53,10 @@ export const checkin: ECCHandlerFunction = async (reqkey, data, ecc) => {
         // Create promise and SNS service object
         result = await new AWS.SNS({ apiVersion: pinc.sns.apiVersion }).publish(params).promise();
     } catch (err) {
-        return ecc.sendEccResult('ECC1000', err.message, nextReqKey);
+        logger.warn('SNS Message Failed', err);
+        return ecc.sendEccResult('ECC9000', err.message, nextReqKey);
     }
-    logger.debug(result);
+    logger.debug('SNS Message Sent', result);
     return ecc.sendEccResult('ECC0000', 'Success', nextReqKey);
 };
 
