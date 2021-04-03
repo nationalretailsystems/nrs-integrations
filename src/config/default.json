@@ -6,6 +6,10 @@
             "secretAccessKey": "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx",
             "region": "xxxxxxxxx",
             "apiVersion": "2010-03-31"
+        },
+        "sqs": {
+            "queueUrl": "https://sqs.xxxxxxxxxx.amazonaws.com/000000000000/xxxxxxxxx.fifo",
+            "apiVersion": "2012-11-05"
         }
     },
 
