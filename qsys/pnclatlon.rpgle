@@ -15,6 +15,26 @@
      DCharBuf          S            500A   Based(BufPtr)
 
       ************************************
+      * Convert LLReq to buffer
+      ************************************
+     PLLReqToBuf       B                   Export
+
+     DLLReqToBuf       PI
+     DDataStruct                           LikeDS(LLReq)
+     D                                     Const
+     DBuffer                        500A
+
+       // Initialize to beginning of buffer
+       BufPtr = %addr(Buffer);
+
+       // Write fields from DS to buffer
+
+
+       return ;
+
+     PLLReqToBuf       E
+
+      ************************************
       * Convert buffer to LatLonDS
       ************************************
      PBufToLatLonDS    B                   Export

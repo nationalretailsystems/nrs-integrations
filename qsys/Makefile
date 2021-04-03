@@ -14,21 +14,24 @@ MODS = dspjk \
        dspvhcl \
        dspwf \
        prtlbl \
-	   tstpncchk
+	   tstpncchk \
+	   tstpncll
 
 GENMODS = icndbapi \
           lblapi \
           trfcapi \
           vinapi \
           wthfrcapi \
-          pncchkin
+          pncchkin \
+		  pnclatlon
 
 GENHDRS = icndbapi_h \
           lblapi_h \
           trfcapi_h \
           vinapi_h \
           wthfcapi_h \
-          pncchkin_h
+          pncchkin_h \
+	      pnclatln_h
 
 SRVPGMS = ecctmpgen
 
@@ -37,16 +40,16 @@ PGMS = dspjk \
        dspvhcl \
        dspwf \
        prtlbl \
-	   tstpncchk
+	   tstpncchk \
+	   tstpncll
 
 CMDS = dspjk \
        dsptrfc \
        dspvhcl \
        dspwf \
        prtlbl \
-	   tstpncchk
-
-INBOUNDPGMS = simplecalc
+	   tstpncchk \
+	   tstpncll
 
 INBOUNDPGMS = simplecalc
 
@@ -120,6 +123,9 @@ $(libdir)/prtlbl.pgm: $(libdir)/prtlbl.module $(libdir)/ecctmpgen.srvpgm
 $(libdir)/tstpncchk.pgm: $(libdir)/tstpncchk.module $(libdir)/ecctmpgen.srvpgm
 	system "CRTPGM PGM($(LIB)/$(basename $(@F))) MODULE(*PGM) BNDSRVPGM((ECCTMPGEN) (ECNCTC))"
 
+$(libdir)/tstpncll.pgm: $(libdir)/tstpncll.module $(libdir)/ecctmpgen.srvpgm
+	system "CRTPGM PGM($(LIB)/$(basename $(@F))) MODULE(*PGM) BNDSRVPGM((ECCTMPGEN) (ECNCTC))"
+
 $(libdir)/ecctmpgen.srvpgm: $(FQGENMODS)
 	system "CRTSRVPGM SRVPGM($(LIB)/$(basename $(@F))) MODULE($(NQGENMODS)) EXPORT(*ALL)"
 
@@ -148,6 +154,10 @@ $(libdir)/dspwf.module: $(libdir)/qrpglesrc.file/wthfcapi_h.mbr $(libdir)/qrpgle
 $(libdir)/prtlbl.module: $(libdir)/qrpglesrc.file/lblapi_h.mbr $(libdir)/qrpglesrc.file/ecnctc.mbr
 
 $(libdir)/tstpncchk.module: $(libdir)/qrpglesrc.file/pncchkin_h.mbr $(libdir)/qrpglesrc.file/ecnctc.mbr
+
+$(libdir)/tstpncll.module: $(libdir)/qrpglesrc.file/pnclatln_h.mbr $(libdir)/qrpglesrc.file/ecnctc.mbr
+
+$(libdir)/tstpncll.module: $(libdir)/qrpglesrc.file/pnclatln_h.mbr $(libdir)/qrpglesrc.file/ecnctc.mbr
 
 $(libdir)/tstpncchk.module: $(libdir)/qrpglesrc.file/pncchkin_h.mbr $(libdir)/qrpglesrc.file/ecnctc.mbr
 
@@ -220,6 +230,12 @@ $(libdir)/qrpglesrc.file/pncchkin.mbr $(libdir)/qrpglesrc.file/pncchkin_h.mbr ..
 	cp pncchkin.ts ../src/interfaces/pncchkin.ts
 	system "CPYFRMSTMF FROMSTMF('pncchkin.rpgle') TOMBR('$(libdir)/qrpglesrc.file/pncchkin.mbr') MBROPT(*REPLACE)"
 	system "CPYFRMSTMF FROMSTMF('pncchkin_h.rpgleinc') TOMBR('$(libdir)/qrpglesrc.file/pncchkin_h.mbr') MBROPT(*REPLACE)"
+
+$(libdir)/qrpglesrc.file/pnclatlon.mbr $(libdir)/qrpglesrc.file/pnclatln_h.mbr ../src/interfaces/pnclatlon.ts: pnclatlon.yaml
+	npx ec-generate -f $<
+	cp pnclatlon.ts ../src/interfaces/pnclatlon.ts
+	system "CPYFRMSTMF FROMSTMF('pnclatlon.rpgle') TOMBR('$(libdir)/qrpglesrc.file/pnclatlon.mbr') MBROPT(*REPLACE)"
+	system "CPYFRMSTMF FROMSTMF('pnclatln_h.rpgleinc') TOMBR('$(libdir)/qrpglesrc.file/pnclatln_h.mbr') MBROPT(*REPLACE)"
 
 
 .PHONY: library
