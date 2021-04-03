@@ -7,7 +7,7 @@
       /copy ecnctc
 
       * Include data structs and buffer conversion prototypes
-      /copy pnclatlon_h
+      /copy pnclatln_h
 
       *
       * Passed Parameters - Request
