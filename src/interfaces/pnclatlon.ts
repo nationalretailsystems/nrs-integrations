@@ -7,6 +7,20 @@ import { ibmiConversions } from '@eradani-inc/ec-client';
 const { fromIbmiDate, fromIbmiTime, fromIbmiTimestamp, toIbmiDate, toIbmiTime, toIbmiTimestamp } = ibmiConversions;
 
 /**
+ * Output interface
+ */
+export interface LLReq {}
+
+/**
+ * Convert LLReq record to TypeScript object
+ */
+export function convertLLReqToObject(dataIn: string): LLReq {
+    const dataOut: any = {};
+
+    return dataOut;
+}
+
+/**
  * Input interface
  */
 export interface LatLonDS {
@@ -168,10 +182,6 @@ export interface LatLonDS {
      */
     longitude: string;
     /**
-     * @size 15 characters
-     */
-    customer_code: string;
-    /**
      * @size 24 characters
      */
     rfid_tag: string;
@@ -222,7 +232,6 @@ export function convertObjectToLatLonDS(dataIn: LatLonDS): string {
     dataOut += dataIn.is_dock.substring(0, 5).padEnd(5);
     dataOut += dataIn.latitude.substring(0, 15).padEnd(15);
     dataOut += dataIn.longitude.substring(0, 25).padEnd(25);
-    dataOut += dataIn.customer_code.substring(0, 15).padEnd(15);
     dataOut += dataIn.rfid_tag.substring(0, 24).padEnd(24);
 
     return dataOut;

@@ -125,8 +125,6 @@
        BufPtr += 15;
        DataStruct.longitude = %subst(CharBuf:1:25);
        BufPtr += 25;
-       DataStruct.customer_code = %subst(CharBuf:1:15);
-       BufPtr += 15;
        DataStruct.rfid_tag = %subst(CharBuf:1:24);
        BufPtr += 24;
 

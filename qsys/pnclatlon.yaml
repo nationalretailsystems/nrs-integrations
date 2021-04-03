@@ -169,10 +169,6 @@ formats:
         rpgName: longitude
         type: Character
         length: 25
-      customer_code:
-        rpgName: customer_code
-        type: Character
-        length: 15
       rfid_tag:
         rpgName: rfid_tag
         type: Character

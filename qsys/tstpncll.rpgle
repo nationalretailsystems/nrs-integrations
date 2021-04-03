@@ -267,8 +267,6 @@
      D                                3A   Inz('  ')
      D  longitude                    25A
      D                                3A   Inz('  ')
-     D  customer_code                15A
-     D                                3A   Inz('  ')
      D  rfid_tag                     24A
      D                                3A   Inz('  ')
 
@@ -311,7 +309,6 @@
        is_dock = Data.is_dock;
        latitude = Data.latitude;
        longitude = Data.longitude;
-       customer_code = Data.customer_code;
        rfid_tag = Data.rfid_tag;
 
        Write QSysPrt Text1;
