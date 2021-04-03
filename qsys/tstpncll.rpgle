@@ -79,7 +79,7 @@
       // Assign Data To Variables
 
          FullCmd = Cmd;
-         DataLen = ReqDataLen;
+         DataLen = LLReqLen;
          LLReqToBuf(MyLLReq:DataBuf);
 
       // Send request
@@ -173,12 +173,12 @@
       * Returns.......:   None
       * Parameters....:   LatLonDS data structure
       ***-----------------------------------------------------------***
-     P Write_LatLon      B
+     P Write_LatLon    B
 
-     D Write_LatLon      PI
+     D Write_LatLon    PI
      D  Data                               LikeDS(LatLonDS) Const
 
-     D Text            DS           132
+     D Text1           DS           132
      D  event                        50A
      D                                3A   Inz('  ')
      D  time                         25A
@@ -320,7 +320,7 @@
 
        Return;
 
-     P Write_LatLon      E
+     P Write_LatLon    E
 
       ***-----------------------------------------------------------***
       * Procedure Name:   Write_EccMsg
