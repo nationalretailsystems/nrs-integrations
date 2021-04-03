@@ -195,7 +195,7 @@
      D                                3A   Inz('  ')
      D  event_type                    2A
      D                                3A   Inz('  ')
-     D  event_no                      7S
+     D  event_no                      7A
      D                                3A   Inz('  ')
      D  reference_id                 25A
      D                                3A   Inz('  ')
@@ -207,10 +207,13 @@
      D                                3A   Inz('  ')
      D  updated_on                   26A
      D                                3A   Inz('  ')
-     D  check_in_agent               25A
+     D  check_in_agent... 
+     D                               25A
      D                                3A   Inz('  ')
-     D  check_out_agent              25A
-     D                                3A   Inz('  ')
+     D  check_out_agent...
+     D                               25A
+
+     D Text4           DS           132
      D  purpose                      25A
      D                                3A   Inz('  ')
      D  spot_number                  10A
@@ -219,7 +222,7 @@
      D                                3A   Inz('  ')
      D  snloctype                     1A
 
-     D Text4           DS           132
+     D Text5           DS           132
      D                                3A   Inz('  ')
      D  snslotnumber                  3A
      D                                3A   Inz('  ')
@@ -229,7 +232,8 @@
      D                                3A   Inz('  ')
      D  yardloc5                      5A
      D                                3A   Inz('  ')
-     D  last_move_time               26A
+     D  last_move_time...
+     D                               26A
      D                                3A   Inz('  ')
      D  movement_type                15A
      D                                3A   Inz('  ')
@@ -240,7 +244,7 @@
      D  trailer                      25A
      D                                3A   Inz('  ')
 
-     D Text5           DS           132
+     D Text6           DS           132
      D  container_num                25A
      D                                3A   Inz('  ')
      D  fleet_code                    6A
@@ -249,7 +253,8 @@
      D                                3A   Inz('  ')
      D  customer_code                 4A
      D                                3A   Inz('  ')
-     D  asset_dimension              15A
+     D  asset_dimension...
+     D                               15A
      D                                3A   Inz('  ')
      D  asset_type                   15A
      D                                3A   Inz('  ')
@@ -257,9 +262,10 @@
      D                                3A   Inz('  ')
      D  site_code                     9A
      D                                3A   Inz('  ')
-     D  asset_visit_id                5I
+     D  asset_visit_id...
+     D                                5A
 
-     D Text6           DS           132
+     D Text7           DS           132
      D                                3A   Inz('  ')
      D  is_dock                       5A
      D                                3A   Inz('  ')
@@ -277,7 +283,7 @@
        custfaccode = Data.custfaccode;
        event_id = Data.event_id;
        event_type = Data.event_type;
-       event_no = Data.event_no;
+       event_no = %char(Data.event_no);
        reference_id = Data.reference_id;
        checked_in = Data.checked_in;
        checked_out = Data.checked_out;
@@ -305,7 +311,7 @@
        asset_type = Data.asset_type;
        site = Data.site;
        site_code = Data.site_code;
-       asset_visit_id = Data.asset_visit_id;
+       asset_visit_id = %char(Data.asset_visit_id);
        is_dock = Data.is_dock;
        latitude = Data.latitude;
        longitude = Data.longitude;
@@ -317,6 +323,7 @@
        Write QSysPrt Text4;
        Write QSysPrt Text5;
        Write QSysPrt Text6;
+       Write QSysPrt Text7;
 
        Return;
 
