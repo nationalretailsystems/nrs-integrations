@@ -89,6 +89,8 @@ export const latlon: ECCHandlerFunction = async (reqkey, _, ecc) => {
             };
             const deleteResult = await sqs.deleteMessage(deleteParams).promise();
             logger.debug('Delete Result', deleteResult);
+        } else {    
+            return ecc.sendEccResult('ECC2000', 'No Messages to Receive', nextReqKey);
         }
     } catch (err) {
         logger.warn('SQS Message Receive Failed', err);

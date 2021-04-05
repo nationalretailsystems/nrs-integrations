@@ -28,7 +28,8 @@
        BufPtr = %addr(Buffer);
 
        // Write fields from DS to buffer
-
+       %subst(CharBuf:1:25) = DataStruct.msg_grp_id;
+       BufPtr += 25;
 
        return ;
 

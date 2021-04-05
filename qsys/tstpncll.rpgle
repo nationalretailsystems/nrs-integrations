@@ -80,6 +80,7 @@
 
          FullCmd = Cmd;
          DataLen = LLReqLen;
+         MyLLReq.msg_grp_id = 'nrs-test-1';
          LLReqToBuf(MyLLReq:DataBuf);
 
       // Send request

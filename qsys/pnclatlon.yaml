@@ -2,8 +2,15 @@
 name: pnclatlon
 rpgIncName: pnclatln_h
 formats:
-  LatLongDS:
+  LLReq:
     recordType: request
+    subfields:
+      message_group_id:
+        rpgName: msg_grp_id
+        type: Character
+        length: 25
+  LatLongDS:
+    recordType: response
     subfields:
       event:
         rpgName: event
