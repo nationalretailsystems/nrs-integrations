@@ -95,6 +95,7 @@ export const latlon: ECCHandlerFunction = async (reqkey, _, ecc) => {
                 yardloc5: result.data.asset.spot_number.substr(9, 5)
             }, result, result.data.asset);
             result.checked_out = result.checked_out || '';
+            result.is_dock = '' + result.is_dock;
 
             const deleteParams = {
                 QueueUrl: pinc.sqs.queueUrl,

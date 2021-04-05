@@ -267,7 +267,7 @@
 
      D Text7           DS           132
      D                                3A   Inz('  ')
-     D  is_dock                        N
+     D  is_dock                       5A
      D                                3A   Inz('  ')
      D  latitude                     15A
      D                                3A   Inz('  ')

@@ -165,7 +165,8 @@ formats:
         length: 5
       is_dock:
         rpgName: is_dock
-        type: Boolean
+        type: Character
+        length: 5
       Latitude:
         rpgName: latitude
         type: Character

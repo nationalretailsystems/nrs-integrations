@@ -186,8 +186,9 @@ export interface LatLonDS {
      */
     asset_visit_id: number,
     /**
+     * @size 5 characters
      */
-    is_dock: boolean,
+    is_dock: string,
     /**
      * @size 15 characters
      */
@@ -244,7 +245,7 @@ export function convertObjectToLatLonDS(dataIn: LatLonDS): string {
   dataOut += dataIn.site.substring(0, 25).padEnd(25);
   dataOut += dataIn.site_code.substring(0, 9).padEnd(9);
   dataOut += dataIn.asset_visit_id.toFixed().substring(0, 6).padEnd(6);
-  dataOut += (dataIn.is_dock ? "1" : "0");
+  dataOut += dataIn.is_dock.substring(0, 5).padEnd(5);
   dataOut += dataIn.Latitude.substring(0, 15).padEnd(15);
   dataOut += dataIn.Longitude.substring(0, 25).padEnd(25);
   dataOut += dataIn.rfid_tag.substring(0, 24).padEnd(24);
