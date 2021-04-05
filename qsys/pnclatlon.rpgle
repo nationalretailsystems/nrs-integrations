@@ -28,8 +28,8 @@
        BufPtr = %addr(Buffer);
 
        // Write fields from DS to buffer
-       %subst(CharBuf:1:25) = DataStruct.msg_grp_id;
-       BufPtr += 25;
+       %subst(CharBuf:1:80) = DataStruct.comment;
+       BufPtr += 80;
 
        return ;
 
@@ -120,8 +120,8 @@
        BufPtr += 9;
        DataStruct.asset_visit_id = %int(%subst(CharBuf:1:6));
        BufPtr += 6;
-       DataStruct.is_dock = %subst(CharBuf:1:5);
-       BufPtr += 5;
+       DataStruct.is_dock = %subst(CharBuf:1:1);
+       BufPtr += 1;
        DataStruct.latitude = %subst(CharBuf:1:15);
        BufPtr += 15;
        DataStruct.longitude = %subst(CharBuf:1:25);

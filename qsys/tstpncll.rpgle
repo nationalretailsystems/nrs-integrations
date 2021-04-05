@@ -80,7 +80,6 @@
 
          FullCmd = Cmd;
          DataLen = LLReqLen;
-         MyLLReq.msg_grp_id = 'nrs-test-1';
          LLReqToBuf(MyLLReq:DataBuf);
 
       // Send request
@@ -268,7 +267,7 @@
 
      D Text7           DS           132
      D                                3A   Inz('  ')
-     D  is_dock                       5A
+     D  is_dock                        N
      D                                3A   Inz('  ')
      D  latitude                     15A
      D                                3A   Inz('  ')

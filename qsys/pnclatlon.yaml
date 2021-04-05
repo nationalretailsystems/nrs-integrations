@@ -5,8 +5,7 @@ formats:
   LLReq:
     recordType: request
     subfields:
-      message_group_id:
-        rpgName: msg_grp_id
+      comment:
         type: Character
         length: 25
   LatLongDS:
@@ -166,13 +165,12 @@ formats:
         length: 5
       is_dock:
         rpgName: is_dock
-        type: Character
-        length: 5
-      latitude:
+        type: Boolean
+      Latitude:
         rpgName: latitude
         type: Character
         length: 15
-      longitude:
+      Longitude:
         rpgName: longitude
         type: Character
         length: 25

@@ -78,25 +78,40 @@ export const latlon: ECCHandlerFunction = async (reqkey, _, ecc) => {
             WaitTimeSeconds: 0
         };
 
-        result = await sqs.receiveMessage(params).promise();
-        logger.debug('Receive Message Result', result);
-        let message = result?.Messages && result.Messages[0];
+        const response = await sqs.receiveMessage(params).promise();
+        logger.debug('Receive Message Result', response);
+        let message = response?.Messages && response.Messages[0];
 
-        if (message && message.ReceiptHandle) {
+        result = JSON.parse(message?.Body || '{}');
+        if (message && message.ReceiptHandle && result?.data?.asset) {
+            result = Object.assign({
+                event_type: result.event_id.substr(0, 2),
+                event_no: parseInt(result.event_id.substr(2, 7), 10),
+                snyard: result.data.asset.spot_number.substr(1),
+                snloctype: result.data.asset.spot_number.substr(1, 1),
+                snslotnumber: result.data.asset.spot_number.substr(2, 3),
+                yardloc3: result.data.asset.spot_number.substr(5, 3),
+                location1: result.data.asset.spot_number.substr(8, 1),
+                yardloc5: result.data.asset.spot_number.substr(9, 5)
+            }, result, result.data.asset);
+            result.checked_out = result.checked_out || '';
+
             const deleteParams = {
-                QueueUrl: pinc.sqs.queueURL,
+                QueueUrl: pinc.sqs.queueUrl,
                 ReceiptHandle: message.ReceiptHandle
             };
             const deleteResult = await sqs.deleteMessage(deleteParams).promise();
             logger.debug('Delete Result', deleteResult);
-        } else {    
-            return ecc.sendEccResult('ECC2000', 'No Messages to Receive', nextReqKey);
+        } else {   
+            logger.warn('Received no valid messages', message);
+            return ecc.sendEccResult('ECC2000', 'No Valid Messages to Receive', nextReqKey);
         }
+                
+        logger.debug('SQS Message Receive Sent', result);
+        nextReqKey = await ecc.sendEccResult('ECC0000', 'Success', nextReqKey);
+        return ecc.sendObjectToCaller(result, pnclatlonapi.convertObjectToLatLonDS, nextReqKey);
     } catch (err) {
         logger.warn('SQS Message Receive Failed', err);
         return ecc.sendEccResult('ECC9000', err.message, nextReqKey);
     }
-    logger.debug('SQS Message Receive Sent', result);
-    nextReqKey = await ecc.sendEccResult('ECC0000', 'Success', nextReqKey);
-    return ecc.sendObjectToCaller(result, pnclatlonapi.convertObjectToLatLonDS, nextReqKey);
 };

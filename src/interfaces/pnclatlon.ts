@@ -18,9 +18,9 @@ const {
  */
 export interface LLReq {
     /**
-     * @size 25 characters
+     * @size 80 characters
      */
-    message_group_id: string
+    comment: string
 }
 
 /**
@@ -31,7 +31,7 @@ export function convertLLReqToObject(dataIn: string): LLReq {
   
     };
 
-  dataOut.message_group_id = dataIn.substring(0, 25).trimEnd();
+  dataOut.comment = dataIn.substring(0, 80).trimEnd();
 
   return dataOut;
 }
@@ -144,7 +144,7 @@ export interface LatLonDS {
     /**
      * @size 4 characters
      */
-    trailer_SCAC: string,
+    trailer_scac: string,
     /**
      * @size 25 characters
      */
@@ -186,17 +186,16 @@ export interface LatLonDS {
      */
     asset_visit_id: number,
     /**
-     * @size 5 characters
      */
-    is_dock: string,
+    is_dock: boolean,
     /**
      * @size 15 characters
      */
-    latitude: string,
+    Latitude: string,
     /**
      * @size 25 characters
      */
-    longitude: string,
+    Longitude: string,
     /**
      * @size 24 characters
      */
@@ -234,7 +233,7 @@ export function convertObjectToLatLonDS(dataIn: LatLonDS): string {
   dataOut += dataIn.last_move_time.substring(0, 26).padEnd(26);
   dataOut += dataIn.movement_type.substring(0, 15).padEnd(15);
   dataOut += dataIn.load_status.substring(0, 15).padEnd(15);
-  dataOut += dataIn.trailer_SCAC.substring(0, 4).padEnd(4);
+  dataOut += dataIn.trailer_scac.substring(0, 4).padEnd(4);
   dataOut += dataIn.trailer_number.substring(0, 25).padEnd(25);
   dataOut += dataIn.container_number.substring(0, 25).padEnd(25);
   dataOut += dataIn.fleet_code.substring(0, 6).padEnd(6);
@@ -245,9 +244,9 @@ export function convertObjectToLatLonDS(dataIn: LatLonDS): string {
   dataOut += dataIn.site.substring(0, 25).padEnd(25);
   dataOut += dataIn.site_code.substring(0, 9).padEnd(9);
   dataOut += dataIn.asset_visit_id.toFixed().substring(0, 6).padEnd(6);
-  dataOut += dataIn.is_dock.substring(0, 5).padEnd(5);
-  dataOut += dataIn.latitude.substring(0, 15).padEnd(15);
-  dataOut += dataIn.longitude.substring(0, 25).padEnd(25);
+  dataOut += (dataIn.is_dock ? "1" : "0");
+  dataOut += dataIn.Latitude.substring(0, 15).padEnd(15);
+  dataOut += dataIn.Longitude.substring(0, 25).padEnd(25);
   dataOut += dataIn.rfid_tag.substring(0, 24).padEnd(24);
 
   return dataOut;
