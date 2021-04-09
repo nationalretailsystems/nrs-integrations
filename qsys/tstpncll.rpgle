@@ -22,7 +22,8 @@
      D  Eoa            S               N
      D  NoData         S               N
      D  MyEccResult    DS                  LikeDS(EccResult)
-     D  MyLatLonDS     DS                  LikeDS(LatLonDS)
+     D  MyLLHeadDS     DS                  LikeDS(LLHeadDS)
+     D  MyLLMoveDS     DS                  LikeDS(LLMoveDS)
 
       *
       * Passed Parameter - both Request & Response
@@ -59,8 +60,11 @@
      D Write_Msg1      PR
      D  In_MsgDta                          Like(MsgDta) Const
 
-     D Write_LatLon    PR
-     D  In_LLDS                            LikeDS(LatLonDS) Const
+     D Write_LLHead    PR
+     D  In_LLDS                            LikeDS(LLHeadDS) Const
+
+     D Write_LLMove    PR
+     D  In_LLDS                            LikeDS(LLMoveDS) Const
 
      D Write_EccMsg    PR
      D  In_Message                         Const LikeDS(EccResult)
@@ -126,7 +130,7 @@
          endif;
 
       // Receive and display the remaining lines, if any
-         DataLen = LatLonDSLen;
+         DataLen = LLHeadDSLen;
          DataBuf = '';
          CallP(e) EccRcvRes(In_WaitTm:In_ReqKey:Eod:Eoa:NoData:
                            DataLen:DataBuf);
@@ -138,8 +142,26 @@
          If (NoData);
            Return;
          Else;
-           BufToLatLonDS(DataBuf:MyLatLonDS);
-           Write_LatLon(MyLatLonDS);
+           BufToLLHeadDS(DataBuf:MyLLHeadDS);
+           Write_LLHead(MyLLHeadDS);
+         EndIf;
+         
+
+      // Receive and display the remaining lines, if any
+         DataLen = LLMoveDSLen;
+         DataBuf = '';
+         CallP(e) EccRcvRes(In_WaitTm:In_ReqKey:Eod:Eoa:NoData:
+                           DataLen:DataBuf);
+         if %error;
+           Write_Excp('EccRcvRes':Psds);
+           Return;
+         endif;
+
+         If (NoData);
+           Return;
+         Else;
+           BufToLLMoveDS(DataBuf:MyLLMoveDS);
+           Write_LLMove(MyLLMoveDS);
          EndIf;
 
          Return;
@@ -168,15 +190,15 @@
      P Write_Msg1      E
 
       ***-----------------------------------------------------------***
-      * Procedure Name:   Write_LatLon
+      * Procedure Name:   Write_LLHead
       * Purpose.......:   Write LatLon
       * Returns.......:   None
-      * Parameters....:   LatLonDS data structure
+      * Parameters....:   LLHeadDS data structure
       ***-----------------------------------------------------------***
-     P Write_LatLon    B
+     P Write_LLHead    B
 
-     D Write_LatLon    PI
-     D  Data                               LikeDS(LatLonDS) Const
+     D Write_LLHead    PI
+     D  Data                               LikeDS(LLHeadDS) Const
 
      D Text1           DS           132
      D  event                        50A
@@ -231,32 +253,6 @@
      D  location1                     1A
      D                                3A   Inz('  ')
      D  yardloc5                      5A
-     D                                3A   Inz('  ')
-     D  last_move_time...
-     D                               26A
-     D                                3A   Inz('  ')
-     D  movement_type                15A
-     D                                3A   Inz('  ')
-     D  load_status                  15A
-     D                                3A   Inz('  ')
-     D  scac                          4A
-     D                                3A   Inz('  ')
-     D  trailer                      25A
-     D                                3A   Inz('  ')
-
-     D Text6           DS           132
-     D  container_num                25A
-     D                                3A   Inz('  ')
-     D  fleet_code                    6A
-     D                                3A   Inz('  ')
-     D  tractor_scac                  4A
-     D                                3A   Inz('  ')
-     D  customer_code                 4A
-     D                                3A   Inz('  ')
-     D  asset_dimension...
-     D                               15A
-     D                                3A   Inz('  ')
-     D  asset_type                   15A
 
        event = Data.event;
        time = Data.time;
@@ -280,6 +276,73 @@
        yardloc3 = Data.yardloc3;
        location1 = Data.location1;
        yardloc5 = Data.yardloc5;
+
+       Write QSysPrt Text1;
+       Write QSysPrt Text2;
+       Write QSysPrt Text3;
+       Write QSysPrt Text4;
+       Write QSysPrt Text5;
+
+       Return;
+
+     P Write_LLHead    E
+
+      ***-----------------------------------------------------------***
+      * Procedure Name:   Write_LLMove
+      * Purpose.......:   Write LatLon
+      * Returns.......:   None
+      * Parameters....:   LLHeadDS data structure
+      ***-----------------------------------------------------------***
+     P Write_LLMove    B
+
+     D Write_LLMove    PI
+     D  Data                               LikeDS(LLMoveDS) Const
+
+     D Text1           DS           132
+     D  last_move_time...
+     D                               26A
+     D                                3A   Inz('  ')
+     D  movement_type                15A
+     D                                3A   Inz('  ')
+     D  load_status                  15A
+     D                                3A   Inz('  ')
+     D  scac                          4A
+     D                                3A   Inz('  ')
+     D  trailer                      25A
+     D                                3A   Inz('  ')
+
+     D Text2           DS           132
+     D  container_num                25A
+     D                                3A   Inz('  ')
+     D  fleet_code                    6A
+     D                                3A   Inz('  ')
+     D  tractor_scac                  4A
+     D                                3A   Inz('  ')
+     D  customer_code                 4A
+     D                                3A   Inz('  ')
+     D  asset_dimension...
+     D                               15A
+     D                                3A   Inz('  ')
+     D  asset_type                   15A
+     D                                3A   Inz('  ')
+     D  site                         25A
+     D                                3A   Inz('  ')
+     D  site_code                     9A
+     D                                3A   Inz('  ')
+     D  asset_visit_id...
+     D                                5A
+
+     D Text3           DS           132
+     D                                3A   Inz('  ')
+     D  is_dock                       5A
+     D                                3A   Inz('  ')
+     D  latitude                     15A
+     D                                3A   Inz('  ')
+     D  longitude                    25A
+     D                                3A   Inz('  ')
+     D  rfid_tag                     24A
+     D                                3A   Inz('  ')
+
        last_move_time = Data.last_move_time;
        movement_type = Data.movement_type;
        load_status = Data.load_status;
@@ -291,17 +354,22 @@
        customer_code = Data.customer_code;
        asset_dimension = Data.asset_dimension;
        asset_type = Data.asset_type;
+       site = Data.site;
+       site_code = Data.site_code;
+       asset_visit_id = %char(Data.asset_visit_id);
+       is_dock = Data.is_dock;
+       latitude = Data.latitude;
+       longitude = Data.longitude;
+       rfid_tag = Data.rfid_tag;
 
        Write QSysPrt Text1;
        Write QSysPrt Text2;
        Write QSysPrt Text3;
-       Write QSysPrt Text4;
-       Write QSysPrt Text5;
-       Write QSysPrt Text6;
 
        Return;
 
-     P Write_LatLon    E
+     P Write_LLMove    E
+
 
       ***-----------------------------------------------------------***
       * Procedure Name:   Write_EccMsg
