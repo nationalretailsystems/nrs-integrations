@@ -98,20 +98,6 @@
        BufPtr += 15;
        DataStruct.asset_type = %subst(CharBuf:1:15);
        BufPtr += 15;
-       DataStruct.site = %subst(CharBuf:1:25);
-       BufPtr += 25;
-       DataStruct.site_code = %subst(CharBuf:1:9);
-       BufPtr += 9;
-       DataStruct.asset_visit_id = %int(%subst(CharBuf:1:6));
-       BufPtr += 6;
-       DataStruct.is_dock = %subst(CharBuf:1:5);
-       BufPtr += 5;
-       DataStruct.latitude = %subst(CharBuf:1:15);
-       BufPtr += 15;
-       DataStruct.longitude = %subst(CharBuf:1:25);
-       BufPtr += 25;
-       DataStruct.rfid_tag = %subst(CharBuf:1:24);
-       BufPtr += 24;
 
        return ;
 

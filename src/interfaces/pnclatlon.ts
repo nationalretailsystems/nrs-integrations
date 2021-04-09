@@ -131,34 +131,6 @@ export interface LatLonDS {
      * @size 15 characters
      */
     asset_type: string;
-    /**
-     * @size 25 characters
-     */
-    site: string;
-    /**
-     * @size 9 characters
-     */
-    site_code: string;
-    /**
-     * @size 5 digits
-     */
-    asset_visit_id: number;
-    /**
-     * @size 5 characters
-     */
-    is_dock: string;
-    /**
-     * @size 15 characters
-     */
-    Latitude: string;
-    /**
-     * @size 25 characters
-     */
-    Longitude: string;
-    /**
-     * @size 24 characters
-     */
-    rfid_tag: string;
 }
 
 /**
@@ -192,13 +164,6 @@ export function convertObjectToLatLonDS(dataIn: LatLonDS): string {
     dataOut += dataIn.customer_code.substring(0, 4).padEnd(4);
     dataOut += dataIn.asset_dimension.substring(0, 15).padEnd(15);
     dataOut += dataIn.asset_type.substring(0, 15).padEnd(15);
-    dataOut += dataIn.site.substring(0, 25).padEnd(25);
-    dataOut += dataIn.site_code.substring(0, 9).padEnd(9);
-    dataOut += dataIn.asset_visit_id.toFixed().substring(0, 6).padEnd(6);
-    dataOut += dataIn.is_dock.substring(0, 5).padEnd(5);
-    dataOut += dataIn.Latitude.substring(0, 15).padEnd(15);
-    dataOut += dataIn.Longitude.substring(0, 25).padEnd(25);
-    dataOut += dataIn.rfid_tag.substring(0, 24).padEnd(24);
 
     return dataOut;
 }

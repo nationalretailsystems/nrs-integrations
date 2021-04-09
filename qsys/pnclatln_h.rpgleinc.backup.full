@@ -24,9 +24,9 @@
 
       ************************************
       * LatLonDS data structure
-      * Record length: 500
+      * Record length: 655
       ************************************
-     DLatLonDSLen      C                   500
+     DLatLonDSLen      C                   655
      DLatLonDS         DS                  Qualified
      D                                     Template
      Devent                          50A
@@ -62,6 +62,13 @@
      Dcustomer_code                   4A
      Dasset_dimension                15A
      Dasset_type                     15A
+     Dsite                           25A
+     Dsite_code                       9A
+     Dasset_visit_id                  5I 0
+     Dis_dock                        50A
+     Dlatitude                       15A
+     Dlongitude                      25A
+     Drfid_tag                       24A
 
       ************************************
       * Convert buffer to LatLonDS
