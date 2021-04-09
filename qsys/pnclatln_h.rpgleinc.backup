@@ -23,11 +23,11 @@
      DBuffer                        500A
 
       ************************************
-      * LatLonDS data structure
-      * Record length: 500
+      * LLHeadDS data structure
+      * Record length: 347
       ************************************
-     DLatLonDSLen      C                   500
-     DLatLonDS         DS                  Qualified
+     DLLHeadDSLen      C                   347
+     DLLHeadDS         DS                  Qualified
      D                                     Template
      Devent                          50A
      Dtime                           25A
@@ -51,6 +51,21 @@
      Dyardloc3                        3A   Overlay(spot_number:1)
      Dlocation1                       1A   Overlay(spot_number:3)
      Dyardloc5                        5A   Overlay(spot_number:1)
+
+      ************************************
+      * Convert buffer to LLHeadDS
+      ************************************
+     DBufToLLHeadDS    PR
+     DBuffer                        500A
+     DDataStruct                           LikeDS(LLHeadDS)
+
+      ************************************
+      * LLMoveDS data structure
+      * Record length: 263
+      ************************************
+     DLLMoveDSLen      C                   263
+     DLLMoveDS         DS                  Qualified
+     D                                     Template
      Dlast_move_time                 26A
      Dmovement_type                  15A
      Dload_status                    15A
@@ -62,10 +77,17 @@
      Dcustomer_code                   4A
      Dasset_dimension                15A
      Dasset_type                     15A
+     Dsite                           25A
+     Dsite_code                       9A
+     Dasset_visit_id                  5I 0
+     Dis_dock                         5A
+     Dlatitude                       15A
+     Dlongitude                      25A
+     Drfid_tag                       24A
 
       ************************************
-      * Convert buffer to LatLonDS
+      * Convert buffer to LLMoveDS
       ************************************
-     DBufToLatLonDS    PR
+     DBufToLLMoveDS    PR
      DBuffer                        500A
-     DDataStruct                           LikeDS(LatLonDS)
+     DDataStruct                           LikeDS(LLMoveDS)
