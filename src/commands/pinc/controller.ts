@@ -84,16 +84,20 @@ export const latlon: ECCHandlerFunction = async (reqkey, _, ecc) => {
 
         result = JSON.parse(message?.Body || '{}');
         if (message && message.ReceiptHandle && result?.data?.asset) {
-            result = Object.assign({
-                event_type: result.event_id.substr(0, 2),
-                event_no: parseInt(result.event_id.substr(2, 7), 10),
-                snyard: result.data.asset.spot_number.substr(1),
-                snloctype: result.data.asset.spot_number.substr(1, 1),
-                snslotnumber: result.data.asset.spot_number.substr(2, 3),
-                yardloc3: result.data.asset.spot_number.substr(5, 3),
-                location1: result.data.asset.spot_number.substr(8, 1),
-                yardloc5: result.data.asset.spot_number.substr(9, 5)
-            }, result, result.data.asset);
+            result = Object.assign(
+                {
+                    event_type: result.event_id.substr(0, 2),
+                    event_no: parseInt(result.event_id.substr(2, 7), 10),
+                    snyard: result.data.asset.spot_number.substr(1),
+                    snloctype: result.data.asset.spot_number.substr(1, 1),
+                    snslotnumber: result.data.asset.spot_number.substr(2, 3),
+                    yardloc3: result.data.asset.spot_number.substr(5, 3),
+                    location1: result.data.asset.spot_number.substr(8, 1),
+                    yardloc5: result.data.asset.spot_number.substr(9, 5)
+                },
+                result,
+                result.data.asset
+            );
             result.checked_out = result.checked_out || '';
             result.is_dock = '' + result.is_dock;
 
@@ -103,11 +107,11 @@ export const latlon: ECCHandlerFunction = async (reqkey, _, ecc) => {
             };
             const deleteResult = await sqs.deleteMessage(deleteParams).promise();
             logger.debug('Delete Result', deleteResult);
-        } else {   
+        } else {
             logger.warn('Received no valid messages', message);
             return ecc.sendEccResult('ECC2000', 'No Valid Messages to Receive', nextReqKey);
         }
-                
+
         logger.debug('SQS Message Receive Sent', result);
         nextReqKey = await ecc.sendEccResult('ECC0000', 'Success', nextReqKey);
         return ecc.sendObjectToCaller(result, pnclatlonapi.convertObjectToLatLonDS, nextReqKey);
