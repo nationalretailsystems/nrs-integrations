@@ -257,24 +257,6 @@
      D                               15A
      D                                3A   Inz('  ')
      D  asset_type                   15A
-     D                                3A   Inz('  ')
-     D  site                         25A
-     D                                3A   Inz('  ')
-     D  site_code                     9A
-     D                                3A   Inz('  ')
-     D  asset_visit_id...
-     D                                5A
-
-     D Text7           DS           132
-     D                                3A   Inz('  ')
-     D  is_dock                       5A
-     D                                3A   Inz('  ')
-     D  latitude                     15A
-     D                                3A   Inz('  ')
-     D  longitude                    25A
-     D                                3A   Inz('  ')
-     D  rfid_tag                     24A
-     D                                3A   Inz('  ')
 
        event = Data.event;
        time = Data.time;
@@ -309,13 +291,6 @@
        customer_code = Data.customer_code;
        asset_dimension = Data.asset_dimension;
        asset_type = Data.asset_type;
-       site = Data.site;
-       site_code = Data.site_code;
-       asset_visit_id = %char(Data.asset_visit_id);
-       is_dock = Data.is_dock;
-       latitude = Data.latitude;
-       longitude = Data.longitude;
-       rfid_tag = Data.rfid_tag;
 
        Write QSysPrt Text1;
        Write QSysPrt Text2;
@@ -323,7 +298,6 @@
        Write QSysPrt Text4;
        Write QSysPrt Text5;
        Write QSysPrt Text6;
-       Write QSysPrt Text7;
 
        Return;
 
