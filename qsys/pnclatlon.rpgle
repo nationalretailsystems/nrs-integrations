@@ -36,13 +36,13 @@
      PLLReqToBuf       E
 
       ************************************
-      * Convert buffer to LatLonDS
+      * Convert buffer to LLHeadDS
       ************************************
-     PBufToLatLonDS    B                   Export
+     PBufToLLHeadDS    B                   Export
 
-     DBufToLatLonDS    PI
+     DBufToLLHeadDS    PI
      DBuffer                        500A
-     DDataStruct                           LikeDS(LatLonDS)
+     DDataStruct                           LikeDS(LLHeadDS)
 
        // Initialize to begining of buffer
        BufPtr = %addr(Buffer);
@@ -76,6 +76,24 @@
        BufPtr += 25;
        DataStruct.spot_number = %subst(CharBuf:1:10);
        BufPtr += 10;
+
+       return ;
+
+     PBufToLLHeadDS    E
+
+      ************************************
+      * Convert buffer to LLMoveDS
+      ************************************
+     PBufToLLMoveDS    B                   Export
+
+     DBufToLLMoveDS    PI
+     DBuffer                        500A
+     DDataStruct                           LikeDS(LLMoveDS)
+
+       // Initialize to begining of buffer
+       BufPtr = %addr(Buffer);
+
+       // Read fields from buffer into DS
        DataStruct.last_move_time = %subst(CharBuf:1:26);
        BufPtr += 26;
        DataStruct.movement_type = %subst(CharBuf:1:15);
@@ -98,7 +116,21 @@
        BufPtr += 15;
        DataStruct.asset_type = %subst(CharBuf:1:15);
        BufPtr += 15;
+       DataStruct.site = %subst(CharBuf:1:25);
+       BufPtr += 25;
+       DataStruct.site_code = %subst(CharBuf:1:9);
+       BufPtr += 9;
+       DataStruct.asset_visit_id = %int(%subst(CharBuf:1:6));
+       BufPtr += 6;
+       DataStruct.is_dock = %subst(CharBuf:1:5);
+       BufPtr += 5;
+       DataStruct.latitude = %subst(CharBuf:1:15);
+       BufPtr += 15;
+       DataStruct.longitude = %subst(CharBuf:1:25);
+       BufPtr += 25;
+       DataStruct.rfid_tag = %subst(CharBuf:1:24);
+       BufPtr += 24;
 
        return ;
 
-     PBufToLatLonDS    E
+     PBufToLLMoveDS    E

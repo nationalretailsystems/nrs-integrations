@@ -30,7 +30,7 @@ export function convertLLReqToObject(dataIn: string): LLReq {
 /**
  * Input interface
  */
-export interface LatLonDS {
+export interface LLHeadDS {
     /**
      * @size 50 characters
      */
@@ -87,6 +87,36 @@ export interface LatLonDS {
      * @size 10 characters
      */
     spot_number: string;
+}
+
+/**
+ * Convert JavaScript object to LLHeadDS record
+ */
+export function convertObjectToLLHeadDS(dataIn: LLHeadDS): string {
+    let dataOut = '';
+
+    dataOut += dataIn.event.substring(0, 50).padEnd(50);
+    dataOut += dataIn.time.substring(0, 25).padEnd(25);
+    dataOut += dataIn.version.substring(0, 3).padEnd(3);
+    dataOut += dataIn.campus.substring(0, 6).padEnd(6);
+    dataOut += dataIn.customer_facility_code.substring(0, 25).padEnd(25);
+    dataOut += dataIn.event_id.substring(0, 25).padEnd(25);
+    dataOut += dataIn.reference_id.substring(0, 25).padEnd(25);
+    dataOut += dataIn.checked_in.substring(0, 26).padEnd(26);
+    dataOut += dataIn.checked_out.substring(0, 26).padEnd(26);
+    dataOut += dataIn.updated_on.substring(0, 26).padEnd(26);
+    dataOut += dataIn.check_in_agent.substring(0, 25).padEnd(25);
+    dataOut += dataIn.check_out_agent.substring(0, 25).padEnd(25);
+    dataOut += dataIn.purpose.substring(0, 25).padEnd(25);
+    dataOut += dataIn.spot_number.substring(0, 10).padEnd(10);
+
+    return dataOut;
+}
+
+/**
+ * Input interface
+ */
+export interface LLMoveDS {
     /**
      * @size 26 characters
      */
@@ -131,28 +161,42 @@ export interface LatLonDS {
      * @size 15 characters
      */
     asset_type: string;
+    /**
+     * @size 25 characters
+     */
+    site: string;
+    /**
+     * @size 9 characters
+     */
+    site_code: string;
+    /**
+     * @size 5 digits
+     */
+    asset_visit_id: number;
+    /**
+     * @size 5 characters
+     */
+    is_dock: string;
+    /**
+     * @size 15 characters
+     */
+    Latitude: string;
+    /**
+     * @size 25 characters
+     */
+    Longitude: string;
+    /**
+     * @size 24 characters
+     */
+    rfid_tag: string;
 }
 
 /**
- * Convert JavaScript object to LatLonDS record
+ * Convert JavaScript object to LLMoveDS record
  */
-export function convertObjectToLatLonDS(dataIn: LatLonDS): string {
+export function convertObjectToLLMoveDS(dataIn: LLMoveDS): string {
     let dataOut = '';
 
-    dataOut += dataIn.event.substring(0, 50).padEnd(50);
-    dataOut += dataIn.time.substring(0, 25).padEnd(25);
-    dataOut += dataIn.version.substring(0, 3).padEnd(3);
-    dataOut += dataIn.campus.substring(0, 6).padEnd(6);
-    dataOut += dataIn.customer_facility_code.substring(0, 25).padEnd(25);
-    dataOut += dataIn.event_id.substring(0, 25).padEnd(25);
-    dataOut += dataIn.reference_id.substring(0, 25).padEnd(25);
-    dataOut += dataIn.checked_in.substring(0, 26).padEnd(26);
-    dataOut += dataIn.checked_out.substring(0, 26).padEnd(26);
-    dataOut += dataIn.updated_on.substring(0, 26).padEnd(26);
-    dataOut += dataIn.check_in_agent.substring(0, 25).padEnd(25);
-    dataOut += dataIn.check_out_agent.substring(0, 25).padEnd(25);
-    dataOut += dataIn.purpose.substring(0, 25).padEnd(25);
-    dataOut += dataIn.spot_number.substring(0, 10).padEnd(10);
     dataOut += dataIn.last_move_time.substring(0, 26).padEnd(26);
     dataOut += dataIn.movement_type.substring(0, 15).padEnd(15);
     dataOut += dataIn.load_status.substring(0, 15).padEnd(15);
@@ -164,6 +208,13 @@ export function convertObjectToLatLonDS(dataIn: LatLonDS): string {
     dataOut += dataIn.customer_code.substring(0, 4).padEnd(4);
     dataOut += dataIn.asset_dimension.substring(0, 15).padEnd(15);
     dataOut += dataIn.asset_type.substring(0, 15).padEnd(15);
+    dataOut += dataIn.site.substring(0, 25).padEnd(25);
+    dataOut += dataIn.site_code.substring(0, 9).padEnd(9);
+    dataOut += dataIn.asset_visit_id.toFixed().substring(0, 6).padEnd(6);
+    dataOut += dataIn.is_dock.substring(0, 5).padEnd(5);
+    dataOut += dataIn.Latitude.substring(0, 15).padEnd(15);
+    dataOut += dataIn.Longitude.substring(0, 25).padEnd(25);
+    dataOut += dataIn.rfid_tag.substring(0, 24).padEnd(24);
 
     return dataOut;
 }
