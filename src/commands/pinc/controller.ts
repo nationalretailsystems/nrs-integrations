@@ -114,7 +114,8 @@ export const latlon: ECCHandlerFunction = async (reqkey, _, ecc) => {
 
         logger.debug('SQS Message Receive Sent', result);
         nextReqKey = await ecc.sendEccResult('ECC0000', 'Success', nextReqKey);
-        return ecc.sendObjectToCaller(result, pnclatlonapi.convertObjectToLatLonDS, nextReqKey);
+        nextReqKey = await ecc.sendObjectToCaller(result, pnclatlonapi.convertObjectToLLHeadDS, nextReqKey);
+        return ecc.sendObjectToCaller(result, pnclatlonapi.convertObjectToLLMoveDS, nextReqKey);
     } catch (err) {
         logger.warn('SQS Message Receive Failed', err);
         return ecc.sendEccResult('ECC9000', err.message, nextReqKey);
