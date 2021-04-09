@@ -9,47 +9,17 @@
 LIB?=ECNCTAPP
 
 
-MODS = dspjk \
-       dsptrfc \
-       dspvhcl \
-       dspwf \
-       prtlbl \
-	   tstpncchk \
-	   tstpncll
+MODS = tstpncll
 
-GENMODS = icndbapi \
-          lblapi \
-          trfcapi \
-          vinapi \
-          wthfrcapi \
-          pncchkin \
-		  pnclatlon
+GENMODS = pnclatlon
 
-GENHDRS = icndbapi_h \
-          lblapi_h \
-          trfcapi_h \
-          vinapi_h \
-          wthfcapi_h \
-          pncchkin_h \
-	      pnclatln_h
+GENHDRS = pnclatln_h
 
 SRVPGMS = ecctmpgen
 
-PGMS = dspjk \
-       dsptrfc \
-       dspvhcl \
-       dspwf \
-       prtlbl \
-	   tstpncchk \
-	   tstpncll
+PGMS = tstpncll
 
-CMDS = dspjk \
-       dsptrfc \
-       dspvhcl \
-       dspwf \
-       prtlbl \
-	   tstpncchk \
-	   tstpncll
+CMDS = tstpncll
 
 INBOUNDPGMS = simplecalc
 
