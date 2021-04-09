@@ -1,0 +1,40 @@
+{
+	"event": "yardhound.events.asset_location_lat_lon",
+	"time": "2021-03-31T11:58:31.534+00:00",
+	"version": "3.0",
+	"campus": "NRSNBR",
+	"customer_facility_code": "",
+	"event_id": "SW6116191",
+	"data":
+	{
+		"asset":
+		{
+			"reference_id": "KNIG-85973",
+			"checked_in": "2021-03-26T10:37:00.000-04:00",
+			"checked_out": null,
+			"updated_on": "2021-03-26T10:36:44.772-04:00",
+			"check_in_agent": "nrsinteg",
+			"check_out_agent": "",
+			"purpose": "F Yard Row 2",
+			"spot_number": "FR2072",
+			"last_move_time": "2021-03-26T11:29:46.632-04:00",
+			"movement_type": "Outbound",
+			"load_status": "Empty",
+			"trailer_scac": "KNIG",
+			"trailer_number": "85973",
+			"container_number": "",
+			"fleet_code": "",
+			"tractor_scac": "KNIG",
+			"customer_code": "TJ",
+			"asset_dimension": "Trailer53",
+			"asset_type": "Trailer",
+			"site": "North Bergen",
+			"site_code": "NRSNBRYRD",
+			"asset_visit_id": 10818,
+			"is_dock": false,
+			"Latitude": "40.7645107",
+			"Longitude": "-74.0580913",
+			"rfid_tag": "340853E1D402FC000003211C"
+		}
+	}
+}
