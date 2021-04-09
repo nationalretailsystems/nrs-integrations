@@ -234,6 +234,7 @@ $(libdir)/qrpglesrc.file/pncchkin.mbr $(libdir)/qrpglesrc.file/pncchkin_h.mbr ..
 $(libdir)/qrpglesrc.file/pnclatlon.mbr $(libdir)/qrpglesrc.file/pnclatln_h.mbr ../src/interfaces/pnclatlon.ts: pnclatlon.yaml
 	npx ec-generate -f $<
 	cp pnclatlon.ts ../src/interfaces/pnclatlon.ts
+	cp pnclatln_h.rpgleinc.backup pnclatln_h.rpgleinc
 	system "CPYFRMSTMF FROMSTMF('pnclatlon.rpgle') TOMBR('$(libdir)/qrpglesrc.file/pnclatlon.mbr') MBROPT(*REPLACE)"
 	system "CPYFRMSTMF FROMSTMF('pnclatln_h.rpgleinc') TOMBR('$(libdir)/qrpglesrc.file/pnclatln_h.mbr') MBROPT(*REPLACE)"
 
