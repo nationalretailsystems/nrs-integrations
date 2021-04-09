@@ -56,15 +56,6 @@ export interface LatLonDS {
      */
     event_id: string;
     /**
-     * @size 2 characters
-     */
-    event_type: string;
-    /**
-     * @size 7 digits
-     * @precision 0 decimals
-     */
-    event_no: number;
-    /**
      * @size 25 characters
      */
     reference_id: string;
@@ -96,30 +87,6 @@ export interface LatLonDS {
      * @size 10 characters
      */
     spot_number: string;
-    /**
-     * @size 1 characters
-     */
-    snyard: string;
-    /**
-     * @size 1 characters
-     */
-    snloctype: string;
-    /**
-     * @size 3 characters
-     */
-    snslotnumber: string;
-    /**
-     * @size 3 characters
-     */
-    yardloc3: string;
-    /**
-     * @size 1 characters
-     */
-    location1: string;
-    /**
-     * @size 5 characters
-     */
-    yardloc5: string;
     /**
      * @size 26 characters
      */
@@ -206,8 +173,6 @@ export function convertObjectToLatLonDS(dataIn: LatLonDS): string {
     dataOut += dataIn.campus.substring(0, 6).padEnd(6);
     dataOut += dataIn.customer_facility_code.substring(0, 25).padEnd(25);
     dataOut += dataIn.event_id.substring(0, 25).padEnd(25);
-    dataOut += dataIn.event_type.substring(0, 2).padEnd(2);
-    dataOut += dataIn.event_no.toFixed(0).substring(0, 9).padEnd(9);
     dataOut += dataIn.reference_id.substring(0, 25).padEnd(25);
     dataOut += dataIn.checked_in.substring(0, 26).padEnd(26);
     dataOut += dataIn.checked_out.substring(0, 26).padEnd(26);
@@ -216,12 +181,6 @@ export function convertObjectToLatLonDS(dataIn: LatLonDS): string {
     dataOut += dataIn.check_out_agent.substring(0, 25).padEnd(25);
     dataOut += dataIn.purpose.substring(0, 25).padEnd(25);
     dataOut += dataIn.spot_number.substring(0, 10).padEnd(10);
-    dataOut += dataIn.snyard.substring(0, 1).padEnd(1);
-    dataOut += dataIn.snloctype.substring(0, 1).padEnd(1);
-    dataOut += dataIn.snslotnumber.substring(0, 3).padEnd(3);
-    dataOut += dataIn.yardloc3.substring(0, 3).padEnd(3);
-    dataOut += dataIn.location1.substring(0, 1).padEnd(1);
-    dataOut += dataIn.yardloc5.substring(0, 5).padEnd(5);
     dataOut += dataIn.last_move_time.substring(0, 26).padEnd(26);
     dataOut += dataIn.movement_type.substring(0, 15).padEnd(15);
     dataOut += dataIn.load_status.substring(0, 15).padEnd(15);

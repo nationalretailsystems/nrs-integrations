@@ -74,8 +74,8 @@
        BufPtr += 25;
        DataStruct.purpose = %subst(CharBuf:1:25);
        BufPtr += 25;
-       DataStruct.spot_number = %subst(CharBuf:1:1);
-       BufPtr += 1;
+       DataStruct.spot_number = %subst(CharBuf:1:10);
+       BufPtr += 10;
        DataStruct.last_move_time = %subst(CharBuf:1:26);
        BufPtr += 26;
        DataStruct.movement_type = %subst(CharBuf:1:15);

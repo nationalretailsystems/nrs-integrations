@@ -15,7 +15,7 @@ export interface CheckinDS {
      */
     message_group_id: string;
     /**
-     * @size 6 characters
+     * @size 60 characters
      */
     campus: string;
     /**
@@ -75,19 +75,19 @@ export function convertCheckinDSToObject(dataIn: string): CheckinDS {
     const dataOut: any = {};
 
     dataOut.message_group_id = dataIn.substring(0, 25).trimEnd();
-    dataOut.campus = dataIn.substring(25, 31).trimEnd();
-    dataOut.checked_in = dataIn.substring(31, 56).trimEnd();
-    dataOut.asset_type = dataIn.substring(56, 81).trimEnd();
-    dataOut.rfid_tag = dataIn.substring(81, 106).trimEnd();
-    dataOut.site_code = dataIn.substring(106, 131).trimEnd();
-    dataOut.Trailer_SCAC = dataIn.substring(131, 135).trimEnd();
-    dataOut.Trailer_number = dataIn.substring(135, 160).trimEnd();
-    dataOut.container_number = dataIn.substring(160, 185).trimEnd();
-    dataOut.movement_type = dataIn.substring(185, 210).trimEnd();
-    dataOut.load_status = dataIn.substring(210, 235).trimEnd();
-    dataOut.customer_code = dataIn.substring(235, 260).trimEnd();
-    dataOut.fleet_code = dataIn.substring(260, 285).trimEnd();
-    dataOut.tractor_scac = dataIn.substring(285, 310).trimEnd();
+    dataOut.campus = dataIn.substring(25, 85).trimEnd();
+    dataOut.checked_in = dataIn.substring(85, 110).trimEnd();
+    dataOut.asset_type = dataIn.substring(110, 135).trimEnd();
+    dataOut.rfid_tag = dataIn.substring(135, 160).trimEnd();
+    dataOut.site_code = dataIn.substring(160, 185).trimEnd();
+    dataOut.Trailer_SCAC = dataIn.substring(185, 189).trimEnd();
+    dataOut.Trailer_number = dataIn.substring(189, 214).trimEnd();
+    dataOut.container_number = dataIn.substring(214, 239).trimEnd();
+    dataOut.movement_type = dataIn.substring(239, 264).trimEnd();
+    dataOut.load_status = dataIn.substring(264, 289).trimEnd();
+    dataOut.customer_code = dataIn.substring(289, 314).trimEnd();
+    dataOut.fleet_code = dataIn.substring(314, 339).trimEnd();
+    dataOut.tractor_scac = dataIn.substring(339, 364).trimEnd();
 
     return dataOut;
 }

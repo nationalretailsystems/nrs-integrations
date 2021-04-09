@@ -77,36 +77,6 @@ formats:
         rpgName: spot_number
         type: Character
         length: 10
-      snyard:
-        rpgName: snyard
-        type: Character
-        length: 1
-        overlay: spot_number
-      snloctype:
-        rpgName: snloctype
-        type: Character
-        length: 1
-        overlay: spot_number:*next
-      snslotnumber:
-        rpgName: snslotnumber
-        type: Character
-        length: 3
-        overlay: spot_number:*next
-      yardloc3:
-        rpgName: yardloc3
-        type: Character
-        length: 3
-        overlay: spot_number:1
-      location1:
-        rpgName: location1
-        type: Character
-        length: 1
-        overlay: spot_number:3
-      yardloc5:
-        rpgName: yardloc5
-        type: Character
-        length: 5
-        overlay: spot_number:1
       last_move_time:
         rpgName: last_move_time
         type: Character
