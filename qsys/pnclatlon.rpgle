@@ -12,7 +12,11 @@
       * Global variables
       ************************************
      DBufPtr           S               *
-     DCharBuf          S            500A   Based(BufPtr)
+     DCharBuf          S          64512A   Based(BufPtr)
+     Di                S             10U 0
+     Dj                S             10U 0
+     Dk                S             10U 0
+     Dl                S             10U 0
 
       ************************************
       * Convert LLReq to buffer
@@ -22,12 +26,12 @@
      DLLReqToBuf       PI
      DDataStruct                           LikeDS(LLReq)
      D                                     Const
-     DBuffer                        500A
+     DBuffer                         80A
 
-       // Initialize to beginning of buffer
+      * Initialize to beginning of buffer
        BufPtr = %addr(Buffer);
 
-       // Write fields from DS to buffer
+      * Write fields from DS to buffer
        %subst(CharBuf:1:80) = DataStruct.comment;
        BufPtr += 80;
 
@@ -41,13 +45,13 @@
      PBufToLLHeadDS    B                   Export
 
      DBufToLLHeadDS    PI
-     DBuffer                        500A
+     DBuffer                        322A
      DDataStruct                           LikeDS(LLHeadDS)
 
-       // Initialize to begining of buffer
+      * Initialize to begining of buffer
        BufPtr = %addr(Buffer);
 
-       // Read fields from buffer into DS
+      * Read fields from buffer into DS
        DataStruct.event = %subst(CharBuf:1:50);
        BufPtr += 50;
        DataStruct.time = %subst(CharBuf:1:25);
@@ -87,13 +91,13 @@
      PBufToLLMoveDS    B                   Export
 
      DBufToLLMoveDS    PI
-     DBuffer                        500A
+     DBuffer                        263A
      DDataStruct                           LikeDS(LLMoveDS)
 
-       // Initialize to begining of buffer
+      * Initialize to begining of buffer
        BufPtr = %addr(Buffer);
 
-       // Read fields from buffer into DS
+      * Read fields from buffer into DS
        DataStruct.last_move_time = %subst(CharBuf:1:26);
        BufPtr += 26;
        DataStruct.movement_type = %subst(CharBuf:1:15);

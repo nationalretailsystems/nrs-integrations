@@ -15,7 +15,7 @@ export interface CheckinDS {
      */
     message_group_id: string;
     /**
-     * @size 60 characters
+     * @size 6 characters
      */
     campus: string;
     /**
@@ -73,21 +73,36 @@ export interface CheckinDS {
  */
 export function convertCheckinDSToObject(dataIn: string): CheckinDS {
     const dataOut: any = {};
+    let pos: number = 0;
 
-    dataOut.message_group_id = dataIn.substring(0, 25).trimEnd();
-    dataOut.campus = dataIn.substring(25, 85).trimEnd();
-    dataOut.checked_in = dataIn.substring(85, 110).trimEnd();
-    dataOut.asset_type = dataIn.substring(110, 135).trimEnd();
-    dataOut.rfid_tag = dataIn.substring(135, 160).trimEnd();
-    dataOut.site_code = dataIn.substring(160, 185).trimEnd();
-    dataOut.Trailer_SCAC = dataIn.substring(185, 189).trimEnd();
-    dataOut.Trailer_number = dataIn.substring(189, 214).trimEnd();
-    dataOut.container_number = dataIn.substring(214, 239).trimEnd();
-    dataOut.movement_type = dataIn.substring(239, 264).trimEnd();
-    dataOut.load_status = dataIn.substring(264, 289).trimEnd();
-    dataOut.customer_code = dataIn.substring(289, 314).trimEnd();
-    dataOut.fleet_code = dataIn.substring(314, 339).trimEnd();
-    dataOut.tractor_scac = dataIn.substring(339, 364).trimEnd();
+    dataOut.message_group_id = dataIn.substring(pos, pos + 25).trimEnd();
+    pos += 25;
+    dataOut.campus = dataIn.substring(pos, pos + 6).trimEnd();
+    pos += 6;
+    dataOut.checked_in = dataIn.substring(pos, pos + 25).trimEnd();
+    pos += 25;
+    dataOut.asset_type = dataIn.substring(pos, pos + 25).trimEnd();
+    pos += 25;
+    dataOut.rfid_tag = dataIn.substring(pos, pos + 25).trimEnd();
+    pos += 25;
+    dataOut.site_code = dataIn.substring(pos, pos + 25).trimEnd();
+    pos += 25;
+    dataOut.Trailer_SCAC = dataIn.substring(pos, pos + 4).trimEnd();
+    pos += 4;
+    dataOut.Trailer_number = dataIn.substring(pos, pos + 25).trimEnd();
+    pos += 25;
+    dataOut.container_number = dataIn.substring(pos, pos + 25).trimEnd();
+    pos += 25;
+    dataOut.movement_type = dataIn.substring(pos, pos + 25).trimEnd();
+    pos += 25;
+    dataOut.load_status = dataIn.substring(pos, pos + 25).trimEnd();
+    pos += 25;
+    dataOut.customer_code = dataIn.substring(pos, pos + 25).trimEnd();
+    pos += 25;
+    dataOut.fleet_code = dataIn.substring(pos, pos + 25).trimEnd();
+    pos += 25;
+    dataOut.tractor_scac = dataIn.substring(pos, pos + 25).trimEnd();
+    pos += 25;
 
     return dataOut;
 }

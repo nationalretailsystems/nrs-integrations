@@ -21,8 +21,10 @@ export interface LLReq {
  */
 export function convertLLReqToObject(dataIn: string): LLReq {
     const dataOut: any = {};
+    let pos: number = 0;
 
-    dataOut.comment = dataIn.substring(0, 80).trimEnd();
+    dataOut.comment = dataIn.substring(pos, pos + 80).trimEnd();
+    pos += 80;
 
     return dataOut;
 }
@@ -93,7 +95,7 @@ export interface LLHeadDS {
  * Convert JavaScript object to LLHeadDS record
  */
 export function convertObjectToLLHeadDS(dataIn: LLHeadDS): string {
-    let dataOut = '';
+    let dataOut: string = '';
 
     dataOut += dataIn.event.substring(0, 50).padEnd(50);
     dataOut += dataIn.time.substring(0, 25).padEnd(25);
@@ -195,7 +197,7 @@ export interface LLMoveDS {
  * Convert JavaScript object to LLMoveDS record
  */
 export function convertObjectToLLMoveDS(dataIn: LLMoveDS): string {
-    let dataOut = '';
+    let dataOut: string = '';
 
     dataOut += dataIn.last_move_time.substring(0, 26).padEnd(26);
     dataOut += dataIn.movement_type.substring(0, 15).padEnd(15);

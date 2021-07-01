@@ -12,7 +12,11 @@
       * Global variables
       ************************************
      DBufPtr           S               *
-     DCharBuf          S            500A   Based(BufPtr)
+     DCharBuf          S          64512A   Based(BufPtr)
+     Di                S             10U 0
+     Dj                S             10U 0
+     Dk                S             10U 0
+     Dl                S             10U 0
 
       ************************************
       * Convert CheckinDS to buffer
@@ -22,12 +26,12 @@
      DCheckinDSToBuf   PI
      DDataStruct                           LikeDS(CheckinDS)
      D                                     Const
-     DBuffer                        500A
+     DBuffer                        310A
 
-       // Initialize to beginning of buffer
+      * Initialize to beginning of buffer
        BufPtr = %addr(Buffer);
 
-       // Write fields from DS to buffer
+      * Write fields from DS to buffer
        %subst(CharBuf:1:25) = DataStruct.msg_grp_id;
        BufPtr += 25;
        %subst(CharBuf:1:6) = DataStruct.campus;
