@@ -29,7 +29,7 @@
       * Passed Parameter - both Request & Response
       *
      D  DataLen        S              5P 0
-     D  DataBuf        S           1024A
+     D  DataBuf        S          32767A
 
       * Local Variables
      D MsgDta          S            132A
@@ -145,7 +145,7 @@
            BufToLLHeadDS(DataBuf:MyLLHeadDS);
            Write_LLHead(MyLLHeadDS);
          EndIf;
-         
+
 
       // Receive and display the remaining lines, if any
          DataLen = LLMoveDSLen;
@@ -229,7 +229,7 @@
      D                                3A   Inz('  ')
      D  updated_on                   26A
      D                                3A   Inz('  ')
-     D  check_in_agent... 
+     D  check_in_agent...
      D                               25A
      D                                3A   Inz('  ')
      D  check_out_agent...

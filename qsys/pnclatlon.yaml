@@ -77,6 +77,30 @@ formats:
         rpgName: spot_number
         type: Character
         length: 10
+      snyard:
+        type: Character
+        length: 1
+        overlay: spot_number
+      snloctype:
+        type: Character
+        length: 1
+        overlay: spot_number:*next
+      snslotnumber:
+        type: Character
+        length: 3
+        overlay: spot_number:*next
+      yardloc3:
+        type: Character
+        length: 3
+        overlay: spot_number:1
+      location1:
+        type: Character
+        length: 1
+        overlay: spot_number:3
+      yardloc5:
+        type: Character
+        length: 5
+        overlay: spot_number:1
   LLMoveDS:
     recordType: response
     subfields:
