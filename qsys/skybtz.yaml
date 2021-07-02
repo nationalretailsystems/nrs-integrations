@@ -1,0 +1,10 @@
+---
+name: skybtz
+rpgIncName: skybtz_h
+formats:
+  GetMileages:
+    recordType: request
+    subfields:
+      filename:
+        type: Character
+        length: 256

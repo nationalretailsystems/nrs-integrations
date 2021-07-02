@@ -14,8 +14,8 @@ MODS = dspjk \
        dspvhcl \
        dspwf \
        prtlbl \
-	   tstpncchk \
-	   tstpncll
+       tstpncchk \
+       tstpncll
 
 GENMODS = icndbapi \
           lblapi \
@@ -23,7 +23,9 @@ GENMODS = icndbapi \
           vinapi \
           wthfrcapi \
           pncchkin \
-		  pnclatlon
+          pnclatlon \
+          skybtz
+
 
 GENHDRS = icndbapi_h \
           lblapi_h \
@@ -31,7 +33,8 @@ GENHDRS = icndbapi_h \
           vinapi_h \
           wthfcapi_h \
           pncchkin_h \
-	      pnclatln_h
+          pnclatln_h \
+          skybtz_h
 
 SRVPGMS = ecctmpgen
 
@@ -40,16 +43,16 @@ PGMS = dspjk \
        dspvhcl \
        dspwf \
        prtlbl \
-	   tstpncchk \
-	   tstpncll
+       tstpncchk \
+       tstpncll
 
 CMDS = dspjk \
        dsptrfc \
        dspvhcl \
        dspwf \
        prtlbl \
-	   tstpncchk \
-	   tstpncll
+       tstpncchk \
+       tstpncll
 
 INBOUNDPGMS = simplecalc
 
@@ -237,6 +240,12 @@ $(libdir)/qrpglesrc.file/pnclatlon.mbr $(libdir)/qrpglesrc.file/pnclatln_h.mbr .
 	#cp pnclatln_h.rpgleinc.backup pnclatln_h.rpgleinc
 	system "CPYFRMSTMF FROMSTMF('pnclatlon.rpgle') TOMBR('$(libdir)/qrpglesrc.file/pnclatlon.mbr') MBROPT(*REPLACE)"
 	system "CPYFRMSTMF FROMSTMF('pnclatln_h.rpgleinc') TOMBR('$(libdir)/qrpglesrc.file/pnclatln_h.mbr') MBROPT(*REPLACE)"
+
+$(libdir)/qrpglesrc.file/skybtz.mbr $(libdir)/qrpglesrc.file/skybtz_h.mbr ../src/interfaces/skybtz.ts: skybtz.yaml
+	npx ec-generate -f $<
+	cp skybtz.ts ../src/interfaces/skybtz.ts
+	system "CPYFRMSTMF FROMSTMF('skybtz.rpgle') TOMBR('$(libdir)/qrpglesrc.file/skybtz.mbr') MBROPT(*REPLACE)"
+	system "CPYFRMSTMF FROMSTMF('skybtz_h.rpgleinc') TOMBR('$(libdir)/qrpglesrc.file/skybtz_h.mbr') MBROPT(*REPLACE)"
 
 
 .PHONY: library

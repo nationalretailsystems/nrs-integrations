@@ -13,6 +13,16 @@
         }
     },
 
+    "skybitz": {
+        "axios": {
+            "baseURL": "http://xml.skybitz.com:nnnn",
+            "responseType": "json"
+        },
+        "username": "skybitz_username",
+        "password": "skybitz_password",
+        "version": "skybitz_version"
+    },
+
     "icndb": {
         "baseURL": "https://api.icndb.com",
         "responseType": "json"
