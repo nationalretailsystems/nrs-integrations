@@ -1,18 +1,14 @@
 ---
 name: pncchkin
 rpgIncName: pncchkin_h
-formats:
-  CheckinDS:
-    recordType: request
+datastructures:
+  DataDS:
     subfields:
-      message_group_id:
-        rpgName: msg_grp_id
-        type: Character
-        length: 25
-      campus:
-        rpgName: campus
-        type: Character
-        length: 6
+      asset:
+        type: DataStruct
+        dsName: AssetDS
+  AssetDS:
+    subfields:
       checked_in:
         rpgName: checked_in
         type: Character
@@ -61,3 +57,18 @@ formats:
         rpgName: tractor_scac
         type: Character
         length: 25
+formats:
+  CheckinDS:
+    recordType: request
+    subfields:
+      message_group_id:
+        rpgName: msg_grp_id
+        type: Character
+        length: 25
+      campus:
+        rpgName: campus
+        type: Character
+        length: 6
+      data:
+        type: DataStruct
+        dsName: DataDS
