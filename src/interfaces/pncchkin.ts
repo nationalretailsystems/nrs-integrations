@@ -6,33 +6,8 @@
 import { ibmiConversions } from '@eradani-inc/ec-client';
 const { fromIbmiDate, fromIbmiTime, fromIbmiTimestamp, toIbmiDate, toIbmiTime, toIbmiTimestamp } = ibmiConversions;
 
-/**
- * Data structure
- */
-let DataDSFields: any = [
-    {
-        name: 'asset',
-        type: new dataTypes.DataStructure(AssetDSFields)
-    }
-];
-
-/**
- * Input interface
- */
-export interface DataDSInput {
-    /**
-     */
-    asset: AssetDSInput;
-}
-
-/**
- * Output interface
- */
-export interface DataDS {
-    /**
-     */
-    asset: AssetDS;
-}
+import eradaniConnect from '@eradani-inc/eradani-connect';
+const { dataTypes } = eradaniConnect;
 
 /**
  * Data structure
@@ -194,6 +169,34 @@ export interface AssetDS {
      * @size 25 characters
      */
     tractor_scac: string;
+}
+
+/**
+ * Data structure
+ */
+let DataDSFields: any = [
+    {
+        name: 'asset',
+        type: new dataTypes.DataStructure(AssetDSFields)
+    }
+];
+
+/**
+ * Input interface
+ */
+export interface DataDSInput {
+    /**
+     */
+    asset: AssetDSInput;
+}
+
+/**
+ * Output interface
+ */
+export interface DataDS {
+    /**
+     */
+    asset: AssetDS;
 }
 
 /**
