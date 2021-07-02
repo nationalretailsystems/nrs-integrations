@@ -24,18 +24,18 @@ export const checkin: ECCHandlerFunction = async (reqkey, data, ecc) => {
         campus: rpgFields.campus,
         data: {
             asset: {
-                checked_in: rpgFields.checked_in,
-                asset_type: rpgFields.asset_type,
-                rfid_tag: rpgFields.rfid_tag,
-                site_code: rpgFields.site_code,
-                'Trailer SCAC': rpgFields.Trailer_SCAC,
-                'Trailer #': rpgFields.Trailer_number,
-                container_number: rpgFields.container_number,
-                movement_type: rpgFields.movement_type,
-                load_status: rpgFields.load_status,
-                customer_code: rpgFields.customer_code,
-                fleet_code: rpgFields.fleet_code,
-                tractor_scac: rpgFields.tractor_scac
+                checked_in: rpgFields.data.asset.checked_in,
+                asset_type: rpgFields.data.asset.asset_type,
+                rfid_tag: rpgFields.data.asset.rfid_tag,
+                site_code: rpgFields.data.asset.site_code,
+                'Trailer SCAC': rpgFields.data.asset.Trailer_SCAC,
+                'Trailer #': rpgFields.data.asset.Trailer_number,
+                container_number: rpgFields.data.asset.container_number,
+                movement_type: rpgFields.data.asset.movement_type,
+                load_status: rpgFields.data.asset.load_status,
+                customer_code: rpgFields.data.asset.customer_code,
+                fleet_code: rpgFields.data.asset.fleet_code,
+                tractor_scac: rpgFields.data.asset.tractor_scac
             }
         }
     };
