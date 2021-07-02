@@ -3,11 +3,13 @@ name: pncchkin
 rpgIncName: pncchkin_h
 datastructures:
   DataDS:
+    qualified: true
     subfields:
       asset:
         type: DataStruct
         dsName: AssetDS
   AssetDS:
+    qualified: true
     subfields:
       checked_in:
         rpgName: checked_in
