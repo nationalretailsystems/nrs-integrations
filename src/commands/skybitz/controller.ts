@@ -12,7 +12,7 @@ const axiosInstance = axios.create(skybitz.axios);
 export const getTrailerMileages: ECCHandlerFunction = async (reqkey, data, ecc) => {
     logger.debug(`Received getTrailerMileages request`, { reqkey, data });
     // Get parameters from incomming data buffer
-    const reqFields = converter.convertGetMileagesToObject(data);
+    const reqFields = converter.convertGetTrlMlsToObject(data);
 
     // Call web service
     let result;

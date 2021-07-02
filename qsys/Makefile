@@ -15,7 +15,8 @@ MODS = dspjk \
        dspwf \
        prtlbl \
        tstpncchk \
-       tstpncll
+       tstpncll \
+       tstskybtz
 
 GENMODS = icndbapi \
           lblapi \
@@ -44,7 +45,8 @@ PGMS = dspjk \
        dspwf \
        prtlbl \
        tstpncchk \
-       tstpncll
+       tstpncll \
+       tstskybtz
 
 CMDS = dspjk \
        dsptrfc \
@@ -52,7 +54,8 @@ CMDS = dspjk \
        dspwf \
        prtlbl \
        tstpncchk \
-       tstpncll
+       tstpncll \
+       tstskybtz
 
 INBOUNDPGMS = simplecalc
 
@@ -129,6 +132,9 @@ $(libdir)/tstpncchk.pgm: $(libdir)/tstpncchk.module $(libdir)/ecctmpgen.srvpgm
 $(libdir)/tstpncll.pgm: $(libdir)/tstpncll.module $(libdir)/ecctmpgen.srvpgm
 	system "CRTPGM PGM($(LIB)/$(basename $(@F))) MODULE(*PGM) BNDSRVPGM((ECCTMPGEN) (ECNCTC))"
 
+$(libdir)/tstskybtz.pgm: $(libdir)/tstskybtz.module $(libdir)/ecctmpgen.srvpgm
+	system "CRTPGM PGM($(LIB)/$(basename $(@F))) MODULE(*PGM) BNDSRVPGM((ECCTMPGEN) (ECNCTC))"
+
 $(libdir)/ecctmpgen.srvpgm: $(FQGENMODS)
 	system "CRTSRVPGM SRVPGM($(LIB)/$(basename $(@F))) MODULE($(NQGENMODS)) EXPORT(*ALL)"
 
@@ -159,6 +165,10 @@ $(libdir)/prtlbl.module: $(libdir)/qrpglesrc.file/lblapi_h.mbr $(libdir)/qrpgles
 $(libdir)/tstpncchk.module: $(libdir)/qrpglesrc.file/pncchkin_h.mbr $(libdir)/qrpglesrc.file/ecnctc.mbr
 
 $(libdir)/tstpncll.module: $(libdir)/qrpglesrc.file/pnclatln_h.mbr $(libdir)/qrpglesrc.file/ecnctc.mbr
+
+$(libdir)/tstskybtz.module: $(libdir)/qrpglesrc.file/skybtz_h.mbr $(libdir)/qrpglesrc.file/ecnctc.mbr
+
+$(libdir)/tstskybtz.module: $(libdir)/qrpglesrc.file/skybtz_h.mbr $(libdir)/qrpglesrc.file/ecnctc.mbr
 
 $(libdir)/tstpncll.module: $(libdir)/qrpglesrc.file/pnclatln_h.mbr $(libdir)/qrpglesrc.file/ecnctc.mbr
 

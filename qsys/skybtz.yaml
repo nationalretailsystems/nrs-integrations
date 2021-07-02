@@ -2,7 +2,7 @@
 name: skybtz
 rpgIncName: skybtz_h
 formats:
-  GetMileages:
+  GetTrlMls:
     recordType: request
     subfields:
       filename:

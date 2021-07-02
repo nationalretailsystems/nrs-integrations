@@ -13,7 +13,7 @@
       * Passed Parameters - Request
       *
      D  FullCmd        S             32A
-     D  MyReqData      DS                  LikeDS(GetMileages)
+     D  MyReqData      DS                  LikeDS(GetTrlMls)
 
       *
       * Passed Parameters - Response
@@ -72,8 +72,8 @@
 
          FullCmd = 'skybitz.trailermileages';
          MyReqData.filename = '/tmp/trailermileages.xml';
-         DataLen = GetMileagesLen;
-         GetMileagesToBuf(MyReqData:DataBuf);
+         DataLen = GetTrlMlsLen;
+         GetTrlMlsToBuf(MyReqData:DataBuf);
 
       // Send request
 
