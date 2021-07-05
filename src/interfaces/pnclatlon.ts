@@ -6,38 +6,41 @@
 import { ibmiConversions } from '@eradani-inc/ec-client';
 const { fromIbmiDate, fromIbmiTime, fromIbmiTimestamp, toIbmiDate, toIbmiTime, toIbmiTimestamp } = ibmiConversions;
 
+import eradaniConnect from '@eradani-inc/eradani-connect';
+const { dataTypes } = eradaniConnect;
+
 /**
  * Data structure
  */
-let DataFields: any = [
+let DataDSFields: any = [
     {
         name: 'asset',
-        type: new dataTypes.DataStructure(AssetFields)
+        type: new dataTypes.DataStructure(AssetDSFields)
     }
 ];
 
 /**
  * Input interface
  */
-export interface DataInput {
+export interface DataDSInput {
     /**
      */
-    asset: AssetInput;
+    asset: AssetDSInput;
 }
 
 /**
  * Output interface
  */
-export interface Data {
+export interface DataDS {
     /**
      */
-    asset: Asset;
+    asset: AssetDS;
 }
 
 /**
  * Data structure
  */
-let AssetFields: any = [
+let AssetDSFields: any = [
     {
         name: 'reference_id',
         type: new dataTypes.Char(25)
@@ -128,7 +131,7 @@ let AssetFields: any = [
     },
     {
         name: 'is_dock',
-        type: new dataTypes.Char(5)
+        type: new dataTypes.Bool()
     },
     {
         name: 'Latitude',
@@ -147,7 +150,7 @@ let AssetFields: any = [
 /**
  * Input interface
  */
-export interface AssetInput {
+export interface AssetDSInput {
     /**
      * @size 25 characters
      */
@@ -237,9 +240,8 @@ export interface AssetInput {
      */
     asset_visit_id: number | string;
     /**
-     * @size 5 characters
      */
-    is_dock: string;
+    is_dock: boolean;
     /**
      * @size 15 characters
      */
@@ -257,7 +259,7 @@ export interface AssetInput {
 /**
  * Output interface
  */
-export interface Asset {
+export interface AssetDS {
     /**
      * @size 25 characters
      */
@@ -347,9 +349,8 @@ export interface Asset {
      */
     asset_visit_id: number;
     /**
-     * @size 5 characters
      */
-    is_dock: string;
+    is_dock: boolean;
     /**
      * @size 15 characters
      */
@@ -417,7 +418,7 @@ export interface LLRes {
     event_id: string;
     /**
      */
-    data: Data;
+    data: DataDS;
 }
 
 /**
@@ -454,7 +455,7 @@ export function convertObjectToLLRes(dataIn: LLRes): string {
     dataOut += dataIn.data.asset.site.substring(0, 25).padEnd(25);
     dataOut += dataIn.data.asset.site_code.substring(0, 9).padEnd(9);
     dataOut += dataIn.data.asset.asset_visit_id.toFixed().substring(0, 6).padEnd(6);
-    dataOut += dataIn.data.asset.is_dock.substring(0, 5).padEnd(5);
+    dataOut += dataIn.data.asset.is_dock ? '1' : '0';
     dataOut += dataIn.data.asset.Latitude.substring(0, 15).padEnd(15);
     dataOut += dataIn.data.asset.Longitude.substring(0, 25).padEnd(25);
     dataOut += dataIn.data.asset.rfid_tag.substring(0, 24).padEnd(24);

@@ -2,6 +2,7 @@ import { ECCHandlerFunction } from '@eradani-inc/ecc-router/types';
 import { DateTime } from 'luxon';
 import AWS from 'aws-sdk';
 import { v4 as uuidv4 } from 'uuid';
+import _ from 'lodash/fp';
 import config from 'config';
 import createLogger from 'src/services/logger';
 const logger = createLogger('commands/pinc');
@@ -16,29 +17,21 @@ let sqs = new AWS.SQS({ apiVersion: pinc.sqs.apiVersion });
 export const checkin: ECCHandlerFunction = async (reqkey, data, ecc) => {
     // Get parameters from incomming data buffer
     const rpgFields = pncchkinapi.convertCheckinDSToObject(data);
-
-    const reqFields = {
-        event: 'yardhound.import_events.checkin',
-        time: DateTime.now().toFormat("yyyy-MM-dd'T'TTZZ"),
-        version: '1.3',
-        campus: rpgFields.campus,
-        data: {
-            asset: {
-                checked_in: rpgFields.data.asset.checked_in,
-                asset_type: rpgFields.data.asset.asset_type,
-                rfid_tag: rpgFields.data.asset.rfid_tag,
-                site_code: rpgFields.data.asset.site_code,
-                'Trailer SCAC': rpgFields.data.asset.Trailer_SCAC,
-                'Trailer #': rpgFields.data.asset.Trailer_number,
-                container_number: rpgFields.data.asset.container_number,
-                movement_type: rpgFields.data.asset.movement_type,
-                load_status: rpgFields.data.asset.load_status,
-                customer_code: rpgFields.data.asset.customer_code,
-                fleet_code: rpgFields.data.asset.fleet_code,
-                tractor_scac: rpgFields.data.asset.tractor_scac
-            }
-        }
-    };
+    const reqFields = _.assign(
+        {
+            event: 'yardhound.import_events.checkin',
+            time: DateTime.now().toFormat("yyyy-MM-dd'T'TTZZ"),
+            version: '1.3'
+        },
+        _.mapKeys(
+            (key) =>
+                (({
+                    Trailer_SCAC: 'Trailer SCAC',
+                    Trailer_number: 'Trailer #'
+                } as any)[key] || key),
+            rpgFields
+        )
+    );
 
     logger.debug('Sending SNS Message', reqFields);
 
