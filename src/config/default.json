@@ -8,8 +8,13 @@
             "apiVersion": "2010-03-31"
         },
         "sqs": {
-            "queueUrl": "https://sqs.xxxxxxxxxx.amazonaws.com/000000000000/xxxxxxxxx.fifo",
-            "apiVersion": "2012-11-05"
+            "QueueUrl": "https://sqs.xxxxxxxxxx.amazonaws.com/000000000000/xxxxxxxxx.fifo",
+            "apiVersion": "2012-11-05",
+            "AttributeNames": ["SentTimestamp"],
+            "MaxNumberOfMessages": 1,
+            "MessageAttributeNames": ["All"],
+            "VisibilityTimeout": 5,
+            "WaitTimeSeconds": 0
         }
     },
 

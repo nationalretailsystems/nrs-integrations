@@ -40,13 +40,13 @@
      PLLReqToBuf       E
 
       ************************************
-      * Convert buffer to LLHeadDS
+      * Convert buffer to LLRes
       ************************************
-     PBufToLLHeadDS    B                   Export
+     PBufToLLRes       B                   Export
 
-     DBufToLLHeadDS    PI
-     DBuffer                        322A
-     DDataStruct                           LikeDS(LLHeadDS)
+     DBufToLLRes       PI
+     DBuffer                        585A
+     DDataStruct                           LikeDS(LLRes)
 
       * Initialize to begining of buffer
        BufPtr = %addr(Buffer);
@@ -64,77 +64,59 @@
        BufPtr += 25;
        DataStruct.event_id = %subst(CharBuf:1:25);
        BufPtr += 25;
-       DataStruct.reference_id = %subst(CharBuf:1:25);
+       DataStruct.data.asset.reference_id = %subst(CharBuf:1:25);
        BufPtr += 25;
-       DataStruct.checked_in = %subst(CharBuf:1:26);
+       DataStruct.data.asset.checked_in = %subst(CharBuf:1:26);
        BufPtr += 26;
-       DataStruct.checked_out = %subst(CharBuf:1:26);
+       DataStruct.data.asset.checked_out = %subst(CharBuf:1:26);
        BufPtr += 26;
-       DataStruct.updated_on = %subst(CharBuf:1:26);
+       DataStruct.data.asset.updated_on = %subst(CharBuf:1:26);
        BufPtr += 26;
-       DataStruct.check_in_agent = %subst(CharBuf:1:25);
+       DataStruct.data.asset.check_in_agent = %subst(CharBuf:1:25);
        BufPtr += 25;
-       DataStruct.check_out_agent = %subst(CharBuf:1:25);
+       DataStruct.data.asset.check_out_agent = %subst(CharBuf:1:25);
        BufPtr += 25;
-       DataStruct.purpose = %subst(CharBuf:1:25);
+       DataStruct.data.asset.purpose = %subst(CharBuf:1:25);
        BufPtr += 25;
-       DataStruct.spot_number = %subst(CharBuf:1:10);
+       DataStruct.data.asset.spot_number = %subst(CharBuf:1:10);
        BufPtr += 10;
-
-       return ;
-
-     PBufToLLHeadDS    E
-
-      ************************************
-      * Convert buffer to LLMoveDS
-      ************************************
-     PBufToLLMoveDS    B                   Export
-
-     DBufToLLMoveDS    PI
-     DBuffer                        263A
-     DDataStruct                           LikeDS(LLMoveDS)
-
-      * Initialize to begining of buffer
-       BufPtr = %addr(Buffer);
-
-      * Read fields from buffer into DS
-       DataStruct.last_move_time = %subst(CharBuf:1:26);
+       DataStruct.data.asset.last_move_time = %subst(CharBuf:1:26);
        BufPtr += 26;
-       DataStruct.movement_type = %subst(CharBuf:1:15);
+       DataStruct.data.asset.movement_type = %subst(CharBuf:1:15);
        BufPtr += 15;
-       DataStruct.load_status = %subst(CharBuf:1:15);
+       DataStruct.data.asset.load_status = %subst(CharBuf:1:15);
        BufPtr += 15;
-       DataStruct.scac = %subst(CharBuf:1:4);
+       DataStruct.data.asset.scac = %subst(CharBuf:1:4);
        BufPtr += 4;
-       DataStruct.trailer = %subst(CharBuf:1:25);
+       DataStruct.data.asset.trailer = %subst(CharBuf:1:25);
        BufPtr += 25;
-       DataStruct.container_num = %subst(CharBuf:1:25);
+       DataStruct.data.asset.container_num = %subst(CharBuf:1:25);
        BufPtr += 25;
-       DataStruct.fleet_code = %subst(CharBuf:1:6);
+       DataStruct.data.asset.fleet_code = %subst(CharBuf:1:6);
        BufPtr += 6;
-       DataStruct.tractor_scac = %subst(CharBuf:1:4);
+       DataStruct.data.asset.tractor_scac = %subst(CharBuf:1:4);
        BufPtr += 4;
-       DataStruct.customer_code = %subst(CharBuf:1:4);
+       DataStruct.data.asset.customer_code = %subst(CharBuf:1:4);
        BufPtr += 4;
-       DataStruct.asset_dimension = %subst(CharBuf:1:15);
+       DataStruct.data.asset.asset_dimension = %subst(CharBuf:1:15);
        BufPtr += 15;
-       DataStruct.asset_type = %subst(CharBuf:1:15);
+       DataStruct.data.asset.asset_type = %subst(CharBuf:1:15);
        BufPtr += 15;
-       DataStruct.site = %subst(CharBuf:1:25);
+       DataStruct.data.asset.site = %subst(CharBuf:1:25);
        BufPtr += 25;
-       DataStruct.site_code = %subst(CharBuf:1:9);
+       DataStruct.data.asset.site_code = %subst(CharBuf:1:9);
        BufPtr += 9;
-       DataStruct.asset_visit_id = %int(%subst(CharBuf:1:6));
+       DataStruct.data.asset.asset_visit_id = %int(%subst(CharBuf:1:6));
        BufPtr += 6;
-       DataStruct.is_dock = %subst(CharBuf:1:5);
+       DataStruct.data.asset.is_dock = %subst(CharBuf:1:5);
        BufPtr += 5;
-       DataStruct.latitude = %subst(CharBuf:1:15);
+       DataStruct.data.asset.latitude = %subst(CharBuf:1:15);
        BufPtr += 15;
-       DataStruct.longitude = %subst(CharBuf:1:25);
+       DataStruct.data.asset.longitude = %subst(CharBuf:1:25);
        BufPtr += 25;
-       DataStruct.rfid_tag = %subst(CharBuf:1:24);
+       DataStruct.data.asset.rfid_tag = %subst(CharBuf:1:24);
        BufPtr += 24;
 
        return ;
 
-     PBufToLLMoveDS    E
+     PBufToLLRes       E

@@ -7,56 +7,147 @@ import { ibmiConversions } from '@eradani-inc/ec-client';
 const { fromIbmiDate, fromIbmiTime, fromIbmiTimestamp, toIbmiDate, toIbmiTime, toIbmiTimestamp } = ibmiConversions;
 
 /**
- * Output interface
+ * Data structure
  */
-export interface LLReq {
-    /**
-     * @size 80 characters
-     */
-    comment: string;
-}
-
-/**
- * Convert LLReq record to TypeScript object
- */
-export function convertLLReqToObject(dataIn: string): LLReq {
-    const dataOut: any = {};
-    let pos: number = 0;
-
-    dataOut.comment = dataIn.substring(pos, pos + 80).trimEnd();
-    pos += 80;
-
-    return dataOut;
-}
+let DataFields: any = [
+    {
+        name: 'asset',
+        type: new dataTypes.DataStructure(AssetFields)
+    }
+];
 
 /**
  * Input interface
  */
-export interface LLHeadDS {
+export interface DataInput {
     /**
-     * @size 50 characters
      */
-    event: string;
+    asset: AssetInput;
+}
+
+/**
+ * Output interface
+ */
+export interface Data {
     /**
-     * @size 25 characters
      */
-    time: string;
-    /**
-     * @size 3 characters
-     */
-    version: string;
-    /**
-     * @size 6 characters
-     */
-    campus: string;
-    /**
-     * @size 25 characters
-     */
-    customer_facility_code: string;
-    /**
-     * @size 25 characters
-     */
-    event_id: string;
+    asset: Asset;
+}
+
+/**
+ * Data structure
+ */
+let AssetFields: any = [
+    {
+        name: 'reference_id',
+        type: new dataTypes.Char(25)
+    },
+    {
+        name: 'checked_in',
+        type: new dataTypes.Char(26)
+    },
+    {
+        name: 'checked_out',
+        type: new dataTypes.Char(26)
+    },
+    {
+        name: 'updated_on',
+        type: new dataTypes.Char(26)
+    },
+    {
+        name: 'check_in_agent',
+        type: new dataTypes.Char(25)
+    },
+    {
+        name: 'check_out_agent',
+        type: new dataTypes.Char(25)
+    },
+    {
+        name: 'purpose',
+        type: new dataTypes.Char(25)
+    },
+    {
+        name: 'spot_number',
+        type: new dataTypes.Char(10)
+    },
+    {
+        name: 'last_move_time',
+        type: new dataTypes.Char(26)
+    },
+    {
+        name: 'movement_type',
+        type: new dataTypes.Char(15)
+    },
+    {
+        name: 'load_status',
+        type: new dataTypes.Char(15)
+    },
+    {
+        name: 'trailer_scac',
+        type: new dataTypes.Char(4)
+    },
+    {
+        name: 'trailer_number',
+        type: new dataTypes.Char(25)
+    },
+    {
+        name: 'container_number',
+        type: new dataTypes.Char(25)
+    },
+    {
+        name: 'fleet_code',
+        type: new dataTypes.Char(6)
+    },
+    {
+        name: 'tractor_scac',
+        type: new dataTypes.Char(4)
+    },
+    {
+        name: 'customer_code',
+        type: new dataTypes.Char(4)
+    },
+    {
+        name: 'asset_dimension',
+        type: new dataTypes.Char(15)
+    },
+    {
+        name: 'asset_type',
+        type: new dataTypes.Char(15)
+    },
+    {
+        name: 'site',
+        type: new dataTypes.Char(25)
+    },
+    {
+        name: 'site_code',
+        type: new dataTypes.Char(9)
+    },
+    {
+        name: 'asset_visit_id',
+        type: new dataTypes.Integer(5)
+    },
+    {
+        name: 'is_dock',
+        type: new dataTypes.Char(5)
+    },
+    {
+        name: 'Latitude',
+        type: new dataTypes.Char(15)
+    },
+    {
+        name: 'Longitude',
+        type: new dataTypes.Char(25)
+    },
+    {
+        name: 'rfid_tag',
+        type: new dataTypes.Char(24)
+    }
+];
+
+/**
+ * Input interface
+ */
+export interface AssetInput {
     /**
      * @size 25 characters
      */
@@ -89,36 +180,116 @@ export interface LLHeadDS {
      * @size 10 characters
      */
     spot_number: string;
+    /**
+     * @size 26 characters
+     */
+    last_move_time: string;
+    /**
+     * @size 15 characters
+     */
+    movement_type: string;
+    /**
+     * @size 15 characters
+     */
+    load_status: string;
+    /**
+     * @size 4 characters
+     */
+    trailer_scac: string;
+    /**
+     * @size 25 characters
+     */
+    trailer_number: string;
+    /**
+     * @size 25 characters
+     */
+    container_number: string;
+    /**
+     * @size 6 characters
+     */
+    fleet_code: string;
+    /**
+     * @size 4 characters
+     */
+    tractor_scac: string;
+    /**
+     * @size 4 characters
+     */
+    customer_code: string;
+    /**
+     * @size 15 characters
+     */
+    asset_dimension: string;
+    /**
+     * @size 15 characters
+     */
+    asset_type: string;
+    /**
+     * @size 25 characters
+     */
+    site: string;
+    /**
+     * @size 9 characters
+     */
+    site_code: string;
+    /**
+     * @size 5 digits
+     */
+    asset_visit_id: number | string;
+    /**
+     * @size 5 characters
+     */
+    is_dock: string;
+    /**
+     * @size 15 characters
+     */
+    Latitude: string;
+    /**
+     * @size 25 characters
+     */
+    Longitude: string;
+    /**
+     * @size 24 characters
+     */
+    rfid_tag: string;
 }
 
 /**
- * Convert JavaScript object to LLHeadDS record
+ * Output interface
  */
-export function convertObjectToLLHeadDS(dataIn: LLHeadDS): string {
-    let dataOut: string = '';
-
-    dataOut += dataIn.event.substring(0, 50).padEnd(50);
-    dataOut += dataIn.time.substring(0, 25).padEnd(25);
-    dataOut += dataIn.version.substring(0, 3).padEnd(3);
-    dataOut += dataIn.campus.substring(0, 6).padEnd(6);
-    dataOut += dataIn.customer_facility_code.substring(0, 25).padEnd(25);
-    dataOut += dataIn.event_id.substring(0, 25).padEnd(25);
-    dataOut += dataIn.reference_id.substring(0, 25).padEnd(25);
-    dataOut += dataIn.checked_in.substring(0, 26).padEnd(26);
-    dataOut += dataIn.checked_out.substring(0, 26).padEnd(26);
-    dataOut += dataIn.updated_on.substring(0, 26).padEnd(26);
-    dataOut += dataIn.check_in_agent.substring(0, 25).padEnd(25);
-    dataOut += dataIn.check_out_agent.substring(0, 25).padEnd(25);
-    dataOut += dataIn.purpose.substring(0, 25).padEnd(25);
-    dataOut += dataIn.spot_number.substring(0, 10).padEnd(10);
-
-    return dataOut;
-}
-
-/**
- * Input interface
- */
-export interface LLMoveDS {
+export interface Asset {
+    /**
+     * @size 25 characters
+     */
+    reference_id: string;
+    /**
+     * @size 26 characters
+     */
+    checked_in: string;
+    /**
+     * @size 26 characters
+     */
+    checked_out: string;
+    /**
+     * @size 26 characters
+     */
+    updated_on: string;
+    /**
+     * @size 25 characters
+     */
+    check_in_agent: string;
+    /**
+     * @size 25 characters
+     */
+    check_out_agent: string;
+    /**
+     * @size 25 characters
+     */
+    purpose: string;
+    /**
+     * @size 10 characters
+     */
+    spot_number: string;
     /**
      * @size 26 characters
      */
@@ -194,29 +365,99 @@ export interface LLMoveDS {
 }
 
 /**
- * Convert JavaScript object to LLMoveDS record
+ * Output interface
  */
-export function convertObjectToLLMoveDS(dataIn: LLMoveDS): string {
+export interface LLReq {
+    /**
+     * @size 80 characters
+     */
+    comment: string;
+}
+
+/**
+ * Convert LLReq record to TypeScript object
+ */
+export function convertLLReqToObject(dataIn: string): LLReq {
+    const dataOut: any = {};
+    let pos: number = 0;
+
+    dataOut.comment = dataIn.substring(pos, pos + 80).trimEnd();
+    pos += 80;
+
+    return dataOut;
+}
+
+/**
+ * Input interface
+ */
+export interface LLRes {
+    /**
+     * @size 50 characters
+     */
+    event: string;
+    /**
+     * @size 25 characters
+     */
+    time: string;
+    /**
+     * @size 3 characters
+     */
+    version: string;
+    /**
+     * @size 6 characters
+     */
+    campus: string;
+    /**
+     * @size 25 characters
+     */
+    customer_facility_code: string;
+    /**
+     * @size 25 characters
+     */
+    event_id: string;
+    /**
+     */
+    data: Data;
+}
+
+/**
+ * Convert JavaScript object to LLRes record
+ */
+export function convertObjectToLLRes(dataIn: LLRes): string {
     let dataOut: string = '';
 
-    dataOut += dataIn.last_move_time.substring(0, 26).padEnd(26);
-    dataOut += dataIn.movement_type.substring(0, 15).padEnd(15);
-    dataOut += dataIn.load_status.substring(0, 15).padEnd(15);
-    dataOut += dataIn.trailer_scac.substring(0, 4).padEnd(4);
-    dataOut += dataIn.trailer_number.substring(0, 25).padEnd(25);
-    dataOut += dataIn.container_number.substring(0, 25).padEnd(25);
-    dataOut += dataIn.fleet_code.substring(0, 6).padEnd(6);
-    dataOut += dataIn.tractor_scac.substring(0, 4).padEnd(4);
-    dataOut += dataIn.customer_code.substring(0, 4).padEnd(4);
-    dataOut += dataIn.asset_dimension.substring(0, 15).padEnd(15);
-    dataOut += dataIn.asset_type.substring(0, 15).padEnd(15);
-    dataOut += dataIn.site.substring(0, 25).padEnd(25);
-    dataOut += dataIn.site_code.substring(0, 9).padEnd(9);
-    dataOut += dataIn.asset_visit_id.toFixed().substring(0, 6).padEnd(6);
-    dataOut += dataIn.is_dock.substring(0, 5).padEnd(5);
-    dataOut += dataIn.Latitude.substring(0, 15).padEnd(15);
-    dataOut += dataIn.Longitude.substring(0, 25).padEnd(25);
-    dataOut += dataIn.rfid_tag.substring(0, 24).padEnd(24);
+    dataOut += dataIn.event.substring(0, 50).padEnd(50);
+    dataOut += dataIn.time.substring(0, 25).padEnd(25);
+    dataOut += dataIn.version.substring(0, 3).padEnd(3);
+    dataOut += dataIn.campus.substring(0, 6).padEnd(6);
+    dataOut += dataIn.customer_facility_code.substring(0, 25).padEnd(25);
+    dataOut += dataIn.event_id.substring(0, 25).padEnd(25);
+    dataOut += dataIn.data.asset.reference_id.substring(0, 25).padEnd(25);
+    dataOut += dataIn.data.asset.checked_in.substring(0, 26).padEnd(26);
+    dataOut += dataIn.data.asset.checked_out.substring(0, 26).padEnd(26);
+    dataOut += dataIn.data.asset.updated_on.substring(0, 26).padEnd(26);
+    dataOut += dataIn.data.asset.check_in_agent.substring(0, 25).padEnd(25);
+    dataOut += dataIn.data.asset.check_out_agent.substring(0, 25).padEnd(25);
+    dataOut += dataIn.data.asset.purpose.substring(0, 25).padEnd(25);
+    dataOut += dataIn.data.asset.spot_number.substring(0, 10).padEnd(10);
+    dataOut += dataIn.data.asset.last_move_time.substring(0, 26).padEnd(26);
+    dataOut += dataIn.data.asset.movement_type.substring(0, 15).padEnd(15);
+    dataOut += dataIn.data.asset.load_status.substring(0, 15).padEnd(15);
+    dataOut += dataIn.data.asset.trailer_scac.substring(0, 4).padEnd(4);
+    dataOut += dataIn.data.asset.trailer_number.substring(0, 25).padEnd(25);
+    dataOut += dataIn.data.asset.container_number.substring(0, 25).padEnd(25);
+    dataOut += dataIn.data.asset.fleet_code.substring(0, 6).padEnd(6);
+    dataOut += dataIn.data.asset.tractor_scac.substring(0, 4).padEnd(4);
+    dataOut += dataIn.data.asset.customer_code.substring(0, 4).padEnd(4);
+    dataOut += dataIn.data.asset.asset_dimension.substring(0, 15).padEnd(15);
+    dataOut += dataIn.data.asset.asset_type.substring(0, 15).padEnd(15);
+    dataOut += dataIn.data.asset.site.substring(0, 25).padEnd(25);
+    dataOut += dataIn.data.asset.site_code.substring(0, 9).padEnd(9);
+    dataOut += dataIn.data.asset.asset_visit_id.toFixed().substring(0, 6).padEnd(6);
+    dataOut += dataIn.data.asset.is_dock.substring(0, 5).padEnd(5);
+    dataOut += dataIn.data.asset.Latitude.substring(0, 15).padEnd(15);
+    dataOut += dataIn.data.asset.Longitude.substring(0, 25).padEnd(25);
+    dataOut += dataIn.data.asset.rfid_tag.substring(0, 24).padEnd(24);
 
     return dataOut;
 }

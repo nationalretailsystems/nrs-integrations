@@ -67,42 +67,19 @@ export const checkin: ECCHandlerFunction = async (reqkey, data, ecc) => {
 export const latlon: ECCHandlerFunction = async (reqkey, _, ecc) => {
     // Call web service
     let nextReqKey = reqkey;
-    let result;
+    let result: pnclatlonapi.LLRes;
     try {
-        const params = {
-            AttributeNames: ['SentTimestamp'],
-            MaxNumberOfMessages: 1,
-            MessageAttributeNames: ['All'],
-            QueueUrl: pinc.sqs.queueUrl,
-            VisibilityTimeout: 5,
-            WaitTimeSeconds: 0
-        };
-
-        const response = await sqs.receiveMessage(params).promise();
+        const response = await sqs.receiveMessage(pinc.sqs.params).promise();
         logger.debug('Receive Message Result', response);
+
         let message = response?.Messages && response.Messages[0];
 
         result = JSON.parse(message?.Body || '{}');
         if (message && message.ReceiptHandle && result?.data?.asset) {
-            result = Object.assign(
-                {
-                    event_type: result.event_id.substr(0, 2),
-                    event_no: parseInt(result.event_id.substr(2, 7), 10),
-                    snyard: result.data.asset.spot_number.substr(1),
-                    snloctype: result.data.asset.spot_number.substr(1, 1),
-                    snslotnumber: result.data.asset.spot_number.substr(2, 3),
-                    yardloc3: result.data.asset.spot_number.substr(5, 3),
-                    location1: result.data.asset.spot_number.substr(8, 1),
-                    yardloc5: result.data.asset.spot_number.substr(9, 5)
-                },
-                result,
-                result.data.asset
-            );
-            result.checked_out = result.checked_out || '';
-            result.is_dock = '' + result.is_dock;
+            result.data.asset.checked_out ||= '';
 
             const deleteParams = {
-                QueueUrl: pinc.sqs.queueUrl,
+                QueueUrl: pinc.sqs.QueueUrl,
                 ReceiptHandle: message.ReceiptHandle
             };
             const deleteResult = await sqs.deleteMessage(deleteParams).promise();
@@ -114,8 +91,7 @@ export const latlon: ECCHandlerFunction = async (reqkey, _, ecc) => {
 
         logger.debug('SQS Message Receive Sent', result);
         nextReqKey = await ecc.sendEccResult('ECC0000', 'Success', nextReqKey);
-        nextReqKey = await ecc.sendObjectToCaller(result, pnclatlonapi.convertObjectToLLHeadDS, nextReqKey);
-        return ecc.sendObjectToCaller(result, pnclatlonapi.convertObjectToLLMoveDS, nextReqKey);
+        return await ecc.sendObjectToCaller(result, pnclatlonapi.convertObjectToLLRes, nextReqKey);
     } catch (err) {
         logger.warn('SQS Message Receive Failed', err);
         return ecc.sendEccResult('ECC9000', err.message, nextReqKey);

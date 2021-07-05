@@ -22,8 +22,7 @@
      D  Eoa            S               N
      D  NoData         S               N
      D  MyEccResult    DS                  LikeDS(EccResult)
-     D  MyLLHeadDS     DS                  LikeDS(LLHeadDS)
-     D  MyLLMoveDS     DS                  LikeDS(LLMoveDS)
+     D  MyLLRes        DS                  LikeDS(LLRes)
 
       *
       * Passed Parameter - both Request & Response
@@ -46,12 +45,12 @@
       * Interfaces
       *****************************************************************
       *
-     D DspJk           PR                  ExtPgm('TSTPNCLL')
+     D TstPncLL        PR                  ExtPgm('TSTPNCLL')
      D  In_Mode                      10A
      D  In_WaitTm                     5P 0
      D  In_ReqKey                     6A
       *
-     D DspJk           PI
+     D TstPncLL        PI
      D  In_Mode                      10A
      D  In_WaitTm                     5P 0
      D  In_ReqKey                     6A
@@ -60,11 +59,8 @@
      D Write_Msg1      PR
      D  In_MsgDta                          Like(MsgDta) Const
 
-     D Write_LLHead    PR
-     D  In_LLDS                            LikeDS(LLHeadDS) Const
-
-     D Write_LLMove    PR
-     D  In_LLDS                            LikeDS(LLMoveDS) Const
+     D Write_LLRes     PR
+     D  In_LLDS                            LikeDS(LLRes) Const
 
      D Write_EccMsg    PR
      D  In_Message                         Const LikeDS(EccResult)
@@ -124,13 +120,14 @@
       // Display The Result
 
          BufToEccResult(DataBuf:MyEccResult);
+         Write_EccMsg(MyEccResult);
+
          if (MyEccResult.MsgId <> 'ECC0000');
-           Write_EccMsg(MyEccResult);
            Return;
          endif;
 
       // Receive and display the remaining lines, if any
-         DataLen = LLHeadDSLen;
+         DataLen = LLResLen;
          DataBuf = '';
          CallP(e) EccRcvRes(In_WaitTm:In_ReqKey:Eod:Eoa:NoData:
                            DataLen:DataBuf);
@@ -142,26 +139,8 @@
          If (NoData);
            Return;
          Else;
-           BufToLLHeadDS(DataBuf:MyLLHeadDS);
-           Write_LLHead(MyLLHeadDS);
-         EndIf;
-
-
-      // Receive and display the remaining lines, if any
-         DataLen = LLMoveDSLen;
-         DataBuf = '';
-         CallP(e) EccRcvRes(In_WaitTm:In_ReqKey:Eod:Eoa:NoData:
-                           DataLen:DataBuf);
-         if %error;
-           Write_Excp('EccRcvRes':Psds);
-           Return;
-         endif;
-
-         If (NoData);
-           Return;
-         Else;
-           BufToLLMoveDS(DataBuf:MyLLMoveDS);
-           Write_LLMove(MyLLMoveDS);
+           BufToLLRes(DataBuf:MyLLRes);
+           Write_LLRes(MyLLRes);
          EndIf;
 
          Return;
@@ -190,15 +169,15 @@
      P Write_Msg1      E
 
       ***-----------------------------------------------------------***
-      * Procedure Name:   Write_LLHead
+      * Procedure Name:   Write_LLRes
       * Purpose.......:   Write LatLon
       * Returns.......:   None
       * Parameters....:   LLHeadDS data structure
       ***-----------------------------------------------------------***
-     P Write_LLHead    B
+     P Write_LLRes     B
 
-     D Write_LLHead    PI
-     D  Data                               LikeDS(LLHeadDS) Const
+     D Write_LLRes     PI
+     D  Data                               LikeDS(LLRes) Const
 
      D Text1           DS           132
      D  event                        50A
@@ -243,8 +222,6 @@
      D  snyard                        1A
      D                                3A   Inz('  ')
      D  snloctype                     1A
-
-     D Text5           DS           132
      D                                3A   Inz('  ')
      D  snslotnumber                  3A
      D                                3A   Inz('  ')
@@ -253,65 +230,20 @@
      D  location1                     1A
      D                                3A   Inz('  ')
      D  yardloc5                      5A
-
-       event = Data.event;
-       time = Data.time;
-       version = Data.version;
-       campus = Data.campus;
-       custfaccode = Data.custfaccode;
-       event_id = Data.event_id;
-       event_type = Data.event_type;
-       event_no = %char(Data.event_no);
-       reference_id = Data.reference_id;
-       checked_in = Data.checked_in;
-       checked_out = Data.checked_out;
-       updated_on = Data.updated_on;
-       check_in_agent = Data.check_in_agent;
-       check_out_agent = Data.check_out_agent;
-       purpose = Data.purpose;
-       spot_number = Data.spot_number;
-       snyard = Data.snyard;
-       snloctype = Data.snloctype;
-       snslotnumber = Data.snslotnumber;
-       yardloc3 = Data.yardloc3;
-       location1 = Data.location1;
-       yardloc5 = Data.yardloc5;
-
-       Write QSysPrt Text1;
-       Write QSysPrt Text2;
-       Write QSysPrt Text3;
-       Write QSysPrt Text4;
-       Write QSysPrt Text5;
-
-       Return;
-
-     P Write_LLHead    E
-
-      ***-----------------------------------------------------------***
-      * Procedure Name:   Write_LLMove
-      * Purpose.......:   Write LatLon
-      * Returns.......:   None
-      * Parameters....:   LLHeadDS data structure
-      ***-----------------------------------------------------------***
-     P Write_LLMove    B
-
-     D Write_LLMove    PI
-     D  Data                               LikeDS(LLMoveDS) Const
-
-     D Text1           DS           132
+     D                                3A   Inz('  ')
      D  last_move_time...
      D                               26A
      D                                3A   Inz('  ')
      D  movement_type                15A
      D                                3A   Inz('  ')
+     
+     D Text5           DS           132
      D  load_status                  15A
      D                                3A   Inz('  ')
      D  scac                          4A
      D                                3A   Inz('  ')
      D  trailer                      25A
      D                                3A   Inz('  ')
-
-     D Text2           DS           132
      D  container_num                25A
      D                                3A   Inz('  ')
      D  fleet_code                    6A
@@ -323,6 +255,8 @@
      D  asset_dimension...
      D                               15A
      D                                3A   Inz('  ')
+
+     D Text6           DS           132
      D  asset_type                   15A
      D                                3A   Inz('  ')
      D  site                         25A
@@ -331,8 +265,6 @@
      D                                3A   Inz('  ')
      D  asset_visit_id...
      D                                5A
-
-     D Text3           DS           132
      D                                3A   Inz('  ')
      D  is_dock                       5A
      D                                3A   Inz('  ')
@@ -340,36 +272,64 @@
      D                                3A   Inz('  ')
      D  longitude                    25A
      D                                3A   Inz('  ')
+
+     D Text7           DS           132
      D  rfid_tag                     24A
      D                                3A   Inz('  ')
 
-       last_move_time = Data.last_move_time;
-       movement_type = Data.movement_type;
-       load_status = Data.load_status;
-       scac = Data.scac;
-       trailer = Data.trailer;
-       container_num = Data.container_num;
-       fleet_code = Data.fleet_code;
-       tractor_scac = Data.tractor_scac;
-       customer_code = Data.customer_code;
-       asset_dimension = Data.asset_dimension;
-       asset_type = Data.asset_type;
-       site = Data.site;
-       site_code = Data.site_code;
-       asset_visit_id = %char(Data.asset_visit_id);
-       is_dock = Data.is_dock;
-       latitude = Data.latitude;
-       longitude = Data.longitude;
-       rfid_tag = Data.rfid_tag;
+       event = Data.event;
+       time = Data.time;
+       version = Data.version;
+       campus = Data.campus;
+       custfaccode = Data.custfaccode;
+       event_id = Data.event_id;
+       event_type = Data.event_type;
+       event_no = %char(Data.event_no);
+       reference_id = Data.data.asset.reference_id;
+       checked_in = Data.data.asset.checked_in;
+       checked_out = Data.data.asset.checked_out;
+       updated_on = Data.data.asset.updated_on;
+       check_in_agent = Data.data.asset.check_in_agent;
+       check_out_agent = Data.data.asset.check_out_agent;
+       purpose = Data.data.asset.purpose;
+       spot_number = Data.data.asset.spot_number;
+       snyard = Data.data.asset.snyard;
+       snloctype = Data.data.asset.snloctype;
+       snslotnumber = Data.data.asset.snslotnumber;
+       yardloc3 = Data.data.asset.yardloc3;
+       location1 = Data.data.asset.location1;
+       yardloc5 = Data.data.asset.yardloc5;
+       last_move_time = Data.data.asset.last_move_time;
+       movement_type = Data.data.asset.movement_type;
+       load_status = Data.data.asset.load_status;
+       scac = Data.data.asset.scac;
+       trailer = Data.data.asset.trailer;
+       container_num = Data.data.asset.container_num;
+       fleet_code = Data.data.asset.fleet_code;
+       tractor_scac = Data.data.asset.tractor_scac;
+       customer_code = Data.data.asset.customer_code;
+       asset_dimension = Data.data.asset.asset_dimension;
+       asset_type = Data.data.asset.asset_type;
+       site = Data.data.asset.site;
+       site_code = Data.data.asset.site_code;
+       asset_visit_id = %char(Data.data.asset.asset_visit_id);
+       is_dock = Data.data.asset.is_dock;
+       latitude = Data.data.asset.latitude;
+       longitude = Data.data.asset.longitude;
+       rfid_tag = Data.data.asset.rfid_tag;
+
 
        Write QSysPrt Text1;
        Write QSysPrt Text2;
        Write QSysPrt Text3;
+       Write QSysPrt Text4;
+       Write QSysPrt Text5;
+       Write QSysPrt Text6;
+       Write QSysPrt Text7;
 
        Return;
 
-     P Write_LLMove    E
-
+     P Write_LLRes     E
 
       ***-----------------------------------------------------------***
       * Procedure Name:   Write_EccMsg

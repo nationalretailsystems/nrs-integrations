@@ -1,9 +1,8 @@
 ---
 name: pnclatlon
 rpgIncName: pnclatln_h
-formats:
-  LLReq:
-    recordType: request
+datastructures:
+  Data:
     subfields:
       comment:
         type: Character
@@ -101,9 +100,6 @@ formats:
         type: Character
         length: 5
         overlay: spot_number:1
-  LLMoveDS:
-    recordType: response
-    subfields:
       last_move_time:
         rpgName: last_move_time
         type: Character
@@ -162,8 +158,7 @@ formats:
         length: 5
       is_dock:
         rpgName: is_dock
-        type: Character
-        length: 5
+        type: Boolean
       Latitude:
         rpgName: latitude
         type: Character
@@ -176,5 +171,51 @@ formats:
         rpgName: rfid_tag
         type: Character
         length: 24
+formats:
+  LLReq:
+    recordType: request
+    subfields:
+      comment:
+        type: Character
+        length: 80
+  LLRes:
+    recordType: response
+    subfields:
+      event:
+        rpgName: event
+        type: Character
+        length: 50
+      time:
+        rpgName: time
+        type: Character
+        length: 25
+      version:
+        rpgName: version
+        type: Character
+        length: 3
+      campus:
+        rpgName: campus
+        type: Character
+        length: 6
+      customer_facility_code:
+        rpgName: custfaccode
+        type: Character
+        length: 25
+      event_id:
+        rpgName: event_id
+        type: Character
+        length: 25
+      event_type:
+        type: Character
+        length: 2
+        overlay: event_id
+      event_no:
+        type: Zoned
+        length: 7
+        overlay: event_id:*next
+      data:
+        type: DataStruct
+        dsName: Data
+
 
 
