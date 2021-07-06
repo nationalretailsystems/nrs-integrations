@@ -57,12 +57,12 @@ export const checkin: ECCHandlerFunction = async (reqkey, data, ecc) => {
     return ecc.sendEccResult('ECC0000', 'Success', nextReqKey);
 };
 
-export const latlon: ECCHandlerFunction = async (reqkey, _, ecc) => {
+export const latlon: ECCHandlerFunction = async (reqkey, _data, ecc) => {
     // Call web service
     let nextReqKey = reqkey;
     let result: pnclatlonapi.LLRes;
     try {
-        const response = await sqs.receiveMessage(pinc.sqs.params).promise();
+        const response = await sqs.receiveMessage(_.omit(['apiVersion'], pinc.sqs) as any).promise();
         logger.debug('Receive Message Result', response);
 
         let message = response?.Messages && response.Messages[0];
