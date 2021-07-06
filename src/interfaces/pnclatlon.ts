@@ -12,34 +12,6 @@ const { dataTypes } = eradaniConnect;
 /**
  * Data structure
  */
-let DataDSFields: any = [
-    {
-        name: 'asset',
-        type: new dataTypes.DataStructure(AssetDSFields)
-    }
-];
-
-/**
- * Input interface
- */
-export interface DataDSInput {
-    /**
-     */
-    asset: AssetDSInput;
-}
-
-/**
- * Output interface
- */
-export interface DataDS {
-    /**
-     */
-    asset: AssetDS;
-}
-
-/**
- * Data structure
- */
 let AssetDSFields: any = [
     {
         name: 'reference_id',
@@ -363,6 +335,34 @@ export interface AssetDS {
      * @size 24 characters
      */
     rfid_tag: string;
+}
+
+/**
+ * Data structure
+ */
+let DataDSFields: any = [
+    {
+        name: 'asset',
+        type: new dataTypes.DataStructure(AssetDSFields)
+    }
+];
+
+/**
+ * Input interface
+ */
+export interface DataDSInput {
+    /**
+     */
+    asset: AssetDSInput;
+}
+
+/**
+ * Output interface
+ */
+export interface DataDS {
+    /**
+     */
+    asset: AssetDS;
 }
 
 /**
