@@ -21,7 +21,7 @@ export const getTrailerMileages: ECCHandlerFunction = async (reqkey, data, ecc) 
         result = await axiosInstance.get('/QueryTotalDeviceMileage', {
             params: {
                 mtsn: 'ALL',
-                user_name: skybitz.username,
+                customer: skybitz.username,
                 password: skybitz.password,
                 version: skybitz.version
             }

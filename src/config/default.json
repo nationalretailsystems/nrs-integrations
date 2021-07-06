@@ -20,12 +20,12 @@
 
     "skybitz": {
         "axios": {
-            "baseURL": "http://xml.skybitz.com:nnnn",
-            "responseType": "json"
+            "baseURL": "https://xml.skybitz.com:9443/",
+            "responseType": "xml"
         },
         "username": "skybitz_username",
         "password": "skybitz_password",
-        "version": "skybitz_version"
+        "version": "2.69"
     },
 
     "icndb": {
