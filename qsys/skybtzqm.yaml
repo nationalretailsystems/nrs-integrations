@@ -2,7 +2,7 @@
 name: skybtzqm
 rpgIncName: skybtzqm_h
 formats:
-  GetTrlMls:
+  GetTrlMls2:
     recordType: request
     subfields:
       filename:

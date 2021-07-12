@@ -3,6 +3,7 @@ import axios from 'axios';
 import config from 'config';
 import createLogger from 'src/services/logger';
 import * as converter from 'src/interfaces/skybtz';
+import * as converter2 from 'src/interfaces/skybtzqm';
 import { promises as fs } from 'fs';
 
 const logger = createLogger('commands/skybitz');
@@ -52,7 +53,7 @@ export const getTrailerMileages: ECCHandlerFunction = async (reqkey, data, ecc) 
 export const getQueryMileage: ECCHandlerFunction = async (reqkey, data, ecc) => {
     logger.debug(`Received getQueryMileage request`, { reqkey, data });
     // Get parameters from incomming data buffer
-    const reqFields = converter.convertGetTrlMlsToObject(data);
+    const reqFields = converter2.convertGetTrlMls2ToObject(data);
     let todaysDate = new Date();
     todaysDate.setDate(todaysDate.getDate() - 1);
     let reqDate = timestamp(todaysDate);

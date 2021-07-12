@@ -9,7 +9,7 @@ const { fromIbmiDate, fromIbmiTime, fromIbmiTimestamp, toIbmiDate, toIbmiTime, t
 /**
  * Output interface
  */
-export interface GetTrlMls {
+export interface GetTrlMls2 {
     /**
      * @size 256 characters
      */
@@ -17,9 +17,9 @@ export interface GetTrlMls {
 }
 
 /**
- * Convert GetTrlMls record to TypeScript object
+ * Convert GetTrlMls2 record to TypeScript object
  */
-export function convertGetTrlMlsToObject(dataIn: string): GetTrlMls {
+export function convertGetTrlMls2ToObject(dataIn: string): GetTrlMls2 {
     const dataOut: any = {};
     let pos: number = 0;
 

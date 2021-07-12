@@ -19,12 +19,12 @@
      Dl                S             10U 0
 
       ************************************
-      * Convert GetTrlMls to buffer
+      * Convert GetTrlMls2 to buffer
       ************************************
-     PGetTrlMlsToBuf   B                   Export
+     PGetTrlMls2ToBuf  B                   Export
 
-     DGetTrlMlsToBuf   PI
-     DDataStruct                           LikeDS(GetTrlMls)
+     DGetTrlMls2ToBuf  PI
+     DDataStruct                           LikeDS(GetTrlMls2)
      D                                     Const
      DBuffer                        256A
 
@@ -37,4 +37,4 @@
 
        return ;
 
-     PGetTrlMlsToBuf   E
+     PGetTrlMls2ToBuf  E
