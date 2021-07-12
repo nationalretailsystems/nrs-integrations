@@ -16,7 +16,8 @@ MODS = dspjk \
        prtlbl \
        tstpncchk \
        tstpncll \
-       tstskybtz
+       tstskybtz \
+	   tstskybtzq
 
 GENMODS = icndbapi \
           lblapi \
@@ -25,7 +26,8 @@ GENMODS = icndbapi \
           wthfrcapi \
           pncchkin \
           pnclatlon \
-          skybtz
+          skybtz  \
+		  skybtzqm
 
 
 GENHDRS = icndbapi_h \
@@ -35,7 +37,8 @@ GENHDRS = icndbapi_h \
           wthfcapi_h \
           pncchkin_h \
           pnclatln_h \
-          skybtz_h
+          skybtz_h \
+		  skybtzqm_h
 
 SRVPGMS = ecctmpgen
 
@@ -46,7 +49,8 @@ PGMS = dspjk \
        prtlbl \
        tstpncchk \
        tstpncll \
-       tstskybtz
+       tstskybtz \
+	   tstskybtzq
 
 CMDS = dspjk \
        dsptrfc \
@@ -55,7 +59,8 @@ CMDS = dspjk \
        prtlbl \
        tstpncchk \
        tstpncll \
-       tstskybtz
+       tstskybtz \
+	   tstskybtzq
 
 INBOUNDPGMS = simplecalc
 
@@ -135,6 +140,9 @@ $(libdir)/tstpncll.pgm: $(libdir)/tstpncll.module $(libdir)/ecctmpgen.srvpgm
 $(libdir)/tstskybtz.pgm: $(libdir)/tstskybtz.module $(libdir)/ecctmpgen.srvpgm
 	system "CRTPGM PGM($(LIB)/$(basename $(@F))) MODULE(*PGM) BNDSRVPGM((ECCTMPGEN) (ECNCTC))"
 
+$(libdir)/tstskybtzq.pgm: $(libdir)/tstskybtzq.module $(libdir)/ecctmpgen.srvpgm
+	system "CRTPGM PGM($(LIB)/$(basename $(@F))) MODULE(*PGM) BNDSRVPGM((ECCTMPGEN) (ECNCTC))"
+
 $(libdir)/ecctmpgen.srvpgm: $(FQGENMODS)
 	system "CRTSRVPGM SRVPGM($(LIB)/$(basename $(@F))) MODULE($(NQGENMODS)) EXPORT(*ALL)"
 
@@ -167,6 +175,10 @@ $(libdir)/tstpncchk.module: $(libdir)/qrpglesrc.file/pncchkin_h.mbr $(libdir)/qr
 $(libdir)/tstpncll.module: $(libdir)/qrpglesrc.file/pnclatln_h.mbr $(libdir)/qrpglesrc.file/ecnctc.mbr
 
 $(libdir)/tstskybtz.module: $(libdir)/qrpglesrc.file/skybtz_h.mbr $(libdir)/qrpglesrc.file/ecnctc.mbr
+
+$(libdir)/tstskybtzq.module: $(libdir)/qrpglesrc.file/skybtzqm_h.mbr $(libdir)/qrpglesrc.file/ecnctc.mbr
+
+$(libdir)/tstskybtzq.module: $(libdir)/qrpglesrc.file/skybtzqm_h.mbr $(libdir)/qrpglesrc.file/ecnctc.mbr
 
 $(libdir)/tstskybtz.module: $(libdir)/qrpglesrc.file/skybtz_h.mbr $(libdir)/qrpglesrc.file/ecnctc.mbr
 
@@ -256,6 +268,12 @@ $(libdir)/qrpglesrc.file/skybtz.mbr $(libdir)/qrpglesrc.file/skybtz_h.mbr ../src
 	cp skybtz.ts ../src/interfaces/skybtz.ts
 	system "CPYFRMSTMF FROMSTMF('skybtz.rpgle') TOMBR('$(libdir)/qrpglesrc.file/skybtz.mbr') MBROPT(*REPLACE)"
 	system "CPYFRMSTMF FROMSTMF('skybtz_h.rpgleinc') TOMBR('$(libdir)/qrpglesrc.file/skybtz_h.mbr') MBROPT(*REPLACE)"
+
+$(libdir)/qrpglesrc.file/skybtzqm.mbr $(libdir)/qrpglesrc.file/skybtzqm_h.mbr ../src/interfaces/skybtzqm.ts: skybtzqm.yaml
+	npx ec-generate -f $<
+	cp skybtzqm.ts ../src/interfaces/skybtzqm.ts
+	system "CPYFRMSTMF FROMSTMF('skybtzqm.rpgle') TOMBR('$(libdir)/qrpglesrc.file/skybtzqm.mbr') MBROPT(*REPLACE)"
+	system "CPYFRMSTMF FROMSTMF('skybtzqm_h.rpgleinc') TOMBR('$(libdir)/qrpglesrc.file/skybtzqm_h.mbr') MBROPT(*REPLACE)"
 
 
 .PHONY: library
