@@ -1,0 +1,121 @@
+---
+name: mpgeteqip
+rpgIncName: mpgeteq_h
+codeblocks:
+  typescript:
+    - import eradaniConnect from "@eradani-inc/eradani-connect";
+    - const { dataTypes } = eradaniConnect;
+datastructures:
+  CustFldsDS:
+    qualified: true
+    subfields:
+      key:
+        rpgName: key
+        type: Packed
+        length: 9
+        precision: 0
+      customFieldKey:
+        rpgName: custfldky
+        type: Packed
+        length: 9
+        precision: 0
+      fieldName:
+        rpgName: custfldnam
+        type: Character
+        length: 25
+      value:
+        rpgName: cstfldval
+        type: Character
+        length: 25
+formats:
+  ReqAssetChg:
+    recordType: request
+    subfields:
+      filename:
+        type: Character
+        length: 256
+  AssetChgDS:
+    recordType: response
+    subfields:
+      assetKey:
+        rpgName: assetkey
+        type: Packed
+        length: 9
+        precision: 0
+      entityName:
+        rpgName: entname
+        type: Character
+        length: 25
+      parentAssetId:
+        rpgName: pasassid
+        type: Character
+        length: 25
+      description:
+        rpgName: descript
+        type: Character
+        length: 25
+      groupKey:
+        rpgName: groupkey
+        type: Packed
+        length: 9
+        precision: 0
+      groupId:
+        rpgName: groupid
+        type: Character
+        length: 25
+      categoryId:
+        rpgName: catid
+        type: Character
+        length: 25
+      typeId:
+        rpgName: typeid
+        type: Character
+        length: 25     
+      budgetGroupId:
+        rpgName: budgrpid
+        type: Character
+        length: 25
+      statusId:
+        rpgName: statusid
+        type: Character
+        length: 25
+      barcode:
+        rpgName: barcode
+        type: Character
+        length: 25
+      manufacturer:
+        rpgName: manufac
+        type: Character
+        length: 25
+      model:
+        rpgName: model
+        type: Character
+        length: 25
+      serialNumber:
+        rpgName: srlnumb
+        type: Character
+        length: 25
+      customer:
+        rpgName: customer
+        type: Character
+        length: 25
+      customerKey:
+        rpgName: custkey
+        type: Packed
+        length: 9
+        precision: 0
+      purchaseDate:
+        rpgName: purchdate
+        type: Date
+      purchaseCost:
+        rpgName: purchcost
+        type: Packed
+        length: 15
+        precision: 2
+      customFields:
+        type: DataStruct
+        dsName: CustFldsDS 
+        dim: 100    
+
+
+
