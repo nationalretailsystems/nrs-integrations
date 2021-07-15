@@ -3,7 +3,7 @@ import axios from 'axios';
 import config from 'config';
 import createLogger from 'src/services/logger';
 import * as converter from 'src/interfaces/rmgetstmi';
-import { promises as fs } from 'fs';
+// Ximport { promises as fs } from 'fs';
 
 const logger = createLogger('commands/randmcnally');
 const { randmcnally } = config;
@@ -25,7 +25,8 @@ export const getStateMiles: ECCHandlerFunction = async (reqkey, data, ecc) => {
             params: {
                 logdate: reqDate,
                 accesstoken: randmcnally.accesstoken,
-                companyCode: randmcnally.companyCode
+                companyCode: randmcnally.companyCode,
+                reqFields
             }
         });
     } catch (err) {
@@ -42,14 +43,16 @@ export const getStateMiles: ECCHandlerFunction = async (reqkey, data, ecc) => {
         return ecc.sendEccResult('ECC9100', err.message, nextReqKey);
     }
 
-    try {
-        await fs.writeFile(reqFields.filename, result.data, 'utf-8');
-    } catch (err) {
-        return ecc.sendEccResult('ECC9200', err.message, nextReqKey);
-    }
+    // Xtry {
+    // X   await fs.writeFile(reqFields.filename, result.data, 'utf-8');
+    // X} catch (err) {
+    // X   return ecc.sendEccResult('ECC9200', err.message, nextReqKey);
+    // X}
 
     // Send the result info
-    return ecc.sendEccResult('ECC0000', 'Success', nextReqKey);
+    const responseData = result.data.Results[0];
+    return ecc.sendObjectToCaller(responseData, converter.convertObjectToRtnStateMilesDS, nextReqKey);
+    // Xreturn ecc.sendEccResult('ECC0000', 'Success', nextReqKey);
 };
 function timestamp(d: any) {
     function pad(n: any) {
