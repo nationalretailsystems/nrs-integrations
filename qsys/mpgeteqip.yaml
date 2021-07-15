@@ -11,22 +11,22 @@ datastructures:
     subfields:
       key:
         rpgName: key
-        type: Packed
-        length: 9
+        type: Integer
+        length: 10
         precision: 0
       customFieldKey:
         rpgName: custfldky
-        type: Packed
-        length: 9
+        type: Integer
+        length: 10
         precision: 0
       fieldName:
         rpgName: custfldnam
         type: Character
-        length: 25
+        length: 24
       value:
         rpgName: cstfldval
         type: Character
-        length: 25
+        length: 100
 formats:
   ReqAssetChg:
     recordType: request
@@ -39,70 +39,74 @@ formats:
     subfields:
       assetKey:
         rpgName: assetkey
-        type: Packed
-        length: 9
+        type: Integer
+        length: 10
         precision: 0
       entityName:
         rpgName: entname
         type: Character
-        length: 25
+        length: 50
+      assetId:
+        rpgName: assetid
+        type: Character
+        length: 24
       parentAssetId:
         rpgName: pasassid
         type: Character
-        length: 25
+        length: 24
       description:
         rpgName: descript
         type: Character
-        length: 25
+        length: 50
       groupKey:
         rpgName: groupkey
-        type: Packed
-        length: 9
+        type: Integer
+        length: 10
         precision: 0
       groupId:
         rpgName: groupid
         type: Character
-        length: 25
+        length: 24
       categoryId:
         rpgName: catid
         type: Character
-        length: 25
+        length: 24
       typeId:
         rpgName: typeid
         type: Character
-        length: 25     
+        length: 24     
       budgetGroupId:
         rpgName: budgrpid
         type: Character
-        length: 25
+        length: 24
       statusId:
         rpgName: statusid
         type: Character
-        length: 25
+        length: 24
       barcode:
         rpgName: barcode
         type: Character
-        length: 25
+        length: 50
       manufacturer:
         rpgName: manufac
         type: Character
-        length: 25
+        length: 24
       model:
         rpgName: model
         type: Character
-        length: 25
+        length: 32
       serialNumber:
         rpgName: srlnumb
         type: Character
-        length: 25
+        length: 32
       customer:
         rpgName: customer
         type: Character
-        length: 25
+        length: 50
       customerKey:
         rpgName: custkey
-        type: Packed
-        length: 9
+        type: Integer
+        length: 10
         precision: 0
       purchaseDate:
         rpgName: purchdate

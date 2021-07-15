@@ -3,56 +3,61 @@
 // Module: mpgeteqip
 // Generated source -- do not modify
 
-import { ibmiConversions } from '@eradani-inc/ec-client';
-const { fromIbmiDate, fromIbmiTime, fromIbmiTimestamp, toIbmiDate, toIbmiTime, toIbmiTimestamp } = ibmiConversions;
+import { ibmiConversions } from "@eradani-inc/ec-client";
+const {
+  fromIbmiDate,
+  fromIbmiTime,
+  fromIbmiTimestamp,
+  toIbmiDate,
+  toIbmiTime,
+  toIbmiTimestamp
+} = ibmiConversions;
 
-import eradaniConnect from '@eradani-inc/eradani-connect';
+import eradaniConnect from "@eradani-inc/eradani-connect";
 const { dataTypes } = eradaniConnect;
 
 /**
  * Data structure
  */
-let CustFldsDSFields: any = [
-    {
-        name: 'key',
-        type: new dataTypes.PackedDecimal(9, 0)
+  let CustFldsDSFields: any = [
+      {
+      name: "key",
+      type: new dataTypes.Integer(10)
     },
-    {
-        name: 'customFieldKey',
-        type: new dataTypes.PackedDecimal(9, 0)
+      {
+      name: "customFieldKey",
+      type: new dataTypes.Integer(10)
     },
-    {
-        name: 'fieldName',
-        type: new dataTypes.Char(25)
+      {
+      name: "fieldName",
+      type: new dataTypes.Char(24)
     },
-    {
-        name: 'value',
-        type: new dataTypes.Char(25)
+      {
+      name: "value",
+      type: new dataTypes.Char(100)
     }
-];
+  ];
 
 /**
  * Input interface
  */
 export interface CustFldsDSInput {
     /**
-     * @size 9 digits
-     * @precision 0 decimals
+     * @size 10 digits
      */
-    key: number | string;
+    key: number | string,
     /**
-     * @size 9 digits
-     * @precision 0 decimals
+     * @size 10 digits
      */
-    customFieldKey: number | string;
+    customFieldKey: number | string,
     /**
-     * @size 25 characters
+     * @size 24 characters
      */
-    fieldName: string;
+    fieldName: string,
     /**
-     * @size 25 characters
+     * @size 100 characters
      */
-    value: string;
+    value: string
 }
 
 /**
@@ -60,23 +65,21 @@ export interface CustFldsDSInput {
  */
 export interface CustFldsDS {
     /**
-     * @size 9 digits
-     * @precision 0 decimals
+     * @size 10 digits
      */
-    key: number;
+    key: number,
     /**
-     * @size 9 digits
-     * @precision 0 decimals
+     * @size 10 digits
      */
-    customFieldKey: number;
+    customFieldKey: number,
     /**
-     * @size 25 characters
+     * @size 24 characters
      */
-    fieldName: string;
+    fieldName: string,
     /**
-     * @size 25 characters
+     * @size 100 characters
      */
-    value: string;
+    value: string
 }
 
 /**
@@ -86,20 +89,22 @@ export interface ReqAssetChg {
     /**
      * @size 256 characters
      */
-    filename: string;
+    filename: string
 }
 
 /**
  * Convert ReqAssetChg record to TypeScript object
  */
 export function convertReqAssetChgToObject(dataIn: string): ReqAssetChg {
-    const dataOut: any = {};
-    let pos: number = 0;
+  const dataOut: any =   {
+  
+    };
+  let pos: number = 0;
 
-    dataOut.filename = dataIn.substring(pos, pos + 256).trimEnd();
-    pos += 256;
+  dataOut.filename = dataIn.substring(pos, pos + 256).trimEnd();
+  pos += 256;
 
-    return dataOut;
+  return dataOut;
 }
 
 /**
@@ -107,117 +112,119 @@ export function convertReqAssetChgToObject(dataIn: string): ReqAssetChg {
  */
 export interface AssetChgDS {
     /**
-     * @size 9 digits
-     * @precision 0 decimals
+     * @size 10 digits
      */
-    assetKey: number;
+    assetKey: number,
     /**
-     * @size 25 characters
+     * @size 50 characters
      */
-    entityName: string;
+    entityName: string,
     /**
-     * @size 25 characters
+     * @size 24 characters
      */
-    parentAssetId: string;
+    assetId: string,
     /**
-     * @size 25 characters
+     * @size 24 characters
      */
-    description: string;
+    parentAssetId: string,
     /**
-     * @size 9 digits
-     * @precision 0 decimals
+     * @size 50 characters
      */
-    groupKey: number;
+    description: string,
     /**
-     * @size 25 characters
+     * @size 10 digits
      */
-    groupId: string;
+    groupKey: number,
     /**
-     * @size 25 characters
+     * @size 24 characters
      */
-    categoryId: string;
+    groupId: string,
     /**
-     * @size 25 characters
+     * @size 24 characters
      */
-    typeId: string;
+    categoryId: string,
     /**
-     * @size 25 characters
+     * @size 24 characters
      */
-    budgetGroupId: string;
+    typeId: string,
     /**
-     * @size 25 characters
+     * @size 24 characters
      */
-    statusId: string;
+    budgetGroupId: string,
     /**
-     * @size 25 characters
+     * @size 24 characters
      */
-    barcode: string;
+    statusId: string,
     /**
-     * @size 25 characters
+     * @size 50 characters
      */
-    manufacturer: string;
+    barcode: string,
     /**
-     * @size 25 characters
+     * @size 24 characters
      */
-    model: string;
+    manufacturer: string,
     /**
-     * @size 25 characters
+     * @size 32 characters
      */
-    serialNumber: string;
+    model: string,
     /**
-     * @size 25 characters
+     * @size 32 characters
      */
-    customer: string;
+    serialNumber: string,
     /**
-     * @size 9 digits
-     * @precision 0 decimals
+     * @size 50 characters
      */
-    customerKey: number;
+    customer: string,
+    /**
+     * @size 10 digits
+     */
+    customerKey: number,
     /**
      */
-    purchaseDate: Date;
+    purchaseDate: Date,
     /**
      * @size 15 digits
      * @precision 2 decimals
      */
-    purchaseCost: number;
+    purchaseCost: number,
     /**
      */
-    customFields: Array<CustFldsDS>;
+    customFields: Array<CustFldsDS>
 }
 
 /**
  * Convert JavaScript object to AssetChgDS record
  */
 export function convertObjectToAssetChgDS(dataIn: AssetChgDS): string {
-    let dataOut: string = '';
+  let dataOut: string = "";
 
-    dataOut += dataIn.assetKey.toFixed(0).substring(0, 11).padEnd(11);
-    dataOut += dataIn.entityName.substring(0, 25).padEnd(25);
-    dataOut += dataIn.parentAssetId.substring(0, 25).padEnd(25);
-    dataOut += dataIn.description.substring(0, 25).padEnd(25);
-    dataOut += dataIn.groupKey.toFixed(0).substring(0, 11).padEnd(11);
-    dataOut += dataIn.groupId.substring(0, 25).padEnd(25);
-    dataOut += dataIn.categoryId.substring(0, 25).padEnd(25);
-    dataOut += dataIn.typeId.substring(0, 25).padEnd(25);
-    dataOut += dataIn.budgetGroupId.substring(0, 25).padEnd(25);
-    dataOut += dataIn.statusId.substring(0, 25).padEnd(25);
-    dataOut += dataIn.barcode.substring(0, 25).padEnd(25);
-    dataOut += dataIn.manufacturer.substring(0, 25).padEnd(25);
-    dataOut += dataIn.model.substring(0, 25).padEnd(25);
-    dataOut += dataIn.serialNumber.substring(0, 25).padEnd(25);
-    dataOut += dataIn.customer.substring(0, 25).padEnd(25);
-    dataOut += dataIn.customerKey.toFixed(0).substring(0, 11).padEnd(11);
-    dataOut += toIbmiDate(dataIn.purchaseDate);
-    dataOut += dataIn.purchaseCost.toFixed(2).substring(0, 17).padEnd(17);
-    for (let i: number = 0; i < 100; ++i) {
-        dataOut += dataIn.customFields[i].key.toFixed(0).substring(0, 11).padEnd(11);
-        dataOut += dataIn.customFields[i].customFieldKey.toFixed(0).substring(0, 11).padEnd(11);
-        dataOut += dataIn.customFields[i].fieldName.substring(0, 25).padEnd(25);
-        dataOut += dataIn.customFields[i].value.substring(0, 25).padEnd(25);
-    }
+  dataOut += dataIn.assetKey.toFixed().substring(0, 11).padEnd(11);
+  dataOut += dataIn.entityName.substring(0, 50).padEnd(50);
+  dataOut += dataIn.assetId.substring(0, 24).padEnd(24);
+  dataOut += dataIn.parentAssetId.substring(0, 24).padEnd(24);
+  dataOut += dataIn.description.substring(0, 50).padEnd(50);
+  dataOut += dataIn.groupKey.toFixed().substring(0, 11).padEnd(11);
+  dataOut += dataIn.groupId.substring(0, 24).padEnd(24);
+  dataOut += dataIn.categoryId.substring(0, 24).padEnd(24);
+  dataOut += dataIn.typeId.substring(0, 24).padEnd(24);
+  dataOut += dataIn.budgetGroupId.substring(0, 24).padEnd(24);
+  dataOut += dataIn.statusId.substring(0, 24).padEnd(24);
+  dataOut += dataIn.barcode.substring(0, 50).padEnd(50);
+  dataOut += dataIn.manufacturer.substring(0, 24).padEnd(24);
+  dataOut += dataIn.model.substring(0, 32).padEnd(32);
+  dataOut += dataIn.serialNumber.substring(0, 32).padEnd(32);
+  dataOut += dataIn.customer.substring(0, 50).padEnd(50);
+  dataOut += dataIn.customerKey.toFixed().substring(0, 11).padEnd(11);
+  dataOut += toIbmiDate(dataIn.purchaseDate);
+  dataOut += dataIn.purchaseCost.toFixed(2).substring(0, 17).padEnd(17);
+  for (let i: number = 0; i < 100; ++i) {
+  dataOut += dataIn.customFields[i].key.toFixed().substring(0, 11).padEnd(11);
+  dataOut += dataIn.customFields[i].customFieldKey.toFixed().substring(0, 11).padEnd(11);
+  dataOut += dataIn.customFields[i].fieldName.substring(0, 24).padEnd(24);
+  dataOut += dataIn.customFields[i].value.substring(0, 100).padEnd(100);
+  }
 
-    return dataOut;
+  return dataOut;
 }
 
 /* eslint-enable */
