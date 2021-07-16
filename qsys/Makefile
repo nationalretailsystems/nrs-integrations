@@ -295,7 +295,7 @@ $(libdir)/qrpglesrc.file/rmgetstmi.mbr $(libdir)/qrpglesrc.file/rmgetst_h.mbr ..
 	npx ec-generate -f $<
 	cp rmgetstmi.ts ../src/interfaces/rmgetstmi.ts
 	system "CPYFRMSTMF FROMSTMF('rmgetstmi.rpgle') TOMBR('$(libdir)/qrpglesrc.file/rmgetstmi.mbr') MBROPT(*REPLACE)"
-	system "CPYFRMSTMF FROMSTMF('rmgetst_h.rpgleinc') TOMBR('$(libdir)/qrpglesrc.file/rmgetst_h.mbr') MBROPT(*REPLACE)"		
+	system "CPYFRMSTMF FROMSTMF('rmgetstm_h.rpgleinc') TOMBR('$(libdir)/qrpglesrc.file/rmgetstm_h.mbr') MBROPT(*REPLACE)"		
 
 
 .PHONY: library
