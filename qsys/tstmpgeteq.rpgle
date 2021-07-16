@@ -15,7 +15,7 @@
       * Passed Parameters - Request
       *
      D  FullCmd        S             32A
-     D  MyReqData      DS                  LikeDS(ReqAssetChg)
+     D  MyReqData      DS                  LikeDS(RqAssetChg)
 
       *
       * Passed Parameters - Response
@@ -72,10 +72,10 @@
 
       // Assign Data To Variables
 
-//       FullCmd = 'skybitz.querymileage';
-//       MyReqData.filename = '/tmp/querymileages.xml';
+      //   FullCmd = 'skybitz.querymileage';
+      //   MyReqData.filename = '/tmp/querymileages.xml';
          DataLen = ReqAssetChgLen;
-         ReqAssetChg(MyReqData:DataBuf);
+         RqAssetChg(MyReqData:DataBuf);
 
       // Send request
 
