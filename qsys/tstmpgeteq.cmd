@@ -1,4 +1,4 @@
-TSTMPGETEQ:CMD PROMPT('Test Mileage Plus Get Equipment API')
+TSTMPGETEQ:CMD PROMPT('Test Mileage Plus Get Equip')
 
   PARM KWD(MODE) TYPE(*CHAR) LEN(10) RSTD(*YES) +
        VALUES(*SNDRCV *RCVONLY) DFT('*SNDRCV') +
