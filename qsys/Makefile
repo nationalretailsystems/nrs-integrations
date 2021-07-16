@@ -65,7 +65,8 @@ CMDS = dspjk \
        tstpncchk \
        tstpncll \
        tstskybtz \
-	   tstskybtzq
+	   tstskybtzq \
+	   tstmpgeteq
 
 INBOUNDPGMS = simplecalc
 
