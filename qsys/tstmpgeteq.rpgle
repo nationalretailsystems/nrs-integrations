@@ -75,7 +75,7 @@
       //   FullCmd = 'skybitz.querymileage';
       //   MyReqData.filename = '/tmp/querymileages.xml';
          DataLen = RqAssetChgLen;
-         RqAssetChg(MyReqData:DataBuf);
+         RqAssetChgtoBuf(MyReqData:DataBuf);
 
       // Send request
 
