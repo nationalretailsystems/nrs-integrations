@@ -12,7 +12,7 @@ const axiosInstance = axios.create(mileageplus.axios);
 export const getAssetChanges: ECCHandlerFunction = async (reqkey, data, ecc) => {
     logger.debug(`Received getAssetChanges request`, { reqkey, data });
     // Get parameters from incomming data buffer
-    const reqFields = converter.convertReqAssetChgToObject(data);
+    const reqFields = converter.convertRqAssetChgToObject(data);
     let todaysDate = new Date();
     todaysDate.setDate(todaysDate.getDate() - 1);
     let reqDate = timestamp(todaysDate);
