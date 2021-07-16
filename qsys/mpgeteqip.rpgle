@@ -19,12 +19,12 @@
      Dl                S             10U 0
 
       ************************************
-      * Convert ReqAssetChg to buffer
+      * Convert RqAssetChg to buffer
       ************************************
-     PReqAssetChgToBuf  B                   Export
+     PRqAssetChgToBuf  B                   Export
 
-     DReqAssetChgToBuf  PI
-     DDataStruct                           LikeDS(ReqAssetChg)
+     DRqAssetChgToBuf  PI
+     DDataStruct                           LikeDS(RqAssetChg)
      D                                     Const
      DBuffer                        256A
 
@@ -37,7 +37,7 @@
 
        return ;
 
-     PReqAssetChgToBuf  E
+     PRqAssetChgToBuf  E
 
       ************************************
       * Convert buffer to AssetChgDS

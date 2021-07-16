@@ -28,7 +28,7 @@ datastructures:
         type: Character
         length: 100
 formats:
-  ReqAssetChg:
+  RqAssetChg:
     recordType: request
     subfields:
       filename:

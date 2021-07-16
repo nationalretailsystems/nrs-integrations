@@ -85,7 +85,7 @@ export interface CustFldsDS {
 /**
  * Output interface
  */
-export interface ReqAssetChg {
+export interface RqAssetChg {
     /**
      * @size 256 characters
      */
@@ -93,9 +93,9 @@ export interface ReqAssetChg {
 }
 
 /**
- * Convert ReqAssetChg record to TypeScript object
+ * Convert RqAssetChg record to TypeScript object
  */
-export function convertReqAssetChgToObject(dataIn: string): ReqAssetChg {
+export function convertRqAssetChgToObject(dataIn: string): RqAssetChg {
   const dataOut: any =   {
   
     };
