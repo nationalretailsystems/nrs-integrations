@@ -2,7 +2,7 @@
      H Debug
 
       * Mike Corbo 07/16/21
-      
+
      FQSYSPRT   O    F  132        Printer
 
       * Include EccSndReq & EccRcvReq prototypes
@@ -72,8 +72,8 @@
 
       // Assign Data To Variables
 
-//         FullCmd = 'skybitz.querymileage';
-//         MyReqData.filename = '/tmp/querymileages.xml';
+//       FullCmd = 'skybitz.querymileage';
+//       MyReqData.filename = '/tmp/querymileages.xml';
          DataLen = ReqAssetChgLen;
          ReqAssetChg(MyReqData:DataBuf);
 
