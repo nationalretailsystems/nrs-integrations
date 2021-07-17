@@ -72,8 +72,6 @@
 
       // Assign Data To Variables
 
-      //   FullCmd = 'skybitz.querymileage';
-      //   MyReqData.filename = '/tmp/querymileages.xml';
          DataLen = RqAssetChgLen;
          RqAssetChgtoBuf(MyReqData:DataBuf);
 
