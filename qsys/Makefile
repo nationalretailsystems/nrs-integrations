@@ -30,8 +30,8 @@ GENMODS = icndbapi \
           skybtz  \
 		  skybtzqm \
 		  mpgeteqip \
-		  mpgeteq2 \
-		  rmgetstmi \
+		  mpgeteq2 
+#		  rmgetstmi \
 
 GENHDRS = icndbapi_h \
           lblapi_h \
