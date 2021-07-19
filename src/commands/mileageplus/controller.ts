@@ -28,7 +28,7 @@ export const getAssetChanges: ECCHandlerFunction = async (reqkey, data, ecc) => 
             },
             headers: {
                 accept: 'application/json',
-                Authorization: mileageplus.apiKey
+                Authorization: mileageplus.apikey
             }
         });
     } catch (err) {
