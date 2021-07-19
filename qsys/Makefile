@@ -18,7 +18,7 @@ MODS = dspjk \
        tstpncll \
        tstskybtz \
 	   tstskybtzq \
-	   tstmpgeteq
+	   tstmpgeteq 
 
 GENMODS = icndbapi \
           lblapi \
@@ -29,8 +29,9 @@ GENMODS = icndbapi \
           pnclatlon \
           skybtz  \
 		  skybtzqm \
-		  mpgeteqip 
-#		  rmgetstmi
+		  mpgeteqip \
+		  mpgeteq2 \
+		  rmgetstmi \
 
 GENHDRS = icndbapi_h \
           lblapi_h \
@@ -42,7 +43,8 @@ GENHDRS = icndbapi_h \
           skybtz_h \
 		  skybtzqm_h \
 		  mpgeteq_h \
-		  rmgetst_h
+		  rmgetst_h \
+		  mpgeteq2_h
 
 SRVPGMS = ecctmpgen
 
@@ -55,7 +57,7 @@ PGMS = dspjk \
        tstpncll \
        tstskybtz \
 	   tstskybtzq \
-	   tstmpgeteq
+	   tstmpgeteq 
 
 CMDS = dspjk \
        dsptrfc \
@@ -292,11 +294,18 @@ $(libdir)/qrpglesrc.file/mpgeteqip.mbr $(libdir)/qrpglesrc.file/mpgeteq_h.mbr ..
 	system "CPYFRMSTMF FROMSTMF('mpgeteqip.rpgle') TOMBR('$(libdir)/qrpglesrc.file/mpgeteqip.mbr') MBROPT(*REPLACE)"
 	system "CPYFRMSTMF FROMSTMF('mpgeteq_h.rpgleinc') TOMBR('$(libdir)/qrpglesrc.file/mpgeteq_h.mbr') MBROPT(*REPLACE)"	
 
+$(libdir)/qrpglesrc.file/mpgeteq2.mbr $(libdir)/qrpglesrc.file/mpgeteq2_h.mbr ../src/interfaces/mpgeteq2.ts: mpgeteq2.yaml
+	npx ec-generate -f $<
+	cp mpgeteq2.ts ../src/interfaces/mpgeteq2.ts
+	system "CPYFRMSTMF FROMSTMF('mpgeteq2.rpgle') TOMBR('$(libdir)/qrpglesrc.file/mpgeteq2.mbr') MBROPT(*REPLACE)"
+	system "CPYFRMSTMF FROMSTMF('mpgeteq2_h.rpgleinc') TOMBR('$(libdir)/qrpglesrc.file/mpgeteq2_h.mbr') MBROPT(*REPLACE)"		
+
 $(libdir)/qrpglesrc.file/rmgetstmi.mbr $(libdir)/qrpglesrc.file/rmgetstm_h.mbr ../src/interfaces/rmgetstmi.ts: rmgetstmi.yaml
 	npx ec-generate -f $<
 	cp rmgetstmi.ts ../src/interfaces/rmgetstmi.ts
 	system "CPYFRMSTMF FROMSTMF('rmgetstmi.rpgle') TOMBR('$(libdir)/qrpglesrc.file/rmgetstmi.mbr') MBROPT(*REPLACE)"
-	system "CPYFRMSTMF FROMSTMF('rmgetstm_h.rpgleinc') TOMBR('$(libdir)/qrpglesrc.file/rmgetstm_h.mbr') MBROPT(*REPLACE)"		
+	system "CPYFRMSTMF FROMSTMF('rmgetstm_h.rpgleinc') TOMBR('$(libdir)/qrpglesrc.file/rmgetstm_h.mbr') MBROPT(*REPLACE)"
+			
 
 
 .PHONY: library
