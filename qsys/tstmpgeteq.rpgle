@@ -71,7 +71,7 @@
          *InLr = *On;
 
       // Assign Data To Variables
-
+         FullCmd = 'mileageplus.getAssetChanges';
          DataLen = RqAssetChgLen;
          RqAssetChgtoBuf(MyReqData:DataBuf);
 
