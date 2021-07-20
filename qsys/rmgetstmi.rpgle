@@ -62,7 +62,7 @@
       * Read fields from buffer into DS
        DataStruct.stateMileage.index = %int(%subst(CharBuf:1:11));
        BufPtr += 11;
-       DataStruct.stateMileage.drvlogid = %subst(CharBuf:1:60);
+       DataStruct.stateMileage.drvrlogid = %subst(CharBuf:1:60);
        BufPtr += 60;
        DataStruct.stateMileage.tractornum = %subst(CharBuf:1:12);
        BufPtr += 12;

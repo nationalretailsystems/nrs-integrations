@@ -31,7 +31,7 @@ datastructures:
         length: 10
         precision: 0
       driverLoginId:
-        rpgName: drvlogid
+        rpgName: drvrlogid
         type: Character
         length: 60
       tractorNumber:
