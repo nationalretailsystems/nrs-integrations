@@ -136,7 +136,7 @@ datastructures:
         type: Character
         length: 50
 formats:
-  ReqStateMiles:
+  ReqSttMiles:
     recordType: request
     subfields:
       accesstoken:
@@ -155,7 +155,7 @@ formats:
         type: Integer
         length: 10
         precision: 0
-  RtnStateMilesDS:
+  RtnSttMiles:
     recordType: response
     subfields:
       stateMileage:

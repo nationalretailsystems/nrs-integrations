@@ -19,12 +19,12 @@
      Dl                S             10U 0
 
       ************************************
-      * Convert ReqStateMiles to buffer
+      * Convert ReqSttMiles to buffer
       ************************************
-     PReqStateMilesToBuf  B                   Export
+     PReqSttMilesToBuf  B                   Export
 
-     DReqStateMilesToBuf  PI
-     DDataStruct                           LikeDS(ReqStateMiles)
+     DReqSttMilesToBuf  PI
+     DDataStruct                           LikeDS(ReqSttMiles)
      D                                     Const
      DBuffer                        142A
 
@@ -45,16 +45,16 @@
 
        return ;
 
-     PReqStateMilesToBuf  E
+     PReqSttMilesToBuf  E
 
       ************************************
-      * Convert buffer to RtnStateMilesDS
+      * Convert buffer to RtnSttMiles
       ************************************
-     PBufToRtnStateMilesDS  B                   Export
+     PBufToRtnSttMiles  B                   Export
 
-     DBufToRtnStateMilesDS  PI
+     DBufToRtnSttMiles  PI
      DBuffer                       1371A
-     DDataStruct                           LikeDS(RtnStateMilesDS)
+     DDataStruct                           LikeDS(RtnSttMiles)
 
       * Initialize to begining of buffer
        BufPtr = %addr(Buffer);
@@ -121,4 +121,4 @@
 
        return ;
 
-     PBufToRtnStateMilesDS  E
+     PBufToRtnSttMiles  E
