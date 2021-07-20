@@ -66,7 +66,7 @@ export const getAssetAll: ECCHandlerFunction = async (reqkey, data, ecc) => {
         result = await axiosInstance.get('/Assets', {
             headers: {
                 accept: 'application/json',
-                Authorization: mileageplus.apiKey
+                Authorization: mileageplus.apikey
             }
         });
     } catch (err) {

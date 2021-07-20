@@ -1,4 +1,4 @@
-TSTMPGETEQ:CMD PROMPT('Test Mileage Plus Get All Equip')
+TSTMPGETEQ:CMD PROMPT('Test MilePlus GetAll Equip')
 
   PARM KWD(MODE) TYPE(*CHAR) LEN(10) RSTD(*YES) +
        VALUES(*SNDRCV *RCVONLY) DFT('*SNDRCV') +
