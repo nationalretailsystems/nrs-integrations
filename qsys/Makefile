@@ -44,7 +44,7 @@ GENHDRS = icndbapi_h \
           skybtz_h \
 		  skybtzqm_h \
 		  mpgeteq_h \
-		  rmgetst_h \
+		  rmgetstm_h \
 		  mpgeteq2_h
 
 SRVPGMS = ecctmpgen
