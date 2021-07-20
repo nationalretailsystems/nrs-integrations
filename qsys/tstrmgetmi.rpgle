@@ -73,6 +73,10 @@
       // Assign Data To Variables
          clear   myreqdata;
          FullCmd = 'randmcnally.getStateMiles';
+         //MyReqData.accesstoken = 'NR03-nr59-2021';
+         //MyReqData.companyCode = 'RM-019960';
+         //myReqData.fromDate = %date - %days(1);
+
          DataLen = ReqStMilesLen;
          ReqStMilestoBuf(MyReqData:DataBuf);
 

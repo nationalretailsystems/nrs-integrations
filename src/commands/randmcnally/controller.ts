@@ -12,23 +12,29 @@ const axiosInstance = axios.create(randmcnally.axios);
 export const getStateMiles: ECCHandlerFunction = async (reqkey, data, ecc) => {
     logger.debug(`Received getStateMiles request`, { reqkey, data });
     // Get parameters from incomming data buffer
-    const reqFields = converter.convertReqStMilesToObject(data);
+    const rpgFields = converter.convertReqStMilesToObject(data);
+
     let todaysDate = new Date();
     todaysDate.setDate(todaysDate.getDate() - 1);
     let reqDate = timestamp(todaysDate);
+
+    const reqFields = {
+        ... rpgFields,
+
+        // Add api key 
+        accesstoken: randmcnally.accesstoken,
+        companyCode: randmcnally.companyCode,
+        
+        // Add constraints
+        logdate: reqDate
+    }
+
     // Call web service
     let result;
     let nextReqKey = reqkey;
 
     try {
-        result = await axiosInstance.get('/getStateMileage', {
-            params: {
-                logdate: reqDate,
-                accesstoken: randmcnally.accesstoken,
-                companyCode: randmcnally.companyCode,
-                reqFields
-            }
-        });
+        result = await axiosInstance.post('/getStateMileage', {params: reqFields});
     } catch (err) {
         if (err.response) {
             // If the request was made and the server responded with a status code
@@ -61,5 +67,5 @@ function timestamp(d: any) {
     let dash = '-';
     let newdate = d.getFullYear() + dash + pad(d.getMonth() + 1) + dash + pad(d.getDate());
     let returns1 = newdate;
-    return [returns1];
+    return returns1;
 }
