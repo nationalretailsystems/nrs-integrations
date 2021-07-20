@@ -14,10 +14,6 @@ export const getStateMiles: ECCHandlerFunction = async (reqkey, data, ecc) => {
     // Get parameters from incomming data buffer
     const rpgFields = converter.convertReqStMilesToObject(data);
 
-    let todaysDate = new Date();
-    todaysDate.setDate(todaysDate.getDate() - 1);
-    let reqDate = timestamp(todaysDate);
-
     const reqFields = {
         ...rpgFields,
 
@@ -25,8 +21,6 @@ export const getStateMiles: ECCHandlerFunction = async (reqkey, data, ecc) => {
         accesstoken: randmcnally.accesstoken,
         companyCode: randmcnally.companyCode,
 
-        // Add constraints
-        logdate: reqDate
     };
 
     // Call web service
@@ -59,13 +53,4 @@ export const getStateMiles: ECCHandlerFunction = async (reqkey, data, ecc) => {
     const responseData = result.data.Results[0];
     return ecc.sendObjectToCaller(responseData, converter.convertObjectToRtnStMiles, nextReqKey);
     // Xreturn ecc.sendEccResult('ECC0000', 'Success', nextReqKey);
-};
-function timestamp(d: any) {
-    function pad(n: any) {
-        return n < 10 ? '0' + n : n;
-    }
-    let dash = '-';
-    let newdate = d.getFullYear() + dash + pad(d.getMonth() + 1) + dash + pad(d.getDate());
-    let returns1 = newdate;
-    return returns1;
 }
