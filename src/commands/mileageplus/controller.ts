@@ -99,5 +99,5 @@ function timestamp(d: any) {
     let dash = '-';
     let newdate = d.getFullYear() + dash + pad(d.getMonth() + 1) + dash + pad(d.getDate());
     let returns1 = newdate;
-    return [returns1];
+    return returns1;
 }
