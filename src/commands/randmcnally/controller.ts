@@ -12,7 +12,7 @@ const axiosInstance = axios.create(randmcnally.axios);
 export const getStateMiles: ECCHandlerFunction = async (reqkey, data, ecc) => {
     logger.debug(`Received getStateMiles request`, { reqkey, data });
     // Get parameters from incomming data buffer
-    const reqFields = converter.convertReqSttMilesToObject(data);
+    const reqFields = converter.convertReqStMilesToObject(data);
     let todaysDate = new Date();
     todaysDate.setDate(todaysDate.getDate() - 1);
     let reqDate = timestamp(todaysDate);
@@ -51,7 +51,7 @@ export const getStateMiles: ECCHandlerFunction = async (reqkey, data, ecc) => {
 
     // Send the result info
     const responseData = result.data.Results[0];
-    return ecc.sendObjectToCaller(responseData, converter.convertObjectToRtnSttMiles, nextReqKey);
+    return ecc.sendObjectToCaller(responseData, converter.convertObjectToRtnStMiles, nextReqKey);
     // Xreturn ecc.sendEccResult('ECC0000', 'Success', nextReqKey);
 };
 function timestamp(d: any) {

@@ -409,7 +409,7 @@ export interface stateMileageDS {
 /**
  * Output interface
  */
-export interface ReqSttMiles {
+export interface ReqStMiles {
     /**
      * @size 100 characters
      */
@@ -432,9 +432,9 @@ export interface ReqSttMiles {
 }
 
 /**
- * Convert ReqSttMiles record to TypeScript object
+ * Convert ReqStMiles record to TypeScript object
  */
-export function convertReqSttMilesToObject(dataIn: string): ReqSttMiles {
+export function convertReqStMilesToObject(dataIn: string): ReqStMiles {
   const dataOut: any =   {
   
     };
@@ -457,7 +457,7 @@ export function convertReqSttMilesToObject(dataIn: string): ReqSttMiles {
 /**
  * Input interface
  */
-export interface RtnSttMiles {
+export interface RtnStMiles {
     /**
      */
     stateMileage: stateMileageDS,
@@ -472,9 +472,9 @@ export interface RtnSttMiles {
 }
 
 /**
- * Convert JavaScript object to RtnSttMiles record
+ * Convert JavaScript object to RtnStMiles record
  */
-export function convertObjectToRtnSttMiles(dataIn: RtnSttMiles): string {
+export function convertObjectToRtnStMiles(dataIn: RtnStMiles): string {
   let dataOut: string = "";
 
   dataOut += dataIn.stateMileage.index.toFixed().substring(0, 11).padEnd(11);
