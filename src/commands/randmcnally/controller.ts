@@ -19,8 +19,7 @@ export const getStateMiles: ECCHandlerFunction = async (reqkey, data, ecc) => {
 
         // Add api key
         accesstoken: randmcnally.accesstoken,
-        companyCode: randmcnally.companyCode,
-
+        companyCode: randmcnally.companyCode
     };
 
     // Call web service
@@ -53,4 +52,4 @@ export const getStateMiles: ECCHandlerFunction = async (reqkey, data, ecc) => {
     const responseData = result.data.Results[0];
     return ecc.sendObjectToCaller(responseData, converter.convertObjectToRtnStMiles, nextReqKey);
     // Xreturn ecc.sendEccResult('ECC0000', 'Success', nextReqKey);
-}
+};
