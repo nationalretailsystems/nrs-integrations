@@ -18,7 +18,8 @@ MODS = dspjk \
        tstpncll \
        tstskybtz \
 	   tstskybtzq \
-	   tstmpgeteq 
+	   tstmpgeteq \
+	   tstmpgete2
 
 GENMODS = icndbapi \
           lblapi \
@@ -57,7 +58,8 @@ PGMS = dspjk \
        tstpncll \
        tstskybtz \
 	   tstskybtzq \
-	   tstmpgeteq 
+	   tstmpgeteq \
+	   tstmpgete2
 
 CMDS = dspjk \
        dsptrfc \
@@ -68,7 +70,8 @@ CMDS = dspjk \
        tstpncll \
        tstskybtz \
 	   tstskybtzq \
-	   tstmpgeteq
+	   tstmpgeteq \
+	   tstmpgete2
 
 INBOUNDPGMS = simplecalc
 
@@ -152,7 +155,10 @@ $(libdir)/tstskybtzq.pgm: $(libdir)/tstskybtzq.module $(libdir)/ecctmpgen.srvpgm
 	system "CRTPGM PGM($(LIB)/$(basename $(@F))) MODULE(*PGM) BNDSRVPGM((ECCTMPGEN) (ECNCTC))"
 
 $(libdir)/tstmpgeteq.pgm: $(libdir)/tstmpgeteq.module $(libdir)/ecctmpgen.srvpgm
-	system "CRTPGM PGM($(LIB)/$(basename $(@F))) MODULE(*PGM) BNDSRVPGM((ECCTMPGEN) (ECNCTC))"	
+	system "CRTPGM PGM($(LIB)/$(basename $(@F))) MODULE(*PGM) BNDSRVPGM((ECCTMPGEN) (ECNCTC))"
+
+$(libdir)/tstmpgete2.pgm: $(libdir)/tstmpgete2.module $(libdir)/ecctmpgen.srvpgm
+	system "CRTPGM PGM($(LIB)/$(basename $(@F))) MODULE(*PGM) BNDSRVPGM((ECCTMPGEN) (ECNCTC))"		
 
 $(libdir)/ecctmpgen.srvpgm: $(FQGENMODS)
 	system "CRTSRVPGM SRVPGM($(LIB)/$(basename $(@F))) MODULE($(NQGENMODS)) EXPORT(*ALL)"
@@ -190,6 +196,10 @@ $(libdir)/tstskybtz.module: $(libdir)/qrpglesrc.file/skybtz_h.mbr $(libdir)/qrpg
 $(libdir)/tstskybtzq.module: $(libdir)/qrpglesrc.file/skybtzqm_h.mbr $(libdir)/qrpglesrc.file/ecnctc.mbr
 
 $(libdir)/tstmpgeteq.module: $(libdir)/qrpglesrc.file/mpgeteq_h.mbr $(libdir)/qrpglesrc.file/ecnctc.mbr
+
+$(libdir)/tstmpgete2.module: $(libdir)/qrpglesrc.file/mpgeteq2_h.mbr $(libdir)/qrpglesrc.file/ecnctc.mbr
+
+$(libdir)/tstmpgete2.module: $(libdir)/qrpglesrc.file/mpgeteq2_h.mbr $(libdir)/qrpglesrc.file/ecnctc.mbr
 
 $(libdir)/tstskybtzq.module: $(libdir)/qrpglesrc.file/skybtzqm_h.mbr $(libdir)/qrpglesrc.file/ecnctc.mbr
 
