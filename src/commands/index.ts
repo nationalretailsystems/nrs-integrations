@@ -7,6 +7,7 @@ import registerShipping from './shipping';
 import registerPinc from './pinc';
 import registerSkybitz from './skybitz';
 import registerMileageplus from './mileageplus';
+import registerRandmcnally from './randmcnally';
 
 export default async function registerCommands(router: ECCRouter) {
     const jokes = new ECCRouter.Router();
@@ -40,6 +41,10 @@ export default async function registerCommands(router: ECCRouter) {
     const mileageplus = new ECCRouter.Router();
     registerMileageplus(mileageplus);
     router.use('mileageplus', mileageplus);
+
+    const randmcnally = new ECCRouter.Router();
+    registerRandmcnally(randmcnally);
+    router.use('randmcnally', randmcnally);
 
     return router;
 }
