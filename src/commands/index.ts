@@ -45,6 +45,10 @@ export default async function registerCommands(router: ECCRouter) {
     const randmcnally = new ECCRouter.Router();
     registerRandmcnally(randmcnally);
     router.use('randmcnally', randmcnally);
+    
+    const duosecurity = new ECCRouter.Router();
+    registerDuosecurity(duosecurity);
+    router.use('duosecurity', duosecurity);
 
     return router;
 }
