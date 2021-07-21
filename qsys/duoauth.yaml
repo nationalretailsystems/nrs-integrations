@@ -1,0 +1,86 @@
+---
+name: duoauth
+rpgIncName: duoauth_h
+codeblocks:
+  typescript:
+    - import eradaniConnect from "@eradani-inc/eradani-connect";
+    - const { dataTypes } = eradaniConnect;
+datastructures:
+  responseDS:
+    qualified: true
+    subfields:
+      result:
+        rpgName: result
+        type: Character
+        length: 15
+      status: 
+        rpgName: type
+        type: Character
+        length: 15
+      status_msg:
+        rpgName: statusmsg
+        type: Character
+        length: 80
+formats:
+  ReqData:
+    recordType: request
+    subfields:
+      user_id:
+        rpgName: userid
+        type: Character
+        length: 10
+      usernaeme:
+        rpgName: username
+        type: Character
+        length: 50
+      factor:
+        rpgName: factor
+        type: Character
+        length: 10
+      ipaddr: 
+        rpgName: ipaddr
+        type: Character
+        length: 15
+      hostname:
+        rpgName: hostname
+        type: Character
+        length: 25
+      async:
+        rpgName: async
+        type: Character
+        length: 1
+      device:
+        rpgName: device
+        type: Character
+        length: 10
+      type:
+        rpgName: type
+        type: Character
+        length: 20
+      display_username:
+        rpgName: dispuname
+        type: Character
+        length: 50
+      pushinfo:
+        rpgName: pushinfo
+        type: Character
+        length: 50
+      passcode:
+        rpgName: passcode
+        type: Character
+        length: 10
+      device:
+        rpgName: device
+        type: Character
+        length: 25
+  ResData:
+    recordType: response
+    subfields:
+      stat:
+        rpgName: stat
+        type: Character
+        length: 10
+      response:
+        type: DataStruct
+        dsName: responseDS
+        
