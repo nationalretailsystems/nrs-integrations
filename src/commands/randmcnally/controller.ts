@@ -17,7 +17,7 @@ export const getStateMiles: ECCHandlerFunction = async (reqkey, data, ecc) => {
 
     const reqFields = {
         ...rpgFields,
-        logDate: DateTime.local().minus({days:1}).toFormat("yyyy-MM-dd") + ' 00:00:00',    
+        logDate: DateTime.local().minus({days:1}).toFormat("MM-dd-yyyy") + ' 00:00:00',    
         // Add api key
         accessToken: randmcnally.accesstoken,
         companyCode: randmcnally.companyCode
