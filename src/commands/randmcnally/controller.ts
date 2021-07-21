@@ -27,7 +27,7 @@ export const getStateMiles: ECCHandlerFunction = async (reqkey, data, ecc) => {
     let nextReqKey = reqkey;
 
     try {
-        result = await axiosInstance.post('/getStateMileage', {data: jsonData} );
+        result = await axiosInstance.post('/getStateMileage', { data: jsonData });
     } catch (err) {
         if (err.response) {
             // If the request was made and the server responded with a status code
