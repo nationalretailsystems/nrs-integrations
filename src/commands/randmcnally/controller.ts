@@ -22,7 +22,8 @@ export const getStateMiles: ECCHandlerFunction = async (reqkey, data, ecc) => {
         accessToken: randmcnally.accesstoken,
         companyCode: randmcnally.companyCode
     };
-    const jsonData = JSON.stringify(reqFields);
+    // X const jsonData = JSON.stringify(reqFields);
+    const jsonData = reqFields;
     // Call web service
     let result;
     let nextReqKey = reqkey;

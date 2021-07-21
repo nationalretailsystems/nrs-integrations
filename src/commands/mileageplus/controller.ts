@@ -46,7 +46,7 @@ export const getAssetChanges: ECCHandlerFunction = async (reqkey, data, ecc) => 
     }
 
     try {
-        await fs.writeFile(reqFields.filename, result.data, 'utf-8');
+        await fs.writeFile(reqFields.filename, JSON.stringify(result.data), 'utf-8');
     } catch (err) {
         return ecc.sendEccResult('ECC9200', err.message, nextReqKey);
     }
@@ -84,7 +84,7 @@ export const getAssetAll: ECCHandlerFunction = async (reqkey, data, ecc) => {
     }
 
     try {
-        await fs.writeFile(reqFields.filename, result.data, 'utf-8');
+        await fs.writeFile(reqFields.filename, JSON.stringify(result.data), 'utf-8');
     } catch (err) {
         return ecc.sendEccResult('ECC9200', err.message, nextReqKey);
     }
