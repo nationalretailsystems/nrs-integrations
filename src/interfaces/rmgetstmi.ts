@@ -406,14 +406,14 @@ export interface ReqStMiles {
     /**
      * @size 100 characters
      */
-    accesstoken: string;
+    accessToken: string;
     /**
      * @size 10 characters
      */
     companyCode: string;
     /**
      */
-    fromDate: Date;
+    logDate: Date;
     /**
      * @size 10 digits
      */
@@ -431,11 +431,11 @@ export function convertReqStMilesToObject(dataIn: string): ReqStMiles {
     const dataOut: any = {};
     let pos: number = 0;
 
-    dataOut.accesstoken = dataIn.substring(pos, pos + 100).trimEnd();
+    dataOut.accessToken = dataIn.substring(pos, pos + 100).trimEnd();
     pos += 100;
     dataOut.companyCode = dataIn.substring(pos, pos + 10).trimEnd();
     pos += 10;
-    dataOut.fromDate = fromIbmiDate(dataIn.substring(pos, pos + 10).trimEnd());
+    dataOut.logDate = fromIbmiDate(dataIn.substring(pos, pos + 10).trimEnd());
     pos += 10;
     dataOut.startIndex = Number(dataIn.substring(pos, pos + 11).trimEnd());
     pos += 11;

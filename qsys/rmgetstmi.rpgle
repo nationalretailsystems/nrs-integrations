@@ -32,11 +32,11 @@
        BufPtr = %addr(Buffer);
 
       * Write fields from DS to buffer
-       %subst(CharBuf:1:100) = DataStruct.accesstoken;
+       %subst(CharBuf:1:100) = DataStruct.accessToken;
        BufPtr += 100;
        %subst(CharBuf:1:10) = DataStruct.companyCode;
        BufPtr += 10;
-       %subst(CharBuf:1:10) = %char(DataStruct.fromDate:*ISO);
+       %subst(CharBuf:1:10) = %char(DataStruct.logDate:*ISO);
        BufPtr += 10;
        %subst(CharBuf:1:11) = %char(DataStruct.startIndex);
        BufPtr += 11;

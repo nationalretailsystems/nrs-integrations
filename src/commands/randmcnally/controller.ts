@@ -1,6 +1,7 @@
 import { ECCHandlerFunction } from '@eradani-inc/ecc-router/types';
 import axios from 'axios';
 import config from 'config';
+import { DateTime } from 'luxon';
 import createLogger from 'src/services/logger';
 import * as converter from 'src/interfaces/rmgetstmi';
 // Ximport { promises as fs } from 'fs';
@@ -16,9 +17,9 @@ export const getStateMiles: ECCHandlerFunction = async (reqkey, data, ecc) => {
 
     const reqFields = {
         ...rpgFields,
-
+        logDate: DateTime.local().minus({ days: 1 }).toFormat('yyyy-MM-dd'),
         // Add api key
-        accesstoken: randmcnally.accesstoken,
+        accessToken: randmcnally.accesstoken,
         companyCode: randmcnally.companyCode
     };
     const jsonData = JSON.stringify(reqFields);

@@ -139,13 +139,13 @@ formats:
   ReqStMiles:
     recordType: request
     subfields:
-      accesstoken:
+      accessToken:
         type: Character
         length: 100
       companyCode:
         type: Character
         length: 10
-      fromDate: 
+      logDate: 
         type: Date
       startIndex:
         type: Integer
