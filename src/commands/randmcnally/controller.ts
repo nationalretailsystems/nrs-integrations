@@ -21,13 +21,13 @@ export const getStateMiles: ECCHandlerFunction = async (reqkey, data, ecc) => {
         accesstoken: randmcnally.accesstoken,
         companyCode: randmcnally.companyCode
     };
-
+    const jsonData = JSON.stringify(reqFields);
     // Call web service
     let result;
     let nextReqKey = reqkey;
 
     try {
-        result = await axiosInstance.post('/getStateMileage', { params: reqFields });
+        result = await axiosInstance.post('/getStateMileage', {data: jsonData} );
     } catch (err) {
         if (err.response) {
             // If the request was made and the server responded with a status code
