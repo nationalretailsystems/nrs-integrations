@@ -72,6 +72,7 @@
 
       // Assign Data To Variables
          FullCmd = 'mileageplus.getAssetChanges';
+         MyReqData.filename = '/tmp/tstmpgeteqassets.json';
          DataLen = RqAssetChgLen;
          RqAssetChgtoBuf(MyReqData:DataBuf);
 

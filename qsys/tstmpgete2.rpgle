@@ -72,6 +72,7 @@
 
       // Assign Data To Variables
          FullCmd = 'mileageplus.getAssetAll';
+         MyReqData.Filename = '/tmp/tstmpget2assets.json';
          DataLen = RqAssetAllLen;
          RqAssetAlltoBuf(MyReqData:DataBuf);
 
