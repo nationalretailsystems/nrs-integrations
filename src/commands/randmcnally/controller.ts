@@ -17,7 +17,7 @@ export const getStateMiles: ECCHandlerFunction = async (reqkey, data, ecc) => {
 
     const reqFields = {
         ...rpgFields,
-        logDate: DateTime.local().minus({days:1}).toFormat("MM-dd-yyyy") + ' 00:00:00',    
+        logDate: DateTime.local().minus({ days: 1 }).toFormat('MM-dd-yyyy') + ' 00:00:00',
         // Add api key
         accessToken: randmcnally.accesstoken,
         companyCode: randmcnally.companyCode
@@ -29,7 +29,7 @@ export const getStateMiles: ECCHandlerFunction = async (reqkey, data, ecc) => {
     let nextReqKey = reqkey;
 
     try {
-        result = await axiosInstance.post('/getStateMileage',  jsonData );
+        result = await axiosInstance.post('/getStateMileage', jsonData);
     } catch (err) {
         if (err.response) {
             // If the request was made and the server responded with a status code
