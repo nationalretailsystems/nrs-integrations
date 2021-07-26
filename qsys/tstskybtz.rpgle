@@ -71,7 +71,7 @@
       // Assign Data To Variables
 
          FullCmd = 'skybitz.trailermileages';
-         MyReqData.filename = '/tmp/trailermileages.xml';
+         MyReqData.filename = '/eradani/tests/trailermileages.xml';
          DataLen = GetTrlMlsLen;
          GetTrlMlsToBuf(MyReqData:DataBuf);
 
