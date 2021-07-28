@@ -52,9 +52,11 @@ export const getAssetChanges: ECCHandlerFunction = async (reqkey, data, ecc) => 
     }
 
     // Send the result info
-    return ecc.sendEccResult('ECC0000', 'Success', nextReqKey);
-    return ecc.sendObjectToCaller(result, converter.convertObjectToAssetChgDS, nextReqKey);
-};
+    
+    logger.debug('ECC0000', 'Success', nextReqKey);
+    let responseData = result.data;
+        return ecc.sendObjectsToCaller (responseData, converter.convertObjectToAssetChgDS, nextReqKey);
+ };
 export const getAssetAll: ECCHandlerFunction = async (reqkey, data, ecc) => {
     logger.debug(`Received getAssetAll request`, { reqkey, data });
     // Get parameters from incomming data buffer
