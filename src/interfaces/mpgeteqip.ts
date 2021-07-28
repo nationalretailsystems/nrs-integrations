@@ -83,6 +83,9 @@ export interface RqAssetChg {
      * @size 256 characters
      */
     filename: string;
+    /**
+     */
+    sincedate: Date;
 }
 
 /**
@@ -94,6 +97,8 @@ export function convertRqAssetChgToObject(dataIn: string): RqAssetChg {
 
     dataOut.filename = dataIn.substring(pos, pos + 256).trimEnd();
     pos += 256;
+    dataOut.sincedate = fromIbmiDate(dataIn.substring(pos, pos + 10).trimEnd());
+    pos += 10;
 
     return dataOut;
 }

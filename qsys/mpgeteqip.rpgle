@@ -26,7 +26,7 @@
      DRqAssetChgToBuf  PI
      DDataStruct                           LikeDS(RqAssetChg)
      D                                     Const
-     DBuffer                        256A
+     DBuffer                        266A
 
       * Initialize to beginning of buffer
        BufPtr = %addr(Buffer);
@@ -34,6 +34,8 @@
       * Write fields from DS to buffer
        %subst(CharBuf:1:256) = DataStruct.filename;
        BufPtr += 256;
+       %subst(CharBuf:1:10) = %char(DataStruct.sincedate:*ISO);
+       BufPtr += 10;
 
        return ;
 

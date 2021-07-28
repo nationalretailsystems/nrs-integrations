@@ -34,6 +34,9 @@ formats:
       filename:
         type: Character
         length: 256
+      sincedate:
+        rpgName: sincedate
+        type: Date
   AssetChgDS:
     recordType: response
     subfields:

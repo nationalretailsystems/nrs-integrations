@@ -14,9 +14,7 @@ export const getAssetChanges: ECCHandlerFunction = async (reqkey, data, ecc) => 
     logger.debug(`Received getAssetChanges request`, { reqkey, data });
     // Get parameters from incomming data buffer
     const reqFields = converter.convertRqAssetChgToObject(data);
-    let todaysDate = new Date();
-    todaysDate.setDate(todaysDate.getDate() - 1);
-    let reqDate = timestamp(todaysDate);
+    let reqDate = reqFields.sincedate.toString();
     // Call web service
     let result;
     let nextReqKey = reqkey;
@@ -95,12 +93,3 @@ export const getAssetAll: ECCHandlerFunction = async (reqkey, data, ecc) => {
     // Send the result info
     return ecc.sendEccResult('ECC0000', 'Success', nextReqKey);
 };
-function timestamp(d: any) {
-    function pad(n: any) {
-        return n < 10 ? '0' + n : n;
-    }
-    let dash = '-';
-    let newdate = d.getFullYear() + dash + pad(d.getMonth() + 1) + dash + pad(d.getDate());
-    let returns1 = newdate;
-    return returns1;
-}
