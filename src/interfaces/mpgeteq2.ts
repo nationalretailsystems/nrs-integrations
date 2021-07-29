@@ -145,6 +145,10 @@ export interface AssetAllDS {
     /**
      * @size 24 characters
      */
+    budgetId: string;
+    /**
+     * @size 24 characters
+     */
     statusId: string;
     /**
      * @size 50 characters
@@ -199,6 +203,7 @@ export function convertObjectToAssetAllDS(dataIn: AssetAllDS): string {
     dataOut += dataIn.categoryId.substring(0, 24).padEnd(24);
     dataOut += dataIn.typeId.substring(0, 24).padEnd(24);
     dataOut += dataIn.budgetGroupId.substring(0, 24).padEnd(24);
+    dataOut += dataIn.budgetId.substring(0, 24).padEnd(24);
     dataOut += dataIn.statusId.substring(0, 24).padEnd(24);
     dataOut += dataIn.barcode.substring(0, 50).padEnd(50);
     dataOut += dataIn.manufacturer.substring(0, 24).padEnd(24);
@@ -208,7 +213,7 @@ export function convertObjectToAssetAllDS(dataIn: AssetAllDS): string {
     dataOut += dataIn.customerKey.toFixed().substring(0, 11).padEnd(11);
     dataOut += toIbmiDate(dataIn.purchaseDate);
     dataOut += dataIn.purchaseCost.toFixed(2).substring(0, 17).padEnd(17);
-    for (let i: number = 0; i < 100; ++i) {
+    for (let i: number = 0; i < dataIn.customFields.length; ++i) {
         dataOut += dataIn.customFields[i].key.toFixed().substring(0, 11).padEnd(11);
         dataOut += dataIn.customFields[i].customFieldKey.toFixed().substring(0, 11).padEnd(11);
         dataOut += dataIn.customFields[i].fieldName.substring(0, 24).padEnd(24);

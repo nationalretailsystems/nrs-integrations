@@ -82,6 +82,10 @@ formats:
         rpgName: budgrpid
         type: Character
         length: 24
+      budgetId:
+        rpgName: budgtid
+        type: Character
+        length: 24
       statusId:
         rpgName: statusid
         type: Character

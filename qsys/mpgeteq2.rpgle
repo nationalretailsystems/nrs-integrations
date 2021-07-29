@@ -45,7 +45,7 @@
      PBufToAssetAllDS  B                   Export
 
      DBufToAssetAllDS  PI
-     DBuffer                      15116A
+     DBuffer                      15140A
      DDataStruct                           LikeDS(AssetAllDS)
 
       * Initialize to begining of buffer
@@ -71,6 +71,8 @@
        DataStruct.typeid = %subst(CharBuf:1:24);
        BufPtr += 24;
        DataStruct.budgrpid = %subst(CharBuf:1:24);
+       BufPtr += 24;
+       DataStruct.budgtid = %subst(CharBuf:1:24);
        BufPtr += 24;
        DataStruct.statusid = %subst(CharBuf:1:24);
        BufPtr += 24;

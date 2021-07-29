@@ -30,7 +30,7 @@ const safeValues: any = {
     customerKey: 0,
     purchaseDate: '0001-01-01',
     purchaseCost: 0
-}
+};
 
 export const getAssetChanges: ECCHandlerFunction = async (reqkey, data, ecc) => {
     logger.debug(`Received getAssetChanges request`, { reqkey, data });
@@ -85,7 +85,7 @@ export const getAssetChanges: ECCHandlerFunction = async (reqkey, data, ecc) => 
             }
         }
 
-        nextReqKey = await ecc.sendObjectsToCaller(responseData, converter.convertObjectToAssetChgDS, nextReqKey);   
+        nextReqKey = await ecc.sendObjectsToCaller(responseData, converter.convertObjectToAssetChgDS, nextReqKey);
         logger.debug('Sent data to RPG');
         return nextReqKey;
     } catch (err) {
