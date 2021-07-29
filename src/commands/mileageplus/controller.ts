@@ -10,11 +10,33 @@ const logger = createLogger('commands/mileageplus');
 const { mileageplus } = config;
 const axiosInstance = axios.create(mileageplus.axios);
 
+const safeValues: any = {
+    assetKey: 0,
+    entityName: '',
+    assetId: '',
+    parentAssetId: '',
+    description: '',
+    groupKey: 0,
+    groupId: '',
+    categoryId: '',
+    typeId: '',
+    budgetGroupId: '',
+    statusId: '',
+    barcode: '',
+    manufacturer: '',
+    model: '',
+    serialNumber: '',
+    customer: '',
+    customerKey: 0,
+    purchaseDate: '0001-01-01',
+    purchaseCost: 0
+}
+
 export const getAssetChanges: ECCHandlerFunction = async (reqkey, data, ecc) => {
     logger.debug(`Received getAssetChanges request`, { reqkey, data });
     // Get parameters from incomming data buffer
     const reqFields = converter.convertRqAssetChgToObject(data);
-    let reqDate = reqFields.sincedate.toString();
+    let reqDate = reqFields.sincedate.toISOString().split('T')[0];
     // Call web service
     let result;
     let nextReqKey = reqkey;
@@ -51,9 +73,25 @@ export const getAssetChanges: ECCHandlerFunction = async (reqkey, data, ecc) => 
 
     // Send the result info
 
-    logger.debug('ECC0000', 'Success', nextReqKey);
-    let responseData = result.data;
-    return ecc.sendObjectsToCaller(responseData, converter.convertObjectToAssetChgDS, nextReqKey);
+    try {
+        logger.debug('ECC0000', 'Success', nextReqKey);
+        nextReqKey = await ecc.sendEccResult('ECC0000', 'Success', nextReqKey);
+
+        let responseData = result.data;
+
+        for (let rec of responseData) {
+            for (let key in rec) {
+                rec[key] = rec[key] || safeValues[key];
+            }
+        }
+
+        nextReqKey = await ecc.sendObjectsToCaller(responseData, converter.convertObjectToAssetChgDS, nextReqKey);   
+        logger.debug('Sent data to RPG');
+        return nextReqKey;
+    } catch (err) {
+        logger.error('Call failed', err);
+        return ecc.sendEccResult('ECC9300', err.message, nextReqKey);
+    }
 };
 export const getAssetAll: ECCHandlerFunction = async (reqkey, data, ecc) => {
     logger.debug(`Received getAssetAll request`, { reqkey, data });
