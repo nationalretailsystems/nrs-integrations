@@ -21,6 +21,7 @@ const safeValues: any = {
     categoryId: '',
     typeId: '',
     budgetGroupId: '',
+    budgetId: '',
     statusId: '',
     barcode: '',
     manufacturer: '',
