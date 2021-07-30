@@ -6,9 +6,9 @@ import * as converter from 'src/interfaces/mpgeteqip';
 import * as converter2 from 'src/interfaces/mpgeteq2';
 import { promises as fs } from 'fs';
 
-const logger = createLogger('commands/mileageplus');
-const { mileageplus } = config;
-const axiosInstance = axios.create(mileageplus.axios);
+const logger = createLogger('commands/managerplus');
+const { managerplus } = config;
+const axiosInstance = axios.create(managerplus.axios);
 
 const safeValues: any = {
     assetKey: 0,
@@ -49,7 +49,7 @@ export const getAssetChanges: ECCHandlerFunction = async (reqkey, data, ecc) => 
             },
             headers: {
                 accept: 'application/json',
-                Authorization: mileageplus.apikey
+                Authorization: managerplus.apikey
             }
         });
     } catch (err) {
@@ -75,8 +75,7 @@ export const getAssetChanges: ECCHandlerFunction = async (reqkey, data, ecc) => 
     // Send the result info
 
     try {
-        logger.debug('ECC0000', 'Success', nextReqKey);
-        nextReqKey = await ecc.sendEccResult('ECC0000', 'Success', nextReqKey);
+
 
         let responseData = result.data;
 
@@ -85,7 +84,8 @@ export const getAssetChanges: ECCHandlerFunction = async (reqkey, data, ecc) => 
                 rec[key] = rec[key] || safeValues[key];
             }
         }
-
+        logger.debug('ECC0000', 'Success', nextReqKey);
+        nextReqKey = await ecc.sendEccResult('ECC0000', 'Success', nextReqKey);
         nextReqKey = await ecc.sendObjectsToCaller(responseData, converter.convertObjectToAssetChgDS, nextReqKey);
         logger.debug('Sent data to RPG');
         return nextReqKey;
@@ -106,7 +106,7 @@ export const getAssetAll: ECCHandlerFunction = async (reqkey, data, ecc) => {
         result = await axiosInstance.get('/Assets', {
             headers: {
                 accept: 'application/json',
-                Authorization: mileageplus.apikey
+                Authorization: managerplus.apikey
             }
         });
     } catch (err) {

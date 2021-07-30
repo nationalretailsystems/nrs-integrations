@@ -6,7 +6,7 @@ import registerWeather from './weather';
 import registerShipping from './shipping';
 import registerPinc from './pinc';
 import registerSkybitz from './skybitz';
-import registerMileageplus from './mileageplus';
+import registerManagerplus from './managerplus';
 import registerRandmcnally from './randmcnally';
 
 export default async function registerCommands(router: ECCRouter) {
@@ -38,9 +38,9 @@ export default async function registerCommands(router: ECCRouter) {
     registerSkybitz(skybitz);
     router.use('skybitz', skybitz);
 
-    const mileageplus = new ECCRouter.Router();
-    registerMileageplus(mileageplus);
-    router.use('mileageplus', mileageplus);
+    const managerplus = new ECCRouter.Router();
+    registerManagerplus(managerplus);
+    router.use('managerplus', managerplus);
 
     const randmcnally = new ECCRouter.Router();
     registerRandmcnally(randmcnally);
