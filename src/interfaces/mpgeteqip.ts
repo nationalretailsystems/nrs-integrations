@@ -225,7 +225,6 @@ export function convertObjectToAssetChgDS(dataIn: AssetChgDS): string {
         dataOut += dataIn.customFields[i].value.substring(0, 100).padEnd(100);
     }
 
-
     return dataOut;
 }
 

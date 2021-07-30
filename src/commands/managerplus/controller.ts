@@ -75,8 +75,6 @@ export const getAssetChanges: ECCHandlerFunction = async (reqkey, data, ecc) => 
     // Send the result info
 
     try {
-
-
         let responseData = result.data;
 
         for (let rec of responseData) {
