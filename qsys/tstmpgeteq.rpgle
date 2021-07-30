@@ -71,7 +71,7 @@
          *InLr = *On;
 
       // Assign Data To Variables
-         FullCmd = 'mileageplus.getAssetChanges';
+         FullCmd = 'managerplus.getAssetChanges';
          MyReqData.filename = '/eradani/tests/tstmpgeteqassets.json';
          DataLen = RqAssetChgLen;
          RqAssetChgtoBuf(MyReqData:DataBuf);
