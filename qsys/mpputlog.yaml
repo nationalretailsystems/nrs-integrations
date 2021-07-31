@@ -1,0 +1,104 @@
+---
+name: mpputlog
+rpgIncName: mpputlg_h
+codeblocks:
+  typescript:
+    - import eradaniConnect from "@eradani-inc/eradani-connect";
+    - const { dataTypes } = eradaniConnect;
+formats:
+  ReqAddLog:
+    recordType: request
+    subfields:
+      assetId:
+        rpgName: assetid
+        type: Character
+        length: 24
+      postDate:
+        rpgName: postdate
+        type: Date
+      logType:
+        rpgName: logtype
+        type: Character
+        length: 24
+      logValue:
+        rpgname: logvalue
+        type: Packed
+        length: 11
+        precision: 2
+      ignoreWarnings:
+        rpgName: ignwarn
+        type: Boolean
+      operator:
+        rpgName: operator
+        type: Character
+        length: 24
+      warehouse:
+        rpgName: warehouse
+        type: Character
+        length: 24
+      budget:
+        rpgName: budget
+        type: Character
+        length: 24
+      cost:
+        rpgName: cost
+        type: Packed
+        length: 11
+        precision: 2
+      partId:
+        rpgName: partid
+        type: Character
+        length: 36
+      site:
+        rpgName: site
+        type: Character
+        length: 24
+  AddLogRes:
+    recordType: response
+    subfields:
+      logId:
+        rpgName: logid
+        type: Integer
+        length: 20
+      assetId:
+        rpgName: assetid
+        type: Character
+        length: 24
+      postDate:
+        rpgName: postdate
+        type: Date
+      logType:
+        rpgName: logtype
+        type: Character
+        length: 24
+      logValue:
+        rpgName: logvalue
+        type: Packed
+        length: 11
+        precision: 2
+      operator:
+        rpgName: operator
+        type: Character
+        length: 24
+      warehouseId:
+        rpgName: wareid
+        type: Character
+        length: 24
+      budgetId:
+        rpgName: budgetid
+        type: Character
+        length: 24
+      cost:
+        rpgName: cost
+        type: Packed
+        length: 11
+        precision: 2
+      partId:
+        rpgName: partid
+        type: Character
+        length: 36
+      site:
+        rpgName: site
+        type: Character
+        length: 24        
+              
