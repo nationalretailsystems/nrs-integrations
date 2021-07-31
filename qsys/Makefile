@@ -33,7 +33,8 @@ GENMODS = icndbapi \
 		  skybtzqm \
 		  mpgeteqip \
 		  mpgeteq2 \
-		  rmgetstmi 
+		  rmgetstmi \
+		  mpputlog
 
 GENHDRS = icndbapi_h \
           lblapi_h \
@@ -46,7 +47,8 @@ GENHDRS = icndbapi_h \
 		  skybtzqm_h \
 		  mpgeteq_h \
 		  rmgetstm_h \
-		  mpgeteq2_h
+		  mpgeteq2_h \
+		  mpputlg_h
 
 SRVPGMS = ecctmpgen
 
@@ -325,6 +327,12 @@ $(libdir)/qrpglesrc.file/rmgetstmi.mbr $(libdir)/qrpglesrc.file/rmgetstm_h.mbr .
 	cp rmgetstmi.ts ../src/interfaces/rmgetstmi.ts
 	system "CPYFRMSTMF FROMSTMF('rmgetstmi.rpgle') TOMBR('$(libdir)/qrpglesrc.file/rmgetstmi.mbr') MBROPT(*REPLACE)"
 	system "CPYFRMSTMF FROMSTMF('rmgetstm_h.rpgleinc') TOMBR('$(libdir)/qrpglesrc.file/rmgetstm_h.mbr') MBROPT(*REPLACE)"
+	
+$(libdir)/qrpglesrc.file/mpputlog.mbr $(libdir)/qrpglesrc.file/mpputlg_h.mbr ../src/interfaces/mpputlog.ts: mpputlog.yaml
+	npx ec-generate -f $<
+	cp mpputlog.ts ../src/interfaces/mpputlog.ts
+	system "CPYFRMSTMF FROMSTMF('mpputlog.rpgle') TOMBR('$(libdir)/qrpglesrc.file/mpputlog.mbr') MBROPT(*REPLACE)"
+	system "CPYFRMSTMF FROMSTMF('mpputlg_h.rpgleinc') TOMBR('$(libdir)/qrpglesrc.file/mpputlg_h.mbr') MBROPT(*REPLACE)"
 			
 
 

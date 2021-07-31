@@ -21,7 +21,7 @@ formats:
         type: Character
         length: 24
       logValue:
-        rpgname: logvalue
+        rpgName: logvalue
         type: Packed
         length: 11
         precision: 2
