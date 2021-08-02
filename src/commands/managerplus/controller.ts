@@ -139,7 +139,7 @@ export const getAssetAll: ECCHandlerFunction = async (reqkey, data, ecc) => {
         }
         logger.debug('ECC0000', 'Success', nextReqKey);
         nextReqKey = await ecc.sendEccResult('ECC0000', 'Success', nextReqKey);
-        nextReqKey = await ecc.sendObjectsToCaller(responseData, converter.convertObjectToAssetChgDS, nextReqKey);
+        nextReqKey = await ecc.sendObjectsToCaller(responseData, converter2.convertObjectToAssetAllDS, nextReqKey);
         logger.debug('Sent data to RPG');
         return nextReqKey;
     } catch (err) {
