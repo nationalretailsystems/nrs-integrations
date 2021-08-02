@@ -129,7 +129,23 @@ export const getAssetAll: ECCHandlerFunction = async (reqkey, data, ecc) => {
     }
 
     // Send the result info
-    return ecc.sendEccResult('ECC0000', 'Success', nextReqKey);
+    try {
+        let responseData = result.data;
+
+        for (let rec of responseData) {
+            for (let key in rec) {
+                rec[key] = rec[key] || safeValues[key];
+            }
+        }
+        logger.debug('ECC0000', 'Success', nextReqKey);
+        nextReqKey = await ecc.sendEccResult('ECC0000', 'Success', nextReqKey);
+        nextReqKey = await ecc.sendObjectsToCaller(responseData, converter.convertObjectToAssetChgDS, nextReqKey);
+        logger.debug('Sent data to RPG');
+        return nextReqKey;
+    } catch (err) {
+        logger.error('Call failed', err);
+        return ecc.sendEccResult('ECC9300', err.message, nextReqKey);
+    }
 };
 export const putLogMileage: ECCHandlerFunction = async (reqkey, data, ecc) => {
     logger.debug(`Received putLogMileage request`, { reqkey, data });
