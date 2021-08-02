@@ -34,6 +34,11 @@ formats:
       filename:
         type: Character
         length: 256
+      skiprecs:
+        rpgName: skiprecs
+        type: Integer
+        length: 5
+        precision: 0
   AssetAllDS:
     recordType: response
     subfields:
