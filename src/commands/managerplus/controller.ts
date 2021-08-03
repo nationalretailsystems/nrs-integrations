@@ -104,7 +104,7 @@ export const getAssetAll: ECCHandlerFunction = async (reqkey, data, ecc) => {
     try {
         result = await axiosInstance.get('/Assets', {
             params: {
-                skip: reqFields.skiprecs
+                $skip: reqFields.skiprecs
             },
             headers: {
                 accept: 'application/json',
