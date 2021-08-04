@@ -3,17 +3,10 @@
 // Module: mpputlog
 // Generated source -- do not modify
 
-import { ibmiConversions } from "@eradani-inc/ec-client";
-const {
-  fromIbmiDate,
-  fromIbmiTime,
-  fromIbmiTimestamp,
-  toIbmiDate,
-  toIbmiTime,
-  toIbmiTimestamp
-} = ibmiConversions;
+import { ibmiConversions } from '@eradani-inc/ec-client';
+const { fromIbmiDate, fromIbmiTime, fromIbmiTimestamp, toIbmiDate, toIbmiTime, toIbmiTimestamp } = ibmiConversions;
 
-import eradaniConnect from "@eradani-inc/eradani-connect";
+import eradaniConnect from '@eradani-inc/eradani-connect';
 const { dataTypes } = eradaniConnect;
 
 /**
@@ -23,82 +16,80 @@ export interface ReqAddLog {
     /**
      * @size 24 characters
      */
-    assetId: string,
+    assetId: string;
     /**
      */
-    postDate: Date,
+    postDate: Date;
     /**
      * @size 24 characters
      */
-    logType: string,
+    logType: string;
     /**
      * @size 11 digits
      * @precision 2 decimals
      */
-    logValue: number,
+    logValue: number;
     /**
      */
-    ignoreWarnings: boolean,
-    /**
-     * @size 24 characters
-     */
-    operator: string,
+    ignoreWarnings: boolean;
     /**
      * @size 24 characters
      */
-    warehouse: string,
+    operator: string;
     /**
      * @size 24 characters
      */
-    budget: string,
+    warehouse: string;
+    /**
+     * @size 24 characters
+     */
+    budget: string;
     /**
      * @size 11 digits
      * @precision 2 decimals
      */
-    cost: number,
+    cost: number;
     /**
      * @size 36 characters
      */
-    partId: string,
+    partId: string;
     /**
      * @size 24 characters
      */
-    site: string
+    site: string;
 }
 
 /**
  * Convert ReqAddLog record to TypeScript object
  */
 export function convertReqAddLogToObject(dataIn: string): ReqAddLog {
-  const dataOut: any =   {
-  
-    };
-  let pos: number = 0;
+    const dataOut: any = {};
+    let pos: number = 0;
 
-  dataOut.assetId = dataIn.substring(pos, pos + 24).trimEnd();
-  pos += 24;
-  dataOut.postDate = fromIbmiDate(dataIn.substring(pos, pos + 10).trimEnd());
-  pos += 10;
-  dataOut.logType = dataIn.substring(pos, pos + 24).trimEnd();
-  pos += 24;
-  dataOut.logValue = Number(dataIn.substring(pos, pos + 13).trimEnd());
-  pos += 13;
-  dataOut.ignoreWarnings = dataIn.substring(pos, pos + 1).trimEnd() === "1";
-  pos += 1;
-  dataOut.operator = dataIn.substring(pos, pos + 24).trimEnd();
-  pos += 24;
-  dataOut.warehouse = dataIn.substring(pos, pos + 24).trimEnd();
-  pos += 24;
-  dataOut.budget = dataIn.substring(pos, pos + 24).trimEnd();
-  pos += 24;
-  dataOut.cost = Number(dataIn.substring(pos, pos + 13).trimEnd());
-  pos += 13;
-  dataOut.partId = dataIn.substring(pos, pos + 36).trimEnd();
-  pos += 36;
-  dataOut.site = dataIn.substring(pos, pos + 24).trimEnd();
-  pos += 24;
+    dataOut.assetId = dataIn.substring(pos, pos + 24).trimEnd();
+    pos += 24;
+    dataOut.postDate = fromIbmiDate(dataIn.substring(pos, pos + 10).trimEnd());
+    pos += 10;
+    dataOut.logType = dataIn.substring(pos, pos + 24).trimEnd();
+    pos += 24;
+    dataOut.logValue = Number(dataIn.substring(pos, pos + 13).trimEnd());
+    pos += 13;
+    dataOut.ignoreWarnings = dataIn.substring(pos, pos + 1).trimEnd() === '1';
+    pos += 1;
+    dataOut.operator = dataIn.substring(pos, pos + 24).trimEnd();
+    pos += 24;
+    dataOut.warehouse = dataIn.substring(pos, pos + 24).trimEnd();
+    pos += 24;
+    dataOut.budget = dataIn.substring(pos, pos + 24).trimEnd();
+    pos += 24;
+    dataOut.cost = Number(dataIn.substring(pos, pos + 13).trimEnd());
+    pos += 13;
+    dataOut.partId = dataIn.substring(pos, pos + 36).trimEnd();
+    pos += 36;
+    dataOut.site = dataIn.substring(pos, pos + 24).trimEnd();
+    pos += 24;
 
-  return dataOut;
+    return dataOut;
 }
 
 /**
@@ -108,18 +99,18 @@ export interface AddLogRes {
     /**
      * @size 256 characters
      */
-    respdata: string
+    respdata: string;
 }
 
 /**
  * Convert JavaScript object to AddLogRes record
  */
 export function convertObjectToAddLogRes(dataIn: AddLogRes): string {
-  let dataOut: string = "";
+    let dataOut: string = '';
 
-  dataOut += dataIn.respdata.substring(0, 256).padEnd(256);
+    dataOut += dataIn.respdata.substring(0, 256).padEnd(256);
 
-  return dataOut;
+    return dataOut;
 }
 
 /* eslint-enable */
