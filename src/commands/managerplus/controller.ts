@@ -159,11 +159,11 @@ export const putLogMileage: ECCHandlerFunction = async (reqkey, data, ecc) => {
     let nextReqKey = reqkey;
 
     try {
-        result = await axiosInstance.post('/Logs', {
+        result = await axiosInstance.post('/Logs', reqFields, {
             headers: {
                 accept: 'application/json',
                 Authorization: managerplus.apikey
-            },reqFields
+            }
         });
     } catch (err) {
         if (err.response) {
