@@ -166,13 +166,19 @@ export const putLogMileage: ECCHandlerFunction = async (reqkey, data, ecc) => {
             }
         });
     } catch (err) {
-        if (err.response) {
+        if (err.response.data == 'Asset Id not found') {
             // If the request was made and the server responded with a status code
-            // That falls out of the range of 2xx
-            // Note: These error formats are dependent on the web service
-            return ecc.sendEccResult('ECC8100', err.response.status + '-' + err.response.statusText, nextReqKey);
+            // of 400, return the data and ECC8400 to recird the bad asset id
+            return ecc.sendEccResult('ECC8400', err.response.status + '-' + err.response.data, nextReqKey);
         }
-
+        else
+        {
+            if (err.response) {
+                // If the request was made and the server responded with a status code
+                // That falls out of the range of 2xx
+                // Note: These error formats are dependent on the web service
+                return ecc.sendEccResult('ECC8100', err.response.status + '-' + err.response.statusText, nextReqKey);
+        }
         // Else the request was made but no response was received
         // Note: This error format has nothing to do with the web service. This is
         // Mainly TCP/IP errors.
