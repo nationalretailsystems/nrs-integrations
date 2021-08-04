@@ -106,50 +106,9 @@ export function convertReqAddLogToObject(dataIn: string): ReqAddLog {
  */
 export interface AddLogRes {
     /**
-     * @size 20 digits
+     * @size 256 characters
      */
-    logId: number,
-    /**
-     * @size 24 characters
-     */
-    assetId: string,
-    /**
-     */
-    postDate: Date,
-    /**
-     * @size 24 characters
-     */
-    logType: string,
-    /**
-     * @size 11 digits
-     * @precision 2 decimals
-     */
-    logValue: number,
-    /**
-     * @size 24 characters
-     */
-    operator: string,
-    /**
-     * @size 24 characters
-     */
-    warehouseId: string,
-    /**
-     * @size 24 characters
-     */
-    budgetId: string,
-    /**
-     * @size 11 digits
-     * @precision 2 decimals
-     */
-    cost: number,
-    /**
-     * @size 36 characters
-     */
-    partId: string,
-    /**
-     * @size 24 characters
-     */
-    site: string
+    respdata: string
 }
 
 /**
@@ -158,17 +117,7 @@ export interface AddLogRes {
 export function convertObjectToAddLogRes(dataIn: AddLogRes): string {
   let dataOut: string = "";
 
-  dataOut += dataIn.logId.toFixed().substring(0, 21).padEnd(21);
-  dataOut += dataIn.assetId.substring(0, 24).padEnd(24);
-  dataOut += toIbmiDate(dataIn.postDate);
-  dataOut += dataIn.logType.substring(0, 24).padEnd(24);
-  dataOut += dataIn.logValue.toFixed(2).substring(0, 13).padEnd(13);
-  dataOut += dataIn.operator.substring(0, 24).padEnd(24);
-  dataOut += dataIn.warehouseId.substring(0, 24).padEnd(24);
-  dataOut += dataIn.budgetId.substring(0, 24).padEnd(24);
-  dataOut += dataIn.cost.toFixed(2).substring(0, 13).padEnd(13);
-  dataOut += dataIn.partId.substring(0, 36).padEnd(36);
-  dataOut += dataIn.site.substring(0, 24).padEnd(24);
+  dataOut += dataIn.respdata.substring(0, 256).padEnd(256);
 
   return dataOut;
 }

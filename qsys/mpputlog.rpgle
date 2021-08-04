@@ -65,35 +65,15 @@
      PBufToAddLogRes   B                   Export
 
      DBufToAddLogRes   PI
-     DBuffer                        237A
+     DBuffer                        256A
      DDataStruct                           LikeDS(AddLogRes)
 
       * Initialize to begining of buffer
        BufPtr = %addr(Buffer);
 
       * Read fields from buffer into DS
-       DataStruct.logid = %int(%subst(CharBuf:1:21));
-       BufPtr += 21;
-       DataStruct.assetid = %subst(CharBuf:1:24);
-       BufPtr += 24;
-       DataStruct.postdate = %date(%subst(CharBuf:1:10):*ISO);
-       BufPtr += 10;
-       DataStruct.logtype = %subst(CharBuf:1:24);
-       BufPtr += 24;
-       DataStruct.logvalue = %dec(%subst(CharBuf:1:13):11:2);
-       BufPtr += 13;
-       DataStruct.operator = %subst(CharBuf:1:24);
-       BufPtr += 24;
-       DataStruct.wareid = %subst(CharBuf:1:24);
-       BufPtr += 24;
-       DataStruct.budgetid = %subst(CharBuf:1:24);
-       BufPtr += 24;
-       DataStruct.cost = %dec(%subst(CharBuf:1:13):11:2);
-       BufPtr += 13;
-       DataStruct.partid = %subst(CharBuf:1:36);
-       BufPtr += 36;
-       DataStruct.site = %subst(CharBuf:1:24);
-       BufPtr += 24;
+       DataStruct.respdata = %subst(CharBuf:1:256);
+       BufPtr += 256;
 
        return ;
 
