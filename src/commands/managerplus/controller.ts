@@ -168,7 +168,7 @@ export const putLogMileage: ECCHandlerFunction = async (reqkey, data, ecc) => {
     } catch (err) {
         if (err.response.data == 'Asset Id not found') {
             // If the request was made and the server responded with a status code
-            // of 400, return the data and ECC8400 to recird the bad asset id
+            // Of 400, return the data and ECC8400 to recird the bad asset id
             return ecc.sendEccResult('ECC8400', err.response.status + '-' + err.response.data, nextReqKey);
         }
         else
@@ -193,7 +193,7 @@ export const putLogMileage: ECCHandlerFunction = async (reqkey, data, ecc) => {
 
         logger.debug('ECC0000', 'Success', nextReqKey);
         nextReqKey = await ecc.sendEccResult('ECC0000', 'Success', nextReqKey);
-        nextReqKey = await ecc.sendObjectToCaller(responseData, converter3.convertObjectToAddLogRes, nextReqKey);
+        nextReqKey = await ecc.sendFieldToCaller(responseData, nextReqKey);
         logger.debug('Sent data to RPG');
         return nextReqKey;
     } catch (err) {
