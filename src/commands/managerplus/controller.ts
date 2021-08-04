@@ -179,6 +179,7 @@ export const putLogMileage: ECCHandlerFunction = async (reqkey, data, ecc) => {
                 // Note: These error formats are dependent on the web service
                 return ecc.sendEccResult('ECC8100', err.response.status + '-' + err.response.statusText, nextReqKey);
         }
+    }
         // Else the request was made but no response was received
         // Note: This error format has nothing to do with the web service. This is
         // Mainly TCP/IP errors.
