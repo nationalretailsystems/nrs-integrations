@@ -155,6 +155,7 @@ export const putLogMileage: ECCHandlerFunction = async (reqkey, data, ecc) => {
     // Get parameters from incomming data buffer
     const reqFields = converter3.convertReqAddLogToObject(data);
     // Call web service
+    
     let result;
     let nextReqKey = reqkey;
 
@@ -166,7 +167,7 @@ export const putLogMileage: ECCHandlerFunction = async (reqkey, data, ecc) => {
             }
         });
     } catch (err) {
-        if (err.response.data === 'Asset Id not found') {
+        if (err?.response?.data === 'Asset Id not found') {
             // If the request was made and the server responded with a status code
             // Of 400, return the data and ECC8400 to recird the bad asset id
             return ecc.sendEccResult('ECC8400', err.response.status + '-' + err.response.data, nextReqKey);
