@@ -56,49 +56,7 @@ formats:
   AddLogRes:
     recordType: response
     subfields:
-      logId:
-        rpgName: logid
-        type: Integer
-        length: 20
-      assetId:
-        rpgName: assetid
+      respdata:
+        rpgName: respdata
         type: Character
-        length: 24
-      postDate:
-        rpgName: postdate
-        type: Date
-      logType:
-        rpgName: logtype
-        type: Character
-        length: 24
-      logValue:
-        rpgName: logvalue
-        type: Packed
-        length: 11
-        precision: 2
-      operator:
-        rpgName: operator
-        type: Character
-        length: 24
-      warehouseId:
-        rpgName: wareid
-        type: Character
-        length: 24
-      budgetId:
-        rpgName: budgetid
-        type: Character
-        length: 24
-      cost:
-        rpgName: cost
-        type: Packed
-        length: 11
-        precision: 2
-      partId:
-        rpgName: partid
-        type: Character
-        length: 36
-      site:
-        rpgName: site
-        type: Character
-        length: 24        
-              
+        length: 256
