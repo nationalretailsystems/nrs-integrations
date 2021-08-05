@@ -155,7 +155,7 @@ export const putLogMileage: ECCHandlerFunction = async (reqkey, data, ecc) => {
     // Get parameters from incomming data buffer
     const reqFields = converter3.convertReqAddLogToObject(data);
     // Call web service
-    
+
     let result;
     let nextReqKey = reqkey;
 
@@ -176,8 +176,7 @@ export const putLogMileage: ECCHandlerFunction = async (reqkey, data, ecc) => {
                 // If the request was made and the server responded with a status code
                 // That falls out of the range of 2xx
                 // Note: These error formats are dependent on the web service
-                return ecc.sendEccResult(
-                    'ECC8100', err.response.status + '-' + err.response.statusText, nextReqKey);
+                return ecc.sendEccResult('ECC8100', err.response.status + '-' + err.response.statusText, nextReqKey);
             }
         }
         // Else the request was made but no response was received

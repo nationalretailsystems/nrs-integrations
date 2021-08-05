@@ -41,29 +41,27 @@ export interface Location {
      * @size 9 digits
      * @precision 6 decimals
      */
-    lat: number,
+    lat: number;
     /**
      * @size 9 digits
      * @precision 6 decimals
      */
-    lon: number
+    lon: number;
 }
 
 /**
  * Convert Location record to TypeScript object
  */
 export function convertLocationToObject(dataIn: string): Location {
-  const dataOut: any =   {
-  
-    };
-  let pos: number = 0;
+    const dataOut: any = {};
+    let pos: number = 0;
 
-  dataOut.lat = Number(dataIn.substring(pos, pos + 11).trimEnd());
-  pos += 11;
-  dataOut.lon = Number(dataIn.substring(pos, pos + 11).trimEnd());
-  pos += 11;
+    dataOut.lat = Number(dataIn.substring(pos, pos + 11).trimEnd());
+    pos += 11;
+    dataOut.lon = Number(dataIn.substring(pos, pos + 11).trimEnd());
+    pos += 11;
 
-  return dataOut;
+    return dataOut;
 }
 
 /**
@@ -88,7 +86,7 @@ export function convertObjectToWeather(dataIn: Weather): string {
         dataOut += dataIn.Forecasts[i].description.substring(0, 58).padEnd(58);
     }
 
-  return dataOut;
+    return dataOut;
 }
 
 /* eslint-enable */
