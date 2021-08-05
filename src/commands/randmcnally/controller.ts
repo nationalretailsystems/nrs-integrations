@@ -17,8 +17,8 @@ export const getStateMiles: ECCHandlerFunction = async (reqkey, data, ecc) => {
 
     const reqFields = {
         ...rpgFields,
-        logDate: DateTime.local().minus({ days: 1 }).toFormat('MM-dd-yyyy') + ' 00:00:00',
-        // Add api key
+        logDate: DateTime.local().minus({ months: 2 }).toFormat('MM-dd-yyyy') + ' 00:00:00',
+        // Add api key, above line was minus days :1
         accessToken: randmcnally.accesstoken,
         companyCode: randmcnally.companyCode
     };
@@ -44,14 +44,17 @@ export const getStateMiles: ECCHandlerFunction = async (reqkey, data, ecc) => {
         return ecc.sendEccResult('ECC9100', err.message, nextReqKey);
     }
 
-    // Xtry {
-    // X   await fs.writeFile(reqFields.filename, result.data, 'utf-8');
-    // X} catch (err) {
-    // X   return ecc.sendEccResult('ECC9200', err.message, nextReqKey);
-    // X}
-
-    // Send the result info
-    const responseData = result.data.Results[0];
-    return ecc.sendObjectToCaller(responseData, converter.convertObjectToRtnStMiles, nextReqKey);
+    try {
+    const responseData = result.data.stateMileage;
+    logger.debug('ECC0000', 'Success', nextReqKey);
+    nextReqKey = await ecc.sendEccResult('ECC0000', 'Success', nextReqKey);
+    nextReqKey = await ecc.sendObjectsToCaller(responseData, converter.convertObjectToRtnStMiles, nextReqKey);
+    logger.debug('Sent data to RPG');
+    return nextReqKey;    
+    // Return ecc.sendObjectToCaller(responseData, converter.convertObjectToRtnStMiles, nextReqKey);
+    } catch (err) {
+        logger.error('Call failed', err);
+        return ecc.sendEccResult('ECC9300', err.message, nextReqKey);
+    }
     // Xreturn ecc.sendEccResult('ECC0000', 'Success', nextReqKey);
 };
