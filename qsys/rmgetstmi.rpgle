@@ -53,7 +53,7 @@
      PBufToRtnStMiles  B                   Export
 
      DBufToRtnStMiles  PI
-     DBuffer                       1371A
+     DBuffer                       1155A
      DDataStruct                           LikeDS(RtnStMiles)
 
       * Initialize to begining of buffer
@@ -110,6 +110,24 @@
        BufPtr += 30;
        DataStruct.stateMileage.dotnbt = %subst(CharBuf:1:50);
        BufPtr += 50;
+
+       return ;
+
+     PBufToRtnStMiles  E
+
+      ************************************
+      * Convert buffer to RtnResponse
+      ************************************
+     PBufToRtnResponse  B                   Export
+
+     DBufToRtnResponse  PI
+     DBuffer                        216A
+     DDataStruct                           LikeDS(RtnResponse)
+
+      * Initialize to begining of buffer
+       BufPtr = %addr(Buffer);
+
+      * Read fields from buffer into DS
        DataStruct.response.code = %int(%subst(CharBuf:1:6));
        BufPtr += 6;
        DataStruct.response.type = %subst(CharBuf:1:5);
@@ -121,4 +139,4 @@
 
        return ;
 
-     PBufToRtnStMiles  E
+     PBufToRtnResponse  E

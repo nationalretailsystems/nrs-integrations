@@ -161,6 +161,9 @@ formats:
       stateMileage:
         type: DataStruct
         dsName: stateMileageDS 
+  RtnResponse:
+    recordType: response
+    subfields:        
       response:
         type: DataStruct
         dsName: responseDS
@@ -168,4 +171,3 @@ formats:
         type: Packed
         length: 3
         precision: 0
-        
