@@ -501,7 +501,7 @@ export function convertObjectToRtnStMiles(dataIn: RtnStMiles): string {
 /**
  * Input interface
  */
-export interface RtnResponse {
+export interface RtnRespons {
     /**
      */
     response: responseDS,
@@ -513,9 +513,9 @@ export interface RtnResponse {
 }
 
 /**
- * Convert JavaScript object to RtnResponse record
+ * Convert JavaScript object to RtnRespons record
  */
-export function convertObjectToRtnResponse(dataIn: RtnResponse): string {
+export function convertObjectToRtnRespons(dataIn: RtnRespons): string {
   let dataOut: string = "";
 
   dataOut += dataIn.response.code.toFixed().substring(0, 6).padEnd(6);

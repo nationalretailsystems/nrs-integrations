@@ -161,7 +161,7 @@ formats:
       stateMileage:
         type: DataStruct
         dsName: stateMileageDS 
-  RtnResponse:
+  RtnRespons:
     recordType: response
     subfields:        
       response:

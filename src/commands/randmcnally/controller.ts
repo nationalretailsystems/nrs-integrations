@@ -49,7 +49,7 @@ export const getStateMiles: ECCHandlerFunction = async (reqkey, data, ecc) => {
         const mileResponse = result.data.stateMileage;
         logger.debug('ECC0000', 'Success', nextReqKey);
         nextReqKey = await ecc.sendEccResult('ECC0000', 'Success', nextReqKey);
-        nextReqKey = await ecc.sendObjectToCaller(responseData, converter.convertObjectToRtnResponse, nextReqKey);
+        nextReqKey = await ecc.sendObjectToCaller(responseData, converter.convertObjectToRtnRespons, nextReqKey);
         nextReqKey = await ecc.sendObjectsToCaller(mileResponse, converter.convertObjectToRtnStMiles, nextReqKey);
         logger.debug('Sent data to RPG');
         return nextReqKey;
