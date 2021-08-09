@@ -85,7 +85,7 @@ formats:
       scheduledDate:
         rpgName: dtsched
         type: Date
-      estimatedCompleteion:
+      estimatedCompletion:
         rpgName: dtestcomp
         type: Date
       customer:

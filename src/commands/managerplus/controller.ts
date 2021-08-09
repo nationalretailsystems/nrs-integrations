@@ -33,6 +33,11 @@ const safeValues: any = {
     customer: '',
     customerKey: 0,
     purchaseDate: '0001-01-01',
+    dateCreated: '0001-01-01',
+    dateCompleted: '0001-01-01',
+    dateDue: '0001-01-01',
+    scheduledDate: '0001-01-01',
+    estimatedCompletion: '0001-01-01',
     purchaseCost: 0
 };
 
