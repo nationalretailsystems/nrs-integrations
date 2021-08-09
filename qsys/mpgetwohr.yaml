@@ -9,7 +9,7 @@ formats:
   ResWoHrs:
     recordType: response
     subfields:
-      workOrderLaborKey:
+      wkOrdLaborKey:
         type: Integer
         length: 10
       workOrderKey:

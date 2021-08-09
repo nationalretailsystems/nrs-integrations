@@ -31,7 +31,7 @@
        BufPtr = %addr(Buffer);
 
       * Read fields from buffer into DS
-       DataStruct.workOrderLaborKey = %int(%subst(CharBuf:1:11));
+       DataStruct.wkOrdLaborKey = %int(%subst(CharBuf:1:11));
        BufPtr += 11;
        DataStruct.workOrderKey = %int(%subst(CharBuf:1:11));
        BufPtr += 11;
