@@ -34,6 +34,8 @@ GENMODS = icndbapi \
 		  mpgeteqip \
 		  mpgeteq2 \
 		  rmgetstmi \
+		  mpgetwohr \
+		  mpgetwoch \
 		  mpputlog
 
 GENHDRS = icndbapi_h \
@@ -47,6 +49,8 @@ GENHDRS = icndbapi_h \
 		  skybtzqm_h \
 		  mpgeteq_h \
 		  rmgetstm_h \
+		  mpgetwoc_h \
+		  mpgetwoh_h \
 		  mpgeteq2_h \
 		  mpputlg_h
 
@@ -327,6 +331,18 @@ $(libdir)/qrpglesrc.file/rmgetstmi.mbr $(libdir)/qrpglesrc.file/rmgetstm_h.mbr .
 	cp rmgetstmi.ts ../src/interfaces/rmgetstmi.ts
 	system "CPYFRMSTMF FROMSTMF('rmgetstmi.rpgle') TOMBR('$(libdir)/qrpglesrc.file/rmgetstmi.mbr') MBROPT(*REPLACE)"
 	system "CPYFRMSTMF FROMSTMF('rmgetstm_h.rpgleinc') TOMBR('$(libdir)/qrpglesrc.file/rmgetstm_h.mbr') MBROPT(*REPLACE)"
+
+$(libdir)/qrpglesrc.file/mpgetwoch.mbr $(libdir)/qrpglesrc.file/mpgetwoc_h.mbr ../src/interfaces/mpgetwoch.ts: mpgetwoch.yaml
+	npx ec-generate -f $<
+	cp mpgetwoch.ts ../src/interfaces/mpgetwoch.ts
+	system "CPYFRMSTMF FROMSTMF('mpgetwoch.rpgle') TOMBR('$(libdir)/qrpglesrc.file/mpgetwoch.mbr') MBROPT(*REPLACE)"
+	system "CPYFRMSTMF FROMSTMF('mpgetwoc_h.rpgleinc') TOMBR('$(libdir)/qrpglesrc.file/mpgetwoc_h.mbr') MBROPT(*REPLACE)"
+
+$(libdir)/qrpglesrc.file/mpgetwohr.mbr $(libdir)/qrpglesrc.file/mpgetwoh_h.mbr ../src/interfaces/mpgetwohr.ts: mpgetwohr.yaml
+	npx ec-generate -f $<
+	cp mpgetwohr.ts ../src/interfaces/mpgetwohr.ts
+	system "CPYFRMSTMF FROMSTMF('mpgetwohr.rpgle') TOMBR('$(libdir)/qrpglesrc.file/mpgetwohr.mbr') MBROPT(*REPLACE)"
+	system "CPYFRMSTMF FROMSTMF('mpgetwoh_h.rpgleinc') TOMBR('$(libdir)/qrpglesrc.file/mpgetwoh_h.mbr') MBROPT(*REPLACE)"
 	
 $(libdir)/qrpglesrc.file/mpputlog.mbr $(libdir)/qrpglesrc.file/mpputlg_h.mbr ../src/interfaces/mpputlog.ts: mpputlog.yaml
 	npx ec-generate -f $<

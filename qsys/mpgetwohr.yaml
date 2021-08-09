@@ -1,0 +1,45 @@
+---
+name: mpgetwohr
+rpgIncName: mpgetwoh_h
+codeblocks:
+  typescript:
+    - import eradaniConnect from "@eradani-inc/eradani-connect";
+    - const { dataTypes } = eradaniConnect;
+formats:
+  ResWoHrs:
+    recordType: response
+    subfields:
+      workOrderLaborKey:
+        type: Integer
+        length: 10
+      workOrderKey:
+        type: Integer
+        length: 10
+      contactKey: 
+        type: Integer
+        length: 10
+      contactId:
+        type: Character
+        length: 50
+      laborDate:
+        type: Date
+      laborHours:
+        type: Packed
+        length: 11
+        precision: 2
+      laborRate:
+        type: Packed
+        length: 11
+        precision: 2
+      laborBudgetId:
+        type: Character
+        length: 25
+      serviceId: 
+        type: Character
+        length: 25
+  ReqWoHours:
+    recordType: request
+    subfields:
+      id:
+        type: Integer
+        length: 10
