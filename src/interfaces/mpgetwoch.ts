@@ -230,7 +230,7 @@ export function convertObjectToResWoChg(dataIn: ResWoChg): string {
   dataOut += dataIn.otherCost.toFixed(2).substring(0, 13).padEnd(13);
   dataOut += dataIn.totalCosts.toFixed(2).substring(0, 13).padEnd(13);
   dataOut += dataIn.scheduleId.substring(0, 24).padEnd(24);
-  for (let i: number = dataIn.customFlds.length; i < dataIn.customFlds.length; ++i) {
+  for (let i: number = dataIn.customFields.length; i < dataIn.customFields.length; ++i) {
   dataOut += dataIn.customFlds[i].key.toFixed().substring(0, 11).padEnd(11);
   dataOut += dataIn.customFlds[i].customFieldKey.toFixed().substring(0, 11).padEnd(11);
   dataOut += dataIn.customFlds[i].fieldName.substring(0, 24).padEnd(24);
