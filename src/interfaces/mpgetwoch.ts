@@ -191,10 +191,10 @@ export interface ResWoChg {
     /**
      * @size 24 characters
      */
-    scheduledId: string,
+    scheduleId: string,
     /**
      */
-    customFlds: customFldsDs
+    customFlds: Array<customFldsDs>
 }
 
 /**
@@ -229,11 +229,13 @@ export function convertObjectToResWoChg(dataIn: ResWoChg): string {
   dataOut += dataIn.laborCost.toFixed(2).substring(0, 13).padEnd(13);
   dataOut += dataIn.otherCost.toFixed(2).substring(0, 13).padEnd(13);
   dataOut += dataIn.totalCosts.toFixed(2).substring(0, 13).padEnd(13);
-  dataOut += dataIn.scheduledId.substring(0, 24).padEnd(24);
-  dataOut += dataIn.customFlds.key.toFixed().substring(0, 11).padEnd(11);
-  dataOut += dataIn.customFlds.customFieldKey.toFixed().substring(0, 11).padEnd(11);
-  dataOut += dataIn.customFlds.fieldName.substring(0, 24).padEnd(24);
-  dataOut += dataIn.customFlds.value.substring(0, 50).padEnd(50);
+  dataOut += dataIn.scheduleId.substring(0, 24).padEnd(24);
+  for (let i: number = dataIn.customFlds.length; i < dataIn.customFlds.length; ++i) {
+  dataOut += dataIn.customFlds[i].key.toFixed().substring(0, 11).padEnd(11);
+  dataOut += dataIn.customFlds[i].customFieldKey.toFixed().substring(0, 11).padEnd(11);
+  dataOut += dataIn.customFlds[i].fieldName.substring(0, 24).padEnd(24);
+  dataOut += dataIn.customFlds[i].value.substring(0, 50).padEnd(50);
+  }
 
   return dataOut;
 }

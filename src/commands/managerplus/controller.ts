@@ -38,7 +38,15 @@ const safeValues: any = {
     dateDue: '0001-01-01',
     scheduledDate: '0001-01-01',
     estimatedCompletion: '0001-01-01',
-    purchaseCost: 0
+    purchaseCost: 0,
+    requestId: 0,
+    inspectionId: 0,
+    invoiceNumber: 0,
+    partsCost: 0,
+    laborCost: 0,
+    otherCost: 0,
+    totalCosts: 0,
+    scheduleId: ''
 };
 
 export const getAssetChanges: ECCHandlerFunction = async (reqkey, data, ecc) => {

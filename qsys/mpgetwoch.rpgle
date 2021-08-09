@@ -24,7 +24,7 @@
      PBufToResWoChg    B                   Export
 
      DBufToResWoChg    PI
-     DBuffer                        581A
+     DBuffer                       5285A
      DDataStruct                           LikeDS(ResWoChg)
 
       * Initialize to begining of buffer
@@ -85,14 +85,16 @@
        BufPtr += 13;
        DataStruct.schedid = %subst(CharBuf:1:24);
        BufPtr += 24;
-       DataStruct.customFlds.key = %int(%subst(CharBuf:1:11));
+       for i = 1 to 50;
+       DataStruct.customFlds(i).key = %int(%subst(CharBuf:1:11));
        BufPtr += 11;
-       DataStruct.customFlds.custfldkey = %int(%subst(CharBuf:1:11));
+       DataStruct.customFlds(i).custfldkey = %int(%subst(CharBuf:1:11));
        BufPtr += 11;
-       DataStruct.customFlds.fldname = %subst(CharBuf:1:24);
+       DataStruct.customFlds(i).fldname = %subst(CharBuf:1:24);
        BufPtr += 24;
-       DataStruct.customFlds.value = %subst(CharBuf:1:50);
+       DataStruct.customFlds(i).value = %subst(CharBuf:1:50);
        BufPtr += 50;
+       endfor;
 
        return ;
 

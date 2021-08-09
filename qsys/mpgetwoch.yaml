@@ -131,13 +131,14 @@ formats:
         type: Packed
         length: 11
         precision: 2      
-      scheduledId:
+      scheduleId:
         rpgName: schedid
         type: Character
         length: 24 
       customFlds:
         type: DataStruct
-        dsName: customFldsDs             
+        dsName: customFldsDs
+        dim: 50             
   ReqWoChg:
     recordType: request
     subfields:
