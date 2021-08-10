@@ -317,7 +317,7 @@ export const getWorkOrderHours: ECCHandlerFunction = async (reqkey, data, ecc) =
         }
         logger.debug('ECC0000', 'Success', nextReqKey);
         nextReqKey = await ecc.sendEccResult('ECC0000', 'Success', nextReqKey);
-        nextReqKey = await ecc.sendObjectToCaller(responseData, converterwohr.convertObjectToResWoHrs, nextReqKey);
+        nextReqKey = await ecc.sendObjectsToCaller(responseData, converterwohr.convertObjectToResWoHrs, nextReqKey);
         logger.debug('Sent data to RPG');
         return nextReqKey;
     } catch (err) {
