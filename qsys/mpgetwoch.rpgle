@@ -1,4 +1,4 @@
-     H Nomain
+     H Nomain  EXPROPTS(*ALWBLANKNUM) 
 
       ************************************
       * Module: mpgetwoch
@@ -86,13 +86,13 @@
        DataStruct.schedid = %subst(CharBuf:1:24);
        BufPtr += 24;
        for i = 1 to 50;
-       DataStruct.customFlds(i).key = %int(%subst(CharBuf:1:11));
+       DataStruct.customFields(i).key = %int(%subst(CharBuf:1:11));
        BufPtr += 11;
-       DataStruct.customFlds(i).custfldkey = %int(%subst(CharBuf:1:11));
+       DataStruct.customFields(i).custfldkey = %int(%subst(CharBuf:1:11));
        BufPtr += 11;
-       DataStruct.customFlds(i).fldname = %subst(CharBuf:1:24);
+       DataStruct.customFields(i).fldname = %subst(CharBuf:1:24);
        BufPtr += 24;
-       DataStruct.customFlds(i).value = %subst(CharBuf:1:50);
+       DataStruct.customFields(i).value = %subst(CharBuf:1:50);
        BufPtr += 50;
        endfor;
 

@@ -135,7 +135,7 @@ formats:
         rpgName: schedid
         type: Character
         length: 24 
-      customFlds:
+      customFields:
         type: DataStruct
         dsName: customFldsDs
         dim: 50             
