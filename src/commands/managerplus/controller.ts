@@ -46,7 +46,9 @@ const safeValues: any = {
     laborCost: 0,
     otherCost: 0,
     totalCosts: 0,
-    scheduleId: ''
+    scheduleId: '',
+    laborRate: 0
+
 };
 
 export const getAssetChanges: ECCHandlerFunction = async (reqkey, data, ecc) => {
@@ -273,7 +275,8 @@ export const getWorkOrderChanges: ECCHandlerFunction = async (reqkey, data, ecc)
 export const getWorkOrderHours: ECCHandlerFunction = async (reqkey, data, ecc) => {
     logger.debug(`Received getWorkOrderHours request`, { reqkey, data });
     // Get parameters from incomming data buffer
-    const id = converterwohr.convertReqWoHoursToObject(data);
+    const dataFields = converterwohr.convertReqWoHoursToObject(data);
+    
     // Call web service
     let result;
     let nextReqKey = reqkey;
@@ -281,12 +284,12 @@ export const getWorkOrderHours: ECCHandlerFunction = async (reqkey, data, ecc) =
     try {
         result = await axiosInstance.get('/WorkOrders/Labor', {
             params: {
-                id: id
+                id: dataFields.id
             },
             headers: {
                 accept: 'application/json',
                 Authorization: managerplus.apikey
-            }
+            }, 
         });
     } catch (err) {
         if (err.response) {
@@ -314,7 +317,7 @@ export const getWorkOrderHours: ECCHandlerFunction = async (reqkey, data, ecc) =
         }
         logger.debug('ECC0000', 'Success', nextReqKey);
         nextReqKey = await ecc.sendEccResult('ECC0000', 'Success', nextReqKey);
-        nextReqKey = await ecc.sendObjectToCaller(responseData, converterwoch.convertObjectToResWoChg, nextReqKey);
+        nextReqKey = await ecc.sendObjectToCaller(responseData, converterwohr.convertObjectToResWoHrs, nextReqKey);
         logger.debug('Sent data to RPG');
         return nextReqKey;
     } catch (err) {
