@@ -10,6 +10,36 @@ const logger = createLogger('commands/randmcnally');
 const { randmcnally } = config;
 const axiosInstance = axios.create(randmcnally.axios);
 
+const safeValues: any = {
+    country: '',
+    deviceSN: '',
+    distance: 0,
+    dotNumber: '',
+    driverLoginId: '',
+    entryOdometerReading: 0,
+    exitOdometerReading: 0,
+    fuelType: '',
+    fuelUsed: 0,
+    index: 0,
+    logDate: '01-01-0001 00:00:00',
+    manualMiles: 0,
+    oaNumber: '',
+    offSet: '',
+    state: '',
+    stateInAddress: '',
+    stateInLatitude: 0,
+    stateInLongitude: 0,
+    stateInTime: '01-01-0001 00:00:00',
+    stateOutAddress: '',
+    stateOutLatitude: 0,
+    stateOutLongitude: 0,
+    stateOutTime: '01-01-0001 00:00:00',
+    tractorNumber: '',
+    vin: ''
+
+
+};
+
 export const getStateMiles: ECCHandlerFunction = async (reqkey, data, ecc) => {
     logger.debug(`Received getStateMiles request`, { reqkey, data });
     // Get parameters from incomming data buffer
@@ -47,6 +77,11 @@ export const getStateMiles: ECCHandlerFunction = async (reqkey, data, ecc) => {
     try {
         const responseData = result.data;
         const mileResponse = result.data.stateMileage;
+        for (let rec of mileResponse) {
+            for (let key in rec) {
+                rec[key] = rec[key] || safeValues[key];
+            }
+        }        
         logger.debug('ECC0000', 'Success', nextReqKey);
         nextReqKey = await ecc.sendEccResult('ECC0000', 'Success', nextReqKey);
         nextReqKey = await ecc.sendObjectToCaller(responseData, converter.convertObjectToRtnRespons, nextReqKey);

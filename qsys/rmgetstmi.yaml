@@ -17,13 +17,33 @@ datastructures:
       type: 
         rpgName: type
         type: Character
-        length: 5
+        length: 10
       message:
         rpgName: message
         type: Character
         length: 200
-  stateMileageDS:
-    qualified: true
+formats:
+  ReqStMiles:
+    recordType: request
+    subfields:
+      accessToken:
+        type: Character
+        length: 100
+      companyCode:
+        type: Character
+        length: 10
+      logDate: 
+        type: Date
+      startIndex:
+        type: Integer
+        length: 10
+        precision: 0
+      size:
+        type: Integer
+        length: 10
+        precision: 0
+  RtnStMiles:
+    recordType: response
     subfields:
       index:
         rpgName: index
@@ -65,12 +85,12 @@ datastructures:
         rpgName: state
         type: Character
         length: 50
-      entryOdometerReading:
+      entryOdemeterReading:
         rpgName: entodread
         type: Packed
         length: 15
         precision: 5      
-      exitOdometerReading:
+      exitOdemeterReading:
         rpgName: exodread
         type: Packed
         length: 15
@@ -99,26 +119,22 @@ datastructures:
         rpgName: oanbr
         type: Character
         length: 100
-      stateinLatitude:
+      stateInLatitude:
         rpgName: sttinlat
-        type: Packed
-        length: 50
-        precision: 14
+        type: Float
+        length: 8
       stateInLongitude:
         rpgName: sttinlng
-        type: Packed
-        length: 50
-        precision: 14
+        type: Float
+        length: 8
       stateOutLatitude:
         rpgName: sttoutlat
-        type: Packed
-        length: 50
-        precision: 14
+        type: Float
+        length: 8
       stateOutLongitude:
         rpgName: sttoutlng
-        type: Packed
-        length: 50
-        precision: 14      
+        type: Float
+        length: 8
       stateInAddress:
         rpgName: sttinadd
         type: Character
@@ -135,32 +151,6 @@ datastructures:
         rpgName: dotnbt
         type: Character
         length: 50
-formats:
-  ReqStMiles:
-    recordType: request
-    subfields:
-      accessToken:
-        type: Character
-        length: 100
-      companyCode:
-        type: Character
-        length: 10
-      logDate: 
-        type: Date
-      startIndex:
-        type: Integer
-        length: 10
-        precision: 0
-      size:
-        type: Integer
-        length: 10
-        precision: 0
-  RtnStMiles:
-    recordType: response
-    subfields:
-      stateMileage:
-        type: DataStruct
-        dsName: stateMileageDS 
   RtnRespons:
     recordType: response
     subfields:        
