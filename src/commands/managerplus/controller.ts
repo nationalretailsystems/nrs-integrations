@@ -7,6 +7,7 @@ import * as converter2 from 'src/interfaces/mpgeteq2';
 import * as converter3 from 'src/interfaces/mpputlog';
 import * as converterwoch from 'src/interfaces/mpgetwoch';
 import * as converterwohr from 'src/interfaces/mpgetwohr';
+import * as converterwkor from 'src/interfaces/mpputwo';
 import { promises as fs } from 'fs';
 
 const logger = createLogger('commands/managerplus');
@@ -318,6 +319,56 @@ export const getWorkOrderHours: ECCHandlerFunction = async (reqkey, data, ecc) =
         logger.debug('ECC0000', 'Success', nextReqKey);
         nextReqKey = await ecc.sendEccResult('ECC0000', 'Success', nextReqKey);
         nextReqKey = await ecc.sendObjectsToCaller(responseData, converterwohr.convertObjectToResWoHrs, nextReqKey);
+        logger.debug('Sent data to RPG');
+        return nextReqKey;
+    } catch (err) {
+        logger.error('Call failed', err);
+        return ecc.sendEccResult('ECC9300', err.message, nextReqKey);
+    }
+};
+export const putNewWorkOrder: ECCHandlerFunction = async (reqkey, data, ecc) => {
+    logger.debug(`Received putNewWorkOrder request`, { reqkey, data });
+    // Get parameters from incomming data buffer
+    const reqFields = converterwkor.convertReqAddWoToObject(data);
+    // Call web service
+
+    let result;
+    let nextReqKey = reqkey;
+
+    try {
+        result = await axiosInstance.post('/WorkOrders', reqFields, {
+            headers: {
+                accept: 'application/json',
+                Authorization: managerplus.apikey
+            }
+        });
+    } catch (err) {
+        if (err?.response?.data === 'Asset Id not found') {
+            // If the request was made and the server responded with a status code
+            // Of 400, return the data and ECC8400 to recird the bad asset id
+            return ecc.sendEccResult('ECC8400', err.response.status + '-' + err.response.data, nextReqKey);
+        } else {
+            if (err.response) {
+                // If the request was made and the server responded with a status code
+                // That falls out of the range of 2xx
+                // Note: These error formats are dependent on the web service
+                return ecc.sendEccResult('ECC8100', err.response.status + '-' + err.response.statusText, nextReqKey);
+            }
+        }
+        // Else the request was made but no response was received
+        // Note: This error format has nothing to do with the web service. This is
+        // Mainly TCP/IP errors.
+        return ecc.sendEccResult('ECC9100', err.message, nextReqKey);
+    }
+
+    // Send the result info
+
+    try {
+        let responseData = result.data;
+
+        logger.debug('ECC0000', 'Success', nextReqKey);
+        nextReqKey = await ecc.sendEccResult('ECC0000', 'Success', nextReqKey);
+        nextReqKey = await ecc.sendFieldToCaller(responseData, nextReqKey);
         logger.debug('Sent data to RPG');
         return nextReqKey;
     } catch (err) {

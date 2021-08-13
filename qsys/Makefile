@@ -36,7 +36,8 @@ GENMODS = icndbapi \
 		  rmgetstmi \
 		  mpgetwohr \
 		  mpgetwoch \
-		  mpputlog
+		  mpputlog \
+		  mpputwo
 
 GENHDRS = icndbapi_h \
           lblapi_h \
@@ -52,7 +53,8 @@ GENHDRS = icndbapi_h \
 		  mpgetwoc_h \
 		  mpgetwoh_h \
 		  mpgeteq2_h \
-		  mpputlg_h
+		  mpputlg_h \
+		  mpputwo_h
 
 SRVPGMS = ecctmpgen
 
@@ -349,7 +351,12 @@ $(libdir)/qrpglesrc.file/mpputlog.mbr $(libdir)/qrpglesrc.file/mpputlg_h.mbr ../
 	cp mpputlog.ts ../src/interfaces/mpputlog.ts
 	system "CPYFRMSTMF FROMSTMF('mpputlog.rpgle') TOMBR('$(libdir)/qrpglesrc.file/mpputlog.mbr') MBROPT(*REPLACE)"
 	system "CPYFRMSTMF FROMSTMF('mpputlg_h.rpgleinc') TOMBR('$(libdir)/qrpglesrc.file/mpputlg_h.mbr') MBROPT(*REPLACE)"
-			
+	
+$(libdir)/qrpglesrc.file/mpputwo.mbr $(libdir)/qrpglesrc.file/mpputwo_h.mbr ../src/interfaces/mpputwo.ts: mpputwo.yaml
+	npx ec-generate -f $<
+	cp mpputwo.ts ../src/interfaces/mpputwo.ts
+	system "CPYFRMSTMF FROMSTMF('mpputwo.rpgle') TOMBR('$(libdir)/qrpglesrc.file/mpputwo.mbr') MBROPT(*REPLACE)"
+	system "CPYFRMSTMF FROMSTMF('mpputwo_h.rpgleinc') TOMBR('$(libdir)/qrpglesrc.file/mpputwo_h.mbr') MBROPT(*REPLACE)"			
 
 
 .PHONY: library
