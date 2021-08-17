@@ -48,7 +48,9 @@ const safeValues: any = {
     otherCost: 0,
     totalCosts: 0,
     scheduleId: '',
-    laborRate: 0
+    laborRate: 0,
+    assigned: '',
+    failureCode: ''
 
 };
 
