@@ -103,6 +103,7 @@ export const getAssetChanges: ECCHandlerFunction = async (reqkey, data, ecc) => 
                 rec[key] = rec[key] || safeValues[key];
             }
         }
+
         logger.debug('ECC0000', 'Success', nextReqKey);
         nextReqKey = await ecc.sendEccResult('ECC0000', 'Success', nextReqKey);
         nextReqKey = await ecc.sendObjectsToCaller(responseData, converter.convertObjectToAssetChgDS, nextReqKey);

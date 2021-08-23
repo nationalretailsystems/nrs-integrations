@@ -9,6 +9,7 @@ const logger = createLogger('commands/pinc');
 const { pinc } = config;
 import * as pncchkinapi from 'src/interfaces/pncchkin';
 import * as pnclatlonapi from 'src/interfaces/pnclatlon';
+import * as pncchkotapi from 'src/interfaces/pncchkot';
 // Set AWS region
 AWS.config.update(pinc.sns);
 let sns = new AWS.SNS({ apiVersion: pinc.sns.apiVersion });
@@ -89,4 +90,46 @@ export const latlon: ECCHandlerFunction = async (reqkey, _data, ecc) => {
         logger.warn('SQS Message Receive Failed', err);
         return ecc.sendEccResult('ECC9000', err.message, nextReqKey);
     }
+};
+export const checkot: ECCHandlerFunction = async (reqkey, data, ecc) => {
+    // Get parameters from incomming data buffer
+    const rpgFields = pncchkotapi.convertCheckotDSToObject(data);
+    const reqFields = _.assign(
+        {
+            event: 'yardhound.import_events.checkout',
+            time: DateTime.now().toFormat("yyyy-MM-dd'T'TTZZ"),
+            version: '1.3'
+        },
+        _.mapKeys(
+            (key) =>
+                (({
+                    Trailer_SCAC: 'Trailer SCAC',
+                    Trailer_number: 'Trailer #'
+                } as any)[key] || key),
+            rpgFields
+        )
+    );
+
+    logger.debug('Sending SNS Message', reqFields);
+
+    // Call web service
+    let result;
+    let nextReqKey = reqkey;
+    try {
+        // Create publish parameters
+        const params = {
+            Message: JSON.stringify(reqFields),
+            MessageGroupId: rpgFields.message_group_id,
+            MessageDeduplicationId: uuidv4(),
+            TopicArn: pinc.sns.prdTargetArn
+        };
+
+        // Create promise and SNS service object
+        result = await sns.publish(params).promise();
+    } catch (err) {
+        logger.warn('SNS Message Failed', err);
+        return ecc.sendEccResult('ECC9000', err.message, nextReqKey);
+    }
+    logger.debug('SNS Message Sent', result);
+    return ecc.sendEccResult('ECC0000', 'Success', nextReqKey);
 };
