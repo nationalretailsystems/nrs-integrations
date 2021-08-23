@@ -49,10 +49,6 @@ const { dataTypes } = eradaniConnect;
       type: new dataTypes.Char(25)
     },
       {
-      name: "movement_type",
-      type: new dataTypes.Char(25)
-    },
-      {
       name: "load_status",
       type: new dataTypes.Char(25)
     },
@@ -101,10 +97,6 @@ export interface AssetDSInput {
     /**
      * @size 25 characters
      */
-    movement_type: string,
-    /**
-     * @size 25 characters
-     */
     load_status: string,
     /**
      * @size 25 characters
@@ -148,10 +140,6 @@ export interface AssetDS {
      * @size 25 characters
      */
     container_number: string,
-    /**
-     * @size 25 characters
-     */
-    movement_type: string,
     /**
      * @size 25 characters
      */
@@ -243,8 +231,6 @@ export function convertCheckotDSToObject(dataIn: string): CheckotDS {
   dataOut.data.asset.Trailer_number = dataIn.substring(pos, pos + 25).trimEnd();
   pos += 25;
   dataOut.data.asset.container_number = dataIn.substring(pos, pos + 25).trimEnd();
-  pos += 25;
-  dataOut.data.asset.movement_type = dataIn.substring(pos, pos + 25).trimEnd();
   pos += 25;
   dataOut.data.asset.load_status = dataIn.substring(pos, pos + 25).trimEnd();
   pos += 25;

@@ -26,7 +26,7 @@
      DCheckotDSToBuf   PI
      DDataStruct                           LikeDS(CheckotDS)
      D                                     Const
-     DBuffer                        285A
+     DBuffer                        260A
 
       * Initialize to beginning of buffer
        BufPtr = %addr(Buffer);
@@ -49,8 +49,6 @@
        %subst(CharBuf:1:25) = DataStruct.data.asset.trailer;
        BufPtr += 25;
        %subst(CharBuf:1:25) = DataStruct.data.asset.container_num;
-       BufPtr += 25;
-       %subst(CharBuf:1:25) = DataStruct.data.asset.movement_type;
        BufPtr += 25;
        %subst(CharBuf:1:25) = DataStruct.data.asset.load_status;
        BufPtr += 25;
