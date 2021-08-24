@@ -39,7 +39,8 @@ GENMODS = icndbapi \
 		  mpputlog \
 		  mpputwo \
 		  pncchkot \
-		  pncupdat
+		  pncupdat \
+		  pnclocat
 
 GENHDRS = icndbapi_h \
           lblapi_h \
@@ -58,7 +59,8 @@ GENHDRS = icndbapi_h \
 		  mpputlg_h \
 		  mpputwo_h \
 		  pncchkot_h \
-		  pncupdat_h
+		  pncupdat_h \
+		  pnclocat_h
 
 SRVPGMS = ecctmpgen
 
@@ -373,6 +375,12 @@ $(libdir)/qrpglesrc.file/pncupdat.mbr $(libdir)/qrpglesrc.file/pncupdat_h.mbr ..
 	cp pncupdat.ts ../src/interfaces/pncupdat.ts
 	system "CPYFRMSTMF FROMSTMF('pncupdat.rpgle') TOMBR('$(libdir)/qrpglesrc.file/pncupdat.mbr') MBROPT(*REPLACE)"
 	system "CPYFRMSTMF FROMSTMF('pncupdat_h.rpgleinc') TOMBR('$(libdir)/qrpglesrc.file/pncupdat_h.mbr') MBROPT(*REPLACE)"
+
+$(libdir)/qrpglesrc.file/pnclocat.mbr $(libdir)/qrpglesrc.file/pnclocat_h.mbr ../src/interfaces/pnclocat.ts: pnclocat.yaml
+	npx ec-generate -f $<
+	cp pnclocat.ts ../src/interfaces/pnclocat.ts
+	system "CPYFRMSTMF FROMSTMF('pnclocat.rpgle') TOMBR('$(libdir)/qrpglesrc.file/pnclocat.mbr') MBROPT(*REPLACE)"
+	system "CPYFRMSTMF FROMSTMF('pnclocat_h.rpgleinc') TOMBR('$(libdir)/qrpglesrc.file/pnclocat_h.mbr') MBROPT(*REPLACE)"
 
 .PHONY: library
 library:
