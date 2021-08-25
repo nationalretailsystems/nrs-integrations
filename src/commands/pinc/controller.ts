@@ -190,7 +190,8 @@ export const locat: ECCHandlerFunction = async (reqkey, data, ecc) => {
             (key) =>
                 (({
                     Trailer_SCAC: 'Trailer SCAC',
-                    Trailer_number: 'Trailer #'
+                    Trailer_number: 'Trailer #',
+                    container_number: 'Container #'
                 } as any)[key] || key),
             rpgFields
         )
