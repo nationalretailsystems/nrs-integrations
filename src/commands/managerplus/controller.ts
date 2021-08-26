@@ -51,7 +51,6 @@ const safeValues: any = {
     laborRate: 0,
     assigned: '',
     failureCode: ''
-
 };
 
 export const getAssetChanges: ECCHandlerFunction = async (reqkey, data, ecc) => {
@@ -280,7 +279,7 @@ export const getWorkOrderHours: ECCHandlerFunction = async (reqkey, data, ecc) =
     logger.debug(`Received getWorkOrderHours request`, { reqkey, data });
     // Get parameters from incomming data buffer
     const dataFields = converterwohr.convertReqWoHoursToObject(data);
-    
+
     // Call web service
     let result;
     let nextReqKey = reqkey;
@@ -293,7 +292,7 @@ export const getWorkOrderHours: ECCHandlerFunction = async (reqkey, data, ecc) =
             headers: {
                 accept: 'application/json',
                 Authorization: managerplus.apikey
-            }, 
+            }
         });
     } catch (err) {
         if (err.response) {

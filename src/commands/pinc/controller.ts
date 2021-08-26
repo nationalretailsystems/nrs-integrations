@@ -12,12 +12,14 @@ import * as pnclatlonapi from 'src/interfaces/pnclatlon';
 import * as pncchkotapi from 'src/interfaces/pncchkot';
 import * as pncupdatapi from 'src/interfaces/pncupdat';
 import * as pnclocatapi from 'src/interfaces/pnclocat';
+import transport from 'src/services/connection';
+import { insertPincPayload } from 'src/models/pinc';
 // Set AWS region
 AWS.config.update(pinc.sns);
 let sns = new AWS.SNS({ apiVersion: pinc.sns.apiVersion });
 let sqs = new AWS.SQS({ apiVersion: pinc.sqs.apiVersion });
 
-export const checkin: ECCHandlerFunction = async (reqkey, data, ecc) => {
+export const checkin: ECCHandlerFunction = async (_reqkey, data, _ecc) => {
     // Get parameters from incomming data buffer
     const rpgFields = pncchkinapi.convertCheckinDSToObject(data);
     const reqFields = _.assign(
@@ -39,11 +41,12 @@ export const checkin: ECCHandlerFunction = async (reqkey, data, ecc) => {
     logger.debug('Sending SNS Message', reqFields);
 
     // Call web service
-    let result;
-    let nextReqKey = reqkey;
+    let result = undefined;
+    let params = undefined;
+    let response = undefined;
     try {
         // Create publish parameters
-        const params = {
+        params = {
             Message: JSON.stringify(reqFields),
             MessageGroupId: rpgFields.message_group_id,
             MessageDeduplicationId: uuidv4(),
@@ -52,12 +55,23 @@ export const checkin: ECCHandlerFunction = async (reqkey, data, ecc) => {
 
         // Create promise and SNS service object
         result = await sns.publish(params).promise();
+
+        logger.debug('SNS Message Sent', result);
+        response = { resultCode: 'ECC0000', message: 'Success' };
     } catch (err) {
         logger.warn('SNS Message Failed', err);
-        return ecc.sendEccResult('ECC9000', err.message, nextReqKey);
+        response = { resultCode: 'ECC9000', message: err.message };
     }
-    logger.debug('SNS Message Sent', result);
-    return ecc.sendEccResult('ECC0000', 'Success', nextReqKey);
+
+    const record = {
+        request: JSON.stringify(params),
+        response: JSON.stringify(result),
+        resultCode: response.resultCode,
+        message: response.message
+    };
+    return transport
+        .execute(insertPincPayload, record)
+        .catch((err) => logger.error('Failed to write pinc checkin payload', { record, err }));
 };
 
 export const latlon: ECCHandlerFunction = async (reqkey, _data, ecc) => {

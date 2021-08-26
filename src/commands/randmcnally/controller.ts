@@ -36,8 +36,6 @@ const safeValues: any = {
     stateOutTime: '01-01-0001 00:00:00',
     tractorNumber: '',
     vin: ''
-
-
 };
 
 export const getStateMiles: ECCHandlerFunction = async (reqkey, data, ecc) => {
@@ -81,7 +79,7 @@ export const getStateMiles: ECCHandlerFunction = async (reqkey, data, ecc) => {
             for (let key in rec) {
                 rec[key] = rec[key] || safeValues[key];
             }
-        }        
+        }
         logger.debug('ECC0000', 'Success', nextReqKey);
         nextReqKey = await ecc.sendEccResult('ECC0000', 'Success', nextReqKey);
         nextReqKey = await ecc.sendObjectToCaller(responseData, converter.convertObjectToRtnRespons, nextReqKey);

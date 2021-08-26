@@ -1,6 +1,12 @@
 import { ECCInternalRouter } from '@eradani-inc/ecc-router/ecc-router';
-import { getAssetChanges, getAssetAll, putLogMileage, getWorkOrderChanges,
-     getWorkOrderHours, putNewWorkOrder } from './controller';
+import {
+    getAssetChanges,
+    getAssetAll,
+    putLogMileage,
+    getWorkOrderChanges,
+    getWorkOrderHours,
+    putNewWorkOrder
+} from './controller';
 import * as managerplus from 'src/interfaces/mpgeteqip';
 import * as managerplus2 from 'src/interfaces/mpgeteq2';
 import * as managerplus3 from 'src/interfaces/mpputlog';
