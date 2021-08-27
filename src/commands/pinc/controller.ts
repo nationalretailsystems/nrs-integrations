@@ -13,19 +13,20 @@ import * as pncchkotapi from 'src/interfaces/pncchkot';
 import * as pncupdatapi from 'src/interfaces/pncupdat';
 import * as pnclocatapi from 'src/interfaces/pnclocat';
 import transport from 'src/services/connection';
-import { insertPincPayload } from 'src/models/pinc';
+import { insertPincSnsLog } from 'src/models/pinc';
 // Set AWS region
 AWS.config.update(pinc.sns);
 let sns = new AWS.SNS({ apiVersion: pinc.sns.apiVersion });
 let sqs = new AWS.SQS({ apiVersion: pinc.sqs.apiVersion });
 
 export const checkin: ECCHandlerFunction = async (_reqkey, data, _ecc) => {
-    // Get parameters from incomming data buffer
+    // Get parameters from incomming data buffer\
+    const timestampHold = DateTime.now();
     const rpgFields = pncchkinapi.convertCheckinDSToObject(data);
     const reqFields = _.assign(
         {
             event: 'yardhound.import_events.checkin',
-            time: DateTime.now().toFormat("yyyy-MM-dd'T'TTZZ"),
+            time: timestampHold.toFormat("yyyy-MM-dd'T'TTZZ"),
             version: '1.3'
         },
         _.mapKeys(
@@ -64,14 +65,16 @@ export const checkin: ECCHandlerFunction = async (_reqkey, data, _ecc) => {
     }
 
     const record = {
-        request: JSON.stringify(params),
-        response: JSON.stringify(result),
+        targetArn: pinc.sns.prdTargetArn, 
+        messageGrpId: rpgFields.message_group_id,
+        message: JSON.stringify(reqFields),
+        result: response.message, // JSON.stringify(result) ?? "No Response",
         resultCode: response.resultCode,
-        message: response.message
+        timestamp: timestampHold.toFormat("yyyy-MM-dd'-'HH.mm.ss.SSS'000'")
     };
     return transport
-        .execute(insertPincPayload, record)
-        .catch((err) => logger.error('Failed to write pinc checkin payload', { record, err }));
+        .execute(insertPincSnsLog, record)
+        .catch((err) => logger.error('Failed to write Pinc SNS Checkin Log Record', { record, err }));
 };
 
 export const latlon: ECCHandlerFunction = async (reqkey, _data, ecc) => {
@@ -107,13 +110,14 @@ export const latlon: ECCHandlerFunction = async (reqkey, _data, ecc) => {
         return ecc.sendEccResult('ECC9000', err.message, nextReqKey);
     }
 };
-export const checkot: ECCHandlerFunction = async (reqkey, data, ecc) => {
+export const checkot: ECCHandlerFunction = async (_reqkey, data, _ecc) => {
     // Get parameters from incomming data buffer
+    const timestampHold = DateTime.now();
     const rpgFields = pncchkotapi.convertCheckotDSToObject(data);
     const reqFields = _.assign(
         {
             event: 'yardhound.import_events.checkout',
-            time: DateTime.now().toFormat("yyyy-MM-dd'T'TTZZ"),
+            time: timestampHold.toFormat("yyyy-MM-dd'T'TTZZ"),
             version: '1.3'
         },
         _.mapKeys(
@@ -129,11 +133,12 @@ export const checkot: ECCHandlerFunction = async (reqkey, data, ecc) => {
     logger.debug('Sending SNS Message', reqFields);
 
     // Call web service
-    let result;
-    let nextReqKey = reqkey;
+    let result = undefined;
+    let params = undefined;
+    let response = undefined;
     try {
         // Create publish parameters
-        const params = {
+        params = {
             Message: JSON.stringify(reqFields),
             MessageGroupId: rpgFields.message_group_id,
             MessageDeduplicationId: uuidv4(),
@@ -142,20 +147,36 @@ export const checkot: ECCHandlerFunction = async (reqkey, data, ecc) => {
 
         // Create promise and SNS service object
         result = await sns.publish(params).promise();
+
+        logger.debug('SNS Message Sent', result);
+        response = { resultCode: 'ECC0000', message: 'Success'} ;
     } catch (err) {
         logger.warn('SNS Message Failed', err);
-        return ecc.sendEccResult('ECC9000', err.message, nextReqKey);
+        response = { resultCode: 'ECC9000', message: err.message };
     }
-    logger.debug('SNS Message Sent', result);
-    return ecc.sendEccResult('ECC0000', 'Success', nextReqKey);
+
+    const record = {
+        targetArn: pinc.sns.prdTargetArn, 
+        messageGrpId: rpgFields.message_group_id,
+        message: JSON.stringify(reqFields),
+        result: response.message, // JSON.stringify(result) ?? "No Response",
+        resultCode: response.resultCode,
+        timestamp: timestampHold.toFormat("yyyy-MM-dd'-'HH.mm.ss.SSS'000'")
+    };
+    return transport
+        .execute(insertPincSnsLog, record)
+        .catch((err) => logger.error('Failed to write Pinc Log Sns Checkout Record', {record, err}));
 };
-export const updat: ECCHandlerFunction = async (reqkey, data, ecc) => {
+
+
+export const updat: ECCHandlerFunction = async (_reqkey, data, _ecc) => {
     // Get parameters from incomming data buffer
+    const timestampHold = DateTime.now();
     const rpgFields = pncupdatapi.convertUpdatDSToObject(data);
     const reqFields = _.assign(
         {
             event: 'yardhound.import_events.update',
-            time: DateTime.now().toFormat("yyyy-MM-dd'T'TTZZ"),
+            time: timestampHold.toFormat("yyyy-MM-dd'T'TTZZ"),
             version: '1.3'
         },
         _.mapKeys(
@@ -171,11 +192,12 @@ export const updat: ECCHandlerFunction = async (reqkey, data, ecc) => {
     logger.debug('Sending SNS Message', reqFields);
 
     // Call web service
-    let result;
-    let nextReqKey = reqkey;
+    let result = undefined;
+    let params = undefined;
+    let response = undefined;
     try {
         // Create publish parameters
-        const params = {
+        params = {
             Message: JSON.stringify(reqFields),
             MessageGroupId: rpgFields.message_group_id,
             MessageDeduplicationId: uuidv4(),
@@ -184,20 +206,35 @@ export const updat: ECCHandlerFunction = async (reqkey, data, ecc) => {
 
         // Create promise and SNS service object
         result = await sns.publish(params).promise();
+
+        logger.debug('SNS Message Sent', result);
+        response = { resultCode: 'ECC0000', message: 'Success'} ;
     } catch (err) {
         logger.warn('SNS Message Failed', err);
-        return ecc.sendEccResult('ECC9000', err.message, nextReqKey);
+        response = { resultCode: 'ECC9000', message: err.message };
     }
-    logger.debug('SNS Message Sent', result);
-    return ecc.sendEccResult('ECC0000', 'Success', nextReqKey);
+
+    const record = {
+        targetArn: pinc.sns.prdTargetArn, 
+        messageGrpId: rpgFields.message_group_id,
+        message: JSON.stringify(reqFields),
+        result: response.message, // JSON.stringify(result) ?? "No Response",
+        resultCode: response.resultCode,
+        timestamp: timestampHold.toFormat("yyyy-MM-dd'-'HH.mm.ss.SSS'000'")
+    };
+    return transport
+        .execute(insertPincSnsLog, record)
+        .catch((err) => logger.error('Failed to write Pinc Log Sns Update Record', {record, err}));    
+
 };
-export const locat: ECCHandlerFunction = async (reqkey, data, ecc) => {
+export const locat: ECCHandlerFunction = async (_reqkey, data, _ecc) => {
     // Get parameters from incomming data buffer
+    const timestampHold = DateTime.now();
     const rpgFields = pnclocatapi.convertLocatDSToObject(data);
     const reqFields = _.assign(
         {
             event: 'yardhound.import_events.retrieve_asset_location',
-            time: DateTime.now().toFormat("yyyy-MM-dd'T'TTZZ"),
+            time: timestampHold.toFormat("yyyy-MM-dd'T'TTZZ"),
             version: '1.3'
         },
         _.mapKeys(
@@ -214,11 +251,12 @@ export const locat: ECCHandlerFunction = async (reqkey, data, ecc) => {
     logger.debug('Sending SNS Message', reqFields);
 
     // Call web service
-    let result;
-    let nextReqKey = reqkey;
+    let result = undefined;
+    let params = undefined;
+    let response = undefined;
     try {
         // Create publish parameters
-        const params = {
+        params = {
             Message: JSON.stringify(reqFields),
             MessageGroupId: rpgFields.message_group_id,
             MessageDeduplicationId: uuidv4(),
@@ -227,10 +265,23 @@ export const locat: ECCHandlerFunction = async (reqkey, data, ecc) => {
 
         // Create promise and SNS service object
         result = await sns.publish(params).promise();
+
+        logger.debug('SNS Message Sent', result);
+        response = { resultCode : 'ECC0000', message: 'Success' };
     } catch (err) {
         logger.warn('SNS Message Failed', err);
-        return ecc.sendEccResult('ECC9000', err.message, nextReqKey);
+        response = { resultCode: 'ECC9000', message: err.message };
     }
-    logger.debug('SNS Message Sent', result);
-    return ecc.sendEccResult('ECC0000', 'Success', nextReqKey);
+
+    const record = {
+        targetArn: pinc.sns.prdTargetArn, 
+        messageGrpId: rpgFields.message_group_id,
+        message: JSON.stringify(reqFields),
+        result: response.message, // JSON.stringify(result) ?? "No Response",
+        resultCode: response.resultCode,
+        timestamp: timestampHold.toFormat("yyyy-MM-dd'-'HH.mm.ss.SSS'000'")
+    };
+    return transport
+        .execute(insertPincSnsLog, record)
+        .catch((err) => logger.error('Failed to write Pinc Log Sns Retrieve_Asset_Location Record', {record, err}));    
 };
