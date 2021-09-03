@@ -40,7 +40,8 @@ GENMODS = icndbapi \
 		  mpputwo \
 		  pncchkot \
 		  pncupdat \
-		  pnclocat
+		  pnclocat \
+		  mpvendor
 
 GENHDRS = icndbapi_h \
           lblapi_h \
@@ -60,7 +61,8 @@ GENHDRS = icndbapi_h \
 		  mpputwo_h \
 		  pncchkot_h \
 		  pncupdat_h \
-		  pnclocat_h
+		  pnclocat_h \
+		  mpvendor_h
 
 SRVPGMS = ecctmpgen
 
@@ -381,6 +383,12 @@ $(libdir)/qrpglesrc.file/pnclocat.mbr $(libdir)/qrpglesrc.file/pnclocat_h.mbr ..
 	cp pnclocat.ts ../src/interfaces/pnclocat.ts
 	system "CPYFRMSTMF FROMSTMF('pnclocat.rpgle') TOMBR('$(libdir)/qrpglesrc.file/pnclocat.mbr') MBROPT(*REPLACE)"
 	system "CPYFRMSTMF FROMSTMF('pnclocat_h.rpgleinc') TOMBR('$(libdir)/qrpglesrc.file/pnclocat_h.mbr') MBROPT(*REPLACE)"
+
+$(libdir)/qrpglesrc.file/mpvendor.mbr $(libdir)/qrpglesrc.file/mpvendor_h.mbr ../src/interfaces/mpvendor.ts: mpvendor.yaml
+	npx ec-generate -f $<
+	cp mpvendor.ts ../src/interfaces/mpvendor.ts
+	system "CPYFRMSTMF FROMSTMF('mpvendor.rpgle') TOMBR('$(libdir)/qrpglesrc.file/mpvendor.mbr') MBROPT(*REPLACE)"
+	system "CPYFRMSTMF FROMSTMF('mpvendor_h.rpgleinc') TOMBR('$(libdir)/qrpglesrc.file/mpvendor_h.mbr') MBROPT(*REPLACE)"
 
 .PHONY: library
 library:

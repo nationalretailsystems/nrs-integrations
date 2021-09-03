@@ -1,0 +1,22 @@
+---
+name: mpvendor
+rpgIncName: mpvendor_h
+codeblocks:
+  typescript:
+    - import eradaniConnect from "@eradani-inc/eradani-connect";
+    - const { dataTypes } = eradaniConnect;
+formats:
+  ReqVendr:
+    recordType: request
+    subfields:
+      contactKey:
+        rpgName: contactkey
+        type: Integer
+        length: 10
+  ResVendr:
+    recordType: response
+    subfields:
+      vendorName:
+        rpgName: vendorNae
+        type: Character
+        length: 100
