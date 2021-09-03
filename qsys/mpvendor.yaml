@@ -17,6 +17,6 @@ formats:
     recordType: response
     subfields:
       vendorName:
-        rpgName: vendorNae
+        rpgName: vendorName
         type: Character
         length: 100
