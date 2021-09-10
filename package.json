@@ -74,6 +74,7 @@
         "passport-http-bearer": "^1.0.1",
         "safe-json-stringify": "^1.2.0",
         "scmp": "^2.1.0",
+        "sequelize": "^6.6.2",
         "swagger-stats": "^0.99.2",
         "swagger-ui-express": "^4.4.0",
         "winston": "^3.7.2",
