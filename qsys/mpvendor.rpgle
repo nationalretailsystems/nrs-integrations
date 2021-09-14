@@ -52,7 +52,7 @@
        BufPtr = %addr(Buffer);
 
       * Read fields from buffer into DS
-       DataStruct.vendorName = %subst(CharBuf:1:100);
+       DataStruct.vendorname = %subst(CharBuf:1:100);
        BufPtr += 100;
 
        return ;

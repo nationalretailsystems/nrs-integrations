@@ -51,7 +51,8 @@ const safeValues: any = {
     scheduleId: '',
     laborRate: 0,
     assigned: '',
-    failureCode: ''
+    failureCode: '',
+    purpose: ''
 };
 
 export const getAssetChanges: ECCHandlerFunction = async (reqkey, data, ecc) => {
@@ -390,8 +391,8 @@ export const getVendor: ECCHandlerFunction = async (reqkey, data, ecc) => {
     try {
         result = await axiosInstance.get('/Vendors', {
             params: {
-                $filter: reqFields.contactKey,
-                $select: "vendorName"
+                $filter: 'contactKey eq ' + reqFields.contactKey,
+                $select: 'vendorName'
             },
             headers: {
                 accept: 'application/json',

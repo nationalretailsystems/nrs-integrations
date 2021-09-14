@@ -1,0 +1,147 @@
+---
+name: rmgetsdvir
+rpgIncName: rmgetdvi_h
+codeblocks:
+  typescript:
+    - import eradaniConnect from "@eradani-inc/eradani-connect";
+    - const { dataTypes } = eradaniConnect;
+datastructures:
+  responseDS:
+    qualified: true
+    subfields:
+      code:
+        rpgName: code
+        type: Integer
+        length: 5
+         precision: 0
+      type: 
+        rpgName: type
+        type: Character
+        length: 10
+      message:
+        rpgName: message
+        type: Character
+        length: 200
+formats:
+  ReqDVIR:
+    recordType: request
+    subfields:
+      accessToken:
+        type: Character
+        length: 100
+      companyCode:
+        type: Character
+        length: 10
+      lastModifiedDate: 
+        type: Date
+      startIndex:
+        type: Integer
+        length: 10
+        precision: 0
+      size:
+        type: Integer
+        length: 10
+        precision: 0
+  RtnDVIR:
+    recordType: response
+    subfields:
+      index:
+        rpgName: index
+        type: Integer
+        length: 10
+        precision: 0
+      driverId:
+        rpgName: driverid
+        type: Character
+        length: 60
+      createdTimeStamp:
+        rpgName: crttmstmp
+        type: Integer
+        length: 20
+      modifiedTimeStamp:
+        rpgName: modtmstmp
+        type: Integer
+        length: 20
+      timeZone:
+        rpgName: timezone
+        type: Character
+        length: 5
+      tripName:
+        rpgName: tripname
+        type: Character
+        length: 200
+      driverComment:
+        rpgName: drvrcmt
+        type: Character
+        length: 200
+      tractorNumber:
+        rpgName: tractornbr
+        type: Character
+        length: 16
+      trailerNumber:
+        rpgName: trailernbr
+        type: Character
+        length: 32
+      totalTractorDefects:
+        rpgName: ttltrctdef
+        type: Integer
+        length: 10
+      tractorDefects:
+        rpgName: trctdef
+        type: Character
+        length: 50
+        dim: 25
+      totalTrailerDefects:
+        rpgName: ttltrltdef
+        type: Integer
+        length: 10
+      trailerDefects:
+        rpgName: trlrDef
+        type: Character
+        length: 50
+        dim: 25
+      defectImages:
+        rpgName: defimages
+        type: Character
+        length: 255
+        dim: 10
+      dvirIsDefective:
+        rpgName: dvirisdef
+        type: Boolean
+      dvirIsCertified:
+        rpgName: dviriscert
+        type: Boolean
+      driverSignature:
+        rpgName: driversig
+        type: Character
+        length: 200
+      mechanicSignature:
+        rpgname: mechanicsig
+        type: Character
+        length: 200
+      latitude:
+        rpgName: latitude
+        type: Float
+        length: 8
+      longitude:
+        rpgName: longitude
+        type: Float
+        length: 8
+      location:
+        rpgName: location
+        type: Character
+        length: 200
+      odometer:
+        rpgName: odometer
+        type: float
+        length: 4
+      status:
+        rpgName: status
+        type: Character
+        length: 100
+      lastModifiedData:
+        rpgName: lstmoddate
+        type: Date
+      dvirIsDST:
+        rpgName: dvirisdst
+        type: Boolean

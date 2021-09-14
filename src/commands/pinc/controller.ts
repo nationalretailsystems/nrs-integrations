@@ -65,7 +65,7 @@ export const checkin: ECCHandlerFunction = async (_reqkey, data, _ecc) => {
     }
 
     const record = {
-        targetArn: pinc.sns.prdTargetArn, 
+        targetArn: pinc.sns.prdTargetArn,
         messageGrpId: rpgFields.message_group_id,
         message: JSON.stringify(reqFields),
         result: response.message, // JSON.stringify(result) ?? "No Response",
@@ -149,14 +149,14 @@ export const checkot: ECCHandlerFunction = async (_reqkey, data, _ecc) => {
         result = await sns.publish(params).promise();
 
         logger.debug('SNS Message Sent', result);
-        response = { resultCode: 'ECC0000', message: 'Success'} ;
+        response = { resultCode: 'ECC0000', message: 'Success' };
     } catch (err) {
         logger.warn('SNS Message Failed', err);
         response = { resultCode: 'ECC9000', message: err.message };
     }
 
     const record = {
-        targetArn: pinc.sns.prdTargetArn, 
+        targetArn: pinc.sns.prdTargetArn,
         messageGrpId: rpgFields.message_group_id,
         message: JSON.stringify(reqFields),
         result: response.message, // JSON.stringify(result) ?? "No Response",
@@ -165,9 +165,8 @@ export const checkot: ECCHandlerFunction = async (_reqkey, data, _ecc) => {
     };
     return transport
         .execute(insertPincSnsLog, record)
-        .catch((err) => logger.error('Failed to write Pinc Log Sns Checkout Record', {record, err}));
+        .catch((err) => logger.error('Failed to write Pinc Log Sns Checkout Record', { record, err }));
 };
-
 
 export const updat: ECCHandlerFunction = async (_reqkey, data, _ecc) => {
     // Get parameters from incomming data buffer
@@ -208,14 +207,14 @@ export const updat: ECCHandlerFunction = async (_reqkey, data, _ecc) => {
         result = await sns.publish(params).promise();
 
         logger.debug('SNS Message Sent', result);
-        response = { resultCode: 'ECC0000', message: 'Success'} ;
+        response = { resultCode: 'ECC0000', message: 'Success' };
     } catch (err) {
         logger.warn('SNS Message Failed', err);
         response = { resultCode: 'ECC9000', message: err.message };
     }
 
     const record = {
-        targetArn: pinc.sns.prdTargetArn, 
+        targetArn: pinc.sns.prdTargetArn,
         messageGrpId: rpgFields.message_group_id,
         message: JSON.stringify(reqFields),
         result: response.message, // JSON.stringify(result) ?? "No Response",
@@ -224,8 +223,7 @@ export const updat: ECCHandlerFunction = async (_reqkey, data, _ecc) => {
     };
     return transport
         .execute(insertPincSnsLog, record)
-        .catch((err) => logger.error('Failed to write Pinc Log Sns Update Record', {record, err}));    
-
+        .catch((err) => logger.error('Failed to write Pinc Log Sns Update Record', { record, err }));
 };
 export const locat: ECCHandlerFunction = async (_reqkey, data, _ecc) => {
     // Get parameters from incomming data buffer
@@ -267,14 +265,14 @@ export const locat: ECCHandlerFunction = async (_reqkey, data, _ecc) => {
         result = await sns.publish(params).promise();
 
         logger.debug('SNS Message Sent', result);
-        response = { resultCode : 'ECC0000', message: 'Success' };
+        response = { resultCode: 'ECC0000', message: 'Success' };
     } catch (err) {
         logger.warn('SNS Message Failed', err);
         response = { resultCode: 'ECC9000', message: err.message };
     }
 
     const record = {
-        targetArn: pinc.sns.prdTargetArn, 
+        targetArn: pinc.sns.prdTargetArn,
         messageGrpId: rpgFields.message_group_id,
         message: JSON.stringify(reqFields),
         result: response.message, // JSON.stringify(result) ?? "No Response",
@@ -283,5 +281,5 @@ export const locat: ECCHandlerFunction = async (_reqkey, data, _ecc) => {
     };
     return transport
         .execute(insertPincSnsLog, record)
-        .catch((err) => logger.error('Failed to write Pinc Log Sns Retrieve_Asset_Location Record', {record, err}));    
+        .catch((err) => logger.error('Failed to write Pinc Log Sns Retrieve_Asset_Location Record', { record, err }));
 };

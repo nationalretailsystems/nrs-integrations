@@ -41,7 +41,9 @@ GENMODS = icndbapi \
 		  pncchkot \
 		  pncupdat \
 		  pnclocat \
-		  mpvendor
+		  mpvendor \
+		  rmgetdvir \
+		  rmcrtdvir
 
 GENHDRS = icndbapi_h \
           lblapi_h \
@@ -389,6 +391,18 @@ $(libdir)/qrpglesrc.file/mpvendor.mbr $(libdir)/qrpglesrc.file/mpvendor_h.mbr ..
 	cp mpvendor.ts ../src/interfaces/mpvendor.ts
 	system "CPYFRMSTMF FROMSTMF('mpvendor.rpgle') TOMBR('$(libdir)/qrpglesrc.file/mpvendor.mbr') MBROPT(*REPLACE)"
 	system "CPYFRMSTMF FROMSTMF('mpvendor_h.rpgleinc') TOMBR('$(libdir)/qrpglesrc.file/mpvendor_h.mbr') MBROPT(*REPLACE)"
+
+$(libdir)/qrpglesrc.file/rmgetdvir.mbr $(libdir)/qrpglesrc.file/rmgetdvi_h.mbr ../src/interfaces/rmgetdvir.ts: rmgetdvir.yaml
+	npx ec-generate -f $<
+	cp rmgetdvir.ts ../src/interfaces/rmgetdvir.ts
+	system "CPYFRMSTMF FROMSTMF('rmgetdvir.rpgle') TOMBR('$(libdir)/qrpglesrc.file/rmgetdvir.mbr') MBROPT(*REPLACE)"
+	system "CPYFRMSTMF FROMSTMF('rmgetdvi_h.rpgleinc') TOMBR('$(libdir)/qrpglesrc.file/rmgetdvi_h.mbr') MBROPT(*REPLACE)"
+
+$(libdir)/qrpglesrc.file/rmcrtdvir.mbr $(libdir)/qrpglesrc.file/rmcrtdvi_h.mbr ../src/interfaces/rmcrtdvir.ts: rmcrtdvir.yaml
+	npx ec-generate -f $<
+	cp rmcrtdvir.ts ../src/interfaces/rmcrtdvir.ts
+	system "CPYFRMSTMF FROMSTMF('rmcrtdvir.rpgle') TOMBR('$(libdir)/qrpglesrc.file/rmcrtdvir.mbr') MBROPT(*REPLACE)"
+	system "CPYFRMSTMF FROMSTMF('rmcrtdvi_h.rpgleinc') TOMBR('$(libdir)/qrpglesrc.file/rmcrtdvi_h.mbr') MBROPT(*REPLACE)"
 
 .PHONY: library
 library:
