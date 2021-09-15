@@ -9,7 +9,10 @@ import * as converterwoch from 'src/interfaces/mpgetwoch';
 import * as converterwohr from 'src/interfaces/mpgetwohr';
 import * as converterwkor from 'src/interfaces/mpputwo';
 import * as convertervndr from 'src/interfaces/mpvendor';
+import * as convertersvcitm from 'src/interfaces/mpsvcitm';
 import { promises as fs } from 'fs';
+
+import { sanitizeValues } from 'src/services/safe-values';
 
 const logger = createLogger('commands/managerplus');
 const { managerplus } = config;
@@ -52,7 +55,15 @@ const safeValues: any = {
     laborRate: 0,
     assigned: '',
     failureCode: '',
-    purpose: ''
+    purpose: '',
+    customFields: {
+        '*100': {
+            key: 0,
+            customFieldKey: 0,
+            fieldName: '',
+            value: ''
+        }
+    }
 };
 
 export const getAssetChanges: ECCHandlerFunction = async (reqkey, data, ecc) => {
@@ -97,13 +108,7 @@ export const getAssetChanges: ECCHandlerFunction = async (reqkey, data, ecc) => 
     // Send the result info
 
     try {
-        let responseData = result.data;
-
-        for (let rec of responseData) {
-            for (let key in rec) {
-                rec[key] = rec[key] || safeValues[key];
-            }
-        }
+        let responseData = sanitizeValues(result.data, safeValues);
 
         logger.debug('ECC0000', 'Success', nextReqKey);
         nextReqKey = await ecc.sendEccResult('ECC0000', 'Success', nextReqKey);
@@ -155,13 +160,8 @@ export const getAssetAll: ECCHandlerFunction = async (reqkey, data, ecc) => {
 
     // Send the result info
     try {
-        let responseData = result.data;
+        let responseData = sanitizeValues(result.data, safeValues);
 
-        for (let rec of responseData) {
-            for (let key in rec) {
-                rec[key] = rec[key] || safeValues[key];
-            }
-        }
         logger.debug('ECC0000', 'Success', nextReqKey);
         nextReqKey = await ecc.sendEccResult('ECC0000', 'Success', nextReqKey);
         nextReqKey = await ecc.sendObjectsToCaller(responseData, converter2.convertObjectToAssetAllDS, nextReqKey);
@@ -259,13 +259,8 @@ export const getWorkOrderChanges: ECCHandlerFunction = async (reqkey, data, ecc)
     // Send the result info
 
     try {
-        let responseData = result.data;
+        let responseData = sanitizeValues(result.data, safeValues);
 
-        for (let rec of responseData) {
-            for (let key in rec) {
-                rec[key] = rec[key] || safeValues[key];
-            }
-        }
         logger.debug('ECC0000', 'Success', nextReqKey);
         nextReqKey = await ecc.sendEccResult('ECC0000', 'Success', nextReqKey);
         nextReqKey = await ecc.sendObjectsToCaller(responseData, converterwoch.convertObjectToResWoChg, nextReqKey);
@@ -313,13 +308,8 @@ export const getWorkOrderHours: ECCHandlerFunction = async (reqkey, data, ecc) =
     // Send the result info
 
     try {
-        let responseData = result.data;
+        let responseData = sanitizeValues(result.data, safeValues);
 
-        for (let rec of responseData) {
-            for (let key in rec) {
-                rec[key] = rec[key] || safeValues[key];
-            }
-        }
         logger.debug('ECC0000', 'Success', nextReqKey);
         nextReqKey = await ecc.sendEccResult('ECC0000', 'Success', nextReqKey);
         nextReqKey = await ecc.sendObjectsToCaller(responseData, converterwohr.convertObjectToResWoHrs, nextReqKey);
@@ -419,6 +409,52 @@ export const getVendor: ECCHandlerFunction = async (reqkey, data, ecc) => {
         logger.debug('ECC0000', 'Success', nextReqKey);
         nextReqKey = await ecc.sendEccResult('ECC0000', 'Success', nextReqKey);
         nextReqKey = await ecc.sendObjectToCaller(responseData, convertervndr.convertObjectToResVendr, nextReqKey);
+        logger.debug('Sent data to RPG');
+        return nextReqKey;
+    } catch (err) {
+        logger.error('Call failed', err);
+        return ecc.sendEccResult('ECC9300', err.message, nextReqKey);
+    }
+};
+
+export const getSvcItem: ECCHandlerFunction = async (reqkey, data, ecc) => {
+    logger.debug(`Received getSvcItem request`, { reqkey, data });
+    // Get parameters from incomming data buffer
+    const reqFields = convertersvcitm.convertReqSvcCdToObject(data);
+    // Call web service
+    let result;
+    let nextReqKey = reqkey;
+
+    try {
+        result = await axiosInstance.get('/ServiceItems', {
+            params: {
+                $filter: 'serviceCode eq ' + reqFields.serviceCode,
+            },
+            headers: {
+                accept: 'application/json',
+                Authorization: managerplus.apikey
+            }
+        });
+    } catch (err) {
+        if (err.response) {
+            // If the request was made and the server responded with a status code
+            // That falls out of the range of 2xx
+            // Note: These error formats are dependent on the web service
+            return ecc.sendEccResult('ECC8100', err.response.status + '-' + err.response.statusText, nextReqKey);
+        }
+
+        // Else the request was made but no response was received
+        // Note: This error format has nothing to do with the web service. This is
+        // Mainly TCP/IP errors.
+        return ecc.sendEccResult('ECC9100', err.message, nextReqKey);
+    }
+
+    // Send the result info
+    try {
+        let responseData = result.data;
+        logger.debug('ECC0000', 'Success', nextReqKey);
+        nextReqKey = await ecc.sendEccResult('ECC0000', 'Success', nextReqKey);
+        nextReqKey = await ecc.sendObjectToCaller(responseData, convertersvcitm.convertObjectToResSvcCd, nextReqKey);
         logger.debug('Sent data to RPG');
         return nextReqKey;
     } catch (err) {

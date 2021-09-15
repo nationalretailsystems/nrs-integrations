@@ -13,7 +13,6 @@ datastructures:
         rpgName: code
         type: Integer
         length: 5
-         precision: 0
       type: 
         rpgName: type
         type: Character
@@ -49,7 +48,6 @@ formats:
         rpgName: index
         type: Integer
         length: 10
-        precision: 0
       driverId:
         rpgName: driverid
         type: Character
@@ -116,7 +114,7 @@ formats:
         type: Character
         length: 200
       mechanicSignature:
-        rpgname: mechanicsig
+        rpgName: mechanicsig
         type: Character
         length: 200
       latitude:
@@ -133,7 +131,7 @@ formats:
         length: 200
       odometer:
         rpgName: odometer
-        type: float
+        type: Float
         length: 4
       status:
         rpgName: status

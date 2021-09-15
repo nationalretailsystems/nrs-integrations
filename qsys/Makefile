@@ -43,7 +43,8 @@ GENMODS = icndbapi \
 		  pnclocat \
 		  mpvendor \
 		  rmgetdvir \
-		  rmcrtdvir
+		  rmcrtdvir \
+		  mpsvcitm
 
 GENHDRS = icndbapi_h \
           lblapi_h \
@@ -403,6 +404,12 @@ $(libdir)/qrpglesrc.file/rmcrtdvir.mbr $(libdir)/qrpglesrc.file/rmcrtdvi_h.mbr .
 	cp rmcrtdvir.ts ../src/interfaces/rmcrtdvir.ts
 	system "CPYFRMSTMF FROMSTMF('rmcrtdvir.rpgle') TOMBR('$(libdir)/qrpglesrc.file/rmcrtdvir.mbr') MBROPT(*REPLACE)"
 	system "CPYFRMSTMF FROMSTMF('rmcrtdvi_h.rpgleinc') TOMBR('$(libdir)/qrpglesrc.file/rmcrtdvi_h.mbr') MBROPT(*REPLACE)"
+
+$(libdir)/qrpglesrc.file/mpsvcitm.mbr $(libdir)/qrpglesrc.file/mpsvcit_h.mbr ../src/interfaces/mpsvcitm.ts: mpsvcitm.yaml
+	npx ec-generate -f $<
+	cp mpsvcitm.ts ../src/interfaces/mpsvcitm.ts
+	system "CPYFRMSTMF FROMSTMF('mpsvcitm.rpgle') TOMBR('$(libdir)/qrpglesrc.file/mpsvcitm.mbr') MBROPT(*REPLACE)"
+	system "CPYFRMSTMF FROMSTMF('mpsvcit_h.rpgleinc') TOMBR('$(libdir)/qrpglesrc.file/mpsvcit_h.mbr') MBROPT(*REPLACE)"
 
 .PHONY: library
 library:

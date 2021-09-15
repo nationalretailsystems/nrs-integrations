@@ -37,6 +37,7 @@
     "author": "Eradani",
     "homepage": "https://github.com/eradani-inc/eradani-inout-template#readme",
     "dependencies": {
+        "@duosecurity/duo_api": "^1.2.2",
         "@eradani-inc/ec-client": "^3.6.3",
         "@eradani-inc/ecc-router": "^0.6.5",
         "@eradani-inc/eradani-connect": "^2.7.0-alpha.21",

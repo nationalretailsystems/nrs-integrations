@@ -1,0 +1,53 @@
+---
+name: mpsvcitm
+rpgIncName: mpsvcit_h
+codeblocks:
+  typescript:
+    - import eradaniConnect from "@eradani-inc/eradani-connect";
+    - const { dataTypes } = eradaniConnect;
+formats:
+  ReqSvcCd:
+    recordType: request
+    subfields:
+      serviceCode:
+        rpgName: svccode
+        type: Character
+        length: 25
+  ResSvcCd:
+    recordType: response
+    subfields:
+      serviceKey:
+        rpgName: svckey
+        type: Integer
+        length: 1
+      serviceCode:
+        rpgName: svccode
+        type: Character
+        length: 25
+      serviceDescription:
+        rpgName: svcdesc
+        type: Character
+        length: 1000
+      serviceClass:
+        rpgName: svcclass
+        type: Character
+        length: 100
+      estimatedHours:
+        rpgName: esthours
+        type: Float
+        length: 8
+      estimatedLaborRate:
+        rpgName: estlabrat
+        type: Float
+        length: 8
+      active:
+        rpgName: active
+        type: Boolean
+      laborSource: 
+        rpgName: labrsrc
+        type: Character
+        length: 25
+      laborPrice:
+        rpgName: labrprc
+        type: Float
+        length: 8
