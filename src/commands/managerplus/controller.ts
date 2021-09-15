@@ -428,7 +428,7 @@ export const getSvcItem: ECCHandlerFunction = async (reqkey, data, ecc) => {
     try {
         result = await axiosInstance.get('/ServiceItems', {
             params: {
-                $filter: 'serviceCode eq ' + reqFields.serviceCode,
+                $filter: 'serviceCode eq ' + reqFields.serviceCode
             },
             headers: {
                 accept: 'application/json',

@@ -55,7 +55,7 @@
      PBufToResDVIR     B                   Export
 
      DBufToResDVIR     PI
-     DBuffer                         11A
+     DBuffer                        227A
      DDataStruct                           LikeDS(ResDVIR)
 
       * Initialize to begining of buffer
@@ -64,6 +64,12 @@
       * Read fields from buffer into DS
        DataStruct.dvirid = %int(%subst(CharBuf:1:11));
        BufPtr += 11;
+       DataStruct.response.code = %int(%subst(CharBuf:1:6));
+       BufPtr += 6;
+       DataStruct.response.type = %subst(CharBuf:1:10);
+       BufPtr += 10;
+       DataStruct.response.message = %subst(CharBuf:1:200);
+       BufPtr += 200;
 
        return ;
 

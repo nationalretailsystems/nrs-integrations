@@ -31,10 +31,12 @@ export const checkin: ECCHandlerFunction = async (_reqkey, data, _ecc) => {
         },
         _.mapKeys(
             (key) =>
-                (({
-                    Trailer_SCAC: 'Trailer SCAC',
-                    Trailer_number: 'Trailer #'
-                } as any)[key] || key),
+                ((
+                    {
+                        Trailer_SCAC: 'Trailer SCAC',
+                        Trailer_number: 'Trailer #'
+                    } as any
+                )[key] || key),
             rpgFields
         )
     );
@@ -122,10 +124,12 @@ export const checkot: ECCHandlerFunction = async (_reqkey, data, _ecc) => {
         },
         _.mapKeys(
             (key) =>
-                (({
-                    Trailer_SCAC: 'Trailer SCAC',
-                    Trailer_number: 'Trailer #'
-                } as any)[key] || key),
+                ((
+                    {
+                        Trailer_SCAC: 'Trailer SCAC',
+                        Trailer_number: 'Trailer #'
+                    } as any
+                )[key] || key),
             rpgFields
         )
     );
@@ -180,10 +184,12 @@ export const updat: ECCHandlerFunction = async (_reqkey, data, _ecc) => {
         },
         _.mapKeys(
             (key) =>
-                (({
-                    Trailer_SCAC: 'Trailer SCAC',
-                    Trailer_number: 'Trailer #'
-                } as any)[key] || key),
+                ((
+                    {
+                        Trailer_SCAC: 'Trailer SCAC',
+                        Trailer_number: 'Trailer #'
+                    } as any
+                )[key] || key),
             rpgFields
         )
     );
@@ -237,11 +243,13 @@ export const locat: ECCHandlerFunction = async (_reqkey, data, _ecc) => {
         },
         _.mapKeys(
             (key) =>
-                (({
-                    Trailer_SCAC: 'Trailer SCAC',
-                    Trailer_number: 'Trailer #',
-                    container_number: 'Container #'
-                } as any)[key] || key),
+                ((
+                    {
+                        Trailer_SCAC: 'Trailer SCAC',
+                        Trailer_number: 'Trailer #',
+                        container_number: 'Container #'
+                    } as any
+                )[key] || key),
             rpgFields
         )
     );

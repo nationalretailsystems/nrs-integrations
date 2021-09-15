@@ -53,4 +53,4 @@ formats:
         length: 10
       response:
         type: DataStruct
-        dsName: responseDs  
+        dsName: responseDS  

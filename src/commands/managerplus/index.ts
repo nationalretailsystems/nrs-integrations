@@ -26,5 +26,5 @@ export default function registerManagerplus(router: ECCInternalRouter) {
     router.use('getWorkOrderHours', managerpluswohr, getWorkOrderHours);
     router.use('putNewWorkOrder', managerpluswkor, putNewWorkOrder);
     router.use('getVendor', managerplusvndr, getVendor);
-    router.use('getSvcItem', managerplussvcitm, getSvcItem);    
+    router.use('getSvcItem', managerplussvcitm, getSvcItem);
 }

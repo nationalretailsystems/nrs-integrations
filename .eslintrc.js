@@ -38,9 +38,9 @@ module.exports = {
         '@typescript-eslint/unified-signatures': 'warn',
         'arrow-parens': ['off', 'as-needed'],
         camelcase: 'warn',
-        'capitalized-comments': 'warn',
-        curly: ['warn', 'all'],
-        'eol-last': 'warn',
+        'capitalized-comments': 'off',
+        curly: ['error', 'multi-line'],
+        'eol-last': 'off',
         eqeqeq: ['warn', 'smart'],
         'id-blacklist': [
             'error',
