@@ -19,12 +19,12 @@
      Dl                S             10U 0
 
       ************************************
-      * Convert ReqDVIR to buffer
+      * Convert CertDVIR to buffer
       ************************************
-     PReqDVIRToBuf     B                   Export
+     PCertDVIRToBuf    B                   Export
 
-     DReqDVIRToBuf     PI
-     DDataStruct                           LikeDS(ReqDVIR)
+     DCertDVIRToBuf    PI
+     DDataStruct                           LikeDS(CertDVIR)
      D                                     Const
      DBuffer                        201A
 
@@ -47,7 +47,7 @@
 
        return ;
 
-     PReqDVIRToBuf     E
+     PCertDVIRToBuf    E
 
       ************************************
       * Convert buffer to ResDVIR
