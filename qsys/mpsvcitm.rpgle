@@ -45,15 +45,15 @@
      PBufToResSvcCd    B                   Export
 
      DBufToResSvcCd    PI
-     DBuffer                       1195A
+     DBuffer                       1199A
      DDataStruct                           LikeDS(ResSvcCd)
 
       * Initialize to begining of buffer
        BufPtr = %addr(Buffer);
 
       * Read fields from buffer into DS
-       DataStruct.svckey = %int(%subst(CharBuf:1:2));
-       BufPtr += 2;
+       DataStruct.svckey = %int(%subst(CharBuf:1:6));
+       BufPtr += 6;
        DataStruct.svccode = %subst(CharBuf:1:25);
        BufPtr += 25;
        DataStruct.svcdesc = %subst(CharBuf:1:1000);

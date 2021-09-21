@@ -19,7 +19,7 @@ formats:
       serviceKey:
         rpgName: svckey
         type: Integer
-        length: 1
+        length: 5
       serviceCode:
         rpgName: svccode
         type: Character
