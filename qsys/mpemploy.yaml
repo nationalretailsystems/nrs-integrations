@@ -1,0 +1,22 @@
+---
+name: mpemploy
+rpgIncName: mpemploy_h
+codeblocks:
+  typescript:
+    - import eradaniConnect from "@eradani-inc/eradani-connect";
+    - const { dataTypes } = eradaniConnect;
+formats:
+  ReqEmpl:
+    recordType: request
+    subfields:
+      contactKey:
+        rpgName: contactkey
+        type: Integer
+        length: 10
+  ResEmpl:
+    recordType: response
+    subfields:
+      EmployeeName:
+        rpgName: employeename
+        type: Character
+        length: 100

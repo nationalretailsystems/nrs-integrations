@@ -1,7 +1,7 @@
      H Nomain
 
       ************************************
-      * Module: rmgetsdvir
+      * Module: rmgetdvir
       * Generated RPG conversion procedures
       * Do not modify
       ************************************

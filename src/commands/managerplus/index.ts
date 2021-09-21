@@ -7,7 +7,8 @@ import {
     getWorkOrderHours,
     putNewWorkOrder,
     getVendor,
-    getSvcItem
+    getSvcItem,
+    getEmploy
 } from './controller';
 import * as managerplus from 'src/interfaces/mpgeteqip';
 import * as managerplus2 from 'src/interfaces/mpgeteq2';
@@ -17,6 +18,7 @@ import * as managerpluswohr from 'src/interfaces/mpgetwohr';
 import * as managerpluswkor from 'src/interfaces/mpputwo';
 import * as managerplusvndr from 'src/interfaces/mpvendor';
 import * as managerplussvcitm from 'src/interfaces/mpsvcitm';
+import * as managerplusempl from 'src/interfaces/mpemploy';
 
 export default function registerManagerplus(router: ECCInternalRouter) {
     router.use('getAssetChanges', managerplus, getAssetChanges);
@@ -27,4 +29,5 @@ export default function registerManagerplus(router: ECCInternalRouter) {
     router.use('putNewWorkOrder', managerpluswkor, putNewWorkOrder);
     router.use('getVendor', managerplusvndr, getVendor);
     router.use('getSvcItem', managerplussvcitm, getSvcItem);
+    router.use('getEmploy', managerplusempl, getEmploy);
 }

@@ -44,7 +44,8 @@ GENMODS = icndbapi \
 		  mpvendor \
 		  rmgetdvir \
 		  rmcrtdvir \
-		  mpsvcitm
+		  mpsvcitm \
+		  mpemploy
 
 GENHDRS = icndbapi_h \
           lblapi_h \
@@ -65,7 +66,8 @@ GENHDRS = icndbapi_h \
 		  pncchkot_h \
 		  pncupdat_h \
 		  pnclocat_h \
-		  mpvendor_h
+		  mpvendor_h \
+		  mpemploy_h
 
 SRVPGMS = ecctmpgen
 
@@ -410,6 +412,14 @@ $(libdir)/qrpglesrc.file/mpsvcitm.mbr $(libdir)/qrpglesrc.file/mpsvcit_h.mbr ../
 	cp mpsvcitm.ts ../src/interfaces/mpsvcitm.ts
 	system "CPYFRMSTMF FROMSTMF('mpsvcitm.rpgle') TOMBR('$(libdir)/qrpglesrc.file/mpsvcitm.mbr') MBROPT(*REPLACE)"
 	system "CPYFRMSTMF FROMSTMF('mpsvcit_h.rpgleinc') TOMBR('$(libdir)/qrpglesrc.file/mpsvcit_h.mbr') MBROPT(*REPLACE)"
+
+$(libdir)/qrpglesrc.file/mpemploy.mbr $(libdir)/qrpglesrc.file/mpemploy_h.mbr ../src/interfaces/mpemploy.ts: mpemploy.yaml
+	npx ec-generate -f $<
+	cp mpemploy.ts ../src/interfaces/mpemploy.ts
+	system "CPYFRMSTMF FROMSTMF('mpemploy.rpgle') TOMBR('$(libdir)/qrpglesrc.file/mpemploy.mbr') MBROPT(*REPLACE)"
+	system "CPYFRMSTMF FROMSTMF('mpemploy_h.rpgleinc') TOMBR('$(libdir)/qrpglesrc.file/mpemploy_h.mbr') MBROPT(*REPLACE)"
+
+
 
 .PHONY: library
 library:
