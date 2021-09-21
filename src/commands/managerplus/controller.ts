@@ -432,7 +432,7 @@ export const getEmploy: ECCHandlerFunction = async (reqkey, data, ecc) => {
     let nextReqKey = reqkey;
 
     try {
-        result = await axiosInstance.get('/Vendors', {
+        result = await axiosInstance.get('/Employees', {
             params: {
                 $filter: 'contactKey eq ' + reqFields.contactKey,
                 $select: 'employeeName'
