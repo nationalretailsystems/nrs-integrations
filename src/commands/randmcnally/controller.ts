@@ -100,8 +100,9 @@ export const getDVIR: ECCHandlerFunction = async (reqkey, data, ecc) => {
 
     const reqFields = {
         ...rpgFields,
-        logDate: DateTime.local().minus({ months: 2 }).toFormat('MM-dd-yyyy') + ' 00:00:00',
-        // Add api key, above line was minus days :1
+        
+        lastModifiedDate: rpgFields.lastModifiedDate.toDateString,
+        // Add api key
         accessToken: randmcnally.accesstoken,
         companyCode: randmcnally.companyCode
     };
@@ -129,14 +130,16 @@ export const getDVIR: ECCHandlerFunction = async (reqkey, data, ecc) => {
 
     try {
         const responseData = result.data;
-        for (let rec of responseData) {
+        const dvirResponse = result.data.dvirs;
+        for (let rec of dvirResponse) {
             for (let key in rec) {
                 rec[key] = rec[key] || safeValues[key];
             }
         }
         logger.debug('ECC0000', 'Success', nextReqKey);
         nextReqKey = await ecc.sendEccResult('ECC0000', 'Success', nextReqKey);
-        nextReqKey = await ecc.sendObjectsToCaller(responseData, convertdvir.convertObjectToRtnDVIR, nextReqKey);
+        nextReqKey = await ecc.sendObjectToCaller(responseData, convertdvir.convertObjectToRtnDVIRRes, nextReqKey);
+        nextReqKey = await ecc.sendObjectsToCaller(dvirResponse, convertdvir.convertObjectToRtnDVIR, nextReqKey);
         logger.debug('Sent data to RPG');
         return nextReqKey;
     } catch (err) {
