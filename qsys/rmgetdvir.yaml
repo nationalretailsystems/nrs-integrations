@@ -134,6 +134,7 @@ formats:
         type: Character
         length: 10
       lastModifiedDate: 
+        rpgName: lstmoddt
         type: Date
       startIndex:
         type: Integer

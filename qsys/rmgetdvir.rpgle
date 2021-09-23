@@ -36,7 +36,7 @@
        BufPtr += 100;
        %subst(CharBuf:1:10) = DataStruct.companyCode;
        BufPtr += 10;
-       %subst(CharBuf:1:10) = %char(DataStruct.lastModifiedDate:*ISO);
+       %subst(CharBuf:1:10) = %char(DataStruct.lstmoddt:*ISO);
        BufPtr += 10;
        %subst(CharBuf:1:11) = %char(DataStruct.startIndex);
        BufPtr += 11;
