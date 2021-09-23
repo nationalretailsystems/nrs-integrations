@@ -100,7 +100,7 @@ export const getDVIR: ECCHandlerFunction = async (reqkey, data, ecc) => {
 
     const reqFields = {
         ...rpgFields,
-        
+
         lastModifiedDate: rpgFields.lastModifiedDate.toDateString,
         // Add api key
         accessToken: randmcnally.accesstoken,
