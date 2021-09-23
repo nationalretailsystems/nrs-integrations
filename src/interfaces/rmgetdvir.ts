@@ -237,7 +237,7 @@ export function convertObjectToRtnDVIR(dataIn: RtnDVIR): string {
 /**
  * Input interface
  */
-export interface RtnRespons {
+export interface RtnDVIRRes {
     /**
      */
     response: responseDS,
@@ -248,9 +248,9 @@ export interface RtnRespons {
 }
 
 /**
- * Convert JavaScript object to RtnRespons record
+ * Convert JavaScript object to RtnDVIRRes record
  */
-export function convertObjectToRtnRespons(dataIn: RtnRespons): string {
+export function convertObjectToRtnDVIRRes(dataIn: RtnDVIRRes): string {
   let dataOut: string = "";
 
   dataOut += dataIn.response.code.toFixed().substring(0, 6).padEnd(6);

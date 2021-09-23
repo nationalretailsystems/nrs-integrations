@@ -122,13 +122,13 @@
      PBufToRtnDVIR     E
 
       ************************************
-      * Convert buffer to RtnRespons
+      * Convert buffer to RtnDVIRRes
       ************************************
-     PBufToRtnRespons  B                   Export
+     PBufToRtnDVIRRes  B                   Export
 
-     DBufToRtnRespons  PI
+     DBufToRtnDVIRRes  PI
      DBuffer                        416A
-     DDataStruct                           LikeDS(RtnRespons)
+     DDataStruct                           LikeDS(RtnDVIRRes)
 
       * Initialize to begining of buffer
        BufPtr = %addr(Buffer);
@@ -145,4 +145,4 @@
 
        return ;
 
-     PBufToRtnRespons  E
+     PBufToRtnDVIRRes  E
