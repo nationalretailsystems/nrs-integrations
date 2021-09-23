@@ -4,6 +4,7 @@ import config from 'config';
 import { DateTime } from 'luxon';
 import createLogger from 'src/services/logger';
 import * as converter from 'src/interfaces/rmgetstmi';
+import * as convertdvir from 'src/interfaces/rmgetdvir';
 // Ximport { promises as fs } from 'fs';
 
 const logger = createLogger('commands/randmcnally');
@@ -57,7 +58,7 @@ export const getStateMiles: ECCHandlerFunction = async (reqkey, data, ecc) => {
     let nextReqKey = reqkey;
 
     try {
-        result = await axiosInstance.post('/getStateMileage', jsonData);
+        result = await axiosInstance.post('/v3/getStateMileage', jsonData);
     } catch (err) {
         if (err.response) {
             // If the request was made and the server responded with a status code
@@ -84,6 +85,58 @@ export const getStateMiles: ECCHandlerFunction = async (reqkey, data, ecc) => {
         nextReqKey = await ecc.sendEccResult('ECC0000', 'Success', nextReqKey);
         nextReqKey = await ecc.sendObjectToCaller(responseData, converter.convertObjectToRtnRespons, nextReqKey);
         nextReqKey = await ecc.sendObjectsToCaller(mileResponse, converter.convertObjectToRtnStMiles, nextReqKey);
+        logger.debug('Sent data to RPG');
+        return nextReqKey;
+    } catch (err) {
+        logger.error('Call failed', err);
+        return ecc.sendEccResult('ECC9300', err.message, nextReqKey);
+    }
+};
+
+export const getDVIR: ECCHandlerFunction = async (reqkey, data, ecc) => {
+    logger.debug(`Received getDVIR request`, { reqkey, data });
+    // Get parameters from incomming data buffer
+    const rpgFields = convertdvir.convertReqDVIRToObject(data);
+
+    const reqFields = {
+        ...rpgFields,
+        logDate: DateTime.local().minus({ months: 2 }).toFormat('MM-dd-yyyy') + ' 00:00:00',
+        // Add api key, above line was minus days :1
+        accessToken: randmcnally.accesstoken,
+        companyCode: randmcnally.companyCode
+    };
+    // X const jsonData = JSON.stringify(reqFields);
+    const jsonData = reqFields;
+    // Call web service
+    let result;
+    let nextReqKey = reqkey;
+
+    try {
+        result = await axiosInstance.post('/v1/getDVIR', jsonData);
+    } catch (err) {
+        if (err.response) {
+            // If the request was made and the server responded with a status code
+            // That falls out of the range of 2xx
+            // Note: These error formats are dependent on the web service
+            return ecc.sendEccResult('ECC8100', err.response.status + '-' + err.response.statusText, nextReqKey);
+        }
+
+        // Else the request was made but no response was received
+        // Note: This error format has nothing to do with the web service. This is
+        // Mainly TCP/IP errors.
+        return ecc.sendEccResult('ECC9100', err.message, nextReqKey);
+    }
+
+    try {
+        const responseData = result.data;
+        for (let rec of responseData) {
+            for (let key in rec) {
+                rec[key] = rec[key] || safeValues[key];
+            }
+        }
+        logger.debug('ECC0000', 'Success', nextReqKey);
+        nextReqKey = await ecc.sendEccResult('ECC0000', 'Success', nextReqKey);
+        nextReqKey = await ecc.sendObjectsToCaller(responseData, convertdvir.convertObjectToRtnDVIR, nextReqKey);
         logger.debug('Sent data to RPG');
         return nextReqKey;
     } catch (err) {

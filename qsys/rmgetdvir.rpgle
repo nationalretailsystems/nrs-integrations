@@ -53,69 +53,77 @@
      PBufToRtnDVIR     B                   Export
 
      DBufToRtnDVIR     PI
-     DBuffer                       6393A
+     DBuffer                       6809A
      DDataStruct                           LikeDS(RtnDVIR)
 
       * Initialize to begining of buffer
        BufPtr = %addr(Buffer);
 
       * Read fields from buffer into DS
-       DataStruct.index = %int(%subst(CharBuf:1:11));
+       DataStruct.dvirs.index = %int(%subst(CharBuf:1:11));
        BufPtr += 11;
-       DataStruct.driverid = %subst(CharBuf:1:60);
+       DataStruct.dvirs.driverid = %subst(CharBuf:1:60);
        BufPtr += 60;
-       DataStruct.crttmstmp = %int(%subst(CharBuf:1:21));
+       DataStruct.dvirs.crttmstmp = %int(%subst(CharBuf:1:21));
        BufPtr += 21;
-       DataStruct.modtmstmp = %int(%subst(CharBuf:1:21));
+       DataStruct.dvirs.modtmstmp = %int(%subst(CharBuf:1:21));
        BufPtr += 21;
-       DataStruct.timezone = %subst(CharBuf:1:5);
+       DataStruct.dvirs.timezone = %subst(CharBuf:1:5);
        BufPtr += 5;
-       DataStruct.tripname = %subst(CharBuf:1:200);
+       DataStruct.dvirs.tripname = %subst(CharBuf:1:200);
        BufPtr += 200;
-       DataStruct.drvrcmt = %subst(CharBuf:1:200);
+       DataStruct.dvirs.drvrcmt = %subst(CharBuf:1:200);
        BufPtr += 200;
-       DataStruct.tractornbr = %subst(CharBuf:1:16);
+       DataStruct.dvirs.tractornbr = %subst(CharBuf:1:16);
        BufPtr += 16;
-       DataStruct.trailernbr = %subst(CharBuf:1:32);
+       DataStruct.dvirs.trailernbr = %subst(CharBuf:1:32);
        BufPtr += 32;
-       DataStruct.ttltrctdef = %int(%subst(CharBuf:1:11));
+       DataStruct.dvirs.ttltrctdef = %int(%subst(CharBuf:1:11));
        BufPtr += 11;
        for i = 1 to 25;
-       DataStruct.tractorDefects(i) = %subst(CharBuf:1:50);
+       DataStruct.dvirs.tractorDefects(i) = %subst(CharBuf:1:50);
        BufPtr += 50;
        endfor;
-       DataStruct.ttltrltdef = %int(%subst(CharBuf:1:11));
+       DataStruct.dvirs.ttltrltdef = %int(%subst(CharBuf:1:11));
        BufPtr += 11;
        for i = 1 to 25;
-       DataStruct.trailerDefects(i) = %subst(CharBuf:1:50);
+       DataStruct.dvirs.trailerDefects(i) = %subst(CharBuf:1:50);
        BufPtr += 50;
        endfor;
        for i = 1 to 10;
-       DataStruct.defectImages(i) = %subst(CharBuf:1:255);
+       DataStruct.dvirs.defectImages(i) = %subst(CharBuf:1:255);
        BufPtr += 255;
        endfor;
-       DataStruct.dvirisdef = %subst(CharBuf:1:1);
+       DataStruct.dvirs.dvirisdef = %subst(CharBuf:1:1);
        BufPtr += 1;
-       DataStruct.dviriscert = %subst(CharBuf:1:1);
+       DataStruct.dvirs.dviriscert = %subst(CharBuf:1:1);
        BufPtr += 1;
-       DataStruct.driversig = %subst(CharBuf:1:200);
+       DataStruct.dvirs.driversig = %subst(CharBuf:1:200);
        BufPtr += 200;
-       DataStruct.mechanicsig = %subst(CharBuf:1:200);
+       DataStruct.dvirs.mechanicsig = %subst(CharBuf:1:200);
        BufPtr += 200;
-       DataStruct.latitude = %float(%subst(CharBuf:1:14));
+       DataStruct.dvirs.latitude = %float(%subst(CharBuf:1:14));
        BufPtr += 14;
-       DataStruct.longitude = %float(%subst(CharBuf:1:14));
+       DataStruct.dvirs.longitude = %float(%subst(CharBuf:1:14));
        BufPtr += 14;
-       DataStruct.location = %subst(CharBuf:1:200);
+       DataStruct.dvirs.location = %subst(CharBuf:1:200);
        BufPtr += 200;
-       DataStruct.odometer = %float(%subst(CharBuf:1:14));
+       DataStruct.dvirs.odometer = %float(%subst(CharBuf:1:14));
        BufPtr += 14;
-       DataStruct.status = %subst(CharBuf:1:100);
+       DataStruct.dvirs.status = %subst(CharBuf:1:100);
        BufPtr += 100;
-       DataStruct.lstmoddate = %date(%subst(CharBuf:1:10):*ISO);
+       DataStruct.dvirs.lstmoddate = %date(%subst(CharBuf:1:10):*ISO);
        BufPtr += 10;
-       DataStruct.dvirisdst = %subst(CharBuf:1:1);
+       DataStruct.dvirs.dvirisdst = %subst(CharBuf:1:1);
        BufPtr += 1;
+       DataStruct.response.code = %int(%subst(CharBuf:1:6));
+       BufPtr += 6;
+       DataStruct.response.type = %subst(CharBuf:1:10);
+       BufPtr += 10;
+       DataStruct.response.message = %subst(CharBuf:1:200);
+       BufPtr += 200;
+       DataStruct.imageurl = %subst(CharBuf:1:200);
+       BufPtr += 200;
 
        return ;
 

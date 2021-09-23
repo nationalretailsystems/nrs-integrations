@@ -6,43 +6,8 @@ codeblocks:
     - import eradaniConnect from "@eradani-inc/eradani-connect";
     - const { dataTypes } = eradaniConnect;
 datastructures:
-  responseDS:
-    qualified: true
-    subfields:
-      code:
-        rpgName: code
-        type: Integer
-        length: 5
-      type: 
-        rpgName: type
-        type: Character
-        length: 10
-      message:
-        rpgName: message
-        type: Character
-        length: 200
-formats:
-  ReqDVIR:
-    recordType: request
-    subfields:
-      accessToken:
-        type: Character
-        length: 100
-      companyCode:
-        type: Character
-        length: 10
-      lastModifiedDate: 
-        type: Date
-      startIndex:
-        type: Integer
-        length: 10
-        precision: 0
-      size:
-        type: Integer
-        length: 10
-        precision: 0
-  RtnDVIR:
-    recordType: response
+  dvirDS:
+    qualified: true 
     subfields:
       index:
         rpgName: index
@@ -143,3 +108,51 @@ formats:
       dvirIsDST:
         rpgName: dvirisdst
         type: Boolean
+  responseDS:
+    qualified: true
+    subfields:
+      code:
+        rpgName: code
+        type: Integer
+        length: 5
+      type: 
+        rpgName: type
+        type: Character
+        length: 10
+      message:
+        rpgName: message
+        type: Character
+        length: 200
+formats:
+  ReqDVIR:
+    recordType: request
+    subfields:
+      accessToken:
+        type: Character
+        length: 100
+      companyCode:
+        type: Character
+        length: 10
+      lastModifiedDate: 
+        type: Date
+      startIndex:
+        type: Integer
+        length: 10
+        precision: 0
+      size:
+        type: Integer
+        length: 10
+        precision: 0
+  RtnDVIR:
+    recordType: response
+    subfields:
+      dvirs:
+        type: DataStruct
+        dsName: dvirDS
+      response:
+        type: DataStruct
+        dsName: responseDS
+      imageURL:
+        rpgName: imageurl
+        type: Character
+        length: 200
