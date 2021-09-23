@@ -190,14 +190,7 @@ export function convertReqDVIRToObject(dataIn: string): ReqDVIR {
 export interface RtnDVIR {
     /**
      */
-    dvirs: dvirDS,
-    /**
-     */
-    response: responseDS,
-    /**
-     * @size 200 characters
-     */
-    imageURL: string
+    dvirs: dvirDS
 }
 
 /**
@@ -237,6 +230,29 @@ export function convertObjectToRtnDVIR(dataIn: RtnDVIR): string {
   dataOut += dataIn.dvirs.status.substring(0, 100).padEnd(100);
   dataOut += toIbmiDate(dataIn.dvirs.lastModifiedData);
   dataOut += (dataIn.dvirs.dvirIsDST ? "1" : "0");
+
+  return dataOut;
+}
+
+/**
+ * Input interface
+ */
+export interface RtnRespons {
+    /**
+     */
+    response: responseDS,
+    /**
+     * @size 200 characters
+     */
+    imageURL: string
+}
+
+/**
+ * Convert JavaScript object to RtnRespons record
+ */
+export function convertObjectToRtnRespons(dataIn: RtnRespons): string {
+  let dataOut: string = "";
+
   dataOut += dataIn.response.code.toFixed().substring(0, 6).padEnd(6);
   dataOut += dataIn.response.type.substring(0, 10).padEnd(10);
   dataOut += dataIn.response.message.substring(0, 200).padEnd(200);

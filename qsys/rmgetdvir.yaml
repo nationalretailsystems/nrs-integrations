@@ -150,6 +150,9 @@ formats:
       dvirs:
         type: DataStruct
         dsName: dvirDS
+  RtnRespons:
+    recordType: response
+    subfields:
       response:
         type: DataStruct
         dsName: responseDS

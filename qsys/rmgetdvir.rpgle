@@ -53,7 +53,7 @@
      PBufToRtnDVIR     B                   Export
 
      DBufToRtnDVIR     PI
-     DBuffer                       6809A
+     DBuffer                       6393A
      DDataStruct                           LikeDS(RtnDVIR)
 
       * Initialize to begining of buffer
@@ -116,6 +116,24 @@
        BufPtr += 10;
        DataStruct.dvirs.dvirisdst = %subst(CharBuf:1:1);
        BufPtr += 1;
+
+       return ;
+
+     PBufToRtnDVIR     E
+
+      ************************************
+      * Convert buffer to RtnRespons
+      ************************************
+     PBufToRtnRespons  B                   Export
+
+     DBufToRtnRespons  PI
+     DBuffer                        416A
+     DDataStruct                           LikeDS(RtnRespons)
+
+      * Initialize to begining of buffer
+       BufPtr = %addr(Buffer);
+
+      * Read fields from buffer into DS
        DataStruct.response.code = %int(%subst(CharBuf:1:6));
        BufPtr += 6;
        DataStruct.response.type = %subst(CharBuf:1:10);
@@ -127,4 +145,4 @@
 
        return ;
 
-     PBufToRtnDVIR     E
+     PBufToRtnRespons  E
