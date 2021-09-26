@@ -134,11 +134,11 @@
        BufPtr = %addr(Buffer);
 
       * Read fields from buffer into DS
-       DataStruct.repsonse.code = %int(%subst(CharBuf:1:6));
+       DataStruct.response.code = %int(%subst(CharBuf:1:6));
        BufPtr += 6;
-       DataStruct.repsonse.type = %subst(CharBuf:1:10);
+       DataStruct.response.type = %subst(CharBuf:1:10);
        BufPtr += 10;
-       DataStruct.repsonse.message = %subst(CharBuf:1:200);
+       DataStruct.response.message = %subst(CharBuf:1:200);
        BufPtr += 200;
        DataStruct.imageurl = %subst(CharBuf:1:200);
        BufPtr += 200;

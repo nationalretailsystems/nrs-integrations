@@ -147,7 +147,7 @@ formats:
   RtnDVIRRes:
     recordType: response
     subfields:
-      repsonse:
+      response:
         type: DataStruct
         dsName: responseDS
       imageURL:
