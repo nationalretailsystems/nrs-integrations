@@ -97,11 +97,11 @@ export interface RtnDVIR {
     /**
      * @size 20 digits
      */
-    createdTimeStamp: number,
+    createdTimestamp: number,
     /**
      * @size 20 digits
      */
-    modifiedTimeStamp: number,
+    modifiedtimestamp: number,
     /**
      * @size 5 characters
      */
@@ -178,7 +178,7 @@ export interface RtnDVIR {
     status: string,
     /**
      */
-    lastModifiedData: Date,
+    lastModifiedDate: Date,
     /**
      */
     dvirIsDST: boolean
@@ -192,22 +192,22 @@ export function convertObjectToRtnDVIR(dataIn: RtnDVIR): string {
 
   dataOut += dataIn.index.toFixed().substring(0, 11).padEnd(11);
   dataOut += dataIn.driverId.substring(0, 60).padEnd(60);
-  dataOut += dataIn.createdTimeStamp.toFixed().substring(0, 21).padEnd(21);
-  dataOut += dataIn.modifiedTimeStamp.toFixed().substring(0, 21).padEnd(21);
+  dataOut += dataIn.createdTimestamp.toFixed().substring(0, 21).padEnd(21);
+  dataOut += dataIn.modifiedtimestamp.toFixed().substring(0, 21).padEnd(21);
   dataOut += dataIn.timeZone.substring(0, 5).padEnd(5);
   dataOut += dataIn.tripName.substring(0, 200).padEnd(200);
   dataOut += dataIn.driverComment.substring(0, 200).padEnd(200);
   dataOut += dataIn.tractorNumber.substring(0, 16).padEnd(16);
   dataOut += dataIn.trailerNumber.substring(0, 32).padEnd(32);
   dataOut += dataIn.totalTractorDefects.toFixed().substring(0, 11).padEnd(11);
-  for (let i: number = 0; i < 25; ++i) {
+  for (let i: number = 0; i < dataIn.tractorDefects.length; ++i) {
   dataOut += dataIn.tractorDefects[i].substring(0, 50).padEnd(50);
   }
   dataOut += dataIn.totalTrailerDefects.toFixed().substring(0, 11).padEnd(11);
-  for (let i: number = 0; i < 25; ++i) {
+  for (let i: number = 0; i < dataIn.trailerDefects.length; ++i) {
   dataOut += dataIn.trailerDefects[i].substring(0, 50).padEnd(50);
   }
-  for (let i: number = 0; i < 10; ++i) {
+  for (let i: number = 0; i < dataIn.defectImages.length; ++i) {
   dataOut += dataIn.defectImages[i].substring(0, 255).padEnd(255);
   }
   dataOut += (dataIn.dvirIsDefective ? "1" : "0");
@@ -219,7 +219,7 @@ export function convertObjectToRtnDVIR(dataIn: RtnDVIR): string {
   dataOut += dataIn.location.substring(0, 200).padEnd(200);
   dataOut += dataIn.odometer.toExponential(7).substring(0, 14).padEnd(14);
   dataOut += dataIn.status.substring(0, 100).padEnd(100);
-  dataOut += toIbmiDate(dataIn.lastModifiedData);
+  dataOut += toIbmiDate(dataIn.lastModifiedDate);
   dataOut += (dataIn.dvirIsDST ? "1" : "0");
 
   return dataOut;

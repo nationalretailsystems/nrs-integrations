@@ -53,11 +53,11 @@ formats:
         rpgName: driverid
         type: Character
         length: 60
-      createdTimeStamp:
+      createdTimestamp:
         rpgName: crttmstmp
         type: Integer
         length: 20
-      modifiedTimeStamp:
+      modifiedtimestamp:
         rpgName: modtmstmp
         type: Integer
         length: 20
@@ -138,7 +138,7 @@ formats:
         rpgName: status
         type: Character
         length: 100
-      lastModifiedData:
+      lastModifiedDate:
         rpgName: lstmoddate
         type: Date
       dvirIsDST:

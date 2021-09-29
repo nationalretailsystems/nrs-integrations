@@ -36,7 +36,16 @@ const safeValues: any = {
     stateOutLongitude: 0,
     stateOutTime: '01-01-0001 00:00:00',
     tractorNumber: '',
-    vin: ''
+    vin: '',
+    driverComment: '',
+    dvirIsDefective: '',
+    mechanicSignature: '',
+    driverSignature: '',
+    totalTractorDefects: 0,
+    totalTrailerDefects: 0,
+    trailerNumber: '',
+    location: '',
+    odometer: 0
 };
 
 export const getStateMiles: ECCHandlerFunction = async (reqkey, data, ecc) => {
@@ -131,6 +140,9 @@ export const getDVIR: ECCHandlerFunction = async (reqkey, data, ecc) => {
     try {
         const responseData = result.data;
         const dvirResponse = result.data.dvirs;
+        for (let i: number = 0; i < dvirResponse.length; ++i ) {
+            dvirResponse[i].lastModifiedDate = DateTime.fromFormat(dvirResponse[i].lastModifiedDate, 'MM-dd-yyyy HH:mm:ss').toISO();
+        }
         for (let rec of dvirResponse) {
             for (let key in rec) {
                 rec[key] = rec[key] || safeValues[key];
