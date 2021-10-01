@@ -442,6 +442,31 @@ export interface dataDS {
 }
 
 /**
+ * Output interface
+ */
+export interface payReq {
+    /**
+     * @size 80 characters
+     */
+    comment: string
+}
+
+/**
+ * Convert payReq record to TypeScript object
+ */
+export function convertpayReqToObject(dataIn: string): payReq {
+  const dataOut: any =   {
+  
+    };
+  let pos: number = 0;
+
+  dataOut.comment = dataIn.substring(pos, pos + 80).trimEnd();
+  pos += 80;
+
+  return dataOut;
+}
+
+/**
  * Input interface
  */
 export interface payEvent {

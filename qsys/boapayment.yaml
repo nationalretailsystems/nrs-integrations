@@ -408,6 +408,12 @@ datastructures:
         type: DataStruct
         dsName: paymentDS 
 formats:
+  payReq:
+    recordType: request
+    subfields:
+      comment:
+        type: Character
+        length: 80
   payEvent:
     recordType: response
     subfields:

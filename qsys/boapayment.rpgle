@@ -19,6 +19,27 @@
      Dl                S             10U 0
 
       ************************************
+      * Convert payReq to buffer
+      ************************************
+     PpayReqToBuf      B                   Export
+
+     DpayReqToBuf      PI
+     DDataStruct                           LikeDS(payReq)
+     D                                     Const
+     DBuffer                         80A
+
+      * Initialize to beginning of buffer
+       BufPtr = %addr(Buffer);
+
+      * Write fields from DS to buffer
+       %subst(CharBuf:1:80) = DataStruct.comment;
+       BufPtr += 80;
+
+       return ;
+
+     PpayReqToBuf      E
+
+      ************************************
       * Convert buffer to payEvent
       ************************************
      PBufTopayEvent    B                   Export
