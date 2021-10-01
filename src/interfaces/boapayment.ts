@@ -206,7 +206,7 @@ export interface custacctDS {
     account_number: string,
     /**
      */
-    addressDS: addressDS,
+    address: addressDS,
     /**
      * @size 18 characters
      */
@@ -527,13 +527,13 @@ export function convertObjectTopaymentEvent(dataIn: paymentEvent): string {
   dataOut += dataIn.data.payment.customer.work_phone.substring(0, 10).padEnd(10);
   dataOut += dataIn.data.payment.customer_account.account_holder_name.substring(0, 60).padEnd(60);
   dataOut += dataIn.data.payment.customer_account.account_number.substring(0, 32).padEnd(32);
-  dataOut += dataIn.data.payment.customer_account.addressDS.address_city.substring(0, 20).padEnd(20);
-  dataOut += dataIn.data.payment.customer_account.addressDS.address_country.substring(0, 3).padEnd(3);
-  dataOut += dataIn.data.payment.customer_account.addressDS.address_line1.substring(0, 100).padEnd(100);
-  dataOut += dataIn.data.payment.customer_account.addressDS.address_line2.substring(0, 100).padEnd(100);
-  dataOut += dataIn.data.payment.customer_account.addressDS.address_state.substring(0, 2).padEnd(2);
-  dataOut += dataIn.data.payment.customer_account.addressDS.address_zip1.substring(0, 5).padEnd(5);
-  dataOut += dataIn.data.payment.customer_account.addressDS.address_zip2.substring(0, 4).padEnd(4);
+  dataOut += dataIn.data.payment.customer_account.address.address_city.substring(0, 20).padEnd(20);
+  dataOut += dataIn.data.payment.customer_account.address.address_country.substring(0, 3).padEnd(3);
+  dataOut += dataIn.data.payment.customer_account.address.address_line1.substring(0, 100).padEnd(100);
+  dataOut += dataIn.data.payment.customer_account.address.address_line2.substring(0, 100).padEnd(100);
+  dataOut += dataIn.data.payment.customer_account.address.address_state.substring(0, 2).padEnd(2);
+  dataOut += dataIn.data.payment.customer_account.address.address_zip1.substring(0, 5).padEnd(5);
+  dataOut += dataIn.data.payment.customer_account.address.address_zip2.substring(0, 4).padEnd(4);
   dataOut += dataIn.data.payment.customer_account.current_balance.substring(0, 18).padEnd(18);
   dataOut += dataIn.data.payment.customer_account.current_statement_balance.substring(0, 18).padEnd(18);
   dataOut += dataIn.data.payment.customer_account.custom_fields.property1.substring(0, 25).padEnd(25);
