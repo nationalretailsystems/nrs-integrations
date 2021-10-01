@@ -42,7 +42,7 @@ export const payment: ECCHandlerFunction = async (reqkey, _data, ecc) => {
 
         logger.debug('SQS Message Receive Sent', result);
         nextReqKey = await ecc.sendEccResult('ECC0000', 'Success', nextReqKey);
-        return await ecc.sendObjectToCaller(result, paymentapi.convertObjectTopaymentEvent, nextReqKey);
+        return await ecc.sendObjectToCaller(result, paymentapi.convertObjectTopayEvent, nextReqKey);
     } catch (err) {
         logger.warn('SQS Message Receive Failed', err);
         return ecc.sendEccResult('ECC9000', err.message, nextReqKey);
