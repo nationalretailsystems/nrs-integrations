@@ -142,7 +142,18 @@ export const getDVIR: ECCHandlerFunction = async (reqkey, data, ecc) => {
         const dvirResponse = result.data.dvirs;
         for (let i: number = 0; i < dvirResponse.length; ++i ) {
             dvirResponse[i].lastModifiedDate = DateTime.fromFormat(dvirResponse[i].lastModifiedDate, 'MM-dd-yyyy HH:mm:ss').toISO();
+        // Fill 3 arrays with blanks for all entries that are not recieved
+            for (let j: number = dvirResponse[i].totalTractorDefects; j < 25; ++ j) {
+                dvirResponse[i].tractorDefects[j]='';
+            }
+            for (let j: number = dvirResponse[i].totalTrailerDefects; j < 25; ++ j) {
+                dvirResponse[i].trailerDefects[j]='';
+            } 
+            for (let j: number = dvirResponse[i].defectImages.length; j < 10; ++ j) {
+                dvirResponse[i].defectImages[j]='';
+            }                       
         }
+
         for (let rec of dvirResponse) {
             for (let key in rec) {
                 rec[key] = rec[key] || safeValues[key];

@@ -45,7 +45,8 @@ GENMODS = icndbapi \
 		  rmgetdvir \
 		  rmcrtdvir \
 		  mpsvcitm \
-		  mpemploy
+		  mpemploy \
+		  boapayment
 
 GENHDRS = icndbapi_h \
           lblapi_h \
@@ -67,7 +68,8 @@ GENHDRS = icndbapi_h \
 		  pncupdat_h \
 		  pnclocat_h \
 		  mpvendor_h \
-		  mpemploy_h
+		  mpemploy_h \
+		  boapaym_h
 
 SRVPGMS = ecctmpgen
 
@@ -418,6 +420,12 @@ $(libdir)/qrpglesrc.file/mpemploy.mbr $(libdir)/qrpglesrc.file/mpemploy_h.mbr ..
 	cp mpemploy.ts ../src/interfaces/mpemploy.ts
 	system "CPYFRMSTMF FROMSTMF('mpemploy.rpgle') TOMBR('$(libdir)/qrpglesrc.file/mpemploy.mbr') MBROPT(*REPLACE)"
 	system "CPYFRMSTMF FROMSTMF('mpemploy_h.rpgleinc') TOMBR('$(libdir)/qrpglesrc.file/mpemploy_h.mbr') MBROPT(*REPLACE)"
+
+$(libdir)/qrpglesrc.file/boapayment.mbr $(libdir)/qrpglesrc.file/boapaym_h.mbr ../src/interfaces/boapayment.ts: boapayment.yaml
+	npx ec-generate -f $<
+	cp boapayment.ts ../src/interfaces/boapayment.ts
+	system "CPYFRMSTMF FROMSTMF('boapayment.rpgle') TOMBR('$(libdir)/qrpglesrc.file/boapayment.mbr') MBROPT(*REPLACE)"
+	system "CPYFRMSTMF FROMSTMF('boapaym_h.rpgleinc') TOMBR('$(libdir)/qrpglesrc.file/boapaym_h.mbr') MBROPT(*REPLACE)"
 
 
 

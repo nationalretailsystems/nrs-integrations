@@ -8,6 +8,7 @@ import registerPinc from './pinc';
 import registerSkybitz from './skybitz';
 import registerManagerplus from './managerplus';
 import registerRandmcnally from './randmcnally';
+import registerBoa from './boa';
 
 export default async function registerCommands(router: ECCRouter) {
     const jokes = new ECCRouter.Router();
@@ -46,5 +47,8 @@ export default async function registerCommands(router: ECCRouter) {
     registerRandmcnally(randmcnally);
     router.use('randmcnally', randmcnally);
 
+    const boa = new ECCRouter.Router();
+    registerBoa(boa);
+    router.use('boa', boa);
     return router;
 }

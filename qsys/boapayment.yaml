@@ -1,0 +1,449 @@
+---
+name: boapayment
+rpgIncName: boapaym_h
+codeblocks:
+  typescript:
+    - import eradaniConnect from "@eradani-inc/eradani-connect";
+    - const { dataTypes } = eradaniConnect;
+datastructures:
+  cstmfldsDS:
+    qualified: true
+    subfields:
+      property1:
+        rpgName: property1
+        type: Character
+        length: 25
+      property2:
+        rpgName: property2
+        type: Character
+        length: 25
+  addressDS:
+    qualified: true
+    subfields:
+      address_city:
+        rpgName: addcity
+        type: Character
+        length: 20
+      address_country:
+        rpgName: addcntry
+        type: Character
+        length: 3
+      address_line1:
+        rpgName: addlin1
+        type: Character
+        length: 100
+      address_line2:
+        rpgName: addlin2
+        type: Character
+        length: 100
+      address_state:
+        rpgName: addstt
+        type: Character
+        length: 2
+      address_zip1:
+        rpgName: addzip1
+        type: Character
+        length: 5
+      address_zip2:
+        rpgName: addzip2
+        type: Character
+        length: 4
+  netrespDS:
+    qualified: true
+    subfields:
+      payment_auth_code:
+        rpgName: pauthcd
+        type: Character
+        length: 30
+      payment_decline_code:
+        rpgName: pdeclcd
+        type: Character
+        length: 30
+      payment_decline_msg:
+        rpgName: pdeclmsg
+        type: Character
+        length: 100
+      return_code:
+        rpgName: prtncd
+        type: Character
+        length: 30
+      return_code_description:
+        rpgName: prtncdds
+        type: Character
+        length: 100
+  fndacctDS:
+    qualified: true
+    subfields:
+      aba_routing_number:
+        rpgName: abanbr
+        type: Character
+        length: 9
+      account_holder_name:
+        rpgName: acthldnm 
+        type: Character
+        length: 60
+      account_holder_type:
+        rpgName: acthldtp 
+        type: Character
+        length: 25
+      account_number:
+        rpgName: acctnbr 
+        type: Character
+        length: 32
+      account_subtpe:
+        rpgName: actsubtp 
+        type: Character
+        length: 25
+      account_type:
+        rpgName: acttype 
+        type: Character
+        length: 25
+      ach_eligible_flag:
+        rpgName: achelig 
+        type: Character
+        length: 3
+      address:
+        type: DataStruct
+        dsName: addressDS
+      atm_eligible_flag:
+        rpgName: atmelig 
+        type: Character
+        length: 3
+      card_cvv_number:
+        rpgName: cvvnbr 
+        type: Character
+        length: 4
+      currency_code3d:
+        rpgName: currcod 
+        type: Character
+        length: 3
+      custom_fields:
+        type: DataStruct
+        dsName: cstmfldsDS
+      expiry_date:
+        rpgName: expdate
+        type: Character
+        length: 5
+      id:
+        rpgName: fndactid
+        type: Character
+        length: 20
+      issuer_name:
+        rpgName: issname 
+        type: Character
+        length: 32
+      nickname:
+        rpgName: nickname 
+        type: Character
+        length: 32
+      status:
+        rpgName: status 
+        type: Character
+        length: 25
+      display_text:
+        rpgName: disptext 
+        type: Character
+        length: 20
+      url:
+        rpgName: fndacturl 
+        type: Character
+        length: 100
+  feeDS:
+    qualified: true
+    subfields:
+      fee_amount:
+        rpgName: feeamnt 
+        type: Character
+        length: 17
+      fee_type:
+        rpgName: feetype 
+        type: Character
+        length: 25
+      id:
+        rpgName: feeid 
+        type: Character
+        length: 20
+      url:
+        rpgName: feeurl 
+        type: Character
+        length: 100
+  custacctDS:
+    qualified:
+    subfields:
+      account_holder_name:
+        rpgName: acthldnam 
+        type: Character
+        length: 60
+      account_number:
+        rpgName: actnbr 
+        type: Character
+        length: 32
+      addressDS:
+        type: DataStruct
+        dsName: addressDS   
+      current_balance:
+        rpgName: currbal 
+        type: Character
+        length: 18
+      current_statement_balance:
+        rpgName: currstbal 
+        type: Character
+        length: 18
+      custom_fields:
+        type: DataStruct
+        dsName: cstmfldsDS
+      customer_account_reference:
+        rpgName: cusactref 
+        type: Character
+        length: 50
+      id:
+        rpgName: cusactid 
+        type: Character
+        length: 20
+      minimum_payment_due:
+        rpgName: minpaydue 
+        type: Character
+        length: 18
+      nickname:
+        rpgName: cusactnik
+        type: Character
+        length: 32
+      past_amount_due:
+        rpgName: pastdue 
+        type: Character
+        length: 18       
+      payment_due_date:
+        rpgName: payduedt 
+        type: Character
+        length: 10
+      statement_date:
+        rpgName: stmtdt 
+        type: Character
+        length: 10
+      status:
+        rpgName: cusactsts 
+        type: Character
+        length: 25       
+      url:
+        rpgName: cusacturl 
+        type: Character
+        length: 100
+  customerDS:
+    qualified: true
+    subfields:
+      address:
+        type: DataStruct
+        dsName: addressDS
+      custom_fields:
+        type: DataStruct
+        dsName: cstmfldsDS
+      customer_reference:
+        rpgName: custref 
+        type: Character
+        length: 100
+      date_of_birth:
+        rpgName: custdob 
+        type: Character
+        length: 10
+      email:
+        rpgName: custemail 
+        type: Character
+        length: 100
+      first_name:
+        rpgName: custfname 
+        type: Character
+        length: 60
+      gender:
+        rpgName: custgender
+        type: Character
+        length: 10
+      home_phone:
+        rpgName: custhomph
+        type: Character
+        length: 10
+      id:
+        rpgName: custid
+        type: Character
+        length: 20
+      last_name:
+        rpgName: custlastnm
+        type: Character
+        length: 60
+      locale:
+        rpgName: custlocal
+        type: Character
+        length: 5
+      middle_name:
+        rpgName: custmidnm
+        type: Character
+        length: 60
+      mobile_phone:
+        rpgName: custmobil
+        type: Character
+        length: 10
+      ssn:
+        rpgName: custssn
+        type: Character
+        length: 9
+      status:
+        rpgName: custstatus
+        type: Character
+        length: 25
+      url:
+        rpgName: custurl
+        type: Character
+        length: 100
+      work_phone:
+        rpgName: custwork
+        type: Character
+        length: 10
+  paymentDS:
+    qualified: true
+    subfields:
+      amount:
+        rpgName: amount
+        type: Character
+        length: 17
+      card_cvv_number:
+        rpgName: cvv_nbr
+        type: Character
+        length: 4
+      confirmation_number:
+        rpgName: confnbr
+        type: Character
+        length: 30
+      currency_code3d:
+        rpgName: currcode
+        type: Character
+        length: 3
+      custom_fields:
+        type: DataStruct
+        dsName: cstmfldsDS        
+      customer:
+        type: DataStruct
+        dsName: customerDS
+      customer_account:
+        type: DataStruct
+        dsName: custacctDS
+      expected_payment_settlement_date:
+        rpgName: settldt
+        type: Character
+        length: 10
+      fee:
+        type: DataStruct
+        dsName: feeDS
+      funding_account:
+        type: DataStruct
+        dsName: fndacctDS
+      id:
+        rpgName: payamtid
+        type: Character
+        length: 20
+      payment_amount_type:
+        rpgName: payamttyp
+        type: Character
+        length: 25
+      payment_date:
+        rpgName: payamtdt
+        type: Character
+        length: 10
+      payment_entry_date:
+        rpgName: payentdt
+        type: Character
+        length: 10
+      payment_method:
+        rpgName: payamtmth
+        type: Character
+        length: 25
+      payment_network_response:
+        type: DataStruct
+        dsName: netrespDS
+      payment_reference:
+        rpgName: payamtref
+        type: Character
+        length: 50
+      payment_request_date:
+        rpgName: payreqdt
+        type: Character
+        length: 10
+      payment_return_date:
+        rpgName: payrtndt
+        type: Character
+        length: 10
+      payment_schedule_type:
+        rpgName: payschtyp
+        type: Character
+        length: 50
+      return_code:
+        rpgName: payrtncd
+        type: Character
+        length: 10
+      status:
+        rpgName: payamtsts
+        type: Character
+        length: 25
+      payment_notification_email:
+        rpgName: payamteml
+        type: Character
+        length: 100
+      comments:
+        rpgName: payamtcmt
+        type: Character
+        length: 1000
+      token:
+        rpgName: payamttok
+        type: Character
+        length: 64
+      url:
+        rpgName: payamturl
+        type: Character
+        length: 100
+  dataDS:
+    qualified: true
+    subfields:
+      payment:
+        type: DataStruct
+        dsName: paymentDS 
+formats:
+  paymentEvent:
+    recordType: response
+    subfields:
+      api_version:
+        rpgName: apivers
+        type: Character
+        length: 25
+      channel:
+        rpgName: channel
+        type: Character
+        length: 25
+      client_key:
+        rpgName: clientkey
+        type: Character
+        length: 50
+      data:
+        type: DataStruct
+        dsName: dataDS
+      id:
+        rpgName: eventid
+        type: Character
+        length: 50
+      pending_webhooks:
+        rpgName: pendhooks
+        type: Character
+        length: 9
+      source_id:
+        rpgName: sourceid
+        type: Character
+        length: 25
+      source_type:
+        rpgName: srctype
+        type: Character
+        length: 25
+      timestamp:
+        rpgName: eventstamp
+        type: Character
+        length: 30
+      type:
+        rpgName: type
+        type: Character
+        length: 25
