@@ -19,13 +19,13 @@
      Dl                S             10U 0
 
       ************************************
-      * Convert buffer to paymentEvent
+      * Convert buffer to payEvent
       ************************************
-     PBufTopaymentEvent  B                   Export
+     PBufTopayEvent    B                   Export
 
-     DBufTopaymentEvent  PI
+     DBufTopayEvent    PI
      DBuffer                       4614A
-     DDataStruct                           LikeDS(paymentEvent)
+     DDataStruct                           LikeDS(payEvent)
 
       * Initialize to begining of buffer
        BufPtr = %addr(Buffer);
@@ -258,4 +258,4 @@
 
        return ;
 
-     PBufTopaymentEvent  E
+     PBufTopayEvent    E

@@ -408,7 +408,7 @@ datastructures:
         type: DataStruct
         dsName: paymentDS 
 formats:
-  paymentEvent:
+  payEvent:
     recordType: response
     subfields:
       api_version:

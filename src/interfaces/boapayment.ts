@@ -444,7 +444,7 @@ export interface dataDS {
 /**
  * Input interface
  */
-export interface paymentEvent {
+export interface payEvent {
     /**
      * @size 25 characters
      */
@@ -487,9 +487,9 @@ export interface paymentEvent {
 }
 
 /**
- * Convert JavaScript object to paymentEvent record
+ * Convert JavaScript object to payEvent record
  */
-export function convertObjectTopaymentEvent(dataIn: paymentEvent): string {
+export function convertObjectTopayEvent(dataIn: payEvent): string {
   let dataOut: string = "";
 
   dataOut += dataIn.api_version.substring(0, 25).padEnd(25);
