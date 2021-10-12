@@ -11,7 +11,8 @@ import * as paymentapi from 'src/interfaces/boapayment';
 //Comment - import transport from 'src/services/connection';
 // Comment - import { insertPincSnsLog } from 'src/models/pinc';
 // Set AWS region
-AWS.config.update(boa.sns);
+// Comment - AWS.config.update(boa.sns);
+
 let sqs = new AWS.SQS({ apiVersion: boa.sqs.apiVersion });
 
 export const payment: ECCHandlerFunction = async (reqkey, _data, ecc) => {
@@ -19,6 +20,7 @@ export const payment: ECCHandlerFunction = async (reqkey, _data, ecc) => {
     let nextReqKey = reqkey;
     // Comment - let result: pnclatlonapi.LLRes;
     let result;
+    let result2;
     try {
         const response = await sqs.receiveMessage(_.omit(['apiVersion'], boa.sqs) as any).promise();
         logger.debug('Receive Message Result', response);
@@ -26,8 +28,9 @@ export const payment: ECCHandlerFunction = async (reqkey, _data, ecc) => {
         let message = response?.Messages && response.Messages[0];
 
         result = JSON.parse(message?.Body || '{}');
-        if (message && message.ReceiptHandle && result?.data?.asset) {
-            result.data.asset.checked_out ||= '';
+        result2 = JSON.parse(result.Message).body;
+        if (message && message.ReceiptHandle && result?.Message) {
+            result.MessageAttributes.MessageType.Value ||= '';
 
             const deleteParams = {
                 QueueUrl: boa.sqs.QueueUrl,
@@ -39,10 +42,10 @@ export const payment: ECCHandlerFunction = async (reqkey, _data, ecc) => {
             logger.warn('Received no valid messages', message);
             return ecc.sendEccResult('ECC2000', 'No Valid Messages to Receive', nextReqKey);
         }
-
+        const result3 = JSON.parse(result2);
         logger.debug('SQS Message Receive Sent', result);
         nextReqKey = await ecc.sendEccResult('ECC0000', 'Success', nextReqKey);
-        return await ecc.sendObjectToCaller(result, paymentapi.convertObjectTopayEvent, nextReqKey);
+        return await ecc.sendObjectToCaller(result3, paymentapi.convertObjectTopayEvent, nextReqKey);
     } catch (err) {
         logger.warn('SQS Message Receive Failed', err);
         return ecc.sendEccResult('ECC9000', err.message, nextReqKey);
