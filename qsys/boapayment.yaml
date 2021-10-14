@@ -67,7 +67,7 @@ datastructures:
         rpgName: prtncd
         type: Character
         length: 30
-      return_code_description:
+      return_code_desc:
         rpgName: prtncdds
         type: Character
         length: 100
@@ -90,7 +90,7 @@ datastructures:
         rpgName: acctnbr 
         type: Character
         length: 32
-      account_subtpe:
+      account_subtype:
         rpgName: actsubtp 
         type: Character
         length: 25

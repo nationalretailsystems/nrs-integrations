@@ -87,7 +87,7 @@ export interface netrespDS {
     /**
      * @size 100 characters
      */
-    return_code_description: string
+    return_code_desc: string
 }
 
 /**
@@ -113,7 +113,7 @@ export interface fndacctDS {
     /**
      * @size 25 characters
      */
-    account_subtpe: string,
+    account_subtype: string,
     /**
      * @size 25 characters
      */
@@ -581,7 +581,7 @@ export function convertObjectTopayEvent(dataIn: payEvent): string {
   dataOut += dataIn.data.payment.funding_account.account_holder_name.substring(0, 60).padEnd(60);
   dataOut += dataIn.data.payment.funding_account.account_holder_type.substring(0, 25).padEnd(25);
   dataOut += dataIn.data.payment.funding_account.account_number.substring(0, 32).padEnd(32);
-  dataOut += dataIn.data.payment.funding_account.account_subtpe.substring(0, 25).padEnd(25);
+  dataOut += dataIn.data.payment.funding_account.account_subtype.substring(0, 25).padEnd(25);
   dataOut += dataIn.data.payment.funding_account.account_type.substring(0, 25).padEnd(25);
   dataOut += dataIn.data.payment.funding_account.ach_eligible_flag.substring(0, 3).padEnd(3);
   dataOut += dataIn.data.payment.funding_account.address.address_city.substring(0, 20).padEnd(20);
@@ -612,7 +612,7 @@ export function convertObjectTopayEvent(dataIn: payEvent): string {
   dataOut += dataIn.data.payment.payment_network_response.payment_decline_code.substring(0, 30).padEnd(30);
   dataOut += dataIn.data.payment.payment_network_response.payment_decline_msg.substring(0, 100).padEnd(100);
   dataOut += dataIn.data.payment.payment_network_response.return_code.substring(0, 30).padEnd(30);
-  dataOut += dataIn.data.payment.payment_network_response.return_code_description.substring(0, 100).padEnd(100);
+  dataOut += dataIn.data.payment.payment_network_response.return_code_desc.substring(0, 100).padEnd(100);
   dataOut += dataIn.data.payment.payment_reference.substring(0, 50).padEnd(50);
   dataOut += dataIn.data.payment.payment_request_date.substring(0, 10).padEnd(10);
   dataOut += dataIn.data.payment.payment_return_date.substring(0, 10).padEnd(10);
