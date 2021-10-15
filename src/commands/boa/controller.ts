@@ -1,14 +1,14 @@
 import { ECCHandlerFunction } from '@eradani-inc/ecc-router/types';
-//Comment - import { DateTime } from 'luxon';
+// Comment - import { DateTime } from 'luxon';
 import AWS from 'aws-sdk';
-//Comment - import { v4 as uuidv4 } from 'uuid';
+// Comment - import { v4 as uuidv4 } from 'uuid';
 import _ from 'lodash/fp';
 import config from 'config';
 import createLogger from 'src/services/logger';
 const logger = createLogger('commands/boa');
 const { boa } = config;
 import * as paymentapi from 'src/interfaces/boapayment';
-//Comment - import transport from 'src/services/connection';
+// Comment - import transport from 'src/services/connection';
 // Comment - import { insertPincSnsLog } from 'src/models/pinc';
 // Set AWS region
 // Comment - AWS.config.update(boa.sns);
