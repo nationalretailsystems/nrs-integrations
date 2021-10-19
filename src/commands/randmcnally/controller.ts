@@ -19,6 +19,8 @@ const safeValues: any = {
     driverLoginId: '',
     entryOdometerReading: 0,
     exitOdometerReading: 0,
+    entryOdemeterReading: 0,
+    exitOdemeterReading: 0,
     fuelType: '',
     fuelUsed: 0,
     index: 0,
