@@ -5,7 +5,8 @@ import { DateTime } from 'luxon';
 import createLogger from 'src/services/logger';
 import * as converter from 'src/interfaces/rmgetstmi';
 import * as convertdvir from 'src/interfaces/rmgetdvir';
-// Ximport { promises as fs } from 'fs';
+import { promises as fs } from 'fs';
+// X import { xor } from 'lodash';
 
 const logger = createLogger('commands/randmcnally');
 const { randmcnally } = config;
@@ -55,10 +56,12 @@ export const getStateMiles: ECCHandlerFunction = async (reqkey, data, ecc) => {
     // Get parameters from incomming data buffer
     const rpgFields = converter.convertReqStMilesToObject(data);
 
+    const x = new Date(rpgFields.logDate);
     const reqFields = {
         ...rpgFields,
-        logDate: DateTime.local().minus({ months: 2 }).toFormat('MM-dd-yyyy') + ' 00:00:00',
-        // Add api key, above line was minus days :1
+        // X logDate: DateTime.local().minus({ months: 2 }).toFormat('MM-dd-yyyy') + ' 00:00:00',
+        logDate: x.getMonth()+1 + '-' + x.getDate() + '-' + x.getFullYear() + ' 00:00:00',
+     // Add api key, above line was minus days :1
         accessToken: randmcnally.accesstoken,
         companyCode: randmcnally.companyCode
     };
@@ -91,6 +94,11 @@ export const getStateMiles: ECCHandlerFunction = async (reqkey, data, ecc) => {
             for (let key in rec) {
                 rec[key] = rec[key] || safeValues[key];
             }
+        }
+        try {
+            await fs.writeFile('/eradani/tests/rmstatemiles.json', JSON.stringify(mileResponse), 'utf-8');
+        } catch (err) {
+            return ecc.sendEccResult('ECC9200', err.message, nextReqKey);
         }
         logger.debug('ECC0000', 'Success', nextReqKey);
         nextReqKey = await ecc.sendEccResult('ECC0000', 'Success', nextReqKey);
