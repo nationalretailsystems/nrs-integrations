@@ -56,11 +56,11 @@ export const getStateMiles: ECCHandlerFunction = async (reqkey, data, ecc) => {
     // Get parameters from incomming data buffer
     const rpgFields = converter.convertReqStMilesToObject(data);
 
-    const x = new Date(rpgFields.logDate);
+    // X const x = new Date(rpgFields.logDate);
     const reqFields = {
         ...rpgFields,
-        // X logDate: DateTime.local().minus({ months: 2 }).toFormat('MM-dd-yyyy') + ' 00:00:00',
-        logDate: x.getMonth()+1 + '-' + x.getDate() + '-' + x.getFullYear() + ' 00:00:00',
+        logDate: DateTime.fromJSDate(rpgFields.logDate).toFormat('MM-dd-yyyy 00:00:00'),
+        // X logDate: x.getMonth()+1 + '-' + x.getDate() + '-' + x.getFullYear() + ' 00:00:00',
      // Add api key, above line was minus days :1
         accessToken: randmcnally.accesstoken,
         companyCode: randmcnally.companyCode
