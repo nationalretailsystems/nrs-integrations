@@ -15,6 +15,7 @@ import * as pnclocatapi from 'src/interfaces/pnclocat';
 import * as pncerrorapi from 'src/interfaces/pncerror';
 import transport from 'src/services/connection';
 import { insertPincSnsLog } from 'src/models/pinc';
+import { promises as fs } from 'fs';
 // Set AWS region
 AWS.config.update(pinc.sns);
 let sns = new AWS.SNS({ apiVersion: pinc.sns.apiVersion });
@@ -117,6 +118,7 @@ export const errors: ECCHandlerFunction = async (reqkey, _data, ecc) => {
     // Call web service
     let nextReqKey = reqkey;
     let result: pncerrorapi.LLErrRes;
+    const reqFields = pncerrorapi.convertLLErrReqToObject(_data);
     try {
         const response = await sqs.receiveMessage(_.omit(['apiVersion'], pinc.sqs) as any).promise();
         logger.debug('Receive Message Result', response);
@@ -137,7 +139,11 @@ export const errors: ECCHandlerFunction = async (reqkey, _data, ecc) => {
             logger.warn('Received no valid messages', message);
             return ecc.sendEccResult('ECC2000', 'No Valid Messages to Receive', nextReqKey);
         }
-
+        try {
+            await fs.writeFile(reqFields.filename, result.toString(), 'utf-8');
+        } catch (err) {
+            return ecc.sendEccResult('ECC9200', err.message, nextReqKey);
+        }
         logger.debug('SQS Message Receive Sent', result);
         nextReqKey = await ecc.sendEccResult('ECC0000', 'Success', nextReqKey);
         return await ecc.sendObjectToCaller(result, pncerrorapi.convertObjectToLLErrRes, nextReqKey);
