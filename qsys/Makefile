@@ -46,7 +46,8 @@ GENMODS = icndbapi \
 		  rmcrtdvir \
 		  mpsvcitm \
 		  mpemploy \
-		  boapayment
+		  boapayment \
+		  pncerror
 
 GENHDRS = icndbapi_h \
           lblapi_h \
@@ -69,7 +70,8 @@ GENHDRS = icndbapi_h \
 		  pnclocat_h \
 		  mpvendor_h \
 		  mpemploy_h \
-		  boapaym_h
+		  boapaym_h \
+		  pncerr_h
 
 SRVPGMS = ecctmpgen
 
@@ -427,6 +429,12 @@ $(libdir)/qrpglesrc.file/boapayment.mbr $(libdir)/qrpglesrc.file/boapaym_h.mbr .
 	system "CPYFRMSTMF FROMSTMF('boapayment.rpgle') TOMBR('$(libdir)/qrpglesrc.file/boapayment.mbr') MBROPT(*REPLACE)"
 	system "CPYFRMSTMF FROMSTMF('boapaym_h.rpgleinc') TOMBR('$(libdir)/qrpglesrc.file/boapaym_h.mbr') MBROPT(*REPLACE)"
 
+$(libdir)/qrpglesrc.file/pncerror.mbr $(libdir)/qrpglesrc.file/pncerr_h.mbr ../src/interfaces/pncerror.ts: pncerror.yaml
+	npx ec-generate -f $<
+	cp pncerror.ts ../src/interfaces/pncerror.ts
+	#cp pncerr_h.rpgleinc.backup pncerr_h.rpgleinc
+	system "CPYFRMSTMF FROMSTMF('pncerror.rpgle') TOMBR('$(libdir)/qrpglesrc.file/pnclerror.mbr') MBROPT(*REPLACE)"
+	system "CPYFRMSTMF FROMSTMF('pnclerr_h.rpgleinc') TOMBR('$(libdir)/qrpglesrc.file/pnclerr_h.mbr') MBROPT(*REPLACE)"
 
 
 .PHONY: library

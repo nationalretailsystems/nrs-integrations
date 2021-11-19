@@ -12,6 +12,7 @@ import * as pnclatlonapi from 'src/interfaces/pnclatlon';
 import * as pncchkotapi from 'src/interfaces/pncchkot';
 import * as pncupdatapi from 'src/interfaces/pncupdat';
 import * as pnclocatapi from 'src/interfaces/pnclocat';
+import * as pncerrorapi from 'src/interfaces/pncerror';
 import transport from 'src/services/connection';
 import { insertPincSnsLog } from 'src/models/pinc';
 // Set AWS region
@@ -112,6 +113,40 @@ export const latlon: ECCHandlerFunction = async (reqkey, _data, ecc) => {
         return ecc.sendEccResult('ECC9000', err.message, nextReqKey);
     }
 };
+export const errors: ECCHandlerFunction = async (reqkey, _data, ecc) => {
+    // Call web service
+    let nextReqKey = reqkey;
+    let result: pncerrorapi.LLRes;
+    try {
+        const response = await sqs.receiveMessage(_.omit(['apiVersion'], pinc.sqs) as any).promise();
+        logger.debug('Receive Message Result', response);
+
+        let message = response?.Messages && response.Messages[0];
+
+        result = JSON.parse(message?.Body || '{}');
+        if (message && message.ReceiptHandle && result?.data?.message?.data) {
+            result.data.message.data.asset.checked_out ||= '';
+
+            const deleteParams = {
+                QueueUrl: pinc.sqs.QueueUrl,
+                ReceiptHandle: message.ReceiptHandle
+            };
+            const deleteResult = await sqs.deleteMessage(deleteParams).promise();
+            logger.debug('Delete Result', deleteResult);
+        } else {
+            logger.warn('Received no valid messages', message);
+            return ecc.sendEccResult('ECC2000', 'No Valid Messages to Receive', nextReqKey);
+        }
+
+        logger.debug('SQS Message Receive Sent', result);
+        nextReqKey = await ecc.sendEccResult('ECC0000', 'Success', nextReqKey);
+        return await ecc.sendObjectToCaller(result, pncerrorapi.convertObjectToLLRes, nextReqKey);
+    } catch (err) {
+        logger.warn('SQS Message Receive Failed', err);
+        return ecc.sendEccResult('ECC9000', err.message, nextReqKey);
+    }
+};
+
 export const checkot: ECCHandlerFunction = async (_reqkey, data, _ecc) => {
     // Get parameters from incomming data buffer
     const timestampHold = DateTime.now();
