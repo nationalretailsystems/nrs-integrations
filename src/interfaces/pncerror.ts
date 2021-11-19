@@ -124,7 +124,7 @@ export interface DataDS2 {
 /**
  * Output interface
  */
-export interface LLReq {
+export interface LLErrReq {
     /**
      * @size 80 characters
      */
@@ -136,9 +136,9 @@ export interface LLReq {
 }
 
 /**
- * Convert LLReq record to TypeScript object
+ * Convert LLErrReq record to TypeScript object
  */
-export function convertLLReqToObject(dataIn: string): LLReq {
+export function convertLLErrReqToObject(dataIn: string): LLErrReq {
   const dataOut: any =   {
   
     };
@@ -155,7 +155,7 @@ export function convertLLReqToObject(dataIn: string): LLReq {
 /**
  * Input interface
  */
-export interface LLRes {
+export interface LLErrRes {
     /**
      * @size 50 characters
      */
@@ -170,9 +170,9 @@ export interface LLRes {
 }
 
 /**
- * Convert JavaScript object to LLRes record
+ * Convert JavaScript object to LLErrRes record
  */
-export function convertObjectToLLRes(dataIn: LLRes): string {
+export function convertObjectToLLErrRes(dataIn: LLErrRes): string {
   let dataOut: string = "";
 
   dataOut += dataIn.event.substring(0, 50).padEnd(50);

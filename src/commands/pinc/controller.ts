@@ -116,7 +116,7 @@ export const latlon: ECCHandlerFunction = async (reqkey, _data, ecc) => {
 export const errors: ECCHandlerFunction = async (reqkey, _data, ecc) => {
     // Call web service
     let nextReqKey = reqkey;
-    let result: pncerrorapi.LLRes;
+    let result: pncerrorapi.LLErrRes;
     try {
         const response = await sqs.receiveMessage(_.omit(['apiVersion'], pinc.sqs) as any).promise();
         logger.debug('Receive Message Result', response);
@@ -140,7 +140,7 @@ export const errors: ECCHandlerFunction = async (reqkey, _data, ecc) => {
 
         logger.debug('SQS Message Receive Sent', result);
         nextReqKey = await ecc.sendEccResult('ECC0000', 'Success', nextReqKey);
-        return await ecc.sendObjectToCaller(result, pncerrorapi.convertObjectToLLRes, nextReqKey);
+        return await ecc.sendObjectToCaller(result, pncerrorapi.convertObjectToLLErrRes, nextReqKey);
     } catch (err) {
         logger.warn('SQS Message Receive Failed', err);
         return ecc.sendEccResult('ECC9000', err.message, nextReqKey);

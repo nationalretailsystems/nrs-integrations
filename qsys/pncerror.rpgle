@@ -19,12 +19,12 @@
      Dl                S             10U 0
 
       ************************************
-      * Convert LLReq to buffer
+      * Convert LLErrReq to buffer
       ************************************
-     PLLReqToBuf       B                   Export
+     PLLErrReqToBuf    B                   Export
 
-     DLLReqToBuf       PI
-     DDataStruct                           LikeDS(LLReq)
+     DLLErrReqToBuf    PI
+     DDataStruct                           LikeDS(LLErrReq)
      D                                     Const
      DBuffer                        180A
 
@@ -39,16 +39,16 @@
 
        return ;
 
-     PLLReqToBuf       E
+     PLLErrReqToBuf    E
 
       ************************************
-      * Convert buffer to LLRes
+      * Convert buffer to LLErrRes
       ************************************
-     PBufToLLRes       B                   Export
+     PBufToLLErrRes    B                   Export
 
-     DBufToLLRes       PI
+     DBufToLLErrRes    PI
      DBuffer                        670A
-     DDataStruct                           LikeDS(LLRes)
+     DDataStruct                           LikeDS(LLErrRes)
 
       * Initialize to begining of buffer
        BufPtr = %addr(Buffer);
@@ -97,4 +97,4 @@
 
        return ;
 
-     PBufToLLRes       E
+     PBufToLLErrRes    E

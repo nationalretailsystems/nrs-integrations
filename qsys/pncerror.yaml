@@ -100,7 +100,7 @@ datastructures:
         type: DataStruct
         dsName: MessageDS
 formats:
-  LLReq:
+  LLErrReq:
     recordType: request
     subfields:
       comment:
@@ -110,7 +110,7 @@ formats:
         rpgName: filename
         type: Character
         length: 100
-  LLRes:
+  LLErrRes:
     recordType: response
     subfields:
       event:
