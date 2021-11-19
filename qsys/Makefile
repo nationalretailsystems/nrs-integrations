@@ -433,8 +433,8 @@ $(libdir)/qrpglesrc.file/pncerror.mbr $(libdir)/qrpglesrc.file/pncerr_h.mbr ../s
 	npx ec-generate -f $<
 	cp pncerror.ts ../src/interfaces/pncerror.ts
 	#cp pncerr_h.rpgleinc.backup pncerr_h.rpgleinc
-	system "CPYFRMSTMF FROMSTMF('pncerror.rpgle') TOMBR('$(libdir)/qrpglesrc.file/pnclerror.mbr') MBROPT(*REPLACE)"
-	system "CPYFRMSTMF FROMSTMF('pnclerr_h.rpgleinc') TOMBR('$(libdir)/qrpglesrc.file/pnclerr_h.mbr') MBROPT(*REPLACE)"
+	system "CPYFRMSTMF FROMSTMF('pncerror.rpgle') TOMBR('$(libdir)/qrpglesrc.file/pncerror.mbr') MBROPT(*REPLACE)"
+	system "CPYFRMSTMF FROMSTMF('pncerr_h.rpgleinc') TOMBR('$(libdir)/qrpglesrc.file/pncerr_h.mbr') MBROPT(*REPLACE)"
 
 
 .PHONY: library
