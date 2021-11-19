@@ -80,7 +80,7 @@ export const checkin: ECCHandlerFunction = async (_reqkey, data, _ecc) => {
         .execute(insertPincSnsLog, record)
         .catch((err) => logger.error('Failed to write Pinc SNS Checkin Log Record', { record, err }));
 };
-
+// Get SQS Message for Asset Location from Pinc
 export const latlon: ECCHandlerFunction = async (reqkey, _data, ecc) => {
     // Call web service
     let nextReqKey = reqkey;
@@ -272,6 +272,9 @@ export const updat: ECCHandlerFunction = async (_reqkey, data, _ecc) => {
         .execute(insertPincSnsLog, record)
         .catch((err) => logger.error('Failed to write Pinc Log Sns Update Record', { record, err }));
 };
+
+// Send SNS Request for Asset Location to Pinc
+
 export const locat: ECCHandlerFunction = async (_reqkey, data, _ecc) => {
     // Get parameters from incomming data buffer
     const timestampHold = DateTime.now();
@@ -280,20 +283,23 @@ export const locat: ECCHandlerFunction = async (_reqkey, data, _ecc) => {
         {
             event: 'yardhound.import_events.retrieve_asset_location',
             time: timestampHold.toFormat("yyyy-MM-dd'T'TTZZ"),
-            version: '1.3'
-        },
-        _.mapKeys(
-            (key) =>
-                ((
-                    {
-                        Trailer_SCAC: 'Trailer SCAC',
-                        Trailer_number: 'Trailer #',
-                        container_number: 'Container #'
-                    } as any
-                )[key] || key),
-            rpgFields
-        )
+            version: '1.3',
+            data: {
+                asset: _.mapKeys(
+                    (key) =>
+                        ((
+                            {
+                                Trailer_SCAC: 'Trailer SCAC',
+                                Trailer_number: 'Trailer #',
+                                container_number: 'Container #'
+                            } as any
+                       )[key] || key),
+                    rpgFields.data.asset
+                )
+            }
+        }
     );
+
 
     logger.debug('Sending SNS Message', reqFields);
 
