@@ -125,7 +125,7 @@ const safeValues: any = {
                 issuer_name: '',
                 nickname: '',
                 status: '',
-                url: ''          
+                url: ''
             },
             id: '',
             payment_amount_type: '',
@@ -152,13 +152,12 @@ const safeValues: any = {
         },
         id: '',
         pending_webhooks: '',
-        source_id: '',    
-        source_type: "user",
+        source_id: '',
+        source_type: 'user',
         timestamp: '',
         type: ''
     }
 };
-
 
 export const payment: ECCHandlerFunction = async (reqkey, _data, ecc) => {
     // Call web service
@@ -197,7 +196,3 @@ export const payment: ECCHandlerFunction = async (reqkey, _data, ecc) => {
         return ecc.sendEccResult('ECC9000', err.message, nextReqKey);
     }
 };
-
-
-
-

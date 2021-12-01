@@ -14,5 +14,4 @@ export default function registerPinc(router: ECCInternalRouter) {
     router.use('updat', pncupdat, updat);
     router.use('locat', pnclocat, locat);
     router.use('errors', pncerror, errors);
-
 }

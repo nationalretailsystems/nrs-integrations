@@ -21,27 +21,29 @@ AWS.config.update(pinc.sns);
 let sns = new AWS.SNS({ apiVersion: pinc.sns.apiVersion });
 let sqs = new AWS.SQS({ apiVersion: pinc.sqs.apiVersion });
 
-export const checkin: ECCHandlerFunction = async (_reqkey, data, _ecc) => {
+export const checkin: ECCHandlerFunction = async (_reqkey, datax, _ecc) => {
     // Get parameters from incomming data buffer\
     const timestampHold = DateTime.now();
-    const rpgFields = pncchkinapi.convertCheckinDSToObject(data);
-    const reqFields = _.assign(
-        {
-            event: 'yardhound.import_events.checkin',
-            time: timestampHold.toFormat("yyyy-MM-dd'T'TTZZ"),
-            version: '1.3'
-        },
-        _.mapKeys(
-            (key) =>
-                ((
-                    {
-                        Trailer_SCAC: 'Trailer SCAC',
-                        Trailer_number: 'Trailer #'
-                    } as any
-                )[key] || key),
-            rpgFields
-        )
-    );
+    const rpgFields = pncchkinapi.convertCheckinDSToObject(datax);
+	const reqFields = {
+        event: 'yardhound.import_events.checkin',
+        time: timestampHold.toFormat("yyyy-MM-dd'T'TTZZ"),
+        version: '1.3',
+        campus: rpgFields.campus,
+        data: {
+            asset: 
+            _.mapKeys(
+                (key) =>
+                    ((
+                        {
+                            Trailer_SCAC: 'Trailer SCAC',
+                            Trailer_number: 'Trailer #'
+                        } as any
+                   )[key] || key),
+                rpgFields.data.asset
+            )
+        } 
+    };
 
     logger.debug('Sending SNS Message', reqFields);
 
@@ -153,27 +155,29 @@ export const errors: ECCHandlerFunction = async (reqkey, _data, ecc) => {
     }
 };
 
-export const checkot: ECCHandlerFunction = async (_reqkey, data, _ecc) => {
+export const checkot: ECCHandlerFunction = async (_reqkey, datax, _ecc) => {
     // Get parameters from incomming data buffer
     const timestampHold = DateTime.now();
-    const rpgFields = pncchkotapi.convertCheckotDSToObject(data);
-    const reqFields = _.assign(
-        {
-            event: 'yardhound.import_events.checkout',
-            time: timestampHold.toFormat("yyyy-MM-dd'T'TTZZ"),
-            version: '1.3'
-        },
-        _.mapKeys(
-            (key) =>
-                ((
-                    {
-                        Trailer_SCAC: 'Trailer SCAC',
-                        Trailer_number: 'Trailer #'
-                    } as any
-                )[key] || key),
-            rpgFields
-        )
-    );
+    const rpgFields = pncchkotapi.convertCheckotDSToObject(datax);
+	const reqFields = {
+        event: 'yardhound.import_events.checkout',
+        time: timestampHold.toFormat("yyyy-MM-dd'T'TTZZ"),
+        version: '1.3',
+        campus: rpgFields.campus,
+        data: {
+            asset: 
+            _.mapKeys(
+                (key) =>
+                    ((
+                        {
+                            Trailer_SCAC: 'Trailer SCAC',
+                            Trailer_number: 'Trailer #'
+                        } as any
+                   )[key] || key),
+                rpgFields.data.asset
+            )
+        } 
+    };
 
     logger.debug('Sending SNS Message', reqFields);
 
@@ -213,27 +217,29 @@ export const checkot: ECCHandlerFunction = async (_reqkey, data, _ecc) => {
         .catch((err) => logger.error('Failed to write Pinc Log Sns Checkout Record', { record, err }));
 };
 
-export const updat: ECCHandlerFunction = async (_reqkey, data, _ecc) => {
+export const updat: ECCHandlerFunction = async (_reqkey, datax, _ecc) => {
     // Get parameters from incomming data buffer
     const timestampHold = DateTime.now();
-    const rpgFields = pncupdatapi.convertUpdatDSToObject(data);
-    const reqFields = _.assign(
-        {
-            event: 'yardhound.import_events.update',
-            time: timestampHold.toFormat("yyyy-MM-dd'T'TTZZ"),
-            version: '1.3'
-        },
-        _.mapKeys(
-            (key) =>
-                ((
-                    {
-                        Trailer_SCAC: 'Trailer SCAC',
-                        Trailer_number: 'Trailer #'
-                    } as any
-                )[key] || key),
-            rpgFields
-        )
-    );
+    const rpgFields = pncupdatapi.convertUpdatDSToObject(datax);
+	const reqFields = {
+        event: 'yardhound.import_events.update',
+        time: timestampHold.toFormat("yyyy-MM-dd'T'TTZZ"),
+        version: '1.3',
+        campus: rpgFields.campus,
+        data: {
+            asset: 
+            _.mapKeys(
+                (key) =>
+                    ((
+                        {
+                            Trailer_SCAC: 'Trailer SCAC',
+                            Trailer_number: 'Trailer #'
+                        } as any
+                   )[key] || key),
+                rpgFields.data.asset
+            )
+        } 
+    };
 
     logger.debug('Sending SNS Message', reqFields);
 
@@ -275,32 +281,30 @@ export const updat: ECCHandlerFunction = async (_reqkey, data, _ecc) => {
 
 // Send SNS Request for Asset Location to Pinc
 
-export const locat: ECCHandlerFunction = async (_reqkey, data, _ecc) => {
+export const locat: ECCHandlerFunction = async (_reqkey, datax, _ecc) => {
     // Get parameters from incomming data buffer
     const timestampHold = DateTime.now();
-    const rpgFields = pnclocatapi.convertLocatDSToObject(data);
-    const reqFields = _.assign(
-        {
-            event: 'yardhound.import_events.retrieve_asset_location',
-            time: timestampHold.toFormat("yyyy-MM-dd'T'TTZZ"),
-            version: '1.3',
-            data: {
-                asset: _.mapKeys(
-                    (key) =>
-                        ((
-                            {
-                                Trailer_SCAC: 'Trailer SCAC',
-                                Trailer_number: 'Trailer #',
-                                container_number: 'Container #'
-                            } as any
-                       )[key] || key),
-                    rpgFields.data.asset
-                )
-            }
+    const rpgFields = pnclocatapi.convertLocatDSToObject(datax);
+    const reqFields = {
+        event: 'yardhound.import_events.retrieve_asset_location',
+        time: timestampHold.toFormat("yyyy-MM-dd'T'TTZZ"),
+        version: '1.4',
+        campus: rpgFields.campus,
+        event_id: rpgFields.event_id,
+        data: {
+            asset: _.mapKeys(
+                (key) =>
+                    ((
+                        {
+                            Trailer_SCAC: 'Trailer SCAC',
+                            Trailer_number: 'Trailer #',
+                            container_number: 'Container #'
+                        } as any
+                    )[key] || key),
+                rpgFields.data.asset
+            )
         }
-    );
-
-
+    };
     logger.debug('Sending SNS Message', reqFields);
 
     // Call web service
