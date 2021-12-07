@@ -14,7 +14,7 @@ import * as pncupdatapi from 'src/interfaces/pncupdat';
 import * as pnclocatapi from 'src/interfaces/pnclocat';
 import * as pncerrorapi from 'src/interfaces/pncerror';
 import transport from 'src/services/connection';
-import { insertPincSnsLog } from 'src/models/pinc';
+import { insertPincSnsLog, insertPincSqsLog } from 'src/models/pinc';
 import { promises as fs } from 'fs';
 // Set AWS region
 AWS.config.update(pinc.sns);
@@ -85,6 +85,7 @@ export const checkin: ECCHandlerFunction = async (_reqkey, datax, _ecc) => {
 // Get SQS Message for Asset Location from Pinc
 export const latlon: ECCHandlerFunction = async (reqkey, _data, ecc) => {
     // Call web service
+    const timestampHold = DateTime.now();    
     let nextReqKey = reqkey;
     let result: pnclatlonapi.LLRes;
     try {
@@ -115,6 +116,15 @@ export const latlon: ECCHandlerFunction = async (reqkey, _data, ecc) => {
         logger.warn('SQS Message Receive Failed', err);
         return ecc.sendEccResult('ECC9000', err.message, nextReqKey);
     }
+    const record2 = {
+        targetArn: pinc.sqs.QueueUrl,
+        result: result, // JSON.stringify(result) ?? "No Response",
+        resultCode: nextReqKey,
+        timestamp: timestampHold.toFormat("yyyy-MM-dd'-'HH.mm.ss.SSS'000'")
+    };
+    return transport
+        .execute(insertPincSqsLog, record2)
+        .catch((err) => logger.error('Failed to write Pinc Log Sqs Checkout Record', { record2, err }));    
 };
 export const errors: ECCHandlerFunction = async (reqkey, _data, ecc) => {
     // Call web service
@@ -122,7 +132,7 @@ export const errors: ECCHandlerFunction = async (reqkey, _data, ecc) => {
     let result: pncerrorapi.LLErrRes;
     const reqFields = pncerrorapi.convertLLErrReqToObject(_data);
     try {
-        const response = await sqs.receiveMessage(_.omit(['apiVersion'], pinc.sqs) as any).promise();
+        const response = await sqs.receiveMessage(_.omit(['apiVersion'], pinc.sqserr) as any).promise();
         logger.debug('Receive Message Result', response);
 
         let message = response?.Messages && response.Messages[0];

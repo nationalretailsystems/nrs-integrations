@@ -27,22 +27,14 @@ export default new eradaniConnect.run.Sql(
         ]
     }
 );
-
-/**
- * Input Structure for SQLTemplate. Includes detailed field information such as
- * field length, format, numerical precision, and default values.
- */
-export interface SQLTemplateInput7 {
-    /**
-     * @description fromYard
-     */
-    fromYard: string | string;
-}
-
-export type SQLTemplateOutputRecord = JSONObject;
-
-/**
- * Output Structure for SQLTemplate SQL query. This is an Array of
- * [[SQLTemplateOutputRecord]] elements.
- */
-export interface SQLTemplateOutput extends Array<SQLTemplateOutputRecord> {}
+export const insertPincSqsLog = new ec.run.Sql(
+    `insert into ${config.native.pincLibrary}.pncsnslog values (?, ?, ?, ?, ?, ?)`,
+    {
+        params: [
+            { name: 'queueUrl', type: new ec.dataTypes.Char(150) },
+            { name: 'resultCode', type: new ec.dataTypes.Char(7) },            
+            { name: 'result', type: new ec.dataTypes.Char(1000) },
+            { name: 'timestamp', type: new ec.dataTypes.Timestamp() }
+        ]
+    }
+);
