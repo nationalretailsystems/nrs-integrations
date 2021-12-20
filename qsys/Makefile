@@ -184,10 +184,6 @@ $(libdir)/tstpncll.pgm: $(libdir)/tstpncll.module $(libdir)/ecctmpgen.srvpgm
 $(libdir)/tstskybtz.pgm: $(libdir)/tstskybtz.module $(libdir)/ecctmpgen.srvpgm
 	system "CRTPGM PGM($(LIB)/$(basename $(@F))) MODULE(*PGM) BNDSRVPGM((ECCTMPGEN) (ECNCTC))"
 
-$(libdir)/tstzplapi.pgm: $(libdir)/tstzplapi.module $(libdir)/ecctmpgen.srvpgm
-	system "CRTPGM PGM($(LIB)/$(basename $(@F))) MODULE(*PGM) BNDSRVPGM((ECCTMPGEN) (ECNCTC))"
-
-
 $(libdir)/tstmpgeteq.pgm: $(libdir)/tstmpgeteq.module $(libdir)/ecctmpgen.srvpgm
 	system "CRTPGM PGM($(LIB)/$(basename $(@F))) MODULE(*PGM) BNDSRVPGM((ECCTMPGEN) (ECNCTC))"
 
@@ -195,7 +191,10 @@ $(libdir)/tstmpgete2.pgm: $(libdir)/tstmpgete2.module $(libdir)/ecctmpgen.srvpgm
 	system "CRTPGM PGM($(LIB)/$(basename $(@F))) MODULE(*PGM) BNDSRVPGM((ECCTMPGEN) (ECNCTC))"
 
 $(libdir)/tstrmgetmi.pgm: $(libdir)/tstrmgetmi.module $(libdir)/ecctmpgen.srvpgm
-	system "CRTPGM PGM($(LIB)/$(basename $(@F))) MODULE(*PGM) BNDSRVPGM((ECCTMPGEN) (ECNCTC))"			
+	system "CRTPGM PGM($(LIB)/$(basename $(@F))) MODULE(*PGM) BNDSRVPGM((ECCTMPGEN) (ECNCTC))"
+
+$(libdir)/tstzplapi.pgm: $(libdir)/tstzplapi.module $(libdir)/ecctmpgen.srvpgm
+	system "CRTPGM PGM($(LIB)/$(basename $(@F))) MODULE(*PGM) BNDSRVPGM((ECCTMPGEN) (ECNCTC))"
 
 $(libdir)/ecctmpgen.srvpgm: $(FQGENMODS)
 	system "CRTSRVPGM SRVPGM($(LIB)/$(basename $(@F))) MODULE($(NQGENMODS)) EXPORT(*ALL)"
@@ -232,13 +231,15 @@ $(libdir)/tstskybtz.module: $(libdir)/qrpglesrc.file/skybtz_h.mbr $(libdir)/qrpg
 
 $(libdir)/tstskybtzq.module: $(libdir)/qrpglesrc.file/skybtzqm_h.mbr $(libdir)/qrpglesrc.file/ecnctc.mbr
 
-$(libdir)/tstzplapi.module: $(libdir)/qrpglesrc.file/zplzpi_h.mbr $(libdir)/qrpglesrc.file/ecnctc.mbr
-
 $(libdir)/tstmpgeteq.module: $(libdir)/qrpglesrc.file/mpgeteq_h.mbr $(libdir)/qrpglesrc.file/ecnctc.mbr
 
 $(libdir)/tstmpgete2.module: $(libdir)/qrpglesrc.file/mpgeteq2_h.mbr $(libdir)/qrpglesrc.file/ecnctc.mbr
 
 $(libdir)/tstrmgetmi.module: $(libdir)/qrpglesrc.file/rmgetstm_h.mbr $(libdir)/qrpglesrc.file/ecnctc.mbr
+
+$(libdir)/tstzplapi.module: $(libdir)/qrpglesrc.file/zplapi_h.mbr $(libdir)/qrpglesrc.file/ecnctc.mbr
+
+$(libdir)/tstzplapi.module: $(libdir)/qrpglesrc.file/zplapi_h.mbr $(libdir)/qrpglesrc.file/ecnctc.mbr
 
 $(libdir)/tstrmgetmi.module: $(libdir)/qrpglesrc.file/rmgetstm_h.mbr $(libdir)/qrpglesrc.file/ecnctc.mbr
 
