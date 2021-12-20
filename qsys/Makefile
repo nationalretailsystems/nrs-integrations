@@ -20,7 +20,8 @@ MODS = dspjk \
 	   tstskybtzq \
 	   tstmpgeteq \
 	   tstmpgete2 \
-	   tstrmgtmi
+	   tstrmgtmi \
+	   tstzplapi
 
 GENMODS = icndbapi \
           lblapi \
@@ -88,7 +89,8 @@ PGMS = dspjk \
 	   tstskybtzq \
 	   tstmpgeteq \
 	   tstmpgete2 \
-	   tstrmgetmi
+	   tstrmgetmi \
+	   tstzplapi
 
 CMDS = dspjk \
        dsptrfc \
@@ -101,7 +103,8 @@ CMDS = dspjk \
 	   tstskybtzq \
 	   tstmpgeteq \
 	   tstmpgete2 \
-	   tstrmgetmi
+	   tstrmgetmi \
+	   tstzplapi
 
 INBOUNDPGMS = simplecalc
 
