@@ -9,6 +9,7 @@ import registerSkybitz from './skybitz';
 import registerManagerplus from './managerplus';
 import registerRandmcnally from './randmcnally';
 import registerBoa from './boa';
+import registerZpl from './zpl';
 
 export default async function registerCommands(router: ECCRouter) {
     const jokes = new ECCRouter.Router();
@@ -50,5 +51,10 @@ export default async function registerCommands(router: ECCRouter) {
     const boa = new ECCRouter.Router();
     registerBoa(boa);
     router.use('boa', boa);
+
+    const zpl = new ECCRouter.Router();
+    registerZpl(zpl);
+    router.use('zpl', zpl);
+
     return router;
 }

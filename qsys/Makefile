@@ -47,7 +47,8 @@ GENMODS = icndbapi \
 		  mpsvcitm \
 		  mpemploy \
 		  boapayment \
-		  pncerror
+		  pncerror \
+		  zplapi
 
 GENHDRS = icndbapi_h \
           lblapi_h \
@@ -71,7 +72,8 @@ GENHDRS = icndbapi_h \
 		  mpvendor_h \
 		  mpemploy_h \
 		  boapaym_h \
-		  pncerr_h
+		  pncerr_h \
+		  zplapi_h
 
 SRVPGMS = ecctmpgen
 
@@ -435,6 +437,13 @@ $(libdir)/qrpglesrc.file/pncerror.mbr $(libdir)/qrpglesrc.file/pncerr_h.mbr ../s
 	#cp pncerr_h.rpgleinc.backup pncerr_h.rpgleinc
 	system "CPYFRMSTMF FROMSTMF('pncerror.rpgle') TOMBR('$(libdir)/qrpglesrc.file/pncerror.mbr') MBROPT(*REPLACE)"
 	system "CPYFRMSTMF FROMSTMF('pncerr_h.rpgleinc') TOMBR('$(libdir)/qrpglesrc.file/pncerr_h.mbr') MBROPT(*REPLACE)"
+
+$(libdir)/qrpglesrc.file/zplapi.mbr $(libdir)/qrpglesrc.file/zplapi_h.mbr ../src/interfaces/zplapi.ts: zplapi.yaml
+	npx ec-generate -f $<
+	cp zplapi.ts ../src/interfaces/zplapi.ts
+	#cp zplapi_h.rpgleinc.backup zplapi_h.rpgleinc
+	system "CPYFRMSTMF FROMSTMF('zplapi.rpgle') TOMBR('$(libdir)/qrpglesrc.file/zplapi.mbr') MBROPT(*REPLACE)"
+	system "CPYFRMSTMF FROMSTMF('zplapi_h.rpgleinc') TOMBR('$(libdir)/qrpglesrc.file/zplapi_h.mbr') MBROPT(*REPLACE)"	
 
 
 .PHONY: library

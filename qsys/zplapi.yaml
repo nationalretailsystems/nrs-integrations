@@ -1,0 +1,15 @@
+---
+name: zplapi
+rpgIncName: zplapi_h
+formats:
+  ZplReq:
+    recordType: request
+    subfields:
+      zpl:
+        rpgName: zpl
+        type: Character
+        length: 1000
+      filename:
+        rpgName: filename
+        type: Character
+        length: 100
