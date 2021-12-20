@@ -71,7 +71,7 @@
          *InLr = *On;
 
       // Assign Data To Variables
-         FullCmd = '';
+         FullCmd = 'zpl.sendZpl';
          MyReqData.filename = 'mypdflabel.pdf';
          myreqdata.zpl = '^xa^cfa,50^fo100,100^fdHello World^fs^xz';
          DataLen = zplreqlen;

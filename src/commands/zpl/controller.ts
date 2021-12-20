@@ -14,16 +14,16 @@ export const postZpl: ECCHandlerFunction = async (reqkey, data, ecc) => {
     // Get parameters from incomming data buffer
     const rpgFields = converter.convertZplReqToObject(data);
     const reqFields = {
-        ...rpgFields,
+        ...rpgFields
     };
 
     // Call web service
     let result;
     let nextReqKey = reqkey;
     try {
-        result = await axiosInstance.post('/8dpmm/labels/4x6/0', { 
-            params: 
-            reqFields.zpl });
+        result = await axiosInstance.post('/8dpmm/labels/4x6/0', {
+            params: reqFields.zpl
+        });
     } catch (err) {
         if (err.response) {
             // If the request was made and the server responded with a status code
@@ -39,12 +39,12 @@ export const postZpl: ECCHandlerFunction = async (reqkey, data, ecc) => {
     }
 
     try {
-        await fs.writeFile('/eradani/tests/'+ reqFields.filename, 'utf-8');
+        await fs.writeFile('/eradani/tests/' + reqFields.filename, 'utf-8');
     } catch (err) {
         return ecc.sendEccResult('ECC9200', err.message, nextReqKey);
     }
-        // Send the result info
-        logger.debug(result); 
-        nextReqKey = await ecc.sendEccResult('ECC0000', 'Success', nextReqKey);
-        return;
+    // Send the result info
+    logger.debug(result);
+    nextReqKey = await ecc.sendEccResult('ECC0000', 'Success', nextReqKey);
+    return;
 };
