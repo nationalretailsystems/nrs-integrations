@@ -7,7 +7,7 @@ const logger = createLogger('commands/zpl');
 const { zpl } = config;
 import * as converter from 'src/interfaces/zplapi';
 
-const axiosInstance = axios.create(zpl.axios);
+const axiosInstance = axios.create(zpl);
 
 export const postZpl: ECCHandlerFunction = async (reqkey, data, ecc) => {
     logger.debug(`Received zpl request`, { reqkey, data });
