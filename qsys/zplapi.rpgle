@@ -26,14 +26,14 @@
      DZplReqToBuf      PI
      DDataStruct                           LikeDS(ZplReq)
      D                                     Const
-     DBuffer                       1100A
+     DBuffer                       3100A
 
       * Initialize to beginning of buffer
        BufPtr = %addr(Buffer);
 
       * Write fields from DS to buffer
-       %subst(CharBuf:1:1000) = DataStruct.zpl;
-       BufPtr += 1000;
+       %subst(CharBuf:1:3000) = DataStruct.zpl;
+       BufPtr += 3000;
        %subst(CharBuf:1:100) = DataStruct.filename;
        BufPtr += 100;
 

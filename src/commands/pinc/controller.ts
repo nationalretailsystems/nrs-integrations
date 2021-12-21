@@ -25,24 +25,23 @@ export const checkin: ECCHandlerFunction = async (_reqkey, datax, _ecc) => {
     // Get parameters from incomming data buffer\
     const timestampHold = DateTime.now();
     const rpgFields = pncchkinapi.convertCheckinDSToObject(datax);
-	const reqFields = {
+    const reqFields = {
         event: 'yardhound.import_events.checkin',
         time: timestampHold.toFormat("yyyy-MM-dd'T'TTZZ"),
         version: '1.3',
         campus: rpgFields.campus,
         data: {
-            asset: 
-            _.mapKeys(
+            asset: _.mapKeys(
                 (key) =>
                     ((
                         {
                             Trailer_SCAC: 'Trailer SCAC',
                             Trailer_number: 'Trailer #'
                         } as any
-                   )[key] || key),
+                    )[key] || key),
                 rpgFields.data.asset
             )
-        } 
+        }
     };
 
     logger.debug('Sending SNS Message', reqFields);
@@ -85,7 +84,7 @@ export const checkin: ECCHandlerFunction = async (_reqkey, datax, _ecc) => {
 // Get SQS Message for Asset Location from Pinc
 export const latlon: ECCHandlerFunction = async (reqkey, _data, ecc) => {
     // Call web service
-    const timestampHold = DateTime.now();    
+    const timestampHold = DateTime.now();
     let nextReqKey = reqkey;
     let result: pnclatlonapi.LLRes;
     try {
@@ -124,7 +123,7 @@ export const latlon: ECCHandlerFunction = async (reqkey, _data, ecc) => {
     };
     return transport
         .execute(insertPincSqsLog, record2)
-        .catch((err) => logger.error('Failed to write Pinc Log Sqs Checkout Record', { record2, err }));    
+        .catch((err) => logger.error('Failed to write Pinc Log Sqs Checkout Record', { record2, err }));
 };
 export const errors: ECCHandlerFunction = async (reqkey, _data, ecc) => {
     // Call web service
@@ -169,24 +168,23 @@ export const checkot: ECCHandlerFunction = async (_reqkey, datax, _ecc) => {
     // Get parameters from incomming data buffer
     const timestampHold = DateTime.now();
     const rpgFields = pncchkotapi.convertCheckotDSToObject(datax);
-	const reqFields = {
+    const reqFields = {
         event: 'yardhound.import_events.checkout',
         time: timestampHold.toFormat("yyyy-MM-dd'T'TTZZ"),
         version: '1.3',
         campus: rpgFields.campus,
         data: {
-            asset: 
-            _.mapKeys(
+            asset: _.mapKeys(
                 (key) =>
                     ((
                         {
                             Trailer_SCAC: 'Trailer SCAC',
                             Trailer_number: 'Trailer #'
                         } as any
-                   )[key] || key),
+                    )[key] || key),
                 rpgFields.data.asset
             )
-        } 
+        }
     };
 
     logger.debug('Sending SNS Message', reqFields);
@@ -231,24 +229,23 @@ export const updat: ECCHandlerFunction = async (_reqkey, datax, _ecc) => {
     // Get parameters from incomming data buffer
     const timestampHold = DateTime.now();
     const rpgFields = pncupdatapi.convertUpdatDSToObject(datax);
-	const reqFields = {
+    const reqFields = {
         event: 'yardhound.import_events.update',
         time: timestampHold.toFormat("yyyy-MM-dd'T'TTZZ"),
         version: '1.3',
         campus: rpgFields.campus,
         data: {
-            asset: 
-            _.mapKeys(
+            asset: _.mapKeys(
                 (key) =>
                     ((
                         {
                             Trailer_SCAC: 'Trailer SCAC',
                             Trailer_number: 'Trailer #'
                         } as any
-                   )[key] || key),
+                    )[key] || key),
                 rpgFields.data.asset
             )
-        } 
+        }
     };
 
     logger.debug('Sending SNS Message', reqFields);

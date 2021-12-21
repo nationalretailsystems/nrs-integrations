@@ -55,6 +55,5 @@ export default async function registerCommands(router: ECCRouter) {
     const zpl = new ECCRouter.Router();
     registerZpl(zpl);
     router.use('zpl', zpl);
-
     return router;
 }

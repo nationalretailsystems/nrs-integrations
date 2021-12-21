@@ -8,7 +8,7 @@ formats:
       zpl:
         rpgName: zpl
         type: Character
-        length: 1000
+        length: 3000
       filename:
         rpgName: filename
         type: Character

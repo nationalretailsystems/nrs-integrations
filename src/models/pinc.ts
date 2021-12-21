@@ -32,7 +32,7 @@ export const insertPincSqsLog = new ec.run.Sql(
     {
         params: [
             { name: 'queueUrl', type: new ec.dataTypes.Char(150) },
-            { name: 'resultCode', type: new ec.dataTypes.Char(7) },            
+            { name: 'resultCode', type: new ec.dataTypes.Char(7) },
             { name: 'result', type: new ec.dataTypes.Char(1000) },
             { name: 'timestamp', type: new ec.dataTypes.Timestamp() }
         ]
