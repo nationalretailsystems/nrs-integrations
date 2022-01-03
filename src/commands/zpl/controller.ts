@@ -7,7 +7,7 @@ const logger = createLogger('commands/zpl');
 const { zpl } = config;
 import * as converter from 'src/interfaces/zplapi';
 
-const axiosInstance = axios.create(zpl);
+const axiosInstance = axios.create(zpl.axios);
 
 export const postZpl: ECCHandlerFunction = async (reqkey, data, ecc) => {
     logger.debug(`Received zpl request`, { reqkey, data });
@@ -20,9 +20,25 @@ export const postZpl: ECCHandlerFunction = async (reqkey, data, ecc) => {
     // Call web service
     let result;
     let nextReqKey = reqkey;
+    // reqFields.zpl = '^XA^CFA,50^FO100,100^FDHello World^FS^XZ';
+    let reqData = reqFields.zpl;
+    
     try {
-        result = await axiosInstance.post('/8dpmm/labels/4x6/0', {
-            params: reqFields.zpl
+        result = await axiosInstance.post('/12dpmm/labels/4x6/0/', 
+           reqData
+        ,  
+            {   headers: 
+                {
+                'Accept':'application/pdf',
+                'Content-Type':'application/x-www-form-urlencoded',
+                'X-Page-Size': 'Letter',
+                'X-Page-Layout': '1x1'
+
+            },
+            responseType: 'arraybuffer',
+            //@ts-ignore
+            responseEncoding: 'binary'
+
         });
     } catch (err) {
         if (err.response) {
@@ -37,14 +53,16 @@ export const postZpl: ECCHandlerFunction = async (reqkey, data, ecc) => {
         // Mainly TCP/IP errors.
         return ecc.sendEccResult('ECC9100', err.message, nextReqKey);
     }
-
+    
     try {
-        await fs.writeFile('/eradani/tests/' + reqFields.filename, 'utf-8');
+        await fs.writeFile('/eradani/tests/' + reqFields.filename, result.data, 'binary');
     } catch (err) {
         return ecc.sendEccResult('ECC9200', err.message, nextReqKey);
     }
     // Send the result info
+    logger.debug(result.status);
     logger.debug(result);
+    logger.debug(result.config.url);
     nextReqKey = await ecc.sendEccResult('ECC0000', 'Success', nextReqKey);
     return;
 };

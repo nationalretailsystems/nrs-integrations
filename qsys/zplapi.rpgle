@@ -26,7 +26,7 @@
      DZplReqToBuf      PI
      DDataStruct                           LikeDS(ZplReq)
      D                                     Const
-     DBuffer                       3100A
+     DBuffer                       3105A
 
       * Initialize to beginning of buffer
        BufPtr = %addr(Buffer);
@@ -36,6 +36,10 @@
        BufPtr += 3000;
        %subst(CharBuf:1:100) = DataStruct.filename;
        BufPtr += 100;
+       %subst(CharBuf:1:2) = DataStruct.dpmm;
+       BufPtr += 2;
+       %subst(CharBuf:1:3) = DataStruct.labelsize;
+       BufPtr += 3;
 
        return ;
 

@@ -13,3 +13,11 @@ formats:
         rpgName: filename
         type: Character
         length: 100
+      dpmm:
+        rpgName: dpmm
+        type: Character
+        length: 2
+      labelsize:
+        rpgName: labelsize
+        type: Character
+        length: 3
