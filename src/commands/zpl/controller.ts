@@ -13,6 +13,7 @@ export const postZpl: ECCHandlerFunction = async (reqkey, data, ecc) => {
     logger.debug(`Received zpl request`, { reqkey, data });
     // Get parameters from incomming data buffer
     const rpgFields = converter.convertZplReqToObject(data);
+    const webcall = '/' + rpgFields.dpmm.trim() + 'dpmm/labels' + '/' + rpgFields.labelsize + '/0/';
     const reqFields = {
         ...rpgFields
     };
@@ -24,14 +25,14 @@ export const postZpl: ECCHandlerFunction = async (reqkey, data, ecc) => {
     let reqData = reqFields.zpl;
     
     try {
-        result = await axiosInstance.post('/12dpmm/labels/4x6/0/', 
+        result = await axiosInstance.post(webcall, 
            reqData
         ,  
             {   headers: 
                 {
                 'Accept':'application/pdf',
                 'Content-Type':'application/x-www-form-urlencoded',
-                'X-Page-Size': 'Letter',
+                //'X-Page-Size': 'Letter',  this would force a 4x6 label to letter size paper
                 'X-Page-Layout': '1x1'
 
             },
