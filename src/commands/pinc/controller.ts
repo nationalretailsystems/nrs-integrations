@@ -92,7 +92,8 @@ export const latlon: ECCHandlerFunction = async (reqkey, _data, ecc) => {
         logger.debug('Receive Message Result', response);
 
         let message = response?.Messages && response.Messages[0];
-
+        // message = undefined here if nothing  received
+        if (message !== undefined) {
         result = JSON.parse(message?.Body || '{}');
         if (message && message.ReceiptHandle && result?.data?.asset) {
             result.data.asset.checked_out ||= '';
@@ -109,21 +110,29 @@ export const latlon: ECCHandlerFunction = async (reqkey, _data, ecc) => {
         }
 
         logger.debug('SQS Message Receive Sent', result);
-        nextReqKey = await ecc.sendEccResult('ECC0000', 'Success', nextReqKey);
-        return await ecc.sendObjectToCaller(result, pnclatlonapi.convertObjectToLLRes, nextReqKey);
+
+
+        const record2 = {
+            targetArn: pinc.sqs.QueueUrl,
+            result: result, // JSON.stringify(result) ?? "No Response",
+            resultCode: nextReqKey,
+            timestamp: timestampHold.toFormat("yyyy-MM-dd'-'HH.mm.ss.SSS'000'")
+        }
+        transport
+            .execute(insertPincSqsLog, record2)
+            .catch((err) => logger.error('Failed to write Pinc Log Sqs Checkout Record', { record2, err }));
+            nextReqKey = await ecc.sendEccResult('ECC0000', 'Success', nextReqKey);
+            return await ecc.sendObjectToCaller(result, pnclatlonapi.convertObjectToLLRes, nextReqKey);                    
+    } else {
+        logger.warn('Received no valid messages', message);
+        return ecc.sendEccResult('ECC2000', 'No Valid Messages to Receive', nextReqKey);
+    }
+
     } catch (err) {
         logger.warn('SQS Message Receive Failed', err);
         return ecc.sendEccResult('ECC9000', err.message, nextReqKey);
     }
-    const record2 = {
-        targetArn: pinc.sqs.QueueUrl,
-        result: result, // JSON.stringify(result) ?? "No Response",
-        resultCode: nextReqKey,
-        timestamp: timestampHold.toFormat("yyyy-MM-dd'-'HH.mm.ss.SSS'000'")
-    };
-    return transport
-        .execute(insertPincSqsLog, record2)
-        .catch((err) => logger.error('Failed to write Pinc Log Sqs Checkout Record', { record2, err }));
+
 };
 export const errors: ECCHandlerFunction = async (reqkey, _data, ecc) => {
     // Call web service
@@ -133,15 +142,19 @@ export const errors: ECCHandlerFunction = async (reqkey, _data, ecc) => {
     try {
         const response = await sqs.receiveMessage(_.omit(['apiVersion'], pinc.sqserr) as any).promise();
         logger.debug('Receive Message Result', response);
-
+        
         let message = response?.Messages && response.Messages[0];
-
+        // message = undefined here if nothing  received
+        if (message !== undefined) {
         result = JSON.parse(message?.Body || '{}');
-        if (message && message.ReceiptHandle && result?.data?.message?.data) {
-            result.data.message.data.asset.checked_out ||= '';
+        //@ts-ignore
+        const dataarray = JSON.parse(result.Message);
+            //let resultdata = JSON.parse(result);
+        if (message && message.ReceiptHandle && dataarray.data) {
+            dataarray.event ||= '';
 
             const deleteParams = {
-                QueueUrl: pinc.sqs.QueueUrl,
+                QueueUrl: pinc.sqserr.QueueUrl,
                 ReceiptHandle: message.ReceiptHandle
             };
             const deleteResult = await sqs.deleteMessage(deleteParams).promise();
@@ -151,13 +164,20 @@ export const errors: ECCHandlerFunction = async (reqkey, _data, ecc) => {
             return ecc.sendEccResult('ECC2000', 'No Valid Messages to Receive', nextReqKey);
         }
         try {
-            await fs.writeFile(reqFields.filename, result.toString(), 'utf-8');
+            let dataout = JSON.stringify(dataarray);
+            await fs.writeFile(reqFields.filename, dataout, 'utf-8');
         } catch (err) {
+            logger.warn('fs.write failed in sqs error receive',err.message);
             return ecc.sendEccResult('ECC9200', err.message, nextReqKey);
         }
         logger.debug('SQS Message Receive Sent', result);
-        nextReqKey = await ecc.sendEccResult('ECC0000', 'Success', nextReqKey);
-        return await ecc.sendObjectToCaller(result, pncerrorapi.convertObjectToLLErrRes, nextReqKey);
+        return  await ecc.sendEccResult('ECC0000', 'Success', nextReqKey);
+        // nextReqKey = await ecc.sendEccResult('ECC0000', 'Success', nextReqKey);
+        // return await ecc.sendObjectToCaller(result, pncerrorapi.convertObjectToLLErrRes, nextReqKey);
+        } else {
+            logger.warn('Received no valid messages', message);
+            return ecc.sendEccResult('ECC2000', 'No Valid Messages to Receive', nextReqKey);
+        }
     } catch (err) {
         logger.warn('SQS Message Receive Failed', err);
         return ecc.sendEccResult('ECC9000', err.message, nextReqKey);
