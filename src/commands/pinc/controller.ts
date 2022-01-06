@@ -160,7 +160,7 @@ export const errors: ECCHandlerFunction = async (reqkey, _data, ecc) => {
             const deleteResult = await sqs.deleteMessage(deleteParams).promise();
             logger.debug('Delete Result', deleteResult);
         } else {
-            logger.warn('Received no valid messages', message);
+            logger.warn('Received no valid messages-1', message);
             return ecc.sendEccResult('ECC2000', 'No Valid Messages to Receive', nextReqKey);
         }
         try {
@@ -175,7 +175,7 @@ export const errors: ECCHandlerFunction = async (reqkey, _data, ecc) => {
         // nextReqKey = await ecc.sendEccResult('ECC0000', 'Success', nextReqKey);
         // return await ecc.sendObjectToCaller(result, pncerrorapi.convertObjectToLLErrRes, nextReqKey);
         } else {
-            logger.warn('Received no valid messages', message);
+            logger.warn('Received no valid messages-2', message);
             return ecc.sendEccResult('ECC2000', 'No Valid Messages to Receive', nextReqKey);
         }
     } catch (err) {
