@@ -26,7 +26,7 @@
      DLLReqToBuf       PI
      DDataStruct                           LikeDS(LLReq)
      D                                     Const
-     DBuffer                         80A
+     DBuffer                         86A
 
       * Initialize to beginning of buffer
        BufPtr = %addr(Buffer);
@@ -34,6 +34,8 @@
       * Write fields from DS to buffer
        %subst(CharBuf:1:80) = DataStruct.comment;
        BufPtr += 80;
+       %subst(CharBuf:1:6) = DataStruct.facility;
+       BufPtr += 6;
 
        return ;
 

@@ -23,23 +23,18 @@ export const postZpl: ECCHandlerFunction = async (reqkey, data, ecc) => {
     let nextReqKey = reqkey;
     // reqFields.zpl = '^XA^CFA,50^FO100,100^FDHello World^FS^XZ';
     let reqData = reqFields.zpl;
-    
-    try {
-        result = await axiosInstance.post(webcall, 
-           reqData
-        ,  
-            {   headers: 
-                {
-                'Accept':'application/pdf',
-                'Content-Type':'application/x-www-form-urlencoded',
-                //'X-Page-Size': 'Letter',  this would force a 4x6 label to letter size paper
-                'X-Page-Layout': '1x1'
 
+    try {
+        result = await axiosInstance.post(webcall, reqData, {
+            headers: {
+                Accept: 'application/pdf',
+                'Content-Type': 'application/x-www-form-urlencoded',
+                // 'X-Page-Size': 'Letter',  this would force a 4x6 label to letter size paper
+                'X-Page-Layout': '1x1'
             },
             responseType: 'arraybuffer',
-            //@ts-ignore
+            // @ts-ignore
             responseEncoding: 'binary'
-
         });
     } catch (err) {
         if (err.response) {
@@ -54,7 +49,7 @@ export const postZpl: ECCHandlerFunction = async (reqkey, data, ecc) => {
         // Mainly TCP/IP errors.
         return ecc.sendEccResult('ECC9100', err.message, nextReqKey);
     }
-    
+
     try {
         await fs.writeFile('/eradani/tests/' + reqFields.filename, result.data, 'binary');
     } catch (err) {

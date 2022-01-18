@@ -10,225 +10,6 @@ import eradaniConnect from '@eradani-inc/eradani-connect';
 const { dataTypes } = eradaniConnect;
 
 /**
- * Data structure
- */
-let AssetDSFields: any = [
-    {
-        name: 'reference_id',
-        type: new dataTypes.Char(25)
-    },
-    {
-        name: 'checked_in',
-        type: new dataTypes.Char(26)
-    },
-    {
-        name: 'checked_out',
-        type: new dataTypes.Char(26)
-    },
-    {
-        name: 'updated_on',
-        type: new dataTypes.Char(26)
-    },
-    {
-        name: 'check_in_agent',
-        type: new dataTypes.Char(25)
-    },
-    {
-        name: 'check_out_agent',
-        type: new dataTypes.Char(25)
-    },
-    {
-        name: 'purpose',
-        type: new dataTypes.Char(25)
-    },
-    {
-        name: 'spot_number',
-        type: new dataTypes.Char(10)
-    },
-    {
-        name: 'last_move_time',
-        type: new dataTypes.Char(26)
-    },
-    {
-        name: 'movement_type',
-        type: new dataTypes.Char(15)
-    },
-    {
-        name: 'load_status',
-        type: new dataTypes.Char(15)
-    },
-    {
-        name: 'trailer_scac',
-        type: new dataTypes.Char(4)
-    },
-    {
-        name: 'trailer_number',
-        type: new dataTypes.Char(25)
-    },
-    {
-        name: 'container_number',
-        type: new dataTypes.Char(25)
-    },
-    {
-        name: 'fleet_code',
-        type: new dataTypes.Char(6)
-    },
-    {
-        name: 'tractor_scac',
-        type: new dataTypes.Char(4)
-    },
-    {
-        name: 'customer_code',
-        type: new dataTypes.Char(4)
-    },
-    {
-        name: 'asset_dimension',
-        type: new dataTypes.Char(15)
-    },
-    {
-        name: 'asset_type',
-        type: new dataTypes.Char(15)
-    },
-    {
-        name: 'site',
-        type: new dataTypes.Char(25)
-    },
-    {
-        name: 'site_code',
-        type: new dataTypes.Char(9)
-    },
-    {
-        name: 'asset_visit_id',
-        type: new dataTypes.Integer(5)
-    },
-    {
-        name: 'is_dock',
-        type: new dataTypes.Bool()
-    },
-    {
-        name: 'Latitude',
-        type: new dataTypes.Char(15)
-    },
-    {
-        name: 'Longitude',
-        type: new dataTypes.Char(25)
-    },
-    {
-        name: 'rfid_tag',
-        type: new dataTypes.Char(24)
-    }
-];
-
-/**
- * Input interface
- */
-export interface AssetDSInput {
-    /**
-     * @size 25 characters
-     */
-    reference_id: string;
-    /**
-     * @size 26 characters
-     */
-    checked_in: string;
-    /**
-     * @size 26 characters
-     */
-    checked_out: string;
-    /**
-     * @size 26 characters
-     */
-    updated_on: string;
-    /**
-     * @size 25 characters
-     */
-    check_in_agent: string;
-    /**
-     * @size 25 characters
-     */
-    check_out_agent: string;
-    /**
-     * @size 25 characters
-     */
-    purpose: string;
-    /**
-     * @size 10 characters
-     */
-    spot_number: string;
-    /**
-     * @size 26 characters
-     */
-    last_move_time: string;
-    /**
-     * @size 15 characters
-     */
-    movement_type: string;
-    /**
-     * @size 15 characters
-     */
-    load_status: string;
-    /**
-     * @size 4 characters
-     */
-    trailer_scac: string;
-    /**
-     * @size 25 characters
-     */
-    trailer_number: string;
-    /**
-     * @size 25 characters
-     */
-    container_number: string;
-    /**
-     * @size 6 characters
-     */
-    fleet_code: string;
-    /**
-     * @size 4 characters
-     */
-    tractor_scac: string;
-    /**
-     * @size 4 characters
-     */
-    customer_code: string;
-    /**
-     * @size 15 characters
-     */
-    asset_dimension: string;
-    /**
-     * @size 15 characters
-     */
-    asset_type: string;
-    /**
-     * @size 25 characters
-     */
-    site: string;
-    /**
-     * @size 9 characters
-     */
-    site_code: string;
-    /**
-     * @size 5 digits
-     */
-    asset_visit_id: number | string;
-    /**
-     */
-    is_dock: boolean;
-    /**
-     * @size 15 characters
-     */
-    Latitude: string;
-    /**
-     * @size 25 characters
-     */
-    Longitude: string;
-    /**
-     * @size 24 characters
-     */
-    rfid_tag: string;
-}
-
-/**
  * Output interface
  */
 export interface AssetDS {
@@ -338,25 +119,6 @@ export interface AssetDS {
 }
 
 /**
- * Data structure
- */
-let DataDSFields: any = [
-    {
-        name: 'asset',
-        type: new dataTypes.DataStructure(AssetDSFields)
-    }
-];
-
-/**
- * Input interface
- */
-export interface DataDSInput {
-    /**
-     */
-    asset: AssetDSInput;
-}
-
-/**
  * Output interface
  */
 export interface DataDS {
@@ -373,6 +135,10 @@ export interface LLReq {
      * @size 80 characters
      */
     comment: string;
+    /**
+     * @size 6 characters
+     */
+    facility: string;
 }
 
 /**
@@ -384,6 +150,8 @@ export function convertLLReqToObject(dataIn: string): LLReq {
 
     dataOut.comment = dataIn.substring(pos, pos + 80).trimEnd();
     pos += 80;
+    dataOut.facility = dataIn.substring(pos, pos + 6).trimEnd();
+    pos += 6;
 
     return dataOut;
 }

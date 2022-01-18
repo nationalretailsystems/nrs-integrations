@@ -178,6 +178,10 @@ formats:
       comment:
         type: Character
         length: 80
+      facility:
+        rpgName: facility
+        type: Character
+        length: 6
   LLRes:
     recordType: response
     subfields:
