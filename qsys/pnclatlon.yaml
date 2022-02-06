@@ -154,7 +154,7 @@ datastructures:
         length: 9
       asset_visit_id:
         rpgName: asset_visit_id
-        type: Integer
+        type: Character
         length: 5
       is_dock:
         rpgName: is_dock
