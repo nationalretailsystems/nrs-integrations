@@ -182,7 +182,7 @@ export const latlon: ECCHandlerFunction = async (reqkey, _data, ecc) => {
             const record2 = {
                 queueUrl: sqsUrl,
                 resultCode: response.$response.httpResponse.statusCode,
-                result: JSON.stringify(dataarray) ?? "No Response", //result, 
+                result: JSON.stringify(dataarray) ?? "No Response", // result, 
                 timestamp: timestampHold.toFormat("yyyy-MM-dd'-'HH.mm.ss.SSS'000'")
             };
             transport
