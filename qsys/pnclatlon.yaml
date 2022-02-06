@@ -51,15 +51,15 @@ datastructures:
       checked_in:
         rpgName: checked_in
         type: Character
-        length: 26
+        length: 29
       checked_out:
         rpgName: checked_out
         type: Character
-        length: 26
+        length: 29
       updated_on:
         rpgName: updated_on
         type: Character
-        length: 26
+        length: 29
       check_in_agent:
         rpgName: check_in_agent
         type: Character
@@ -158,11 +158,12 @@ datastructures:
         length: 5
       is_dock:
         rpgName: is_dock
-        type: Boolean
+        type: Character
+        length: 5
       Latitude:
         rpgName: latitude
         type: Character
-        length: 15
+        length: 25
       Longitude:
         rpgName: longitude
         type: Character
@@ -192,7 +193,7 @@ formats:
       time:
         rpgName: time
         type: Character
-        length: 25
+        length: 29
       version:
         rpgName: version
         type: Character

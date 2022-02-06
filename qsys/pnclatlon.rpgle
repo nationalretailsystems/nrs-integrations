@@ -47,7 +47,7 @@
      PBufToLLRes       B                   Export
 
      DBufToLLRes       PI
-     DBuffer                        581A
+     DBuffer                        608A
      DDataStruct                           LikeDS(LLRes)
 
       * Initialize to begining of buffer
@@ -56,8 +56,8 @@
       * Read fields from buffer into DS
        DataStruct.event = %subst(CharBuf:1:50);
        BufPtr += 50;
-       DataStruct.time = %subst(CharBuf:1:25);
-       BufPtr += 25;
+       DataStruct.time = %subst(CharBuf:1:29);
+       BufPtr += 29;
        DataStruct.version = %subst(CharBuf:1:3);
        BufPtr += 3;
        DataStruct.campus = %subst(CharBuf:1:6);
@@ -68,12 +68,12 @@
        BufPtr += 25;
        DataStruct.data.asset.reference_id = %subst(CharBuf:1:25);
        BufPtr += 25;
-       DataStruct.data.asset.checked_in = %subst(CharBuf:1:26);
-       BufPtr += 26;
-       DataStruct.data.asset.checked_out = %subst(CharBuf:1:26);
-       BufPtr += 26;
-       DataStruct.data.asset.updated_on = %subst(CharBuf:1:26);
-       BufPtr += 26;
+       DataStruct.data.asset.checked_in = %subst(CharBuf:1:29);
+       BufPtr += 29;
+       DataStruct.data.asset.checked_out = %subst(CharBuf:1:29);
+       BufPtr += 29;
+       DataStruct.data.asset.updated_on = %subst(CharBuf:1:29);
+       BufPtr += 29;
        DataStruct.data.asset.check_in_agent = %subst(CharBuf:1:25);
        BufPtr += 25;
        DataStruct.data.asset.check_out_agent = %subst(CharBuf:1:25);
@@ -110,10 +110,10 @@
        BufPtr += 9;
        DataStruct.data.asset.asset_visit_id = %int(%subst(CharBuf:1:6));
        BufPtr += 6;
-       DataStruct.data.asset.is_dock = %subst(CharBuf:1:1);
-       BufPtr += 1;
-       DataStruct.data.asset.latitude = %subst(CharBuf:1:15);
-       BufPtr += 15;
+       DataStruct.data.asset.is_dock = %subst(CharBuf:1:5);
+       BufPtr += 5;
+       DataStruct.data.asset.latitude = %subst(CharBuf:1:25);
+       BufPtr += 25;
        DataStruct.data.asset.longitude = %subst(CharBuf:1:25);
        BufPtr += 25;
        DataStruct.data.asset.rfid_tag = %subst(CharBuf:1:24);
