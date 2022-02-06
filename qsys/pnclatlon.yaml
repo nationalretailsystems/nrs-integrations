@@ -155,7 +155,7 @@ datastructures:
       asset_visit_id:
         rpgName: asset_visit_id
         type: Integer
-        length: 5
+        length: 10
       is_dock:
         rpgName: is_dock
         type: Boolean
