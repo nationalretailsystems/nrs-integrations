@@ -158,8 +158,7 @@ datastructures:
         length: 5
       is_dock:
         rpgName: is_dock
-        type: Character
-        length: 5
+        type: Boolean
       Latitude:
         rpgName: latitude
         type: Character

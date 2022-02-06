@@ -47,7 +47,7 @@
      PBufToLLRes       B                   Export
 
      DBufToLLRes       PI
-     DBuffer                        608A
+     DBuffer                        604A
      DDataStruct                           LikeDS(LLRes)
 
       * Initialize to begining of buffer
@@ -110,8 +110,8 @@
        BufPtr += 9;
        DataStruct.data.asset.asset_visit_id = %int(%subst(CharBuf:1:6));
        BufPtr += 6;
-       DataStruct.data.asset.is_dock = %subst(CharBuf:1:5);
-       BufPtr += 5;
+       DataStruct.data.asset.is_dock = %subst(CharBuf:1:1);
+       BufPtr += 1;
        DataStruct.data.asset.latitude = %subst(CharBuf:1:25);
        BufPtr += 25;
        DataStruct.data.asset.longitude = %subst(CharBuf:1:25);
