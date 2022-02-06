@@ -105,9 +105,10 @@ export interface AssetDS {
      */
     site_code: string,
     /**
-     * @size 5 characters
+     * @size 7 digits
+     * @precision 0 decimals
      */
-    asset_visit_id: string,
+    asset_visit_id: number,
     /**
      */
     is_dock: boolean,
@@ -231,7 +232,7 @@ export function convertObjectToLLRes(dataIn: LLRes): string {
   dataOut += dataIn.data.asset.asset_type.substring(0, 15).padEnd(15);
   dataOut += dataIn.data.asset.site.substring(0, 25).padEnd(25);
   dataOut += dataIn.data.asset.site_code.substring(0, 9).padEnd(9);
-  dataOut += dataIn.data.asset.asset_visit_id.substring(0, 5).padEnd(5);
+  dataOut += dataIn.data.asset.asset_visit_id.toFixed(0).substring(0, 9).padEnd(9);
   dataOut += (dataIn.data.asset.is_dock ? "1" : "0");
   dataOut += dataIn.data.asset.Latitude.substring(0, 15).padEnd(15);
   dataOut += dataIn.data.asset.Longitude.substring(0, 25).padEnd(25);

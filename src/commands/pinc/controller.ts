@@ -58,9 +58,9 @@ const safeValues: any = {
             fleet_code: '',
             tractor_scac: '',
             customer_code: ''
-            }
         }
     }
+};
 
 function getCampus(id: string) {
     return {
@@ -161,7 +161,7 @@ export const latlon: ECCHandlerFunction = async (reqkey, _data, ecc) => {
         if (message !== undefined) {
             result = JSON.parse(message?.Body || '{}');
             // @ts-ignore
-            const dataarray = JSON.parse(result.Message);            
+            const dataarray = JSON.parse(result.Message);
             if (message && message.ReceiptHandle && dataarray.data) {
                 dataarray.event ||= '';
 
@@ -182,13 +182,13 @@ export const latlon: ECCHandlerFunction = async (reqkey, _data, ecc) => {
             const record2 = {
                 queueUrl: sqsUrl,
                 resultCode: response.$response.httpResponse.statusCode,
-                result: JSON.stringify(dataarray) ?? "No Response", // result, 
+                result: JSON.stringify(dataarray) ?? 'No Response', // result,
                 timestamp: timestampHold.toFormat("yyyy-MM-dd'-'HH.mm.ss.SSS'000'")
             };
             transport
                 .execute(insertPincSqsLog, record2)
                 .catch((err) => logger.error('Failed to write Pinc Log Sqs LatLon Record', { record2, err }));
-                let responseData = sanitizeValues(dataarray, safeValues);
+            let responseData = sanitizeValues(dataarray, safeValues);
             nextReqKey = await ecc.sendEccResult('ECC0000', 'Success', nextReqKey);
             return await ecc.sendObjectToCaller(responseData, pnclatlonapi.convertObjectToLLRes, nextReqKey);
         } else {
