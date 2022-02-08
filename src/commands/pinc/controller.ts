@@ -208,7 +208,7 @@ export const errors: ECCHandlerFunction = async (reqkey, _data, ecc) => {
     try {
         const sqsConfig = {
             ...pinc.sqs,
-            QueueUrl: pinc.sqsUrls.errurl
+            QueueUrl: pinc.sqsUrls.errUrl
         };
         // const response = await sqs.receiveMessage(_.omit(['apiVersion'], pinc.sqserr) as any).promise();
         const response = await sqs.receiveMessage(_.omit(['apiVersion'], sqsConfig) as any).promise();
@@ -226,7 +226,7 @@ export const errors: ECCHandlerFunction = async (reqkey, _data, ecc) => {
 
                 const deleteParams = {
                     // QueueUrl: pinc.sqserr.QueueUrl,
-                    QueueUrl: pinc.sqsUrls.errurl,
+                    QueueUrl: pinc.sqsUrls.errUrl,
                     ReceiptHandle: message.ReceiptHandle
                 };
                 const deleteResult = await sqs.deleteMessage(deleteParams).promise();
