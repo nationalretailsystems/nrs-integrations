@@ -21,7 +21,8 @@ MODS = dspjk \
 	   tstmpgeteq \
 	   tstmpgete2 \
 	   tstrmgtmi \
-	   tstzplapi
+	   tstzplapi \
+	   tstboapay
 
 GENMODS = icndbapi \
           lblapi \
@@ -105,7 +106,8 @@ CMDS = dspjk \
 	   tstmpgeteq \
 	   tstmpgete2 \
 	   tstrmgetmi \
-	   tstzplapi
+	   tstzplapi \
+	   tstboapay
 
 INBOUNDPGMS = simplecalc
 
@@ -243,7 +245,7 @@ $(libdir)/tstrmgetmi.module: $(libdir)/qrpglesrc.file/rmgetstm_h.mbr $(libdir)/q
 
 $(libdir)/tstzplapi.module: $(libdir)/qrpglesrc.file/zplapi_h.mbr $(libdir)/qrpglesrc.file/ecnctc.mbr
 
-$(libdir)/tstboapay.module: $(libdir)/qrpglesrc.file/zplapi_h.mbr $(libdir)/qrpglesrc.file/ecnctc.mbr
+$(libdir)/tstboapay.module: $(libdir)/qrpglesrc.file/boapaym_h.mbr $(libdir)/qrpglesrc.file/ecnctc.mbr
 
 $(libdir)/tstzplapi.module: $(libdir)/qrpglesrc.file/zplapi_h.mbr $(libdir)/qrpglesrc.file/ecnctc.mbr
 
