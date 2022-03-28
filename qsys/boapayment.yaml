@@ -300,6 +300,22 @@ datastructures:
   paymentDS:
     qualified: true
     subfields:
+      id:
+        rpgName: payamtid
+        type: Character
+        length: 20
+      payment_reference:
+        rpgName: payamtref
+        type: Character
+        length: 50
+      url:
+        rpgName: payamturl
+        type: Character
+        length: 100
+      status:
+        rpgName: payamtsts
+        type: Character
+        length: 25
       amount:
         rpgName: amount
         type: Character
@@ -308,43 +324,21 @@ datastructures:
         rpgName: cvv_nbr
         type: Character
         length: 4
-      confirmation_number:
-        rpgName: confnbr
-        type: Character
-        length: 30
+      fee:
+        type: DataStruct
+        dsName: feeDS
       currency_code3d:
         rpgName: currcode
         type: Character
         length: 3
-      custom_fields:
-        type: DataStruct
-        dsName: cstmfldsDS        
-      customer:
-        type: DataStruct
-        dsName: customerDS
-      customer_account:
-        rpgName: custacct        
-        type: DataStruct
-        dsName: custacctDS
-      expected_payment_settlement_date:
-        rpgName: settldt
+      confirmation_number:
+        rpgName: confnbr
         type: Character
-        length: 10
-      fee:
-        type: DataStruct
-        dsName: feeDS
-      funding_account:
-        rpgName: fundacct        
-        type: DataStruct
-        dsName: fndacctDS
-      id:
-        rpgName: payamtid
+        length: 30
+      payment_method:
+        rpgName: payamtmth
         type: Character
-        length: 20
-      payment_amount_type:
-        rpgName: payamttyp
-        type: Character
-        length: 25
+        length: 25        
       payment_date:
         rpgName: payamtdt
         type: Character
@@ -353,54 +347,49 @@ datastructures:
         rpgName: payentdt
         type: Character
         length: 10
-      payment_method:
-        rpgName: payamtmth
-        type: Character
-        length: 25
-      payment_network_response:
-        rpgName: paynetrsp        
-        type: DataStruct
-        dsName: netrespDS
-      payment_reference:
-        rpgName: payamtref
-        type: Character
-        length: 50
-      payment_request_date:
-        rpgName: payreqdt
-        type: Character
-        length: 10
       payment_return_date:
         rpgName: payrtndt
         type: Character
         length: 10
-      payment_schedule_type:
-        rpgName: payschtyp
-        type: Character
-        length: 50
       return_code:
         rpgName: payrtncd
         type: Character
         length: 10
-      status:
-        rpgName: payamtsts
+      expected_payment_settlement_date:
+        rpgName: settldt
+        type: Character
+        length: 10
+      payment_request_date:
+        rpgName: payreqdt
+        type: Character
+        length: 10
+      payment_amount_type:
+        rpgName: payamttyp
         type: Character
         length: 25
-      payment_notification_email:
-        rpgName: payamteml
+      payment_schedule_type:
+        rpgName: payschtyp
         type: Character
-        length: 100
-      comments:
-        rpgName: payamtcmt
-        type: Character
-        length: 1000
-      token:
-        rpgName: payamttok
-        type: Character
-        length: 64
-      url:
-        rpgName: payamturl
-        type: Character
-        length: 100
+        length: 50
+      payment_network_response:
+        rpgName: paynetrsp        
+        type: DataStruct
+        dsName: netrespDS
+      custom_fields:
+        type: DataStruct
+        dsName: cstmfldsDS        
+      customer:
+        rpgName: customer
+        type: DataStruct
+        dsName: customerDS
+      funding_account:
+        rpgName: fundacct        
+        type: DataStruct
+        dsName: fndacctDS      
+      customer_account:
+        rpgName: custacct        
+        type: DataStruct
+        dsName: custacctDS
   dataDS:
     qualified: true
     subfields:
@@ -417,41 +406,41 @@ formats:
   payEvent:
     recordType: response
     subfields:
+      id:
+        rpgName: rootid
+        type: Character
+        length: 50
       api_version:
         rpgName: apivers
-        type: Character
-        length: 25
-      channel:
-        rpgName: channel
-        type: Character
-        length: 25
-      client_key:
-        rpgName: clientkey
-        type: Character
-        length: 50
-      data:
-        type: DataStruct
-        dsName: dataDS
-      id:
-        rpgName: eventid
-        type: Character
-        length: 50
-      pending_webhooks:
-        rpgName: pendhooks
-        type: Character
-        length: 9
-      source_id:
-        rpgName: sourceid
-        type: Character
-        length: 25
-      source_type:
-        rpgName: srctype
         type: Character
         length: 25
       timestamp:
         rpgName: eventstamp
         type: Character
         length: 30
+      client_key:
+        rpgName: clientkey
+        type: Character
+        length: 50        
+      channel:
+        rpgName: channel
+        type: Character
+        length: 25
+      data:
+        type: DataStruct
+        dsName: dataDS
+      pending_webhooks:
+        rpgName: pendhooks
+        type: Character
+        length: 9
+      source_type:
+        rpgName: srctype
+        type: Character
+        length: 25
+      source_id:
+        rpgName: sourceid
+        type: Character
+        length: 25
       type:
         rpgName: type
         type: Character
