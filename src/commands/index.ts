@@ -10,6 +10,7 @@ import registerManagerplus from './managerplus';
 import registerRandmcnally from './randmcnally';
 import registerBoa from './boa';
 import registerZpl from './zpl';
+import registerMailgun from './mailgun';
 
 export default async function registerCommands(router: ECCRouter) {
     const jokes = new ECCRouter.Router();
@@ -56,4 +57,9 @@ export default async function registerCommands(router: ECCRouter) {
     registerZpl(zpl);
     router.use('zpl', zpl);
     return router;
+
+    const mailgun = new ECCRouter.Router();
+    registerMailgun(mailgun);
+    router.use('mailgun', mailgun);
+    return router;    
 }
