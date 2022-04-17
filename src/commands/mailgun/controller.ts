@@ -1,31 +1,52 @@
 import { ECCHandlerFunction } from '@eradani-inc/ecc-router/types';
-import axios from 'axios';
+// import axios from 'axios';
 import config from 'config';
 import createLogger from 'src/services/logger';
 const logger = createLogger('commands/mailgun');
-const { mailgun } = config;
+const { mailgun: mailgunConfig } = config;
 import * as converter from 'src/interfaces/mlgnveri';
+import formData from 'form-data';
+import Mailgun from 'mailgun.js';
+import { sanitizeValues } from 'src/services/safe-values';
 
-const axiosInstance = axios.create(mailgun);
 
-export const getMailgun: ECCHandlerFunction = async function (reqkey, data, ecc) {
-    logger.debug(`Received getMailgun request`, { reqkey, data });
+const mailgun = new Mailgun(formData);
+const mg = mailgun.client({ username: 'api', key: mailgunConfig.apikey });
+const safeValues: any = {
+    address: '',
+    is_disposable_address: false,
+    is_role_address: false,
+    reason: {
+        '*10': ''   
+    },
+    result: '',
+    risk: ''
+    }
+
+// const axiosInstance = axios.create(mailgunConfig);
+
+export const verify: ECCHandlerFunction = async function (reqkey, datax, ecc) {
+    // logger.debug(`Received getMailgun request`, { reqkey, data });
     // Get parameters from incomming data buffer
-    const reqFields = converter.convertMgReqDataToObject(data);
+    const reqFields = converter.convertMgReqDataToObject(datax);
+    logger.debug(`Received getMailgun request`, { reqkey, datax });
 
     // Call web service
     let result;
     let nextReqKey = reqkey;
     try {
-        result = await axiosInstance.get('/v4/address/validate', { 
-            params: {
-                address: reqFields.address
-                }, 
-            headers: {
-                Accept: 'application/json',
-                Authorization: mailgun.apikey,
-                                }
-            });
+        
+        result = await mg.validate.get(reqFields.address);
+        // result = await axiosInstance.get('/v4/address/validate', {
+        //     params: {
+        //          ...reqFields
+        //     },
+        //     headers: {
+        //         Accept: 'application/json',
+        //         Authorization: mailgun.apikey
+        //     }
+        // });
+        
     } catch (err) {
         if (err.response) {
             // If the request was made and the server responded with a status code
@@ -40,21 +61,15 @@ export const getMailgun: ECCHandlerFunction = async function (reqkey, data, ecc)
         return ecc.sendEccResult('ECC1000', err.message, nextReqKey);
     }
 
-    if (result.data.type !== 'success') {
-        // If the request did not succeed
-        // Note: if not successful value is a string containing the error
-        return ecc.sendEccResult('ECC1000', result.status + '-' + result.data.value, nextReqKey);
-    }
-
     // Else save the joke then change the value field so it is as expected
     // Note: if successful value is an object containing the joke and other info
-    const { joke } = result.data.value;
-    result.data.httpstatus = result.status;
-    result.data.value = '';
+    
+    // const responseData= result;
 
+    let responseData = sanitizeValues(result, safeValues);
     // Send the result info
     nextReqKey = await ecc.sendEccResult('ECC0000', 'Success', nextReqKey);
 
-    // Send the joke
-    return ecc.sendFieldToCaller(joke, nextReqKey);
+    // Send the results
+    return ecc.sendObjectToCaller(responseData, converter.convertObjectToMgResData,nextReqKey);
 };

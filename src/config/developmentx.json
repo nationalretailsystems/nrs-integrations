@@ -1,0 +1,174 @@
+{
+    "pinc": {
+        "sns": {
+            "accessKeyId": "AKIA3M5QZMVORA6DLMNB",
+            "secretAccessKey": "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",
+            "region": "us-east-1",
+            "apiVersion": "2010-03-31"
+        },
+        "snsArns": {
+            "nbrArn": "arn:aws:sns:us-east-1:783665423709:sns-nrs-outbound-event.fifo",
+            "savArn": "arn:aws:sns:us-east-1:783665423709:sns-nrssav-stg-outbound-event.fifo"
+        },
+        "sqs": {
+            "apiVersion": "2012-11-05",
+            "AttributeNames": ["SentTimestamp"],
+            "MaxNumberOfMessages": 1,
+            "MessageAttributeNames": ["All"],
+            "VisibilityTimeout": 5,
+            "WaitTimeSeconds": 0
+        },
+        "sqsUrls": {
+            "nbrUrl": "https://sqs.us-east-1.amazonaws.com/783665423709/sqs-nrs-inbound-event.fifo",
+            "savUrl": "https://sqs.us-east-1.amazonaws.com/783665423709/sqs-nrssav-stg-inbound-event.fifo",
+            "errUrl": "https://sqs.us-east-1.amazonaws.com/783665423709/sqs-nrs-prd-inbound-error.fifo"
+        }
+    },
+    "boa": {
+        "sqs": {
+            "QueueUrl": "https://sqs.us-east-1.amazonaws.com/783665423709/boa-test-inbound-sqs-events",
+            "apiVersion": "2012-11-05",
+            "AttributeNames": ["SentTimestamp"],
+            "MaxNumberOfMessages": 1,
+            "MessageAttributeNames": ["All"],
+            "VisibilityTimeout": 5,
+            "WaitTimeSeconds": 0
+        }
+    },
+    "native": {
+        "pincLibrary": "PINC_API",
+        "pincDevLibrary": "PINC_DEV"
+    },
+
+    "skybitz": {
+        "axios": {
+            "baseURL": "https://xml.skybitz.com:9443/",
+            "responseType": "xml"
+        },
+        "username": "xML!tg!1970",
+        "password": "FaZQ5tf85Cn8SMn",
+        "version": "2.69"
+    },
+
+    "managerplus": {
+        "axios": {
+            "baseURL": "https://nationalretailsystemssb.managerpluscloud.com/api2",
+            "responseType": "json"
+        },
+        "apikey": "Bearer 50a75892dc3f40d88a65b36169239d81-2"
+    },
+
+    "managerplus_prod": {
+        "axios": {
+            "baseURL": "https://nationalretailsystems.managerpluscloud.com/api2",
+            "responseType": "json"
+        },
+        "apikey": "Bearer 162eec955b6e4f7586340150ce2c7d84-1"
+    },
+
+    "randmcnally": {
+        "axios": {
+            "baseURL": "https://driverconnect.randmcnally.com/DCWS_Cust/api",
+            "responseType": "json"
+        },
+        "accesstoken": "NR03-nr59-2021",
+        "companyCode": "RM-019960",
+        "email": "mike.corbo@nrsonline.com",
+        "password": "testing"
+    },
+
+    "duosecurity": {
+        "integrationKey": "DIDRN9TM5UITSQ1D7XNN",
+        "secretKey": "fOY9VJWiEhhdC3irjyzMOL1IJolYrQKqLqPhvryp",
+        "apiHostname": "api-8b18e4bd.duosecurity.com"
+    },
+
+    "icndb": {
+        "baseURL": "https://api.icndb.com",
+        "responseType": "json"
+    },
+    "zpl": {
+        "axios": {
+            "baseURL": "http://api.labelary.com/v1/printers"
+        }
+    },
+    "weather": {
+        "baseURL": "https://api.openweathermap.org/data/2.5/",
+        "responseType": "json",
+        "apikey": "17af76e4aafa2f06bc4c17f0ea276be4"
+    },
+
+    "vehicle": {
+        "baseURL": "https://vpic.nhtsa.dot.gov/api",
+        "responseType": "json"
+    },
+
+    "traffic": {
+        "baseURL": "https://traffic.ls.hereapi.com",
+        "responseType": "json",
+        "apiKey": "5Fcwm9bdMMnlyiMA7Q0InjTIgvTcIGwLP6lH2TmYJrE"
+    },
+
+    "shipping": {
+        "baseURL": "https://api.shipengine.com/v1",
+        "responseType": "json",
+        "apiKey": "TEST_r/PzCS7lSzZQsDV5Usz11SoByOtIu1b1XGjX+dNn0gA",
+        "shipFrom": {
+            "name": "Test Demo",
+            "company_name": "Demo, Inc",
+            "phone": "123-456-7890",
+            "address_line1": "123 Example St",
+            "city_locality": "Demo",
+            "state_province": "CA",
+            "postal_code": "94707",
+            "country_code": "US",
+            "address_residential_indicator": "no"
+        }
+    },
+
+    "logger": {
+        "maxLoggingLevel": "debug",
+        "disableConsole": false
+    },
+
+    "proxy": {
+        "enabled": false,
+        "protocol": "http",
+        "auth": "",
+        "host": "localhost",
+        "port": 8080,
+        "rejectUnauthorized": true
+    },
+
+    "ecclient": {
+        "appLibrary": "ECNCTTST",
+        "responseLen": 32767,
+        "requestLen": 32767,
+        "debug": true,
+        "pooling": true,
+        "connectionString": "Driver={IBM i Access ODBC Driver};System=192.168.26.101;Uid=ECNCT;Pwd=Mike1234;NAM=1;CCSID=1208",
+        "useIbmiServices": false
+    },
+
+    "ec": {
+        "xml": {
+            "usrprf": "usrprf",
+            "passwd": "passwd"
+        },
+        "xmlOptions": {
+            "host": "localhost",
+            "port": 47700,
+            "path": "/cgi-bin/xmlcgi.pgm",
+            "usePOST": true,
+            "debug": true
+        },
+        "odbcOptions": {
+            "noPool": true,
+            "pool": {
+                "initialSize": 10,
+                "maxSize": 10,
+                "incrementSize": 1
+            }
+        }
+    }
+}

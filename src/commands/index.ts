@@ -56,10 +56,10 @@ export default async function registerCommands(router: ECCRouter) {
     const zpl = new ECCRouter.Router();
     registerZpl(zpl);
     router.use('zpl', zpl);
-    return router;
 
     const mailgun = new ECCRouter.Router();
     registerMailgun(mailgun);
     router.use('mailgun', mailgun);
-    return router;    
+    
+    return router;
 }

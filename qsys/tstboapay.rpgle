@@ -34,6 +34,9 @@ dcl-s DataBuf char(32767);
 //* Local Variables
 dcl-s MsgDta char(132);
 dcl-s subject char(80);
+dcl-s subjectx char(80);
+dcl-s attnamex char(100);
+dcl-s arcnamex char(100);
 dcl-s note1 char(80);
 dcl-s note2 char(80);
 dcl-s note3 char(80);
