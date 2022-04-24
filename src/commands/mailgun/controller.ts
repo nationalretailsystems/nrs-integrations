@@ -9,7 +9,6 @@ import formData from 'form-data';
 import Mailgun from 'mailgun.js';
 import { sanitizeValues } from 'src/services/safe-values';
 
-
 const mailgun = new Mailgun(formData);
 const mg = mailgun.client({ username: 'api', key: mailgunConfig.apikey });
 const safeValues: any = {
@@ -17,11 +16,11 @@ const safeValues: any = {
     is_disposable_address: false,
     is_role_address: false,
     reason: {
-        '*10': ''   
+        '*10': ''
     },
     result: '',
     risk: ''
-    }
+};
 
 // const axiosInstance = axios.create(mailgunConfig);
 
@@ -35,7 +34,6 @@ export const verify: ECCHandlerFunction = async function (reqkey, datax, ecc) {
     let result;
     let nextReqKey = reqkey;
     try {
-        
         result = await mg.validate.get(reqFields.address);
         // result = await axiosInstance.get('/v4/address/validate', {
         //     params: {
@@ -46,7 +44,6 @@ export const verify: ECCHandlerFunction = async function (reqkey, datax, ecc) {
         //         Authorization: mailgun.apikey
         //     }
         // });
-        
     } catch (err) {
         if (err.response) {
             // If the request was made and the server responded with a status code
@@ -63,7 +60,7 @@ export const verify: ECCHandlerFunction = async function (reqkey, datax, ecc) {
 
     // Else save the joke then change the value field so it is as expected
     // Note: if successful value is an object containing the joke and other info
-    
+
     // const responseData= result;
 
     let responseData = sanitizeValues(result, safeValues);
@@ -71,5 +68,5 @@ export const verify: ECCHandlerFunction = async function (reqkey, datax, ecc) {
     nextReqKey = await ecc.sendEccResult('ECC0000', 'Success', nextReqKey);
 
     // Send the results
-    return ecc.sendObjectToCaller(responseData, converter.convertObjectToMgResData,nextReqKey);
+    return ecc.sendObjectToCaller(responseData, converter.convertObjectToMgResData, nextReqKey);
 };
