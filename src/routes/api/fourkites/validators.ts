@@ -22,7 +22,7 @@ export const loadCreation: InputCheckChain[] = [
 ];
 export const stopEtaUpdate: InputCheckChain[] = [
     body('BillOfLading').optional().isString().isLength({max: 20 }),
-    body('BookingNumber').optional().isString().isLength({max: 20 }),
+    body('BookingNumber').optional({nullable:true}).isString().isLength({max: 20 }),
     body('ContainerType').optional({nullable:true}).isString().isLength({max: 10}),
     body('FourKitesLoadId').exists().isInt().isLength({max: 16}),
     body('LoadNumber').exists().isString().isLength({max: 40}),

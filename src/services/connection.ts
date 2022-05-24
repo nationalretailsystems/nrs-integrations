@@ -9,18 +9,6 @@ const transport = new eradaniConnect.transports.Odbc(config.eradaniConnect.odbc,
     logger
 });
 
-export const powerbiTransports = {
-    wolf: new eradaniConnect.transports.Odbc(config.eradaniConnect.odbc, {
-        ...Object.assign({}, config.eradaniConnect.odbcOptions, { noPool: true }),
-        logger
-    }),
-
-    lawson: new eradaniConnect.transports.Odbc(config.eradaniConnect.odbc2, {
-        ...Object.assign({}, config.eradaniConnect.odbcOptions, { noPool: true }),
-        logger
-    })
-};
-
 /* Disabled XML Transport
 const credentials = config.eradaniConnect.credentials;
 const transport = new eradaniConnect.transports.Xml(
