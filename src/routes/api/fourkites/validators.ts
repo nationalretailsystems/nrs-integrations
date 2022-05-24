@@ -21,7 +21,7 @@ export const loadCreation: InputCheckChain[] = [
     body('Timestamp').exists().isISO8601()
 ];
 export const stopEtaUpdate: InputCheckChain[] = [
-    body('BillOfLading').optional().isString().isLength({max: 20 }),
+    body('BillOfLading').optional({nullable:true}).isString().isLength({max: 20 }),
     body('BookingNumber').optional({nullable:true}).isString().isLength({max: 20 }),
     body('ContainerType').optional({nullable:true}).isString().isLength({max: 10}),
     body('FourKitesLoadId').exists().isInt().isLength({max: 16}),
@@ -40,7 +40,7 @@ export const stopEtaUpdate: InputCheckChain[] = [
     body('Tags').exists().isArray({max: 10}), 
     body('Tags.*').isString().isLength({max: 50}),
     body('Timestamp').exists().isISO8601(),
-    body('VesselName').optional().isString().isLength({max: 30}),
+    body('VesselName').optional({nullable:true}).isString().isLength({max: 30}),
     body('VoyageNumber').optional({nullable:true}).isString().isLength({max: 25})
 ];
 export const oceanUpdate: InputCheckChain[] = [
