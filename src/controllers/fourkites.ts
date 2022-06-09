@@ -22,12 +22,14 @@ const logger = createLogger('controllers/fourkites');
 export async function loadCreation(load: FKLOADCREAInput) {
     logger.debug('Calling FKLOADCREA program');
     load.FourKitesLoadId ??= 0;
-    const loadCreResult = (await transport.execute(FKLOADCREAModel, load)) as FKLOADCREAOutput;
-    if (loadCreResult.FourKitesLoadId === 0) {
-        throw new APIError(450, 'Bad Load ID');
-    }
+    // they started sending 0 as a loadid on loads that have errors    
+    // const loadCreResult = (await transport.execute(FKLOADCREAModel, load)) as FKLOADCREAOutput;
 
-    //    return transport.execute(FKLOADCREAModel, load) as Promise<FKLOADCREAOutput>;
+    // if (loadCreResult.FourKitesLoadId === 0) {
+    //     throw new APIError(450, 'Bad Load ID');
+    // }
+
+       return transport.execute(FKLOADCREAModel, load) as Promise<FKLOADCREAOutput>;
 }
 
 export async function stopEtaUpdate(load: FKSTOPETAInput) {
