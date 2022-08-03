@@ -15,7 +15,7 @@
      DErrors                        125A   Dim(4)
      DFourKitesLoadId                16P 0
      DIsSuccess                        N
-     DLoadNumber                     20A
+     DLoadNumber                     40A
      DMessageType                    40A
      DProNumber                      20A
      DRefNumbers                     50A   Dim(10)

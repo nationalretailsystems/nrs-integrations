@@ -38,7 +38,7 @@ pgmmodels:
             type: Boolean
           LoadNumber:
             type: Character
-            length: 20
+            length: 40
           MessageType:
             type: Character
             length: 40
