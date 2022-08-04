@@ -9,6 +9,9 @@
       * Program prototype
       ************************************
      DFKOCEANUPD       PR
+     DBillOfLading                   20A
+     DBookingNumber                  20A
+     DContainerNumber                20A
      DContainerType                   5A
      DFourKitesLoadId                16P 0
      DLoadNumber                     40A
@@ -23,4 +26,5 @@
      DStopName                       30A
      DTags                           50A   Dim(10)
      DTimestamp                        Z
+     DVesselName                     30A
      DVoyageNumber                   25A
