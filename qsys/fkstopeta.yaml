@@ -18,9 +18,12 @@ pgmmodels:
             length: 20
             default: ""
           BookingNumber:
-              type: Character
-              length: 20
-              default: ""
+            type: Character
+            length: 20
+            default: ""
+          ContainerNumber:
+            type: Character
+            length: 20
           ContainerType:
             type: Character
             length: 10
