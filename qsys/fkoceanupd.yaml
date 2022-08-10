@@ -15,7 +15,7 @@ pgmmodels:
         params:
           BillOfLading:
             type: Character
-            length: 20
+            length: 30
             default: ""
           BookingNumber:
             type: Character
@@ -34,7 +34,7 @@ pgmmodels:
             length: 16
           LoadNumber:
             type: Character
-            length: 40
+            length: 50
           Message:
             type: Character
             length: 100

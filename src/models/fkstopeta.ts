@@ -20,7 +20,7 @@ export const FKSTOPETAModel =   new eradaniConnect.run.Pgm("FKSTOPETA",   {
       params: [
       {
       name: "BillOfLading",
-      type: new dataTypes.Char(20),
+      type: new dataTypes.Char(30),
       defaultValue: ""
     },
       {
@@ -30,11 +30,17 @@ export const FKSTOPETAModel =   new eradaniConnect.run.Pgm("FKSTOPETA",   {
     },
       {
       name: "ContainerNumber",
-      type: new dataTypes.Char(20)
+      type: new dataTypes.Char(20),
+      defaultValue: ""
     },
       {
       name: "ContainerType",
       type: new dataTypes.Char(10),
+      defaultValue: ""
+    },
+      {
+      name: "EncryptedAccessToken",
+      type: new dataTypes.Char(125),
       defaultValue: ""
     },
       {
@@ -43,7 +49,7 @@ export const FKSTOPETAModel =   new eradaniConnect.run.Pgm("FKSTOPETA",   {
     },
       {
       name: "LoadNumber",
-      type: new dataTypes.Char(40)
+      type: new dataTypes.Char(50)
     },
       {
       name: "MessageType",
@@ -123,7 +129,7 @@ export const FKSTOPETAModel =   new eradaniConnect.run.Pgm("FKSTOPETA",   {
  */
 export interface FKSTOPETAInput {
     /**
-     * @size 20 characters
+     * @size 30 characters
      * @default ``
      */
     BillOfLading?: string,
@@ -134,20 +140,26 @@ export interface FKSTOPETAInput {
     BookingNumber?: string,
     /**
      * @size 20 characters
+     * @default ``
      */
-    ContainerNumber: string,
+    ContainerNumber?: string,
     /**
      * @size 10 characters
      * @default ``
      */
     ContainerType?: string,
     /**
+     * @size 125 characters
+     * @default ``
+     */
+    EncryptedAccessToken?: string,
+    /**
      * @size 16 digits
      * @precision 0 decimals
      */
     FourKitesLoadId: number | string,
     /**
-     * @size 40 characters
+     * @size 50 characters
      */
     LoadNumber: string,
     /**
@@ -225,7 +237,7 @@ export interface FKSTOPETAInput {
  */
 export interface FKSTOPETAOutput {
     /**
-     * @size 20 characters
+     * @size 30 characters
      * @default ``
      */
     BillOfLading: string,
@@ -236,6 +248,7 @@ export interface FKSTOPETAOutput {
     BookingNumber: string,
     /**
      * @size 20 characters
+     * @default ``
      */
     ContainerNumber: string,
     /**
@@ -244,12 +257,17 @@ export interface FKSTOPETAOutput {
      */
     ContainerType: string,
     /**
+     * @size 125 characters
+     * @default ``
+     */
+    EncryptedAccessToken: string,
+    /**
      * @size 16 digits
      * @precision 0 decimals
      */
     FourKitesLoadId: number,
     /**
-     * @size 40 characters
+     * @size 50 characters
      */
     LoadNumber: string,
     /**

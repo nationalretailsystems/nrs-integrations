@@ -15,7 +15,7 @@ pgmmodels:
         params:
           BillOfLading:
             type: Character
-            length: 20
+            length: 30
             default: ""
           BookingNumber:
             type: Character
@@ -24,16 +24,21 @@ pgmmodels:
           ContainerNumber:
             type: Character
             length: 20
+            default: ""
           ContainerType:
             type: Character
             length: 10
+            default: ""
+          EncryptedAccessToken:
+            type: Character
+            length: 125
             default: ""
           FourKitesLoadId:
             type: Packed
             length: 16
           LoadNumber:
             type: Character
-            length: 40
+            length: 50
           MessageType:
             type: Character
             length: 20
