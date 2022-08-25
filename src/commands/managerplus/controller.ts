@@ -161,8 +161,8 @@ export const getAssetAll: ECCHandlerFunction = async (reqkey, data, ecc) => {
 
     // Send the result info
     try {
-        let responseData = sanitizeValues(result.data, safeValues);
-
+        // let responseData = sanitizeValues(result.data, safeValues);
+        let responseData = result.data;
         logger.debug('ECC0000', 'Success', nextReqKey);
         nextReqKey = await ecc.sendEccResult('ECC0000', 'Success', nextReqKey);
         nextReqKey = await ecc.sendObjectsToCaller(responseData, converter2.convertObjectToAssetAllDS, nextReqKey);
