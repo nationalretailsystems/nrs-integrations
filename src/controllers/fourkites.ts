@@ -22,14 +22,15 @@ const logger = createLogger('controllers/fourkites');
 export async function loadCreation(load: FKLOADCREAInput) {
     logger.debug('Calling FKLOADCREA program');
     load.FourKitesLoadId ??= 0;
-    // they started sending 0 as a loadid on loads that have errors    
-    // const loadCreResult = (await transport.execute(FKLOADCREAModel, load)) as FKLOADCREAOutput;
+    /** They started sending 0 as a loadid on loads that have errors
+     *  const loadCreResult = (await transport.execute(FKLOADCREAModel, load)) as FKLOADCREAOutput;
+     *    TODO: Aaron: Old code delete?
+     * if (loadCreResult.FourKitesLoadId === 0) {
+     *    throw new APIError(450, 'Bad Load ID');
+     * }
+     */
 
-    // if (loadCreResult.FourKitesLoadId === 0) {
-    //     throw new APIError(450, 'Bad Load ID');
-    // }
-
-       return transport.execute(FKLOADCREAModel, load) as Promise<FKLOADCREAOutput>;
+    return transport.execute(FKLOADCREAModel, load) as Promise<FKLOADCREAOutput>;
 }
 
 export async function stopEtaUpdate(load: FKSTOPETAInput) {
@@ -39,7 +40,7 @@ export async function stopEtaUpdate(load: FKSTOPETAInput) {
     if (stopEtaResult.FourKitesLoadId === 0) {
         throw new APIError(450, 'Bad Load ID');
     }
-    //  return transport.execute(FKSTOPETAModel, load) as Promise<FKSTOPETAOutput>;
+    //  Return transport.execute(FKSTOPETAModel, load) as Promise<FKSTOPETAOutput>; TODO: Aaron: Old code delete?
 }
 
 export async function oceanUpdate(load: FKOCEANUPDInput) {
@@ -49,7 +50,7 @@ export async function oceanUpdate(load: FKOCEANUPDInput) {
     if (oceanUpdResult.FourKitesLoadId === 0) {
         throw new APIError(450, 'Bad Load ID');
     }
-    //  return transport.execute(FKOCEANUPDModel, load) as Promise<FKOCEANUPDOutput>;
+    //  Return transport.execute(FKOCEANUPDModel, load) as Promise<FKOCEANUPDOutput>;  TODO: Aaron: Old code delete?
 }
 
 export async function trackingUpdate(load: FKTRACKUPDInput): Promise<FKTRACKUPDOutput> {

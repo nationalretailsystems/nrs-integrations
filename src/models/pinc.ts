@@ -1,7 +1,7 @@
 import eradaniConnect from '@eradani-inc/eradani-connect';
-// XXX import configService from 'config';
+// XXX import config from 'config';
 import { JSONObject } from 'src/types';
-// XXX const config = configService.get().eradaniConnect.native;
+// XXX const configNative = config.get().eradaniConnect.native;
 
 export default new eradaniConnect.run.Sql(
     `select 

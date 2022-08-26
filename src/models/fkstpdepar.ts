@@ -7,8 +7,7 @@ import eradaniConnect from '@eradani-inc/eradani-connect';
 const { dataTypes } = eradaniConnect;
 
 // Manually entered import
-import configService from '../../config';
-const config = configService.get();
+import config from 'config';
 
 /**
  * Program model

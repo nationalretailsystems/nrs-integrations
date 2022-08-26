@@ -4,8 +4,7 @@ codeblocks:
   typescript:
     - ""
     - // Manually entered import
-    - import configService from "../../config";
-    - const config = configService.get();
+    - import config from 'config';
 pgmmodels:
   FKSTPARRIV:
     library: \config.eradaniConnect.native.pgmLib
