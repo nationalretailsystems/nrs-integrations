@@ -55,6 +55,7 @@ formats:
         rpgName: entname
         type: Character
         length: 50
+        default: " "
       assetId:
         rpgName: assetid
         type: Character
@@ -104,6 +105,7 @@ formats:
         rpgName: statusid
         type: Character
         length: 24
+        default: " "
       barcode:
         rpgName: barcode
         type: Character
