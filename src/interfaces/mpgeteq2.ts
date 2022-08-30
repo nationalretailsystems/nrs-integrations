@@ -199,7 +199,7 @@ export function convertObjectToAssetAllDS(dataIn: AssetAllDS): string {
     dataOut += dataIn?.customer?.substring(0, 50)?.padEnd(50) ?? ' '.substring(0, 50).padEnd(50);
     dataOut += dataIn?.customerKey?.toFixed()?.substring(0, 11)?.padEnd(11) ?? '0'.substring(0, 11).padEnd(11);
     dataOut +=
-        dataIn?.purchaseDate !== undefined && dateIn?.purchaseDate !== null
+        dataIn?.purchaseDate !== undefined && dataIn?.purchaseDate !== null
             ? toIbmiDate(dataIn?.purchaseDate)
             : '0001-01-01'.substring(0, 10).padEnd(10);
     dataOut += dataIn?.purchaseCost?.toFixed(2)?.substring(0, 17)?.padEnd(17) ?? '0'.substring(0, 17).padEnd(17);
