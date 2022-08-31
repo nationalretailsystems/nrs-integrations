@@ -19,6 +19,17 @@ const { dataTypes } = eradaniConnect;
 /**
  * Output interface
  */
+export interface PwsDS {
+    /**
+     * @size 50 characters
+     * @default ` `
+     */
+    pws: string
+}
+
+/**
+ * Output interface
+ */
 export interface PwdRequest {
     /**
      * @size 3 digits
@@ -49,7 +60,7 @@ export interface PwdRequest {
      */
     nums: number,
     /**
-     * @size 3 characters
+     * @size 15 characters
      */
     whenUp: string,
     /**
@@ -81,8 +92,8 @@ export function convertPwdRequestToObject(dataIn: string): PwdRequest {
   pos += 15;
   dataOut.nums = Number(dataIn.substring(pos, pos + 4).trimEnd());
   pos += 4;
-  dataOut.whenUp = dataIn.substring(pos, pos + 3).trimEnd();
-  pos += 3;
+  dataOut.whenUp = dataIn.substring(pos, pos + 15).trimEnd();
+  pos += 15;
   dataOut.ups = Number(dataIn.substring(pos, pos + 4).trimEnd());
   pos += 4;
 
@@ -94,9 +105,13 @@ export function convertPwdRequestToObject(dataIn: string): PwdRequest {
  */
 export interface PwdResult {
     /**
-     * @size 20 characters
      */
-    password: string
+    data: Array<PwsDS>,
+    /**
+     * @size 50 characters
+     * @default ` `
+     */
+    error: string
 }
 
 /**
@@ -105,7 +120,10 @@ export interface PwdResult {
 export function convertObjectToPwdResult(dataIn: PwdResult): string {
   let dataOut: string = "";
 
-  dataOut += dataIn?.password?.substring(0, 20)?.padEnd(20) ?? missingInput(`dataIn.password`, "char", dataIn?.password);
+  for (let i: number = 0; i < 10; ++i) {
+  dataOut += dataIn?.data[i]?.pws?.substring(0, 50)?.padEnd(50) ?? " ".substring(0, 50).padEnd(50);
+  }
+  dataOut += dataIn?.error?.substring(0, 50)?.padEnd(50) ?? " ".substring(0, 50).padEnd(50);
 
   return dataOut;
 }

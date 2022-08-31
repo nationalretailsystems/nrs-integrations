@@ -11,6 +11,7 @@ import registerRandmcnally from './randmcnally';
 import registerBoa from './boa';
 import registerZpl from './zpl';
 import registerMailgun from './mailgun';
+import registerMakeme from './mmpwd';
 
 export default async function registerCommands(router: ECCRouter) {
     const jokes = new ECCRouter.Router();
@@ -61,5 +62,8 @@ export default async function registerCommands(router: ECCRouter) {
     registerMailgun(mailgun);
     router.use('mailgun', mailgun);
 
+    const makeme = new ECCRouter.Router();
+    registerMakeme(makeme);
+    router.use('mmpwd', makeme);    
     return router;
 }

@@ -51,7 +51,8 @@ GENMODS = icndbapi \
 		  boapayment \
 		  pncerror \
 		  zplapi  \
-		  mlgnveri
+		  mlgnveri \
+		  makeme
 
 GENHDRS = icndbapi_h \
           lblapi_h \
@@ -77,7 +78,8 @@ GENHDRS = icndbapi_h \
 		  boapaym_h \
 		  pncerr_h \
 		  zplapi_h \
-		  mlgnveri_h
+		  mlgnveri_h \
+		  makeme_h
 
 SRVPGMS = ecctmpgen
 
@@ -468,6 +470,12 @@ $(libdir)/qrpglesrc.file/mlgnveri.mbr $(libdir)/qrpglesrc.file/mlgenveri_h.mbr .
 	#cp mlgnveri_h.rpgleinc.backup mlgnveri_h.rpgleinc
 	system "CPYFRMSTMF FROMSTMF('mlgnveri.rpgle') TOMBR('$(libdir)/qrpglesrc.file/mlgnveri.mbr') MBROPT(*REPLACE)"
 	system "CPYFRMSTMF FROMSTMF('mlgnveri_h.rpgleinc') TOMBR('$(libdir)/qrpglesrc.file/mlgnveri_h.mbr') MBROPT(*REPLACE)"
+
+$(libdir)/qrpglesrc.file/makeme.mbr $(libdir)/qrpglesrc.file/makeme_h.mbr ../src/interfaces/makeme.ts: makeme.yaml
+	npx ec-generate -f $<
+	cp makeme.ts ../src/interfaces/makeme.ts
+	system "CPYFRMSTMF FROMSTMF('makeme.rpgle') TOMBR('$(libdir)/qrpglesrc.file/makeme.mbr') MBROPT(*REPLACE)"
+	system "CPYFRMSTMF FROMSTMF('makeme_h.rpgleinc') TOMBR('$(libdir)/qrpglesrc.file/makeme_h.mbr') MBROPT(*REPLACE)"		
 
 .PHONY: library
 library:

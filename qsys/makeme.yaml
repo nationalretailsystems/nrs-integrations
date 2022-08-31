@@ -1,0 +1,59 @@
+---
+name: makeme
+rpgIncName: makeme_h
+codeblocks:
+  typescript:
+    - import eradaniConnect from "@eradani-inc/eradani-connect";
+    - const { dataTypes } = eradaniConnect;
+datastructures:
+  PwsDS:
+    qualified: true
+    subfields:
+      pws:
+        rpgName: pws
+        type: Character
+        length: 50
+        
+        default: " "
+formats:
+  PwdRequest:
+    recordType: request
+    subfields:
+      wc:
+        type: Integer
+        length: 3
+      pc:
+        type: Integer
+        length: 3
+      sp:
+        type: Character
+        length: 1
+      minCh:
+        type: Integer
+        length: 3
+      maxCh:
+        type: Integer
+        length: 3
+      whenNum:
+        type: Character
+        length: 15
+      nums:
+        type: Integer
+        length: 3
+      whenUp:
+        type: Character
+        length: 15
+      ups:
+        type: Integer
+        length: 3
+  PwdResult:
+    recordType: result
+    subfields:
+      data:
+        type: DataStruct
+        dsName: PwsDS
+        dim: 10
+      error: 
+        type: Character
+        length: 50
+        default: " "
