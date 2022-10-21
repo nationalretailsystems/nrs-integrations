@@ -12,6 +12,8 @@ import registerBoa from './boa';
 import registerZpl from './zpl';
 import registerMailgun from './mailgun';
 import registerMakeme from './mmpwd';
+import registerPaycargo from './paycargo';
+
 
 export default async function registerCommands(router: ECCRouter) {
     const jokes = new ECCRouter.Router();
@@ -64,6 +66,11 @@ export default async function registerCommands(router: ECCRouter) {
 
     const makeme = new ECCRouter.Router();
     registerMakeme(makeme);
-    router.use('mmpwd', makeme);    
+    router.use('mmpwd', makeme); 
+    
+    const paycargo = new ECCRouter.Router();
+    registerPaycargo(paycargo);
+    router.use('paycargo', paycargo);  
+
     return router;
 }

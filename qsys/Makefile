@@ -52,7 +52,8 @@ GENMODS = icndbapi \
 		  pncerror \
 		  zplapi  \
 		  mlgnveri \
-		  makeme
+		  makeme \
+		  pcachrpt
 
 GENHDRS = icndbapi_h \
           lblapi_h \
@@ -79,7 +80,8 @@ GENHDRS = icndbapi_h \
 		  pncerr_h \
 		  zplapi_h \
 		  mlgnveri_h \
-		  makeme_h
+		  makeme_h \
+		  pcachrpt_h
 
 SRVPGMS = ecctmpgen
 
@@ -476,6 +478,12 @@ $(libdir)/qrpglesrc.file/makeme.mbr $(libdir)/qrpglesrc.file/makeme_h.mbr ../src
 	cp makeme.ts ../src/interfaces/makeme.ts
 	system "CPYFRMSTMF FROMSTMF('makeme.rpgle') TOMBR('$(libdir)/qrpglesrc.file/makeme.mbr') MBROPT(*REPLACE)"
 	system "CPYFRMSTMF FROMSTMF('makeme_h.rpgleinc') TOMBR('$(libdir)/qrpglesrc.file/makeme_h.mbr') MBROPT(*REPLACE)"		
+
+$(libdir)/qrpglesrc.file/pcachrpt.mbr $(libdir)/qrpglesrc.file/pcachrpt_h.mbr ../src/interfaces/pcachrpt.ts: pcachrpt.yaml
+	npx ec-generate -f $<
+	cp pcachrpt.ts ../src/interfaces/pcachrpt.ts
+	system "CPYFRMSTMF FROMSTMF('pcachrpt.rpgle') TOMBR('$(libdir)/qrpglesrc.file/pcachrpt.mbr') MBROPT(*REPLACE)"
+	system "CPYFRMSTMF FROMSTMF('pcachrpt_h.rpgleinc') TOMBR('$(libdir)/qrpglesrc.file/pcachrpt_h.mbr') MBROPT(*REPLACE)"	
 
 .PHONY: library
 library:

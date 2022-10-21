@@ -1,0 +1,247 @@
+---
+name: pcachrpt
+rpgIncName: pcachrpt_h
+codeblocks:
+  typescript:
+    - import eradaniConnect from @eradani-inc/eradani-connect;
+    - const { dataTypes } = eradaniConnect;
+datastructures:
+  RecSetDS:
+    qualified: true
+    subfields:
+      account:
+        rpgName: account
+        type: Character
+        length: 10
+      transaction_id:
+        rpgName: transid
+        type: Integer
+        length: 10
+      payor:
+        rpgName: payor
+        type: Character
+        length: 50
+      payee:
+        rpgName: payee
+        type: Character
+        length: 50
+      category:
+        rpgName: category
+        type: Character
+        length: 25
+      transaction_type:
+        rpgName: transtype
+        type: Character
+        length: 25
+      number:
+        rpgName: number
+        type: Character
+        length: 25
+      debitCredit:
+        rpgName: debitcredit
+        type: Character
+        length: 10
+      debitAmount:
+        rpgName: debitamt
+        type: Packed
+        length: 15
+        precision: 5
+      creditAmount:
+        rpgName: creditamt
+        type: Packed
+        length: 15
+        precision: 5
+      payorBatch:
+        rpgName: payorbtch
+        type: Integer
+        length: 10
+      payorDate:
+        rpgName: payordate
+        type: Character
+        length: 24
+      payeeBatch:
+        rpgName: payeebatch
+        type: Integer
+        length: 10
+      payeeDate:
+        rpgName: payeedate
+        type: Character
+        length: 24
+      payorID:
+        rpgName: payorid
+        type: Character
+        length: 10
+      payeeID:
+        rpgName: payeeid
+        type: Character
+        length: 10
+      customer_reference_number:
+        rpgName: custrefnum
+        type: Character
+        length: 50
+      shipper_reference_number:
+        rpgName: shiprefnum
+        type: Character
+        length: 50
+      parent:
+        rpgName: parent
+        type: Character
+        length: 50
+      approvalDate:
+        rpgName: approvaldate
+        type: Character
+        length: 24
+      approvedByUserName:
+        rpgName: appbyuser
+        type: Character
+        length: 50
+      currency:
+        rpgName: currency
+        type: Character
+        length: 3
+      payerId:
+        rpgName: payerid
+        type: Integer
+        length: 10
+      vendorId:
+        rpgName: vendorid
+        type: Integer
+        length: 10
+      payerReferenceNumber:
+        rpgName: payrefnum
+        type: Character
+        length: 10
+      origin:
+        rpgName: origin
+        type: Character
+        length: 50
+      destination:
+        rpgName: destination
+        type: Character
+        length: 50
+      payerInternalNumber:
+        rpgName: payerintnum
+        type: Character
+        length: 50
+      payerFileNumber:
+        rpgName: payerfilenum
+        type: Character
+        length: 50
+      payerVoucherNumber:
+        rpgName: payervouch
+        type: Character
+        length: 50
+      payerProductNumber:
+        rpgName: payerprodnum
+        type: Character
+        length: 50
+      payerInvoiceNumber:
+        rpgName: payerinvnum
+        type: Character
+        length: 50
+      bolLink:
+        rpgName: bollink
+        type: Character
+        length: 50
+  OverallDS:
+    qualified: true
+    subfields:
+      count:
+        rpgName: count
+        type: Integer
+        length: 10
+      debitamount:
+        rpgName: debitamt
+        type: Packed
+        length: 15
+        precision: 5
+      creditamount:
+        rpgName: creditamt
+        type: Packed
+        length: 15
+        precision: 5
+  PayorDS:
+    qualified: true
+    subfields:
+      batch:
+        rpgName: batch
+        type: Integer
+        length: 10
+      amount:
+        rpgName: amount
+        type: Packed
+        length: 15
+        precision: 5
+formats:
+  PCReqRpt:
+    recordType: request
+    subfields:
+      branchClientId:
+        rpgName: brclientid
+        type: Character
+        length: 10
+      startDate:
+        rpgName: startdate
+        type: Character
+        length: 10
+      endDate:
+        rpgName: enddate
+        type: Character
+        length: 10
+      client_id:
+        rpgName: clientid
+        type: Character
+        length: 10
+      report_action_name:
+        rpgName: rptactname
+        type: Character
+        length: 25
+      type:
+        rpgName: type
+        type: Character
+        length: 20
+      accountName:
+        rpgName: acctname
+        type: Character
+        length: 10
+  PCRcvRpt:
+    recordType: response
+    subfields:
+      branchClientId:
+        rpgName: brnchclntid
+        type: Character
+        length: 10
+      startDate:
+        rpgName: startdate
+        type: Character
+        length: 10
+      endDate:
+        rpgName: enddate
+        type: Character
+        length: 10
+      client_id:
+        rpgName: clientid
+        type: Character
+        length: 10
+      report_action_name:
+        rpgName: rptactname
+        type: Character
+        length: 25
+      type:
+        rpgName: type
+        type: Character
+        length: 25
+      accountName:
+        rpgName: acctname
+        type: Character
+        length: 50
+      recordset:
+        type: DataStruct
+        dsName: RecSetDS
+        dim: 2
+      overall:
+        type: DataStruct
+        dsName: OverallDS
+      payor:
+        type: DataStruct
+        dsName: PayorDS
