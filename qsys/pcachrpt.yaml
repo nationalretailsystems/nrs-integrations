@@ -6,6 +6,37 @@ codeblocks:
     - import eradaniConnect from @eradani-inc/eradani-connect;
     - const { dataTypes } = eradaniConnect;
 datastructures:
+  ParmsDS:
+    qualified: true
+    subfields:
+      branchClientId:
+        rpgName: brnchclntid
+        type: Character
+        length: 10
+      startDate:
+        rpgName: startdate
+        type: Character
+        length: 10
+      endDate:
+        rpgName: enddate
+        type: Character
+        length: 10
+      client_id:
+        rpgName: clientid
+        type: Character
+        length: 10
+      report_action_name:
+        rpgName: rptactname
+        type: Character
+        length: 25
+      type:
+        rpgName: type
+        type: Character
+        length: 25
+      accountName:
+        rpgName: acctname
+        type: Character
+        length: 50
   RecSetDS:
     qualified: true
     subfields:
@@ -172,6 +203,19 @@ datastructures:
         type: Packed
         length: 15
         precision: 5
+  DataDS:
+    qualified: true
+    subfields:
+      recordset:
+        type: DataStruct
+        dsName: RecSetDS
+        dim: 100
+      overall:
+        type: DataStruct
+        dsName: OverallDS
+      payor:
+        type: DataStruct
+        dsName: PayorDS
 formats:
   PCReqRpt:
     recordType: request
@@ -207,41 +251,9 @@ formats:
   PCRcvRpt:
     recordType: response
     subfields:
-      branchClientId:
-        rpgName: brnchclntid
-        type: Character
-        length: 10
-      startDate:
-        rpgName: startdate
-        type: Character
-        length: 10
-      endDate:
-        rpgName: enddate
-        type: Character
-        length: 10
-      client_id:
-        rpgName: clientid
-        type: Character
-        length: 10
-      report_action_name:
-        rpgName: rptactname
-        type: Character
-        length: 25
-      type:
-        rpgName: type
-        type: Character
-        length: 25
-      accountName:
-        rpgName: acctname
-        type: Character
-        length: 50
-      recordset:
+      params:
         type: DataStruct
-        dsName: RecSetDS
-        dim: 2
-      overall:
+        dsName: ParmDS
+      datas:
         type: DataStruct
-        dsName: OverallDS
-      payor:
-        type: DataStruct
-        dsName: PayorDS
+        dsName: DataDS

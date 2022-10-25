@@ -13,8 +13,42 @@ const {
   toIbmiTimestamp
 } = ibmiConversions;
 
-import eradaniConnect from "@eradani-inc/eradani-connect";
+import eradaniConnect from @eradani-inc/eradani-connect;
 const { dataTypes } = eradaniConnect;
+
+/**
+ * Output interface
+ */
+export interface ParmsDS {
+    /**
+     * @size 10 characters
+     */
+    branchClientId: string,
+    /**
+     * @size 10 characters
+     */
+    startDate: string,
+    /**
+     * @size 10 characters
+     */
+    endDate: string,
+    /**
+     * @size 10 characters
+     */
+    client_id: string,
+    /**
+     * @size 25 characters
+     */
+    report_action_name: string,
+    /**
+     * @size 25 characters
+     */
+    type: string,
+    /**
+     * @size 50 characters
+     */
+    accountName: string
+}
 
 /**
  * Output interface
@@ -194,6 +228,21 @@ export interface PayorDS {
 /**
  * Output interface
  */
+export interface DataDS {
+    /**
+     */
+    recordset: Array<RecSetDS>,
+    /**
+     */
+    overall: OverallDS,
+    /**
+     */
+    payor: PayorDS
+}
+
+/**
+ * Output interface
+ */
 export interface PCReqRpt {
     /**
      * @size 10 characters
@@ -257,42 +306,11 @@ export function convertPCReqRptToObject(dataIn: string): PCReqRpt {
  */
 export interface PCRcvRpt {
     /**
-     * @size 10 characters
      */
-    branchClientId: string,
-    /**
-     * @size 10 characters
-     */
-    startDate: string,
-    /**
-     * @size 10 characters
-     */
-    endDate: string,
-    /**
-     * @size 10 characters
-     */
-    client_id: string,
-    /**
-     * @size 25 characters
-     */
-    report_action_name: string,
-    /**
-     * @size 25 characters
-     */
-    type: string,
-    /**
-     * @size 50 characters
-     */
-    accountName: string,
+    params: ParmDS,
     /**
      */
-    recordset: Array<RecSetDS>,
-    /**
-     */
-    overall: OverallDS,
-    /**
-     */
-    payor: PayorDS
+    datas: DataDS
 }
 
 /**
@@ -301,53 +319,46 @@ export interface PCRcvRpt {
 export function convertObjectToPCRcvRpt(dataIn: PCRcvRpt): string {
   let dataOut: string = "";
 
-  dataOut += dataIn?.branchClientId?.substring(0, 10)?.padEnd(10) ?? missingInput(`dataIn.branchClientId`, "char", dataIn?.branchClientId);
-  dataOut += dataIn?.startDate?.substring(0, 10)?.padEnd(10) ?? missingInput(`dataIn.startDate`, "char", dataIn?.startDate);
-  dataOut += dataIn?.endDate?.substring(0, 10)?.padEnd(10) ?? missingInput(`dataIn.endDate`, "char", dataIn?.endDate);
-  dataOut += dataIn?.client_id?.substring(0, 10)?.padEnd(10) ?? missingInput(`dataIn.client_id`, "char", dataIn?.client_id);
-  dataOut += dataIn?.report_action_name?.substring(0, 25)?.padEnd(25) ?? missingInput(`dataIn.report_action_name`, "char", dataIn?.report_action_name);
-  dataOut += dataIn?.type?.substring(0, 25)?.padEnd(25) ?? missingInput(`dataIn.type`, "char", dataIn?.type);
-  dataOut += dataIn?.accountName?.substring(0, 50)?.padEnd(50) ?? missingInput(`dataIn.accountName`, "char", dataIn?.accountName);
-  for (let i: number = 0; i < 2; ++i) {
-  dataOut += dataIn?.recordset[i]?.account?.substring(0, 10)?.padEnd(10) ?? missingInput(`dataIn.recordset[${i}].account`, "char", dataIn?.recordset[i]?.account);
-  dataOut += dataIn?.recordset[i]?.transaction_id?.toFixed()?.substring(0, 11)?.padEnd(11) ?? missingInput(`dataIn.recordset[${i}].transaction_id`, "integer", dataIn?.recordset[i]?.transaction_id);
-  dataOut += dataIn?.recordset[i]?.payor?.substring(0, 50)?.padEnd(50) ?? missingInput(`dataIn.recordset[${i}].payor`, "char", dataIn?.recordset[i]?.payor);
-  dataOut += dataIn?.recordset[i]?.payee?.substring(0, 50)?.padEnd(50) ?? missingInput(`dataIn.recordset[${i}].payee`, "char", dataIn?.recordset[i]?.payee);
-  dataOut += dataIn?.recordset[i]?.category?.substring(0, 25)?.padEnd(25) ?? missingInput(`dataIn.recordset[${i}].category`, "char", dataIn?.recordset[i]?.category);
-  dataOut += dataIn?.recordset[i]?.transaction_type?.substring(0, 25)?.padEnd(25) ?? missingInput(`dataIn.recordset[${i}].transaction_type`, "char", dataIn?.recordset[i]?.transaction_type);
-  dataOut += dataIn?.recordset[i]?.number?.substring(0, 25)?.padEnd(25) ?? missingInput(`dataIn.recordset[${i}].number`, "char", dataIn?.recordset[i]?.number);
-  dataOut += dataIn?.recordset[i]?.debitCredit?.substring(0, 10)?.padEnd(10) ?? missingInput(`dataIn.recordset[${i}].debitCredit`, "char", dataIn?.recordset[i]?.debitCredit);
-  dataOut += dataIn?.recordset[i]?.debitAmount?.toFixed(5)?.substring(0, 17)?.padEnd(17) ?? missingInput(`dataIn.recordset[${i}].debitAmount`, "packed", dataIn?.recordset[i]?.debitAmount);
-  dataOut += dataIn?.recordset[i]?.creditAmount?.toFixed(5)?.substring(0, 17)?.padEnd(17) ?? missingInput(`dataIn.recordset[${i}].creditAmount`, "packed", dataIn?.recordset[i]?.creditAmount);
-  dataOut += dataIn?.recordset[i]?.payorBatch?.toFixed()?.substring(0, 11)?.padEnd(11) ?? missingInput(`dataIn.recordset[${i}].payorBatch`, "integer", dataIn?.recordset[i]?.payorBatch);
-  dataOut += dataIn?.recordset[i]?.payorDate?.substring(0, 24)?.padEnd(24) ?? missingInput(`dataIn.recordset[${i}].payorDate`, "char", dataIn?.recordset[i]?.payorDate);
-  dataOut += dataIn?.recordset[i]?.payeeBatch?.toFixed()?.substring(0, 11)?.padEnd(11) ?? missingInput(`dataIn.recordset[${i}].payeeBatch`, "integer", dataIn?.recordset[i]?.payeeBatch);
-  dataOut += dataIn?.recordset[i]?.payeeDate?.substring(0, 24)?.padEnd(24) ?? missingInput(`dataIn.recordset[${i}].payeeDate`, "char", dataIn?.recordset[i]?.payeeDate);
-  dataOut += dataIn?.recordset[i]?.payorID?.substring(0, 10)?.padEnd(10) ?? missingInput(`dataIn.recordset[${i}].payorID`, "char", dataIn?.recordset[i]?.payorID);
-  dataOut += dataIn?.recordset[i]?.payeeID?.substring(0, 10)?.padEnd(10) ?? missingInput(`dataIn.recordset[${i}].payeeID`, "char", dataIn?.recordset[i]?.payeeID);
-  dataOut += dataIn?.recordset[i]?.customer_reference_number?.substring(0, 50)?.padEnd(50) ?? missingInput(`dataIn.recordset[${i}].customer_reference_number`, "char", dataIn?.recordset[i]?.customer_reference_number);
-  dataOut += dataIn?.recordset[i]?.shipper_reference_number?.substring(0, 50)?.padEnd(50) ?? missingInput(`dataIn.recordset[${i}].shipper_reference_number`, "char", dataIn?.recordset[i]?.shipper_reference_number);
-  dataOut += dataIn?.recordset[i]?.parent?.substring(0, 50)?.padEnd(50) ?? missingInput(`dataIn.recordset[${i}].parent`, "char", dataIn?.recordset[i]?.parent);
-  dataOut += dataIn?.recordset[i]?.approvalDate?.substring(0, 24)?.padEnd(24) ?? missingInput(`dataIn.recordset[${i}].approvalDate`, "char", dataIn?.recordset[i]?.approvalDate);
-  dataOut += dataIn?.recordset[i]?.approvedByUserName?.substring(0, 50)?.padEnd(50) ?? missingInput(`dataIn.recordset[${i}].approvedByUserName`, "char", dataIn?.recordset[i]?.approvedByUserName);
-  dataOut += dataIn?.recordset[i]?.currency?.substring(0, 3)?.padEnd(3) ?? missingInput(`dataIn.recordset[${i}].currency`, "char", dataIn?.recordset[i]?.currency);
-  dataOut += dataIn?.recordset[i]?.payerId?.toFixed()?.substring(0, 11)?.padEnd(11) ?? missingInput(`dataIn.recordset[${i}].payerId`, "integer", dataIn?.recordset[i]?.payerId);
-  dataOut += dataIn?.recordset[i]?.vendorId?.toFixed()?.substring(0, 11)?.padEnd(11) ?? missingInput(`dataIn.recordset[${i}].vendorId`, "integer", dataIn?.recordset[i]?.vendorId);
-  dataOut += dataIn?.recordset[i]?.payerReferenceNumber?.substring(0, 10)?.padEnd(10) ?? missingInput(`dataIn.recordset[${i}].payerReferenceNumber`, "char", dataIn?.recordset[i]?.payerReferenceNumber);
-  dataOut += dataIn?.recordset[i]?.origin?.substring(0, 50)?.padEnd(50) ?? missingInput(`dataIn.recordset[${i}].origin`, "char", dataIn?.recordset[i]?.origin);
-  dataOut += dataIn?.recordset[i]?.destination?.substring(0, 50)?.padEnd(50) ?? missingInput(`dataIn.recordset[${i}].destination`, "char", dataIn?.recordset[i]?.destination);
-  dataOut += dataIn?.recordset[i]?.payerInternalNumber?.substring(0, 50)?.padEnd(50) ?? missingInput(`dataIn.recordset[${i}].payerInternalNumber`, "char", dataIn?.recordset[i]?.payerInternalNumber);
-  dataOut += dataIn?.recordset[i]?.payerFileNumber?.substring(0, 50)?.padEnd(50) ?? missingInput(`dataIn.recordset[${i}].payerFileNumber`, "char", dataIn?.recordset[i]?.payerFileNumber);
-  dataOut += dataIn?.recordset[i]?.payerVoucherNumber?.substring(0, 50)?.padEnd(50) ?? missingInput(`dataIn.recordset[${i}].payerVoucherNumber`, "char", dataIn?.recordset[i]?.payerVoucherNumber);
-  dataOut += dataIn?.recordset[i]?.payerProductNumber?.substring(0, 50)?.padEnd(50) ?? missingInput(`dataIn.recordset[${i}].payerProductNumber`, "char", dataIn?.recordset[i]?.payerProductNumber);
-  dataOut += dataIn?.recordset[i]?.payerInvoiceNumber?.substring(0, 50)?.padEnd(50) ?? missingInput(`dataIn.recordset[${i}].payerInvoiceNumber`, "char", dataIn?.recordset[i]?.payerInvoiceNumber);
-  dataOut += dataIn?.recordset[i]?.bolLink?.substring(0, 50)?.padEnd(50) ?? missingInput(`dataIn.recordset[${i}].bolLink`, "char", dataIn?.recordset[i]?.bolLink);
+  for (let j: number = 0; j < 100; ++j) {
+  dataOut += dataIn?.datas?.recordset[j]?.account?.substring(0, 10)?.padEnd(10) ?? missingInput(`dataIn.datas.recordset[${j}].account`, "char", dataIn?.datas?.recordset[j]?.account);
+  dataOut += dataIn?.datas?.recordset[j]?.transaction_id?.toFixed()?.substring(0, 11)?.padEnd(11) ?? missingInput(`dataIn.datas.recordset[${j}].transaction_id`, "integer", dataIn?.datas?.recordset[j]?.transaction_id);
+  dataOut += dataIn?.datas?.recordset[j]?.payor?.substring(0, 50)?.padEnd(50) ?? missingInput(`dataIn.datas.recordset[${j}].payor`, "char", dataIn?.datas?.recordset[j]?.payor);
+  dataOut += dataIn?.datas?.recordset[j]?.payee?.substring(0, 50)?.padEnd(50) ?? missingInput(`dataIn.datas.recordset[${j}].payee`, "char", dataIn?.datas?.recordset[j]?.payee);
+  dataOut += dataIn?.datas?.recordset[j]?.category?.substring(0, 25)?.padEnd(25) ?? missingInput(`dataIn.datas.recordset[${j}].category`, "char", dataIn?.datas?.recordset[j]?.category);
+  dataOut += dataIn?.datas?.recordset[j]?.transaction_type?.substring(0, 25)?.padEnd(25) ?? missingInput(`dataIn.datas.recordset[${j}].transaction_type`, "char", dataIn?.datas?.recordset[j]?.transaction_type);
+  dataOut += dataIn?.datas?.recordset[j]?.number?.substring(0, 25)?.padEnd(25) ?? missingInput(`dataIn.datas.recordset[${j}].number`, "char", dataIn?.datas?.recordset[j]?.number);
+  dataOut += dataIn?.datas?.recordset[j]?.debitCredit?.substring(0, 10)?.padEnd(10) ?? missingInput(`dataIn.datas.recordset[${j}].debitCredit`, "char", dataIn?.datas?.recordset[j]?.debitCredit);
+  dataOut += dataIn?.datas?.recordset[j]?.debitAmount?.toFixed(5)?.substring(0, 17)?.padEnd(17) ?? missingInput(`dataIn.datas.recordset[${j}].debitAmount`, "packed", dataIn?.datas?.recordset[j]?.debitAmount);
+  dataOut += dataIn?.datas?.recordset[j]?.creditAmount?.toFixed(5)?.substring(0, 17)?.padEnd(17) ?? missingInput(`dataIn.datas.recordset[${j}].creditAmount`, "packed", dataIn?.datas?.recordset[j]?.creditAmount);
+  dataOut += dataIn?.datas?.recordset[j]?.payorBatch?.toFixed()?.substring(0, 11)?.padEnd(11) ?? missingInput(`dataIn.datas.recordset[${j}].payorBatch`, "integer", dataIn?.datas?.recordset[j]?.payorBatch);
+  dataOut += dataIn?.datas?.recordset[j]?.payorDate?.substring(0, 24)?.padEnd(24) ?? missingInput(`dataIn.datas.recordset[${j}].payorDate`, "char", dataIn?.datas?.recordset[j]?.payorDate);
+  dataOut += dataIn?.datas?.recordset[j]?.payeeBatch?.toFixed()?.substring(0, 11)?.padEnd(11) ?? missingInput(`dataIn.datas.recordset[${j}].payeeBatch`, "integer", dataIn?.datas?.recordset[j]?.payeeBatch);
+  dataOut += dataIn?.datas?.recordset[j]?.payeeDate?.substring(0, 24)?.padEnd(24) ?? missingInput(`dataIn.datas.recordset[${j}].payeeDate`, "char", dataIn?.datas?.recordset[j]?.payeeDate);
+  dataOut += dataIn?.datas?.recordset[j]?.payorID?.substring(0, 10)?.padEnd(10) ?? missingInput(`dataIn.datas.recordset[${j}].payorID`, "char", dataIn?.datas?.recordset[j]?.payorID);
+  dataOut += dataIn?.datas?.recordset[j]?.payeeID?.substring(0, 10)?.padEnd(10) ?? missingInput(`dataIn.datas.recordset[${j}].payeeID`, "char", dataIn?.datas?.recordset[j]?.payeeID);
+  dataOut += dataIn?.datas?.recordset[j]?.customer_reference_number?.substring(0, 50)?.padEnd(50) ?? missingInput(`dataIn.datas.recordset[${j}].customer_reference_number`, "char", dataIn?.datas?.recordset[j]?.customer_reference_number);
+  dataOut += dataIn?.datas?.recordset[j]?.shipper_reference_number?.substring(0, 50)?.padEnd(50) ?? missingInput(`dataIn.datas.recordset[${j}].shipper_reference_number`, "char", dataIn?.datas?.recordset[j]?.shipper_reference_number);
+  dataOut += dataIn?.datas?.recordset[j]?.parent?.substring(0, 50)?.padEnd(50) ?? missingInput(`dataIn.datas.recordset[${j}].parent`, "char", dataIn?.datas?.recordset[j]?.parent);
+  dataOut += dataIn?.datas?.recordset[j]?.approvalDate?.substring(0, 24)?.padEnd(24) ?? missingInput(`dataIn.datas.recordset[${j}].approvalDate`, "char", dataIn?.datas?.recordset[j]?.approvalDate);
+  dataOut += dataIn?.datas?.recordset[j]?.approvedByUserName?.substring(0, 50)?.padEnd(50) ?? missingInput(`dataIn.datas.recordset[${j}].approvedByUserName`, "char", dataIn?.datas?.recordset[j]?.approvedByUserName);
+  dataOut += dataIn?.datas?.recordset[j]?.currency?.substring(0, 3)?.padEnd(3) ?? missingInput(`dataIn.datas.recordset[${j}].currency`, "char", dataIn?.datas?.recordset[j]?.currency);
+  dataOut += dataIn?.datas?.recordset[j]?.payerId?.toFixed()?.substring(0, 11)?.padEnd(11) ?? missingInput(`dataIn.datas.recordset[${j}].payerId`, "integer", dataIn?.datas?.recordset[j]?.payerId);
+  dataOut += dataIn?.datas?.recordset[j]?.vendorId?.toFixed()?.substring(0, 11)?.padEnd(11) ?? missingInput(`dataIn.datas.recordset[${j}].vendorId`, "integer", dataIn?.datas?.recordset[j]?.vendorId);
+  dataOut += dataIn?.datas?.recordset[j]?.payerReferenceNumber?.substring(0, 10)?.padEnd(10) ?? missingInput(`dataIn.datas.recordset[${j}].payerReferenceNumber`, "char", dataIn?.datas?.recordset[j]?.payerReferenceNumber);
+  dataOut += dataIn?.datas?.recordset[j]?.origin?.substring(0, 50)?.padEnd(50) ?? missingInput(`dataIn.datas.recordset[${j}].origin`, "char", dataIn?.datas?.recordset[j]?.origin);
+  dataOut += dataIn?.datas?.recordset[j]?.destination?.substring(0, 50)?.padEnd(50) ?? missingInput(`dataIn.datas.recordset[${j}].destination`, "char", dataIn?.datas?.recordset[j]?.destination);
+  dataOut += dataIn?.datas?.recordset[j]?.payerInternalNumber?.substring(0, 50)?.padEnd(50) ?? missingInput(`dataIn.datas.recordset[${j}].payerInternalNumber`, "char", dataIn?.datas?.recordset[j]?.payerInternalNumber);
+  dataOut += dataIn?.datas?.recordset[j]?.payerFileNumber?.substring(0, 50)?.padEnd(50) ?? missingInput(`dataIn.datas.recordset[${j}].payerFileNumber`, "char", dataIn?.datas?.recordset[j]?.payerFileNumber);
+  dataOut += dataIn?.datas?.recordset[j]?.payerVoucherNumber?.substring(0, 50)?.padEnd(50) ?? missingInput(`dataIn.datas.recordset[${j}].payerVoucherNumber`, "char", dataIn?.datas?.recordset[j]?.payerVoucherNumber);
+  dataOut += dataIn?.datas?.recordset[j]?.payerProductNumber?.substring(0, 50)?.padEnd(50) ?? missingInput(`dataIn.datas.recordset[${j}].payerProductNumber`, "char", dataIn?.datas?.recordset[j]?.payerProductNumber);
+  dataOut += dataIn?.datas?.recordset[j]?.payerInvoiceNumber?.substring(0, 50)?.padEnd(50) ?? missingInput(`dataIn.datas.recordset[${j}].payerInvoiceNumber`, "char", dataIn?.datas?.recordset[j]?.payerInvoiceNumber);
+  dataOut += dataIn?.datas?.recordset[j]?.bolLink?.substring(0, 50)?.padEnd(50) ?? missingInput(`dataIn.datas.recordset[${j}].bolLink`, "char", dataIn?.datas?.recordset[j]?.bolLink);
   }
-  dataOut += dataIn?.overall?.count?.toFixed()?.substring(0, 11)?.padEnd(11) ?? missingInput(`dataIn.overall.count`, "integer", dataIn?.overall?.count);
-  dataOut += dataIn?.overall?.debitamount?.toFixed(5)?.substring(0, 17)?.padEnd(17) ?? missingInput(`dataIn.overall.debitamount`, "packed", dataIn?.overall?.debitamount);
-  dataOut += dataIn?.overall?.creditamount?.toFixed(5)?.substring(0, 17)?.padEnd(17) ?? missingInput(`dataIn.overall.creditamount`, "packed", dataIn?.overall?.creditamount);
-  dataOut += dataIn?.payor?.batch?.toFixed()?.substring(0, 11)?.padEnd(11) ?? missingInput(`dataIn.payor.batch`, "integer", dataIn?.payor?.batch);
-  dataOut += dataIn?.payor?.amount?.toFixed(5)?.substring(0, 17)?.padEnd(17) ?? missingInput(`dataIn.payor.amount`, "packed", dataIn?.payor?.amount);
+  dataOut += dataIn?.datas?.overall?.count?.toFixed()?.substring(0, 11)?.padEnd(11) ?? missingInput(`dataIn.datas.overall.count`, "integer", dataIn?.datas?.overall?.count);
+  dataOut += dataIn?.datas?.overall?.debitamount?.toFixed(5)?.substring(0, 17)?.padEnd(17) ?? missingInput(`dataIn.datas.overall.debitamount`, "packed", dataIn?.datas?.overall?.debitamount);
+  dataOut += dataIn?.datas?.overall?.creditamount?.toFixed(5)?.substring(0, 17)?.padEnd(17) ?? missingInput(`dataIn.datas.overall.creditamount`, "packed", dataIn?.datas?.overall?.creditamount);
+  dataOut += dataIn?.datas?.payor?.batch?.toFixed()?.substring(0, 11)?.padEnd(11) ?? missingInput(`dataIn.datas.payor.batch`, "integer", dataIn?.datas?.payor?.batch);
+  dataOut += dataIn?.datas?.payor?.amount?.toFixed(5)?.substring(0, 17)?.padEnd(17) ?? missingInput(`dataIn.datas.payor.amount`, "packed", dataIn?.datas?.payor?.amount);
 
   return dataOut;
 }
