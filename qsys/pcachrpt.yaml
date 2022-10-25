@@ -253,7 +253,7 @@ formats:
     subfields:
       params:
         type: DataStruct
-        dsName: ParmDS
+        dsName: ParmsDS
       datas:
         type: DataStruct
         dsName: DataDS

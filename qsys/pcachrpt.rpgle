@@ -57,13 +57,27 @@
      PBufToPCRcvRpt    B                   Export
 
      DBufToPCRcvRpt    PI
-     DBuffer                      98973A
+     DBuffer                      99113A
      DDataStruct                           LikeDS(PCRcvRpt)
 
       * Initialize to begining of buffer
        BufPtr = %addr(Buffer);
 
       * Read fields from buffer into DS
+       DataStruct.params.brnchclntid = %subst(CharBuf:1:10);
+       BufPtr += 10;
+       DataStruct.params.startdate = %subst(CharBuf:1:10);
+       BufPtr += 10;
+       DataStruct.params.enddate = %subst(CharBuf:1:10);
+       BufPtr += 10;
+       DataStruct.params.clientid = %subst(CharBuf:1:10);
+       BufPtr += 10;
+       DataStruct.params.rptactname = %subst(CharBuf:1:25);
+       BufPtr += 25;
+       DataStruct.params.type = %subst(CharBuf:1:25);
+       BufPtr += 25;
+       DataStruct.params.acctname = %subst(CharBuf:1:50);
+       BufPtr += 50;
        for i = 1 to 100;
        DataStruct.datas.recordset(i).account = %subst(CharBuf:1:10);
        BufPtr += 10;

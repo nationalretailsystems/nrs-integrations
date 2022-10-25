@@ -307,7 +307,7 @@ export function convertPCReqRptToObject(dataIn: string): PCReqRpt {
 export interface PCRcvRpt {
     /**
      */
-    params: ParmDS,
+    params: ParmsDS,
     /**
      */
     datas: DataDS
@@ -319,6 +319,13 @@ export interface PCRcvRpt {
 export function convertObjectToPCRcvRpt(dataIn: PCRcvRpt): string {
   let dataOut: string = "";
 
+  dataOut += dataIn?.params?.branchClientId?.substring(0, 10)?.padEnd(10) ?? missingInput(`dataIn.params.branchClientId`, "char", dataIn?.params?.branchClientId);
+  dataOut += dataIn?.params?.startDate?.substring(0, 10)?.padEnd(10) ?? missingInput(`dataIn.params.startDate`, "char", dataIn?.params?.startDate);
+  dataOut += dataIn?.params?.endDate?.substring(0, 10)?.padEnd(10) ?? missingInput(`dataIn.params.endDate`, "char", dataIn?.params?.endDate);
+  dataOut += dataIn?.params?.client_id?.substring(0, 10)?.padEnd(10) ?? missingInput(`dataIn.params.client_id`, "char", dataIn?.params?.client_id);
+  dataOut += dataIn?.params?.report_action_name?.substring(0, 25)?.padEnd(25) ?? missingInput(`dataIn.params.report_action_name`, "char", dataIn?.params?.report_action_name);
+  dataOut += dataIn?.params?.type?.substring(0, 25)?.padEnd(25) ?? missingInput(`dataIn.params.type`, "char", dataIn?.params?.type);
+  dataOut += dataIn?.params?.accountName?.substring(0, 50)?.padEnd(50) ?? missingInput(`dataIn.params.accountName`, "char", dataIn?.params?.accountName);
   for (let j: number = 0; j < 100; ++j) {
   dataOut += dataIn?.datas?.recordset[j]?.account?.substring(0, 10)?.padEnd(10) ?? missingInput(`dataIn.datas.recordset[${j}].account`, "char", dataIn?.datas?.recordset[j]?.account);
   dataOut += dataIn?.datas?.recordset[j]?.transaction_id?.toFixed()?.substring(0, 11)?.padEnd(11) ?? missingInput(`dataIn.datas.recordset[${j}].transaction_id`, "integer", dataIn?.datas?.recordset[j]?.transaction_id);
