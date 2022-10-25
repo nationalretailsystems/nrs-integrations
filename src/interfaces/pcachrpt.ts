@@ -326,7 +326,7 @@ export function convertObjectToPCRcvRpt(dataIn: PCRcvRpt): string {
   dataOut += dataIn?.params?.report_action_name?.substring(0, 25)?.padEnd(25) ?? missingInput(`dataIn.params.report_action_name`, "char", dataIn?.params?.report_action_name);
   dataOut += dataIn?.params?.type?.substring(0, 25)?.padEnd(25) ?? missingInput(`dataIn.params.type`, "char", dataIn?.params?.type);
   dataOut += dataIn?.params?.accountName?.substring(0, 50)?.padEnd(50) ?? missingInput(`dataIn.params.accountName`, "char", dataIn?.params?.accountName);
-  for (let j: number = 0; j < 50; ++j) {
+  for (let j: number = 0; j < 25; ++j) {
   dataOut += dataIn?.datas?.recordset[j]?.account?.substring(0, 10)?.padEnd(10) ?? missingInput(`dataIn.datas.recordset[${j}].account`, "char", dataIn?.datas?.recordset[j]?.account);
   dataOut += dataIn?.datas?.recordset[j]?.transaction_id?.toFixed()?.substring(0, 11)?.padEnd(11) ?? missingInput(`dataIn.datas.recordset[${j}].transaction_id`, "integer", dataIn?.datas?.recordset[j]?.transaction_id);
   dataOut += dataIn?.datas?.recordset[j]?.payor?.substring(0, 50)?.padEnd(50) ?? missingInput(`dataIn.datas.recordset[${j}].payor`, "char", dataIn?.datas?.recordset[j]?.payor);
