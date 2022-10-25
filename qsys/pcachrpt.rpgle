@@ -57,7 +57,7 @@
      PBufToPCRcvRpt    B                   Export
 
      DBufToPCRcvRpt    PI
-     DBuffer                      99113A
+     DBuffer                      49663A
      DDataStruct                           LikeDS(PCRcvRpt)
 
       * Initialize to begining of buffer
@@ -78,7 +78,7 @@
        BufPtr += 25;
        DataStruct.params.acctname = %subst(CharBuf:1:50);
        BufPtr += 50;
-       for i = 1 to 100;
+       for i = 1 to 50;
        DataStruct.datas.recordset(i).account = %subst(CharBuf:1:10);
        BufPtr += 10;
        DataStruct.datas.recordset(i).transid = %int(%subst(CharBuf:1:11));

@@ -209,7 +209,7 @@ datastructures:
       recordset:
         type: DataStruct
         dsName: RecSetDS
-        dim: 100
+        dim: 50
       overall:
         type: DataStruct
         dsName: OverallDS
