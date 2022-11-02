@@ -1,4 +1,4 @@
-     H Nomain
+     H Nomain EXPROPTS(*ALWBLANKNUM)  
 
       ************************************
       * Module: pcachrpt
@@ -57,104 +57,90 @@
      PBufToPCRcvRpt    B                   Export
 
      DBufToPCRcvRpt    PI
-     DBuffer                      24938A
+     DBuffer                      24798A
      DDataStruct                           LikeDS(PCRcvRpt)
 
       * Initialize to begining of buffer
        BufPtr = %addr(Buffer);
 
       * Read fields from buffer into DS
-       DataStruct.params.brnchclntid = %subst(CharBuf:1:10);
-       BufPtr += 10;
-       DataStruct.params.startdate = %subst(CharBuf:1:10);
-       BufPtr += 10;
-       DataStruct.params.enddate = %subst(CharBuf:1:10);
-       BufPtr += 10;
-       DataStruct.params.clientid = %subst(CharBuf:1:10);
-       BufPtr += 10;
-       DataStruct.params.rptactname = %subst(CharBuf:1:25);
-       BufPtr += 25;
-       DataStruct.params.type = %subst(CharBuf:1:25);
-       BufPtr += 25;
-       DataStruct.params.acctname = %subst(CharBuf:1:50);
-       BufPtr += 50;
        for i = 1 to 25;
-       DataStruct.datas.recordset(i).account = %subst(CharBuf:1:10);
+       DataStruct.recordset(i).account = %subst(CharBuf:1:10);
        BufPtr += 10;
-       DataStruct.datas.recordset(i).transid = %int(%subst(CharBuf:1:11));
+       DataStruct.recordset(i).transid = %int(%subst(CharBuf:1:11));
        BufPtr += 11;
-       DataStruct.datas.recordset(i).payor = %subst(CharBuf:1:50);
+       DataStruct.recordset(i).payor = %subst(CharBuf:1:50);
        BufPtr += 50;
-       DataStruct.datas.recordset(i).payee = %subst(CharBuf:1:50);
+       DataStruct.recordset(i).payee = %subst(CharBuf:1:50);
        BufPtr += 50;
-       DataStruct.datas.recordset(i).category = %subst(CharBuf:1:25);
+       DataStruct.recordset(i).category = %subst(CharBuf:1:25);
        BufPtr += 25;
-       DataStruct.datas.recordset(i).transtype = %subst(CharBuf:1:25);
+       DataStruct.recordset(i).transtype = %subst(CharBuf:1:25);
        BufPtr += 25;
-       DataStruct.datas.recordset(i).number = %subst(CharBuf:1:25);
+       DataStruct.recordset(i).number = %subst(CharBuf:1:25);
        BufPtr += 25;
-       DataStruct.datas.recordset(i).debitcredit = %subst(CharBuf:1:10);
+       DataStruct.recordset(i).debitcredit = %subst(CharBuf:1:10);
        BufPtr += 10;
-       DataStruct.datas.recordset(i).debitamt = %dec(%subst(CharBuf:1:17):15:5);
+       DataStruct.recordset(i).debitamt = %dec(%subst(CharBuf:1:17):15:5);
        BufPtr += 17;
-       DataStruct.datas.recordset(i).creditamt = %dec(%subst(CharBuf:1:17):15:5);
+       DataStruct.recordset(i).creditamt = %dec(%subst(CharBuf:1:17):15:5);
        BufPtr += 17;
-       DataStruct.datas.recordset(i).payorbtch = %int(%subst(CharBuf:1:11));
+       DataStruct.recordset(i).payorbtch = %int(%subst(CharBuf:1:11));
        BufPtr += 11;
-       DataStruct.datas.recordset(i).payordate = %subst(CharBuf:1:24);
+       DataStruct.recordset(i).payordate = %subst(CharBuf:1:24);
        BufPtr += 24;
-       DataStruct.datas.recordset(i).payeebatch = %int(%subst(CharBuf:1:11));
+       DataStruct.recordset(i).payeebatch = %int(%subst(CharBuf:1:11));
        BufPtr += 11;
-       DataStruct.datas.recordset(i).payeedate = %subst(CharBuf:1:24);
+       DataStruct.recordset(i).payeedate = %subst(CharBuf:1:24);
        BufPtr += 24;
-       DataStruct.datas.recordset(i).payorid = %subst(CharBuf:1:10);
+       DataStruct.recordset(i).payorid = %subst(CharBuf:1:10);
        BufPtr += 10;
-       DataStruct.datas.recordset(i).payeeid = %subst(CharBuf:1:10);
+       DataStruct.recordset(i).payeeid = %subst(CharBuf:1:10);
        BufPtr += 10;
-       DataStruct.datas.recordset(i).custrefnum = %subst(CharBuf:1:50);
+       DataStruct.recordset(i).custrefnum = %subst(CharBuf:1:50);
        BufPtr += 50;
-       DataStruct.datas.recordset(i).shiprefnum = %subst(CharBuf:1:50);
+       DataStruct.recordset(i).shiprefnum = %subst(CharBuf:1:50);
        BufPtr += 50;
-       DataStruct.datas.recordset(i).parent = %subst(CharBuf:1:50);
+       DataStruct.recordset(i).parent = %subst(CharBuf:1:50);
        BufPtr += 50;
-       DataStruct.datas.recordset(i).approvaldate = %subst(CharBuf:1:24);
+       DataStruct.recordset(i).approvaldate = %subst(CharBuf:1:24);
        BufPtr += 24;
-       DataStruct.datas.recordset(i).appbyuser = %subst(CharBuf:1:50);
+       DataStruct.recordset(i).appbyuser = %subst(CharBuf:1:50);
        BufPtr += 50;
-       DataStruct.datas.recordset(i).currency = %subst(CharBuf:1:3);
+       DataStruct.recordset(i).currency = %subst(CharBuf:1:3);
        BufPtr += 3;
-       DataStruct.datas.recordset(i).payerid = %int(%subst(CharBuf:1:11));
+       DataStruct.recordset(i).payerid = %int(%subst(CharBuf:1:11));
        BufPtr += 11;
-       DataStruct.datas.recordset(i).vendorid = %int(%subst(CharBuf:1:11));
+       DataStruct.recordset(i).vendorid = %int(%subst(CharBuf:1:11));
        BufPtr += 11;
-       DataStruct.datas.recordset(i).payrefnum = %subst(CharBuf:1:10);
+       DataStruct.recordset(i).payrefnum = %subst(CharBuf:1:10);
        BufPtr += 10;
-       DataStruct.datas.recordset(i).origin = %subst(CharBuf:1:50);
+       DataStruct.recordset(i).origin = %subst(CharBuf:1:50);
        BufPtr += 50;
-       DataStruct.datas.recordset(i).destination = %subst(CharBuf:1:50);
+       DataStruct.recordset(i).destination = %subst(CharBuf:1:50);
        BufPtr += 50;
-       DataStruct.datas.recordset(i).payerintnum = %subst(CharBuf:1:50);
+       DataStruct.recordset(i).payerintnum = %subst(CharBuf:1:50);
        BufPtr += 50;
-       DataStruct.datas.recordset(i).payerfilenum = %subst(CharBuf:1:50);
+       DataStruct.recordset(i).payerfilenum = %subst(CharBuf:1:50);
        BufPtr += 50;
-       DataStruct.datas.recordset(i).payervouch = %subst(CharBuf:1:50);
+       DataStruct.recordset(i).payervouch = %subst(CharBuf:1:50);
        BufPtr += 50;
-       DataStruct.datas.recordset(i).payerprodnum = %subst(CharBuf:1:50);
+       DataStruct.recordset(i).payerprodnum = %subst(CharBuf:1:50);
        BufPtr += 50;
-       DataStruct.datas.recordset(i).payerinvnum = %subst(CharBuf:1:50);
+       DataStruct.recordset(i).payerinvnum = %subst(CharBuf:1:50);
        BufPtr += 50;
-       DataStruct.datas.recordset(i).bollink = %subst(CharBuf:1:50);
+       DataStruct.recordset(i).bollink = %subst(CharBuf:1:50);
        BufPtr += 50;
        endfor;
-       DataStruct.datas.overall.count = %int(%subst(CharBuf:1:11));
+       DataStruct.overall.count = %int(%subst(CharBuf:1:11));
        BufPtr += 11;
-       DataStruct.datas.overall.debitamt = %dec(%subst(CharBuf:1:17):15:5);
+       DataStruct.overall.debitamt = %dec(%subst(CharBuf:1:17):15:5);
        BufPtr += 17;
-       DataStruct.datas.overall.creditamt = %dec(%subst(CharBuf:1:17):15:5);
+       DataStruct.overall.creditamt = %dec(%subst(CharBuf:1:17):15:5);
        BufPtr += 17;
-       DataStruct.datas.payor.batch = %int(%subst(CharBuf:1:11));
+       DataStruct.payor.batch = %int(%subst(CharBuf:1:11));
        BufPtr += 11;
-       DataStruct.datas.payor.amount = %dec(%subst(CharBuf:1:17):15:5);
+       DataStruct.payor.amount = %dec(%subst(CharBuf:1:17):15:5);
        BufPtr += 17;
 
        return ;

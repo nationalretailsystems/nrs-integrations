@@ -4,18 +4,19 @@ import config from 'config';
 import createLogger from 'src/services/logger';
 import * as converterusraut from 'src/interfaces/pcusraut';
 import * as converterachrpt from 'src/interfaces/pcachrpt';
+import * as convertergettran from 'src/interfaces/pcgettran';
 import { getToken } from 'src/services/get-token';
 
 const logger = createLogger('commands/paycargo');
-const { paycargo } = config;
-const axiosInstance = axios.create(paycargo.axios);
+const { paycargo_dev } = config;
+const axiosInstance = axios.create(paycargo_dev.axios);
 
 export const getUsraut: ECCHandlerFunction = async function (reqkey, datax, ecc) {
     // Get parameters from incomming data buffer
     // const reqFields = converterusraut.convertPCReqTokenToObject(datax);
     const reqFields = {
-        username: paycargo.username,
-        password: paycargo.password
+        username: paycargo_dev.username,
+        password: paycargo_dev .password
     }
     logger.debug(`Received getPayCargoUser request`, { reqkey, datax });
 
@@ -82,7 +83,16 @@ export const getAchrpt: ECCHandlerFunction = async function (reqkey, datax, ecc)
     // const jsonData = reqFields;
       try {
         const token = await getToken()
-        result = await axiosInstance.post('/reports/singleReport', reqFields, {
+        result = await axiosInstance.get('/reports/singleReport',  {
+            params: {
+                branchClientId: reqFields.branchClientId,
+                startDate: reqFields.startDate,
+                endDate: reqFields.endDate,
+                client_id: reqFields.client_id,
+                report_action_name: reqFields.report_action_name,
+                type: reqFields.type,
+                accountName: reqFields.accountName
+            },
             headers: {
                 Authorization: `JWT ${token}`
             }
@@ -104,20 +114,22 @@ export const getAchrpt: ECCHandlerFunction = async function (reqkey, datax, ecc)
 
     // const responseData= result;
     // Send the result info
-    nextReqKey = await ecc.sendEccResult('ECC0000', 'Success', nextReqKey);
 
-    // Send the results
-    return ecc.sendObjectToCaller(result, converterusraut.convertObjectToPCRcvToken, nextReqKey);
+        let responseData = result.data[0][1];
+        nextReqKey = await ecc.sendEccResult('ECC0000', 'Success', nextReqKey);
+        logger.error('Call test1 failed');
+        return await ecc.sendObjectToCaller(responseData, converterachrpt.convertObjectToPCRcvRpt, nextReqKey);
+        logger.error(nextReqKey);
+
+   
 };
 
-export const getTranscacions: ECCHandlerFunction = async function (reqkey, datax, ecc) {
+export const getTransaction: ECCHandlerFunction = async function (reqkey, datax, ecc) {
     // Get parameters from incomming data buffer
     // const reqFields = converterusraut.convertPCReqTokenToObject(datax);
-    const reqFields = {
-        username: paycargo.username,
-        password: paycargo.password
-    }
-    logger.debug(`Received getPayCargoUser request`, { reqkey, datax });
+    const reqFields = convertergettran.convertPCReqTrnToObject(datax);
+
+    logger.debug(`Received getTransaction request`, { reqkey, datax });
 
     // Call web service
     let result;
@@ -125,7 +137,7 @@ export const getTranscacions: ECCHandlerFunction = async function (reqkey, datax
     // const jsonData = reqFields;
       try {
         const token = await getToken()
-        result = await axiosInstance.post('/login', reqFields, {
+        result = await axiosInstance.post('/transaction/' + reqFields.transactionId, {
             headers: {
                 Authorization: `JWT ${token}`
             }
@@ -150,5 +162,5 @@ export const getTranscacions: ECCHandlerFunction = async function (reqkey, datax
     nextReqKey = await ecc.sendEccResult('ECC0000', 'Success', nextReqKey);
 
     // Send the results
-    return ecc.sendObjectToCaller(result, converterusraut.convertObjectToPCRcvToken, nextReqKey);
+    return ecc.sendObjectToCaller(result, convertergettran.convertObjectToPCRcvTrn, nextReqKey);
 };

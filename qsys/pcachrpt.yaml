@@ -3,40 +3,9 @@ name: pcachrpt
 rpgIncName: pcachrpt_h
 codeblocks:
   typescript:
-    - import eradaniConnect from @eradani-inc/eradani-connect;
+    - import eradaniConnect from "@eradani-inc/eradani-connect";
     - const { dataTypes } = eradaniConnect;
 datastructures:
-  ParmsDS:
-    qualified: true
-    subfields:
-      branchClientId:
-        rpgName: brnchclntid
-        type: Character
-        length: 10
-      startDate:
-        rpgName: startdate
-        type: Character
-        length: 10
-      endDate:
-        rpgName: enddate
-        type: Character
-        length: 10
-      client_id:
-        rpgName: clientid
-        type: Character
-        length: 10
-      report_action_name:
-        rpgName: rptactname
-        type: Character
-        length: 25
-      type:
-        rpgName: type
-        type: Character
-        length: 25
-      accountName:
-        rpgName: acctname
-        type: Character
-        length: 50
   RecSetDS:
     qualified: true
     subfields:
@@ -44,136 +13,169 @@ datastructures:
         rpgName: account
         type: Character
         length: 10
+        default: " "
       transaction_id:
         rpgName: transid
         type: Integer
         length: 10
+        default: 0
       payor:
         rpgName: payor
         type: Character
         length: 50
+        default: " "
       payee:
         rpgName: payee
         type: Character
         length: 50
+        default: " "
       category:
         rpgName: category
         type: Character
         length: 25
+        default: " "
       transaction_type:
         rpgName: transtype
         type: Character
         length: 25
+        default: " "
       number:
         rpgName: number
         type: Character
         length: 25
+        default: " "
       debitCredit:
         rpgName: debitcredit
         type: Character
         length: 10
+        default: " "
       debitAmount:
         rpgName: debitamt
         type: Packed
         length: 15
         precision: 5
+        default: 0
       creditAmount:
         rpgName: creditamt
         type: Packed
         length: 15
         precision: 5
+        default: 0
       payorBatch:
         rpgName: payorbtch
         type: Integer
         length: 10
+        default: 0
       payorDate:
         rpgName: payordate
         type: Character
         length: 24
+        default: " "
       payeeBatch:
         rpgName: payeebatch
         type: Integer
         length: 10
+        default: 0
       payeeDate:
         rpgName: payeedate
         type: Character
         length: 24
+        default: " "
       payorID:
         rpgName: payorid
         type: Character
         length: 10
+        default: " "
       payeeID:
         rpgName: payeeid
         type: Character
         length: 10
+        default: " "
       customer_reference_number:
         rpgName: custrefnum
         type: Character
         length: 50
+        default: " "
       shipper_reference_number:
         rpgName: shiprefnum
         type: Character
         length: 50
+        default: " "
       parent:
         rpgName: parent
         type: Character
         length: 50
+        default: " "
       approvalDate:
         rpgName: approvaldate
         type: Character
         length: 24
+        default: " "
       approvedByUserName:
         rpgName: appbyuser
         type: Character
         length: 50
+        default: " "
       currency:
         rpgName: currency
         type: Character
         length: 3
+        default: " "
       payerId:
         rpgName: payerid
         type: Integer
         length: 10
+        default: 0
       vendorId:
         rpgName: vendorid
         type: Integer
         length: 10
+        default: 0
       payerReferenceNumber:
         rpgName: payrefnum
         type: Character
         length: 10
+        default: " "
       origin:
         rpgName: origin
         type: Character
         length: 50
+        default: " "
       destination:
         rpgName: destination
         type: Character
         length: 50
+        default: " "
       payerInternalNumber:
         rpgName: payerintnum
         type: Character
         length: 50
+        default: " "
       payerFileNumber:
         rpgName: payerfilenum
         type: Character
         length: 50
+        default: " "
       payerVoucherNumber:
         rpgName: payervouch
         type: Character
         length: 50
+        default: " "
       payerProductNumber:
         rpgName: payerprodnum
         type: Character
         length: 50
+        default: " "
       payerInvoiceNumber:
         rpgName: payerinvnum
         type: Character
         length: 50
+        default: " "
       bolLink:
         rpgName: bollink
         type: Character
         length: 50
+        default: " "
   OverallDS:
     qualified: true
     subfields:
@@ -251,9 +253,13 @@ formats:
   PCRcvRpt:
     recordType: response
     subfields:
-      params:
+      recordset:
         type: DataStruct
-        dsName: ParmsDS
-      datas:
+        dsName: RecSetDS
+        dim: 25
+      overall:
         type: DataStruct
-        dsName: DataDS
+        dsName: OverallDS
+      payor:
+        type: DataStruct
+        dsName: PayorDS
