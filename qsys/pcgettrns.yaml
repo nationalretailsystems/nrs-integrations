@@ -22,7 +22,7 @@ datastructures:
   DataDS:
     qualified: true
     subfields:
-      transaction_id:
+      transactionId:
         rpgName: transid
         type: Integer
         length: 10

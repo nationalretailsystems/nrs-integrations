@@ -40,7 +40,7 @@ export interface DataDS {
      * @size 10 digits
      * @default `0`
      */
-    transaction_id: number,
+    transactionId: number,
     /**
      * @size 10 digits
      * @default `0`
@@ -326,7 +326,7 @@ export function convertObjectToPCRcvTrns(dataIn: PCRcvTrns): string {
   dataOut += dataIn?.result?.msg?.substring(0, 25)?.padEnd(25) ?? " ".substring(0, 25).padEnd(25);
   dataOut += dataIn?.result?.code?.toFixed()?.substring(0, 6)?.padEnd(6) ?? "0".substring(0, 6).padEnd(6);
   for (let i: number = 0; i < 30; ++i) {
-  dataOut += dataIn?.data[i]?.transaction_id?.toFixed()?.substring(0, 11)?.padEnd(11) ?? "0".substring(0, 11).padEnd(11);
+  dataOut += dataIn?.data[i]?.transactionId?.toFixed()?.substring(0, 11)?.padEnd(11) ?? "0".substring(0, 11).padEnd(11);
   dataOut += dataIn?.data[i]?.payerId?.toFixed()?.substring(0, 11)?.padEnd(11) ?? "0".substring(0, 11).padEnd(11);
   dataOut += dataIn?.data[i]?.payerClientId?.toFixed()?.substring(0, 11)?.padEnd(11) ?? "0".substring(0, 11).padEnd(11);
   dataOut += dataIn?.data[i]?.payerName?.substring(0, 50)?.padEnd(50) ?? " ".substring(0, 50).padEnd(50);

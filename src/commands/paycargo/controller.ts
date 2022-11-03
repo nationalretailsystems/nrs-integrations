@@ -147,4 +147,5 @@ export const getTransactions: ECCHandlerFunction = async function (reqkey, datax
 
     // Send the results
     return ecc.sendObjectToCaller(result.data, convertergettrns.convertObjectToPCRcvTrns, nextReqKey);
+    logger.debug(`Executed sendObjectToCaller`);
 };
