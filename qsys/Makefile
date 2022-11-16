@@ -55,7 +55,8 @@ GENMODS = icndbapi \
 		  makeme \
 		  pcachrpt \
 		  pcgettran \
-		  pcgettrns
+		  pcgettrns \
+		  p44stsupd
 
 GENHDRS = icndbapi_h \
           lblapi_h \
@@ -85,7 +86,8 @@ GENHDRS = icndbapi_h \
 		  makeme_h \
 		  pcachrpt_h \
 		  pcgettrn_h \
-		  pcgettrs_h
+		  pcgettrs_h \
+		  p44stsup_h
 
 SRVPGMS = ecctmpgen
 
@@ -501,6 +503,12 @@ $(libdir)/qrpglesrc.file/pcgettrns.mbr $(libdir)/qrpglesrc.file/pcgettrs_h.mbr .
 	system "CPYFRMSTMF FROMSTMF('pcgettrns.rpgle') TOMBR('$(libdir)/qrpglesrc.file/pcgettrns.mbr') MBROPT(*REPLACE)"
 	system "CPYFRMSTMF FROMSTMF('pcgettrs_h.rpgleinc') TOMBR('$(libdir)/qrpglesrc.file/pcgettrs_h.mbr') MBROPT(*REPLACE)"	
 
+$(libdir)/qrpglesrc.file/p44stsupd.mbr $(libdir)/qrpglesrc.file/p44stsup_h.mbr ../src/interfaces/p44stsupd.ts: p44stsupd.yaml
+	npx ec-generate -f $<
+	cp p44stsupd.ts ../src/interfaces/p44stsupd.ts
+	system "CPYFRMSTMF FROMSTMF('p44stsupd.rpgle') TOMBR('$(libdir)/qrpglesrc.file/p44stsupd.mbr') MBROPT(*REPLACE)"
+	system "CPYFRMSTMF FROMSTMF('p44stsup_h.rpgleinc') TOMBR('$(libdir)/qrpglesrc.file/p44stsup_h.mbr') MBROPT(*REPLACE)"
+		
 .PHONY: library
 library:
 	-system "CRTLIB $(LIB)"
