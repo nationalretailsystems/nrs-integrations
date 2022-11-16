@@ -18,18 +18,11 @@ export const postP44: ECCHandlerFunction = async function (reqkey, datax, ecc) {
     // Call web service
     let result;
     let nextReqKey = reqkey;
-    const authkey = Buffer.from(config.userid + ':' + config.password).toString('base64');
-    // const jsonData = reqFields;
+    const authkey = Buffer.from(project44.username + ':' + project44.password).toString('base64');
+    const jsonData = reqFields;
       try {
-        result = await axiosInstance.post('/shipments/statusUpdates',  {
-            params: {
-                'type': 'reqFields.type',
-                'value': 'reqFields.value',
-                latitude: reqFields.latitude,
-                longituide: reqFields.longitude,
-                utcTimestamp: reqFields.utcTimestamp,
-                customerId: reqFields.customerId
-            },
+        result = await axiosInstance.post('/shipments/statusUpdates', jsonData, {
+            
             headers: {
                 Authorization: 'Basic ' + authkey
             }

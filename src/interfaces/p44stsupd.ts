@@ -38,7 +38,7 @@ export interface ShipIdDS {
 export interface P44SndRpt {
     /**
      */
-    shipmentIdentifiers: ShipIdDS,
+    shipmentIdentifiers: Array<ShipIdDS>,
     /**
      * @size 20 digits
      * @precision 15 decimals
@@ -68,13 +68,18 @@ export function convertP44SndRptToObject(dataIn: string): P44SndRpt {
     };
   let pos: number = 0;
 
-  dataOut.shipmentIdentifiers =   {
+  dataOut.shipmentIdentifiers = [
+    
+  ];
+  for (let i: number = 0; i < 2; ++i) {
+  dataOut.shipmentIdentifiers[i] =   {
   
     };
-  dataOut.shipmentIdentifiers.type = dataIn.substring(pos, pos + 10).trimEnd();
+  dataOut.shipmentIdentifiers[i].type = dataIn.substring(pos, pos + 10).trimEnd();
   pos += 10;
-  dataOut.shipmentIdentifiers.value = dataIn.substring(pos, pos + 20).trimEnd();
+  dataOut.shipmentIdentifiers[i].value = dataIn.substring(pos, pos + 20).trimEnd();
   pos += 20;
+  }
   dataOut.latitude = Number(dataIn.substring(pos, pos + 22).trimEnd());
   pos += 22;
   dataOut.longitude = Number(dataIn.substring(pos, pos + 22).trimEnd());
@@ -97,19 +102,23 @@ export interface P44RcvRpt {
     /**
      * @size 20 digits
      * @precision 15 decimals
+     * @default `0`
      */
     latitude: number,
     /**
      * @size 20 digits
      * @precision 15 decimals
+     * @default `0`
      */
     longitude: number,
     /**
      * @size 19 characters
+     * @default ` `
      */
     utcTimestamp: string,
     /**
      * @size 25 characters
+     * @default ` `
      */
     customerId: string
 }
@@ -122,10 +131,10 @@ export function convertObjectToP44RcvRpt(dataIn: P44RcvRpt): string {
 
   dataOut += dataIn?.shipmentIdentifiers?.type?.substring(0, 10)?.padEnd(10) ?? " ".substring(0, 10).padEnd(10);
   dataOut += dataIn?.shipmentIdentifiers?.value?.substring(0, 20)?.padEnd(20) ?? " ".substring(0, 20).padEnd(20);
-  dataOut += dataIn?.latitude?.toFixed(15)?.substring(0, 22)?.padEnd(22) ?? missingInput(`dataIn.latitude`, "packed", dataIn?.latitude);
-  dataOut += dataIn?.longitude?.toFixed(15)?.substring(0, 22)?.padEnd(22) ?? missingInput(`dataIn.longitude`, "packed", dataIn?.longitude);
-  dataOut += dataIn?.utcTimestamp?.substring(0, 19)?.padEnd(19) ?? missingInput(`dataIn.utcTimestamp`, "char", dataIn?.utcTimestamp);
-  dataOut += dataIn?.customerId?.substring(0, 25)?.padEnd(25) ?? missingInput(`dataIn.customerId`, "char", dataIn?.customerId);
+  dataOut += dataIn?.latitude?.toFixed(15)?.substring(0, 22)?.padEnd(22) ?? "0".substring(0, 22).padEnd(22);
+  dataOut += dataIn?.longitude?.toFixed(15)?.substring(0, 22)?.padEnd(22) ?? "0".substring(0, 22).padEnd(22);
+  dataOut += dataIn?.utcTimestamp?.substring(0, 19)?.padEnd(19) ?? " ".substring(0, 19).padEnd(19);
+  dataOut += dataIn?.customerId?.substring(0, 25)?.padEnd(25) ?? " ".substring(0, 25).padEnd(25);
 
   return dataOut;
 }

@@ -13,6 +13,7 @@ import registerZpl from './zpl';
 import registerMailgun from './mailgun';
 import registerMakeme from './mmpwd';
 import registerPaycargo from './paycargo';
+import registerProject44 from './project44';
 
 
 export default async function registerCommands(router: ECCRouter) {
@@ -71,6 +72,10 @@ export default async function registerCommands(router: ECCRouter) {
     const paycargo = new ECCRouter.Router();
     registerPaycargo(paycargo);
     router.use('paycargo', paycargo);  
+
+    const project44 = new ECCRouter.Router();
+    registerProject44(project44);
+    router.use('project44', project44);  
 
     return router;
 }

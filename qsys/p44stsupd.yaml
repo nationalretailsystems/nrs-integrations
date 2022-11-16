@@ -27,6 +27,7 @@ formats:
         rpgName: shipids
         type: DataStruct
         dsName: ShipIdDS
+        dim: 2
       latitude:
         rpgName: latitude
         type: Packed

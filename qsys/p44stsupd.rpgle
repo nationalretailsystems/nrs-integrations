@@ -26,16 +26,18 @@
      DP44SndRptToBuf   PI
      DDataStruct                           LikeDS(P44SndRpt)
      D                                     Const
-     DBuffer                        118A
+     DBuffer                        148A
 
       * Initialize to beginning of buffer
        BufPtr = %addr(Buffer);
 
       * Write fields from DS to buffer
-       %subst(CharBuf:1:10) = DataStruct.shipids.type;
+       for i = 1 to 2;
+       %subst(CharBuf:1:10) = DataStruct.shipids(i).type;
        BufPtr += 10;
-       %subst(CharBuf:1:20) = DataStruct.shipids.value;
+       %subst(CharBuf:1:20) = DataStruct.shipids(i).value;
        BufPtr += 20;
+       endfor;
        %subst(CharBuf:1:22) = %char(DataStruct.latitude);
        BufPtr += 22;
        %subst(CharBuf:1:22) = %char(DataStruct.longitude);
