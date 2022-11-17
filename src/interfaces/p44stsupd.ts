@@ -97,30 +97,9 @@ export function convertP44SndRptToObject(dataIn: string): P44SndRpt {
  */
 export interface P44RcvRpt {
     /**
+     * @size 10 characters
      */
-    shipmentIdentifiers: ShipIdDS,
-    /**
-     * @size 20 digits
-     * @precision 15 decimals
-     * @default `0`
-     */
-    latitude: number,
-    /**
-     * @size 20 digits
-     * @precision 15 decimals
-     * @default `0`
-     */
-    longitude: number,
-    /**
-     * @size 19 characters
-     * @default ` `
-     */
-    utcTimestamp: string,
-    /**
-     * @size 25 characters
-     * @default ` `
-     */
-    customerId: string
+    status: string
 }
 
 /**
@@ -129,12 +108,7 @@ export interface P44RcvRpt {
 export function convertObjectToP44RcvRpt(dataIn: P44RcvRpt): string {
   let dataOut: string = "";
 
-  dataOut += dataIn?.shipmentIdentifiers?.type?.substring(0, 10)?.padEnd(10) ?? " ".substring(0, 10).padEnd(10);
-  dataOut += dataIn?.shipmentIdentifiers?.value?.substring(0, 20)?.padEnd(20) ?? " ".substring(0, 20).padEnd(20);
-  dataOut += dataIn?.latitude?.toFixed(15)?.substring(0, 22)?.padEnd(22) ?? "0".substring(0, 22).padEnd(22);
-  dataOut += dataIn?.longitude?.toFixed(15)?.substring(0, 22)?.padEnd(22) ?? "0".substring(0, 22).padEnd(22);
-  dataOut += dataIn?.utcTimestamp?.substring(0, 19)?.padEnd(19) ?? " ".substring(0, 19).padEnd(19);
-  dataOut += dataIn?.customerId?.substring(0, 25)?.padEnd(25) ?? " ".substring(0, 25).padEnd(25);
+  dataOut += dataIn?.status?.substring(0, 10)?.padEnd(10) ?? missingInput(`dataIn.status`, "char", dataIn?.status);
 
   return dataOut;
 }

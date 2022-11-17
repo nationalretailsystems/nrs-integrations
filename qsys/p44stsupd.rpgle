@@ -57,25 +57,15 @@
      PBufToP44RcvRpt   B                   Export
 
      DBufToP44RcvRpt   PI
-     DBuffer                        118A
+     DBuffer                         10A
      DDataStruct                           LikeDS(P44RcvRpt)
 
       * Initialize to begining of buffer
        BufPtr = %addr(Buffer);
 
       * Read fields from buffer into DS
-       DataStruct.shipids.type = %subst(CharBuf:1:10);
+       DataStruct.status = %subst(CharBuf:1:10);
        BufPtr += 10;
-       DataStruct.shipids.value = %subst(CharBuf:1:20);
-       BufPtr += 20;
-       DataStruct.latitude = %dec(%subst(CharBuf:1:22):20:15);
-       BufPtr += 22;
-       DataStruct.longitude = %dec(%subst(CharBuf:1:22):20:15);
-       BufPtr += 22;
-       DataStruct.utcstamp = %subst(CharBuf:1:19);
-       BufPtr += 19;
-       DataStruct.customerid = %subst(CharBuf:1:25);
-       BufPtr += 25;
 
        return ;
 

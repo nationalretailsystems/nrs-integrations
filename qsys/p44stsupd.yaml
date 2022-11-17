@@ -49,29 +49,7 @@ formats:
   P44RcvRpt:
     recordType: response
     subfields:
-      shipmentIdentifiers:
-        rpgName: shipids
-        type: DataStruct
-        dsName: ShipIdDS
-      latitude:
-        rpgName: latitude
-        type: Packed
-        length: 20
-        precision: 15
-        default: 0
-      longitude:
-        rpgName: longitude
-        type: Packed
-        length: 20
-        precision: 15
-        default: 0
-      utcTimestamp:
-        rpgName: utcstamp
+      status:
+        rpgName: status
         type: Character
-        length: 19
-        default: " "
-      customerId:
-        rpgName: customerid
-        type: Character
-        length: 25
-        default: " "
+        length: 10

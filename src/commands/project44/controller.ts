@@ -20,6 +20,7 @@ export const postP44: ECCHandlerFunction = async function (reqkey, datax, ecc) {
     let nextReqKey = reqkey;
     const authkey = Buffer.from(project44.username + ':' + project44.password).toString('base64');
     const jsonData = reqFields;
+    jsonData.shipmentIdentifiers = [{type: 'ORDER', value: 'SH3073296'}];
       try {
         result = await axiosInstance.post('/shipments/statusUpdates', jsonData, {
             
@@ -44,10 +45,12 @@ export const postP44: ECCHandlerFunction = async function (reqkey, datax, ecc) {
 
     // const responseData= result;
     // Send the result info
-        let responseData = result.data;
+        // let responseData = result.data;
+        let returnStatus = result.status.toString();
         logger.debug('ECC0000', 'Success', nextReqKey);
         nextReqKey = await ecc.sendEccResult('ECC0000', 'Success', nextReqKey);
-        return ecc.sendObjectToCaller(responseData, converterp44post.convertObjectToP44RcvRpt, nextReqKey);
+        return ecc.sendFieldToCaller(returnStatus,nextReqKey);
+        //  return ecc.sendObjectToCaller(responseData, converterp44post.convertObjectToP44RcvRpt, nextReqKey);
         logger.debug('Sent data to RPG'); 
 
 };
