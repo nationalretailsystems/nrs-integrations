@@ -19,10 +19,16 @@ export const postP44: ECCHandlerFunction = async function (reqkey, datax, ecc) {
     let result;
     let nextReqKey = reqkey;
     const authkey = Buffer.from(project44.username + ':' + project44.password).toString('base64');
-    const jsonData = reqFields;
-    jsonData.shipmentIdentifiers = [{type: 'ORDER', value: 'SH3073296'}];
+    const shipmentIdentifiers = [];
+    for (let si=0; si<reqFields.shipmentIdentifiers.length; si++) {
+        if (reqFields.shipmentIdentifiers[si].type && reqFields.shipmentIdentifiers[si].value) {
+            shipmentIdentifiers.push(reqFields.shipmentIdentifiers[si]);
+        }
+    }
+    reqFields.shipmentIdentifiers = shipmentIdentifiers;
+
       try {
-        result = await axiosInstance.post('/shipments/statusUpdates', jsonData, {
+        result = await axiosInstance.post('/shipments/statusUpdates', reqFields, {
             
             headers: {
                 Authorization: 'Basic ' + authkey
