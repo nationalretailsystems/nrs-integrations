@@ -13,6 +13,7 @@ import * as pncchkotapi from 'src/interfaces/pncchkot';
 import * as pncupdatapi from 'src/interfaces/pncupdat';
 import * as pnclocatapi from 'src/interfaces/pnclocat';
 import * as pncerrorapi from 'src/interfaces/pncerror';
+import * as pncupdt2api from 'src/interfaces/pncupdt2';
 import transport from 'src/services/connection';
 import { insertPincSnsLog, insertPincSqsLog } from 'src/models/pinc';
 import { promises as fs } from 'fs';
@@ -450,4 +451,67 @@ export const locat: ECCHandlerFunction = async (_reqkey, datax, _ecc) => {
     return transport
         .execute(insertPincSnsLog, record)
         .catch((err) => logger.error('Failed to write Pinc Log Sns Retrieve_Asset_Location Record', { record, err }));
+};
+export const updt2: ECCHandlerFunction = async (_reqkey, datax, _ecc) => {
+    // Get parameters from incomming data buffer
+    const timestampHold = DateTime.now();
+    const rpgFields = pncupdt2api.convertUpdt2DSToObject(datax);
+    const { snsArn } = getCampusAws(rpgFields.campus);
+    const reqFields = {
+        event: 'yardhound.import_events.update',
+        time: timestampHold.toFormat("yyyy-MM-dd'T'TTZZ"),
+        version: '1.3',
+        campus: rpgFields.campus,
+        data: {
+            asset: _.mapKeys(
+                (key) =>
+                    ((
+                        {
+                            Trailer_SCAC: 'Trailer SCAC',
+                            Trailer_number: 'Trailer #'
+                        } as any
+                    )[key] || key),
+                rpgFields.data.asset
+            )
+        }
+    };
+
+    logger.debug('Sending SNS Message', reqFields);
+
+    // Call web service
+    let result = undefined;
+    let params = undefined;
+    let response = undefined;
+    try {
+        // Create publish parameters
+        params = {
+            Message: JSON.stringify(reqFields),
+            MessageGroupId: rpgFields.message_group_id,
+            MessageDeduplicationId: uuidv4(),
+            // TopicArn: pinc.sns.prdTargetArn
+            TopicArn: snsArn
+        };
+
+        // Create promise and SNS service object
+        result = await sns.publish(params).promise();
+
+        logger.debug('SNS Message Sent', result);
+        response = { resultCode: 'ECC0000', message: 'Success' };
+    } catch (err) {
+        logger.warn('SNS Message Failed', err);
+        response = { resultCode: 'ECC9000', message: err.message };
+    }
+
+    const record = {
+        // targetArn: pinc.sns.prdTargetArn,
+        targetArn: snsArn,
+        messageGrpId: rpgFields.message_group_id,
+        message: JSON.stringify(reqFields),
+        result: response.message, // JSON.stringify(result) ?? "No Response",
+        resultCode: response.resultCode,
+        timestamp: timestampHold.toFormat("yyyy-MM-dd'-'HH.mm.ss.SSS'000'")
+    };
+    return transport
+        .execute(insertPincSnsLog, record)
+        .catch((err) => logger.error('Failed to write Pinc Log Sns Update2 Record', { record, err }));
 };

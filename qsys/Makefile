@@ -42,6 +42,7 @@ GENMODS = icndbapi \
 		  mpputwo \
 		  pncchkot \
 		  pncupdat \
+		  pncupdt2 \
 		  pnclocat \
 		  mpvendor \
 		  rmgetdvir \
@@ -76,6 +77,7 @@ GENHDRS = icndbapi_h \
 		  mpputwo_h \
 		  pncchkot_h \
 		  pncupdat_h \
+		  pncupdt2_h \
 		  pnclocat_h \
 		  mpvendor_h \
 		  mpemploy_h \
@@ -415,6 +417,12 @@ $(libdir)/qrpglesrc.file/pncupdat.mbr $(libdir)/qrpglesrc.file/pncupdat_h.mbr ..
 	cp pncupdat.ts ../src/interfaces/pncupdat.ts
 	system "CPYFRMSTMF FROMSTMF('pncupdat.rpgle') TOMBR('$(libdir)/qrpglesrc.file/pncupdat.mbr') MBROPT(*REPLACE)"
 	system "CPYFRMSTMF FROMSTMF('pncupdat_h.rpgleinc') TOMBR('$(libdir)/qrpglesrc.file/pncupdat_h.mbr') MBROPT(*REPLACE)"
+
+$(libdir)/qrpglesrc.file/pncupdt2.mbr $(libdir)/qrpglesrc.file/pncupdt2_h.mbr ../src/interfaces/pncupdt2.ts: pncupdt2.yaml
+	npx ec-generate -f $<
+	cp pncupdt2.ts ../src/interfaces/pncupdt2.ts
+	system "CPYFRMSTMF FROMSTMF('pncupdt2.rpgle') TOMBR('$(libdir)/qrpglesrc.file/pncupdt2.mbr') MBROPT(*REPLACE)"
+	system "CPYFRMSTMF FROMSTMF('pncupdt2_h.rpgleinc') TOMBR('$(libdir)/qrpglesrc.file/pncupdt2_h.mbr') MBROPT(*REPLACE)"
 
 $(libdir)/qrpglesrc.file/pnclocat.mbr $(libdir)/qrpglesrc.file/pnclocat_h.mbr ../src/interfaces/pnclocat.ts: pnclocat.yaml
 	npx ec-generate -f $<
