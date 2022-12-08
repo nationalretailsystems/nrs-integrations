@@ -33,6 +33,7 @@ GENMODS = icndbapi \
           pnclatlon \
           skybtz  \
 		  skybtzqm \
+		  skybtzqp \
 		  mpgeteqip \
 		  mpgeteq2 \
 		  rmgetstmi \
@@ -68,6 +69,7 @@ GENHDRS = icndbapi_h \
           pnclatln_h \
           skybtz_h \
 		  skybtzqm_h \
+		  skybtzqp_h \
 		  mpgeteq_h \
 		  rmgetstm_h \
 		  mpgetwoc_h \
@@ -363,6 +365,12 @@ $(libdir)/qrpglesrc.file/skybtzqm.mbr $(libdir)/qrpglesrc.file/skybtzqm_h.mbr ..
 	cp skybtzqm.ts ../src/interfaces/skybtzqm.ts
 	system "CPYFRMSTMF FROMSTMF('skybtzqm.rpgle') TOMBR('$(libdir)/qrpglesrc.file/skybtzqm.mbr') MBROPT(*REPLACE)"
 	system "CPYFRMSTMF FROMSTMF('skybtzqm_h.rpgleinc') TOMBR('$(libdir)/qrpglesrc.file/skybtzqm_h.mbr') MBROPT(*REPLACE)"
+
+$(libdir)/qrpglesrc.file/skybtzqp.mbr $(libdir)/qrpglesrc.file/skybtzqp_h.mbr ../src/interfaces/skybtzqp.ts: skybtzqp.yaml
+	npx ec-generate -f $<
+	cp skybtzqp.ts ../src/interfaces/skybtzqp.ts
+	system "CPYFRMSTMF FROMSTMF('skybtzqp.rpgle') TOMBR('$(libdir)/qrpglesrc.file/skybtzqp.mbr') MBROPT(*REPLACE)"
+	system "CPYFRMSTMF FROMSTMF('skybtzqp_h.rpgleinc') TOMBR('$(libdir)/qrpglesrc.file/skybtzqp_h.mbr') MBROPT(*REPLACE)"	
 
 $(libdir)/qrpglesrc.file/mpgeteqip.mbr $(libdir)/qrpglesrc.file/mpgeteq_h.mbr ../src/interfaces/mpgeteqip.ts: mpgeteqip.yaml
 	npx ec-generate -f $<

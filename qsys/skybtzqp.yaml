@@ -1,0 +1,10 @@
+---
+name: skybtzqp
+rpgIncName: skybtzqp_h
+formats:
+  GetTrlPos:
+    recordType: request
+    subfields:
+      assetid:
+        type: Character
+        length: 20

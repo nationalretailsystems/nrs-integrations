@@ -4,6 +4,7 @@ import config from 'config';
 import createLogger from 'src/services/logger';
 import * as converter from 'src/interfaces/skybtz';
 import * as converter2 from 'src/interfaces/skybtzqm';
+import * as converter3 from 'src/interfaces/skybtzqp';
 import { promises as fs } from 'fs';
 
 const logger = createLogger('commands/skybitz');
@@ -96,6 +97,43 @@ export const getQueryMileage: ECCHandlerFunction = async (reqkey, data, ecc) => 
     // Send the result info
     return ecc.sendEccResult('ECC0000', 'Success', nextReqKey);
 };
+export const getQueryPosition: ECCHandlerFunction = async (reqkey, data, ecc) => {
+    logger.debug(`Received getQueryPosition request`, { reqkey, data });
+    // Get parameters from incomming data buffer
+    const reqFields = converter3.convertGetTrlPosToObject(data);
+    // Call web service
+    let result;
+    let nextReqKey = reqkey;
+
+    try {
+        result = await axiosInstance.get('/QueryPositions', {
+            params: {
+                assetid: reqFields.assetid,
+                customer: skybitz.username,
+                password: skybitz.password,
+                version: skybitz.version
+            }
+        });
+    } catch (err) {
+        if (err.response) {
+            // If the request was made and the server responded with a status code
+            // That falls out of the range of 2xx
+            // Note: These error formats are dependent on the web service
+            return ecc.sendEccResult('ECC8100', err.response.status + '-' + err.response.statusText, nextReqKey);
+        }
+
+        // Else the request was made but no response was received
+        // Note: This error format has nothing to do with the web service. This is
+        // Mainly TCP/IP errors.
+        return ecc.sendEccResult('ECC9100', err.message, nextReqKey);
+    }
+
+    // Send the result info
+    return ecc.sendEccResult('ECC0000', 'Success', nextReqKey);
+    //return await ecc.sendObjectToCaller(responseData, converterachrpt.convertObjectToPCRcvRpt, nextReqKey);
+    return ecc.sendFieldToCaller(result,nextReqKey);
+};
+
 function timestamp(d: any) {
     function pad(n: any) {
         return n < 10 ? '0' + n : n;
