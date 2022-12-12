@@ -6,6 +6,8 @@ import * as converter from 'src/interfaces/skybtz';
 import * as converter2 from 'src/interfaces/skybtzqm';
 import * as converter3 from 'src/interfaces/skybtzqp';
 import { promises as fs } from 'fs';
+import { parseStringPromise  } from 'xml2js';
+// import { resolve } from 'path';
 
 const logger = createLogger('commands/skybitz');
 const { skybitz } = config;
@@ -129,9 +131,12 @@ export const getQueryPosition: ECCHandlerFunction = async (reqkey, data, ecc) =>
     }
 
     // Send the result info
-    return ecc.sendEccResult('ECC0000', 'Success', nextReqKey);
-    //return await ecc.sendObjectToCaller(responseData, converterachrpt.convertObjectToPCRcvRpt, nextReqKey);
-    return ecc.sendFieldToCaller(result,nextReqKey);
+    // return ecc.sendEccResult('ECC0000', 'Success', nextReqKey);
+    nextReqKey = await ecc.sendEccResult('ECC0000', 'Success', nextReqKey);
+    const jsonData = await  toJson(result.data);
+    console.log(jsonData);
+    return ecc.sendObjectToCaller(jsonData,converter3.convertObjectToTrlRtnDta, nextReqKey);
+    // return ecc.sendFieldToCaller(JSON.stringify(jsonData),nextReqKey);
 };
 
 function timestamp(d: any) {
@@ -146,4 +151,8 @@ function timestamp(d: any) {
     let returns1 = newdate + '00:00:00';
     let returns2 = newdate + '23:59:59';
     return [returns1, returns2];
-}
+};
+    // Convert string/XML to JSON
+    function toJson(xmlData:string) {
+        return parseStringPromise (xmlData, {explicitArray:false})
+    }
