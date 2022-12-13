@@ -7,7 +7,25 @@ import * as converter2 from 'src/interfaces/skybtzqm';
 import * as converter3 from 'src/interfaces/skybtzqp';
 import { promises as fs } from 'fs';
 import { parseStringPromise  } from 'xml2js';
+import { sanitizeValues } from 'src/services/safe-values';
 // import { resolve } from 'path';
+const safeValues: any = {
+    skybitz: {
+        gls: {
+            asset: {
+                groups: {
+                    groupname: {
+                        '*10': ''
+                    }
+                },
+                note: ''
+            },
+            serial: {
+                '*10': ''
+            }
+        }
+    }
+};
 
 const logger = createLogger('commands/skybitz');
 const { skybitz } = config;
@@ -133,10 +151,23 @@ export const getQueryPosition: ECCHandlerFunction = async (reqkey, data, ecc) =>
     // Send the result info
     // return ecc.sendEccResult('ECC0000', 'Success', nextReqKey);
     nextReqKey = await ecc.sendEccResult('ECC0000', 'Success', nextReqKey);
+   
     const jsonData = await  toJson(result.data);
-    console.log(jsonData);
-    return ecc.sendObjectToCaller(jsonData,converter3.convertObjectToTrlRtnDta, nextReqKey);
+    if (jsonData.skybitz.error == '2') {
+        return ecc.sendEccResult('ECC9900', 'Error 2 received', nextReqKey); 
+    } else {
+
+    const groupname = [];
+    if (!Array.isArray(jsonData.skybitz.gls.asset.groups.groupname)) {
+        groupname.push(jsonData.skybitz.gls.asset.groups.groupname);
+        jsonData.skybitz.gls.asset.groups.groupname = groupname;
+    }
+
+    let safeResponse   = sanitizeValues(jsonData, safeValues);
+    console.log(safeResponse);
+    return ecc.sendObjectToCaller(safeResponse,converter3.convertObjectToTrlRtnDta, nextReqKey);
     // return ecc.sendFieldToCaller(JSON.stringify(jsonData),nextReqKey);
+}
 };
 
 function timestamp(d: any) {

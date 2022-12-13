@@ -98,7 +98,7 @@
        BufPtr += 15;
        DataStruct.skybitz.gls.heading = %subst(CharBuf:1:3);
        BufPtr += 3;
-       DataStruct.skybitz.gls.headingindegrees = %subst(CharBuf:1:10);
+       DataStruct.skybitz.gls.headingdegrees = %subst(CharBuf:1:10);
        BufPtr += 10;
        DataStruct.skybitz.gls.battery = %subst(CharBuf:1:10);
        BufPtr += 10;
@@ -146,7 +146,7 @@
        BufPtr += 10;
        DataStruct.skybitz.gls.epmflag = %subst(CharBuf:1:10);
        BufPtr += 10;
-       DataStruct.skybitz.gls.messagereceivedtime = %subst(CharBuf:1:19);
+       DataStruct.skybitz.gls.messagercvtime = %subst(CharBuf:1:19);
        BufPtr += 19;
        DataStruct.skybitz.gls.devicetype = %subst(CharBuf:1:10);
        BufPtr += 10;
