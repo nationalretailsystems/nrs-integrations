@@ -47,7 +47,7 @@
      PBufToPCRcvTrns   B                   Export
 
      DBufToPCRcvTrns   PI
-     DBuffer                      22891A
+     DBuffer                      24541A
      DDataStruct                           LikeDS(PCRcvTrns)
 
       * Initialize to begining of buffer
@@ -101,10 +101,10 @@
        BufPtr += 11;
        DataStruct.data(i).moduserid = %int(%subst(CharBuf:1:11));
        BufPtr += 11;
-       DataStruct.data(i).shiprefnum = %subst(CharBuf:1:10);
-       BufPtr += 10;
-       DataStruct.data(i).custrefnum = %subst(CharBuf:1:10);
-       BufPtr += 10;
+       DataStruct.data(i).shiprefnum = %subst(CharBuf:1:25);
+       BufPtr += 25;
+       DataStruct.data(i).custrefnum = %subst(CharBuf:1:25);
+       BufPtr += 25;
        DataStruct.data(i).partialpay = %subst(CharBuf:1:10);
        BufPtr += 10;
        DataStruct.data(i).disprsnresp = %subst(CharBuf:1:10);
@@ -115,8 +115,8 @@
        BufPtr += 11;
        DataStruct.data(i).externalid = %subst(CharBuf:1:10);
        BufPtr += 10;
-       DataStruct.data(i).parent = %subst(CharBuf:1:10);
-       BufPtr += 10;
+       DataStruct.data(i).parent = %subst(CharBuf:1:25);
+       BufPtr += 25;
        DataStruct.data(i).batchid = %subst(CharBuf:1:10);
        BufPtr += 10;
        DataStruct.data(i).notes = %subst(CharBuf:1:50);
@@ -127,8 +127,8 @@
        BufPtr += 15;
        DataStruct.data(i).statusid = %int(%subst(CharBuf:1:11));
        BufPtr += 11;
-       DataStruct.data(i).type = %subst(CharBuf:1:15);
-       BufPtr += 15;
+       DataStruct.data(i).type = %subst(CharBuf:1:25);
+       BufPtr += 25;
        DataStruct.data(i).payduedtdiff = %int(%subst(CharBuf:1:11));
        BufPtr += 11;
        DataStruct.data(i).paymethod = %subst(CharBuf:1:15);
