@@ -45,12 +45,12 @@ export interface DataDS {
      * @size 10 digits
      * @default `0`
      */
-    payerId: number,
+    payerClientId: number,
     /**
      * @size 10 digits
      * @default `0`
      */
-    payerClientId: number,
+    payerId: number,
     /**
      * @size 50 characters
      * @default ` `
@@ -60,12 +60,12 @@ export interface DataDS {
      * @size 10 digits
      * @default `0`
      */
-    vendorId: number,
+    vendorClientId: number,
     /**
      * @size 10 digits
      * @default `0`
      */
-    vendorClientId: number,
+    vendorId: number,
     /**
      * @size 50 characters
      * @default ` `
@@ -143,12 +143,12 @@ export interface DataDS {
      */
     modifiedByUserId: number,
     /**
-     * @size 10 characters
+     * @size 25 characters
      * @default ` `
      */
     shipperRefNumber: string,
     /**
-     * @size 10 characters
+     * @size 25 characters
      * @default ` `
      */
     customerRefNumber: string,
@@ -178,7 +178,7 @@ export interface DataDS {
      */
     externalId: string,
     /**
-     * @size 10 characters
+     * @size 25 characters
      * @default ` `
      */
     parent: string,
@@ -208,7 +208,7 @@ export interface DataDS {
      */
     statusId: number,
     /**
-     * @size 15 characters
+     * @size 25 characters
      * @default ` `
      */
     type: string,
@@ -327,11 +327,11 @@ export function convertObjectToPCRcvTrns(dataIn: PCRcvTrns): string {
   dataOut += dataIn?.result?.code?.toFixed()?.substring(0, 6)?.padEnd(6) ?? "0".substring(0, 6).padEnd(6);
   for (let i: number = 0; i < 30; ++i) {
   dataOut += dataIn?.data[i]?.transactionId?.toFixed()?.substring(0, 11)?.padEnd(11) ?? "0".substring(0, 11).padEnd(11);
-  dataOut += dataIn?.data[i]?.payerId?.toFixed()?.substring(0, 11)?.padEnd(11) ?? "0".substring(0, 11).padEnd(11);
   dataOut += dataIn?.data[i]?.payerClientId?.toFixed()?.substring(0, 11)?.padEnd(11) ?? "0".substring(0, 11).padEnd(11);
+  dataOut += dataIn?.data[i]?.payerId?.toFixed()?.substring(0, 11)?.padEnd(11) ?? "0".substring(0, 11).padEnd(11);
   dataOut += dataIn?.data[i]?.payerName?.substring(0, 50)?.padEnd(50) ?? " ".substring(0, 50).padEnd(50);
-  dataOut += dataIn?.data[i]?.vendorId?.toFixed()?.substring(0, 11)?.padEnd(11) ?? "0".substring(0, 11).padEnd(11);
   dataOut += dataIn?.data[i]?.vendorClientId?.toFixed()?.substring(0, 11)?.padEnd(11) ?? "0".substring(0, 11).padEnd(11);
+  dataOut += dataIn?.data[i]?.vendorId?.toFixed()?.substring(0, 11)?.padEnd(11) ?? "0".substring(0, 11).padEnd(11);
   dataOut += dataIn?.data[i]?.vendorName?.substring(0, 50)?.padEnd(50) ?? " ".substring(0, 50).padEnd(50);
   dataOut += dataIn?.data[i]?.number?.substring(0, 25)?.padEnd(25) ?? " ".substring(0, 25).padEnd(25);
   dataOut += dataIn?.data[i]?.departureDate?.substring(0, 24)?.padEnd(24) ?? " ".substring(0, 24).padEnd(24);
@@ -347,20 +347,20 @@ export function convertObjectToPCRcvTrns(dataIn: PCRcvTrns): string {
   dataOut += dataIn?.data[i]?.lastModifiedDate?.substring(0, 24)?.padEnd(24) ?? " ".substring(0, 24).padEnd(24);
   dataOut += dataIn?.data[i]?.userId?.toFixed()?.substring(0, 11)?.padEnd(11) ?? "0".substring(0, 11).padEnd(11);
   dataOut += dataIn?.data[i]?.modifiedByUserId?.toFixed()?.substring(0, 11)?.padEnd(11) ?? "0".substring(0, 11).padEnd(11);
-  dataOut += dataIn?.data[i]?.shipperRefNumber?.substring(0, 10)?.padEnd(10) ?? " ".substring(0, 10).padEnd(10);
-  dataOut += dataIn?.data[i]?.customerRefNumber?.substring(0, 10)?.padEnd(10) ?? " ".substring(0, 10).padEnd(10);
+  dataOut += dataIn?.data[i]?.shipperRefNumber?.substring(0, 25)?.padEnd(25) ?? " ".substring(0, 25).padEnd(25);
+  dataOut += dataIn?.data[i]?.customerRefNumber?.substring(0, 25)?.padEnd(25) ?? " ".substring(0, 25).padEnd(25);
   dataOut += dataIn?.data[i]?.partialPayment?.substring(0, 10)?.padEnd(10) ?? " ".substring(0, 10).padEnd(10);
   dataOut += dataIn?.data[i]?.disputeReasonResponse?.substring(0, 10)?.padEnd(10) ?? " ".substring(0, 10).padEnd(10);
   dataOut += dataIn?.data[i]?.subcategory?.substring(0, 10)?.padEnd(10) ?? " ".substring(0, 10).padEnd(10);
   dataOut += dataIn?.data[i]?.externalSystemId?.toFixed()?.substring(0, 11)?.padEnd(11) ?? "0".substring(0, 11).padEnd(11);
   dataOut += dataIn?.data[i]?.externalId?.substring(0, 10)?.padEnd(10) ?? " ".substring(0, 10).padEnd(10);
-  dataOut += dataIn?.data[i]?.parent?.substring(0, 10)?.padEnd(10) ?? " ".substring(0, 10).padEnd(10);
+  dataOut += dataIn?.data[i]?.parent?.substring(0, 25)?.padEnd(25) ?? " ".substring(0, 25).padEnd(25);
   dataOut += dataIn?.data[i]?.batchId?.substring(0, 10)?.padEnd(10) ?? " ".substring(0, 10).padEnd(10);
   dataOut += dataIn?.data[i]?.notes?.substring(0, 50)?.padEnd(50) ?? " ".substring(0, 50).padEnd(50);
   dataOut += dataIn?.data[i]?.valueOfGoods?.substring(0, 15)?.padEnd(15) ?? " ".substring(0, 15).padEnd(15);
   dataOut += dataIn?.data[i]?.status?.substring(0, 15)?.padEnd(15) ?? " ".substring(0, 15).padEnd(15);
   dataOut += dataIn?.data[i]?.statusId?.toFixed()?.substring(0, 11)?.padEnd(11) ?? "0".substring(0, 11).padEnd(11);
-  dataOut += dataIn?.data[i]?.type?.substring(0, 15)?.padEnd(15) ?? " ".substring(0, 15).padEnd(15);
+  dataOut += dataIn?.data[i]?.type?.substring(0, 25)?.padEnd(25) ?? " ".substring(0, 25).padEnd(25);
   dataOut += dataIn?.data[i]?.paymentDueDateDiff?.toFixed()?.substring(0, 11)?.padEnd(11) ?? "0".substring(0, 11).padEnd(11);
   dataOut += dataIn?.data[i]?.paymentMethod?.substring(0, 15)?.padEnd(15) ?? " ".substring(0, 15).padEnd(15);
   dataOut += dataIn?.data[i]?.payerRefNumber?.substring(0, 15)?.padEnd(15) ?? " ".substring(0, 15).padEnd(15);

@@ -6,11 +6,66 @@ import * as converterachrpt from 'src/interfaces/pcachrpt';
 import * as convertergettran from 'src/interfaces/pcgettran';
 import * as convertergettrns from 'src/interfaces/pcgettrns';
 import { getToken } from 'src/services/get-token';
+import { sanitizeValues } from 'src/services/safe-values';
 
 const logger = createLogger('commands/paycargo');
-const { paycargo_dev } = config;
-const axiosInstance = axios.create(paycargo_dev.axios);
-
+const { paycargo } = config;
+const axiosInstance = axios.create(paycargo.axios);
+const safeValues: any = {
+    msg: '',
+    code: 0,
+    data: {
+        '*30':{
+            transactionId: 0,
+            payerClientId: 0,
+            payerId: 0,
+            payerName: '',
+            vendorClientId: 0,
+            vendorId: 0,
+            vendorName: '',
+            number: '',
+            departureDate: '',
+            arrivalDate: '',
+            paymentDueDate: '',
+            approvalDate: '',
+            hasArrived: '',
+            total: 0,
+            directionId: 0,
+            bolLink: '',
+            direction: '',
+            createdDate: '',
+            lastModifiedDate: '',
+            userId: 0,
+            modifiedByUserId: 0,
+            shipperRefNumber: '',
+            customerRefNumber: '',
+            partialPayment: '',
+            disputeReasonResponse: '',
+            subcategory: '',
+            externalSystemId: '',
+            externalId: '',
+            parent: '',
+            batchId: '',
+            notes: '',
+            valueOfGoods: '',
+            status: '',
+            statusId: 0,
+            type: '',
+            paymentDueDateDiff: 0,
+            paymentMethod: '',
+            payerRefNumber: '',
+            vendorRefNumber: '',
+            payerInternalNumber: '',
+            payerFileNumber: '',
+            payerVoucherNumber: '',
+            payerProductNumber: '',
+            payerInvoiceNumber: '',
+            nachaBatchId: '',
+            paycargoBatchId: '',
+            processingDate: ''
+        }
+    }
+};
 export const getAchrpt: ECCHandlerFunction = async function (reqkey, datax, ecc) {
     // Get parameters from incomming data buffer
     const reqFields = converterachrpt.convertPCReqRptToObject(datax);
@@ -143,9 +198,11 @@ export const getTransactions: ECCHandlerFunction = async function (reqkey, datax
 
     // const responseData= result;
     // Send the result info
+    let responseData = sanitizeValues(result.data, safeValues);
     nextReqKey = await ecc.sendEccResult('ECC0000', 'Success', nextReqKey);
 
     // Send the results
-    return ecc.sendObjectToCaller(result.data, convertergettrns.convertObjectToPCRcvTrns, nextReqKey);
+    // return ecc.sendObjectToCaller(result.data, convertergettrns.convertObjectToPCRcvTrns, nextReqKey);
+    return ecc.sendObjectToCaller(responseData, convertergettrns.convertObjectToPCRcvTrns, nextReqKey);
     logger.debug(`Executed sendObjectToCaller`);
 };

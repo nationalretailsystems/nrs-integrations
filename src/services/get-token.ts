@@ -1,8 +1,10 @@
 import config from 'config';
-const { paycargo_dev } = config;
+//const { paycargo_dev } = config;
+const { paycargo } = config;
 import axios from 'axios';
 
-const axiosInstance = axios.create(paycargo_dev.axios);
+// const axiosInstance = axios.create(paycargo_dev.axios);
+const axiosInstance = axios.create(paycargo.axios);
 
 let _token: string;
 let _expiration: number;
@@ -12,8 +14,10 @@ export const getToken = async (): Promise<string> => {
     }
 
     const credentials = {
-        apiKey: paycargo_dev.apikey,
-        apiSecret: paycargo_dev.apisecret
+        // apiKey: paycargo_dev.apikey,
+        // apiSecret: paycargo_dev.apisecret
+        apiKey: paycargo.apikey,
+        apiSecret: paycargo.apisecret        
     };
 
     const response = await axiosInstance.post('/login/developer', credentials);

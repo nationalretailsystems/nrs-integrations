@@ -27,31 +27,31 @@ datastructures:
         type: Integer
         length: 10
         default: 0
-      payerId:
-        rpgName: payerid
-        type: Integer
-        length: 10
-        default: 0
       payerClientId:
         rpgName: payerclntid
         type: Integer
         length: 10
         default: 0
+      payerId:
+        rpgName: payerid
+        type: Integer
+        length: 10
+        default: 0        
       payerName:
         rpgName: payername
         type: Character
         length: 50
         default: " "
-      vendorId:
-        rpgName: vendorid
-        type: Integer
-        length: 10
-        default: 0
       vendorClientId:
         rpgName: vndclientid
         type: Integer
         length: 10
         default: 0
+      vendorId:
+        rpgName: vendorid
+        type: Integer
+        length: 10
+        default: 0        
       vendorName:
         rpgName: vendorname
         type: Character
