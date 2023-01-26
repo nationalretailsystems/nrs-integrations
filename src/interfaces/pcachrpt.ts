@@ -19,6 +19,40 @@ const { dataTypes } = eradaniConnect;
 /**
  * Output interface
  */
+export interface ParmsDS {
+    /**
+     * @size 6 characters
+     */
+    branchClientId: string,
+    /**
+     * @size 10 characters
+     */
+    startDate: string,
+    /**
+     * @size 10 characters
+     */
+    endDate: string,
+    /**
+     * @size 6 characters
+     */
+    client_id: string,
+    /**
+     * @size 50 characters
+     */
+    report_action_name: string,
+    /**
+     * @size 10 characters
+     */
+    type: string,
+    /**
+     * @size 10 characters
+     */
+    accountName: string
+}
+
+/**
+ * Output interface
+ */
 export interface RecSetDS {
     /**
      * @size 10 characters
@@ -305,34 +339,6 @@ export function convertPCReqRptToObject(dataIn: string): PCReqRpt {
  */
 export interface PCRcvRpt {
     /**
-     * @size 6 characters
-     */
-    branchClientId: string,
-    /**
-     * @size 10 characters
-     */
-    startDate: string,
-    /**
-     * @size 10 characters
-     */
-    endDate: string,
-    /**
-     * @size 6 characters
-     */
-    client_id: string,
-    /**
-     * @size 50 characters
-     */
-    report_action_name: string,
-    /**
-     * @size 10 characters
-     */
-    type: string,
-    /**
-     * @size 10 characters
-     */
-    accountName: string,
-    /**
      */
     recordset: Array<RecSetDS>,
     /**
@@ -349,13 +355,6 @@ export interface PCRcvRpt {
 export function convertObjectToPCRcvRpt(dataIn: PCRcvRpt): string {
   let dataOut: string = "";
 
-  dataOut += dataIn?.branchClientId?.substring(0, 6)?.padEnd(6) ?? missingInput(`dataIn.branchClientId`, "char", dataIn?.branchClientId);
-  dataOut += dataIn?.startDate?.substring(0, 10)?.padEnd(10) ?? missingInput(`dataIn.startDate`, "char", dataIn?.startDate);
-  dataOut += dataIn?.endDate?.substring(0, 10)?.padEnd(10) ?? missingInput(`dataIn.endDate`, "char", dataIn?.endDate);
-  dataOut += dataIn?.client_id?.substring(0, 6)?.padEnd(6) ?? missingInput(`dataIn.client_id`, "char", dataIn?.client_id);
-  dataOut += dataIn?.report_action_name?.substring(0, 50)?.padEnd(50) ?? missingInput(`dataIn.report_action_name`, "char", dataIn?.report_action_name);
-  dataOut += dataIn?.type?.substring(0, 10)?.padEnd(10) ?? missingInput(`dataIn.type`, "char", dataIn?.type);
-  dataOut += dataIn?.accountName?.substring(0, 10)?.padEnd(10) ?? missingInput(`dataIn.accountName`, "char", dataIn?.accountName);
   for (let i: number = 0; i < 50; ++i) {
   dataOut += dataIn?.recordset[i]?.account?.substring(0, 10)?.padEnd(10) ?? " ".substring(0, 10).padEnd(10);
   dataOut += dataIn?.recordset[i]?.transaction_id?.toFixed()?.substring(0, 11)?.padEnd(11) ?? "0".substring(0, 11).padEnd(11);

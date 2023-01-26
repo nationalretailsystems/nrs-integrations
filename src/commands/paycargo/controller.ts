@@ -67,6 +67,15 @@ const safeValues: any = {
     }
 };
 const safeValuesACH: any = {
+   // parms: {
+   //     branchClientId: '',
+   //     startDate: '',
+   //     endDate: '',
+   //     client_id: '',
+   //     report_action_name: '',
+   //     type: '',
+   //     accountname: ''
+   // },
     recordset: {
         '*50':{
             account: '',
@@ -83,7 +92,7 @@ const safeValuesACH: any = {
             payorDate: '',
             payeeBatch: 0,
             payeeDate: '',
-            payorID: 0,
+            payorID: '',
             payeeID: '',
             customer_reference_number: '',
             shipper_reference_number: '',
@@ -102,6 +111,15 @@ const safeValuesACH: any = {
             payerProductNumber: '',
             payerInvoiceNumber: '',
             bolLink: ''        
+        },
+        overall: {
+            count: 0,
+            debitamount: 0,
+            creditamount: 0
+        },
+        payor: {
+            batch: 0,
+            amount: 0
         }
     }
 };
@@ -148,7 +166,7 @@ export const getAchrpt: ECCHandlerFunction = async function (reqkey, datax, ecc)
 
     // const responseData= result;
     // Send the result info
-        let responseData = sanitizeValues(result.data, safeValuesACH);
+        let responseData = sanitizeValues(result.data[0][1], safeValuesACH);
        // let responseData = result.data[0][1];
         nextReqKey = await ecc.sendEccResult('ECC0000', 'Success', nextReqKey);
        // logger.error('Call test1 failed');

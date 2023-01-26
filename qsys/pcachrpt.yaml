@@ -6,6 +6,33 @@ codeblocks:
     - import eradaniConnect from "@eradani-inc/eradani-connect";
     - const { dataTypes } = eradaniConnect;
 datastructures:
+  ParmsDS:
+    qualified: true
+    subfields:
+      branchClientId:
+        type: Character
+        length: 6
+      startDate:
+        type: Character
+        length: 10
+      endDate:
+        type: Character
+        length: 10
+      client_id:
+        rpgName: clientid
+        type: Character
+        length: 6
+      report_action_name:
+        rpgName: rptactnam
+        type: Character
+        length: 50
+      type:
+        rpgName: type
+        type: Character
+        length: 10
+      accountName:
+        type: Character
+        length: 10
   RecSetDS:
     qualified: true
     subfields:
@@ -211,7 +238,7 @@ datastructures:
       recordset:
         type: DataStruct
         dsName: RecSetDS
-        dim: 25
+        dim: 50
       overall:
         type: DataStruct
         dsName: OverallDS
@@ -253,30 +280,6 @@ formats:
   PCRcvRpt:
     recordType: response
     subfields:
-      branchClientId:
-        type: Character
-        length: 6
-      startDate:
-        type: Character
-        length: 10
-      endDate:
-        type: Character
-        length: 10
-      client_id:
-        rpgName: clientid
-        type: Character
-        length: 6
-      report_action_name:
-        rpgName: rptactnam
-        type: Character
-        length: 50
-      type:
-        rpgName: type
-        type: Character
-        length: 10
-      accountName:
-        type: Character
-        length: 10
       recordset:
         type: DataStruct
         dsName: RecSetDS
