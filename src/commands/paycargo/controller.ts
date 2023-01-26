@@ -42,7 +42,7 @@ const safeValues: any = {
             partialPayment: '',
             disputeReasonResponse: '',
             subcategory: '',
-            externalSystemId: '',
+            externalSystemId: 0,
             externalId: '',
             parent: '',
             batchId: '',
@@ -63,6 +63,45 @@ const safeValues: any = {
             nachaBatchId: '',
             paycargoBatchId: '',
             processingDate: ''
+        }
+    }
+};
+const safeValuesACH: any = {
+    recordset: {
+        '*50':{
+            account: '',
+            transaction_id: 0,
+            payor: '',
+            payee: '',
+            category: '',
+            transaction_type: '',
+            number: '',
+            debitCredit: '',
+            debitAmount: 0,
+            creditAmount: 0,
+            payorBatch: 0,
+            payorDate: '',
+            payeeBatch: 0,
+            payeeDate: '',
+            payorID: 0,
+            payeeID: '',
+            customer_reference_number: '',
+            shipper_reference_number: '',
+            parent: '',
+            approvalDate: '',
+            approvedByUserName: '',
+            currency: '',
+            payerId: 0,
+            vendorId: 0,
+            payerReferenceNumber: '',
+            origin: '',
+            destination: '',
+            payerInternalNumber: '',
+            payerFileNumber: '',
+            payerVoucherNumber: '',
+            payerProductNumber: '',
+            payerInvoiceNumber: '',
+            bolLink: ''        
         }
     }
 };
@@ -109,10 +148,10 @@ export const getAchrpt: ECCHandlerFunction = async function (reqkey, datax, ecc)
 
     // const responseData= result;
     // Send the result info
-
-        let responseData = result.data[0][1];
+        let responseData = sanitizeValues(result.data, safeValuesACH);
+       // let responseData = result.data[0][1];
         nextReqKey = await ecc.sendEccResult('ECC0000', 'Success', nextReqKey);
-        logger.error('Call test1 failed');
+       // logger.error('Call test1 failed');
         return await ecc.sendObjectToCaller(responseData, converterachrpt.convertObjectToPCRcvRpt, nextReqKey);
         logger.error(nextReqKey);
 

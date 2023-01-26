@@ -1,4 +1,4 @@
-     H Nomain EXPROPTS(*ALWBLANKNUM)  
+     H Nomain
 
       ************************************
       * Module: pcachrpt
@@ -57,14 +57,28 @@
      PBufToPCRcvRpt    B                   Export
 
      DBufToPCRcvRpt    PI
-     DBuffer                      24798A
+     DBuffer                      49625A
      DDataStruct                           LikeDS(PCRcvRpt)
 
       * Initialize to begining of buffer
        BufPtr = %addr(Buffer);
 
       * Read fields from buffer into DS
-       for i = 1 to 25;
+       DataStruct.branchClientId = %subst(CharBuf:1:6);
+       BufPtr += 6;
+       DataStruct.startDate = %subst(CharBuf:1:10);
+       BufPtr += 10;
+       DataStruct.endDate = %subst(CharBuf:1:10);
+       BufPtr += 10;
+       DataStruct.clientid = %subst(CharBuf:1:6);
+       BufPtr += 6;
+       DataStruct.rptactnam = %subst(CharBuf:1:50);
+       BufPtr += 50;
+       DataStruct.type = %subst(CharBuf:1:10);
+       BufPtr += 10;
+       DataStruct.accountName = %subst(CharBuf:1:10);
+       BufPtr += 10;
+       for i = 1 to 50;
        DataStruct.recordset(i).account = %subst(CharBuf:1:10);
        BufPtr += 10;
        DataStruct.recordset(i).transid = %int(%subst(CharBuf:1:11));
