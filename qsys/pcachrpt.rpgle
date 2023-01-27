@@ -57,14 +57,14 @@
      PBufToPCRcvRpt    B                   Export
 
      DBufToPCRcvRpt    PI
-     DBuffer                      49523A
+     DBuffer                      28633A
      DDataStruct                           LikeDS(PCRcvRpt)
 
       * Initialize to begining of buffer
        BufPtr = %addr(Buffer);
 
       * Read fields from buffer into DS
-       for i = 1 to 50;
+       for i = 1 to 40;
        DataStruct.recordset(i).account = %subst(CharBuf:1:10);
        BufPtr += 10;
        DataStruct.recordset(i).transid = %int(%subst(CharBuf:1:11));
@@ -97,16 +97,16 @@
        BufPtr += 10;
        DataStruct.recordset(i).payeeid = %subst(CharBuf:1:10);
        BufPtr += 10;
-       DataStruct.recordset(i).custrefnum = %subst(CharBuf:1:50);
-       BufPtr += 50;
-       DataStruct.recordset(i).shiprefnum = %subst(CharBuf:1:50);
-       BufPtr += 50;
-       DataStruct.recordset(i).parent = %subst(CharBuf:1:50);
-       BufPtr += 50;
+       DataStruct.recordset(i).custrefnum = %subst(CharBuf:1:25);
+       BufPtr += 25;
+       DataStruct.recordset(i).shiprefnum = %subst(CharBuf:1:25);
+       BufPtr += 25;
+       DataStruct.recordset(i).parent = %subst(CharBuf:1:25);
+       BufPtr += 25;
        DataStruct.recordset(i).approvaldate = %subst(CharBuf:1:24);
        BufPtr += 24;
-       DataStruct.recordset(i).appbyuser = %subst(CharBuf:1:50);
-       BufPtr += 50;
+       DataStruct.recordset(i).appbyuser = %subst(CharBuf:1:25);
+       BufPtr += 25;
        DataStruct.recordset(i).currency = %subst(CharBuf:1:3);
        BufPtr += 3;
        DataStruct.recordset(i).payerid = %int(%subst(CharBuf:1:11));
@@ -115,20 +115,20 @@
        BufPtr += 11;
        DataStruct.recordset(i).payrefnum = %subst(CharBuf:1:10);
        BufPtr += 10;
-       DataStruct.recordset(i).origin = %subst(CharBuf:1:50);
-       BufPtr += 50;
-       DataStruct.recordset(i).destination = %subst(CharBuf:1:50);
-       BufPtr += 50;
-       DataStruct.recordset(i).payerintnum = %subst(CharBuf:1:50);
-       BufPtr += 50;
-       DataStruct.recordset(i).payerfilenum = %subst(CharBuf:1:50);
-       BufPtr += 50;
-       DataStruct.recordset(i).payervouch = %subst(CharBuf:1:50);
-       BufPtr += 50;
-       DataStruct.recordset(i).payerprodnum = %subst(CharBuf:1:50);
-       BufPtr += 50;
-       DataStruct.recordset(i).payerinvnum = %subst(CharBuf:1:50);
-       BufPtr += 50;
+       DataStruct.recordset(i).origin = %subst(CharBuf:1:25);
+       BufPtr += 25;
+       DataStruct.recordset(i).destination = %subst(CharBuf:1:25);
+       BufPtr += 25;
+       DataStruct.recordset(i).payerintnum = %subst(CharBuf:1:25);
+       BufPtr += 25;
+       DataStruct.recordset(i).payerfilenum = %subst(CharBuf:1:25);
+       BufPtr += 25;
+       DataStruct.recordset(i).payervouch = %subst(CharBuf:1:25);
+       BufPtr += 25;
+       DataStruct.recordset(i).payerprodnum = %subst(CharBuf:1:25);
+       BufPtr += 25;
+       DataStruct.recordset(i).payerinvnum = %subst(CharBuf:1:25);
+       BufPtr += 25;
        DataStruct.recordset(i).bollink = %subst(CharBuf:1:50);
        BufPtr += 50;
        endfor;

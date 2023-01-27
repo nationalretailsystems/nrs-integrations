@@ -121,17 +121,17 @@ datastructures:
       customer_reference_number:
         rpgName: custrefnum
         type: Character
-        length: 50
+        length: 25
         default: " "
       shipper_reference_number:
         rpgName: shiprefnum
         type: Character
-        length: 50
+        length: 25
         default: " "
       parent:
         rpgName: parent
         type: Character
-        length: 50
+        length: 25
         default: " "
       approvalDate:
         rpgName: approvaldate
@@ -141,7 +141,7 @@ datastructures:
       approvedByUserName:
         rpgName: appbyuser
         type: Character
-        length: 50
+        length: 25
         default: " "
       currency:
         rpgName: currency
@@ -166,37 +166,37 @@ datastructures:
       origin:
         rpgName: origin
         type: Character
-        length: 50
+        length: 25
         default: " "
       destination:
         rpgName: destination
         type: Character
-        length: 50
+        length: 25
         default: " "
       payerInternalNumber:
         rpgName: payerintnum
         type: Character
-        length: 50
+        length: 25
         default: " "
       payerFileNumber:
         rpgName: payerfilenum
         type: Character
-        length: 50
+        length: 25
         default: " "
       payerVoucherNumber:
         rpgName: payervouch
         type: Character
-        length: 50
+        length: 25
         default: " "
       payerProductNumber:
         rpgName: payerprodnum
         type: Character
-        length: 50
+        length: 25
         default: " "
       payerInvoiceNumber:
         rpgName: payerinvnum
         type: Character
-        length: 50
+        length: 25
         default: " "
       bolLink:
         rpgName: bollink
@@ -283,7 +283,7 @@ formats:
       recordset:
         type: DataStruct
         dsName: RecSetDS
-        dim: 50
+        dim: 40
       overall:
         type: DataStruct
         dsName: OverallDS

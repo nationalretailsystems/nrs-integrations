@@ -137,17 +137,17 @@ export interface RecSetDS {
      */
     payeeID: string,
     /**
-     * @size 50 characters
+     * @size 25 characters
      * @default ` `
      */
     customer_reference_number: string,
     /**
-     * @size 50 characters
+     * @size 25 characters
      * @default ` `
      */
     shipper_reference_number: string,
     /**
-     * @size 50 characters
+     * @size 25 characters
      * @default ` `
      */
     parent: string,
@@ -157,7 +157,7 @@ export interface RecSetDS {
      */
     approvalDate: string,
     /**
-     * @size 50 characters
+     * @size 25 characters
      * @default ` `
      */
     approvedByUserName: string,
@@ -182,37 +182,37 @@ export interface RecSetDS {
      */
     payerReferenceNumber: string,
     /**
-     * @size 50 characters
+     * @size 25 characters
      * @default ` `
      */
     origin: string,
     /**
-     * @size 50 characters
+     * @size 25 characters
      * @default ` `
      */
     destination: string,
     /**
-     * @size 50 characters
+     * @size 25 characters
      * @default ` `
      */
     payerInternalNumber: string,
     /**
-     * @size 50 characters
+     * @size 25 characters
      * @default ` `
      */
     payerFileNumber: string,
     /**
-     * @size 50 characters
+     * @size 25 characters
      * @default ` `
      */
     payerVoucherNumber: string,
     /**
-     * @size 50 characters
+     * @size 25 characters
      * @default ` `
      */
     payerProductNumber: string,
     /**
-     * @size 50 characters
+     * @size 25 characters
      * @default ` `
      */
     payerInvoiceNumber: string,
@@ -355,7 +355,7 @@ export interface PCRcvRpt {
 export function convertObjectToPCRcvRpt(dataIn: PCRcvRpt): string {
   let dataOut: string = "";
 
-  for (let i: number = 0; i < 50; ++i) {
+  for (let i: number = 0; i < 40; ++i) {
   dataOut += dataIn?.recordset[i]?.account?.substring(0, 10)?.padEnd(10) ?? " ".substring(0, 10).padEnd(10);
   dataOut += dataIn?.recordset[i]?.transaction_id?.toFixed()?.substring(0, 11)?.padEnd(11) ?? "0".substring(0, 11).padEnd(11);
   dataOut += dataIn?.recordset[i]?.payor?.substring(0, 50)?.padEnd(50) ?? " ".substring(0, 50).padEnd(50);
@@ -372,22 +372,22 @@ export function convertObjectToPCRcvRpt(dataIn: PCRcvRpt): string {
   dataOut += dataIn?.recordset[i]?.payeeDate?.substring(0, 24)?.padEnd(24) ?? " ".substring(0, 24).padEnd(24);
   dataOut += dataIn?.recordset[i]?.payorID?.substring(0, 10)?.padEnd(10) ?? " ".substring(0, 10).padEnd(10);
   dataOut += dataIn?.recordset[i]?.payeeID?.substring(0, 10)?.padEnd(10) ?? " ".substring(0, 10).padEnd(10);
-  dataOut += dataIn?.recordset[i]?.customer_reference_number?.substring(0, 50)?.padEnd(50) ?? " ".substring(0, 50).padEnd(50);
-  dataOut += dataIn?.recordset[i]?.shipper_reference_number?.substring(0, 50)?.padEnd(50) ?? " ".substring(0, 50).padEnd(50);
-  dataOut += dataIn?.recordset[i]?.parent?.substring(0, 50)?.padEnd(50) ?? " ".substring(0, 50).padEnd(50);
+  dataOut += dataIn?.recordset[i]?.customer_reference_number?.substring(0, 25)?.padEnd(25) ?? " ".substring(0, 25).padEnd(25);
+  dataOut += dataIn?.recordset[i]?.shipper_reference_number?.substring(0, 25)?.padEnd(25) ?? " ".substring(0, 25).padEnd(25);
+  dataOut += dataIn?.recordset[i]?.parent?.substring(0, 25)?.padEnd(25) ?? " ".substring(0, 25).padEnd(25);
   dataOut += dataIn?.recordset[i]?.approvalDate?.substring(0, 24)?.padEnd(24) ?? " ".substring(0, 24).padEnd(24);
-  dataOut += dataIn?.recordset[i]?.approvedByUserName?.substring(0, 50)?.padEnd(50) ?? " ".substring(0, 50).padEnd(50);
+  dataOut += dataIn?.recordset[i]?.approvedByUserName?.substring(0, 25)?.padEnd(25) ?? " ".substring(0, 25).padEnd(25);
   dataOut += dataIn?.recordset[i]?.currency?.substring(0, 3)?.padEnd(3) ?? " ".substring(0, 3).padEnd(3);
   dataOut += dataIn?.recordset[i]?.payerId?.toFixed()?.substring(0, 11)?.padEnd(11) ?? "0".substring(0, 11).padEnd(11);
   dataOut += dataIn?.recordset[i]?.vendorId?.toFixed()?.substring(0, 11)?.padEnd(11) ?? "0".substring(0, 11).padEnd(11);
   dataOut += dataIn?.recordset[i]?.payerReferenceNumber?.substring(0, 10)?.padEnd(10) ?? " ".substring(0, 10).padEnd(10);
-  dataOut += dataIn?.recordset[i]?.origin?.substring(0, 50)?.padEnd(50) ?? " ".substring(0, 50).padEnd(50);
-  dataOut += dataIn?.recordset[i]?.destination?.substring(0, 50)?.padEnd(50) ?? " ".substring(0, 50).padEnd(50);
-  dataOut += dataIn?.recordset[i]?.payerInternalNumber?.substring(0, 50)?.padEnd(50) ?? " ".substring(0, 50).padEnd(50);
-  dataOut += dataIn?.recordset[i]?.payerFileNumber?.substring(0, 50)?.padEnd(50) ?? " ".substring(0, 50).padEnd(50);
-  dataOut += dataIn?.recordset[i]?.payerVoucherNumber?.substring(0, 50)?.padEnd(50) ?? " ".substring(0, 50).padEnd(50);
-  dataOut += dataIn?.recordset[i]?.payerProductNumber?.substring(0, 50)?.padEnd(50) ?? " ".substring(0, 50).padEnd(50);
-  dataOut += dataIn?.recordset[i]?.payerInvoiceNumber?.substring(0, 50)?.padEnd(50) ?? " ".substring(0, 50).padEnd(50);
+  dataOut += dataIn?.recordset[i]?.origin?.substring(0, 25)?.padEnd(25) ?? " ".substring(0, 25).padEnd(25);
+  dataOut += dataIn?.recordset[i]?.destination?.substring(0, 25)?.padEnd(25) ?? " ".substring(0, 25).padEnd(25);
+  dataOut += dataIn?.recordset[i]?.payerInternalNumber?.substring(0, 25)?.padEnd(25) ?? " ".substring(0, 25).padEnd(25);
+  dataOut += dataIn?.recordset[i]?.payerFileNumber?.substring(0, 25)?.padEnd(25) ?? " ".substring(0, 25).padEnd(25);
+  dataOut += dataIn?.recordset[i]?.payerVoucherNumber?.substring(0, 25)?.padEnd(25) ?? " ".substring(0, 25).padEnd(25);
+  dataOut += dataIn?.recordset[i]?.payerProductNumber?.substring(0, 25)?.padEnd(25) ?? " ".substring(0, 25).padEnd(25);
+  dataOut += dataIn?.recordset[i]?.payerInvoiceNumber?.substring(0, 25)?.padEnd(25) ?? " ".substring(0, 25).padEnd(25);
   dataOut += dataIn?.recordset[i]?.bolLink?.substring(0, 50)?.padEnd(50) ?? " ".substring(0, 50).padEnd(50);
   }
   dataOut += dataIn?.overall?.count?.toFixed()?.substring(0, 11)?.padEnd(11) ?? missingInput(`dataIn.overall.count`, "integer", dataIn?.overall?.count);
