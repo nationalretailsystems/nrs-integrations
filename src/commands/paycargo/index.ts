@@ -6,6 +6,6 @@ import * as pcgettrns from 'src/interfaces/pcgettrns';
 
 export default function registerPayCargo(router: ECCInternalRouter) {
     router.use('achrpt', pcachrpt, getAchrpt);
-    router.use('gettran',pcgettran, getTransaction)
-    router.use('gettrns',pcgettrns, getTransactions)    
+    router.use('gettran', pcgettran, getTransaction);
+    router.use('gettrns', pcgettrns, getTransactions);
 }

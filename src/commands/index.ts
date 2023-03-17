@@ -15,7 +15,6 @@ import registerMakeme from './mmpwd';
 import registerPaycargo from './paycargo';
 import registerProject44 from './project44';
 
-
 export default async function registerCommands(router: ECCRouter) {
     const jokes = new ECCRouter.Router();
     registerJokes(jokes);
@@ -67,15 +66,15 @@ export default async function registerCommands(router: ECCRouter) {
 
     const makeme = new ECCRouter.Router();
     registerMakeme(makeme);
-    router.use('mmpwd', makeme); 
-    
+    router.use('mmpwd', makeme);
+
     const paycargo = new ECCRouter.Router();
     registerPaycargo(paycargo);
-    router.use('paycargo', paycargo);  
+    router.use('paycargo', paycargo);
 
     const project44 = new ECCRouter.Router();
     registerProject44(project44);
-    router.use('project44', project44);  
+    router.use('project44', project44);
 
     return router;
 }

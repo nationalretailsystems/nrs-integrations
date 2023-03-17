@@ -15,7 +15,7 @@ const safeValues: any = {
     msg: '',
     code: 0,
     data: {
-        '*30':{
+        '*30': {
             transactionId: 0,
             payerClientId: 0,
             payerId: 0,
@@ -66,18 +66,19 @@ const safeValues: any = {
         }
     }
 };
+/* eslint-disable camelcase */
 const safeValuesACH: any = {
-   // parms: {
-   //     branchClientId: '',
-   //     startDate: '',
-   //     endDate: '',
-   //     client_id: '',
-   //     report_action_name: '',
-   //     type: '',
-   //     accountname: ''
-   // },
+    // parms: {
+    //     branchClientId: '',
+    //     startDate: '',
+    //     endDate: '',
+    //     client_id: '',
+    //     report_action_name: '',
+    //     type: '',
+    //     accountname: ''
+    // },
     recordset: {
-        '*50':{
+        '*50': {
             account: '',
             transaction_id: 0,
             payor: '',
@@ -110,7 +111,7 @@ const safeValuesACH: any = {
             payerVoucherNumber: '',
             payerProductNumber: '',
             payerInvoiceNumber: '',
-            bolLink: ''        
+            bolLink: ''
         },
         overall: {
             count: 0,
@@ -123,6 +124,7 @@ const safeValuesACH: any = {
         }
     }
 };
+/* eslint-enable */
 export const getAchrpt: ECCHandlerFunction = async function (reqkey, datax, ecc) {
     // Get parameters from incomming data buffer
     const reqFields = converterachrpt.convertPCReqRptToObject(datax);
@@ -133,9 +135,10 @@ export const getAchrpt: ECCHandlerFunction = async function (reqkey, datax, ecc)
     let result;
     let nextReqKey = reqkey;
     // const jsonData = reqFields;
-      try {
-        const token = await getToken()
-        result = await axiosInstance.get('/reports/singleReport',  {
+    try {
+        const token = await getToken();
+        result = await axiosInstance.get('/reports/singleReport', {
+            /* eslint-disable */
             params: {
                 branchClientId: reqFields.branchClientId,
                 startDate: reqFields.startDate,
@@ -145,11 +148,12 @@ export const getAchrpt: ECCHandlerFunction = async function (reqkey, datax, ecc)
                 type: reqFields.type,
                 accountName: reqFields.accountName
             },
+            /* eslint-enable */
+
             headers: {
                 Authorization: `JWT ${token}`
             }
-        })
-
+        });
     } catch (err) {
         if (err.response) {
             // If the request was made and the server responded with a status code
@@ -166,14 +170,12 @@ export const getAchrpt: ECCHandlerFunction = async function (reqkey, datax, ecc)
 
     // const responseData= result;
     // Send the result info
-        let responseData = sanitizeValues(result.data[0][1], safeValuesACH);
-       // let responseData = result.data[0][1];
-        nextReqKey = await ecc.sendEccResult('ECC0000', 'Success', nextReqKey);
-       // logger.error('Call test1 failed');
-        return await ecc.sendObjectToCaller(responseData, converterachrpt.convertObjectToPCRcvRpt, nextReqKey);
-        logger.error(nextReqKey);
-
-   
+    let responseData = sanitizeValues(result.data[0][1], safeValuesACH);
+    // let responseData = result.data[0][1];
+    nextReqKey = await ecc.sendEccResult('ECC0000', 'Success', nextReqKey);
+    // logger.error('Call test1 failed');
+    return ecc.sendObjectToCaller(responseData, converterachrpt.convertObjectToPCRcvRpt, nextReqKey);
+    logger.error(nextReqKey);
 };
 
 export const getTransaction: ECCHandlerFunction = async function (reqkey, datax, ecc) {
@@ -187,14 +189,13 @@ export const getTransaction: ECCHandlerFunction = async function (reqkey, datax,
     let result;
     let nextReqKey = reqkey;
     // const jsonData = reqFields;
-      try {
-        const token = await getToken()
+    try {
+        const token = await getToken();
         result = await axiosInstance.get('/transaction/' + reqFields.transactionId, {
             headers: {
                 Authorization: `JWT ${token}`
             }
-        })
-
+        });
     } catch (err) {
         if (err.response) {
             // If the request was made and the server responded with a status code
@@ -227,9 +228,9 @@ export const getTransactions: ECCHandlerFunction = async function (reqkey, datax
     let result;
     let nextReqKey = reqkey;
     // const jsonData = reqFields;
-      try {
-        const token = await getToken()
-        result = await axiosInstance.get('/transactions' ,  {
+    try {
+        const token = await getToken();
+        result = await axiosInstance.get('/transactions', {
             params: {
                 page: reqFields.page,
                 count: reqFields.count
@@ -237,8 +238,7 @@ export const getTransactions: ECCHandlerFunction = async function (reqkey, datax
             headers: {
                 Authorization: `JWT ${token}`
             }
-        })
-
+        });
     } catch (err) {
         if (err.response) {
             // If the request was made and the server responded with a status code

@@ -16,6 +16,7 @@ import { sanitizeValues } from 'src/services/safe-values';
 
 let sqs = new AWS.SQS({ apiVersion: boa.sqs.apiVersion });
 
+/* eslint-disable */
 const safeValues: any = {
     api_version: '',
     channel: '',
@@ -158,6 +159,7 @@ const safeValues: any = {
         type: ''
     }
 };
+/* eslint-enable */
 
 export const payment: ECCHandlerFunction = async (reqkey, _data, ecc) => {
     // Call web service

@@ -22,6 +22,8 @@ import { sanitizeValues } from 'src/services/safe-values';
 AWS.config.update(pinc.sns);
 let sns = new AWS.SNS({ apiVersion: pinc.sns.apiVersion });
 let sqs = new AWS.SQS({ apiVersion: pinc.sqs.apiVersion });
+
+/* eslint-disable */
 const safeValues: any = {
     campus: '',
     customer_facility_code: '',
@@ -62,6 +64,7 @@ const safeValues: any = {
         }
     }
 };
+/* eslint-enable */
 
 function getCampus(id: string) {
     return {
@@ -82,6 +85,8 @@ export const checkin: ECCHandlerFunction = async (_reqkey, datax, _ecc) => {
     const timestampHold = DateTime.now();
     const rpgFields = pncchkinapi.convertCheckinDSToObject(datax);
     const { snsArn } = getCampusAws(rpgFields.campus);
+
+    /* eslint-disable */
     const reqFields = {
         event: 'yardhound.import_events.checkin',
         time: timestampHold.toFormat("yyyy-MM-dd'T'TTZZ"),
@@ -100,6 +105,7 @@ export const checkin: ECCHandlerFunction = async (_reqkey, datax, _ecc) => {
             )
         }
     };
+    /* eslint-enable */
 
     logger.debug('Sending SNS Message', reqFields);
 
@@ -263,6 +269,7 @@ export const checkot: ECCHandlerFunction = async (_reqkey, datax, _ecc) => {
     const rpgFields = pncchkotapi.convertCheckotDSToObject(datax);
     const { snsArn } = getCampusAws(rpgFields.campus);
 
+    /* eslint-disable */
     const reqFields = {
         event: 'yardhound.import_events.checkout',
         time: timestampHold.toFormat("yyyy-MM-dd'T'TTZZ"),
@@ -281,6 +288,7 @@ export const checkot: ECCHandlerFunction = async (_reqkey, datax, _ecc) => {
             )
         }
     };
+    /* eslint-enable */
 
     logger.debug('Sending SNS Message', reqFields);
 
@@ -327,6 +335,8 @@ export const updat: ECCHandlerFunction = async (_reqkey, datax, _ecc) => {
     const timestampHold = DateTime.now();
     const rpgFields = pncupdatapi.convertUpdatDSToObject(datax);
     const { snsArn } = getCampusAws(rpgFields.campus);
+
+    /* eslint-disable */
     const reqFields = {
         event: 'yardhound.import_events.update',
         time: timestampHold.toFormat("yyyy-MM-dd'T'TTZZ"),
@@ -345,6 +355,7 @@ export const updat: ECCHandlerFunction = async (_reqkey, datax, _ecc) => {
             )
         }
     };
+    /* eslint-enable */
 
     logger.debug('Sending SNS Message', reqFields);
 
@@ -393,6 +404,8 @@ export const locat: ECCHandlerFunction = async (_reqkey, datax, _ecc) => {
     const timestampHold = DateTime.now();
     const rpgFields = pnclocatapi.convertLocatDSToObject(datax);
     const { snsArn } = getCampusAws(rpgFields.campus);
+
+    /* eslint-disable */
     const reqFields = {
         event: 'yardhound.import_events.retrieve_asset_location',
         time: timestampHold.toFormat("yyyy-MM-dd'T'TTZZ"),
@@ -413,6 +426,8 @@ export const locat: ECCHandlerFunction = async (_reqkey, datax, _ecc) => {
             )
         }
     };
+    /* eslint-enable */
+
     logger.debug('Sending SNS Message', reqFields);
 
     // Call web service
@@ -457,6 +472,8 @@ export const updt2: ECCHandlerFunction = async (_reqkey, datax, _ecc) => {
     const timestampHold = DateTime.now();
     const rpgFields = pncupdt2api.convertUpdt2DSToObject(datax);
     const { snsArn } = getCampusAws(rpgFields.campus);
+
+    /* eslint-disable */
     const reqFields = {
         event: 'yardhound.import_events.update',
         time: timestampHold.toFormat("yyyy-MM-dd'T'TTZZ"),
@@ -475,6 +492,7 @@ export const updt2: ECCHandlerFunction = async (_reqkey, datax, _ecc) => {
             )
         }
     };
+    /* eslint-enable */
 
     logger.debug('Sending SNS Message', reqFields);
 

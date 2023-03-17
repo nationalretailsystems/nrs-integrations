@@ -6,7 +6,7 @@ import * as converter from 'src/interfaces/skybtz';
 import * as converter2 from 'src/interfaces/skybtzqm';
 import * as converter3 from 'src/interfaces/skybtzqp';
 import { promises as fs } from 'fs';
-import { parseStringPromise  } from 'xml2js';
+import { parseStringPromise } from 'xml2js';
 import { sanitizeValues } from 'src/services/safe-values';
 // import { resolve } from 'path';
 const safeValues: any = {
@@ -151,23 +151,23 @@ export const getQueryPosition: ECCHandlerFunction = async (reqkey, data, ecc) =>
     // Send the result info
     // return ecc.sendEccResult('ECC0000', 'Success', nextReqKey);
     nextReqKey = await ecc.sendEccResult('ECC0000', 'Success', nextReqKey);
-   
-    const jsonData = await  toJson(result.data);
+
+    const jsonData = await toJson(result.data);
+    /* eslint-disable-next-line eqeqeq */
     if (jsonData.skybitz.error == '2') {
-        return ecc.sendEccResult('ECC9900', 'Error 2 received', nextReqKey); 
+        return ecc.sendEccResult('ECC9900', 'Error 2 received', nextReqKey);
     } else {
+        const groupname = [];
+        if (!Array.isArray(jsonData.skybitz.gls.asset.groups.groupname)) {
+            groupname.push(jsonData.skybitz.gls.asset.groups.groupname);
+            jsonData.skybitz.gls.asset.groups.groupname = groupname;
+        }
 
-    const groupname = [];
-    if (!Array.isArray(jsonData.skybitz.gls.asset.groups.groupname)) {
-        groupname.push(jsonData.skybitz.gls.asset.groups.groupname);
-        jsonData.skybitz.gls.asset.groups.groupname = groupname;
+        let safeResponse = sanitizeValues(jsonData, safeValues);
+        console.log(safeResponse);
+        return ecc.sendObjectToCaller(safeResponse, converter3.convertObjectToTrlRtnDta, nextReqKey);
+        // return ecc.sendFieldToCaller(JSON.stringify(jsonData),nextReqKey);
     }
-
-    let safeResponse   = sanitizeValues(jsonData, safeValues);
-    console.log(safeResponse);
-    return ecc.sendObjectToCaller(safeResponse,converter3.convertObjectToTrlRtnDta, nextReqKey);
-    // return ecc.sendFieldToCaller(JSON.stringify(jsonData),nextReqKey);
-}
 };
 
 function timestamp(d: any) {
@@ -182,8 +182,8 @@ function timestamp(d: any) {
     let returns1 = newdate + '00:00:00';
     let returns2 = newdate + '23:59:59';
     return [returns1, returns2];
-};
-    // Convert string/XML to JSON
-    function toJson(xmlData:string) {
-        return parseStringPromise (xmlData, {explicitArray:false})
-    }
+}
+// Convert string/XML to JSON
+function toJson(xmlData: string) {
+    return parseStringPromise(xmlData, { explicitArray: false });
+}

@@ -4,7 +4,6 @@ import config from 'config';
 import createLogger from 'src/services/logger';
 import * as converterp44post from 'src/interfaces/p44stsupd';
 
-
 const logger = createLogger('commands/project44');
 const { project44 } = config;
 const axiosInstance = axios.create(project44.axios);
@@ -20,21 +19,19 @@ export const postP44: ECCHandlerFunction = async function (reqkey, datax, ecc) {
     let nextReqKey = reqkey;
     const authkey = Buffer.from(project44.username + ':' + project44.password).toString('base64');
     const shipmentIdentifiers = [];
-    for (let si=0; si<reqFields.shipmentIdentifiers.length; si++) {
+    for (let si = 0; si < reqFields.shipmentIdentifiers.length; si++) {
         if (reqFields.shipmentIdentifiers[si].type && reqFields.shipmentIdentifiers[si].value) {
             shipmentIdentifiers.push(reqFields.shipmentIdentifiers[si]);
         }
     }
     reqFields.shipmentIdentifiers = shipmentIdentifiers;
 
-      try {
+    try {
         result = await axiosInstance.post('/shipments/statusUpdates', reqFields, {
-            
             headers: {
                 Authorization: 'Basic ' + authkey
             }
-        })
-
+        });
     } catch (err) {
         if (err.response) {
             // If the request was made and the server responded with a status code
@@ -51,13 +48,11 @@ export const postP44: ECCHandlerFunction = async function (reqkey, datax, ecc) {
 
     // const responseData= result;
     // Send the result info
-        // let responseData = result.data;
-        let returnStatus = result.status.toString();
-        logger.debug('ECC0000', 'Success', nextReqKey);
-        nextReqKey = await ecc.sendEccResult('ECC0000', 'Success', nextReqKey);
-        return ecc.sendFieldToCaller(returnStatus,nextReqKey);
-        //  return ecc.sendObjectToCaller(responseData, converterp44post.convertObjectToP44RcvRpt, nextReqKey);
-        logger.debug('Sent data to RPG'); 
-
+    // let responseData = result.data;
+    let returnStatus = result.status.toString();
+    logger.debug('ECC0000', 'Success', nextReqKey);
+    nextReqKey = await ecc.sendEccResult('ECC0000', 'Success', nextReqKey);
+    return ecc.sendFieldToCaller(returnStatus, nextReqKey);
+    //  return ecc.sendObjectToCaller(responseData, converterp44post.convertObjectToP44RcvRpt, nextReqKey);
+    logger.debug('Sent data to RPG');
 };
-

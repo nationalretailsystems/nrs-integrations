@@ -11,6 +11,8 @@ import { sanitizeValues } from 'src/services/safe-values';
 
 const mailgun = new Mailgun(formData);
 const mg = mailgun.client({ username: 'api', key: mailgunConfig.apikey });
+
+/* eslint-disable */
 const safeValues: any = {
     address: '',
     is_disposable_address: false,
@@ -21,6 +23,7 @@ const safeValues: any = {
     result: '',
     risk: ''
 };
+/* eslint-enable */
 
 // const axiosInstance = axios.create(mailgunConfig);
 

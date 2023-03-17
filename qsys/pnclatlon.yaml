@@ -1,49 +1,14 @@
 ---
 name: pnclatlon
 rpgIncName: pnclatln_h
+codeblocks:
+  typescript:
+    - import eradaniConnect from "@eradani-inc/eradani-connect";
+    - const { dataTypes } = eradaniConnect;
 datastructures:
-  Data:
+  AssetDS:
+    qualified: true
     subfields:
-      comment:
-        type: Character
-        length: 25
-  LatLongDS:
-    recordType: response
-    subfields:
-      event:
-        rpgName: event
-        type: Character
-        length: 50
-      time:
-        rpgName: time
-        type: Character
-        length: 25
-      version:
-        rpgName: version
-        type: Character
-        length: 3
-      campus:
-        rpgName: campus
-        type: Character
-        length: 6
-      customer_facility_code:
-        rpgName: custfaccode
-        type: Character
-        length: 25
-      event_id:
-        rpgName: event_id
-        type: Character
-        length: 25
-      event_type:
-        rpgName: event_type
-        type: Character
-        length: 2
-        overlay: event_id
-      event_no:
-        rpgName: event_no
-        type: Zoned
-        length: 7
-        overlay: event_id:*next
       reference_id:
         rpgName: reference_id
         type: Character
@@ -112,7 +77,7 @@ datastructures:
         rpgName: load_status
         type: Character
         length: 15
-      trailer_SCAC:
+      trailer_scac:
         rpgName: scac
         type: Character
         length: 4
@@ -171,6 +136,13 @@ datastructures:
         rpgName: rfid_tag
         type: Character
         length: 24
+  DataDS:
+    qualified: true
+    subfields:
+      asset:
+        type: DataStruct
+        dsName: AssetDS
+        length: 24
 formats:
   LLReq:
     recordType: request
@@ -219,7 +191,4 @@ formats:
         overlay: event_id:*next
       data:
         type: DataStruct
-        dsName: Data
-
-
-
+        dsName: DataDS

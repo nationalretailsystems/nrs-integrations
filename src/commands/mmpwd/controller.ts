@@ -41,13 +41,16 @@ export const getPwd: ECCHandlerFunction = async function (reqkey, data, ecc) {
     // Else save the joke then change the value field so it is as expected
     // Note: if successful value is an object containing the joke and other info
     let password = null;
-    for (var x = 0; x < result.data.pws.length; x++) {
-    if (result.data.pws[x] !== 'A passphrase could not be found matching your minimum and maximum length requirements') {
-        password  = result.data.pws[x];
-        break;
+    for (let x = 0; x < result.data.pws.length; x++) {
+        if (
+            result.data.pws[x] !==
+            'A passphrase could not be found matching your minimum and maximum length requirements'
+        ) {
+            password = result.data.pws[x];
+            break;
+        }
     }
-    }
-    
+
     // Send the result info
     nextReqKey = await ecc.sendEccResult('ECC0000', 'Success', nextReqKey);
 
