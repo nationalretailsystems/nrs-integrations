@@ -146,29 +146,39 @@
         "requestLen": 32767,
         "debug": true,
         "pooling": true,
-        "connectionString": "Driver={IBM i Access ODBC Driver};System=192.168.26.101;Uid=ECNCT;Pwd=Mike1234;NAM=1;CCSID=1208",
+        "connectionString": "DSN=*LOCAL;NAM=1;CCSID=1208",
         "useIbmiServices": false
     },
 
-    "ec": {
+    "eradaniConnect": {
         "xml": {
-            "usrprf": "usrprf",
-            "passwd": "passwd"
-        },
-        "xmlOptions": {
             "host": "localhost",
             "port": 47700,
             "path": "/cgi-bin/xmlcgi.pgm",
             "usePOST": true,
             "debug": true
         },
+        "odbc": "DSN=*LOCAL;NAM=1;CCSID=1208",
         "odbcOptions": {
-            "noPool": true,
+            "debug": true,
+            "noPool": false,
             "pool": {
                 "initialSize": 10,
                 "maxSize": 10,
                 "incrementSize": 1
-            }
+            },
+            "useLuxon": true
+        },
+        "credentials": {
+            "username": "ECNCT",
+            "password": "ecnctpassword"
+        },
+        "native": {
+            "templateLib": "ECNCTAPP",
+            "templateDataLib": "QIWS",
+            "pgmLib": "FOURKITES"
         }
-    }
+    },
+
+    "defaults": {}
 }

@@ -51,6 +51,7 @@
         "@types/luxon": "^2.0.4",
         "@types/mailgun-js": "^0.22.12",
         "@types/morgan": "^1.9.3",
+        "@types/passport": "^1.0.9",
         "@types/passport-http-bearer": "^1.0.37",
         "@types/safe-json-stringify": "^1.1.2",
         "@types/swagger-stats": "^0.95.4",

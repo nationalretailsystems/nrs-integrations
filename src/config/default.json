@@ -1,14 +1,32 @@
 {
     "pinc": {
         "sns": {
-            "prdTargetArn": "arn:aws:sns:xxxxxxxxx:000000000000:xxxxxxxxxxxxxxxxxxxxxxxxxx.fifo",
-            "accessKeyId": "XXXXXXXXXXXXXXXXXXXX",
-            "secretAccessKey": "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx",
-            "region": "xxxxxxxxx",
+            "accessKeyId": "AKIA3M5QZMVORA6DLMNB",
+            "secretAccessKey": "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",
+            "region": "us-east-1",
             "apiVersion": "2010-03-31"
         },
+        "snsArns": {
+            "nbrArn": "arn:aws:sns:us-east-1:783665423709:sns-nrs-outbound-event.fifo",
+            "savArn": "arn:aws:sns:us-east-1:783665423709:sns-nrssav-stg-outbound-event.fifo"
+        },
         "sqs": {
-            "QueueUrl": "https://sqs.xxxxxxxxxx.amazonaws.com/000000000000/xxxxxxxxx.fifo",
+            "apiVersion": "2012-11-05",
+            "AttributeNames": ["SentTimestamp"],
+            "MaxNumberOfMessages": 1,
+            "MessageAttributeNames": ["All"],
+            "VisibilityTimeout": 5,
+            "WaitTimeSeconds": 0
+        },
+        "sqsUrls": {
+            "nbrUrl": "https://sqs.us-east-1.amazonaws.com/783665423709/sqs-nrs-inbound-event.fifo",
+            "savUrl": "https://sqs.us-east-1.amazonaws.com/783665423709/sqs-nrssav-stg-inbound-event.fifo",
+            "errUrl": "https://sqs.us-east-1.amazonaws.com/783665423709/sqs-nrs-prd-inbound-error.fifo"
+        }
+    },
+    "boa": {
+        "sqs": {
+            "QueueUrl": "https://sqs.us-east-1.amazonaws.com/783665423709/boa-test-inbound-sqs-events",
             "apiVersion": "2012-11-05",
             "AttributeNames": ["SentTimestamp"],
             "MaxNumberOfMessages": 1,
@@ -17,15 +35,121 @@
             "WaitTimeSeconds": 0
         }
     },
+    "native": {
+        "pincLibrary": "PINC_API",
+        "pincDevLibrary": "PINC_DEV"
+    },
 
     "skybitz": {
         "axios": {
             "baseURL": "https://xml.skybitz.com:9443/",
             "responseType": "xml"
         },
-        "username": "skybitz_username",
-        "password": "skybitz_password",
+        "username": "xML!tg!1970",
+        "password": "FaZQ5tf85Cn8SMn",
         "version": "2.69"
+    },
+
+    "managerplus": {
+        "axios": {
+            "baseURL": "https://nationalretailsystemssb.managerpluscloud.com/api2",
+            "responseType": "json"
+        },
+        "apikey": "Bearer 50a75892dc3f40d88a65b36169239d81-2"
+    },
+
+    "managerplus_prod": {
+        "axios": {
+            "baseURL": "https://nationalretailsystems.managerpluscloud.com/api2",
+            "responseType": "json"
+        },
+        "apikey": "Bearer 162eec955b6e4f7586340150ce2c7d84-1"
+    },
+
+    "managerplus_dev": {
+        "axios": {
+            "baseURL": "https://nationalretailsystemssb.managerpluscloud.com/api2",
+            "responseType": "json"
+        },
+        "apikey": "Bearer xx-2"
+    },
+
+    "randmcnally": {
+        "axios": {
+            "baseURL": "https://driverconnect.randmcnally.com/DCWS_Cust/api",
+            "responseType": "json"
+        },
+        "accesstoken": "NR03-nr59-2021",
+        "companyCode": "RM-019960",
+        "email": "mike.corbo@nrsonline.com",
+        "password": "testing"
+    },
+
+    "duosecurity": {
+        "integrationKey": "DIDRN9TM5UITSQ1D7XNN",
+        "secretKey": "fOY9VJWiEhhdC3irjyzMOL1IJolYrQKqLqPhvryp",
+        "apiHostname": "api-8b18e4bd.duosecurity.com"
+    },
+
+    "mailgun": {
+        "axios": {
+            "baseURL": "https://api.mailgun.net"
+        },
+        "password": "Basic xx",
+        "apikey": "key-xx"
+    },
+
+    "makeme": {
+        "baseURL": "https://makemeapassword.ligos.net/api/v1",
+        "responseType": "json"
+    },
+
+    "zpl": {
+        "axios": {
+            "baseURL": "http://api.labelary.com/v1/printers"
+        }
+    },
+
+    "project44": {
+        "axios": {
+            "baseURL": "https://cloud.p-44.com/api/carriers/v2/tl",
+            "responseType": "json"
+        },
+        "username": "nationalretailtransportation@project44.com",
+        "password": "xx"
+    },
+
+    "paycargo": {
+        "axios": {
+            "baseURL": "https://api.paycargo.com",
+            "responseType": "json"
+        },
+        "username": "PayCargoUser@nrsonline.com",
+        "password": "@AllofNRS",
+        "apikey": "1630a4afd754417aacbabd355dd3e87e",
+        "apisecret": "xx"
+    },
+
+    "paycargo_prd": {
+        "axios": {
+            "baseURL": "https://api.paycargo.com",
+            "responseType": "json"
+        },
+        "username": "PayCargoUser@nrsonline.com",
+        "password": "@AllofNRS",
+        "apikey": "1630a4afd754417aacbabd355dd3e87e",
+        "apisecret": "xx"
+    },
+
+    "paycargo_dev": {
+        "axios": {
+            "baseURL": "https://apitest.paycargo.com",
+            "responseType": "json"
+        },
+        "username": "NRSPayer",
+        "password": "Test123!",
+        "apikey": "15ded4a1dd28486b93afe340ba2e3e63",
+        "apisecret": "xx"
     },
 
     "icndb": {
@@ -149,7 +273,8 @@
         },
         "native": {
             "templateLib": "ECNCTAPP",
-            "templateDataLib": "QIWS"
+            "templateDataLib": "QIWS",
+            "pgmLib": "FOURKITES"
         }
     },
 
