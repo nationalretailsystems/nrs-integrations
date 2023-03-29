@@ -1,0 +1,26 @@
+---
+name: pcusraut
+rpgIncName: pcusraut_h
+codeblocks:
+  typescript:
+    - import eradaniConnect from "@eradani-inc/eradani-connect";
+    - const { dataTypes } = eradaniConnect;
+formats:
+  PCReqToken:
+    recordType: request
+    subfields:
+      username:
+        rpgName: username
+        type: Character
+        length: 50
+      password:
+        rpgName: password
+        type: Character
+        length: 50
+  PCRcvToken:
+    recordType: response
+    subfields:
+      Authorization:
+        rpgName: authorization
+        type: Character
+        length: 2000

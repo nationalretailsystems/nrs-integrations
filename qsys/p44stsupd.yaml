@@ -1,0 +1,55 @@
+---
+name: p44stsupd
+rpgIncName: p44stsup_h
+codeblocks:
+  typescript:
+    - import eradaniConnect from "@eradani-inc/eradani-connect";
+    - const { dataTypes } = eradaniConnect;
+datastructures:
+  ShipIdDS:
+    qualified: true
+    subfields:
+      type:
+        rpgName: type
+        type: Character
+        length: 10
+        default: " "
+      value:
+        rpgName: value
+        type: Character
+        length: 20
+        default: " "
+formats:
+  P44SndRpt:
+    recordType: request
+    subfields:
+      shipmentIdentifiers:
+        rpgName: shipids
+        type: DataStruct
+        dsName: ShipIdDS
+        dim: 2
+      latitude:
+        rpgName: latitude
+        type: Packed
+        length: 20
+        precision: 15
+      longitude:
+        rpgName: longitude
+        type: Packed
+        length: 20
+        precision: 15
+      utcTimestamp:
+        rpgName: utcstamp
+        type: Character
+        length: 19
+      customerId:
+        rpgName: customerid
+        type: Character
+        length: 25
+  P44RcvRpt:
+    recordType: response
+    subfields:
+      status:
+        rpgName: status
+        type: Character
+        length: 10

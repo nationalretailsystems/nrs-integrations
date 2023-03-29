@@ -1,0 +1,80 @@
+---
+name: pncchkin
+rpgIncName: pncchkin_h
+codeblocks:
+  typescript:
+    - import eradaniConnect from "@eradani-inc/eradani-connect";
+    - const { dataTypes } = eradaniConnect;
+datastructures:
+  AssetDS:
+    qualified: true
+    subfields:
+      checked_in:
+        rpgName: checked_in
+        type: Character
+        length: 25
+      asset_type:
+        rpgName: asset_type
+        type: Character
+        length: 25
+      rfid_tag:
+        rpgName: rfid_tag
+        type: Character
+        length: 25
+      site_code:
+        rpgName: site_code
+        type: Character
+        length: 25
+      Trailer_SCAC:
+        rpgName: scac
+        type: Character
+        length: 4
+      Trailer_number:
+        rpgName: trailer
+        type: Character
+        length: 25
+      container_number:
+        rpgName: container_num
+        type: Character
+        length: 25
+      movement_type:
+        rpgName: movement_type
+        type: Character
+        length: 25
+      load_status:
+        rpgName: load_status
+        type: Character
+        length: 25
+      customer_code:
+        rpgName: customer_code
+        type: Character
+        length: 25
+      fleet_code:
+        rpgName: fleet_code
+        type: Character
+        length: 25
+      tractor_scac:
+        rpgName: tractor_scac
+        type: Character
+        length: 25
+  DataDS:
+    qualified: true
+    subfields:
+      asset:
+        type: DataStruct
+        dsName: AssetDS
+formats:
+  CheckinDS:
+    recordType: request
+    subfields:
+      message_group_id:
+        rpgName: msg_grp_id
+        type: Character
+        length: 25
+      campus:
+        rpgName: campus
+        type: Character
+        length: 6
+      data:
+        type: DataStruct
+        dsName: DataDS

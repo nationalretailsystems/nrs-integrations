@@ -1,0 +1,23 @@
+---
+name: zplapi
+rpgIncName: zplapi_h
+formats:
+  ZplReq:
+    recordType: request
+    subfields:
+      zpl:
+        rpgName: zpl
+        type: Character
+        length: 3000
+      filename:
+        rpgName: filename
+        type: Character
+        length: 100
+      dpmm:
+        rpgName: dpmm
+        type: Character
+        length: 2
+      labelsize:
+        rpgName: labelsize
+        type: Character
+        length: 3

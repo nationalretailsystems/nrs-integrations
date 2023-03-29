@@ -1,0 +1,364 @@
+---
+name: pcgettran
+rpgIncName: pcgettrn_h
+codeblocks:
+  typescript:
+    - import eradaniConnect from "@eradani-inc/eradani-connect";
+    - const { dataTypes } = eradaniConnect;
+datastructures:
+  ResultDS:
+    qualified: true
+    subfields:
+      msg:
+        rpgName: msg
+        type: Character
+        length: 25
+        default: " "
+      code:
+        rpgName: code
+        type: Integer
+        length: 5
+        default: 0
+  DataDS:
+    qualified: true
+    subfields:
+      transaction_id:
+        rpgName: transid
+        type: Integer
+        length: 10
+        default: 0
+      payerId:
+        rpgName: payerid
+        type: Integer
+        length: 10
+        default: 0
+      payerClientId:
+        rpgName: payerclntid
+        type: Integer
+        length: 10
+        default: 0
+      payerName:
+        rpgName: payername
+        type: Character
+        length: 50
+        default: " "
+      vendorId:
+        rpgName: vendorid
+        type: Integer
+        length: 10
+        default: 0
+      vendorClientId:
+        rpgName: vndclientid
+        type: Integer
+        length: 10
+        default: 0
+      vendorName:
+        rpgName: vendorname
+        type: Character
+        length: 50
+        default: " "
+      number:
+        rpgName: number
+        type: Character
+        length: 25
+        default: " "
+      departureDate:
+        rpgName: departdate
+        type: Character
+        length: 24
+        default: " "
+      arrivalDate:
+        rpgName: arrivaldate
+        type: Character
+        length: 24
+        default: " "
+      paymentDueDate:
+        rpgName: payduedate
+        type: Character
+        length: 24
+        default: " "
+      approvalDate:
+        rpgName: approvaldate
+        type: Character
+        length: 24
+        default: " "
+      hasArrived:
+        rpgName: hasarrived
+        type: Character
+        length: 1
+        default: " "
+      total:
+        rpgName: total
+        type: Packed
+        length: 15
+        precision: 5
+        default: 0      
+      directionId:
+        rpgName: directionid
+        type: Integer
+        length: 5
+        default: 0      
+      bolLink:
+        rpgName: bollink
+        type: Character
+        length: 50
+        default: " "
+      direction:
+        rpgName: direction
+        type: Character
+        length: 25
+        default: " "
+      createdDate:
+        rpgName: creatdate
+        type: Character
+        length: 24
+        default: " "
+      lastModifiedDate:
+        rpgName: lastmoddate
+        type: Character
+        length: 24
+        default: " "
+      createdByUserId:
+        rpgName: crtuserid
+        type: Integer
+        length: 10
+        default: 0       
+      createdByUserName:
+        rpgName: crtusername
+        type: Character
+        length: 50
+        default: " "
+      modifiedByUserId:
+        rpgName: moduserid
+        type: Integer
+        length: 10
+        default: 0       
+      modifiedByUserName:
+        rpgName: cmodusername
+        type: Character
+        length: 50
+        default: " "
+      shipperRefNumber:
+        rpgName: shiprefnum
+        type: Character
+        length: 50
+        default: " "
+      customerRefNumber:
+        rpgName: custrefnum
+        type: Character
+        length: 50
+        default: " "
+      partialPayment:
+        rpgName: partialpay
+        type: Character
+        length: 50
+        default: " "
+      disputeReasonResponse:
+        rpgName: disprsnresp
+        type: Character
+        length: 50
+        default: " "
+      subcategory:
+        rpgName: subcat
+        type: Character
+        length: 50
+        default: " "
+      externalSystemId:
+        rpgName: extsysid
+        type: Integer
+        length: 10
+        default: 0      
+      externalId:
+        rpgName: externalid
+        type: Character
+        length: 50
+        default: " "
+      parent:
+        rpgName: parent
+        type: Character
+        length: 50
+        default: " "
+      batchId:
+        rpgName: batchid
+        type: Character
+        length: 50
+        default: " "
+      notes:
+        rpgName: notes
+        type: Character
+        length: 50
+        default: " "
+      valueOfGoods:
+        rpgName: valofgoods
+        type: Character
+        length: 50
+        default: " "
+      status:
+        rpgName: status
+        type: Character
+        length: 25
+        default: " "
+      statusId:
+        rpgName: statusid
+        type: Integer
+        length: 10
+        default: 0      
+      type:
+        rpgName: type
+        type: Character
+        length: 50
+        default: " "
+      paymentDueDateDiff:
+        rpgName: payduedtdiff
+        type: Integer
+        length: 10
+        default: 0      
+      directionCode:
+        rpgName: directcode
+        type: Character
+        length: 10
+        default: " "
+      vendorRegion:
+        rpgName: vendorreg
+        type: Character
+        length: 10
+        default: " "
+      vendorCurrency:
+        rpgName: vendorcurr
+        type: Character
+        length: 3
+        default: " "
+      payerRegion:
+        rpgName: payerreg
+        type: Character
+        length: 10
+        default: " "
+      payerCurrency:
+        rpgName: payercurr
+        type: Character
+        length: 3
+        default: " "
+      isRegisteredMerchant:
+        rpgName: isregmerch
+        type: Integer
+        length: 5
+        default: 0      
+      paymentMethod:
+        rpgName: paymethod
+        type: Character
+        length: 15
+        default: " "
+      modifiedByUserAddress:
+        rpgName: modbyusradr
+        type: Character
+        length: 100
+        default: " "
+      payerRefNumber:
+        rpgName: payerrefnum
+        type: Character
+        length: 50
+        default: " "
+      vendorRefNumber:
+        rpgName: vendorrefnum
+        type: Character
+        length: 50
+        default: " "
+      originatorId:
+        rpgName: originid
+        type: Integer
+        length: 10
+        default: 0      
+      payerCurrencyId:
+        rpgName: payercurrid
+        type: Character
+        length: 3
+        default: " "
+      vendorCurrencyId:
+        rpgName: vendcuirrid
+        type: Character
+        length: 3
+        default: " "
+      currencyExchangeRate:
+        rpgName: currexchrat
+        type: Packed
+        length: 15
+        precision: 5
+        default: 0      
+      vendorTotalAmount:
+        rpgName: vendttlamt
+        type: Packed
+        length: 15
+        precision: 5
+        default: 0      
+      approvedByUserId:
+        rpgName: apprusrid
+        type: Integer
+        length: 10
+        default: 0      
+      approvedByUserName:
+        rpgName: apprusrname
+        type: Character
+        length: 50
+        default: " "
+      payerInternalNumber:
+        rpgName: payrintnum
+        type: Character
+        length: 10
+        default: " "
+      payerFileNumber:
+        rpgName: payrfilenum
+        type: Character
+        length: 10
+        default: " "
+      payerVoucherNumber:
+        rpgName: payrvchrnum
+        type: Character
+        length: 10
+        default: " "
+      payerProductNumber:
+        rpgName: payrprdnum
+        type: Character
+        length: 10
+        default: " "
+      payerInvoiceNumber:
+        rpgName: payrincnum
+        type: Character
+        length: 10
+        default: " "
+      origin:
+        rpgName: origin
+        type: Character
+        length: 25
+        default: " "
+      destination:
+        rpgName: destination
+        type: Character
+        length: 25
+        default: " "
+      placeOfReceipt:
+        rpgName: placeofrcp
+        type: Character
+        length: 25
+        default: " "
+      placeOfDelivery:
+        rpgName: placeofdelv
+        type: Character
+        length: 25
+        default: " "
+formats:
+  PCReqTrn:
+    recordType: request
+    subfields:
+      transactionId:
+        rpgName: transid
+        type: Integer
+        length: 10
+  PCRcvTrn:
+    recordType: response
+    subfields:
+      result:
+        type: DataStruct
+        dsName: ResultDS
+      data:
+        type: DataStruct
+        dsName: DataDS

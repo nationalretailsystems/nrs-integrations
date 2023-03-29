@@ -1,0 +1,45 @@
+      ************************************
+      * Module: pncupdt2
+      * Generated RPG data structures
+      * and prototypes
+      * Do not modify
+      ************************************
+
+      ************************************
+      * AssetDS data structure
+      ************************************
+     DAssetDS          DS                  Qualified
+     D                                     Template
+     Dsite_code                      25A
+     Dasset_type                     25A
+     Dscac                            4A
+     Dtrailer                        25A
+     Dcontainer_num                  25A
+     Dload_status                    25A
+     Dcustomer_code                  25A
+
+      ************************************
+      * DataDS data structure
+      ************************************
+     DDataDS           DS                  Qualified
+     D                                     Template
+     Dasset                                LikeDS(AssetDS)
+
+      ************************************
+      * Updt2DS data structure
+      * Record length: 185
+      ************************************
+     DUpdt2DSLen       C                   185
+     DUpdt2DS          DS                  Qualified
+     D                                     Template
+     Dmsg_grp_id                     25A
+     Dcampus                          6A
+     Ddata                                 LikeDS(DataDS)
+
+      ************************************
+      * Convert Updt2DS to buffer
+      ************************************
+     DUpdt2DSToBuf     PR
+     DDataStruct                           LikeDS(Updt2DS)
+     D                                     Const
+     DBuffer                        185A

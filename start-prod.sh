@@ -1,6 +1,6 @@
 #!/bin/sh
 NODE_HOME=/QOpenSys/pkgs/bin
-ECNCT_HOME=/QOpenSys/opt/eradani/eradani-inout-template
+ECNCT_HOME=/QOpenSys/opt/eradani/nrs-integrations
 
 NODE_ENV=production
 export NODE_ENV

@@ -1,0 +1,56 @@
+---
+name: rmcrtdvir
+rpgIncName: rmcrtdvi_h
+codeblocks:
+  typescript:
+    - import eradaniConnect from "@eradani-inc/eradani-connect";
+    - const { dataTypes } = eradaniConnect;
+datastructures:
+  responseDS:
+    qualified: true
+    subfields:
+      code:
+        rpgName: code
+        type: Integer
+        length: 5
+        precision: 0
+      type: 
+        rpgName: type
+        type: Character
+        length: 10
+      message:
+        rpgName: message
+        type: Character
+        length: 200
+formats:
+  CertDVIR:
+    recordType: request
+    subfields:
+      accessToken:
+        type: Character
+        length: 100
+      companyCode:
+        type: Character
+        length: 10
+      userEmail:
+        type: Character
+        length: 60
+      userPassword:
+        type: Character
+        length: 10
+      dvirId:
+        type: Integer
+        length: 10
+      certifiedBy:
+        type: Character
+        length: 10
+  ResDVIR:
+    recordType: response
+    subfields:
+      dvirId:
+        rpgName: dvirid
+        type: Integer
+        length: 10
+      response:
+        type: DataStruct
+        dsName: responseDS  
