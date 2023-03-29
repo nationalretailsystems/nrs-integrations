@@ -1,0 +1,189 @@
+**free                                                                          
+                                                                                
+// pinc retrieve asset location api                                             
+//                                                                              
+// Mike Corbo                                                                   
+// 01/05/21                                                                     
+// In order to be able to call the included modules, must be compiled as follows
+//                                                                              
+// CRTSQLRPGI OBJ(PINC_API/LOCATIONX)                                           
+//           SRCSTMF('/QOpenSys/opt/eradani/nrs-poc/qsys/locationX.sqlrpgle')   
+//           OBJTYPE(*MODULE)                                                   
+//                                                                              
+//  CRTPGM PGM(PINC_API/LOCATIONX) BNDSRVPGM((PINC_API/PINCMODS)                
+//            (ECNCTAPP/ECCTMPGEN) (ECNCT/ECNCTC))                              
+//            (ECNCTAPP/ECCTMPGEN) (ECNCT/ECNCTC))                    
+//                                                                    
+//                                                                    
+ctl-opt; //  BNDDIR('YAJL72/YAJL');                                   
+                                                                      
+dcl-f pincfacl01 keyed usage(*input) extfile('PINC_API/PINCFACL01');  
+                                                                      
+dcl-pr locationx extpgm('LOCATIONX');                                 
+   *n likeds(swjb_ds);                                                
+END-PR;                                                               
+dcl-pi locationx;                                                     
+   FileData likeds(swjb_ds);                                          
+END-PI;                                                               
+                                                                      
+dcl-ds swjb_ds extname('YDFILE3/SWJBLG');                             
+                                    
+END-DS;                                                                      
+                                                                             
+// procedure definitions for PINCMODS                                        
+dcl-pr  convertpincdate char(26);                                            
+   *n timestamp(0);                                                          
+END-PR;                                                                      
+dcl-pr  LookupRFID char(24);                                                 
+   *n char(6);                                                               
+END-PR;                                                                      
+                                                                             
+// Include EccSndReq & EccRcvReq prototypes                                  
+/include /QOpenSys/opt/eradani/nrs-poc/qsys/ecnctc.rpgleinc                  
+                                                                             
+                                                                             
+                                                                                
+// Include data structs and buffer conversion prototypes                        
+/include /QOpenSys/opt/eradani/nrs-poc/qsys/pncreqll_h.rpgleinc                 
+                                                                                
+dcl-ds location_ds likeds(LocationDS);                                          
+dcl-ds eccresult_ds likeds(EccResult);                                          
+                                                                                
+dcl-s command char(32);                                                         
+dcl-s datalen packed(5);                                                        
+dcl-s databuf char(1024);                                                       
+dcl-s waittm packed(5) inz(10);                                                 
+dcl-s reqkey char(6);                                                           
+dcl-s eod ind;                                                                  
+dcl-s eoa ind;                                                                  
+dcl-s nodata ind;                                                               
+                                                          
+                                                                             
+//dcl-ds location_ds qualified;                                              
+//  event varchar(50) inz('yardhound.import_events.retrieve_asset_location');
+//  event_id varchar(25);                                                    
+//  time char(25);  //timestamp                                              
+//  version char(3) inz('1.4');                                              
+//  campus char(6) inz('NRSNBR');                                            
+//  dcl-ds data;                                                             
+//    dcl-ds asset;                                                          
+//      asset_type varchar(25);                                              
+//      site_code varchar(25);                                               
+//      //event_id varchar(25);                                              
+//      SCAC char(4);                                                        
+//      name_SCAC varchar(50) inz('Trailer SCAC');                           
+//      name_SCAC varchar(50) inz('Trailer SCAC');                              
+//      trailer varchar(25);                                                    
+//      name_trailer varchar(50) inz('Trailer #');    // rename json field to pi
+//      container varchar(25);                                                  
+//      name_container varchar(50) inz('Container #');                          
+//    END-DS;                                                                   
+//  END-DS;                                                                     
+//END-DS;                                                                       
+                                                                                
+dcl-s currentstmp timestamp(0);                                                 
+dcl-s checkinstmp timestamp(0);                                                 
+dcl-s nullstamp timestamp(0) inz(z'0001-01-01-00.00.00');                       
+                                                                                
+// array for data que                                                           
+dcl-ds dataque_data qualified;                                                  
+dcl-ds dataque_data qualified;                                                 
+   api_name char(25) inz('retrieve_asset_location');                           
+   json_data char(500);                                                        
+   data char(1024) pos(1);                                                     
+END-DS;                                                                        
+dcl-s eventid char(9);                                                         
+dcl-s etypex char(1);                                                          
+dcl-s cmpus char(6);                                                           
+dcl-s sitecd char(9);                                                          
+                                                                               
+eval-corr swjb_ds = filedata;                                                  
+// get campus and sitecodes                                                    
+//exec sql select  pinccampus, pincsitecd into :cmpus, :sitecd                 
+//  from pincfacl where nrsfacl = :filedata.facl#s;                            
+chain facl#s pincfacl01;                                                       
+chain facl#s pincfacl01;                                                  
+cmpus = pinccampus;                                                       
+sitecd = pincsitecd;                                                      
+                                                                          
+                                                                          
+                                                                          
+// process ADD records from YARDLG (trigger program)                      
+  clear location_ds;                                                      
+//  location_ds.name_trailer = 'Trailer #';                               
+//  location_ds.name_SCAC = 'Trailer SCAC';                               
+//  location_ds.name_container = 'Container #';                           
+  location_ds.site_code = sitecd;                                         
+  // get current timestamp for api record and convert to pinc format      
+currentstmp = %timestamp(*SYS:0);                                         
+location_ds.time = convertpincdate(currentstmp);                          
+                           
+location_ds.campus = cmpus;                                                     
+location_ds.msg_grp_id = 'retrieve_asset_location';                             
+location_ds.event = 'yardhound.import_events.retrieve_asset_location';          
+location_ds.version = '1.4';                                                    
+  // need to get equipment type from yard file not in YWHO                      
+  Exec sql select etypey  into :etypex from yard where carrcy = :ECARRS and equipy = :EQUIPS;
+                                                                                
+       select;                                                                  
+         when etypex = 'C';                                                     
+           location_ds.asset_type = 'Container';                                
+           location_ds.container_num = %trim(ECARRS) + %trim(EQUIPS);           
+         when etypex = 'T';                                                     
+           location_ds.asset_type = 'Trailer';                                  
+           location_ds.scac = ECARRS;                                           
+           location_ds.scac = ECARRS;                                           
+           location_ds.trailer = EQUIPS;                                        
+         when etypex = 'R';                                                     
+          location_ds.asset_type = 'Railbox';                                   
+           location_ds.scac = ECARRS;                                           
+           location_ds.trailer = EQUIPS;                                        
+       ENDSL;                                                                   
+       // generate event_id for this transaction                                
+       eventid = 'SW' + %editc(sjob#s:'X');                                     
+       //location_ds.event_id = eventid;                                        
+       location_ds.event_id = eventid;                                          
+                                                                                
+    // write record to SWLO for later return data                               
+    exec sql insert into ydfilet.swlo (acrecsx,SJOB#SX,facl#sx,pref#sx,dttmcsx,dttmrsx,lstupsx)
+      values(' ',:sjob#s,:facl#s,:eventid,:currentstmp,:nullstamp, :nullstamp) with NC;
+                                                                                
+     // Send data structure to JavaScript                                       
+     command = 'pinc.retrieve_asset_location';                                  
+     datalen = LocationDSLen;                                                   
+     LocationDSToBuf(location_ds:databuf);                                      
+                                                                                
+      // Send request                                                           
+      reqkey = '0';   // per aaron 4/13/21                                      
+      EccSndReq(command:datalen:databuf:reqkey);                                
+                                                                                
+      datalen = EccResultLen;                                                   
+      databuf = '';                                                             
+      EccRcvRes(waittm:reqkey:eod:eoa:nodata:datalen:databuf);                  
+                                                                                
+                                                                               
+      if (eod and eoa and nodata);                                             
+        dsply ('Timeout Waiting On Response: ' + reqkey);                      
+        Return;                                                                
+      ENDIF;                                                                   
+                                                                               
+                                                                               
+      // Check the result                                                      
+      BufToEccResult(databuf:eccresult_ds);                                    
+                                                                               
+      if eccresult_ds.MsgId <> 'ECC0000';                                      
+        dsply 'Failure calling command pinc.retrieve_asset_location' ;         
+        Return;                                                                
+      ENDIF;                                                                   
+                                                                               
+                                                                                
+    // convert data structure to json array                                     
+//     DATA-GEN location_ds %DATA( dataque_data.json_data : 'renameprefix=name_')
+//         %gen('YAJL72/YAJLDTAGEN');                                           
+     //DATA-GEN location_ds %DATA( dataque_data.json_data )                     
+     //    %gen('YAJL72/YAJLDTAGEN');                                           
+    // write json to dataq  for api call                                        
+//    exec sql call qsys2.send_data_queue(:dataque_data.data,'PINCAPIOUT','PINC_API');
+                                                                                
+                                                                                
+*inlr = *on;                                                                    

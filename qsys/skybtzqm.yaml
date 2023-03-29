@@ -1,0 +1,10 @@
+---
+name: skybtzqm
+rpgIncName: skybtzqm_h
+formats:
+  GetTrlMls2:
+    recordType: request
+    subfields:
+      filename:
+        type: Character
+        length: 256

@@ -1,0 +1,80 @@
+---
+name: mpputwo
+rpgIncName: mpputwo_h
+codeblocks:
+  typescript:
+    - import eradaniConnect from "@eradani-inc/eradani-connect";
+    - const { dataTypes } = eradaniConnect;
+datastructures:
+  errorsDs:
+    qualified: true
+    subfields:
+      key:
+        rpgName: keyname
+        type: Character
+        length: 25
+      error:
+        rpgName: errdesc
+        type: Character
+        length: 80
+formats:
+  ReqAddWo:
+    recordType: request
+    subfields:
+      purpose:
+        rpgName: purpose
+        type: Character
+        length: 80
+      entityKey:
+        rpgName: entkey
+        type: Integer
+        length: 10
+      assetKey:
+        rpgName: assetkey
+        type: Integer
+        length: 10
+      priorityKey:
+        rpgName: ptykey
+        type: Integer
+        length: 10
+      budgetKey:
+        rpgName: budgetkey
+        type: Integer
+        length: 10
+      createDate:
+        rpgName: createdt
+        type: Timestamp
+      dateDue:
+        rpgName: datedue
+        type: Timestamp
+      workTypeKey:
+        rpgName: wktypeky
+        type: Integer
+        length: 10
+      workDescription:
+        rpgName: wrkdesc
+        type: Character
+        length: 80
+  ResAddWo:
+    recordType: response
+    subfields:
+      type:
+        rpgName: type
+        type: Character
+        length: 100
+      title: 
+        rpgName: title
+        type: Character
+        length: 100
+      status:
+        rpgName: status
+        type: Integer
+        length: 10
+      traceId:
+        rpgName: traceid
+        type: Character
+        length: 80
+      errors:
+        type: DataStruct
+        dsName: errorsDs
+        dim: 5

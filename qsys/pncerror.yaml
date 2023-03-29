@@ -1,0 +1,126 @@
+---
+name: pncerror
+rpgIncName: pncerr_h
+codeblocks:
+  typescript:
+    - import eradaniConnect from "@eradani-inc/eradani-connect";
+    - const { dataTypes } = eradaniConnect;
+datastructures:
+  AssetDS:
+    qualified: true
+    subfields:
+      checked_in:
+        rpgName: checked_in
+        type: Character
+        length: 26
+      checked_out:
+        rpgName: checked_out
+        type: Character
+        length: 26
+      movement_type:
+        rpgName: movement_type
+        type: Character
+        length: 15
+      load_status:
+        rpgName: load_status
+        type: Character
+        length: 15
+      SCAC:
+        rpgName: scac
+        type: Character
+        length: 4
+      trailer_number:
+        rpgName: trailer
+        type: Character
+        length: 25
+      container_number:
+        rpgName: container_num
+        type: Character
+        length: 25
+      fleet_code:
+        rpgName: fleet_code
+        type: Character
+        length: 6
+      tractor_scac:
+        rpgName: tractor_scac
+        type: Character
+        length: 4
+      customer_code:
+        rpgName: customer_code
+        type: Character
+        length: 4
+      asset_type:
+        rpgName: asset_type
+        type: Character
+        length: 15
+      site_code:
+        rpgName: site_code
+        type: Character
+        length: 9
+      rfid_tag:
+        rpgName: rfid_tag
+        type: Character
+        length: 24
+  DataDS:
+    qualified: true
+    subfields:        
+      asset:
+        type: DataStruct
+        dsName: AssetDS        
+  MessageDS:
+    qualified: true 
+    subfields:
+      event: 
+        rpgName: event
+        type: Character
+        length: 100
+      time:
+        rpgName: time
+        type: Character
+        length: 25
+      version:
+        rpgName: version
+        type: Character
+        length: 10
+      campus:
+        rpgName: campus
+        type: Character
+        length: 6 
+      data:
+        type: DataStruct
+        dsName: DataDS       
+  DataDS2:
+    qualified: true
+    subfields:
+      error:
+        rpgName: error
+        type: Character
+        length: 256
+      message:
+        type: DataStruct
+        dsName: MessageDS
+formats:
+  LLErrReq:
+    recordType: request
+    subfields:
+      comment:
+        type: Character
+        length: 80
+      filename:
+        rpgName: filename
+        type: Character
+        length: 100
+  LLErrRes:
+    recordType: response
+    subfields:
+      event:
+        rpgName: event
+        type: Character
+        length: 50
+      time:
+        rpgName: time
+        type: Character
+        length: 25
+      data:
+        type: DataStruct
+        dsName: DataDS2

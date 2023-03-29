@@ -1,0 +1,44 @@
+---
+name: mlgnveri
+rpgIncName: mlgnveri_h
+formats:
+  MgReqData:
+    recordType: request
+    subfields:
+      address:
+        rpgName: address
+        type: Character
+        length: 100
+      mailbox_verification:
+        rpgName: mbxver
+        type: Boolean
+      provider_lookup:
+        rpgName: provlokup
+        type: Boolean
+  MgResData:
+    recordType: response
+    subfields:
+      address:
+        rpgName: address
+        type: Character
+        length: 100
+      is_disposable_address:
+        rpgName: dispadd
+        type: Boolean
+      is_role_address:
+        rpgName: roleadd
+        type: Boolean
+      reason:
+        rpgName: reason
+        type: Character
+        length: 25
+        dim: 10
+      result:
+        rpgName: result
+        type: Character
+        length: 25
+      risk:
+        rpgName: risk
+        type: Character
+        length: 25
+

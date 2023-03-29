@@ -1,0 +1,93 @@
+      ************************************
+      * Module: pnclatlon
+      * Generated RPG data structures
+      * and prototypes
+      * Do not modify
+      ************************************
+
+      ************************************
+      * LLReq data structure
+      * Record length: 80
+      ************************************
+     DLLReqLen         C                   80
+     DLLReq            DS                  Qualified
+     D                                     Template
+     Dcomment                        80A
+
+      ************************************
+      * Convert LLReq to buffer
+      ************************************
+     DLLReqToBuf       PR
+     DDataStruct                           LikeDS(LLReq)
+     D                                     Const
+     DBuffer                        500A
+
+      ************************************
+      * LLHeadDS data structure
+      * Record length: 347
+      ************************************
+     DLLHeadDSLen      C                   347
+     DLLHeadDS         DS                  Qualified
+     D                                     Template
+     Devent                          50A
+     Dtime                           25A
+     Dversion                         3A
+     Dcampus                          6A
+     Dcustfaccode                    25A
+     Devent_id                       25A
+     Devent_type                      2A   Overlay(event_id)
+     Devent_no                        7S 0 Overlay(event_id:*next)
+     Dreference_id                   25A
+     Dchecked_in                     26A
+     Dchecked_out                    26A
+     Dupdated_on                     26A
+     Dcheck_in_agent                 25A
+     Dcheck_out_agent                25A
+     Dpurpose                        25A
+     Dspot_number                    10A
+     Dsnyard                          1A   Overlay(spot_number)
+     Dsnloctype                       1A   Overlay(spot_number:*next)
+     Dsnslotnumber                    3A   Overlay(spot_number:*next)
+     Dyardloc3                        3A   Overlay(spot_number:1)
+     Dlocation1                       1A   Overlay(spot_number:3)
+     Dyardloc5                        5A   Overlay(spot_number:1)
+
+      ************************************
+      * Convert buffer to LLHeadDS
+      ************************************
+     DBufToLLHeadDS    PR
+     DBuffer                        500A
+     DDataStruct                           LikeDS(LLHeadDS)
+
+      ************************************
+      * LLMoveDS data structure
+      * Record length: 263
+      ************************************
+     DLLMoveDSLen      C                   263
+     DLLMoveDS         DS                  Qualified
+     D                                     Template
+     Dlast_move_time                 26A
+     Dmovement_type                  15A
+     Dload_status                    15A
+     Dscac                            4A
+     Dtrailer                        25A
+     Dcontainer_num                  25A
+     Dfleet_code                      6A
+     Dtractor_scac                    4A
+     Dcustomer_code                   4A
+     Dasset_dimension                15A
+     Dasset_type                     15A
+     Dsite                           25A
+     Dsite_code                       9A
+     Dasset_visit_id                  5I 0
+     Dis_dock                         5A
+     Dlatitude                       15A
+     Dlongitude                      25A
+     Drfid_tag                       24A
+
+      ************************************
+      * Convert buffer to LLMoveDS
+      ************************************
+     DBufToLLMoveDS    PR
+     DBuffer                        500A
+     DDataStruct                           LikeDS(LLMoveDS)

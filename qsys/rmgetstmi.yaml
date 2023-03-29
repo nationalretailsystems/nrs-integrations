@@ -1,0 +1,163 @@
+---
+name: rmgetstmi
+rpgIncName: rmgetstm_h
+codeblocks:
+  typescript:
+    - import eradaniConnect from "@eradani-inc/eradani-connect";
+    - const { dataTypes } = eradaniConnect;
+datastructures:
+  responseDS:
+    qualified: true
+    subfields:
+      code:
+        rpgName: code
+        type: Integer
+        length: 5
+        precision: 0
+      type: 
+        rpgName: type
+        type: Character
+        length: 10
+      message:
+        rpgName: message
+        type: Character
+        length: 200
+formats:
+  ReqStMiles:
+    recordType: request
+    subfields:
+      accessToken:
+        type: Character
+        length: 100
+      companyCode:
+        type: Character
+        length: 10
+      logDate: 
+        type: Date
+      startIndex:
+        type: Integer
+        length: 10
+        precision: 0
+      size:
+        type: Integer
+        length: 10
+        precision: 0
+  RtnStMiles:
+    recordType: response
+    subfields:
+      index:
+        rpgName: index
+        type: Integer
+        length: 10
+        precision: 0
+      driverLoginId:
+        rpgName: drvrlogid
+        type: Character
+        length: 60
+      tractorNumber:
+        rpgName: tractornum
+        type: Character
+        length: 12
+      deviceSN:
+        rpgName: devicesn
+        type: Character
+        length: 20
+      fuelUsed:
+        rpgName: fuelused
+        type: Packed
+        length: 15
+        precision: 5
+      fuelType:
+        rpgName: fueltype
+        type: Character
+        length: 20
+      distance:
+        rpgName: distance
+        type: Packed
+        length: 15
+        precision: 5
+      manualMiles:
+        rpgName: manualmi
+        type: Packed
+        length: 15
+        precision: 5
+      state:
+        rpgName: state
+        type: Character
+        length: 50
+      entryOdemeterReading:
+        rpgName: entodread
+        type: Packed
+        length: 15
+        precision: 5      
+      exitOdemeterReading:
+        rpgName: exodread
+        type: Packed
+        length: 15
+        precision: 5      
+      country:
+        rpgName: country
+        type: Character
+        length: 50      
+      stateInTime:
+        rpgName: sttintm
+        type: Character
+        length: 19
+      stateOutTime:
+        rpgName: sttouttm
+        type: Character
+        length: 19
+      logDate:
+        rpgName: logdate
+        type: Character
+        length: 19
+      offSet:
+        rpgName: offSet
+        type: Character
+        length: 2
+      oaNumber:
+        rpgName: oanbr
+        type: Character
+        length: 100
+      stateInLatitude:
+        rpgName: sttinlat
+        type: Float
+        length: 8
+      stateInLongitude:
+        rpgName: sttinlng
+        type: Float
+        length: 8
+      stateOutLatitude:
+        rpgName: sttoutlat
+        type: Float
+        length: 8
+      stateOutLongitude:
+        rpgName: sttoutlng
+        type: Float
+        length: 8
+      stateInAddress:
+        rpgName: sttinadd
+        type: Character
+        length: 200
+      stateOutAddress:
+        rpgName: sttoutadd
+        type: Character
+        length: 200
+      vin:
+        rpgName: vin
+        type: Character
+        length: 30
+      dotNumber:
+        rpgName: dotnbt
+        type: Character
+        length: 50
+  RtnRespons:
+    recordType: response
+    subfields:        
+      response:
+        type: DataStruct
+        dsName: responseDS
+      isDST:
+        type: Packed
+        length: 3
+        precision: 0

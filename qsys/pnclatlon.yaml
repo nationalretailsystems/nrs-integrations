@@ -1,0 +1,194 @@
+---
+name: pnclatlon
+rpgIncName: pnclatln_h
+codeblocks:
+  typescript:
+    - import eradaniConnect from "@eradani-inc/eradani-connect";
+    - const { dataTypes } = eradaniConnect;
+datastructures:
+  AssetDS:
+    qualified: true
+    subfields:
+      reference_id:
+        rpgName: reference_id
+        type: Character
+        length: 25
+      checked_in:
+        rpgName: checked_in
+        type: Character
+        length: 29
+      checked_out:
+        rpgName: checked_out
+        type: Character
+        length: 29
+      updated_on:
+        rpgName: updated_on
+        type: Character
+        length: 29
+      check_in_agent:
+        rpgName: check_in_agent
+        type: Character
+        length: 25
+      check_out_agent:
+        rpgName: check_out_agent
+        type: Character
+        length: 25
+      purpose:
+        rpgName: purpose
+        type: Character
+        length: 25
+      spot_number:
+        rpgName: spot_number
+        type: Character
+        length: 10
+      snyard:
+        type: Character
+        length: 1
+        overlay: spot_number
+      snloctype:
+        type: Character
+        length: 1
+        overlay: spot_number:*next
+      snslotnumber:
+        type: Character
+        length: 3
+        overlay: spot_number:*next
+      yardloc3:
+        type: Character
+        length: 3
+        overlay: spot_number:1
+      location1:
+        type: Character
+        length: 1
+        overlay: spot_number:3
+      yardloc5:
+        type: Character
+        length: 5
+        overlay: spot_number:1
+      last_move_time:
+        rpgName: last_move_time
+        type: Character
+        length: 26
+      movement_type:
+        rpgName: movement_type
+        type: Character
+        length: 15
+      load_status:
+        rpgName: load_status
+        type: Character
+        length: 15
+      trailer_scac:
+        rpgName: scac
+        type: Character
+        length: 4
+      trailer_number:
+        rpgName: trailer
+        type: Character
+        length: 25
+      container_number:
+        rpgName: container_num
+        type: Character
+        length: 25
+      fleet_code:
+        rpgName: fleet_code
+        type: Character
+        length: 6
+      tractor_scac:
+        rpgName: tractor_scac
+        type: Character
+        length: 4
+      customer_code:
+        rpgName: customer_code
+        type: Character
+        length: 4
+      asset_dimension:
+        rpgName: asset_dimension
+        type: Character
+        length: 15
+      asset_type:
+        rpgName: asset_type
+        type: Character
+        length: 15
+      site:
+        rpgName: site
+        type: Character
+        length: 25
+      site_code:
+        rpgName: site_code
+        type: Character
+        length: 9
+      asset_visit_id:
+        rpgName: asset_visit_id
+        type: Integer
+        length: 10
+      is_dock:
+        rpgName: is_dock
+        type: Boolean
+      Latitude:
+        rpgName: latitude
+        type: Character
+        length: 25
+      Longitude:
+        rpgName: longitude
+        type: Character
+        length: 25
+      rfid_tag:
+        rpgName: rfid_tag
+        type: Character
+        length: 24
+  DataDS:
+    qualified: true
+    subfields:
+      asset:
+        type: DataStruct
+        dsName: AssetDS
+        length: 24
+formats:
+  LLReq:
+    recordType: request
+    subfields:
+      comment:
+        type: Character
+        length: 80
+      facility:
+        rpgName: facility
+        type: Character
+        length: 6
+  LLRes:
+    recordType: response
+    subfields:
+      event:
+        rpgName: event
+        type: Character
+        length: 50
+      time:
+        rpgName: time
+        type: Character
+        length: 29
+      version:
+        rpgName: version
+        type: Character
+        length: 3
+      campus:
+        rpgName: campus
+        type: Character
+        length: 6
+      customer_facility_code:
+        rpgName: custfaccode
+        type: Character
+        length: 25
+      event_id:
+        rpgName: event_id
+        type: Character
+        length: 25
+      event_type:
+        type: Character
+        length: 2
+        overlay: event_id
+      event_no:
+        type: Zoned
+        length: 7
+        overlay: event_id:*next
+      data:
+        type: DataStruct
+        dsName: DataDS

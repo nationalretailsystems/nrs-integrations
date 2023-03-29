@@ -1,0 +1,276 @@
+---
+name: skybtzqp
+rpgIncName: skybtzqp_h
+codeblocks:
+  typescript:
+    - import eradaniConnect from "@eradani-inc/eradani-connect";
+    - const { dataTypes } = eradaniConnect;
+datastructures:
+  groupsDS:
+    qualified: true 
+    subfields:
+      groupname: 
+        type: Character
+        length: 50
+        default: " "
+        dim: 10
+  assetDS:
+    qualified: true
+    subfields:
+      assetid:
+        type: Character
+        length: 10
+        default: " "
+      assettype:
+        type: Character
+        length: 20
+        default: " "
+      owner:
+        type: Character
+        length: 50
+        default: " "
+      note:
+        type: Character
+        length: 30
+        default: " "
+      groups:
+        type: DataStruct
+        dsName: groupsDS
+  binaryDS:
+    qualified: true
+    subfields:
+      inputname:
+        type: Character
+        length: 20
+        default: " "
+      inputid:
+        type: Character
+        length: 10
+        default: " "
+      inputval:
+        type: Character
+        length: 10
+        default: " "
+      inputstate:
+        type: Character
+        length: 10
+        default: " "
+  serialDS:
+    qualified: true
+    subfields:
+      serialtype:
+        type: Character
+        length: 2
+        default: " "
+      serialid:
+        type: Character
+        length: 10
+        default: " "
+      serialname:
+        type: Character
+        length: 20
+        default: " "
+      serialdata:
+        type: Character
+        length: 20
+        default: " "
+  landmarkDS:
+    qualified: true
+    subfields:
+      geoname:
+        type: Character
+        length: 25
+        default: " "
+      locationid:
+        type: Character
+        length: 10
+        default: " "
+      city:
+        type: Character
+        length: 25
+        default: " "
+      state:
+        type: Character
+        length: 2
+        default: " "
+      country:
+        type: Character
+        length: 2
+        default: " "
+      postal:
+        type: Character
+        length: 10
+        default: " "
+      distance:
+        type: Character
+        length: 15
+        default: " "
+      direction:
+        type: Character
+        length: 3
+        default: " "
+      geotypename:
+        type: Character
+        length: 15
+        default: " "
+      geoshape:
+        type: Character
+        length: 15
+        default: " "
+  addressDS:
+    qualified: true
+    subfields:
+      street:
+        type: Character
+        length: 25
+        default: " "
+      city:
+        type: Character
+        length: 25
+        default: " "
+      state:
+        type: Character
+        length: 2
+        default: " "
+      country:
+        type: Character
+        length: 2
+        default: " "
+      postal:
+        type: Character
+        length: 10
+        default: " "
+  skyfenceDS:
+    qualified: true
+    subfields:
+      skyfencestatus:
+        type: Character
+        length: 10
+        default: " "
+  idleDS:
+    qualified: true
+    subfields:
+      idlestatus:
+        type: Character
+        length: 10
+        default: " "
+      idleduration:
+        type: Character
+        length: 10
+        default: " "
+      idlegap:
+        type: Character
+        length: 10
+        default: " "
+  skybitzDS:
+    qualified: true
+    subfields:
+      error:
+        rpgName: error
+        type: Character
+        length: 1
+        default: " "
+      gls:
+        type: DataStruct
+        dsName: glsDS
+  glsDS:
+    qualified: true
+    subfields:
+      mtsn:
+        rpgName: mtsn
+        type: Character
+        length: 20
+        default: " "
+      asset:
+        type: DataStruct
+        dsName: assetDS
+      messagetype:
+        rpgName: msgtype
+        type: Character
+        length: 20
+        default: " "
+      binary:
+        type: DataStruct
+        dsName: binaryDS
+      extpwr:
+        type: Character
+        length: 1
+        default: " "
+      serial:
+        type: DataStruct
+        dsName: serialDS
+        dim: 10
+      latitude:
+        type: Character
+        length: 15
+        default: " "
+      longitude:
+        type: Character
+        length: 15
+        default: " "
+      speed:
+        type: Character
+        length: 15
+        default: " "
+      heading:
+        type: Character
+        length: 3
+        default: " "
+      headingdegrees:
+        type: Character
+        length: 10
+        default: " "
+      battery:
+        type: Character
+        length: 10
+        default: " "
+      time:
+        type: Character
+        length: 19
+        default: " "
+      quality:
+        type: Character
+        length: 10
+        default: " "
+      landmark:
+        type: DataStruct
+        dsName: landmarkDS
+      address:
+        type: DataStruct
+        dsName: addressDS
+      skyfence:
+        type: DataStruct
+        dsName: skyfenceDS
+      idle:
+        type: DataStruct
+        dsName: idleDS
+      epmflag:
+        type: Character
+        length: 10
+        default: " "
+      messagercvtime:
+        type: Character
+        length: 19
+        default: " "
+      devicetype:
+        type: Character
+        length: 10
+        default: " "
+formats:
+  GetTrlPos:
+    recordType: request
+    subfields:
+      assetid:
+        type: Character
+        length: 20
+        default: " "
+  TrlRtnDta:
+    recordType: response
+    subfields:
+      skybitz:
+        type: DataStruct
+        dsName: skybitzDS
+      error:
+        type: Character
+        length: 1
+        default: " "

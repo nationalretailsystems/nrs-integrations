@@ -1,7 +1,7 @@
 {
     "openapi": "3.0.0",
     "info": {
-        "title": "eradani-connect-template",
+        "title": "nrs-inbound",
         "version": "2.5.2",
         "description": "Specification JSONs: [v2](/api-spec/v2), [v3](/api-spec/v3).\n\nEradani Connect Template Application"
     },
@@ -307,7 +307,8 @@
     "tags": [],
     "servers": [
         {
-            "url": "http://localhost:3001"
+            "url": "https://localhost:4001",
+            "description": "Local Dev (HTTPS)"
         }
     ],
     "components": {
