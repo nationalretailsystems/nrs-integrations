@@ -1,6 +1,6 @@
 #!/bin/sh
 NODE_HOME=/QOpenSys/pkgs/bin
-ECNCT_HOME=/QOpenSys/opt/eradani/nrs-integrations
+ECNCT_HOME=/QOpenSys/opt/eradani/prod/nrs-integrations
 
 NODE_ENV=production
 export NODE_ENV
