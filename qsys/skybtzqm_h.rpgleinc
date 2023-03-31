@@ -1,0 +1,23 @@
+      ************************************
+      * Module: skybtzqm
+      * Generated RPG data structures
+      * and prototypes
+      * Do not modify
+      ************************************
+
+      ************************************
+      * GetTrlMls2 data structure
+      * Record length: 256
+      ************************************
+     DGetTrlMls2Len    C                   256
+     DGetTrlMls2       DS                  Qualified
+     D                                     Template
+     Dfilename                      256A
+
+      ************************************
+      * Convert GetTrlMls2 to buffer
+      ************************************
+     DGetTrlMls2ToBuf  PR
+     DDataStruct                           LikeDS(GetTrlMls2)
+     D                                     Const
+     DBuffer                        256A

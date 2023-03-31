@@ -29,7 +29,7 @@
      D  Eoa            S               N
      D  NoData         S               N
      D  MyEccResult    DS                  LikeDS(EccResult)
-     D  MyWeather      DS                  LikeDS(Weather)
+     D  MyForecast     DS                  LikeDS(Forecast)
 
       *
       * Passed Parameter - both Request & Response
@@ -72,8 +72,8 @@
      D Write_EccMsg    PR
      D  In_EccResult                       LikeDS(EccResult) Const
 
-     D Write_Weather   PR
-     D  In_Weather                         LikeDS(Weather) Const
+     D Write_Forecast  PR
+     D  In_Forecast                        LikeDS(Forecast) Const
 
      D Write_Excp      PR
      D  In_ProcNm                    32A   Const
@@ -138,21 +138,23 @@
            Return;
          EndIf;
 
-         DataLen = WeatherLen;
-         DataBuf = '';
-         CallP(e) EccRcvRes(In_WaitTm:In_ReqKey:Eod:Eoa:NoData:
-                            DataLen:DataBuf);
-         if %error;
-           Write_Excp('EccRcvRes':Psds);
-           Return;
-         endif;
+         DoU Eoa;
+             DataLen = ForecastLen;
+             DataBuf = '';
+             CallP(e) EccRcvRes(In_WaitTm:In_ReqKey:Eod:Eoa:NoData:
+                                DataLen:DataBuf);
+             if %error;
+               Write_Excp('EccRcvRes':Psds);
+               Return;
+             endif;
 
-         If (NoData);
-           Return;
-         Else;
-           BufToWeather(DataBuf:MyWeather);
-           Write_Weather(MyWeather);
-         EndIf;
+             If (NoData);
+               Return;
+             Else;
+               BufToForecast(DataBuf:MyForecast);
+               Write_Forecast(MyForecast);
+             EndIf;
+         EndDo;
 
          Return;
 
@@ -209,17 +211,16 @@
      P Write_EccMsg    E
 
       ***-----------------------------------------------------------***
-      * Procedure Name:   Write_Weather
+      * Procedure Name:   Write_Forecast
       * Purpose.......:   Write weather forecast
       * Returns.......:   None
-      * Parameters....:   Weather data structure
+      * Parameters....:   Forecast data structure
       ***-----------------------------------------------------------***
-     P Write_Weather   B
+     P Write_Forecast  B
 
-     D Write_Weather   PI
-     D  In_Weather                         LikeDS(Weather) Const
+     D Write_Forecast  PI
+     D  In_Forecast                        LikeDS(Forecast) Const
 
-     D i               S             10U 0
      D Text            DS           132    Qualified
      D                                6A   Inz('Date: ')
      D  Date                         10A
@@ -230,18 +231,16 @@
      D                                8A   Inz(', Desc: ')
      D  Desc                         58A
 
-       for i = 1 to %elem(In_Weather.Forecasts);
-         Text.Date = %char(In_Weather.Forecasts(i).Date);
-         Text.Min = %char(In_Weather.Forecasts(i).Min);
-         Text.Max = %char(In_Weather.Forecasts(i).Max);
-         Text.Desc = In_Weather.Forecasts(i).Desc;
+       Text.Date = %char(In_Forecast.Date);
+       Text.Min = %char(In_Forecast.Min);
+       Text.Max = %char(In_Forecast.Max);
+       Text.Desc = In_Forecast.Desc;
 
-         Write QSysPrt Text;
-       endfor;
+       Write QSysPrt Text;
 
        Return;
 
-     P Write_Weather   E
+     P Write_Forecast  E
 
       ***-----------------------------------------------------------***
       * Procedure Name:   Write_Excp

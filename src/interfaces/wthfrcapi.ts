@@ -3,7 +3,7 @@
 // Module: wthfrcapi
 // Generated source -- do not modify
 
-import { ibmiConversions } from '@eradani-inc/ec-client';
+import { ibmiConversions, missingInput } from '@eradani-inc/ec-client';
 const { fromIbmiDate, fromIbmiTime, fromIbmiTimestamp, toIbmiDate, toIbmiTime, toIbmiTimestamp } = ibmiConversions;
 
 import eradaniConnect from '@eradani-inc/eradani-connect';
@@ -80,10 +80,19 @@ export function convertObjectToWeather(dataIn: Weather): string {
     let dataOut: string = '';
 
     for (let i: number = 0; i < 8; ++i) {
-        dataOut += toIbmiDate(dataIn.Forecasts[i].date);
-        dataOut += dataIn.Forecasts[i].min.toFixed(2).substring(0, 7).padEnd(7);
-        dataOut += dataIn.Forecasts[i].max.toFixed(2).substring(0, 7).padEnd(7);
-        dataOut += dataIn.Forecasts[i].description.substring(0, 58).padEnd(58);
+        dataOut +=
+            dataIn?.Forecasts[i]?.date !== undefined
+                ? toIbmiDate(dataIn?.Forecasts[i]?.date)
+                : missingInput(`dataIn.Forecasts[${i}].date`, 'date', dataIn?.Forecasts[i]?.date);
+        dataOut +=
+            dataIn?.Forecasts[i]?.min?.toFixed(2)?.substring(0, 7)?.padEnd(7) ??
+            missingInput(`dataIn.Forecasts[${i}].min`, 'packed', dataIn?.Forecasts[i]?.min);
+        dataOut +=
+            dataIn?.Forecasts[i]?.max?.toFixed(2)?.substring(0, 7)?.padEnd(7) ??
+            missingInput(`dataIn.Forecasts[${i}].max`, 'packed', dataIn?.Forecasts[i]?.max);
+        dataOut +=
+            dataIn?.Forecasts[i]?.description?.substring(0, 58)?.padEnd(58) ??
+            missingInput(`dataIn.Forecasts[${i}].description`, 'char', dataIn?.Forecasts[i]?.description);
     }
 
     return dataOut;

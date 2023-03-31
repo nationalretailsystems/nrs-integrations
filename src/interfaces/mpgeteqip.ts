@@ -3,55 +3,11 @@
 // Module: mpgeteqip
 // Generated source -- do not modify
 
-import { ibmiConversions } from '@eradani-inc/ec-client';
+import { ibmiConversions, missingInput } from '@eradani-inc/ec-client';
 const { fromIbmiDate, fromIbmiTime, fromIbmiTimestamp, toIbmiDate, toIbmiTime, toIbmiTimestamp } = ibmiConversions;
 
 import eradaniConnect from '@eradani-inc/eradani-connect';
 const { dataTypes } = eradaniConnect;
-
-/**
- * Data structure
- */
-let CustFldsDSFields: any = [
-    {
-        name: 'key',
-        type: new dataTypes.Integer(10)
-    },
-    {
-        name: 'customFieldKey',
-        type: new dataTypes.Integer(10)
-    },
-    {
-        name: 'fieldName',
-        type: new dataTypes.Char(24)
-    },
-    {
-        name: 'value',
-        type: new dataTypes.Char(100)
-    }
-];
-
-/**
- * Input interface
- */
-export interface CustFldsDSInput {
-    /**
-     * @size 10 digits
-     */
-    key: number | string;
-    /**
-     * @size 10 digits
-     */
-    customFieldKey: number | string;
-    /**
-     * @size 24 characters
-     */
-    fieldName: string;
-    /**
-     * @size 100 characters
-     */
-    value: string;
-}
 
 /**
  * Output interface
@@ -198,31 +154,71 @@ export interface AssetChgDS {
 export function convertObjectToAssetChgDS(dataIn: AssetChgDS): string {
     let dataOut: string = '';
 
-    dataOut += dataIn.assetKey.toFixed().substring(0, 11).padEnd(11);
-    dataOut += dataIn.entityName.substring(0, 50).padEnd(50);
-    dataOut += dataIn.assetId.substring(0, 24).padEnd(24);
-    dataOut += dataIn.parentAssetId.substring(0, 24).padEnd(24);
-    dataOut += dataIn.description.substring(0, 50).padEnd(50);
-    dataOut += dataIn.groupKey.toFixed().substring(0, 11).padEnd(11);
-    dataOut += dataIn.groupId.substring(0, 24).padEnd(24);
-    dataOut += dataIn.categoryId.substring(0, 24).padEnd(24);
-    dataOut += dataIn.typeId.substring(0, 24).padEnd(24);
-    dataOut += dataIn.budgetGroupId.substring(0, 24).padEnd(24);
-    dataOut += dataIn.budgetId.substring(0, 24).padEnd(24);
-    dataOut += dataIn.statusId.substring(0, 24).padEnd(24);
-    dataOut += dataIn.barcode.substring(0, 50).padEnd(50);
-    dataOut += dataIn.manufacturer.substring(0, 24).padEnd(24);
-    dataOut += dataIn.model.substring(0, 32).padEnd(32);
-    dataOut += dataIn.serialNumber.substring(0, 32).padEnd(32);
-    dataOut += dataIn.customer.substring(0, 50).padEnd(50);
-    dataOut += dataIn.customerKey.toFixed().substring(0, 11).padEnd(11);
-    dataOut += toIbmiDate(dataIn.purchaseDate);
-    dataOut += dataIn.purchaseCost.toFixed(2).substring(0, 17).padEnd(17);
-    for (let i: number = 0; i < dataIn.customFields.length; ++i) {
-        dataOut += dataIn.customFields[i].key.toFixed().substring(0, 11).padEnd(11);
-        dataOut += dataIn.customFields[i].customFieldKey.toFixed().substring(0, 11).padEnd(11);
-        dataOut += dataIn.customFields[i].fieldName.substring(0, 24).padEnd(24);
-        dataOut += dataIn.customFields[i].value.substring(0, 100).padEnd(100);
+    dataOut +=
+        dataIn?.assetKey?.toFixed()?.substring(0, 11)?.padEnd(11) ??
+        missingInput(`dataIn.assetKey`, 'integer', dataIn?.assetKey);
+    dataOut +=
+        dataIn?.entityName?.substring(0, 50)?.padEnd(50) ??
+        missingInput(`dataIn.entityName`, 'char', dataIn?.entityName);
+    dataOut += dataIn?.assetId?.substring(0, 24)?.padEnd(24) ?? missingInput(`dataIn.assetId`, 'char', dataIn?.assetId);
+    dataOut +=
+        dataIn?.parentAssetId?.substring(0, 24)?.padEnd(24) ??
+        missingInput(`dataIn.parentAssetId`, 'char', dataIn?.parentAssetId);
+    dataOut +=
+        dataIn?.description?.substring(0, 50)?.padEnd(50) ??
+        missingInput(`dataIn.description`, 'char', dataIn?.description);
+    dataOut +=
+        dataIn?.groupKey?.toFixed()?.substring(0, 11)?.padEnd(11) ??
+        missingInput(`dataIn.groupKey`, 'integer', dataIn?.groupKey);
+    dataOut += dataIn?.groupId?.substring(0, 24)?.padEnd(24) ?? missingInput(`dataIn.groupId`, 'char', dataIn?.groupId);
+    dataOut +=
+        dataIn?.categoryId?.substring(0, 24)?.padEnd(24) ??
+        missingInput(`dataIn.categoryId`, 'char', dataIn?.categoryId);
+    dataOut += dataIn?.typeId?.substring(0, 24)?.padEnd(24) ?? missingInput(`dataIn.typeId`, 'char', dataIn?.typeId);
+    dataOut +=
+        dataIn?.budgetGroupId?.substring(0, 24)?.padEnd(24) ??
+        missingInput(`dataIn.budgetGroupId`, 'char', dataIn?.budgetGroupId);
+    dataOut +=
+        dataIn?.budgetId?.substring(0, 24)?.padEnd(24) ?? missingInput(`dataIn.budgetId`, 'char', dataIn?.budgetId);
+    dataOut +=
+        dataIn?.statusId?.substring(0, 24)?.padEnd(24) ?? missingInput(`dataIn.statusId`, 'char', dataIn?.statusId);
+    dataOut += dataIn?.barcode?.substring(0, 50)?.padEnd(50) ?? missingInput(`dataIn.barcode`, 'char', dataIn?.barcode);
+    dataOut +=
+        dataIn?.manufacturer?.substring(0, 24)?.padEnd(24) ??
+        missingInput(`dataIn.manufacturer`, 'char', dataIn?.manufacturer);
+    dataOut += dataIn?.model?.substring(0, 32)?.padEnd(32) ?? missingInput(`dataIn.model`, 'char', dataIn?.model);
+    dataOut +=
+        dataIn?.serialNumber?.substring(0, 32)?.padEnd(32) ??
+        missingInput(`dataIn.serialNumber`, 'char', dataIn?.serialNumber);
+    dataOut +=
+        dataIn?.customer?.substring(0, 50)?.padEnd(50) ?? missingInput(`dataIn.customer`, 'char', dataIn?.customer);
+    dataOut +=
+        dataIn?.customerKey?.toFixed()?.substring(0, 11)?.padEnd(11) ??
+        missingInput(`dataIn.customerKey`, 'integer', dataIn?.customerKey);
+    dataOut +=
+        dataIn?.purchaseDate !== undefined
+            ? toIbmiDate(dataIn?.purchaseDate)
+            : missingInput(`dataIn.purchaseDate`, 'date', dataIn?.purchaseDate);
+    dataOut +=
+        dataIn?.purchaseCost?.toFixed(2)?.substring(0, 17)?.padEnd(17) ??
+        missingInput(`dataIn.purchaseCost`, 'packed', dataIn?.purchaseCost);
+    for (let i: number = 0; i < 100; ++i) {
+        dataOut +=
+            dataIn?.customFields[i]?.key?.toFixed()?.substring(0, 11)?.padEnd(11) ??
+            missingInput(`dataIn.customFields[${i}].key`, 'integer', dataIn?.customFields[i]?.key);
+        dataOut +=
+            dataIn?.customFields[i]?.customFieldKey?.toFixed()?.substring(0, 11)?.padEnd(11) ??
+            missingInput(
+                `dataIn.customFields[${i}].customFieldKey`,
+                'integer',
+                dataIn?.customFields[i]?.customFieldKey
+            );
+        dataOut +=
+            dataIn?.customFields[i]?.fieldName?.substring(0, 24)?.padEnd(24) ??
+            missingInput(`dataIn.customFields[${i}].fieldName`, 'char', dataIn?.customFields[i]?.fieldName);
+        dataOut +=
+            dataIn?.customFields[i]?.value?.substring(0, 100)?.padEnd(100) ??
+            missingInput(`dataIn.customFields[${i}].value`, 'char', dataIn?.customFields[i]?.value);
     }
 
     return dataOut;

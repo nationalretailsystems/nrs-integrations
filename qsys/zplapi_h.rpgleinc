@@ -1,0 +1,26 @@
+      ************************************
+      * Module: zplapi
+      * Generated RPG data structures
+      * and prototypes
+      * Do not modify
+      ************************************
+
+      ************************************
+      * ZplReq data structure
+      * Record length: 3105
+      ************************************
+     DZplReqLen        C                   3105
+     DZplReq           DS                  Qualified
+     D                                     Template
+     Dzpl                          3000A
+     Dfilename                      100A
+     Ddpmm                            2A
+     Dlabelsize                       3A
+
+      ************************************
+      * Convert ZplReq to buffer
+      ************************************
+     DZplReqToBuf      PR
+     DDataStruct                           LikeDS(ZplReq)
+     D                                     Const
+     DBuffer                       3105A

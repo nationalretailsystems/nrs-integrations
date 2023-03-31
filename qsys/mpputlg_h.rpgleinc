@@ -1,0 +1,49 @@
+      ************************************
+      * Module: mpputlog
+      * Generated RPG data structures
+      * and prototypes
+      * Do not modify
+      ************************************
+
+      ************************************
+      * ReqAddLog data structure
+      * Record length: 217
+      ************************************
+     DReqAddLogLen     C                   217
+     DReqAddLog        DS                  Qualified
+     D                                     Template
+     Dassetid                        24A
+     Dpostdate                         D
+     Dlogtype                        24A
+     Dlogvalue                       11P 2
+     Dignwarn                          N
+     Doperator                       24A
+     Dwarehouse                      24A
+     Dbudget                         24A
+     Dcost                           11P 2
+     Dpartid                         36A
+     Dsite                           24A
+
+      ************************************
+      * Convert ReqAddLog to buffer
+      ************************************
+     DReqAddLogToBuf   PR
+     DDataStruct                           LikeDS(ReqAddLog)
+     D                                     Const
+     DBuffer                        217A
+
+      ************************************
+      * AddLogRes data structure
+      * Record length: 256
+      ************************************
+     DAddLogResLen     C                   256
+     DAddLogRes        DS                  Qualified
+     D                                     Template
+     Drespdata                      256A
+
+      ************************************
+      * Convert buffer to AddLogRes
+      ************************************
+     DBufToAddLogRes   PR
+     DBuffer                        256A
+     DDataStruct                           LikeDS(AddLogRes)

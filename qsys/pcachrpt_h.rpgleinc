@@ -1,0 +1,127 @@
+      ************************************
+      * Module: pcachrpt
+      * Generated RPG data structures
+      * and prototypes
+      * Do not modify
+      ************************************
+
+      ************************************
+      * ParmsDS data structure
+      ************************************
+     DParmsDS          DS                  Qualified
+     D                                     Template
+     DbranchClientId                  6A
+     DstartDate                      10A
+     DendDate                        10A
+     Dclientid                        6A
+     Drptactnam                      50A
+     Dtype                           10A
+     DaccountName                    10A
+
+      ************************************
+      * RecSetDS data structure
+      ************************************
+     DRecSetDS         DS                  Qualified
+     D                                     Template
+     Daccount                        10A
+     Dtransid                        10I 0
+     Dpayor                          50A
+     Dpayee                          50A
+     Dcategory                       25A
+     Dtranstype                      25A
+     Dnumber                         25A
+     Ddebitcredit                    10A
+     Ddebitamt                       15P 5
+     Dcreditamt                      15P 5
+     Dpayorbtch                      10I 0
+     Dpayordate                      24A
+     Dpayeebatch                     10I 0
+     Dpayeedate                      24A
+     Dpayorid                        10A
+     Dpayeeid                        10A
+     Dcustrefnum                     25A
+     Dshiprefnum                     25A
+     Dparent                         25A
+     Dapprovaldate                   24A
+     Dappbyuser                      25A
+     Dcurrency                        3A
+     Dpayerid                        10I 0
+     Dvendorid                       10I 0
+     Dpayrefnum                      10A
+     Dorigin                         25A
+     Ddestination                    25A
+     Dpayerintnum                    25A
+     Dpayerfilenum                   25A
+     Dpayervouch                     25A
+     Dpayerprodnum                   25A
+     Dpayerinvnum                    25A
+     Dbollink                        50A
+
+      ************************************
+      * OverallDS data structure
+      ************************************
+     DOverallDS        DS                  Qualified
+     D                                     Template
+     Dcount                          10I 0
+     Ddebitamt                       15P 5
+     Dcreditamt                      15P 5
+
+      ************************************
+      * PayorDS data structure
+      ************************************
+     DPayorDS          DS                  Qualified
+     D                                     Template
+     Dbatch                          10I 0
+     Damount                         15P 5
+
+      ************************************
+      * DataDS data structure
+      ************************************
+     DDataDS           DS                  Qualified
+     D                                     Template
+     Drecordset                            LikeDS(RecSetDS)
+     D                                     Dim(50)
+     Doverall                              LikeDS(OverallDS)
+     Dpayor                                LikeDS(PayorDS)
+
+      ************************************
+      * PCReqRpt data structure
+      * Record length: 95
+      ************************************
+     DPCReqRptLen      C                   95
+     DPCReqRpt         DS                  Qualified
+     D                                     Template
+     Dbrclientid                     10A
+     Dstartdate                      10A
+     Denddate                        10A
+     Dclientid                       10A
+     Drptactname                     25A
+     Dtype                           20A
+     Dacctname                       10A
+
+      ************************************
+      * Convert PCReqRpt to buffer
+      ************************************
+     DPCReqRptToBuf    PR
+     DDataStruct                           LikeDS(PCReqRpt)
+     D                                     Const
+     DBuffer                         95A
+
+      ************************************
+      * PCRcvRpt data structure
+      * Record length: 28633
+      ************************************
+     DPCRcvRptLen      C                   28633
+     DPCRcvRpt         DS                  Qualified
+     D                                     Template
+     Drecordset                            LikeDS(RecSetDS)
+     D                                     Dim(40)
+     Doverall                              LikeDS(OverallDS)
+     Dpayor                                LikeDS(PayorDS)
+
+      ************************************
+      * Convert buffer to PCRcvRpt
+      ************************************
+     DBufToPCRcvRpt    PR
+     DBuffer                      28633A
+     DDataStruct                           LikeDS(PCRcvRpt)

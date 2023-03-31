@@ -45,15 +45,15 @@
      PBufToResData     B                   Export
 
      DBufToResData     PI
-     DBuffer                       1000A
+     DBuffer                         80A
      DDataStruct                           LikeDS(ResData)
 
       * Initialize to begining of buffer
        BufPtr = %addr(Buffer);
 
       * Read fields from buffer into DS
-       DataStruct.Joke = %subst(CharBuf:1:1000);
-       BufPtr += 1000;
+       DataStruct.Joke = %subst(CharBuf:1:80);
+       BufPtr += 80;
 
        return ;
 

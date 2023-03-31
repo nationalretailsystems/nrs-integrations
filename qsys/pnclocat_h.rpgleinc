@@ -1,0 +1,44 @@
+      ************************************
+      * Module: pnclocat
+      * Generated RPG data structures
+      * and prototypes
+      * Do not modify
+      ************************************
+
+      ************************************
+      * AssetDS data structure
+      ************************************
+     DAssetDS          DS                  Qualified
+     D                                     Template
+     Dasset_type                     25A
+     Dsite_code                      25A
+     Dscac                            4A
+     Dtrailer                        25A
+     Dcontainer_num                  25A
+
+      ************************************
+      * DataDS data structure
+      ************************************
+     DDataDS           DS                  Qualified
+     D                                     Template
+     Dasset                                LikeDS(AssetDS)
+
+      ************************************
+      * LocatDS data structure
+      * Record length: 160
+      ************************************
+     DLocatDSLen       C                   160
+     DLocatDS          DS                  Qualified
+     D                                     Template
+     Dmsg_grp_id                     25A
+     Deventid                        25A
+     Dcampus                          6A
+     Ddata                                 LikeDS(DataDS)
+
+      ************************************
+      * Convert LocatDS to buffer
+      ************************************
+     DLocatDSToBuf     PR
+     DDataStruct                           LikeDS(LocatDS)
+     D                                     Const
+     DBuffer                        160A

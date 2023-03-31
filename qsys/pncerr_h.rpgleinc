@@ -1,0 +1,87 @@
+      ************************************
+      * Module: pncerror
+      * Generated RPG data structures
+      * and prototypes
+      * Do not modify
+      ************************************
+
+      ************************************
+      * AssetDS data structure
+      ************************************
+     DAssetDS          DS                  Qualified
+     D                                     Template
+     Dchecked_in                     26A
+     Dchecked_out                    26A
+     Dmovement_type                  15A
+     Dload_status                    15A
+     Dscac                            4A
+     Dtrailer                        25A
+     Dcontainer_num                  25A
+     Dfleet_code                      6A
+     Dtractor_scac                    4A
+     Dcustomer_code                   4A
+     Dasset_type                     15A
+     Dsite_code                       9A
+     Drfid_tag                       24A
+
+      ************************************
+      * DataDS data structure
+      ************************************
+     DDataDS           DS                  Qualified
+     D                                     Template
+     Dasset                                LikeDS(AssetDS)
+
+      ************************************
+      * MessageDS data structure
+      ************************************
+     DMessageDS        DS                  Qualified
+     D                                     Template
+     Devent                         100A
+     Dtime                           25A
+     Dversion                        10A
+     Dcampus                          6A
+     Ddata                                 LikeDS(DataDS)
+
+      ************************************
+      * DataDS2 data structure
+      ************************************
+     DDataDS2          DS                  Qualified
+     D                                     Template
+     Derror                         256A
+     Dmessage                              LikeDS(MessageDS)
+
+      ************************************
+      * LLErrReq data structure
+      * Record length: 180
+      ************************************
+     DLLErrReqLen      C                   180
+     DLLErrReq         DS                  Qualified
+     D                                     Template
+     Dcomment                        80A
+     Dfilename                      100A
+
+      ************************************
+      * Convert LLErrReq to buffer
+      ************************************
+     DLLErrReqToBuf    PR
+     DDataStruct                           LikeDS(LLErrReq)
+     D                                     Const
+     DBuffer                        180A
+
+      ************************************
+      * LLErrRes data structure
+      * Record length: 670
+      ************************************
+     DLLErrResLen      C                   670
+     DLLErrRes         DS                  Qualified
+     D                                     Template
+     Devent                          50A
+     Dtime                           25A
+     Ddata                                 LikeDS(DataDS2)
+
+      ************************************
+      * Convert buffer to LLErrRes
+      ************************************
+     DBufToLLErrRes    PR
+     DBuffer                        670A
+     DDataStruct                           LikeDS(LLErrRes)

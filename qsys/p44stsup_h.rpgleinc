@@ -1,0 +1,52 @@
+      ************************************
+      * Module: p44stsupd
+      * Generated RPG data structures
+      * and prototypes
+      * Do not modify
+      ************************************
+
+      ************************************
+      * ShipIdDS data structure
+      ************************************
+     DShipIdDS         DS                  Qualified
+     D                                     Template
+     Dtype                           10A
+     Dvalue                          20A
+
+      ************************************
+      * P44SndRpt data structure
+      * Record length: 148
+      ************************************
+     DP44SndRptLen     C                   148
+     DP44SndRpt        DS                  Qualified
+     D                                     Template
+     Dshipids                              LikeDS(ShipIdDS)
+     D                                     Dim(2)
+     Dlatitude                       20P15
+     Dlongitude                      20P15
+     Dutcstamp                       19A
+     Dcustomerid                     25A
+
+      ************************************
+      * Convert P44SndRpt to buffer
+      ************************************
+     DP44SndRptToBuf   PR
+     DDataStruct                           LikeDS(P44SndRpt)
+     D                                     Const
+     DBuffer                        148A
+
+      ************************************
+      * P44RcvRpt data structure
+      * Record length: 10
+      ************************************
+     DP44RcvRptLen     C                   10
+     DP44RcvRpt        DS                  Qualified
+     D                                     Template
+     Dstatus                         10A
+
+      ************************************
+      * Convert buffer to P44RcvRpt
+      ************************************
+     DBufToP44RcvRpt   PR
+     DBuffer                         10A
+     DDataStruct                           LikeDS(P44RcvRpt)

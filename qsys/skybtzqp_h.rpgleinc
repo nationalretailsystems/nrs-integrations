@@ -1,0 +1,157 @@
+      ************************************
+      * Module: skybtzqp
+      * Generated RPG data structures
+      * and prototypes
+      * Do not modify
+      ************************************
+
+      ************************************
+      * groupsDS data structure
+      ************************************
+     DgroupsDS         DS                  Qualified
+     D                                     Template
+     Dgroupname                      50A   Dim(10)
+
+      ************************************
+      * assetDS data structure
+      ************************************
+     DassetDS          DS                  Qualified
+     D                                     Template
+     Dassetid                        10A
+     Dassettype                      20A
+     Downer                          50A
+     Dnote                           30A
+     Dgroups                               LikeDS(groupsDS)
+
+      ************************************
+      * binaryDS data structure
+      ************************************
+     DbinaryDS         DS                  Qualified
+     D                                     Template
+     Dinputname                      20A
+     Dinputid                        10A
+     Dinputval                       10A
+     Dinputstate                     10A
+
+      ************************************
+      * serialDS data structure
+      ************************************
+     DserialDS         DS                  Qualified
+     D                                     Template
+     Dserialtype                      2A
+     Dserialid                       10A
+     Dserialname                     20A
+     Dserialdata                     20A
+
+      ************************************
+      * landmarkDS data structure
+      ************************************
+     DlandmarkDS       DS                  Qualified
+     D                                     Template
+     Dgeoname                        25A
+     Dlocationid                     10A
+     Dcity                           25A
+     Dstate                           2A
+     Dcountry                         2A
+     Dpostal                         10A
+     Ddistance                       15A
+     Ddirection                       3A
+     Dgeotypename                    15A
+     Dgeoshape                       15A
+
+      ************************************
+      * addressDS data structure
+      ************************************
+     DaddressDS        DS                  Qualified
+     D                                     Template
+     Dstreet                         25A
+     Dcity                           25A
+     Dstate                           2A
+     Dcountry                         2A
+     Dpostal                         10A
+
+      ************************************
+      * skyfenceDS data structure
+      ************************************
+     DskyfenceDS       DS                  Qualified
+     D                                     Template
+     Dskyfencestatus                 10A
+
+      ************************************
+      * idleDS data structure
+      ************************************
+     DidleDS           DS                  Qualified
+     D                                     Template
+     Didlestatus                     10A
+     Didleduration                   10A
+     Didlegap                        10A
+
+      ************************************
+      * glsDS data structure
+      ************************************
+     DglsDS            DS                  Qualified
+     D                                     Template
+     Dmtsn                           20A
+     Dasset                                LikeDS(assetDS)
+     Dmsgtype                        20A
+     Dbinary                               LikeDS(binaryDS)
+     Dextpwr                          1A
+     Dserial                               LikeDS(serialDS)
+     D                                     Dim(10)
+     Dlatitude                       15A
+     Dlongitude                      15A
+     Dspeed                          15A
+     Dheading                         3A
+     Dheadingdegrees                 10A
+     Dbattery                        10A
+     Dtime                           19A
+     Dquality                        10A
+     Dlandmark                             LikeDS(landmarkDS)
+     Daddress                              LikeDS(addressDS)
+     Dskyfence                             LikeDS(skyfenceDS)
+     Didle                                 LikeDS(idleDS)
+     Depmflag                        10A
+     Dmessagercvtime                 19A
+     Ddevicetype                     10A
+
+      ************************************
+      * skybitzDS data structure
+      ************************************
+     DskybitzDS        DS                  Qualified
+     D                                     Template
+     Derror                           1A
+     Dgls                                  LikeDS(glsDS)
+
+      ************************************
+      * GetTrlPos data structure
+      * Record length: 20
+      ************************************
+     DGetTrlPosLen     C                   20
+     DGetTrlPos        DS                  Qualified
+     D                                     Template
+     Dassetid                        20A
+
+      ************************************
+      * Convert GetTrlPos to buffer
+      ************************************
+     DGetTrlPosToBuf   PR
+     DDataStruct                           LikeDS(GetTrlPos)
+     D                                     Const
+     DBuffer                         20A
+
+      ************************************
+      * TrlRtnDta data structure
+      * Record length: 1585
+      ************************************
+     DTrlRtnDtaLen     C                   1585
+     DTrlRtnDta        DS                  Qualified
+     D                                     Template
+     Dskybitz                              LikeDS(skybitzDS)
+     Derror                           1A
+
+      ************************************
+      * Convert buffer to TrlRtnDta
+      ************************************
+     DBufToTrlRtnDta   PR
+     DBuffer                       1585A
+     DDataStruct                           LikeDS(TrlRtnDta)

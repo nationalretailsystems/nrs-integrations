@@ -3,39 +3,11 @@
 // Module: mpputwo
 // Generated source -- do not modify
 
-import { ibmiConversions } from '@eradani-inc/ec-client';
+import { ibmiConversions, missingInput } from '@eradani-inc/ec-client';
 const { fromIbmiDate, fromIbmiTime, fromIbmiTimestamp, toIbmiDate, toIbmiTime, toIbmiTimestamp } = ibmiConversions;
 
 import eradaniConnect from '@eradani-inc/eradani-connect';
 const { dataTypes } = eradaniConnect;
-
-/**
- * Data structure
- */
-let errorsDsFields: any = [
-    {
-        name: 'key',
-        type: new dataTypes.Char(25)
-    },
-    {
-        name: 'error',
-        type: new dataTypes.Char(80)
-    }
-];
-
-/**
- * Input interface
- */
-export interface errorsDsInput {
-    /**
-     * @size 25 characters
-     */
-    key: string;
-    /**
-     * @size 80 characters
-     */
-    error: string;
-}
 
 /**
  * Output interface
@@ -151,13 +123,19 @@ export interface ResAddWo {
 export function convertObjectToResAddWo(dataIn: ResAddWo): string {
     let dataOut: string = '';
 
-    dataOut += dataIn.type.substring(0, 100).padEnd(100);
-    dataOut += dataIn.title.substring(0, 100).padEnd(100);
-    dataOut += dataIn.status.toFixed().substring(0, 11).padEnd(11);
-    dataOut += dataIn.traceId.substring(0, 80).padEnd(80);
+    dataOut += dataIn?.type?.substring(0, 100)?.padEnd(100) ?? missingInput(`dataIn.type`, 'char', dataIn?.type);
+    dataOut += dataIn?.title?.substring(0, 100)?.padEnd(100) ?? missingInput(`dataIn.title`, 'char', dataIn?.title);
+    dataOut +=
+        dataIn?.status?.toFixed()?.substring(0, 11)?.padEnd(11) ??
+        missingInput(`dataIn.status`, 'integer', dataIn?.status);
+    dataOut += dataIn?.traceId?.substring(0, 80)?.padEnd(80) ?? missingInput(`dataIn.traceId`, 'char', dataIn?.traceId);
     for (let i: number = 0; i < 5; ++i) {
-        dataOut += dataIn.errors[i].key.substring(0, 25).padEnd(25);
-        dataOut += dataIn.errors[i].error.substring(0, 80).padEnd(80);
+        dataOut +=
+            dataIn?.errors[i]?.key?.substring(0, 25)?.padEnd(25) ??
+            missingInput(`dataIn.errors[${i}].key`, 'char', dataIn?.errors[i]?.key);
+        dataOut +=
+            dataIn?.errors[i]?.error?.substring(0, 80)?.padEnd(80) ??
+            missingInput(`dataIn.errors[${i}].error`, 'char', dataIn?.errors[i]?.error);
     }
 
     return dataOut;

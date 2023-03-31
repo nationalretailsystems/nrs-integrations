@@ -1,0 +1,60 @@
+      ************************************
+      * Module: mpputwo
+      * Generated RPG data structures
+      * and prototypes
+      * Do not modify
+      ************************************
+
+      ************************************
+      * errorsDs data structure
+      ************************************
+     DerrorsDs         DS                  Qualified
+     D                                     Template
+     Dkeyname                        25A
+     Derrdesc                        80A
+
+      ************************************
+      * ReqAddWo data structure
+      * Record length: 267
+      ************************************
+     DReqAddWoLen      C                   267
+     DReqAddWo         DS                  Qualified
+     D                                     Template
+     Dpurpose                        80A
+     Dentkey                         10I 0
+     Dassetkey                       10I 0
+     Dptykey                         10I 0
+     Dbudgetkey                      10I 0
+     Dcreatedt                         Z
+     Ddatedue                          Z
+     Dwktypeky                       10I 0
+     Dwrkdesc                        80A
+
+      ************************************
+      * Convert ReqAddWo to buffer
+      ************************************
+     DReqAddWoToBuf    PR
+     DDataStruct                           LikeDS(ReqAddWo)
+     D                                     Const
+     DBuffer                        267A
+
+      ************************************
+      * ResAddWo data structure
+      * Record length: 816
+      ************************************
+     DResAddWoLen      C                   816
+     DResAddWo         DS                  Qualified
+     D                                     Template
+     Dtype                          100A
+     Dtitle                         100A
+     Dstatus                         10I 0
+     Dtraceid                        80A
+     Derrors                               LikeDS(errorsDs)
+     D                                     Dim(5)
+
+      ************************************
+      * Convert buffer to ResAddWo
+      ************************************
+     DBufToResAddWo    PR
+     DBuffer                        816A
+     DDataStruct                           LikeDS(ResAddWo)

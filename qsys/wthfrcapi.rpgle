@@ -42,29 +42,27 @@
      PLocationToBuf    E
 
       ************************************
-      * Convert buffer to Weather
+      * Convert buffer to Forecast
       ************************************
-     PBufToWeather     B                   Export
+     PBufToForecast    B                   Export
 
-     DBufToWeather     PI
-     DBuffer                        656A
-     DDataStruct                           LikeDS(Weather)
+     DBufToForecast    PI
+     DBuffer                         82A
+     DDataStruct                           LikeDS(Forecast)
 
       * Initialize to begining of buffer
        BufPtr = %addr(Buffer);
 
       * Read fields from buffer into DS
-       for i = 1 to 8;
-       DataStruct.Forecasts(i).Date = %date(%subst(CharBuf:1:10):*ISO);
+       DataStruct.Date = %date(%subst(CharBuf:1:10):*ISO);
        BufPtr += 10;
-       DataStruct.Forecasts(i).Min = %dec(%subst(CharBuf:1:7):5:2);
+       DataStruct.Min = %dec(%subst(CharBuf:1:7):5:2);
        BufPtr += 7;
-       DataStruct.Forecasts(i).Max = %dec(%subst(CharBuf:1:7):5:2);
+       DataStruct.Max = %dec(%subst(CharBuf:1:7):5:2);
        BufPtr += 7;
-       DataStruct.Forecasts(i).Desc = %subst(CharBuf:1:58);
+       DataStruct.Desc = %subst(CharBuf:1:58);
        BufPtr += 58;
-       endfor;
 
        return ;
 
-     PBufToWeather     E
+     PBufToForecast    E

@@ -24,16 +24,16 @@
 
       ************************************
       * ResData data structure
-      * Record length: 1000
+      * Record length: 80
       ************************************
-     DResDataLen       C                   1000
+     DResDataLen       C                   80
      DResData          DS                  Qualified
      D                                     Template
-     DJoke                         1000A
+     DJoke                           80A
 
       ************************************
       * Convert buffer to ResData
       ************************************
      DBufToResData     PR
-     DBuffer                       1000A
+     DBuffer                         80A
      DDataStruct                           LikeDS(ResData)

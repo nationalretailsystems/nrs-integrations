@@ -1,0 +1,50 @@
+      ************************************
+      * Module: pncchkin
+      * Generated RPG data structures
+      * and prototypes
+      * Do not modify
+      ************************************
+
+      ************************************
+      * AssetDS data structure
+      ************************************
+     DAssetDS          DS                  Qualified
+     D                                     Template
+     Dchecked_in                     25A
+     Dasset_type                     25A
+     Drfid_tag                       25A
+     Dsite_code                      25A
+     Dscac                            4A
+     Dtrailer                        25A
+     Dcontainer_num                  25A
+     Dmovement_type                  25A
+     Dload_status                    25A
+     Dcustomer_code                  25A
+     Dfleet_code                     25A
+     Dtractor_scac                   25A
+
+      ************************************
+      * DataDS data structure
+      ************************************
+     DDataDS           DS                  Qualified
+     D                                     Template
+     Dasset                                LikeDS(AssetDS)
+
+      ************************************
+      * CheckinDS data structure
+      * Record length: 310
+      ************************************
+     DCheckinDSLen     C                   310
+     DCheckinDS        DS                  Qualified
+     D                                     Template
+     Dmsg_grp_id                     25A
+     Dcampus                          6A
+     Ddata                                 LikeDS(DataDS)
+
+      ************************************
+      * Convert CheckinDS to buffer
+      ************************************
+     DCheckinDSToBuf   PR
+     DDataStruct                           LikeDS(CheckinDS)
+     D                                     Const
+     DBuffer                        310A

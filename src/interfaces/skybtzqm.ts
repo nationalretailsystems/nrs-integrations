@@ -3,7 +3,7 @@
 // Module: skybtzqm
 // Generated source -- do not modify
 
-import { ibmiConversions } from '@eradani-inc/ec-client';
+import { ibmiConversions, missingInput } from '@eradani-inc/ec-client';
 const { fromIbmiDate, fromIbmiTime, fromIbmiTimestamp, toIbmiDate, toIbmiTime, toIbmiTimestamp } = ibmiConversions;
 
 /**

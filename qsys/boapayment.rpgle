@@ -132,9 +132,11 @@
        BufPtr += 5;
        DataStruct.data.payment.customer.address.addzip2 = %subst(CharBuf:1:4);
        BufPtr += 4;
-       DataStruct.data.payment.customer.custom_fields.property1 = %subst(CharBuf:1:25);
+       DataStruct.data.payment.customer.custom_fields.property1 =
+           %subst(CharBuf:1:25);
        BufPtr += 25;
-       DataStruct.data.payment.customer.custom_fields.property2 = %subst(CharBuf:1:25);
+       DataStruct.data.payment.customer.custom_fields.property2 =
+           %subst(CharBuf:1:25);
        BufPtr += 25;
        DataStruct.data.payment.customer.custref = %subst(CharBuf:1:100);
        BufPtr += 100;
@@ -200,9 +202,11 @@
        BufPtr += 4;
        DataStruct.data.payment.fundacct.currcod = %subst(CharBuf:1:3);
        BufPtr += 3;
-       DataStruct.data.payment.fundacct.custom_fields.property1 = %subst(CharBuf:1:25);
+       DataStruct.data.payment.fundacct.custom_fields.property1 =
+           %subst(CharBuf:1:25);
        BufPtr += 25;
-       DataStruct.data.payment.fundacct.custom_fields.property2 = %subst(CharBuf:1:25);
+       DataStruct.data.payment.fundacct.custom_fields.property2 =
+           %subst(CharBuf:1:25);
        BufPtr += 25;
        DataStruct.data.payment.fundacct.expdate = %subst(CharBuf:1:5);
        BufPtr += 5;
@@ -222,27 +226,36 @@
        BufPtr += 60;
        DataStruct.data.payment.custacct.actnbr = %subst(CharBuf:1:32);
        BufPtr += 32;
-       DataStruct.data.payment.custacct.address.addcity = %subst(CharBuf:1:20);
+       DataStruct.data.payment.custacct.address.addcity =
+           %subst(CharBuf:1:20);
        BufPtr += 20;
-       DataStruct.data.payment.custacct.address.addcntry = %subst(CharBuf:1:3);
+       DataStruct.data.payment.custacct.address.addcntry =
+           %subst(CharBuf:1:3);
        BufPtr += 3;
-       DataStruct.data.payment.custacct.address.addlin1 = %subst(CharBuf:1:100);
+       DataStruct.data.payment.custacct.address.addlin1 =
+           %subst(CharBuf:1:100);
        BufPtr += 100;
-       DataStruct.data.payment.custacct.address.addlin2 = %subst(CharBuf:1:100);
+       DataStruct.data.payment.custacct.address.addlin2 =
+           %subst(CharBuf:1:100);
        BufPtr += 100;
-       DataStruct.data.payment.custacct.address.addstt = %subst(CharBuf:1:2);
+       DataStruct.data.payment.custacct.address.addstt =
+           %subst(CharBuf:1:2);
        BufPtr += 2;
-       DataStruct.data.payment.custacct.address.addzip1 = %subst(CharBuf:1:5);
+       DataStruct.data.payment.custacct.address.addzip1 =
+           %subst(CharBuf:1:5);
        BufPtr += 5;
-       DataStruct.data.payment.custacct.address.addzip2 = %subst(CharBuf:1:4);
+       DataStruct.data.payment.custacct.address.addzip2 =
+           %subst(CharBuf:1:4);
        BufPtr += 4;
        DataStruct.data.payment.custacct.currbal = %subst(CharBuf:1:18);
        BufPtr += 18;
        DataStruct.data.payment.custacct.currstbal = %subst(CharBuf:1:18);
        BufPtr += 18;
-       DataStruct.data.payment.custacct.custom_fields.property1 = %subst(CharBuf:1:25);
+       DataStruct.data.payment.custacct.custom_fields.property1 =
+           %subst(CharBuf:1:25);
        BufPtr += 25;
-       DataStruct.data.payment.custacct.custom_fields.property2 = %subst(CharBuf:1:25);
+       DataStruct.data.payment.custacct.custom_fields.property2 =
+           %subst(CharBuf:1:25);
        BufPtr += 25;
        DataStruct.data.payment.custacct.cusactref = %subst(CharBuf:1:50);
        BufPtr += 50;

@@ -1,0 +1,47 @@
+      ************************************
+      * Module: mpgetwohr
+      * Generated RPG data structures
+      * and prototypes
+      * Do not modify
+      ************************************
+
+      ************************************
+      * ReqWoHours data structure
+      * Record length: 11
+      ************************************
+     DReqWoHoursLen    C                   11
+     DReqWoHours       DS                  Qualified
+     D                                     Template
+     Did                             10I 0
+
+      ************************************
+      * Convert ReqWoHours to buffer
+      ************************************
+     DReqWoHoursToBuf  PR
+     DDataStruct                           LikeDS(ReqWoHours)
+     D                                     Const
+     DBuffer                         11A
+
+      ************************************
+      * ResWoHrs data structure
+      * Record length: 169
+      ************************************
+     DResWoHrsLen      C                   169
+     DResWoHrs         DS                  Qualified
+     D                                     Template
+     Dwolabkey                       10I 0
+     DworkOrderKey                   10I 0
+     DcontactKey                     10I 0
+     DcontactId                      50A
+     DlaborDate                        D
+     DlaborHours                     11P 2
+     DlaborRate                      11P 2
+     DlaborBudgetId                  25A
+     DserviceId                      25A
+
+      ************************************
+      * Convert buffer to ResWoHrs
+      ************************************
+     DBufToResWoHrs    PR
+     DBuffer                        169A
+     DDataStruct                           LikeDS(ResWoHrs)

@@ -3,7 +3,7 @@
 // Module: lblapi
 // Generated source -- do not modify
 
-import { ibmiConversions } from '@eradani-inc/ec-client';
+import { ibmiConversions, missingInput } from '@eradani-inc/ec-client';
 const { fromIbmiDate, fromIbmiTime, fromIbmiTimestamp, toIbmiDate, toIbmiTime, toIbmiTimestamp } = ibmiConversions;
 
 /**
@@ -137,13 +137,25 @@ export interface ShipInfo {
 export function convertObjectToShipInfo(dataIn: ShipInfo): string {
     let dataOut: string = '';
 
-    dataOut += dataIn.labelStatus.substring(0, 10).padEnd(10);
-    dataOut += dataIn.shipmentId.substring(0, 11).padEnd(11);
-    dataOut += dataIn.labelId.substring(0, 11).padEnd(11);
-    dataOut += dataIn.shipmentCost.toFixed(2).substring(0, 12).padEnd(12);
-    dataOut += dataIn.shipmentCostCurrency.substring(0, 3).padEnd(3);
-    dataOut += dataIn.insuranceCost.toFixed(2).substring(0, 12).padEnd(12);
-    dataOut += dataIn.insuranceCostCurrency.substring(0, 3).padEnd(3);
+    dataOut +=
+        dataIn?.labelStatus?.substring(0, 10)?.padEnd(10) ??
+        missingInput(`dataIn.labelStatus`, 'char', dataIn?.labelStatus);
+    dataOut +=
+        dataIn?.shipmentId?.substring(0, 11)?.padEnd(11) ??
+        missingInput(`dataIn.shipmentId`, 'char', dataIn?.shipmentId);
+    dataOut += dataIn?.labelId?.substring(0, 11)?.padEnd(11) ?? missingInput(`dataIn.labelId`, 'char', dataIn?.labelId);
+    dataOut +=
+        dataIn?.shipmentCost?.toFixed(2)?.substring(0, 12)?.padEnd(12) ??
+        missingInput(`dataIn.shipmentCost`, 'packed', dataIn?.shipmentCost);
+    dataOut +=
+        dataIn?.shipmentCostCurrency?.substring(0, 3)?.padEnd(3) ??
+        missingInput(`dataIn.shipmentCostCurrency`, 'char', dataIn?.shipmentCostCurrency);
+    dataOut +=
+        dataIn?.insuranceCost?.toFixed(2)?.substring(0, 12)?.padEnd(12) ??
+        missingInput(`dataIn.insuranceCost`, 'packed', dataIn?.insuranceCost);
+    dataOut +=
+        dataIn?.insuranceCostCurrency?.substring(0, 3)?.padEnd(3) ??
+        missingInput(`dataIn.insuranceCostCurrency`, 'char', dataIn?.insuranceCostCurrency);
 
     return dataOut;
 }
@@ -172,9 +184,15 @@ export interface Label {
 export function convertObjectToLabel(dataIn: Label): string {
     let dataOut: string = '';
 
-    dataOut += dataIn.trackingNumber.substring(0, 30).padEnd(30);
-    dataOut += dataIn.labelPdfFile.substring(0, 23).padEnd(23);
-    dataOut += dataIn.labelZplFile.substring(0, 23).padEnd(23);
+    dataOut +=
+        dataIn?.trackingNumber?.substring(0, 30)?.padEnd(30) ??
+        missingInput(`dataIn.trackingNumber`, 'char', dataIn?.trackingNumber);
+    dataOut +=
+        dataIn?.labelPdfFile?.substring(0, 23)?.padEnd(23) ??
+        missingInput(`dataIn.labelPdfFile`, 'char', dataIn?.labelPdfFile);
+    dataOut +=
+        dataIn?.labelZplFile?.substring(0, 23)?.padEnd(23) ??
+        missingInput(`dataIn.labelZplFile`, 'char', dataIn?.labelZplFile);
 
     return dataOut;
 }

@@ -1,0 +1,56 @@
+      ************************************
+      * Module: makeme
+      * Generated RPG data structures
+      * and prototypes
+      * Do not modify
+      ************************************
+
+      ************************************
+      * PwsDS data structure
+      ************************************
+     DPwsDS            DS                  Qualified
+     D                                     Template
+     Dpws                            50A
+
+      ************************************
+      * PwdRequest data structure
+      * Record length: 55
+      ************************************
+     DPwdRequestLen    C                   55
+     DPwdRequest       DS                  Qualified
+     D                                     Template
+     Dwc                              3I 0
+     Dpc                              3I 0
+     Dsp                              1A
+     DminCh                           3I 0
+     DmaxCh                           3I 0
+     DwhenNum                        15A
+     Dnums                            3I 0
+     DwhenUp                         15A
+     Dups                             3I 0
+
+      ************************************
+      * Convert PwdRequest to buffer
+      ************************************
+     DPwdRequestToBuf  PR
+     DDataStruct                           LikeDS(PwdRequest)
+     D                                     Const
+     DBuffer                         55A
+
+      ************************************
+      * PwdResult data structure
+      * Record length: 550
+      ************************************
+     DPwdResultLen     C                   550
+     DPwdResult        DS                  Qualified
+     D                                     Template
+     Ddata                                 LikeDS(PwsDS)
+     D                                     Dim(10)
+     Derror                          50A
+
+      ************************************
+      * Convert buffer to PwdResult
+      ************************************
+     DBufToPwdResult   PR
+     DBuffer                        550A
+     DDataStruct                           LikeDS(PwdResult)

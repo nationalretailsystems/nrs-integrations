@@ -1,0 +1,93 @@
+      ************************************
+      * Module: rmgetdvir
+      * Generated RPG data structures
+      * and prototypes
+      * Do not modify
+      ************************************
+
+      ************************************
+      * responseDS data structure
+      ************************************
+     DresponseDS       DS                  Qualified
+     D                                     Template
+     Dcode                            5I 0
+     Dtype                           10A
+     Dmessage                       200A
+
+      ************************************
+      * ReqDVIR data structure
+      * Record length: 142
+      ************************************
+     DReqDVIRLen       C                   142
+     DReqDVIR          DS                  Qualified
+     D                                     Template
+     DaccessToken                   100A
+     DcompanyCode                    10A
+     Dlstmoddt                         D
+     DstartIndex                     10I 0
+     Dsize                           10I 0
+
+      ************************************
+      * Convert ReqDVIR to buffer
+      ************************************
+     DReqDVIRToBuf     PR
+     DDataStruct                           LikeDS(ReqDVIR)
+     D                                     Const
+     DBuffer                        142A
+
+      ************************************
+      * RtnDVIR data structure
+      * Record length: 6393
+      ************************************
+     DRtnDVIRLen       C                   6393
+     DRtnDVIR          DS                  Qualified
+     D                                     Template
+     Dindex                          10I 0
+     Ddriverid                       60A
+     Dcrttmstmp                      20I 0
+     Dmodtmstmp                      20I 0
+     Dtimezone                        5A
+     Dtripname                      200A
+     Ddrvrcmt                       200A
+     Dtractornbr                     16A
+     Dtrailernbr                     32A
+     Dttltrctdef                     10I 0
+     Dtrctdef                        50A   Dim(25)
+     Dttltrltdef                     10I 0
+     DtrlrDef                        50A   Dim(25)
+     Ddefimages                     255A   Dim(10)
+     Ddvirisdef                        N
+     Ddviriscert                       N
+     Ddriversig                     200A
+     Dmechanicsig                   200A
+     Dlatitude                        4F
+     Dlongitude                       4F
+     Dlocation                      200A
+     Dodometer                        4F
+     Dstatus                        100A
+     Dlstmoddate                       D
+     Ddvirisdst                        N
+
+      ************************************
+      * Convert buffer to RtnDVIR
+      ************************************
+     DBufToRtnDVIR     PR
+     DBuffer                       6393A
+     DDataStruct                           LikeDS(RtnDVIR)
+
+      ************************************
+      * RtnDVIRRes data structure
+      * Record length: 416
+      ************************************
+     DRtnDVIRResLen    C                   416
+     DRtnDVIRRes       DS                  Qualified
+     D                                     Template
+     Dresponse                             LikeDS(responseDS)
+     Dimageurl                      200A
+
+      ************************************
+      * Convert buffer to RtnDVIRRes
+      ************************************
+     DBufToRtnDVIRRes  PR
+     DBuffer                        416A
+     DDataStruct                           LikeDS(RtnDVIRRes)

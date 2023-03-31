@@ -1,0 +1,54 @@
+      ************************************
+      * Module: rmcrtdvir
+      * Generated RPG data structures
+      * and prototypes
+      * Do not modify
+      ************************************
+
+      ************************************
+      * responseDS data structure
+      ************************************
+     DresponseDS       DS                  Qualified
+     D                                     Template
+     Dcode                            5I 0
+     Dtype                           10A
+     Dmessage                       200A
+
+      ************************************
+      * CertDVIR data structure
+      * Record length: 201
+      ************************************
+     DCertDVIRLen      C                   201
+     DCertDVIR         DS                  Qualified
+     D                                     Template
+     DaccessToken                   100A
+     DcompanyCode                    10A
+     DuserEmail                      60A
+     DuserPassword                   10A
+     DdvirId                         10I 0
+     DcertifiedBy                    10A
+
+      ************************************
+      * Convert CertDVIR to buffer
+      ************************************
+     DCertDVIRToBuf    PR
+     DDataStruct                           LikeDS(CertDVIR)
+     D                                     Const
+     DBuffer                        201A
+
+      ************************************
+      * ResDVIR data structure
+      * Record length: 227
+      ************************************
+     DResDVIRLen       C                   227
+     DResDVIR          DS                  Qualified
+     D                                     Template
+     Ddvirid                         10I 0
+     Dresponse                             LikeDS(responseDS)
+
+      ************************************
+      * Convert buffer to ResDVIR
+      ************************************
+     DBufToResDVIR     PR
+     DBuffer                        227A
+     DDataStruct                           LikeDS(ResDVIR)

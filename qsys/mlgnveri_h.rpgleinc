@@ -1,0 +1,46 @@
+      ************************************
+      * Module: mlgnveri
+      * Generated RPG data structures
+      * and prototypes
+      * Do not modify
+      ************************************
+
+      ************************************
+      * MgReqData data structure
+      * Record length: 102
+      ************************************
+     DMgReqDataLen     C                   102
+     DMgReqData        DS                  Qualified
+     D                                     Template
+     Daddress                       100A
+     Dmbxver                           N
+     Dprovlokup                        N
+
+      ************************************
+      * Convert MgReqData to buffer
+      ************************************
+     DMgReqDataToBuf   PR
+     DDataStruct                           LikeDS(MgReqData)
+     D                                     Const
+     DBuffer                        102A
+
+      ************************************
+      * MgResData data structure
+      * Record length: 402
+      ************************************
+     DMgResDataLen     C                   402
+     DMgResData        DS                  Qualified
+     D                                     Template
+     Daddress                       100A
+     Ddispadd                          N
+     Droleadd                          N
+     Dreason                         25A   Dim(10)
+     Dresult                         25A
+     Drisk                           25A
+
+      ************************************
+      * Convert buffer to MgResData
+      ************************************
+     DBufToMgResData   PR
+     DBuffer                        402A
+     DDataStruct                           LikeDS(MgResData)

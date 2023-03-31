@@ -1,0 +1,39 @@
+      ************************************
+      * Module: mpemploy
+      * Generated RPG data structures
+      * and prototypes
+      * Do not modify
+      ************************************
+
+      ************************************
+      * ReqEmpl data structure
+      * Record length: 11
+      ************************************
+     DReqEmplLen       C                   11
+     DReqEmpl          DS                  Qualified
+     D                                     Template
+     Dcontactkey                     10I 0
+
+      ************************************
+      * Convert ReqEmpl to buffer
+      ************************************
+     DReqEmplToBuf     PR
+     DDataStruct                           LikeDS(ReqEmpl)
+     D                                     Const
+     DBuffer                         11A
+
+      ************************************
+      * ResEmpl data structure
+      * Record length: 100
+      ************************************
+     DResEmplLen       C                   100
+     DResEmpl          DS                  Qualified
+     D                                     Template
+     Demployeename                  100A
+
+      ************************************
+      * Convert buffer to ResEmpl
+      ************************************
+     DBufToResEmpl     PR
+     DBuffer                        100A
+     DDataStruct                           LikeDS(ResEmpl)

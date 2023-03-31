@@ -1,0 +1,103 @@
+      ************************************
+      * Module: pcgettrns
+      * Generated RPG data structures
+      * and prototypes
+      * Do not modify
+      ************************************
+
+      ************************************
+      * ResultDS data structure
+      ************************************
+     DResultDS         DS                  Qualified
+     D                                     Template
+     Dmsg                            25A
+     Dcode                            5I 0
+
+      ************************************
+      * DataDS data structure
+      ************************************
+     DDataDS           DS                  Qualified
+     D                                     Template
+     Dtransid                        10I 0
+     Dpayerclntid                    10I 0
+     Dpayerid                        10I 0
+     Dpayername                      50A
+     Dvndclientid                    10I 0
+     Dvendorid                       10I 0
+     Dvendorname                     50A
+     Dnumber                         25A
+     Ddepartdate                     24A
+     Darrivaldate                    24A
+     Dpayduedate                     24A
+     Dapprovaldate                   24A
+     Dhasarrived                      1A
+     Dtotal                          15P 5
+     Ddirectionid                     5I 0
+     Dbollink                        15A
+     Ddirection                      10A
+     Dcreatdate                      24A
+     Dlastmoddate                    24A
+     Dcrtuserid                      10I 0
+     Dmoduserid                      10I 0
+     Dshiprefnum                     25A
+     Dcustrefnum                     25A
+     Dpartialpay                     10A
+     Ddisprsnresp                    10A
+     Dsubcat                         10A
+     Dextsysid                       10I 0
+     Dexternalid                     10A
+     Dparent                         25A
+     Dbatchid                        10A
+     Dnotes                          50A
+     Dvalofgoods                     15A
+     Dstatus                         15A
+     Dstatusid                       10I 0
+     Dtype                           25A
+     Dpayduedtdiff                   10I 0
+     Dpaymethod                      15A
+     Dpayerrefnum                    15A
+     Dvendorrefnum                   15A
+     Dpayrintnum                     10A
+     Dpayrfilenum                    10A
+     Dpayrvchrnum                    10A
+     Dpayrprdnum                     10A
+     Dpayrincnum                     10A
+     Dnachaid                        25A
+     Dpcbatchid                      15A
+     Dprocdate                       24A
+
+      ************************************
+      * PCReqTrns data structure
+      * Record length: 22
+      ************************************
+     DPCReqTrnsLen     C                   22
+     DPCReqTrns        DS                  Qualified
+     D                                     Template
+     Dpage                           10I 0
+     Dcount                          10I 0
+
+      ************************************
+      * Convert PCReqTrns to buffer
+      ************************************
+     DPCReqTrnsToBuf   PR
+     DDataStruct                           LikeDS(PCReqTrns)
+     D                                     Const
+     DBuffer                         22A
+
+      ************************************
+      * PCRcvTrns data structure
+      * Record length: 24541
+      ************************************
+     DPCRcvTrnsLen     C                   24541
+     DPCRcvTrns        DS                  Qualified
+     D                                     Template
+     Dresult                               LikeDS(ResultDS)
+     Ddata                                 LikeDS(DataDS)
+     D                                     Dim(30)
+
+      ************************************
+      * Convert buffer to PCRcvTrns
+      ************************************
+     DBufToPCRcvTrns   PR
+     DBuffer                      24541A
+     DDataStruct                           LikeDS(PCRcvTrns)

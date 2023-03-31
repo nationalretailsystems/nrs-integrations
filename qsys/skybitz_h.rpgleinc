@@ -1,0 +1,46 @@
+      ************************************
+      * Module: skybitz
+      * Generated RPG data structures
+      * and prototypes
+      * Do not modify
+      ************************************
+
+      ************************************
+      * LLReq data structure
+      * Record length: 200
+      ************************************
+     DLLReqLen         C                   200
+     DLLReq            DS                  Qualified
+     D                                     Template
+     Dcommemt                       200A
+
+      ************************************
+      * Convert LLReq to buffer
+      ************************************
+     DLLReqToBuf       PR
+     DDataStruct                           LikeDS(LLReq)
+     D                                     Const
+     DBuffer                        500A
+
+      ************************************
+      * SBHeadDS data structure
+      * Record length: 150
+      ************************************
+     DSBHeadDSLen      C                   150
+     DSBHeadDS         DS                  Qualified
+     D                                     Template
+     Derror                           5A
+     Dtransid                        10A
+     Dmtsn                           20A
+     Dassetid                        10A
+     Dassettype                      25A
+     Downer                          50A
+     DtotalMiles                     10A
+     Dtimestamp                      20A
+
+      ************************************
+      * Convert buffer to SBHeadDS
+      ************************************
+     DBufToSBHeadDS    PR
+     DBuffer                        500A
+     DDataStruct                           LikeDS(SBHeadDS)

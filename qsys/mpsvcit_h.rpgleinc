@@ -1,0 +1,47 @@
+      ************************************
+      * Module: mpsvcitm
+      * Generated RPG data structures
+      * and prototypes
+      * Do not modify
+      ************************************
+
+      ************************************
+      * ReqSvcCd data structure
+      * Record length: 25
+      ************************************
+     DReqSvcCdLen      C                   25
+     DReqSvcCd         DS                  Qualified
+     D                                     Template
+     Dsvccode                        25A
+
+      ************************************
+      * Convert ReqSvcCd to buffer
+      ************************************
+     DReqSvcCdToBuf    PR
+     DDataStruct                           LikeDS(ReqSvcCd)
+     D                                     Const
+     DBuffer                         25A
+
+      ************************************
+      * ResSvcCd data structure
+      * Record length: 1199
+      ************************************
+     DResSvcCdLen      C                   1199
+     DResSvcCd         DS                  Qualified
+     D                                     Template
+     Dsvckey                          5I 0
+     Dsvccode                        25A
+     Dsvcdesc                      1000A
+     Dsvcclass                      100A
+     Desthours                        4F
+     Destlabrat                       4F
+     Dactive                           N
+     Dlabrsrc                        25A
+     Dlabrprc                         4F
+
+      ************************************
+      * Convert buffer to ResSvcCd
+      ************************************
+     DBufToResSvcCd    PR
+     DBuffer                       1199A
+     DDataStruct                           LikeDS(ResSvcCd)

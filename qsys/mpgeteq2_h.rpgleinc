@@ -1,0 +1,71 @@
+      ************************************
+      * Module: mpgeteq2
+      * Generated RPG data structures
+      * and prototypes
+      * Do not modify
+      ************************************
+
+      ************************************
+      * CustFldsDS data structure
+      ************************************
+     DCustFldsDS       DS                  Qualified
+     D                                     Template
+     Dkey                            10I 0
+     Dcustfldky                      10I 0
+     Dcustfldnam                     24A
+     Dcstfldval                     100A
+
+      ************************************
+      * RqAssetAll data structure
+      * Record length: 262
+      ************************************
+     DRqAssetAllLen    C                   262
+     DRqAssetAll       DS                  Qualified
+     D                                     Template
+     Dfilename                      256A
+     Dskiprecs                        5I 0
+
+      ************************************
+      * Convert RqAssetAll to buffer
+      ************************************
+     DRqAssetAllToBuf  PR
+     DDataStruct                           LikeDS(RqAssetAll)
+     D                                     Const
+     DBuffer                        262A
+
+      ************************************
+      * AssetAllDS data structure
+      * Record length: 15140
+      ************************************
+     DAssetAllDSLen    C                   15140
+     DAssetAllDS       DS                  Qualified
+     D                                     Template
+     Dassetkey                       10I 0
+     Dentname                        50A
+     Dassetid                        24A
+     Dpasassid                       24A
+     Ddescript                       50A
+     Dgroupkey                       10I 0
+     Dgroupid                        24A
+     Dcatid                          24A
+     Dtypeid                         24A
+     Dbudgrpid                       24A
+     Dbudgtid                        24A
+     Dstatusid                       24A
+     Dbarcode                        50A
+     Dmanufac                        24A
+     Dmodel                          32A
+     Dsrlnumb                        32A
+     Dcustomer                       50A
+     Dcustkey                        10I 0
+     Dpurchdate                        D
+     Dpurchcost                      15P 2
+     DcustomFields                         LikeDS(CustFldsDS)
+     D                                     Dim(100)
+
+      ************************************
+      * Convert buffer to AssetAllDS
+      ************************************
+     DBufToAssetAllDS  PR
+     DBuffer                      15140A
+     DDataStruct                           LikeDS(AssetAllDS)

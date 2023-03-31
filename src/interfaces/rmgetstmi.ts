@@ -3,47 +3,11 @@
 // Module: rmgetstmi
 // Generated source -- do not modify
 
-import { ibmiConversions } from '@eradani-inc/ec-client';
+import { ibmiConversions, missingInput } from '@eradani-inc/ec-client';
 const { fromIbmiDate, fromIbmiTime, fromIbmiTimestamp, toIbmiDate, toIbmiTime, toIbmiTimestamp } = ibmiConversions;
 
 import eradaniConnect from '@eradani-inc/eradani-connect';
 const { dataTypes } = eradaniConnect;
-
-/**
- * Data structure
- */
-let responseDSFields: any = [
-    {
-        name: 'code',
-        type: new dataTypes.Integer(5)
-    },
-    {
-        name: 'type',
-        type: new dataTypes.Char(10)
-    },
-    {
-        name: 'message',
-        type: new dataTypes.Char(200)
-    }
-];
-
-/**
- * Input interface
- */
-export interface responseDSInput {
-    /**
-     * @size 5 digits
-     */
-    code: number | string;
-    /**
-     * @size 10 characters
-     */
-    type: string;
-    /**
-     * @size 200 characters
-     */
-    message: string;
-}
 
 /**
  * Output interface
@@ -226,31 +190,67 @@ export interface RtnStMiles {
 export function convertObjectToRtnStMiles(dataIn: RtnStMiles): string {
     let dataOut: string = '';
 
-    dataOut += dataIn.index.toFixed().substring(0, 11).padEnd(11);
-    dataOut += dataIn.driverLoginId.substring(0, 60).padEnd(60);
-    dataOut += dataIn.tractorNumber.substring(0, 12).padEnd(12);
-    dataOut += dataIn.deviceSN.substring(0, 20).padEnd(20);
-    dataOut += dataIn.fuelUsed.toFixed(5).substring(0, 17).padEnd(17);
-    dataOut += dataIn.fuelType.substring(0, 20).padEnd(20);
-    dataOut += dataIn.distance.toFixed(5).substring(0, 17).padEnd(17);
-    dataOut += dataIn.manualMiles.toFixed(5).substring(0, 17).padEnd(17);
-    dataOut += dataIn.state.substring(0, 50).padEnd(50);
-    dataOut += dataIn.entryOdemeterReading.toFixed(5).substring(0, 17).padEnd(17);
-    dataOut += dataIn.exitOdemeterReading.toFixed(5).substring(0, 17).padEnd(17);
-    dataOut += dataIn.country.substring(0, 50).padEnd(50);
-    dataOut += dataIn.stateInTime.substring(0, 19).padEnd(19);
-    dataOut += dataIn.stateOutTime.substring(0, 19).padEnd(19);
-    dataOut += dataIn.logDate.substring(0, 19).padEnd(19);
-    dataOut += dataIn.offSet.substring(0, 2).padEnd(2);
-    dataOut += dataIn.oaNumber.substring(0, 100).padEnd(100);
-    dataOut += dataIn.stateInLatitude.toExponential(7).substring(0, 14).padEnd(14);
-    dataOut += dataIn.stateInLongitude.toExponential(7).substring(0, 14).padEnd(14);
-    dataOut += dataIn.stateOutLatitude.toExponential(7).substring(0, 14).padEnd(14);
-    dataOut += dataIn.stateOutLongitude.toExponential(7).substring(0, 14).padEnd(14);
-    dataOut += dataIn.stateInAddress.substring(0, 200).padEnd(200);
-    dataOut += dataIn.stateOutAddress.substring(0, 200).padEnd(200);
-    dataOut += dataIn.vin.substring(0, 30).padEnd(30);
-    dataOut += dataIn.dotNumber.substring(0, 50).padEnd(50);
+    dataOut +=
+        dataIn?.index?.toFixed()?.substring(0, 11)?.padEnd(11) ??
+        missingInput(`dataIn.index`, 'integer', dataIn?.index);
+    dataOut +=
+        dataIn?.driverLoginId?.substring(0, 60)?.padEnd(60) ??
+        missingInput(`dataIn.driverLoginId`, 'char', dataIn?.driverLoginId);
+    dataOut +=
+        dataIn?.tractorNumber?.substring(0, 12)?.padEnd(12) ??
+        missingInput(`dataIn.tractorNumber`, 'char', dataIn?.tractorNumber);
+    dataOut +=
+        dataIn?.deviceSN?.substring(0, 20)?.padEnd(20) ?? missingInput(`dataIn.deviceSN`, 'char', dataIn?.deviceSN);
+    dataOut +=
+        dataIn?.fuelUsed?.toFixed(5)?.substring(0, 17)?.padEnd(17) ??
+        missingInput(`dataIn.fuelUsed`, 'packed', dataIn?.fuelUsed);
+    dataOut +=
+        dataIn?.fuelType?.substring(0, 20)?.padEnd(20) ?? missingInput(`dataIn.fuelType`, 'char', dataIn?.fuelType);
+    dataOut +=
+        dataIn?.distance?.toFixed(5)?.substring(0, 17)?.padEnd(17) ??
+        missingInput(`dataIn.distance`, 'packed', dataIn?.distance);
+    dataOut +=
+        dataIn?.manualMiles?.toFixed(5)?.substring(0, 17)?.padEnd(17) ??
+        missingInput(`dataIn.manualMiles`, 'packed', dataIn?.manualMiles);
+    dataOut += dataIn?.state?.substring(0, 50)?.padEnd(50) ?? missingInput(`dataIn.state`, 'char', dataIn?.state);
+    dataOut +=
+        dataIn?.entryOdemeterReading?.toFixed(5)?.substring(0, 17)?.padEnd(17) ??
+        missingInput(`dataIn.entryOdemeterReading`, 'packed', dataIn?.entryOdemeterReading);
+    dataOut +=
+        dataIn?.exitOdemeterReading?.toFixed(5)?.substring(0, 17)?.padEnd(17) ??
+        missingInput(`dataIn.exitOdemeterReading`, 'packed', dataIn?.exitOdemeterReading);
+    dataOut += dataIn?.country?.substring(0, 50)?.padEnd(50) ?? missingInput(`dataIn.country`, 'char', dataIn?.country);
+    dataOut +=
+        dataIn?.stateInTime?.substring(0, 19)?.padEnd(19) ??
+        missingInput(`dataIn.stateInTime`, 'char', dataIn?.stateInTime);
+    dataOut +=
+        dataIn?.stateOutTime?.substring(0, 19)?.padEnd(19) ??
+        missingInput(`dataIn.stateOutTime`, 'char', dataIn?.stateOutTime);
+    dataOut += dataIn?.logDate?.substring(0, 19)?.padEnd(19) ?? missingInput(`dataIn.logDate`, 'char', dataIn?.logDate);
+    dataOut += dataIn?.offSet?.substring(0, 2)?.padEnd(2) ?? missingInput(`dataIn.offSet`, 'char', dataIn?.offSet);
+    dataOut +=
+        dataIn?.oaNumber?.substring(0, 100)?.padEnd(100) ?? missingInput(`dataIn.oaNumber`, 'char', dataIn?.oaNumber);
+    dataOut +=
+        dataIn?.stateInLatitude?.toExponential(7)?.substring(0, 14)?.padEnd(14) ??
+        missingInput(`dataIn.stateInLatitude`, 'float', dataIn?.stateInLatitude);
+    dataOut +=
+        dataIn?.stateInLongitude?.toExponential(7)?.substring(0, 14)?.padEnd(14) ??
+        missingInput(`dataIn.stateInLongitude`, 'float', dataIn?.stateInLongitude);
+    dataOut +=
+        dataIn?.stateOutLatitude?.toExponential(7)?.substring(0, 14)?.padEnd(14) ??
+        missingInput(`dataIn.stateOutLatitude`, 'float', dataIn?.stateOutLatitude);
+    dataOut +=
+        dataIn?.stateOutLongitude?.toExponential(7)?.substring(0, 14)?.padEnd(14) ??
+        missingInput(`dataIn.stateOutLongitude`, 'float', dataIn?.stateOutLongitude);
+    dataOut +=
+        dataIn?.stateInAddress?.substring(0, 200)?.padEnd(200) ??
+        missingInput(`dataIn.stateInAddress`, 'char', dataIn?.stateInAddress);
+    dataOut +=
+        dataIn?.stateOutAddress?.substring(0, 200)?.padEnd(200) ??
+        missingInput(`dataIn.stateOutAddress`, 'char', dataIn?.stateOutAddress);
+    dataOut += dataIn?.vin?.substring(0, 30)?.padEnd(30) ?? missingInput(`dataIn.vin`, 'char', dataIn?.vin);
+    dataOut +=
+        dataIn?.dotNumber?.substring(0, 50)?.padEnd(50) ?? missingInput(`dataIn.dotNumber`, 'char', dataIn?.dotNumber);
 
     return dataOut;
 }
@@ -275,10 +275,17 @@ export interface RtnRespons {
 export function convertObjectToRtnRespons(dataIn: RtnRespons): string {
     let dataOut: string = '';
 
-    dataOut += dataIn.response.code.toFixed().substring(0, 6).padEnd(6);
-    dataOut += dataIn.response.type.substring(0, 10).padEnd(10);
-    dataOut += dataIn.response.message.substring(0, 200).padEnd(200);
-    dataOut += dataIn.isDST.toFixed(0).substring(0, 5).padEnd(5);
+    dataOut +=
+        dataIn?.response?.code?.toFixed()?.substring(0, 6)?.padEnd(6) ??
+        missingInput(`dataIn.response.code`, 'integer', dataIn?.response?.code);
+    dataOut +=
+        dataIn?.response?.type?.substring(0, 10)?.padEnd(10) ??
+        missingInput(`dataIn.response.type`, 'char', dataIn?.response?.type);
+    dataOut +=
+        dataIn?.response?.message?.substring(0, 200)?.padEnd(200) ??
+        missingInput(`dataIn.response.message`, 'char', dataIn?.response?.message);
+    dataOut +=
+        dataIn?.isDST?.toFixed(0)?.substring(0, 5)?.padEnd(5) ?? missingInput(`dataIn.isDST`, 'packed', dataIn?.isDST);
 
     return dataOut;
 }

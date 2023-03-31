@@ -1,0 +1,39 @@
+      ************************************
+      * Module: mpvendor
+      * Generated RPG data structures
+      * and prototypes
+      * Do not modify
+      ************************************
+
+      ************************************
+      * ReqVendr data structure
+      * Record length: 11
+      ************************************
+     DReqVendrLen      C                   11
+     DReqVendr         DS                  Qualified
+     D                                     Template
+     Dcontactkey                     10I 0
+
+      ************************************
+      * Convert ReqVendr to buffer
+      ************************************
+     DReqVendrToBuf    PR
+     DDataStruct                           LikeDS(ReqVendr)
+     D                                     Const
+     DBuffer                         11A
+
+      ************************************
+      * ResVendr data structure
+      * Record length: 100
+      ************************************
+     DResVendrLen      C                   100
+     DResVendr         DS                  Qualified
+     D                                     Template
+     Dvendorname                    100A
+
+      ************************************
+      * Convert buffer to ResVendr
+      ************************************
+     DBufToResVendr    PR
+     DBuffer                        100A
+     DDataStruct                           LikeDS(ResVendr)

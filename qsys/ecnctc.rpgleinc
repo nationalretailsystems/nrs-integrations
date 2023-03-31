@@ -1,0 +1,44 @@
+      ***********************************
+      * Eradanin Connect Client
+      * include file
+      ***********************************
+
+      ***********************************
+      * Send and Receive request
+      * prototypes
+      ************************************
+
+      *
+     D EccSndReq       PR                  Extpgm('ECCSNDREQ')
+     D  In_Cmd                       32A
+     D  In_DataLen                    5P 0
+     D  In_Data                   32767A
+     D  Out_ReqKey                    6A
+      *
+     D EccRcvRes       PR                  Extpgm('ECCRCVRES')
+     D  In_WaitTm                     5P 0
+     D  In_ReqKey                     6A
+     D  Out_Eod                        N
+     D  Out_Eoa                        N
+     D  Out_NoData                     N
+     D  In_DataLen                    5P 0
+     D  Out_Data                  32767A
+
+
+      ************************************
+      * EccResult data structure
+      * Record length: 80
+      ************************************
+     DEccResultLen     C                   80
+     DEccResult        DS                  Qualified
+     D                                     Template
+     DMsgId                           7A
+     DMsgTime                        23Z
+     DMsgDesc                        50A
+
+      ************************************
+      * Convert buffer to EccResult
+      ************************************
+     DBufToEccResult   PR
+     DBuffer                        500A
+     DDataStruct                           LikeDS(EccResult)

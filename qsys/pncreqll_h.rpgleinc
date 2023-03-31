@@ -1,0 +1,33 @@
+      ************************************
+      * Module: pncreqll
+      * Generated RPG data structures
+      * and prototypes
+      * Do not modify
+      ************************************
+
+      ************************************
+      * LocationDS data structure
+      * Record length: 238
+      ************************************
+     DLocationDSLen    C                   238
+     DLocationDS       DS                  Qualified
+     D                                     Template
+     Dmsg_grp_id                     25A
+     Devent                          50A
+     Devent_id                       25A
+     Dtime                           25A
+     Dversion                         3A
+     Dcampus                          6A
+     Dasset_type                     25A
+     Dsite_code                      25A
+     Dscac                            4A
+     Dtrailer                        25A
+     Dcontainer_num                  25A
+
+      ************************************
+      * Convert LocationDS to buffer
+      ************************************
+     DLocationDSToBuf  PR
+     DDataStruct                           LikeDS(LocationDS)
+     D                                     Const
+     DBuffer                        500A

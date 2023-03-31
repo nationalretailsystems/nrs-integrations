@@ -3,7 +3,7 @@
 // Module: rmgetdvir
 // Generated source -- do not modify
 
-import { ibmiConversions } from '@eradani-inc/ec-client';
+import { ibmiConversions, missingInput } from '@eradani-inc/ec-client';
 const { fromIbmiDate, fromIbmiTime, fromIbmiTimestamp, toIbmiDate, toIbmiTime, toIbmiTimestamp } = ibmiConversions;
 
 import eradaniConnect from '@eradani-inc/eradani-connect';
@@ -181,37 +181,91 @@ export interface RtnDVIR {
 export function convertObjectToRtnDVIR(dataIn: RtnDVIR): string {
     let dataOut: string = '';
 
-    dataOut += dataIn.index.toFixed().substring(0, 11).padEnd(11);
-    dataOut += dataIn.driverId.substring(0, 60).padEnd(60);
-    dataOut += dataIn.createdTimestamp.toFixed().substring(0, 21).padEnd(21);
-    dataOut += dataIn.modifiedtimestamp.toFixed().substring(0, 21).padEnd(21);
-    dataOut += dataIn.timeZone.substring(0, 5).padEnd(5);
-    dataOut += dataIn.tripName.substring(0, 200).padEnd(200);
-    dataOut += dataIn.driverComment.substring(0, 200).padEnd(200);
-    dataOut += dataIn.tractorNumber.substring(0, 16).padEnd(16);
-    dataOut += dataIn.trailerNumber.substring(0, 32).padEnd(32);
-    dataOut += dataIn.totalTractorDefects.toFixed().substring(0, 11).padEnd(11);
-    for (let i: number = 0; i < dataIn.tractorDefects.length; ++i) {
-        dataOut += dataIn.tractorDefects[i].substring(0, 50).padEnd(50);
+    dataOut +=
+        dataIn?.index?.toFixed()?.substring(0, 11)?.padEnd(11) ??
+        missingInput(`dataIn.index`, 'integer', dataIn?.index);
+    dataOut +=
+        dataIn?.driverId?.substring(0, 60)?.padEnd(60) ?? missingInput(`dataIn.driverId`, 'char', dataIn?.driverId);
+    dataOut +=
+        dataIn?.createdTimestamp?.toFixed()?.substring(0, 21)?.padEnd(21) ??
+        missingInput(`dataIn.createdTimestamp`, 'integer', dataIn?.createdTimestamp);
+    dataOut +=
+        dataIn?.modifiedtimestamp?.toFixed()?.substring(0, 21)?.padEnd(21) ??
+        missingInput(`dataIn.modifiedtimestamp`, 'integer', dataIn?.modifiedtimestamp);
+    dataOut +=
+        dataIn?.timeZone?.substring(0, 5)?.padEnd(5) ?? missingInput(`dataIn.timeZone`, 'char', dataIn?.timeZone);
+    dataOut +=
+        dataIn?.tripName?.substring(0, 200)?.padEnd(200) ?? missingInput(`dataIn.tripName`, 'char', dataIn?.tripName);
+    dataOut +=
+        dataIn?.driverComment?.substring(0, 200)?.padEnd(200) ??
+        missingInput(`dataIn.driverComment`, 'char', dataIn?.driverComment);
+    dataOut +=
+        dataIn?.tractorNumber?.substring(0, 16)?.padEnd(16) ??
+        missingInput(`dataIn.tractorNumber`, 'char', dataIn?.tractorNumber);
+    dataOut +=
+        dataIn?.trailerNumber?.substring(0, 32)?.padEnd(32) ??
+        missingInput(`dataIn.trailerNumber`, 'char', dataIn?.trailerNumber);
+    dataOut +=
+        dataIn?.totalTractorDefects?.toFixed()?.substring(0, 11)?.padEnd(11) ??
+        missingInput(`dataIn.totalTractorDefects`, 'integer', dataIn?.totalTractorDefects);
+    for (let i: number = 0; i < 25; ++i) {
+        dataOut +=
+            dataIn?.tractorDefects[i]?.substring(0, 50)?.padEnd(50) ??
+            missingInput(`dataIn.tractorDefects[${i}]`, 'char', dataIn?.tractorDefects[i]);
     }
-    dataOut += dataIn.totalTrailerDefects.toFixed().substring(0, 11).padEnd(11);
-    for (let i: number = 0; i < dataIn.trailerDefects.length; ++i) {
-        dataOut += dataIn.trailerDefects[i].substring(0, 50).padEnd(50);
+    dataOut +=
+        dataIn?.totalTrailerDefects?.toFixed()?.substring(0, 11)?.padEnd(11) ??
+        missingInput(`dataIn.totalTrailerDefects`, 'integer', dataIn?.totalTrailerDefects);
+    for (let i: number = 0; i < 25; ++i) {
+        dataOut +=
+            dataIn?.trailerDefects[i]?.substring(0, 50)?.padEnd(50) ??
+            missingInput(`dataIn.trailerDefects[${i}]`, 'char', dataIn?.trailerDefects[i]);
     }
-    for (let i: number = 0; i < dataIn.defectImages.length; ++i) {
-        dataOut += dataIn.defectImages[i].substring(0, 255).padEnd(255);
+    for (let i: number = 0; i < 10; ++i) {
+        dataOut +=
+            dataIn?.defectImages[i]?.substring(0, 255)?.padEnd(255) ??
+            missingInput(`dataIn.defectImages[${i}]`, 'char', dataIn?.defectImages[i]);
     }
-    dataOut += dataIn.dvirIsDefective ? '1' : '0';
-    dataOut += dataIn.dvirIsCertified ? '1' : '0';
-    dataOut += dataIn.driverSignature.substring(0, 200).padEnd(200);
-    dataOut += dataIn.mechanicSignature.substring(0, 200).padEnd(200);
-    dataOut += dataIn.latitude.toExponential(7).substring(0, 14).padEnd(14);
-    dataOut += dataIn.longitude.toExponential(7).substring(0, 14).padEnd(14);
-    dataOut += dataIn.location.substring(0, 200).padEnd(200);
-    dataOut += dataIn.odometer.toExponential(7).substring(0, 14).padEnd(14);
-    dataOut += dataIn.status.substring(0, 100).padEnd(100);
-    dataOut += toIbmiDate(dataIn.lastModifiedDate);
-    dataOut += dataIn.dvirIsDST ? '1' : '0';
+    dataOut +=
+        dataIn?.dvirIsDefective !== undefined
+            ? dataIn?.dvirIsDefective
+                ? '1'
+                : '0'
+            : missingInput(`dataIn.dvirIsDefective`, 'bool', dataIn?.dvirIsDefective);
+    dataOut +=
+        dataIn?.dvirIsCertified !== undefined
+            ? dataIn?.dvirIsCertified
+                ? '1'
+                : '0'
+            : missingInput(`dataIn.dvirIsCertified`, 'bool', dataIn?.dvirIsCertified);
+    dataOut +=
+        dataIn?.driverSignature?.substring(0, 200)?.padEnd(200) ??
+        missingInput(`dataIn.driverSignature`, 'char', dataIn?.driverSignature);
+    dataOut +=
+        dataIn?.mechanicSignature?.substring(0, 200)?.padEnd(200) ??
+        missingInput(`dataIn.mechanicSignature`, 'char', dataIn?.mechanicSignature);
+    dataOut +=
+        dataIn?.latitude?.toExponential(7)?.substring(0, 14)?.padEnd(14) ??
+        missingInput(`dataIn.latitude`, 'float', dataIn?.latitude);
+    dataOut +=
+        dataIn?.longitude?.toExponential(7)?.substring(0, 14)?.padEnd(14) ??
+        missingInput(`dataIn.longitude`, 'float', dataIn?.longitude);
+    dataOut +=
+        dataIn?.location?.substring(0, 200)?.padEnd(200) ?? missingInput(`dataIn.location`, 'char', dataIn?.location);
+    dataOut +=
+        dataIn?.odometer?.toExponential(7)?.substring(0, 14)?.padEnd(14) ??
+        missingInput(`dataIn.odometer`, 'float', dataIn?.odometer);
+    dataOut += dataIn?.status?.substring(0, 100)?.padEnd(100) ?? missingInput(`dataIn.status`, 'char', dataIn?.status);
+    dataOut +=
+        dataIn?.lastModifiedDate !== undefined
+            ? toIbmiDate(dataIn?.lastModifiedDate)
+            : missingInput(`dataIn.lastModifiedDate`, 'date', dataIn?.lastModifiedDate);
+    dataOut +=
+        dataIn?.dvirIsDST !== undefined
+            ? dataIn?.dvirIsDST
+                ? '1'
+                : '0'
+            : missingInput(`dataIn.dvirIsDST`, 'bool', dataIn?.dvirIsDST);
 
     return dataOut;
 }
@@ -235,10 +289,17 @@ export interface RtnDVIRRes {
 export function convertObjectToRtnDVIRRes(dataIn: RtnDVIRRes): string {
     let dataOut: string = '';
 
-    dataOut += dataIn.response.code.toFixed().substring(0, 6).padEnd(6);
-    dataOut += dataIn.response.type.substring(0, 10).padEnd(10);
-    dataOut += dataIn.response.message.substring(0, 200).padEnd(200);
-    dataOut += dataIn.imageURL.substring(0, 200).padEnd(200);
+    dataOut +=
+        dataIn?.response?.code?.toFixed()?.substring(0, 6)?.padEnd(6) ??
+        missingInput(`dataIn.response.code`, 'integer', dataIn?.response?.code);
+    dataOut +=
+        dataIn?.response?.type?.substring(0, 10)?.padEnd(10) ??
+        missingInput(`dataIn.response.type`, 'char', dataIn?.response?.type);
+    dataOut +=
+        dataIn?.response?.message?.substring(0, 200)?.padEnd(200) ??
+        missingInput(`dataIn.response.message`, 'char', dataIn?.response?.message);
+    dataOut +=
+        dataIn?.imageURL?.substring(0, 200)?.padEnd(200) ?? missingInput(`dataIn.imageURL`, 'char', dataIn?.imageURL);
 
     return dataOut;
 }

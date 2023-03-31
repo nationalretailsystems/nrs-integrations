@@ -3,7 +3,7 @@
 // Module: mpvendor
 // Generated source -- do not modify
 
-import { ibmiConversions } from '@eradani-inc/ec-client';
+import { ibmiConversions, missingInput } from '@eradani-inc/ec-client';
 const { fromIbmiDate, fromIbmiTime, fromIbmiTimestamp, toIbmiDate, toIbmiTime, toIbmiTimestamp } = ibmiConversions;
 
 import eradaniConnect from '@eradani-inc/eradani-connect';
@@ -48,7 +48,9 @@ export interface ResVendr {
 export function convertObjectToResVendr(dataIn: ResVendr): string {
     let dataOut: string = '';
 
-    dataOut += dataIn.VendorName.substring(0, 100).padEnd(100);
+    dataOut +=
+        dataIn?.VendorName?.substring(0, 100)?.padEnd(100) ??
+        missingInput(`dataIn.VendorName`, 'char', dataIn?.VendorName);
 
     return dataOut;
 }

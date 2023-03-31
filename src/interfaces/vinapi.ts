@@ -3,7 +3,7 @@
 // Module: vinapi
 // Generated source -- do not modify
 
-import { ibmiConversions } from '@eradani-inc/ec-client';
+import { ibmiConversions, missingInput } from '@eradani-inc/ec-client';
 const { fromIbmiDate, fromIbmiTime, fromIbmiTimestamp, toIbmiDate, toIbmiTime, toIbmiTimestamp } = ibmiConversions;
 
 /**
@@ -60,9 +60,15 @@ export interface VinInfo {
 export function convertObjectToVinInfo(dataIn: VinInfo): string {
     let dataOut: string = '';
 
-    dataOut += dataIn.ElectrificationLevel.substring(0, 35).padEnd(35);
-    dataOut += dataIn.FuelTypePrimary.substring(0, 15).padEnd(15);
-    dataOut += dataIn.FuelTypeSecondary.substring(0, 25).padEnd(25);
+    dataOut +=
+        dataIn?.ElectrificationLevel?.substring(0, 35)?.padEnd(35) ??
+        missingInput(`dataIn.ElectrificationLevel`, 'char', dataIn?.ElectrificationLevel);
+    dataOut +=
+        dataIn?.FuelTypePrimary?.substring(0, 15)?.padEnd(15) ??
+        missingInput(`dataIn.FuelTypePrimary`, 'char', dataIn?.FuelTypePrimary);
+    dataOut +=
+        dataIn?.FuelTypeSecondary?.substring(0, 25)?.padEnd(25) ??
+        missingInput(`dataIn.FuelTypeSecondary`, 'char', dataIn?.FuelTypeSecondary);
 
     return dataOut;
 }

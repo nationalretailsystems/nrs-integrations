@@ -6,16 +6,6 @@
       ************************************
 
       ************************************
-      * Forecast data structure
-      ************************************
-     DForecast         DS                  Qualified
-     D                                     Template
-     DDate                             D   DatFmt(*MDY)
-     DMin                             5P 2
-     DMax                             5P 2
-     DDesc                           58A
-
-      ************************************
       * Location data structure
       * Record length: 22
       ************************************
@@ -34,18 +24,20 @@
      DBuffer                         22A
 
       ************************************
-      * Weather data structure
-      * Record length: 656
+      * Forecast data structure
+      * Record length: 82
       ************************************
-     DWeatherLen       C                   656
-     DWeather          DS                  Qualified
+     DForecastLen      C                   82
+     DForecast         DS                  Qualified
      D                                     Template
-     DForecasts                            LikeDS(Forecast)
-     D                                     Dim(8)
+     DDate                             D
+     DMin                             5P 2
+     DMax                             5P 2
+     DDesc                           58A
 
       ************************************
-      * Convert buffer to Weather
+      * Convert buffer to Forecast
       ************************************
-     DBufToWeather     PR
-     DBuffer                        656A
-     DDataStruct                           LikeDS(Weather)
+     DBufToForecast    PR
+     DBuffer                         82A
+     DDataStruct                           LikeDS(Forecast)

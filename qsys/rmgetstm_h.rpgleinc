@@ -1,0 +1,93 @@
+      ************************************
+      * Module: rmgetstmi
+      * Generated RPG data structures
+      * and prototypes
+      * Do not modify
+      ************************************
+
+      ************************************
+      * responseDS data structure
+      ************************************
+     DresponseDS       DS                  Qualified
+     D                                     Template
+     Dcode                            5I 0
+     Dtype                           10A
+     Dmessage                       200A
+
+      ************************************
+      * ReqStMiles data structure
+      * Record length: 142
+      ************************************
+     DReqStMilesLen    C                   142
+     DReqStMiles       DS                  Qualified
+     D                                     Template
+     DaccessToken                   100A
+     DcompanyCode                    10A
+     DlogDate                          D
+     DstartIndex                     10I 0
+     Dsize                           10I 0
+
+      ************************************
+      * Convert ReqStMiles to buffer
+      ************************************
+     DReqStMilesToBuf  PR
+     DDataStruct                           LikeDS(ReqStMiles)
+     D                                     Const
+     DBuffer                        142A
+
+      ************************************
+      * RtnStMiles data structure
+      * Record length: 1003
+      ************************************
+     DRtnStMilesLen    C                   1003
+     DRtnStMiles       DS                  Qualified
+     D                                     Template
+     Dindex                          10I 0
+     Ddrvrlogid                      60A
+     Dtractornum                     12A
+     Ddevicesn                       20A
+     Dfuelused                       15P 5
+     Dfueltype                       20A
+     Ddistance                       15P 5
+     Dmanualmi                       15P 5
+     Dstate                          50A
+     Dentodread                      15P 5
+     Dexodread                       15P 5
+     Dcountry                        50A
+     Dsttintm                        19A
+     Dsttouttm                       19A
+     Dlogdate                        19A
+     DoffSet                          2A
+     Doanbr                         100A
+     Dsttinlat                        4F
+     Dsttinlng                        4F
+     Dsttoutlat                       4F
+     Dsttoutlng                       4F
+     Dsttinadd                      200A
+     Dsttoutadd                     200A
+     Dvin                            30A
+     Ddotnbt                         50A
+
+      ************************************
+      * Convert buffer to RtnStMiles
+      ************************************
+     DBufToRtnStMiles  PR
+     DBuffer                       1003A
+     DDataStruct                           LikeDS(RtnStMiles)
+
+      ************************************
+      * RtnRespons data structure
+      * Record length: 221
+      ************************************
+     DRtnResponsLen    C                   221
+     DRtnRespons       DS                  Qualified
+     D                                     Template
+     Dresponse                             LikeDS(responseDS)
+     DisDST                           3P 0
+
+      ************************************
+      * Convert buffer to RtnRespons
+      ************************************
+     DBufToRtnRespons  PR
+     DBuffer                        221A
+     DDataStruct                           LikeDS(RtnRespons)

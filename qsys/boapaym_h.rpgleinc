@@ -1,0 +1,195 @@
+      ************************************
+      * Module: boapayment
+      * Generated RPG data structures
+      * and prototypes
+      * Do not modify
+      ************************************
+
+      ************************************
+      * cstmfldsDS data structure
+      ************************************
+     DcstmfldsDS       DS                  Qualified
+     D                                     Template
+     Dproperty1                      25A
+     Dproperty2                      25A
+
+      ************************************
+      * addressDS data structure
+      ************************************
+     DaddressDS        DS                  Qualified
+     D                                     Template
+     Daddcity                        20A
+     Daddcntry                        3A
+     Daddlin1                       100A
+     Daddlin2                       100A
+     Daddstt                          2A
+     Daddzip1                         5A
+     Daddzip2                         4A
+
+      ************************************
+      * netrespDS data structure
+      ************************************
+     DnetrespDS        DS                  Qualified
+     D                                     Template
+     Dpauthcd                        30A
+     Dpdeclcd                        30A
+     Dpdeclmsg                      100A
+     Dprtncd                         30A
+     Dprtncdds                      100A
+
+      ************************************
+      * fndacctDS data structure
+      ************************************
+     DfndacctDS        DS                  Qualified
+     D                                     Template
+     Dabanbr                          9A
+     Dacthldnm                       60A
+     Dacthldtp                       25A
+     Dacctnbr                        32A
+     Dactsubtp                       25A
+     Dacttype                        25A
+     Dachelig                         3A
+     Daddress                              LikeDS(addressDS)
+     Datmelig                         3A
+     Dcvvnbr                          4A
+     Dcurrcod                         3A
+     Dcustom_fields                        LikeDS(cstmfldsDS)
+     Dexpdate                         5A
+     Dfndactid                       20A
+     Dissname                        32A
+     Dnickname                       32A
+     Dstatus                         25A
+     Ddisptext                       20A
+     Dfndacturl                     100A
+
+      ************************************
+      * feeDS data structure
+      ************************************
+     DfeeDS            DS                  Qualified
+     D                                     Template
+     Dfeeamnt                        17A
+     Dfeetype                        25A
+     Dfeeid                          20A
+     Dfeeurl                        100A
+
+      ************************************
+      * custacctDS data structure
+      ************************************
+     DcustacctDS       DS                  Qualified
+     D                                     Template
+     Dacthldnam                      60A
+     Dactnbr                         32A
+     Daddress                              LikeDS(addressDS)
+     Dcurrbal                        18A
+     Dcurrstbal                      18A
+     Dcustom_fields                        LikeDS(cstmfldsDS)
+     Dcusactref                      50A
+     Dcusactid                       20A
+     Dminpaydue                      18A
+     Dcusactnik                      32A
+     Dpastdue                        18A
+     Dpayduedt                       10A
+     Dstmtdt                         10A
+     Dcusactsts                      25A
+     Dcusacturl                     100A
+
+      ************************************
+      * customerDS data structure
+      ************************************
+     DcustomerDS       DS                  Qualified
+     D                                     Template
+     Daddress                              LikeDS(addressDS)
+     Dcustom_fields                        LikeDS(cstmfldsDS)
+     Dcustref                       100A
+     Dcustdob                        10A
+     Dcustemail                     100A
+     Dcustfname                      60A
+     Dcustgender                     10A
+     Dcusthomph                      10A
+     Dcustid                         20A
+     Dcustlastnm                     60A
+     Dcustlocal                       5A
+     Dcustmidnm                      60A
+     Dcustmobil                      10A
+     Dcustssn                         9A
+     Dcuststatus                     25A
+     Dcusturl                       100A
+     Dcustwork                       10A
+
+      ************************************
+      * paymentDS data structure
+      ************************************
+     DpaymentDS        DS                  Qualified
+     D                                     Template
+     Dpayamtid                       20A
+     Dpayamtref                      50A
+     Dpayamturl                     100A
+     Dpayamtsts                      25A
+     Damount                         17A
+     Dcvv_nbr                         4A
+     Dfee                                  LikeDS(feeDS)
+     Dcurrcode                        3A
+     Dconfnbr                        30A
+     Dpayamtmth                      25A
+     Dpayamtdt                       10A
+     Dpayentdt                       10A
+     Dpayrtndt                       10A
+     Dpayrtncd                       10A
+     Dsettldt                        10A
+     Dpayreqdt                       10A
+     Dpayamttyp                      25A
+     Dpayschtyp                      50A
+     Dpaynetrsp                            LikeDS(netrespDS)
+     Dcustom_fields                        LikeDS(cstmfldsDS)
+     Dcustomer                             LikeDS(customerDS)
+     Dfundacct                             LikeDS(fndacctDS)
+     Dcustacct                             LikeDS(custacctDS)
+
+      ************************************
+      * dataDS data structure
+      ************************************
+     DdataDS           DS                  Qualified
+     D                                     Template
+     Dpayment                              LikeDS(paymentDS)
+
+      ************************************
+      * payReq data structure
+      * Record length: 80
+      ************************************
+     DpayReqLen        C                   80
+     DpayReq           DS                  Qualified
+     D                                     Template
+     Dcomment                        80A
+
+      ************************************
+      * Convert payReq to buffer
+      ************************************
+     DpayReqToBuf      PR
+     DDataStruct                           LikeDS(payReq)
+     D                                     Const
+     DBuffer                         80A
+
+      ************************************
+      * payEvent data structure
+      * Record length: 3450
+      ************************************
+     DpayEventLen      C                   3450
+     DpayEvent         DS                  Qualified
+     D                                     Template
+     Drootid                         50A
+     Dapivers                        25A
+     Deventstamp                     30A
+     Dclientkey                      50A
+     Dchannel                        25A
+     Ddata                                 LikeDS(dataDS)
+     Dpendhooks                       9A
+     Dsrctype                        25A
+     Dsourceid                       25A
+     Dtype                           25A
+
+      ************************************
+      * Convert buffer to payEvent
+      ************************************
+     DBufTopayEvent    PR
+     DBuffer                       3450A
+     DDataStruct                           LikeDS(payEvent)

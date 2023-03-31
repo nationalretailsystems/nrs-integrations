@@ -3,7 +3,7 @@
 // Module: mpputlog
 // Generated source -- do not modify
 
-import { ibmiConversions } from '@eradani-inc/ec-client';
+import { ibmiConversions, missingInput } from '@eradani-inc/ec-client';
 const { fromIbmiDate, fromIbmiTime, fromIbmiTimestamp, toIbmiDate, toIbmiTime, toIbmiTimestamp } = ibmiConversions;
 
 import eradaniConnect from '@eradani-inc/eradani-connect';
@@ -108,7 +108,8 @@ export interface AddLogRes {
 export function convertObjectToAddLogRes(dataIn: AddLogRes): string {
     let dataOut: string = '';
 
-    dataOut += dataIn.respdata.substring(0, 256).padEnd(256);
+    dataOut +=
+        dataIn?.respdata?.substring(0, 256)?.padEnd(256) ?? missingInput(`dataIn.respdata`, 'char', dataIn?.respdata);
 
     return dataOut;
 }

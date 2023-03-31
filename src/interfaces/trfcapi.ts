@@ -3,7 +3,7 @@
 // Module: trfcapi
 // Generated source -- do not modify
 
-import { ibmiConversions } from '@eradani-inc/ec-client';
+import { ibmiConversions, missingInput } from '@eradani-inc/ec-client';
 const { fromIbmiDate, fromIbmiTime, fromIbmiTimestamp, toIbmiDate, toIbmiTime, toIbmiTimestamp } = ibmiConversions;
 
 /**
@@ -70,12 +70,23 @@ export interface Traffic {
 export function convertObjectToTraffic(dataIn: Traffic): string {
     let dataOut: string = '';
 
-    dataOut += dataIn.rank.toFixed(0).substring(0, 4).padEnd(4);
-    dataOut += dataIn.streetName.substring(0, 30).padEnd(30);
-    dataOut += dataIn.averageSpeed.toFixed(1).substring(0, 6).padEnd(6);
-    dataOut += dataIn.length.toFixed(5).substring(0, 9).padEnd(9);
-    dataOut += dataIn.jamFactor.toFixed(5).substring(0, 10).padEnd(10);
-    dataOut += dataIn.confidence.toFixed(0).substring(0, 5).padEnd(5);
+    dataOut +=
+        dataIn?.rank?.toFixed(0)?.substring(0, 4)?.padEnd(4) ?? missingInput(`dataIn.rank`, 'packed', dataIn?.rank);
+    dataOut +=
+        dataIn?.streetName?.substring(0, 30)?.padEnd(30) ??
+        missingInput(`dataIn.streetName`, 'char', dataIn?.streetName);
+    dataOut +=
+        dataIn?.averageSpeed?.toFixed(1)?.substring(0, 6)?.padEnd(6) ??
+        missingInput(`dataIn.averageSpeed`, 'packed', dataIn?.averageSpeed);
+    dataOut +=
+        dataIn?.length?.toFixed(5)?.substring(0, 9)?.padEnd(9) ??
+        missingInput(`dataIn.length`, 'packed', dataIn?.length);
+    dataOut +=
+        dataIn?.jamFactor?.toFixed(5)?.substring(0, 10)?.padEnd(10) ??
+        missingInput(`dataIn.jamFactor`, 'packed', dataIn?.jamFactor);
+    dataOut +=
+        dataIn?.confidence?.toFixed(0)?.substring(0, 5)?.padEnd(5) ??
+        missingInput(`dataIn.confidence`, 'packed', dataIn?.confidence);
 
     return dataOut;
 }
