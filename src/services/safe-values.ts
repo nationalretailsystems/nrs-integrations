@@ -12,6 +12,8 @@ export function sanitizeValues(input: any, sv: any = {}) {
                 input[key] = sanitizeValues(input[key], sv[path]);
             }
             break;
+        } else if (path === 'toCamelCase') {
+            return input;
         } else if (typeof sv[path] === 'object') {
             input[path] = sanitizeValues(input[path] || {}, sv[path]);
         } else {
