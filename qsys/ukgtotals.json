@@ -1,0 +1,65 @@
+{
+    "startDate": "2023-06-18T00:00:00",
+    "endDate": "2023-06-24T00:00:00",
+    "totals": [
+        {
+            "employeeContext": {
+                "employee": {
+                    "id": 1631,
+                    "qualifier": "014028",
+                    "name": "014028"
+                },
+                "timezone": {
+                    "id": 13404,
+                    "qualifier": "(GMT -08:00) Pacific Time (USA; Canada); Tijuana",
+                    "name": "(GMT -08:00) Pacific Time (USA; Canada); Tijuana"
+                }
+            },
+            "totalContext": {
+                "totalType": "Actual totals",
+                "totalAggregationType": "All",
+                "totalGroupByType": "All"
+            },
+            "aggregatedTotals": [
+                {
+                    "amountType": "HOUR",
+                    "wagesCurrency": {
+                        "amount": 0.0,
+                        "currencyCode": "USD"
+                    },
+                    "employee": {
+                        "id": 1631,
+                        "qualifier": "014028",
+                        "name": "014028"
+                    },
+                    "location": {
+                        "id": 1156,
+                        "qualifier": "National Retail Systems/NRT/COO-TRANSPORTATION/CA Pier/Manville, CA/Drivers",
+                        "name": "National Retail Systems/NRT/COO-TRANSPORTATION/CA Pier/Manville, CA/Drivers"
+                    },
+                    "job": {
+                        "id": 1107,
+                        "qualifier": "Job",
+                        "name": "Job"
+                    },
+                    "laborCategory": {
+                        "id": 1870,
+                        "qualifier": ",Weekly,1ST SHIFT-DAY,DRIVER - PIER",
+                        "name": ",Weekly,1ST SHIFT-DAY,DRIVER - PIER"
+                    },
+                    "payCode": {
+                        "id": 254,
+                        "qualifier": "Earned Sick Accrual",
+                        "name": "Earned Sick Accrual"
+                    },
+                    "amount": 34.233333333333334,
+                    "wages": 0.0,
+                    "jobTransfer": false,
+                    "laborCategoryTransfer": false,
+                    "timeItemType": {},
+                    "approvableByManager": false
+                }
+            ]
+        }
+    ]
+}

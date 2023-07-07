@@ -1,0 +1,219 @@
+---
+name: ukgtotals
+rpgIncName: ukgtotal_h
+datastructures:
+  employeeDS:
+    subfields:
+      id:
+        type: Packed
+        length: 5
+        default: 0
+      qualifier:
+        type: Character
+        length: 6
+        default: ""
+      name:
+        type: Character
+        length: 6
+        default: ""
+  timezoneDS:
+    subfields:
+      id:
+        type: Packed
+        length: 5
+        default: 0
+      qualifier:
+        type: Character
+        length: 12
+        default: ""
+      name:
+        type: Character
+        length: 12
+        default: ""
+  emplContextDS:
+    subfields:
+      employee:
+        type: DataStruct
+        dsName: employeeDS
+      timezone:
+        type: DataStruct
+        dsName: timezoneDS
+  totalContextDS:
+    subfields:
+      totalType:
+        type: Character
+        length: 13
+        default: ""
+      totalAggregationType:
+        rpgName: ttlaggtype
+        type: Character
+        length: 3
+        default: ""
+      totalGroupByType:
+        rpgName: ttlgrpbytyp
+        type: Character
+        length: 3
+        default: ""
+  wagesCurrencyDS:
+    subfields:
+      amount:
+        type: Packed
+        length: 5
+        precision: 2
+        default: 0
+      currencyCode:
+        type: Character
+        length: 3
+        default: ""
+  locationDS:
+    subfields:
+      id:
+        type: Packed
+        length: 5
+        default: 0
+      qualifier:
+        type: Character
+        length: 75
+        default: ""
+      name:
+        type: Character
+        length: 75
+        default: ""
+  jobDS:
+    subfields:
+      id:
+        type: Packed
+        length: 5
+        default: 0
+      qualifier:
+        type: Character
+        length: 3
+        default: ""
+      name:
+        type: Character
+        length: 3
+        default: ""
+  laborCategoryDS:
+    subfields:
+      id:
+        type: Packed
+        length: 5
+        default: 0
+      qualifier:
+        type: Character
+        length: 35
+        default: ""
+      name:
+        type: Character
+        length: 35
+        default: ""
+  payCodeDS:
+    subfields:
+      id:
+        type: Packed
+        length: 11
+        default: 0
+      qualifier:
+        type: Character
+        length: 35
+        default: ""
+      name:
+        type: Character
+        length: 35
+        default: ""
+  timeItemTypeDS:
+    subfields:
+      timeItemType:
+        type: Character
+        length: 10
+        default: "None"
+  AggTotalsDS:
+    subfields:
+      amountType:
+        type: Character
+        length: 4
+        default: ""
+      wagesCurrency:
+        type: DataStruct
+        dsName: wagesCurrencyDS
+      employee:
+        type: DataStruct
+        dsName: employeeDS
+      location:
+        type: DataStruct
+        dsName: locationDS
+      job:
+        type: DataStruct
+        dsName: jobDS
+      laborCategory:
+        type: DataStruct
+        dsName: laborCategoryDS
+      payCode:
+        type: DataStruct
+        dsName: payCodeDS
+      amount:
+        type: Packed
+        length: 10
+        precision: 5
+        default: 0
+      wages:
+        type: Packed
+        length: 5
+        precision: 2
+        default: 0
+      jobTransfer:
+        type: Boolean
+        default: false
+      laborCategoryTransfer:
+        rpgName: labcatxfer
+        type: Boolean
+        default: false
+      timeItemType:
+        type: DataStruct
+        dsName: timeItemTypeDS
+      approvableByManager:
+        rpgName: appbymgr
+        type: Boolean
+        default: false
+  TotalsDS:
+    subfields:
+      employeeContext:
+        rpgName: empcontext
+        type: DataStruct
+        dsName: emplContextDS
+      totalContext:
+        type: DataStruct
+        dsName: totalContextDS
+      aggregatedTotals:
+        rpgName: aggtotals
+        type: DataStruct
+        dsName: AggTotalsDS
+        dim: 20
+formats:
+  TotalsRes:
+    recordType: response
+    subfields:
+      startDate:
+        type: Character
+        length: 19
+        default: ""
+      endDate:
+        type: Character
+        length: 19
+        default: ""
+      totals:
+        type: DataStruct
+        dsName: TotalsDS
+        dim: 2
+  TotalsReq:
+    recordType: request
+    subfields:
+      employeer:
+        type: Character
+        length: 6
+      startDater:
+        type: Character
+        length: 10
+      endDater:
+        type: Character
+        length: 10    

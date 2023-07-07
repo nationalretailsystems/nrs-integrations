@@ -22,7 +22,8 @@ MODS = dspjk \
 	   tstmpgete2 \
 	   tstrmgtmi \
 	   tstzplapi \
-	   tstboapay
+	   tstboapay \
+	   tstukgttls
 
 GENMODS = icndbapi \
           lblapi \
@@ -58,7 +59,8 @@ GENMODS = icndbapi \
 		  pcachrpt \
 		  pcgettran \
 		  pcgettrns \
-		  p44stsupd
+		  p44stsupd \
+		  ukgtotals
 
 GENHDRS = icndbapi_h \
           lblapi_h \
@@ -91,7 +93,8 @@ GENHDRS = icndbapi_h \
 		  pcachrpt_h \
 		  pcgettrn_h \
 		  pcgettrs_h \
-		  p44stsup_h
+		  p44stsup_h \
+		  ukgtotal_h
 
 SRVPGMS = ecctmpgen
 
@@ -108,7 +111,8 @@ PGMS = dspjk \
 	   tstmpgete2 \
 	   tstrmgetmi \
 	   tstzplapi \
-	   tstboapay
+	   tstboapay \
+	   tstukgttls
 
 CMDS = dspjk \
        dsptrfc \
@@ -533,7 +537,13 @@ $(libdir)/qrpglesrc.file/p44stsupd.mbr $(libdir)/qrpglesrc.file/p44stsup_h.mbr .
 	#cp p44stsupd.ts ../src/interfaces/p44stsupd.ts
 	system "CPYFRMSTMF FROMSTMF('p44stsupd.rpgle') TOMBR('$(libdir)/qrpglesrc.file/p44stsupd.mbr') MBROPT(*REPLACE)"
 	system "CPYFRMSTMF FROMSTMF('p44stsup_h.rpgleinc') TOMBR('$(libdir)/qrpglesrc.file/p44stsup_h.mbr') MBROPT(*REPLACE)"
-		
+
+$(libdir)/qrpglesrc.file/ukgtotals.mbr $(libdir)/qrpglesrc.file/ukgtotal_h.mbr ../src/interfaces/ukgtotals.ts: ukgtotals.yaml
+	npx ec-generate -f $<
+	cp ukgtotals.ts ../src/interfaces/ukgtotals.ts
+	system "CPYFRMSTMF FROMSTMF('ukgtotals.rpgle') TOMBR('$(libdir)/qrpglesrc.file/ukgtotals.mbr') MBROPT(*REPLACE)"
+	system "CPYFRMSTMF FROMSTMF('ukgtotal_h.rpgleinc') TOMBR('$(libdir)/qrpglesrc.file/ukgtotal_h.mbr') MBROPT(*REPLACE)"
+
 .PHONY: library
 library:
 	-system "CRTLIB $(LIB)"

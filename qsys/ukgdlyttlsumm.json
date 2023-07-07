@@ -1,0 +1,42 @@
+{
+    "startDate": "2023-06-04T00:00:00",
+    "endDate": "2023-06-10T00:00:00",
+    "dailyTotalSummary": [
+        {
+            "employee": {
+                "id": 13790,
+                "qualifier": "010050",
+                "name": "010050"
+            },
+            "applyDate": "2023-06-05",
+            "cumulativeTotal": 35100,
+            "dailyTotalAmount": {
+                "HOUR": 35100
+            },
+            "hoursAndCostSummaries": {
+                "HOUR": [
+                    {
+                        "id": 353179,
+                        "durationInHours": 9.75,
+                        "wages": 0.0,
+                        "wagesCurrency": {
+                            "amount": 0.0,
+                            "currencyCode": "USD"
+                        },
+                        "durationInDays": 0.0,
+                        "timeItemId": 353179,
+                        "amountType": "HOUR",
+                        "employee": {
+                            "id": 13790,
+                            "qualifier": "010050",
+                            "name": "010050"
+                        },
+                        "applyDate": "2023-06-05",
+                        "fromShift": true,
+                        "totalType": "HOURSANDCOST"
+                    }
+                ]
+            }
+        }
+    ]
+}

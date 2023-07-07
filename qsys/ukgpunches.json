@@ -1,0 +1,106 @@
+{
+    "startDate": "2023-06-04T00:00:00",
+    "endDate": "2023-06-10T00:00:00",
+    "punches": [
+        {
+            "id": 27844,
+            "employee": {
+                "id": 13790,
+                "qualifier": "010050",
+                "name": "010050"
+            },
+            "punchDtm": "2023-06-05T02:38:00",
+            "roundedPunchDtm": "2023-06-05T02:45:00",
+            "timeZone": {
+                "id": 134111,
+                "qualifier": "(GMT -05:00) Eastern Time (USA; Canada)",
+                "name": "(GMT -05:00) Eastern Time (USA; Canada)"
+            },
+            "enteredOnDtm": "2023-06-05T06:38:13",
+            "hasComments": false,
+            "editByType": {
+                "id": -1,
+                "qualifier": "EMPLOYEE_MADE_ADD_OR_EDIT",
+                "name": "EMPLOYEE_MADE_ADD_OR_EDIT"
+            },
+            "dataSource": {
+                "id": 30847,
+                "qualifier": "Vagelakos, George",
+                "displayName": "UDM (100040)",
+                "functionalAreaName": "13859/UDM",
+                "name": "Vagelakos, George"
+            },
+            "typeOverride": {
+                "id": 2,
+                "qualifier": "In Punch",
+                "typeOverrideId": 2,
+                "description": "In Punch",
+                "name": "In Punch"
+            },
+            "exceptions": [
+                {
+                    "employee": {
+                        "id": 13790,
+                        "qualifier": "010050",
+                        "name": "010050"
+                    },
+                    "startDateTime": "2023-06-05T02:38:00",
+                    "endDateTime": "2023-06-05T04:00:00",
+                    "applyDate": "2023-06-05",
+                    "id": 32987,
+                    "endTimeZone": {
+                        "id": 134111
+                    },
+                    "exceptionType": {
+                        "id": 4,
+                        "name": "EARLY_IN",
+                        "description": "EARLY_IN_DSC",
+                        "displayName": "Early In",
+                        "category": "IN_PUNCH_EXCEPTIONS"
+                    },
+                    "orgJob": {
+                        "id": 837
+                    },
+                    "overLimitInHours": 1.28,
+                    "startTimeZone": {
+                        "id": 134111
+                    },
+                    "violationInHours": 1.37,
+                    "workRule": {
+                        "id": 152,
+                        "qualifier": "Wkly 40hrs Hol 1.0 Not Resticted",
+                        "name": "Wkly 40hrs Hol 1.0 Not Resticted"
+                    },
+                    "commentsNotes": [],
+                    "punchEvent": {
+                        "id": 353179
+                    },
+                    "isExcusedAbsence": false,
+                    "isUnExcusedAbsence": false,
+                    "missingTimeStatus": {
+                        "id": 1,
+                        "displayName": "Not Applicable"
+                    },
+                    "justifications": [],
+                    "justifiedTimes": [],
+                    "transfer": false,
+                    "eventDate": "2023-06-05",
+                    "startException": true,
+                    "endException": false,
+                    "reviewed": true
+                }
+            ],
+            "commentsNotes": [],
+            "isPhantom": false,
+            "isScheduled": false,
+            "updatedOnDtm": "2023-06-05T06:38:13",
+            "validateAsTimestamp": false,
+            "attestationPunchEdit": false,
+            "markRelatedExceptionsAsReviewed": true,
+            "editable": true,
+            "cancelDeduct": false,
+            "fromPhantomEdited": false,
+            "exceptionResolved": false
+        }
+    ]
+}

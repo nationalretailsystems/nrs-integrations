@@ -1,0 +1,121 @@
+      ************************************
+      * Module: ukgtchours
+      * Generated RPG data structures
+      * and prototypes
+      * Do not modify
+      ************************************
+
+      ************************************
+      * employeeDS data structure
+      ************************************
+     DemployeeDS       DS                  Qualified
+     D                                     Template
+     Did                              4P 0
+     Dqualifier                       6A
+     Dname                            6A
+
+      ************************************
+      * timeZoneDS data structure
+      ************************************
+     DtimeZoneDS       DS                  Qualified
+     D                                     Template
+     Did                              6P 0
+     Dqualifier                      39A
+     Dname                           39A
+
+      ************************************
+      * editByTypeDS data structure
+      ************************************
+     DeditByTypeDS     DS                  Qualified
+     D                                     Template
+     Did                              2P 0
+     Dqualifier                      25A
+     Dname                           25A
+
+      ************************************
+      * dataSourceDS data structure
+      ************************************
+     DdataSourceDS     DS                  Qualified
+     D                                     Template
+     Did                              5P 0
+     Dqualifier                      15A
+     DdisplayName                    10A
+     Dfuncareanm                     37A
+     Dname                           15A
+
+      ************************************
+      * geoLocationDS data structure
+      ************************************
+     DgeoLocationDS    DS                  Qualified
+     D                                     Template
+     DlocationId                      4P 0
+     Daccuracy                        7P 0
+     Doutsidegeofence                  N
+     DupdateTime                     19A
+     Dgeofencemethod                  1P 0
+     Dunverified                       N
+
+      ************************************
+      * AnonymousDS data structure
+      ************************************
+     DAnonymousDS      DS                  Qualified
+     D                                     Template
+     Did                              5P 0
+     Demployee                             LikeDS(employeeDS)
+     DpunchDtm                       19A
+     DroundedPunchDtm                19A
+     DtimeZone                             LikeDS(timeZoneDS)
+     DenteredOnDtm                   19A
+     DhasComments                      N
+     DeditByType                           LikeDS(editByTypeDS)
+     DdataSource                           LikeDS(dataSourceDS)
+     Dexceptions                     10A   Dim(1)
+     DcommentsNotes                  10A   Dim(1)
+     DisPhantom                        N
+     DisScheduled                      N
+     DupdatedOnDtm                   19A
+     DgeoLocation                          LikeDS(geoLocationDS)
+     Dvalidateasts                     N
+     Dattestpunchedit                  N
+     Dmarkrereviewed                   N
+     Deditable                         N
+     DcancelDeduct                     N
+     Dfromphantomed                    N
+     Dexceptresolved                   N
+
+      ************************************
+      * HoursReq data structure
+      * Record length: 16
+      ************************************
+     DHoursReqLen      C                   16
+     DHoursReq         DS                  Qualified
+     D                                     Template
+     Demployee                        6A
+     Ddate                           10A
+
+      ************************************
+      * Convert HoursReq to buffer
+      ************************************
+     DHoursReqToBuf    PR
+     DDataStruct                           LikeDS(HoursReq)
+     D                                     Const
+     DBuffer                         16A
+
+      ************************************
+      * FormatName data structure
+      * Record length: 4766
+      ************************************
+     DFormatNameLen    C                   4766
+     DFormatName       DS                  Qualified
+     D                                     Template
+     DstartDate                      19A
+     DendDate                        19A
+     Dpunches                              LikeDS(AnonymousDS)
+     D                                     Dim(12)
+
+      ************************************
+      * Convert buffer to FormatName
+      ************************************
+     DBufToFormatName  PR
+     DBuffer                       4766A
+     DDataStruct                           LikeDS(FormatName)

@@ -1,0 +1,207 @@
+      ************************************
+      * Module: ukgpunches
+      * Generated RPG data structures
+      * and prototypes
+      * Do not modify
+      ************************************
+
+      ************************************
+      * employeeDS data structure
+      ************************************
+     DemployeeDS       DS                  Qualified
+     D                                     Template
+     Did                              5P 0
+     Dqualifier                       6A
+     Dname                            6A
+
+      ************************************
+      * timeZoneDS data structure
+      ************************************
+     DtimeZoneDS       DS                  Qualified
+     D                                     Template
+     Did                              6P 0
+     Dqualifier                      39A
+     Dname                           39A
+
+      ************************************
+      * editByTypeDS data structure
+      ************************************
+     DeditByTypeDS     DS                  Qualified
+     D                                     Template
+     Did                              2P 0
+     Dqualifier                      25A
+     Dname                           25A
+
+      ************************************
+      * dataSourceDS data structure
+      ************************************
+     DdataSourceDS     DS                  Qualified
+     D                                     Template
+     Did                              5P 0
+     Dqualifier                      17A
+     DdisplayName                    12A
+     Dfuncareanm                      9A
+     Dname                           17A
+
+      ************************************
+      * typeOverrideDS data structure
+      ************************************
+     DtypeOverrideDS   DS                  Qualified
+     D                                     Template
+     Did                              1P 0
+     Dqualifier                       8A
+     DtypeOverrideId                  1P 0
+     Ddescription                     8A
+     Dname                            8A
+
+      ************************************
+      * endTimeZoneDS data structure
+      ************************************
+     DendTimeZoneDS    DS                  Qualified
+     D                                     Template
+     Did                              6P 0
+
+      ************************************
+      * exceptionTypeDS data structure
+      ************************************
+     DexceptionTypeDS  DS                  Qualified
+     D                                     Template
+     Did                              1P 0
+     Dname                            8A
+     Ddescription                    12A
+     DdisplayName                     8A
+     Dcategory                       19A
+
+      ************************************
+      * orgJobDS data structure
+      ************************************
+     DorgJobDS         DS                  Qualified
+     D                                     Template
+     Did                              3P 0
+
+      ************************************
+      * startTimeZoneDS data structure
+      ************************************
+     DstartTimeZoneDS  DS                  Qualified
+     D                                     Template
+     Did                              6P 0
+
+      ************************************
+      * workRuleDS data structure
+      ************************************
+     DworkRuleDS       DS                  Qualified
+     D                                     Template
+     Did                              3P 0
+     Dqualifier                      32A
+     Dname                           32A
+
+      ************************************
+      * punchEventDS data structure
+      ************************************
+     DpunchEventDS     DS                  Qualified
+     D                                     Template
+     Did                              6P 0
+
+      ************************************
+      * missTimeStsDS data structure
+      ************************************
+     DmissTimeStsDS    DS                  Qualified
+     D                                     Template
+     Did                              1P 0
+     DdisplayName                    14A
+
+      ************************************
+      * ExceptionDS data structure
+      ************************************
+     DExceptionDS      DS                  Qualified
+     D                                     Template
+     Demployee                             LikeDS(employeeDS)
+     DstartDateTime                  19A
+     DendDateTime                    19A
+     DapplyDate                      10A
+     Did                              5P 0
+     DendTimeZone                          LikeDS(endTimeZoneDS)
+     DexceptionType                        LikeDS(exceptionTypeDS)
+     DorgJob                               LikeDS(orgJobDS)
+     Doverlimithrs                    3P 2
+     DstartTimeZone                        LikeDS(startTimeZoneDS)
+     Dviolationhrs                    3P 2
+     DworkRule                             LikeDS(workRuleDS)
+     DcommentsNotes                  10A   Dim(1)                               Unable to process this item
+     DpunchEvent                           LikeDS(punchEventDS)
+     DexcusedAbs                       N
+     DunexcusedAbs                     N
+     Dmissingtmsts                         LikeDS(missTimeStsDS)
+     Djustifications                 10A   Dim(1)                               Unable to process this item
+     DjustifiedTimes                 10A   Dim(1)                               Unable to process this item
+     Dtransfer                         N
+     DeventDate                      10A
+     DstartException                   N
+     DendException                     N
+     Dreviewed                         N
+
+      ************************************
+      * punchDS data structure
+      ************************************
+     DpunchDS          DS                  Qualified
+     D                                     Template
+     Did                              5P 0
+     Demployee                             LikeDS(employeeDS)
+     DpunchDtm                       19A
+     DroundedPunchDtm                19A
+     DtimeZone                             LikeDS(timeZoneDS)
+     DenteredOnDtm                   19A
+     DhasComments                      N
+     DeditByType                           LikeDS(editByTypeDS)
+     DdataSource                           LikeDS(dataSourceDS)
+     DtypeOverride                         LikeDS(typeOverrideDS)
+     Dexceptions                           LikeDS(ExceptionDS)
+     D                                     Dim(1)
+     DcommentsNotes                  10A   Dim(1)                               Unable to process this item
+     DisPhantom                        N
+     DisScheduled                      N
+     DupdatedOnDtm                   19A
+     Dvalidasts                        N
+     Datttestasts                      N
+     Dmarkrelexcp                      N
+     Deditable                         N
+     DcancelDeduct                     N
+     Dfromphantom                      N
+     Dexceptresolv                     N
+
+      ************************************
+      * PunchReq data structure
+      * Record length: 16
+      ************************************
+     DPunchReqLen      C                   16
+     DPunchReq         DS                  Qualified
+     D                                     Template
+     Demployee                        6A
+     Ddate                           10A
+
+      ************************************
+      * Convert PunchReq to buffer
+      ************************************
+     DPunchReqToBuf    PR
+     DDataStruct                           LikeDS(PunchReq)
+     D                                     Const
+     DBuffer                         16A
+
+      ************************************
+      * PunchRes data structure
+      * Record length: 687
+      ************************************
+     DPunchResLen      C                   687
+     DPunchRes         DS                  Qualified
+     D                                     Template
+     DstartDate                      19A
+     DendDate                        19A
+     Dpunches                              LikeDS(punchDS)
+     D                                     Dim(1)
+
+      ************************************
+      * Convert buffer to PunchRes
+      ************************************
+     DBufToPunchRes    PR
+     DBuffer                        687A
+     DDataStruct                           LikeDS(PunchRes)

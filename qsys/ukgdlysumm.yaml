@@ -1,0 +1,115 @@
+---
+name: ukgdlysumm
+rpgIncName: ukgdlysm_h
+datastructures:
+  employeeDS:
+    subfields:
+      id:
+        type: Packed
+        length: 5
+      qualifier:
+        type: Character
+        length: 6
+      name:
+        type: Character
+        length: 6
+  dlyTtlAmtDS:
+    subfields:
+      HOUR:
+        type: Packed
+        length: 5
+  wagesCurrencyDS:
+    subfields:
+      amount:
+        type: Packed
+        length: 1
+      currencyCode:
+        type: Character
+        length: 3
+  HourDS:
+    subfields:
+      id:
+        type: Packed
+        length: 6
+      durationInHours:
+        type: Packed
+        length: 3
+        precision: 2
+      wages:
+        type: Packed
+        length: 1
+      wagesCurrency:
+        type: DataStruct
+        dsName: wagesCurrencyDS
+      durationInDays:
+        type: Packed
+        length: 1
+      timeItemId:
+        type: Packed
+        length: 6
+      amountType:
+        type: Character
+        length: 4
+      employee:
+        type: DataStruct
+        dsName: employeeDS
+      applyDate:
+        type: Character
+        length: 10
+      fromShift:
+        type: Boolean
+      totalType:
+        type: Character
+        length: 12
+  hrsAndCstSumDS:
+    subfields:
+      HOUR:
+        type: DataStruct
+        dsName: HourDS
+        dim: 2
+  DailySummDS:
+    subfields:
+      employee:
+        type: DataStruct
+        dsName: employeeDS
+      applyDate:
+        type: Character
+        length: 10
+      cumulativeTotal:
+        type: Packed
+        length: 5
+      dailyTotalAmount:
+        rpgName: dailytotalamt
+        type: DataStruct
+        dsName: dlyTtlAmtDS
+      hoursAndCostSummaries:
+        rpgName: hrsAndCstSum
+        type: DataStruct
+        dsName: hrsAndCstSumDS
+formats:
+  SummaryRes:
+    recordType: response
+    subfields:
+      startDate:
+        type: Character
+        length: 19
+      endDate:
+        type: Character
+        length: 19
+      dailyTotalSummary:
+        rpgName: dlyttlsum
+        type: DataStruct
+        dsName: DailySummDS
+        dim: 10
+  SummaryReq:
+    recordType: request
+    subfields:
+      employeer:
+        type: Character
+        length: 6    
+      startDater:
+        type: Character
+        length: 10
+      endDater:
+        type: Character
+        length: 10

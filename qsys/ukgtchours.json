@@ -1,0 +1,711 @@
+{
+    "startDate": "2023-06-04T00:00:00",
+    "endDate": "2023-06-17T00:00:00",
+    "punches": [
+        {
+            "id": 26102,
+            "employee": {
+                "id": 1147,
+                "qualifier": "013491",
+                "name": "013491"
+            },
+            "punchDtm": "2023-06-05T08:53:00",
+            "roundedPunchDtm": "2023-06-05T09:00:00",
+            "timeZone": {
+                "id": 134111,
+                "qualifier": "(GMT -05:00) Eastern Time (USA; Canada)",
+                "name": "(GMT -05:00) Eastern Time (USA; Canada)"
+            },
+            "enteredOnDtm": "2023-06-05T12:53:58",
+            "hasComments": false,
+            "editByType": {
+                "id": -1,
+                "qualifier": "EMPLOYEE_MADE_ADD_OR_EDIT",
+                "name": "EMPLOYEE_MADE_ADD_OR_EDIT"
+            },
+            "dataSource": {
+                "id": 31726,
+                "qualifier": "Behera, Sujit K",
+                "displayName": "Time Stamp",
+                "functionalAreaName": "sujit.behera@nrsonline.com/Time Stamp",
+                "name": "Behera, Sujit K"
+            },
+            "exceptions": ["exceptions"],
+            "commentsNotes": ["nocomments"],
+            "isPhantom": false,
+            "isScheduled": false,
+            "updatedOnDtm": "2023-06-05T12:53:58",
+            "geoLocation": {
+                "locationId": 1518,
+                "accuracy": 1000000.0,
+                "outsideOfGeofence": false,
+                "updateTime": "2023-06-05T12:53:58",
+                "geofenceMethodId": 0,
+                "unverified": true
+            },
+            "validateAsTimestamp": false,
+            "attestationPunchEdit": false,
+            "markRelatedExceptionsAsReviewed": false,
+            "editable": true,
+            "cancelDeduct": false,
+            "fromPhantomEdited": false,
+            "exceptionResolved": false
+        },
+        {
+            "id": 25486,
+            "employee": {
+                "id": 1147,
+                "qualifier": "013491",
+                "name": "013491"
+            },
+            "punchDtm": "2023-06-06T10:31:00",
+            "roundedPunchDtm": "2023-06-06T09:00:00",
+            "timeZone": {
+                "id": 134111,
+                "qualifier": "(GMT -05:00) Eastern Time (USA; Canada)",
+                "name": "(GMT -05:00) Eastern Time (USA; Canada)"
+            },
+            "enteredOnDtm": "2023-06-06T14:31:35",
+            "hasComments": false,
+            "editByType": {
+                "id": -1,
+                "qualifier": "EMPLOYEE_MADE_ADD_OR_EDIT",
+                "name": "EMPLOYEE_MADE_ADD_OR_EDIT"
+            },
+            "dataSource": {
+                "id": 31726,
+                "qualifier": "Behera, Sujit K",
+                "displayName": "Time Stamp",
+                "functionalAreaName": "sujit.behera@nrsonline.com/Time Stamp",
+                "name": "Behera, Sujit K"
+            },
+            "typeOverride": {
+                "id": 2,
+                "qualifier": "In Punch",
+                "typeOverrideId": 2,
+                "description": "In Punch",
+                "name": "In Punch"
+            },
+            "exceptions": [],
+            "commentsNotes": [],
+            "isPhantom": false,
+            "isScheduled": false,
+            "updatedOnDtm": "2023-06-06T14:31:35",
+            "geoLocation": {
+                "locationId": 1335,
+                "accuracy": 1000000.0,
+                "outsideOfGeofence": false,
+                "updateTime": "2023-06-06T14:31:35",
+                "geofenceMethodId": 0,
+                "unverified": true
+            },
+            "validateAsTimestamp": false,
+            "attestationPunchEdit": false,
+            "markRelatedExceptionsAsReviewed": false,
+            "editable": true,
+            "cancelDeduct": false,
+            "fromPhantomEdited": false,
+            "exceptionResolved": false
+        },
+        {
+            "id": 36555,
+            "employee": {
+                "id": 1147,
+                "qualifier": "013491",
+                "name": "013491"
+            },
+            "punchDtm": "2023-06-07T07:55:00",
+            "roundedPunchDtm": "2023-06-07T09:00:00",
+            "timeZone": {
+                "id": 134111,
+                "qualifier": "(GMT -05:00) Eastern Time (USA; Canada)",
+                "name": "(GMT -05:00) Eastern Time (USA; Canada)"
+            },
+            "enteredOnDtm": "2023-06-07T11:55:40",
+            "hasComments": false,
+            "editByType": {
+                "id": -1,
+                "qualifier": "EMPLOYEE_MADE_ADD_OR_EDIT",
+                "name": "EMPLOYEE_MADE_ADD_OR_EDIT"
+            },
+            "dataSource": {
+                "id": 30995,
+                "qualifier": "Behera, Sujit K",
+                "displayName": "Time Stamp",
+                "functionalAreaName": "sujit.behera@nrsonline.com/Time Stamp",
+                "name": "Behera, Sujit K"
+            },
+            "typeOverride": {
+                "id": 2,
+                "qualifier": "In Punch",
+                "typeOverrideId": 2,
+                "description": "In Punch",
+                "name": "In Punch"
+            },
+            "exceptions": [],
+            "commentsNotes": [],
+            "isPhantom": false,
+            "isScheduled": false,
+            "updatedOnDtm": "2023-06-07T11:55:40",
+            "geoLocation": {
+                "locationId": 2202,
+                "latitude": 32.987755,
+                "longitude": -97.006493,
+                "accuracy": 16.408,
+                "locationType": "COARSE",
+                "outsideOfGeofence": false,
+                "updateTime": "2023-06-07T11:55:40",
+                "geofenceMethodId": 0,
+                "unverified": false,
+                "geoLocationInfo": "32.987755, -97.006493, 16.408"
+            },
+            "validateAsTimestamp": false,
+            "attestationPunchEdit": false,
+            "markRelatedExceptionsAsReviewed": false,
+            "editable": true,
+            "cancelDeduct": false,
+            "fromPhantomEdited": false,
+            "exceptionResolved": false
+        },
+        {
+            "id": 36655,
+            "employee": {
+                "id": 1147,
+                "qualifier": "013491",
+                "name": "013491"
+            },
+            "punchDtm": "2023-06-08T09:04:00",
+            "roundedPunchDtm": "2023-06-08T09:00:00",
+            "timeZone": {
+                "id": 134111,
+                "qualifier": "(GMT -05:00) Eastern Time (USA; Canada)",
+                "name": "(GMT -05:00) Eastern Time (USA; Canada)"
+            },
+            "enteredOnDtm": "2023-06-08T13:04:50",
+            "hasComments": false,
+            "editByType": {
+                "id": -1,
+                "qualifier": "EMPLOYEE_MADE_ADD_OR_EDIT",
+                "name": "EMPLOYEE_MADE_ADD_OR_EDIT"
+            },
+            "dataSource": {
+                "id": 30995,
+                "qualifier": "Behera, Sujit K",
+                "displayName": "Time Stamp",
+                "functionalAreaName": "sujit.behera@nrsonline.com/Time Stamp",
+                "name": "Behera, Sujit K"
+            },
+            "typeOverride": {
+                "id": 2,
+                "qualifier": "In Punch",
+                "typeOverrideId": 2,
+                "description": "In Punch",
+                "name": "In Punch"
+            },
+            "exceptions": [],
+            "commentsNotes": [],
+            "isPhantom": false,
+            "isScheduled": false,
+            "updatedOnDtm": "2023-06-08T13:04:50",
+            "geoLocation": {
+                "locationId": 2227,
+                "latitude": 32.987767,
+                "longitude": -97.006512,
+                "accuracy": 16.134,
+                "locationType": "COARSE",
+                "outsideOfGeofence": false,
+                "updateTime": "2023-06-08T13:04:50",
+                "geofenceMethodId": 0,
+                "unverified": false,
+                "geoLocationInfo": "32.987767, -97.006512, 16.134"
+            },
+            "validateAsTimestamp": false,
+            "attestationPunchEdit": false,
+            "markRelatedExceptionsAsReviewed": false,
+            "editable": true,
+            "cancelDeduct": false,
+            "fromPhantomEdited": false,
+            "exceptionResolved": false
+        },
+        {
+            "id": 42803,
+            "employee": {
+                "id": 1147,
+                "qualifier": "013491",
+                "name": "013491"
+            },
+            "punchDtm": "2023-06-09T09:00:00",
+            "roundedPunchDtm": "2023-06-09T09:00:00",
+            "timeZone": {
+                "id": 134111,
+                "qualifier": "(GMT -05:00) Eastern Time (USA; Canada)",
+                "name": "(GMT -05:00) Eastern Time (USA; Canada)"
+            },
+            "enteredOnDtm": "2023-06-09T13:00:42",
+            "hasComments": false,
+            "editByType": {
+                "id": -1,
+                "qualifier": "EMPLOYEE_MADE_ADD_OR_EDIT",
+                "name": "EMPLOYEE_MADE_ADD_OR_EDIT"
+            },
+            "dataSource": {
+                "id": 30995,
+                "qualifier": "Behera, Sujit K",
+                "displayName": "Time Stamp",
+                "functionalAreaName": "sujit.behera@nrsonline.com/Time Stamp",
+                "name": "Behera, Sujit K"
+            },
+            "typeOverride": {
+                "id": 2,
+                "qualifier": "In Punch",
+                "typeOverrideId": 2,
+                "description": "In Punch",
+                "name": "In Punch"
+            },
+            "exceptions": [],
+            "commentsNotes": [],
+            "isPhantom": false,
+            "isScheduled": false,
+            "updatedOnDtm": "2023-06-09T13:00:42",
+            "geoLocation": {
+                "locationId": 2406,
+                "latitude": 32.987761,
+                "longitude": -97.006542,
+                "accuracy": 18.108,
+                "locationType": "COARSE",
+                "outsideOfGeofence": false,
+                "updateTime": "2023-06-09T13:00:42",
+                "geofenceMethodId": 0,
+                "unverified": false,
+                "geoLocationInfo": "32.987761, -97.006542, 18.108"
+            },
+            "validateAsTimestamp": false,
+            "attestationPunchEdit": false,
+            "markRelatedExceptionsAsReviewed": false,
+            "editable": true,
+            "cancelDeduct": false,
+            "fromPhantomEdited": false,
+            "exceptionResolved": false
+        },
+        {
+            "id": 47143,
+            "employee": {
+                "id": 1147,
+                "qualifier": "013491",
+                "name": "013491"
+            },
+            "punchDtm": "2023-06-12T09:59:00",
+            "roundedPunchDtm": "2023-06-12T09:00:00",
+            "timeZone": {
+                "id": 134111,
+                "qualifier": "(GMT -05:00) Eastern Time (USA; Canada)",
+                "name": "(GMT -05:00) Eastern Time (USA; Canada)"
+            },
+            "enteredOnDtm": "2023-06-12T13:59:28",
+            "hasComments": false,
+            "editByType": {
+                "id": -1,
+                "qualifier": "EMPLOYEE_MADE_ADD_OR_EDIT",
+                "name": "EMPLOYEE_MADE_ADD_OR_EDIT"
+            },
+            "dataSource": {
+                "id": 30995,
+                "qualifier": "Behera, Sujit K",
+                "displayName": "Time Stamp",
+                "functionalAreaName": "sujit.behera@nrsonline.com/Time Stamp",
+                "name": "Behera, Sujit K"
+            },
+            "typeOverride": {
+                "id": 2,
+                "qualifier": "In Punch",
+                "typeOverrideId": 2,
+                "description": "In Punch",
+                "name": "In Punch"
+            },
+            "exceptions": [],
+            "commentsNotes": [],
+            "isPhantom": false,
+            "isScheduled": false,
+            "updatedOnDtm": "2023-06-12T13:59:28",
+            "geoLocation": {
+                "locationId": 2718,
+                "latitude": 32.987761,
+                "longitude": -97.006533,
+                "accuracy": 17.129,
+                "locationType": "COARSE",
+                "outsideOfGeofence": false,
+                "updateTime": "2023-06-12T13:59:28",
+                "geofenceMethodId": 0,
+                "unverified": false,
+                "geoLocationInfo": "32.987761, -97.006533, 17.129"
+            },
+            "validateAsTimestamp": false,
+            "attestationPunchEdit": false,
+            "markRelatedExceptionsAsReviewed": false,
+            "editable": true,
+            "cancelDeduct": false,
+            "fromPhantomEdited": false,
+            "exceptionResolved": false
+        },
+        {
+            "id": 52811,
+            "employee": {
+                "id": 1147,
+                "qualifier": "013491",
+                "name": "013491"
+            },
+            "punchDtm": "2023-06-13T09:00:00",
+            "roundedPunchDtm": "2023-06-13T09:00:00",
+            "timeZone": {
+                "id": 134111,
+                "qualifier": "(GMT -05:00) Eastern Time (USA; Canada)",
+                "name": "(GMT -05:00) Eastern Time (USA; Canada)"
+            },
+            "enteredOnDtm": "2023-06-13T13:00:32",
+            "hasComments": false,
+            "editByType": {
+                "id": -1,
+                "qualifier": "EMPLOYEE_MADE_ADD_OR_EDIT",
+                "name": "EMPLOYEE_MADE_ADD_OR_EDIT"
+            },
+            "dataSource": {
+                "id": 30995,
+                "qualifier": "Behera, Sujit K",
+                "displayName": "Time Stamp",
+                "functionalAreaName": "sujit.behera@nrsonline.com/Time Stamp",
+                "name": "Behera, Sujit K"
+            },
+            "typeOverride": {
+                "id": 2,
+                "qualifier": "In Punch",
+                "typeOverrideId": 2,
+                "description": "In Punch",
+                "name": "In Punch"
+            },
+            "exceptions": [],
+            "commentsNotes": [],
+            "isPhantom": false,
+            "isScheduled": false,
+            "updatedOnDtm": "2023-06-13T13:00:32",
+            "geoLocation": {
+                "locationId": 2741,
+                "latitude": 32.98776,
+                "longitude": -97.006556,
+                "accuracy": 17.955,
+                "locationType": "COARSE",
+                "outsideOfGeofence": false,
+                "updateTime": "2023-06-13T13:00:32",
+                "geofenceMethodId": 0,
+                "unverified": false,
+                "geoLocationInfo": "32.98776, -97.006556, 17.955"
+            },
+            "validateAsTimestamp": false,
+            "attestationPunchEdit": false,
+            "markRelatedExceptionsAsReviewed": false,
+            "editable": true,
+            "cancelDeduct": false,
+            "fromPhantomEdited": false,
+            "exceptionResolved": false
+        },
+        {
+            "id": 51699,
+            "employee": {
+                "id": 1147,
+                "qualifier": "013491",
+                "name": "013491"
+            },
+            "punchDtm": "2023-06-13T18:29:00",
+            "roundedPunchDtm": "2023-06-13T18:29:00",
+            "timeZone": {
+                "id": 134111,
+                "qualifier": "(GMT -05:00) Eastern Time (USA; Canada)",
+                "name": "(GMT -05:00) Eastern Time (USA; Canada)"
+            },
+            "enteredOnDtm": "2023-06-13T22:29:45",
+            "hasComments": false,
+            "editByType": {
+                "id": -1,
+                "qualifier": "EMPLOYEE_MADE_ADD_OR_EDIT",
+                "name": "EMPLOYEE_MADE_ADD_OR_EDIT"
+            },
+            "dataSource": {
+                "id": 38186,
+                "qualifier": "Behera, Sujit K",
+                "displayName": "Time Stamp",
+                "functionalAreaName": "sujit.behera@nrsonline.com/Time Stamp",
+                "name": "Behera, Sujit K"
+            },
+            "typeOverride": {
+                "id": 4,
+                "qualifier": "Out Punch",
+                "typeOverrideId": 4,
+                "description": "Out Punch",
+                "name": "Out Punch"
+            },
+            "exceptions": [],
+            "commentsNotes": [],
+            "isPhantom": false,
+            "isScheduled": false,
+            "updatedOnDtm": "2023-06-13T22:29:45",
+            "geoLocation": {
+                "locationId": 3063,
+                "latitude": 33.062548,
+                "longitude": -96.90136,
+                "accuracy": 52.331138,
+                "locationType": "COARSE",
+                "outsideOfGeofence": false,
+                "updateTime": "2023-06-13T22:29:45",
+                "geofenceMethodId": 0,
+                "unverified": false,
+                "geoLocationInfo": "33.062548, -96.90136, 52.331138"
+            },
+            "validateAsTimestamp": false,
+            "attestationPunchEdit": false,
+            "markRelatedExceptionsAsReviewed": false,
+            "editable": true,
+            "cancelDeduct": false,
+            "fromPhantomEdited": false,
+            "exceptionResolved": false
+        },
+        {
+            "id": 51482,
+            "employee": {
+                "id": 1147,
+                "qualifier": "013491",
+                "name": "013491"
+            },
+            "punchDtm": "2023-06-14T08:58:00",
+            "roundedPunchDtm": "2023-06-14T09:00:00",
+            "timeZone": {
+                "id": 134111,
+                "qualifier": "(GMT -05:00) Eastern Time (USA; Canada)",
+                "name": "(GMT -05:00) Eastern Time (USA; Canada)"
+            },
+            "enteredOnDtm": "2023-06-14T12:58:44",
+            "hasComments": false,
+            "editByType": {
+                "id": -1,
+                "qualifier": "EMPLOYEE_MADE_ADD_OR_EDIT",
+                "name": "EMPLOYEE_MADE_ADD_OR_EDIT"
+            },
+            "dataSource": {
+                "id": 30995,
+                "qualifier": "Behera, Sujit K",
+                "displayName": "Time Stamp",
+                "functionalAreaName": "sujit.behera@nrsonline.com/Time Stamp",
+                "name": "Behera, Sujit K"
+            },
+            "typeOverride": {
+                "id": 2,
+                "qualifier": "In Punch",
+                "typeOverrideId": 2,
+                "description": "In Punch",
+                "name": "In Punch"
+            },
+            "exceptions": [],
+            "commentsNotes": [],
+            "isPhantom": false,
+            "isScheduled": false,
+            "updatedOnDtm": "2023-06-14T12:58:44",
+            "geoLocation": {
+                "locationId": 3168,
+                "latitude": 32.987747,
+                "longitude": -97.006499,
+                "accuracy": 15.635,
+                "locationType": "COARSE",
+                "outsideOfGeofence": false,
+                "updateTime": "2023-06-14T12:58:44",
+                "geofenceMethodId": 0,
+                "unverified": false,
+                "geoLocationInfo": "32.987747, -97.006499, 15.635"
+            },
+            "validateAsTimestamp": false,
+            "attestationPunchEdit": false,
+            "markRelatedExceptionsAsReviewed": false,
+            "editable": true,
+            "cancelDeduct": false,
+            "fromPhantomEdited": false,
+            "exceptionResolved": false
+        },
+        {
+            "id": 49780,
+            "employee": {
+                "id": 1147,
+                "qualifier": "013491",
+                "name": "013491"
+            },
+            "punchDtm": "2023-06-15T09:00:00",
+            "roundedPunchDtm": "2023-06-15T09:00:00",
+            "timeZone": {
+                "id": 134111,
+                "qualifier": "(GMT -05:00) Eastern Time (USA; Canada)",
+                "name": "(GMT -05:00) Eastern Time (USA; Canada)"
+            },
+            "enteredOnDtm": "2023-06-15T13:00:30",
+            "hasComments": false,
+            "editByType": {
+                "id": -1,
+                "qualifier": "EMPLOYEE_MADE_ADD_OR_EDIT",
+                "name": "EMPLOYEE_MADE_ADD_OR_EDIT"
+            },
+            "dataSource": {
+                "id": 30995,
+                "qualifier": "Behera, Sujit K",
+                "displayName": "Time Stamp",
+                "functionalAreaName": "sujit.behera@nrsonline.com/Time Stamp",
+                "name": "Behera, Sujit K"
+            },
+            "typeOverride": {
+                "id": 2,
+                "qualifier": "In Punch",
+                "typeOverrideId": 2,
+                "description": "In Punch",
+                "name": "In Punch"
+            },
+            "exceptions": [],
+            "commentsNotes": [],
+            "isPhantom": false,
+            "isScheduled": false,
+            "updatedOnDtm": "2023-06-15T13:00:30",
+            "geoLocation": {
+                "locationId": 3050,
+                "latitude": 32.987768,
+                "longitude": -97.006555,
+                "accuracy": 17.876,
+                "locationType": "COARSE",
+                "outsideOfGeofence": false,
+                "updateTime": "2023-06-15T13:00:30",
+                "geofenceMethodId": 0,
+                "unverified": false,
+                "geoLocationInfo": "32.987768, -97.006555, 17.876"
+            },
+            "validateAsTimestamp": false,
+            "attestationPunchEdit": false,
+            "markRelatedExceptionsAsReviewed": false,
+            "editable": true,
+            "cancelDeduct": false,
+            "fromPhantomEdited": false,
+            "exceptionResolved": false
+        },
+        {
+            "id": 62144,
+            "employee": {
+                "id": 1147,
+                "qualifier": "013491",
+                "name": "013491"
+            },
+            "punchDtm": "2023-06-16T14:40:00",
+            "roundedPunchDtm": "2023-06-16T15:01:00",
+            "timeZone": {
+                "id": 134111,
+                "qualifier": "(GMT -05:00) Eastern Time (USA; Canada)",
+                "name": "(GMT -05:00) Eastern Time (USA; Canada)"
+            },
+            "enteredOnDtm": "2023-06-16T18:40:42",
+            "hasComments": false,
+            "editByType": {
+                "id": -1,
+                "qualifier": "EMPLOYEE_MADE_ADD_OR_EDIT",
+                "name": "EMPLOYEE_MADE_ADD_OR_EDIT"
+            },
+            "dataSource": {
+                "id": 30995,
+                "qualifier": "Behera, Sujit K",
+                "displayName": "Time Stamp",
+                "functionalAreaName": "sujit.behera@nrsonline.com/Time Stamp",
+                "name": "Behera, Sujit K"
+            },
+            "typeOverride": {
+                "id": 2,
+                "qualifier": "In Punch",
+                "typeOverrideId": 2,
+                "description": "In Punch",
+                "name": "In Punch"
+            },
+            "exceptions": [],
+            "commentsNotes": [],
+            "isPhantom": false,
+            "isScheduled": false,
+            "updatedOnDtm": "2023-06-16T18:40:42",
+            "geoLocation": {
+                "locationId": 3815,
+                "latitude": 32.987741,
+                "longitude": -97.006505,
+                "accuracy": 17.424,
+                "locationType": "COARSE",
+                "outsideOfGeofence": false,
+                "updateTime": "2023-06-16T18:40:42",
+                "geofenceMethodId": 0,
+                "unverified": false,
+                "geoLocationInfo": "32.987741, -97.006505, 17.424"
+            },
+            "validateAsTimestamp": false,
+            "attestationPunchEdit": false,
+            "markRelatedExceptionsAsReviewed": false,
+            "editable": true,
+            "cancelDeduct": false,
+            "fromPhantomEdited": false,
+            "exceptionResolved": false
+        },
+        {
+            "id": 62662,
+            "employee": {
+                "id": 1147,
+                "qualifier": "013491",
+                "name": "013491"
+            },
+            "punchDtm": "2023-06-16T19:01:00",
+            "roundedPunchDtm": "2023-06-16T19:01:00",
+            "timeZone": {
+                "id": 134111,
+                "qualifier": "(GMT -05:00) Eastern Time (USA; Canada)",
+                "name": "(GMT -05:00) Eastern Time (USA; Canada)"
+            },
+            "enteredOnDtm": "2023-06-16T23:01:52",
+            "hasComments": false,
+            "editByType": {
+                "id": -1,
+                "qualifier": "EMPLOYEE_MADE_ADD_OR_EDIT",
+                "name": "EMPLOYEE_MADE_ADD_OR_EDIT"
+            },
+            "dataSource": {
+                "id": 31726,
+                "qualifier": "Behera, Sujit K",
+                "displayName": "Time Stamp",
+                "functionalAreaName": "sujit.behera@nrsonline.com/Time Stamp",
+                "name": "Behera, Sujit K"
+            },
+            "typeOverride": {
+                "id": 4,
+                "qualifier": "Out Punch",
+                "typeOverrideId": 4,
+                "description": "Out Punch",
+                "name": "Out Punch"
+            },
+            "exceptions": [],
+            "commentsNotes": [],
+            "isPhantom": false,
+            "isScheduled": false,
+            "updatedOnDtm": "2023-06-16T23:01:52",
+            "geoLocation": {
+                "locationId": 3875,
+                "latitude": 32.987671,
+                "longitude": -97.006607,
+                "accuracy": 12.228247,
+                "locationType": "COARSE",
+                "outsideOfGeofence": false,
+                "updateTime": "2023-06-16T23:01:52",
+                "geofenceMethodId": 0,
+                "unverified": false,
+                "geoLocationInfo": "32.987671, -97.006607, 12.228247"
+            },
+            "validateAsTimestamp": false,
+            "attestationPunchEdit": false,
+            "markRelatedExceptionsAsReviewed": false,
+            "editable": true,
+            "cancelDeduct": false,
+            "fromPhantomEdited": false,
+            "exceptionResolved": false
+        }
+    ]
+}
