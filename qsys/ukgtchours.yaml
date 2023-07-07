@@ -1,0 +1,164 @@
+---
+name: ukgtchours
+rpgIncName: ukghours_h
+datastructures:
+  employeeDS:
+    subfields:
+      id:
+        type: Packed
+        length: 4
+      qualifier:
+        type: Character
+        length: 6
+      name:
+        type: Character
+        length: 6
+  timeZoneDS:
+    subfields:
+      id:
+        type: Packed
+        length: 6
+      qualifier:
+        type: Character
+        length: 39
+      name:
+        type: Character
+        length: 39
+  editByTypeDS:
+    subfields:
+      id:
+        type: Packed
+        length: 2
+      qualifier:
+        type: Character
+        length: 25
+      name:
+        type: Character
+        length: 25
+  dataSourceDS:
+    subfields:
+      id:
+        type: Packed
+        length: 5
+      qualifier:
+        type: Character
+        length: 15
+      displayName:
+        type: Character
+        length: 10
+      functionalAreaName:
+        rpgName: funcareanm
+        type: Character
+        length: 37
+      name:
+        type: Character
+        length: 15
+  geoLocationDS:
+    subfields:
+      locationId:
+        type: Packed
+        length: 4
+      accuracy:
+        type: Packed
+        length: 7
+      outsideOfGeofence:
+        rpgName: outsidegeofence
+        type: Boolean
+      updateTime:
+        type: Character
+        length: 19
+      geofenceMethodId:
+        rpgName: geofencemethod
+        type: Packed
+        length: 1
+      unverified:
+        type: Boolean
+  AnonymousDS:
+    subfields:
+      id:
+        type: Packed
+        length: 5
+      employee:
+        type: DataStruct
+        dsName: employeeDS
+      punchDtm:
+        type: Character
+        length: 19
+      roundedPunchDtm:
+        type: Character
+        length: 19
+      timeZone:
+        type: DataStruct
+        dsName: timeZoneDS
+      enteredOnDtm:
+        type: Character
+        length: 19
+      hasComments:
+        type: Boolean
+      editByType:
+        type: DataStruct
+        dsName: editByTypeDS
+      dataSource:
+        type: DataStruct
+        dsName: dataSourceDS
+      exceptions:
+        type: Character
+        length: 10
+        dim: 1
+      commentsNotes:
+        type: Character
+        length: 10
+        dim: 1
+      isPhantom:
+        type: Boolean
+      isScheduled:
+        type: Boolean
+      updatedOnDtm:
+        type: Character
+        length: 19
+      geoLocation:
+        type: DataStruct
+        dsName: geoLocationDS
+      validateAsTimestamp:
+        rpgName: validateasts
+        type: Boolean
+      attestationPunchEdit:
+        rpgName: attestpunchedit
+        type: Boolean
+      markRelatedExceptionsAsReviewed:
+        rpgName: markrereviewed
+        type: Boolean
+      editable:
+        type: Boolean
+      cancelDeduct:
+        type: Boolean
+      fromPhantomEdited:
+        rpgName: fromphantomed
+        type: Boolean
+      exceptionResolved:
+        rpgName: exceptresolved
+        type: Boolean
+formats:
+  FormatName:
+    recordType: response
+    subfields:
+      startDate:
+        type: Character
+        length: 19
+      endDate:
+        type: Character
+        length: 19
+      punches:
+        type: DataStruct
+        dsName: AnonymousDS
+        dim: 12
+  HoursReq:
+    recordType: request
+    subfields:
+      employee:
+        type: Character
+        length: 6
+      date:
+        type: Character
+        length: 10
+        

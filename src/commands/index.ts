@@ -14,6 +14,7 @@ import registerMailgun from './mailgun';
 import registerMakeme from './mmpwd';
 import registerPaycargo from './paycargo';
 import registerProject44 from './project44';
+import registerUKG from './ukg';
 
 export default async function registerCommands(router: ECCRouter) {
     const jokes = new ECCRouter.Router();
@@ -75,6 +76,10 @@ export default async function registerCommands(router: ECCRouter) {
     const project44 = new ECCRouter.Router();
     registerProject44(project44);
     router.use('project44', project44);
+
+    const ukg = new ECCRouter.Router();
+    registerUKG(ukg);
+    router.use('ukg', ukg);
 
     return router;
 }

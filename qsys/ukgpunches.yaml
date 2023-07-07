@@ -1,0 +1,299 @@
+---
+name: ukgpunches
+rpgIncName: ukgpunch_h
+datastructures:
+  employeeDS:
+    subfields:
+      id:
+        type: Packed
+        length: 5
+      qualifier:
+        type: Character
+        length: 6
+      name:
+        type: Character
+        length: 6
+  timeZoneDS:
+    subfields:
+      id:
+        type: Packed
+        length: 6
+      qualifier:
+        type: Character
+        length: 39
+      name:
+        type: Character
+        length: 39
+  editByTypeDS:
+    subfields:
+      id:
+        type: Packed
+        length: 2
+      qualifier:
+        type: Character
+        length: 25
+      name:
+        type: Character
+        length: 25
+  dataSourceDS:
+    subfields:
+      id:
+        type: Packed
+        length: 5
+      qualifier:
+        type: Character
+        length: 17
+      displayName:
+        type: Character
+        length: 12
+      functionAreaName:
+        rpgName: funcareanm
+        type: Character
+        length: 9
+      name:
+        type: Character
+        length: 17
+  typeOverrideDS:
+    subfields:
+      id:
+        type: Packed
+        length: 1
+      qualifier:
+        type: Character
+        length: 8
+      typeOverrideId:
+        type: Packed
+        length: 1
+      description:
+        type: Character
+        length: 8
+      name:
+        type: Character
+        length: 8
+  endTimeZoneDS:
+    subfields:
+      id:
+        type: Packed
+        length: 6
+  exceptionTypeDS:
+    subfields:
+      id:
+        type: Packed
+        length: 1
+      name:
+        type: Character
+        length: 8
+      description:
+        type: Character
+        length: 12
+      displayName:
+        type: Character
+        length: 8
+      category:
+        type: Character
+        length: 19
+  orgJobDS:
+    subfields:
+      id:
+        type: Packed
+        length: 3
+  startTimeZoneDS:
+    subfields:
+      id:
+        type: Packed
+        length: 6
+  workRuleDS:
+    subfields:
+      id:
+        type: Packed
+        length: 3
+      qualifier:
+        type: Character
+        length: 32
+      name:
+        type: Character
+        length: 32
+  punchEventDS:
+    subfields:
+      id:
+        type: Packed
+        length: 6
+  missTimeStsDS:
+    subfields:
+      id:
+        type: Packed
+        length: 1
+      displayName:
+        type: Character
+        length: 14
+  ExceptionDS:
+    subfields:
+      employee:
+        type: DataStruct
+        dsName: employeeDS
+      startDateTime:
+        type: Character
+        length: 19
+      endDateTime:
+        type: Character
+        length: 19
+      applyDate:
+        type: Character
+        length: 10
+      id:
+        type: Packed
+        length: 5
+      endTimeZone:
+        type: DataStruct
+        dsName: endTimeZoneDS
+      exceptionType:
+        type: DataStruct
+        dsName: exceptionTypeDS
+      orgJob:
+        type: DataStruct
+        dsName: orgJobDS
+      overLimitInHours:
+        rpgName: overlimithrs
+        type: Packed
+        length: 3
+        precision: 2
+      startTimeZone:
+        type: DataStruct
+        dsName: startTimeZoneDS
+      violationInHours:
+        rpgName: violationhrs
+        type: Packed
+        length: 3
+        precision: 2
+      workRule:
+        type: DataStruct
+        dsName: workRuleDS
+      commentsNotes:
+        type: Character
+        length: 10
+        comment: Unable to process this item
+        dim: 1
+      punchEvent:
+        type: DataStruct
+        dsName: punchEventDS
+      isExcusedAbsence:
+        rpgName: excusedAbs
+        type: Boolean
+      isUnExcusedAbsence:
+        rpgName: unexcusedAbs
+        type: Boolean
+      missingTimeStatus:
+        rpgName: missingtmsts
+        type: DataStruct
+        dsName: missTimeStsDS
+      justifications:
+        type: Character
+        length: 10
+        comment: Unable to process this item
+        dim: 1
+      justifiedTimes:
+        type: Character
+        length: 10
+        comment: Unable to process this item
+        dim: 1
+      transfer:
+        type: Boolean
+      eventDate:
+        type: Character
+        length: 10
+      startException:
+        type: Boolean
+      endException:
+        type: Boolean
+      reviewed:
+        type: Boolean
+  punchDS:
+    subfields:
+      id:
+        type: Packed
+        length: 5
+      employee:
+        type: DataStruct
+        dsName: employeeDS
+      punchDtm:
+        type: Character
+        length: 19
+      roundedPunchDtm:
+        type: Character
+        length: 19
+      timeZone:
+        type: DataStruct
+        dsName: timeZoneDS
+      enteredOnDtm:
+        type: Character
+        length: 19
+      hasComments:
+        type: Boolean
+      editByType:
+        type: DataStruct
+        dsName: editByTypeDS
+      dataSource:
+        type: DataStruct
+        dsName: dataSourceDS
+      typeOverride:
+        type: DataStruct
+        dsName: typeOverrideDS
+      exceptions:
+        type: DataStruct
+        dsName: ExceptionDS
+        dim: 1
+      commentsNotes:
+        type: Character
+        length: 10
+        comment: Unable to process this item
+        dim: 1
+      isPhantom:
+        type: Boolean
+      isScheduled:
+        type: Boolean
+      updatedOnDtm:
+        type: Character
+        length: 19
+      validateAsTimestamp:
+        rpgName: validasts
+        type: Boolean
+      attestationPunchEdit:
+        rpgName: atttestasts
+        type: Boolean
+      markRelatedExceptionsAsReviewed:
+        rpgName: markrelexcp
+        type: Boolean
+      editable:
+        type: Boolean
+      cancelDeduct:
+        type: Boolean
+      fromPhantomEdited:
+        rpgName: fromphantom
+        type: Boolean
+      exceptionResolved:
+        rpgName: exceptresolv
+        type: Boolean
+formats:
+  PunchRes:
+    recordType: response
+    subfields:
+      startDate:
+        type: Character
+        length: 19
+      endDate:
+        type: Character
+        length: 19
+      punches:
+        type: DataStruct
+        dsName: punchDS
+        dim: 1
+  PunchReq:
+    recordType: request
+    subfields:
+      employee:
+        type: Character
+        length: 6
+      date:
+        type: Character
+        length: 10      
+

@@ -1,0 +1,104 @@
+      ************************************
+      * Module: ukgdlysumm
+      * Generated RPG data structures
+      * and prototypes
+      * Do not modify
+      ************************************
+
+      ************************************
+      * employeeDS data structure
+      ************************************
+     DemployeeDS       DS                  Qualified
+     D                                     Template
+     Did                              5P 0
+     Dqualifier                       6A
+     Dname                            6A
+
+      ************************************
+      * dlyTtlAmtDS data structure
+      ************************************
+     DdlyTtlAmtDS      DS                  Qualified
+     D                                     Template
+     DHOUR                            5P 0
+
+      ************************************
+      * wagesCurrencyDS data structure
+      ************************************
+     DwagesCurrencyDS  DS                  Qualified
+     D                                     Template
+     Damount                          1P 0
+     DcurrencyCode                    3A
+
+      ************************************
+      * HourDS data structure
+      ************************************
+     DHourDS           DS                  Qualified
+     D                                     Template
+     Did                              6P 0
+     DdurationInHours                 3P 2
+     Dwages                           1P 0
+     DwagesCurrency                        LikeDS(wagesCurrencyDS)
+     DdurationInDays                  1P 0
+     DtimeItemId                      6P 0
+     DamountType                      4A
+     Demployee                             LikeDS(employeeDS)
+     DapplyDate                      10A
+     DfromShift                        N
+     DtotalType                      12A
+
+      ************************************
+      * hrsAndCstSumDS data structure
+      ************************************
+     DhrsAndCstSumDS   DS                  Qualified
+     D                                     Template
+     DHOUR                                 LikeDS(HourDS)
+     D                                     Dim(2)
+
+      ************************************
+      * DailySummDS data structure
+      ************************************
+     DDailySummDS      DS                  Qualified
+     D                                     Template
+     Demployee                             LikeDS(employeeDS)
+     DapplyDate                      10A
+     DcumulativeTotal                 5P 0
+     Ddailytotalamt                        LikeDS(dlyTtlAmtDS)
+     DhrsAndCstSum                         LikeDS(hrsAndCstSumDS)
+
+      ************************************
+      * SummaryReq data structure
+      * Record length: 26
+      ************************************
+     DSummaryReqLen    C                   26
+     DSummaryReq       DS                  Qualified
+     D                                     Template
+     Demployeer                       6A
+     DstartDater                     10A
+     DendDater                       10A
+
+      ************************************
+      * Convert SummaryReq to buffer
+      ************************************
+     DSummaryReqToBuf  PR
+     DDataStruct                           LikeDS(SummaryReq)
+     D                                     Const
+     DBuffer                         26A
+
+      ************************************
+      * SummaryRes data structure
+      * Record length: 2048
+      ************************************
+     DSummaryResLen    C                   2048
+     DSummaryRes       DS                  Qualified
+     D                                     Template
+     DstartDate                      19A
+     DendDate                        19A
+     Ddlyttlsum                            LikeDS(DailySummDS)
+     D                                     Dim(10)
+
+      ************************************
+      * Convert buffer to SummaryRes
+      ************************************
+     DBufToSummaryRes  PR
+     DBuffer                       2048A
+     DDataStruct                           LikeDS(SummaryRes)
