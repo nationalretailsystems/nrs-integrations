@@ -62,7 +62,7 @@ export const FKSTOPETAModel = new eradaniConnect.run.Pgm('FKSTOPETA', {
             name: 'ReferenceNumbers',
             type: new dataTypes.Char(50),
             defaultValue: '',
-            dim: 10
+            dim: 15
         },
         {
             name: 'Scac',
@@ -103,7 +103,7 @@ export const FKSTOPETAModel = new eradaniConnect.run.Pgm('FKSTOPETA', {
             name: 'Tags',
             type: new dataTypes.Char(50),
             defaultValue: '',
-            dim: 10
+            dim: 15
         },
         {
             name: 'Timestamp',

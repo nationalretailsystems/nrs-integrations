@@ -5,6 +5,7 @@ codeblocks:
     - ""
     - // Manually entered import
     - import config from 'config';
+pgmmodels:
   FKSTOPETA:
     library: \config.eradaniConnect.native.pgmLib
     mode: ile
@@ -49,7 +50,7 @@ codeblocks:
             type: Character
             length: 50
             default: ""
-            dim: 10
+            dim: 15
           Scac:
             type: Character
             length: 4
@@ -81,7 +82,7 @@ codeblocks:
             type: Character
             length: 50
             default: ""
-            dim: 10
+            dim: 15
           Timestamp:
             type: Timestamp
           VesselName:
