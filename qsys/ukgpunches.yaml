@@ -11,8 +11,8 @@ datastructures:
   employeeDS:
     subfields:
       id:
-        type: Packed
-        length: 5
+        type: Integer
+        length: 10
         default: 0
       qualifier:
         type: Character
@@ -25,8 +25,8 @@ datastructures:
   timeZoneDS:
     subfields:
       id:
-        type: Packed
-        length: 6
+        type: Integer
+        length: 10
         default: 0
       qualifier:
         type: Character
@@ -39,8 +39,8 @@ datastructures:
   editByTypeDS:
     subfields:
       id:
-        type: Packed
-        length: 2
+        type: Integer
+        length: 10
         default: 0
       qualifier:
         type: Character
@@ -53,8 +53,8 @@ datastructures:
   dataSourceDS:
     subfields:
       id:
-        type: Packed
-        length: 5
+        type: Integer
+        length: 10
         default: 0
       qualifier:
         type: Character
@@ -76,16 +76,16 @@ datastructures:
   typeOverrideDS:
     subfields:
       id:
-        type: Packed
-        length: 1
+        type: Integer
+        length: 10
         default: 0
       qualifier:
         type: Character
         length: 15
         default: ""
       typeOverrideId:
-        type: Packed
-        length: 1
+        type: Integer
+        length: 10
         default: 0
       description:
         type: Character
@@ -98,14 +98,14 @@ datastructures:
   endTimeZoneDS:
     subfields:
       id:
-        type: Packed
-        length: 6
+        type: Integer
+        length: 10
         default: 0
   exceptionTypeDS:
     subfields:
       id:
-        type: Packed
-        length: 1
+        type: Integer
+        length: 10
         default: 0
       name:
         type: Character
@@ -126,20 +126,20 @@ datastructures:
   orgJobDS:
     subfields:
       id:
-        type: Packed
-        length: 3
+        type: Intgeger
+        length: 10
         default: 0
   startTimeZoneDS:
     subfields:
       id:
-        type: Packed
-        length: 6
+        type: Integer
+        length: 10
         default: 0
   workRuleDS:
     subfields:
       id:
-        type: Packed
-        length: 3
+        type: Integer
+        length: 10
         default: 0
       qualifier:
         type: Character
@@ -152,14 +152,14 @@ datastructures:
   punchEventDS:
     subfields:
       id:
-        type: Packed
-        length: 6
+        type: Integer
+        length: 10
         default: 0
   missTimeStsDS:
     subfields:
       id:
-        type: Packed
-        length: 1
+        type: Integer
+        length: 10
         default: 0
       displayName:
         type: Character
@@ -183,8 +183,8 @@ datastructures:
         length: 10
         default: ""
       id:
-        type: Packed
-        length: 5
+        type: Integer
+        length: 10
         default: 0
       endTimeZone:
         type: DataStruct
@@ -255,8 +255,8 @@ datastructures:
   punchDS:
     subfields:
       id:
-        type: Packed
-        length: 7
+        type: Integer
+        length: 10
         default: 0
       employee:
         type: DataStruct
