@@ -60,7 +60,9 @@ GENMODS = icndbapi \
 		  pcgettran \
 		  pcgettrns \
 		  p44stsupd \
-		  ukgtotals
+		  ukgtotals \
+		  ukgpunches \
+		  ukgtchours
 
 GENHDRS = icndbapi_h \
           lblapi_h \
@@ -94,7 +96,9 @@ GENHDRS = icndbapi_h \
 		  pcgettrn_h \
 		  pcgettrs_h \
 		  p44stsup_h \
-		  ukgtotal_h
+		  ukgtotal_h \
+		  ukgpunch_h \
+		  ukg_hours_h
 
 SRVPGMS = ecctmpgen
 
@@ -543,6 +547,18 @@ $(libdir)/qrpglesrc.file/ukgtotals.mbr $(libdir)/qrpglesrc.file/ukgtotal_h.mbr .
 	cp ukgtotals.ts ../src/interfaces/ukgtotals.ts
 	system "CPYFRMSTMF FROMSTMF('ukgtotals.rpgle') TOMBR('$(libdir)/qrpglesrc.file/ukgtotals.mbr') MBROPT(*REPLACE)"
 	system "CPYFRMSTMF FROMSTMF('ukgtotal_h.rpgleinc') TOMBR('$(libdir)/qrpglesrc.file/ukgtotal_h.mbr') MBROPT(*REPLACE)"
+
+$(libdir)/qrpglesrc.file/ukgtchours.mbr $(libdir)/qrpglesrc.file/ukghours_h.mbr ../src/interfaces/ukgtchours.ts: ukgtchours.yaml
+	npx ec-generate -f $<
+	cp ukgtchours.ts ../src/interfaces/ukgtchours.ts
+	system "CPYFRMSTMF FROMSTMF('ukgtchours.rpgle') TOMBR('$(libdir)/qrpglesrc.file/ukgtchours.mbr') MBROPT(*REPLACE)"
+	system "CPYFRMSTMF FROMSTMF('ukghours_h.rpgleinc') TOMBR('$(libdir)/qrpglesrc.file/ukghours_h.mbr') MBROPT(*REPLACE)"
+
+$(libdir)/qrpglesrc.file/ukgpunches.mbr $(libdir)/qrpglesrc.file/ukgpunch_h.mbr ../src/interfaces/ukgpunches.ts: ukgpunches.yaml
+	npx ec-generate -f $<
+	cp ukgpunches.ts ../src/interfaces/ukgpunches.ts
+	system "CPYFRMSTMF FROMSTMF('ukgpunches.rpgle') TOMBR('$(libdir)/qrpglesrc.file/ukgpunches.mbr') MBROPT(*REPLACE)"
+	system "CPYFRMSTMF FROMSTMF('ukgpunch_h.rpgleinc') TOMBR('$(libdir)/qrpglesrc.file/ukgpunch_h.mbr') MBROPT(*REPLACE)"
 
 .PHONY: library
 library:

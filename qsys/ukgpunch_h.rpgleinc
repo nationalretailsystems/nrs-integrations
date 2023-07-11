@@ -6,6 +6,13 @@
       ************************************
 
       ************************************
+      * commentsNotesDS data structure
+      ************************************
+     DcommentsNotesDS  DS                  Qualified
+     D                                     Template
+     DcommentsNotes                  10A
+
+      ************************************
       * employeeDS data structure
       ************************************
      DemployeeDS       DS                  Qualified
@@ -20,8 +27,8 @@
      DtimeZoneDS       DS                  Qualified
      D                                     Template
      Did                              6P 0
-     Dqualifier                      39A
-     Dname                           39A
+     Dqualifier                      12A
+     Dname                           12A
 
       ************************************
       * editByTypeDS data structure
@@ -49,10 +56,10 @@
      DtypeOverrideDS   DS                  Qualified
      D                                     Template
      Did                              1P 0
-     Dqualifier                       8A
+     Dqualifier                      15A
      DtypeOverrideId                  1P 0
-     Ddescription                     8A
-     Dname                            8A
+     Ddescription                    15A
+     Dname                           15A
 
       ************************************
       * endTimeZoneDS data structure
@@ -92,7 +99,7 @@
      DworkRuleDS       DS                  Qualified
      D                                     Template
      Did                              3P 0
-     Dqualifier                      32A
+     Dqualifier                       3A
      Dname                           32A
 
       ************************************
@@ -127,13 +134,12 @@
      DstartTimeZone                        LikeDS(startTimeZoneDS)
      Dviolationhrs                    3P 2
      DworkRule                             LikeDS(workRuleDS)
-     DcommentsNotes                  10A   Dim(1)                               Unable to process this item
      DpunchEvent                           LikeDS(punchEventDS)
      DexcusedAbs                       N
      DunexcusedAbs                     N
      Dmissingtmsts                         LikeDS(missTimeStsDS)
-     Djustifications                 10A   Dim(1)                               Unable to process this item
-     DjustifiedTimes                 10A   Dim(1)                               Unable to process this item
+     Djustifications                 10A                                        Unable to process this item
+     DjustifiedTimes                 10A                                        Unable to process this item
      Dtransfer                         N
      DeventDate                      10A
      DstartException                   N
@@ -156,8 +162,6 @@
      DdataSource                           LikeDS(dataSourceDS)
      DtypeOverride                         LikeDS(typeOverrideDS)
      Dexceptions                           LikeDS(ExceptionDS)
-     D                                     Dim(1)
-     DcommentsNotes                  10A   Dim(1)                               Unable to process this item
      DisPhantom                        N
      DisScheduled                      N
      DupdatedOnDtm                   19A
@@ -171,13 +175,14 @@
 
       ************************************
       * PunchReq data structure
-      * Record length: 16
+      * Record length: 26
       ************************************
-     DPunchReqLen      C                   16
+     DPunchReqLen      C                   26
      DPunchReq         DS                  Qualified
      D                                     Template
      Demployee                        6A
-     Ddate                           10A
+     Dstartdate                      10A
+     Denddate                        10A
 
       ************************************
       * Convert PunchReq to buffer
@@ -185,23 +190,23 @@
      DPunchReqToBuf    PR
      DDataStruct                           LikeDS(PunchReq)
      D                                     Const
-     DBuffer                         16A
+     DBuffer                         26A
 
       ************************************
       * PunchRes data structure
-      * Record length: 687
+      * Record length: 11378
       ************************************
-     DPunchResLen      C                   687
+     DPunchResLen      C                   11378
      DPunchRes         DS                  Qualified
      D                                     Template
      DstartDate                      19A
      DendDate                        19A
      Dpunches                              LikeDS(punchDS)
-     D                                     Dim(1)
+     D                                     Dim(20)
 
       ************************************
       * Convert buffer to PunchRes
       ************************************
      DBufToPunchRes    PR
-     DBuffer                        687A
+     DBuffer                      11378A
      DDataStruct                           LikeDS(PunchRes)

@@ -2,130 +2,169 @@
 name: ukgpunches
 rpgIncName: ukgpunch_h
 datastructures:
+  commentsNotesDS:
+    subfields:
+      commentsNotes:
+        type: Character
+        length: 10
+        default: "None"
   employeeDS:
     subfields:
       id:
         type: Packed
         length: 5
+        default: 0
       qualifier:
         type: Character
         length: 6
+        default: ""
       name:
         type: Character
         length: 6
+        default: ""
   timeZoneDS:
     subfields:
       id:
         type: Packed
         length: 6
+        default: 0
       qualifier:
         type: Character
-        length: 39
+        length: 12
+        default: ""
       name:
         type: Character
-        length: 39
+        length: 12
+        default: ""
   editByTypeDS:
     subfields:
       id:
         type: Packed
         length: 2
+        default: 0
       qualifier:
         type: Character
         length: 25
+        default: ""
       name:
         type: Character
         length: 25
+        default: ""
   dataSourceDS:
     subfields:
       id:
         type: Packed
         length: 5
+        default: 0
       qualifier:
         type: Character
         length: 17
+        default: ""
       displayName:
         type: Character
         length: 12
+        default: ""
       functionAreaName:
         rpgName: funcareanm
         type: Character
         length: 9
+        default: ""
       name:
         type: Character
         length: 17
+        default: ""
   typeOverrideDS:
     subfields:
       id:
         type: Packed
         length: 1
+        default: 0
       qualifier:
         type: Character
-        length: 8
+        length: 15
+        default: ""
       typeOverrideId:
         type: Packed
         length: 1
+        default: 0
       description:
         type: Character
-        length: 8
+        length: 15
+        default: ""
       name:
         type: Character
-        length: 8
+        length: 15
+        default: ""
   endTimeZoneDS:
     subfields:
       id:
         type: Packed
         length: 6
+        default: 0
   exceptionTypeDS:
     subfields:
       id:
         type: Packed
         length: 1
+        default: 0
       name:
         type: Character
         length: 8
+        default: ""
       description:
         type: Character
         length: 12
+        default: ""
       displayName:
         type: Character
         length: 8
+        default: ""
       category:
         type: Character
         length: 19
+        default: ""
   orgJobDS:
     subfields:
       id:
         type: Packed
         length: 3
+        default: 0
   startTimeZoneDS:
     subfields:
       id:
         type: Packed
         length: 6
+        default: 0
   workRuleDS:
     subfields:
       id:
         type: Packed
         length: 3
+        default: 0
       qualifier:
         type: Character
-        length: 32
+        length: 3
+        default: ""
       name:
         type: Character
         length: 32
+        default: ""
   punchEventDS:
     subfields:
       id:
         type: Packed
         length: 6
+        default: 0
   missTimeStsDS:
     subfields:
       id:
         type: Packed
         length: 1
+        default: 0
       displayName:
         type: Character
         length: 14
+        default: ""
   ExceptionDS:
     subfields:
       employee:
@@ -134,15 +173,19 @@ datastructures:
       startDateTime:
         type: Character
         length: 19
+        default: ""
       endDateTime:
         type: Character
         length: 19
+        default: ""
       applyDate:
         type: Character
         length: 10
+        default: ""
       id:
         type: Packed
         length: 5
+        default: 0
       endTimeZone:
         type: DataStruct
         dsName: endTimeZoneDS
@@ -157,6 +200,7 @@ datastructures:
         type: Packed
         length: 3
         precision: 2
+        default: 0
       startTimeZone:
         type: DataStruct
         dsName: startTimeZoneDS
@@ -165,23 +209,21 @@ datastructures:
         type: Packed
         length: 3
         precision: 2
+        default: 0
       workRule:
         type: DataStruct
         dsName: workRuleDS
-      commentsNotes:
-        type: Character
-        length: 10
-        comment: Unable to process this item
-        dim: 1
       punchEvent:
         type: DataStruct
         dsName: punchEventDS
       isExcusedAbsence:
         rpgName: excusedAbs
         type: Boolean
+        default: false
       isUnExcusedAbsence:
         rpgName: unexcusedAbs
         type: Boolean
+        default: false
       missingTimeStatus:
         rpgName: missingtmsts
         type: DataStruct
@@ -189,46 +231,54 @@ datastructures:
       justifications:
         type: Character
         length: 10
-        comment: Unable to process this item
-        dim: 1
+        default: ""
       justifiedTimes:
         type: Character
         length: 10
-        comment: Unable to process this item
-        dim: 1
+        default: ""
       transfer:
         type: Boolean
+        default: false
       eventDate:
         type: Character
         length: 10
+        default: ""
       startException:
         type: Boolean
+        default: false
       endException:
         type: Boolean
+        default: true
       reviewed:
         type: Boolean
+        default: false
   punchDS:
     subfields:
       id:
         type: Packed
         length: 5
+        default: 0
       employee:
         type: DataStruct
         dsName: employeeDS
       punchDtm:
         type: Character
         length: 19
+        default: ""
       roundedPunchDtm:
         type: Character
         length: 19
+        default: ""
       timeZone:
         type: DataStruct
         dsName: timeZoneDS
       enteredOnDtm:
         type: Character
         length: 19
+        default: ""
       hasComments:
         type: Boolean
+        default: false
       editByType:
         type: DataStruct
         dsName: editByTypeDS
@@ -241,38 +291,42 @@ datastructures:
       exceptions:
         type: DataStruct
         dsName: ExceptionDS
-        dim: 1
-      commentsNotes:
-        type: Character
-        length: 10
-        comment: Unable to process this item
-        dim: 1
       isPhantom:
         type: Boolean
+        default: false
       isScheduled:
         type: Boolean
+        default: false
       updatedOnDtm:
         type: Character
         length: 19
+        default: ""
       validateAsTimestamp:
         rpgName: validasts
         type: Boolean
+        default: false
       attestationPunchEdit:
         rpgName: atttestasts
         type: Boolean
+        default: false
       markRelatedExceptionsAsReviewed:
         rpgName: markrelexcp
         type: Boolean
+        default: false
       editable:
         type: Boolean
+        default: true
       cancelDeduct:
         type: Boolean
+        default: false
       fromPhantomEdited:
         rpgName: fromphantom
         type: Boolean
+        default: false
       exceptionResolved:
         rpgName: exceptresolv
         type: Boolean
+        default: false
 formats:
   PunchRes:
     recordType: response
@@ -280,20 +334,24 @@ formats:
       startDate:
         type: Character
         length: 19
+        default: ""
       endDate:
         type: Character
         length: 19
+        default: ""
       punches:
         type: DataStruct
         dsName: punchDS
-        dim: 1
+        dim: 20
   PunchReq:
     recordType: request
     subfields:
       employee:
         type: Character
         length: 6
-      date:
+      startdate:
         type: Character
-        length: 10      
-
+        length: 10 
+      enddate:
+        type: Character
+        length: 10 
