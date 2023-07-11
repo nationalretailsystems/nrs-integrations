@@ -256,7 +256,7 @@ datastructures:
     subfields:
       id:
         type: Packed
-        length: 5
+        length: 7
         default: 0
       employee:
         type: DataStruct
