@@ -97,8 +97,8 @@ export const getPunches: ECCHandlerFunction = async function (reqkey, datax, ecc
         result = await axiosInstance.get('/v1/timekeeping/timecard', {
             /* eslint-disable */
             params: {
-                start_date: reqFields.date,
-                end_date: reqFields.date,
+                start_date: reqFields.startdate,
+                end_date: reqFields.enddate,
                 person_number: reqFields.employee,
                 select: 'PUNCHES'
             },
