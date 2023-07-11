@@ -232,12 +232,10 @@ datastructures:
         type: Character
         length: 10
         default: ""
-        comment: Unable to process this item
       justifiedTimes:
         type: Character
         length: 10
         default: ""
-        comment: Unable to process this item
       transfer:
         type: Boolean
         default: false
