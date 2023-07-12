@@ -28,6 +28,10 @@
      DStopType                       20A
      DStopUnlocode                   10A
      DTags                           50A   Dim(15)
+     Dtermname                       20A
      DTimestamp                        Z
+     DTimezone                       20A
+     Dtzoffset                       10I 0
+     Dtzshortname                     5A
      DVesselName                     30A
      DVoyageNumber                   25A
