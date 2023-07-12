@@ -37,11 +37,16 @@ export const stopEtaUpdate: InputCheckChain[] = [
     body('StopName').exists().isString().isLength({max: 30}),
     body('StopReferenceId').optional({nullable:true}).isString().isLength({max: 15}),
     body('StopSequence').exists().isInt().isLength({max: 7}),
+    body('StopStatus').optional({nullable:true}).isString().isLength({max:20}),
     body('StopType').exists().isString().isLength({max: 20}),
     body('StopUnlocode').optional().isString().isLength({max: 10}),
     body('Tags').exists().isArray({max: 10}), 
     body('Tags.*').isString().isLength({max: 50}),
+    body('TerminalName').optional({nullable:true}).isString().isLength({max:20}),
     body('Timestamp').exists().isISO8601(),
+    body('Timezone').optional({nullable:true}).isString().isLength({max:20}),
+    body('TimezoneOffset').optional({nullable:true}).isInt().isLength({max:10}),
+    body('TimezonShortName').optional({nullable:true}).isString().isLength({max:5}),
     body('VesselName').optional({nullable:true}).isString().isLength({max: 30}),
     body('VoyageNumber').optional({nullable:true}).isString().isLength({max: 25})
 ];
