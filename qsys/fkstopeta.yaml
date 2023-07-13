@@ -83,8 +83,27 @@ pgmmodels:
             length: 50
             default: ""
             dim: 15
+          TerminalName:
+            rpgName: termname
+            type: Character
+            length: 20
+            default: ""
           Timestamp:
             type: Timestamp
+          Timezone:
+            type: Character
+            length: 20
+            default: ""
+          TimezoneOffset:
+            rpgName: tzoffset
+            type: Integer
+            length: 10
+            default: 0
+          TimezoneShhortName:
+            rpgName: tzshortname
+            type: Character
+            length: 5
+            default: ""
           VesselName:
             type: Character
             length: 30
