@@ -1,7 +1,7 @@
 module.exports = {
     apps: [
         {
-            name: 'eradani-inout-template',
+            name: 'nrs-integrations',
             script: 'dist/src/app.js',
 
             // Options reference: https://pm2.keymetrics.io/docs/usage/application-declaration/
@@ -9,7 +9,6 @@ module.exports = {
             exec_mode: 'cluster',
             autorestart: true,
             restart_delay: 5000,
-            cron_restart: '0 0 * * *',
             env: {
                 NODE_ENV: 'development'
             },

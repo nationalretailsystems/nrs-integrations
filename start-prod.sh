@@ -8,4 +8,4 @@ export NODE_ENV
 PATH=$NODE_HOME:$PATH
 
 cd $ECNCT_HOME
-npm start
+npx pm2 start --no-daemon --env production
