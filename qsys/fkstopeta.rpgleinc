@@ -21,16 +21,16 @@
      DRefNumbers                     50A   Dim(15)
      DScac                            4A
      DShipper                        30A
-     DStopName                       30A
+     DStopName                       50A
      DStopReferenceId                15A
      DStopSequence                    7P 0
      DStopStatus                     20A
      DStopType                       20A
      DStopUnlocode                   10A
      DTags                           50A   Dim(15)
-     Dtermname                       20A
+     Dtermname                       50A
      DTimestamp                        Z
-     DTimezone                       20A
+     DTimezone                       30A
      Dtzoffset                       10I 0
      Dtzshortname                     5A
      DVesselName                     30A

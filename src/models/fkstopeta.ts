@@ -76,7 +76,7 @@ export const FKSTOPETAModel =   new eradaniConnect.run.Pgm("FKSTOPETA",   {
     },
       {
       name: "StopName",
-      type: new dataTypes.Char(30)
+      type: new dataTypes.Char(50)
     },
       {
       name: "StopReferenceId",
@@ -108,7 +108,7 @@ export const FKSTOPETAModel =   new eradaniConnect.run.Pgm("FKSTOPETA",   {
     },
       {
       name: "TerminalName",
-      type: new dataTypes.Char(20),
+      type: new dataTypes.Char(50),
       defaultValue: ""
     },
       {
@@ -117,7 +117,7 @@ export const FKSTOPETAModel =   new eradaniConnect.run.Pgm("FKSTOPETA",   {
     },
       {
       name: "Timezone",
-      type: new dataTypes.Char(20),
+      type: new dataTypes.Char(30),
       defaultValue: ""
     },
       {
@@ -205,7 +205,7 @@ export interface FKSTOPETAInput {
      */
     Shipper: string,
     /**
-     * @size 30 characters
+     * @size 50 characters
      */
     StopName: string,
     /**
@@ -237,7 +237,7 @@ export interface FKSTOPETAInput {
      */
     Tags?: Array<string>,
     /**
-     * @size 20 characters
+     * @size 50 characters
      * @default ``
      */
     TerminalName?: string,
@@ -245,7 +245,7 @@ export interface FKSTOPETAInput {
      */
     Timestamp: Date | string,
     /**
-     * @size 20 characters
+     * @size 30 characters
      * @default ``
      */
     Timezone?: string,
@@ -333,7 +333,7 @@ export interface FKSTOPETAOutput {
      */
     Shipper: string,
     /**
-     * @size 30 characters
+     * @size 50 characters
      */
     StopName: string,
     /**
@@ -365,7 +365,7 @@ export interface FKSTOPETAOutput {
      */
     Tags: Array<string>,
     /**
-     * @size 20 characters
+     * @size 50 characters
      * @default ``
      */
     TerminalName: string,
@@ -373,7 +373,7 @@ export interface FKSTOPETAOutput {
      */
     Timestamp: Date,
     /**
-     * @size 20 characters
+     * @size 30 characters
      * @default ``
      */
     Timezone: string,
