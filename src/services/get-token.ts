@@ -57,7 +57,7 @@ export const getTokenUkg = async (): Promise<string> => {
         }
     });
     _tokenukg = response.data.access_token;
-    _expirationukg = Date.now() + (response.data.expires_in * 1000); // 1000ms * 60s * 60m * 8h = 8 hours
+    _expirationukg = Date.now() + response.data.expires_in * 1000; // 1000ms * 60s * 60m * 8h = 8 hours
     logger.error('returning token');
     return _tokenukg;
 };

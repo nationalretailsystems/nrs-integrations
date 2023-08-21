@@ -1,205 +1,201 @@
 {
+    "ukg": {
+        "prd": {
+            "axios": {
+                "baseURL": "https://nationalretail.prd.mykronos.com/api",
+                "responseType": "json"
+            },
+            "appkey": "n7207NqTk6qIhChNkXgZLCht9S9OblXO",
+            "username": "APIAccess",
+            "password": "Welcomne2National1!",
+            "client_id": "y8AxCIJnFoacDgxciVHTPpiZErotNrCt",
+            "client_secret": "nSAhDOaTjBkMvyd1"
+        },
+        "uat": {
+            "axios": {
+                "baseURL": "https://nationalretail.uat.mykronos.com/api",
+                "responseType": "json"
+            },
+            "appkey": "",
+            "username": "APIAccess",
+            "password": "Welcomne2National1!",
+            "client_id": "543xjwbRAXyU7bjNb9olOzDOtVESPlkn",
+            "client_secret": "HTEfl0Ys2Twq0NZ7"
+        }
+    },
     "pinc": {
         "sns": {
-            "accessKeyId": "",
-            "secretAccessKey": "",
-            "region": "",
-            "apiVersion": ""
+            "accessKeyId": "AKIA3M5QZMVORA6DLMNB",
+            "secretAccessKey": "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",
+            "region": "us-east-1",
+            "apiVersion": "2010-03-31"
         },
         "snsArns": {
-            "nbrArn": "",
-            "savArn": ""
+            "nbrArn": "arn:aws:sns:us-east-1:783665423709:sns-nrs-prd-outbound-event.fifo",
+            "savArn": "arn:aws:sns:us-east-1:783665423709:sns-nrssav-prd-outbound-event.fifo"
         },
         "sqs": {
-            "apiVersion": "",
-            "AttributeNames": [""],
+            "apiVersion": "2012-11-05",
+            "AttributeNames": ["SentTimestamp"],
             "MaxNumberOfMessages": 1,
-            "MessageAttributeNames": [""],
+            "MessageAttributeNames": ["All"],
             "VisibilityTimeout": 5,
             "WaitTimeSeconds": 0
         },
         "sqsUrls": {
-            "nbrUrl": "",
-            "savUrl": "",
-            "errUrl": ""
+            "nbrUrl": "https://sqs.us-east-1.amazonaws.com/783665423709/sqs-nrs-prd-inbound-event.fifo",
+            "savUrl": "https://sqs.us-east-1.amazonaws.com/783665423709/sqs-nrssav-prd-inbound-event.fifo",
+            "errUrl": "https://sqs.us-east-1.amazonaws.com/783665423709/sqs-nrs-prd-inbound-error.fifo"
         }
     },
     "boa": {
         "sqs": {
-            "QueueUrl": "",
-            "apiVersion": "",
-            "AttributeNames": [""],
+            "QueueUrl": "https://sqs.us-east-1.amazonaws.com/783665423709/boa-test-inbound-sqs-events",
+            "apiVersion": "2012-11-05",
+            "AttributeNames": ["SentTimestamp"],
             "MaxNumberOfMessages": 1,
-            "MessageAttributeNames": [""],
+            "MessageAttributeNames": ["All"],
             "VisibilityTimeout": 5,
             "WaitTimeSeconds": 0
         }
     },
     "native": {
-        "pincLibrary": "",
-        "pincDevLibrary": ""
+        "pincLibrary": "PINC_API",
+        "pincDevLibrary": "PINC_DEV"
     },
 
     "skybitz": {
         "axios": {
-            "baseURL": "",
-            "responseType": ""
+            "baseURL": "https://xml.skybitz.com:9443/",
+            "responseType": "xml"
         },
-        "username": "",
-        "password": "",
-        "version": ""
+        "username": "xML!tg!1970",
+        "password": "FaZQ5tf85Cn8SMn",
+        "version": "2.69"
     },
 
     "managerplus": {
         "axios": {
-            "baseURL": "",
-            "responseType": ""
+            "baseURL": "https://nationalretailsystemssb.managerpluscloud.com/api2",
+            "responseType": "json"
         },
-        "apikey": ""
+        "apikey": "Bearer 46d6bb9c30f94f81914dd0fbb80d9bd5-2"
     },
 
-    "managerplus_prod": {
+    "managerplus_prd": {
         "axios": {
-            "baseURL": "",
-            "responseType": ""
+            "baseURL": "https://nationalretailsystems.managerpluscloud.com/api2",
+            "responseType": "json"
         },
-        "apikey": ""
+        "apikey": "Bearer 162eec955b6e4f7586340150ce2c7d84-1"
     },
 
     "managerplus_dev": {
         "axios": {
-            "baseURL": "",
-            "responseType": ""
+            "baseURL": "https://nationalretailsystemssb.managerpluscloud.com/api2",
+            "responseType": "json"
         },
-        "apikey": ""
+        "apikey": "Bearer 46d6bb9c30f94f81914dd0fbb80d9bd5-2"
     },
 
     "randmcnally": {
         "axios": {
-            "baseURL": "",
-            "responseType": ""
+            "baseURL": "https://driverconnect.randmcnally.com/DCWS_Cust/api",
+            "responseType": "json"
         },
-        "accesstoken": "",
-        "companyCode": "",
-        "email": "",
-        "password": ""
+        "accesstoken": "NR03-nr59-2021",
+        "companyCode": "RM-019960",
+        "email": "mike.corbo@nrsonline.com",
+        "password": "testing"
     },
 
     "duosecurity": {
-        "integrationKey": "",
-        "secretKey": "",
-        "apiHostname": ""
+        "integrationKey": "DIDRN9TM5UITSQ1D7XNN",
+        "secretKey": "fOY9VJWiEhhdC3irjyzMOL1IJolYrQKqLqPhvryp",
+        "apiHostname": "api-8b18e4bd.duosecurity.com"
     },
 
     "mailgun": {
         "axios": {
-            "baseURL": ""
+            "baseURL": "https://api.mailgun.net"
         },
-        "password": "",
-        "apikey": ""
+        "password": "Basic YXBpOmtleS04OTZkNmZkZTYzOTRkM2VlMDYxMmYwMDlkYjU2NGI4MA==",
+        "apikey": "key-896d6fde6394d3ee0612f009db564b80"
     },
 
+    "icndb": {
+        "baseURL": "https://api.icndb.com",
+        "responseType": "json"
+    },
     "makeme": {
-        "baseURL": "",
-        "responseType": ""
+        "baseURL": "https://makemeapassword.ligos.net/api/v1",
+        "responseType": "json"
     },
 
     "zpl": {
         "axios": {
-            "baseURL": ""
+            "baseURL": "http://api.labelary.com/v1/printers"
         }
     },
-
     "project44": {
         "axios": {
-            "baseURL": "",
-            "responseType": ""
+            "baseURL": "https://cloud.p-44.com/api/carriers/v2/tl",
+            "responseType": "json"
         },
-        "username": "",
-        "password": ""
+        "username": "nationalretailtransportation@project44.com",
+        "password": "project44!"
     },
-
     "paycargo": {
         "axios": {
-            "baseURL": "",
-            "responseType": ""
+            "baseURL": "https://api.paycargo.com",
+            "responseType": "json"
         },
-        "username": "",
-        "password": "",
-        "apikey": "",
-        "apisecret": ""
+        "username": "PayCargoUser@nrsonline.com",
+        "password": "@AllofNRS",
+        "apikey": "1630a4afd754417aacbabd355dd3e87e",
+        "apisecret": "0e006dca490d40f692eb5f1b05b49d52"
     },
-
     "paycargo_prd": {
         "axios": {
-            "baseURL": "",
-            "responseType": ""
+            "baseURL": "https://api.paycargo.com",
+            "responseType": "json"
         },
-        "username": "",
-        "password": "",
-        "apikey": "",
-        "apisecret": ""
+        "username": "PayCargoUser@nrsonline.com",
+        "password": "@AllofNRS",
+        "apikey": "1630a4afd754417aacbabd355dd3e87e",
+        "apisecret": "0e006dca490d40f692eb5f1b05b49d52"
     },
-
     "paycargo_dev": {
         "axios": {
-            "baseURL": "",
-            "responseType": ""
+            "baseURL": "https://apitest.paycargo.com",
+            "responseType": "json"
         },
-        "username": "",
-        "password": "!",
-        "apikey": "",
-        "apisecret": "xx"
+        "username": "NRSPayer",
+        "password": "Test123!",
+        "apikey": "15ded4a1dd28486b93afe340ba2e3e63",
+        "apisecret": "13b9c9444f924c198ac5e8105af70230"
     },
-
-    "icndb": {
-        "baseURL": "",
-        "responseType": ""
-    },
-
-    "app": {
-        "port": 3001,
-        "host": "0.0.0.0",
-        "shutdownTimeout": 6000,
-        "healthCheckTimeout": 3000,
-        "inbound": true,
-        "outbound": true
-    },
-
-    "debug": true,
-
-    "jwt": {
-        "expiresIn": ""
-    },
-
-    "credentials": {
-        "username": "",
-        "password": ""
-    },
-
-    "protectedFields": ["password", "username"],
-
     "weather": {
-        "baseURL": "",
-        "responseType": "",
-        "apikey": ""
+        "baseURL": "https://api.openweathermap.org/data/2.5/",
+        "responseType": "json",
+        "apikey": "17af76e4aafa2f06bc4c17f0ea276be4"
     },
 
     "vehicle": {
-        "baseURL": "",
-        "responseType": ""
+        "baseURL": "https://vpic.nhtsa.dot.gov/api",
+        "responseType": "json"
     },
 
     "traffic": {
-        "baseURL": "",
-        "responseType": "",
-        "apiKey": ""
+        "baseURL": "https://traffic.ls.hereapi.com",
+        "responseType": "json",
+        "apiKey": "5Fcwm9bdMMnlyiMA7Q0InjTIgvTcIGwLP6lH2TmYJrE"
     },
 
     "shipping": {
-        "baseURL": "",
-        "responseType": "",
-        "apiKey": "",
+        "baseURL": "https://api.shipengine.com/v1",
+        "responseType": "json",
+        "apiKey": "TEST_r/PzCS7lSzZQsDV5Usz11SoByOtIu1b1XGjX+dNn0gA",
         "shipFrom": {
             "name": "Test Demo",
             "company_name": "Demo, Inc",
@@ -213,9 +209,22 @@
         }
     },
 
+    "debug": true,
+
+    "jwt": {
+        "expiresIn": "24h"
+    },
+
+    "credentials": {
+        "username": "fourkites",
+        "password": "tnE7vyVT!"
+    },
+
+    "protectedFields": ["password", "username", "client_id", "client_secret"],
+
     "logger": {
         "maxLoggingLevel": "debug",
-        "disableConsole": false
+        "disableConsole": true
     },
 
     "proxy": {
@@ -228,11 +237,11 @@
     },
 
     "ecclient": {
-        "appLibrary": "",
+        "appLibrary": "ECIPRD",
         "responseLen": 32767,
         "requestLen": 32767,
-        "debug": false,
-        "pooling": false,
+        "debug": true,
+        "pooling": true,
         "connectionString": "DSN=*LOCAL;NAM=1;CCSID=1208",
         "useIbmiServices": false
     },
@@ -243,8 +252,8 @@
         "auth": {
             "enabled": true,
             "sessionMaxAge": 43200,
-            "username": "",
-            "password": ""
+            "username": "changethisusername",
+            "password": "changethispassword"
         }
     },
 
@@ -272,9 +281,9 @@
             "password": ""
         },
         "native": {
-            "templateLib": "",
-            "templateDataLib": "",
-            "pgmLib": ""
+            "templateLib": "ECNCTAPP",
+            "templateDataLib": "QIWS",
+            "pgmLib": "FOURKITES"
         }
     },
 

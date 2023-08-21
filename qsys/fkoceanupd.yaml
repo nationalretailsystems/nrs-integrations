@@ -64,7 +64,7 @@ pgmmodels:
             length: 5
           StopName:
             type: Character
-            length: 30
+            length: 50
           Tags:
             type: Character
             length: 50

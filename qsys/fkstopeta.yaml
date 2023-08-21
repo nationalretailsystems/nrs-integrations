@@ -60,7 +60,7 @@ pgmmodels:
             length: 30
           StopName:
             type: Character
-            length: 30
+            length: 50
           StopReferenceId:
             type: Character
             length: 15
@@ -86,13 +86,13 @@ pgmmodels:
           TerminalName:
             rpgName: termname
             type: Character
-            length: 20
+            length: 50
             default: ""
           Timestamp:
             type: Timestamp
           Timezone:
             type: Character
-            length: 20
+            length: 30
             default: ""
           TimezoneOffset:
             rpgName: tzoffset

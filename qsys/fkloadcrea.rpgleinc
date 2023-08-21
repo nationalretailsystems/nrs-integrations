@@ -18,8 +18,11 @@
      DLoadNumber                     40A
      DMessageType                    40A
      DProNumber                      20A
-     DRefNumbers                     50A   Dim(10)
+     DRefNumbers                     50A   Dim(20)
      DScac                            4A
      DShipper                        30A
-     DTags                           50A   Dim(10)
+     DTags                           50A   Dim(15)
      DTimestamp                        Z
+     DTimezone                       30A
+     Dtzoffset                       10I 0
+     Dtzshortname                     5A
