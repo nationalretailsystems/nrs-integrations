@@ -3,9 +3,8 @@
 // Module: fkoceanupd
 // Generated source -- do not modify
 
-import eradaniConnect from "@eradani-inc/eradani-connect";
+import eradaniConnect from '@eradani-inc/eradani-connect';
 const { dataTypes } = eradaniConnect;
-
 
 // Manually entered import
 import config from 'config';
@@ -13,99 +12,99 @@ import config from 'config';
 /**
  * Program model
  */
-export const FKOCEANUPDModel =   new eradaniConnect.run.Pgm("FKOCEANUPD",   {
-      lib: config.eradaniConnect.native.pgmLib,
-      mode: "ile",
-      params: [
-      {
-      name: "BillOfLading",
-      type: new dataTypes.Char(30),
-      defaultValue: ""
-    },
-      {
-      name: "BookingNumber",
-      type: new dataTypes.Char(20),
-      defaultValue: ""
-    },
-      {
-      name: "ContainerNumber",
-      type: new dataTypes.Char(20),
-      defaultValue: ""
-    },
-      {
-      name: "ContainerType",
-      type: new dataTypes.Char(5),
-      defaultValue: ""
-    },
-      {
-      name: "FourKitesLoadId",
-      type: new dataTypes.PackedDecimal(16, 0)
-    },
-      {
-      name: "LoadNumber",
-      type: new dataTypes.Char(50)
-    },
-      {
-      name: "Message",
-      type: new dataTypes.Char(100)
-    },
-      {
-      name: "MessageType",
-      type: new dataTypes.Char(20)
-    },
-      {
-      name: "ProNumber",
-      type: new dataTypes.Char(20),
-      defaultValue: ""
-    },
-      {
-      name: "ReferenceNumbers",
-      type: new dataTypes.Char(50),
-      defaultValue: "",
-      dim: 20
-    },
-      {
-      name: "Scac",
-      type: new dataTypes.Char(4)
-    },
-      {
-      name: "Shipper",
-      type: new dataTypes.Char(30)
-    },
-      {
-      name: "Status",
-      type: new dataTypes.Char(30)
-    },
-      {
-      name: "StatusCode",
-      type: new dataTypes.Char(5)
-    },
-      {
-      name: "StopName",
-      type: new dataTypes.Char(50)
-    },
-      {
-      name: "Tags",
-      type: new dataTypes.Char(50),
-      defaultValue: "",
-      dim: 10
-    },
-      {
-      name: "Timestamp",
-      type: new dataTypes.Timestamp()
-    },
-      {
-      name: "VesselName",
-      type: new dataTypes.Char(30),
-      defaultValue: ""
-    },
-      {
-      name: "VoyageNumber",
-      type: new dataTypes.Char(25),
-      defaultValue: ""
-    }
-  ]
-    });
+export const FKOCEANUPDModel = new eradaniConnect.run.Pgm('FKOCEANUPD', {
+    lib: config.eradaniConnect.native.pgmLib,
+    mode: 'ile',
+    params: [
+        {
+            name: 'BillOfLading',
+            type: new dataTypes.Char(30),
+            defaultValue: ''
+        },
+        {
+            name: 'BookingNumber',
+            type: new dataTypes.Char(20),
+            defaultValue: ''
+        },
+        {
+            name: 'ContainerNumber',
+            type: new dataTypes.Char(20),
+            defaultValue: ''
+        },
+        {
+            name: 'ContainerType',
+            type: new dataTypes.Char(5),
+            defaultValue: ''
+        },
+        {
+            name: 'FourKitesLoadId',
+            type: new dataTypes.PackedDecimal(16, 0)
+        },
+        {
+            name: 'LoadNumber',
+            type: new dataTypes.Char(50)
+        },
+        {
+            name: 'Message',
+            type: new dataTypes.Char(100)
+        },
+        {
+            name: 'MessageType',
+            type: new dataTypes.Char(20)
+        },
+        {
+            name: 'ProNumber',
+            type: new dataTypes.Char(20),
+            defaultValue: ''
+        },
+        {
+            name: 'ReferenceNumbers',
+            type: new dataTypes.Char(50),
+            defaultValue: '',
+            dim: 20
+        },
+        {
+            name: 'Scac',
+            type: new dataTypes.Char(4)
+        },
+        {
+            name: 'Shipper',
+            type: new dataTypes.Char(30)
+        },
+        {
+            name: 'Status',
+            type: new dataTypes.Char(30)
+        },
+        {
+            name: 'StatusCode',
+            type: new dataTypes.Char(5)
+        },
+        {
+            name: 'StopName',
+            type: new dataTypes.Char(50)
+        },
+        {
+            name: 'Tags',
+            type: new dataTypes.Char(50),
+            defaultValue: '',
+            dim: 10
+        },
+        {
+            name: 'Timestamp',
+            type: new dataTypes.Timestamp()
+        },
+        {
+            name: 'VesselName',
+            type: new dataTypes.Char(30),
+            defaultValue: ''
+        },
+        {
+            name: 'VoyageNumber',
+            type: new dataTypes.Char(25),
+            defaultValue: ''
+        }
+    ]
+});
 
 /**
  * Input interface
@@ -115,87 +114,87 @@ export interface FKOCEANUPDInput {
      * @size 30 characters
      * @default ``
      */
-    BillOfLading?: string,
+    BillOfLading?: string;
     /**
      * @size 20 characters
      * @default ``
      */
-    BookingNumber?: string,
+    BookingNumber?: string;
     /**
      * @size 20 characters
      * @default ``
      */
-    ContainerNumber?: string,
+    ContainerNumber?: string;
     /**
      * @size 5 characters
      * @default ``
      */
-    ContainerType?: string,
+    ContainerType?: string;
     /**
      * @size 16 digits
      * @precision 0 decimals
      */
-    FourKitesLoadId: number | string,
+    FourKitesLoadId: number | string;
     /**
      * @size 50 characters
      */
-    LoadNumber: string,
+    LoadNumber: string;
     /**
      * @size 100 characters
      */
-    Message: string,
+    Message: string;
     /**
      * @size 20 characters
      */
-    MessageType: string,
+    MessageType: string;
     /**
      * @size 20 characters
      * @default ``
      */
-    ProNumber?: string,
+    ProNumber?: string;
     /**
      * @size 50 characters
      * @default ``
      */
-    ReferenceNumbers?: Array<string>,
+    ReferenceNumbers?: Array<string>;
     /**
      * @size 4 characters
      */
-    Scac: string,
+    Scac: string;
     /**
      * @size 30 characters
      */
-    Shipper: string,
+    Shipper: string;
     /**
      * @size 30 characters
      */
-    Status: string,
+    Status: string;
     /**
      * @size 5 characters
      */
-    StatusCode: string,
+    StatusCode: string;
     /**
      * @size 50 characters
      */
-    StopName: string,
+    StopName: string;
     /**
      * @size 50 characters
      * @default ``
      */
-    Tags?: Array<string>,
+    Tags?: Array<string>;
     /**
      */
-    Timestamp: Date | string,
+    Timestamp: Date | string;
     /**
      * @size 30 characters
      * @default ``
      */
-    VesselName?: string,
+    VesselName?: string;
     /**
      * @size 25 characters
      * @default ``
      */
-    VoyageNumber?: string
+    VoyageNumber?: string;
 }
 
 /**
@@ -206,87 +205,87 @@ export interface FKOCEANUPDOutput {
      * @size 30 characters
      * @default ``
      */
-    BillOfLading: string,
+    BillOfLading: string;
     /**
      * @size 20 characters
      * @default ``
      */
-    BookingNumber: string,
+    BookingNumber: string;
     /**
      * @size 20 characters
      * @default ``
      */
-    ContainerNumber: string,
+    ContainerNumber: string;
     /**
      * @size 5 characters
      * @default ``
      */
-    ContainerType: string,
+    ContainerType: string;
     /**
      * @size 16 digits
      * @precision 0 decimals
      */
-    FourKitesLoadId: number,
+    FourKitesLoadId: number;
     /**
      * @size 50 characters
      */
-    LoadNumber: string,
+    LoadNumber: string;
     /**
      * @size 100 characters
      */
-    Message: string,
+    Message: string;
     /**
      * @size 20 characters
      */
-    MessageType: string,
+    MessageType: string;
     /**
      * @size 20 characters
      * @default ``
      */
-    ProNumber: string,
+    ProNumber: string;
     /**
      * @size 50 characters
      * @default ``
      */
-    ReferenceNumbers: Array<string>,
+    ReferenceNumbers: Array<string>;
     /**
      * @size 4 characters
      */
-    Scac: string,
+    Scac: string;
     /**
      * @size 30 characters
      */
-    Shipper: string,
+    Shipper: string;
     /**
      * @size 30 characters
      */
-    Status: string,
+    Status: string;
     /**
      * @size 5 characters
      */
-    StatusCode: string,
+    StatusCode: string;
     /**
      * @size 50 characters
      */
-    StopName: string,
+    StopName: string;
     /**
      * @size 50 characters
      * @default ``
      */
-    Tags: Array<string>,
+    Tags: Array<string>;
     /**
      */
-    Timestamp: Date,
+    Timestamp: Date;
     /**
      * @size 30 characters
      * @default ``
      */
-    VesselName: string,
+    VesselName: string;
     /**
      * @size 25 characters
      * @default ``
      */
-    VoyageNumber: string
+    VoyageNumber: string;
 }
 
 /* eslint-enable */
