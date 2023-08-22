@@ -134,7 +134,7 @@ export const FKSTOPETAModel =   new eradaniConnect.run.Pgm("FKSTOPETA",   {
       defaultValue: 0
     },
       {
-      name: "TimezoneShhortName",
+      name: "TimezoneShortName",
       type: new dataTypes.Char(5),
       defaultValue: ""
     },
@@ -279,7 +279,7 @@ export interface FKSTOPETAInput {
      * @size 5 characters
      * @default ``
      */
-    TimezoneShhortName?: string,
+    TimezoneShortName?: string,
     /**
      * @size 30 characters
      * @default ``
@@ -420,7 +420,7 @@ export interface FKSTOPETAOutput {
      * @size 5 characters
      * @default ``
      */
-    TimezoneShhortName: string,
+    TimezoneShortName: string,
     /**
      * @size 30 characters
      * @default ``
