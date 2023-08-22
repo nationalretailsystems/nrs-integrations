@@ -27,15 +27,15 @@ const safeValues: any = {
                     id: 0,
                     qualifier: ' ',
                     name: ' '
-                },
+                }
             },
             totalContext: {
                 totalType: ' ',
                 totalAggregationType: ' ',
-                totalGroupByType: ' '    
+                totalGroupByType: ' '
             },
             aggregatedTotals: {
-                '*20': {   
+                '*20': {
                     amountType: ' ',
                     wagesCurrency: {
                         amount: 0,
@@ -44,7 +44,7 @@ const safeValues: any = {
                     employee: {
                         id: 0,
                         qualifier: ' ',
-                        name: ' '    
+                        name: ' '
                     },
                     location: {
                         id: 0,
@@ -70,9 +70,7 @@ const safeValues: any = {
                     wages: 0,
                     jobTransfer: ' ',
                     laborCategoryTransfer: ' ',
-                    timeItemType: {
-
-                    },
+                    timeItemType: {},
                     approvableByManager: ' '
                 }
             }
@@ -219,6 +217,10 @@ export const getTotals: ECCHandlerFunction = async function (reqkey, datax, ecc)
                 'content-type': 'application/json',
                 accept: 'application/json'
             }
+        });
+        result.data.totals = result.data.totals.map((total: any) => {
+            total.aggTotals = total.aggregatedTotals;
+            return total;
         });
     } catch (err) {
         if (err.response) {

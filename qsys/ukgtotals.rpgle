@@ -49,7 +49,7 @@
      PBufToTotalsRes   B                   Export
 
      DBufToTotalsRes   PI
-     DBuffer                      15976A
+     DBuffer                      16060A
      DDataStruct                           LikeDS(TotalsRes)
 
       * Initialize to begining of buffer
@@ -61,8 +61,8 @@
        DataStruct.endDate = %subst(CharBuf:1:19);
        BufPtr += 19;
        for i = 1 to 2;
-       DataStruct.totals(i).empcontext.employee.id = %dec(%subst(CharBuf:1:7):5:0);
-       BufPtr += 7;
+       DataStruct.totals(i).empcontext.employee.id = %dec(%subst(CharBuf:1:9):7:0);
+       BufPtr += 9;
        DataStruct.totals(i).empcontext.employee.qualifier = %subst(CharBuf:1:6);
        BufPtr += 6;
        DataStruct.totals(i).empcontext.employee.name = %subst(CharBuf:1:6);
@@ -80,53 +80,53 @@
        DataStruct.totals(i).totalContext.ttlgrpbytyp = %subst(CharBuf:1:3);
        BufPtr += 3;
        for j = 1 to 20;
-       DataStruct.totals(i).aggregatedTotals(j).amountType = %subst(CharBuf:1:4);
+       DataStruct.totals(i).aggTotals(j).amountType = %subst(CharBuf:1:4);
        BufPtr += 4;
-       DataStruct.totals(i).aggregatedTotals(j).wagesCurrency.amount = %dec(%subst(CharBuf:1:7):5:2);
+       DataStruct.totals(i).aggTotals(j).wagesCurrency.amount = %dec(%subst(CharBuf:1:7):5:2);
        BufPtr += 7;
-       DataStruct.totals(i).aggregatedTotals(j).wagesCurrency.currencyCode = %subst(CharBuf:1:3);
+       DataStruct.totals(i).aggTotals(j).wagesCurrency.currencyCode = %subst(CharBuf:1:3);
        BufPtr += 3;
-       DataStruct.totals(i).aggregatedTotals(j).employee.id = %dec(%subst(CharBuf:1:7):5:0);
-       BufPtr += 7;
-       DataStruct.totals(i).aggregatedTotals(j).employee.qualifier = %subst(CharBuf:1:6);
+       DataStruct.totals(i).aggTotals(j).employee.id = %dec(%subst(CharBuf:1:9):7:0);
+       BufPtr += 9;
+       DataStruct.totals(i).aggTotals(j).employee.qualifier = %subst(CharBuf:1:6);
        BufPtr += 6;
-       DataStruct.totals(i).aggregatedTotals(j).employee.name = %subst(CharBuf:1:6);
+       DataStruct.totals(i).aggTotals(j).employee.name = %subst(CharBuf:1:6);
        BufPtr += 6;
-       DataStruct.totals(i).aggregatedTotals(j).location.id = %dec(%subst(CharBuf:1:7):5:0);
+       DataStruct.totals(i).aggTotals(j).location.id = %dec(%subst(CharBuf:1:7):5:0);
        BufPtr += 7;
-       DataStruct.totals(i).aggregatedTotals(j).location.qualifier = %subst(CharBuf:1:75);
+       DataStruct.totals(i).aggTotals(j).location.qualifier = %subst(CharBuf:1:75);
        BufPtr += 75;
-       DataStruct.totals(i).aggregatedTotals(j).location.name = %subst(CharBuf:1:75);
+       DataStruct.totals(i).aggTotals(j).location.name = %subst(CharBuf:1:75);
        BufPtr += 75;
-       DataStruct.totals(i).aggregatedTotals(j).job.id = %dec(%subst(CharBuf:1:7):5:0);
+       DataStruct.totals(i).aggTotals(j).job.id = %dec(%subst(CharBuf:1:7):5:0);
        BufPtr += 7;
-       DataStruct.totals(i).aggregatedTotals(j).job.qualifier = %subst(CharBuf:1:3);
+       DataStruct.totals(i).aggTotals(j).job.qualifier = %subst(CharBuf:1:3);
        BufPtr += 3;
-       DataStruct.totals(i).aggregatedTotals(j).job.name = %subst(CharBuf:1:3);
+       DataStruct.totals(i).aggTotals(j).job.name = %subst(CharBuf:1:3);
        BufPtr += 3;
-       DataStruct.totals(i).aggregatedTotals(j).laborCategory.id = %dec(%subst(CharBuf:1:7):5:0);
+       DataStruct.totals(i).aggTotals(j).laborCategory.id = %dec(%subst(CharBuf:1:7):5:0);
        BufPtr += 7;
-       DataStruct.totals(i).aggregatedTotals(j).laborCategory.qualifier = %subst(CharBuf:1:35);
+       DataStruct.totals(i).aggTotals(j).laborCategory.qualifier = %subst(CharBuf:1:35);
        BufPtr += 35;
-       DataStruct.totals(i).aggregatedTotals(j).laborCategory.name = %subst(CharBuf:1:35);
+       DataStruct.totals(i).aggTotals(j).laborCategory.name = %subst(CharBuf:1:35);
        BufPtr += 35;
-       DataStruct.totals(i).aggregatedTotals(j).payCode.id = %dec(%subst(CharBuf:1:13):11:0);
+       DataStruct.totals(i).aggTotals(j).payCode.id = %dec(%subst(CharBuf:1:13):11:0);
        BufPtr += 13;
-       DataStruct.totals(i).aggregatedTotals(j).payCode.qualifier = %subst(CharBuf:1:35);
+       DataStruct.totals(i).aggTotals(j).payCode.qualifier = %subst(CharBuf:1:35);
        BufPtr += 35;
-       DataStruct.totals(i).aggregatedTotals(j).payCode.name = %subst(CharBuf:1:35);
+       DataStruct.totals(i).aggTotals(j).payCode.name = %subst(CharBuf:1:35);
        BufPtr += 35;
-       DataStruct.totals(i).aggregatedTotals(j).amount = %dec(%subst(CharBuf:1:12):10:5);
+       DataStruct.totals(i).aggTotals(j).amount = %dec(%subst(CharBuf:1:12):10:5);
        BufPtr += 12;
-       DataStruct.totals(i).aggregatedTotals(j).wages = %dec(%subst(CharBuf:1:7):5:2);
+       DataStruct.totals(i).aggTotals(j).wages = %dec(%subst(CharBuf:1:7):5:2);
        BufPtr += 7;
-       DataStruct.totals(i).aggregatedTotals(j).jobTransfer = %subst(CharBuf:1:1);
+       DataStruct.totals(i).aggTotals(j).jobTransfer = %subst(CharBuf:1:1);
        BufPtr += 1;
-       DataStruct.totals(i).aggregatedTotals(j).labcatxfer = %subst(CharBuf:1:1);
+       DataStruct.totals(i).aggTotals(j).labcatxfer = %subst(CharBuf:1:1);
        BufPtr += 1;
-       DataStruct.totals(i).aggregatedTotals(j).timeItemType.timeItemType = %subst(CharBuf:1:10);
+       DataStruct.totals(i).aggTotals(j).timeItemType.timeItemType = %subst(CharBuf:1:10);
        BufPtr += 10;
-       DataStruct.totals(i).aggregatedTotals(j).appbymgr = %subst(CharBuf:1:1);
+       DataStruct.totals(i).aggTotals(j).appbymgr = %subst(CharBuf:1:1);
        BufPtr += 1;
        endfor;
        endfor;

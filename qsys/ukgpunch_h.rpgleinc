@@ -10,14 +10,14 @@
       ************************************
      DcommentsNotesDS  DS                  Qualified
      D                                     Template
-     DcommentsNotes                  10A
+     DcommentsNotes                   5A
 
       ************************************
       * employeeDS data structure
       ************************************
      DemployeeDS       DS                  Qualified
      D                                     Template
-     Did                              5P 0
+     Did                             10I 0
      Dqualifier                       6A
      Dname                            6A
 
@@ -26,17 +26,17 @@
       ************************************
      DtimeZoneDS       DS                  Qualified
      D                                     Template
-     Did                              6P 0
+     Did                             10I 0
      Dqualifier                      12A
-     Dname                           12A
+     Dname                            3A
 
       ************************************
       * editByTypeDS data structure
       ************************************
      DeditByTypeDS     DS                  Qualified
      D                                     Template
-     Did                              2P 0
-     Dqualifier                      25A
+     Did                              5I 0
+     Dqualifier                       3A
      Dname                           25A
 
       ************************************
@@ -44,7 +44,7 @@
       ************************************
      DdataSourceDS     DS                  Qualified
      D                                     Template
-     Did                              5P 0
+     Did                             10I 0
      Dqualifier                      17A
      DdisplayName                    12A
      Dfuncareanm                      9A
@@ -55,9 +55,9 @@
       ************************************
      DtypeOverrideDS   DS                  Qualified
      D                                     Template
-     Did                              1P 0
+     Did                              5I 0
      Dqualifier                      15A
-     DtypeOverrideId                  1P 0
+     DtypeOverrideId                  5I 0
      Ddescription                    15A
      Dname                           15A
 
@@ -66,14 +66,14 @@
       ************************************
      DendTimeZoneDS    DS                  Qualified
      D                                     Template
-     Did                              6P 0
+     Did                             10I 0
 
       ************************************
       * exceptionTypeDS data structure
       ************************************
      DexceptionTypeDS  DS                  Qualified
      D                                     Template
-     Did                              1P 0
+     Did                              5I 0
      Dname                            8A
      Ddescription                    12A
      DdisplayName                     8A
@@ -84,37 +84,37 @@
       ************************************
      DorgJobDS         DS                  Qualified
      D                                     Template
-     Did                              3P 0
+     Did                              5I 0
 
       ************************************
       * startTimeZoneDS data structure
       ************************************
      DstartTimeZoneDS  DS                  Qualified
      D                                     Template
-     Did                              6P 0
+     Did                             10I 0
 
       ************************************
       * workRuleDS data structure
       ************************************
      DworkRuleDS       DS                  Qualified
      D                                     Template
-     Did                              3P 0
-     Dqualifier                       3A
-     Dname                           32A
+     Did                              5I 0
+     Dqualifier                       5A
+     Dname                            5A
 
       ************************************
       * punchEventDS data structure
       ************************************
      DpunchEventDS     DS                  Qualified
      D                                     Template
-     Did                              6P 0
+     Did                             10I 0
 
       ************************************
       * missTimeStsDS data structure
       ************************************
      DmissTimeStsDS    DS                  Qualified
      D                                     Template
-     Did                              1P 0
+     Did                              5I 0
      DdisplayName                    14A
 
       ************************************
@@ -126,7 +126,7 @@
      DstartDateTime                  19A
      DendDateTime                    19A
      DapplyDate                      10A
-     Did                              5P 0
+     Did                             10I 0
      DendTimeZone                          LikeDS(endTimeZoneDS)
      DexceptionType                        LikeDS(exceptionTypeDS)
      DorgJob                               LikeDS(orgJobDS)
@@ -138,8 +138,6 @@
      DexcusedAbs                       N
      DunexcusedAbs                     N
      Dmissingtmsts                         LikeDS(missTimeStsDS)
-     Djustifications                 10A                                        Unable to process this item
-     DjustifiedTimes                 10A                                        Unable to process this item
      Dtransfer                         N
      DeventDate                      10A
      DstartException                   N
@@ -151,7 +149,7 @@
       ************************************
      DpunchDS          DS                  Qualified
      D                                     Template
-     Did                              5P 0
+     Did                             10I 0
      Demployee                             LikeDS(employeeDS)
      DpunchDtm                       19A
      DroundedPunchDtm                19A
@@ -162,6 +160,7 @@
      DdataSource                           LikeDS(dataSourceDS)
      DtypeOverride                         LikeDS(typeOverrideDS)
      Dexceptions                           LikeDS(ExceptionDS)
+     D                                     Dim(2)
      DisPhantom                        N
      DisScheduled                      N
      DupdatedOnDtm                   19A
@@ -194,9 +193,9 @@
 
       ************************************
       * PunchRes data structure
-      * Record length: 11378
+      * Record length: 15538
       ************************************
-     DPunchResLen      C                   11378
+     DPunchResLen      C                   15538
      DPunchRes         DS                  Qualified
      D                                     Template
      DstartDate                      19A
@@ -208,5 +207,5 @@
       * Convert buffer to PunchRes
       ************************************
      DBufToPunchRes    PR
-     DBuffer                      11378A
+     DBuffer                      15538A
      DDataStruct                           LikeDS(PunchRes)

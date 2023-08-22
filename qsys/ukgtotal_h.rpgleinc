@@ -10,7 +10,7 @@
       ************************************
      DemployeeDS       DS                  Qualified
      D                                     Template
-     Did                              5P 0
+     Did                              7P 0
      Dqualifier                       6A
      Dname                            6A
 
@@ -141,9 +141,9 @@
 
       ************************************
       * TotalsRes data structure
-      * Record length: 15976
+      * Record length: 16060
       ************************************
-     DTotalsResLen     C                   15976
+     DTotalsResLen     C                   16060
      DTotalsRes        DS                  Qualified
      D                                     Template
      DstartDate                      19A
@@ -155,5 +155,5 @@
       * Convert buffer to TotalsRes
       ************************************
      DBufToTotalsRes   PR
-     DBuffer                      15976A
+     DBuffer                      16060A
      DDataStruct                           LikeDS(TotalsRes)
