@@ -35,12 +35,15 @@ pgmmodels:
           FourKitesLoadId:
             type: Packed
             length: 16
+            default: 0
           LoadNumber:
             type: Character
             length: 50
+            default: ""
           MessageType:
             type: Character
             length: 20
+            default: ""
           ProNumber:
             type: Character
             length: 20
@@ -58,9 +61,11 @@ pgmmodels:
           Shipper:
             type: Character
             length: 30
+            default: ""
           StopName:
             type: Character
             length: 50
+            default: ""
           StopReferenceId:
             type: Character
             length: 15
@@ -68,12 +73,15 @@ pgmmodels:
           StopSequence:
             type: Packed
             length: 7
+            default: 0
           StopStatus:
             type: Character
             length: 20
+            default: ""
           StopType:
             type: Character
             length: 20
+            default: ""
           StopUnlocode:
             type: Character
             length: 10
@@ -111,4 +119,8 @@ pgmmodels:
           VoyageNumber:
             type: Character
             length: 25
+            default: ""
+          Confidence: 
+            type: Character
+            length: 10
             default: ""
