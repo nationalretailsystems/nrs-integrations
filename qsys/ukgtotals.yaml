@@ -6,7 +6,7 @@ datastructures:
     subfields:
       id:
         type: Packed
-        length: 5
+        length: 7
         default: 0
       qualifier:
         type: Character
@@ -184,7 +184,7 @@ datastructures:
       totalContext:
         type: DataStruct
         dsName: totalContextDS
-      aggregatedTotals:
+      aggTotals:
         rpgName: aggtotals
         type: DataStruct
         dsName: AggTotalsDS

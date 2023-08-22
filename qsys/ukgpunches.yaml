@@ -228,14 +228,6 @@ datastructures:
         rpgName: missingtmsts
         type: DataStruct
         dsName: missTimeStsDS
-      justifications:
-        type: Character
-        length: 5
-        default: ""
-      justifiedTimes:
-        type: Character
-        length: 5
-        default: ""
       transfer:
         type: Boolean
         default: false
@@ -291,6 +283,7 @@ datastructures:
       exceptions:
         type: DataStruct
         dsName: ExceptionDS
+        dim: 2
       isPhantom:
         type: Boolean
         default: false
