@@ -33,7 +33,7 @@ export const FKOCEANUPDModel = new eradaniConnect.run.Pgm('FKOCEANUPD', {
         },
         {
             name: 'ContainerType',
-            type: new dataTypes.Char(5),
+            type: new dataTypes.Char(20),
             defaultValue: ''
         },
         {
@@ -126,7 +126,7 @@ export interface FKOCEANUPDInput {
      */
     ContainerNumber?: string;
     /**
-     * @size 5 characters
+     * @size 20 characters
      * @default ``
      */
     ContainerType?: string;
@@ -217,7 +217,7 @@ export interface FKOCEANUPDOutput {
      */
     ContainerNumber: string;
     /**
-     * @size 5 characters
+     * @size 20 characters
      * @default ``
      */
     ContainerType: string;

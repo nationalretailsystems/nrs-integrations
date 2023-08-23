@@ -12,7 +12,7 @@
      DBillOfLading                   30A
      DBookingNumber                  20A
      DContainerNumber                20A
-     DContainerType                   5A
+     DContainerType                  20A
      DFourKitesLoadId                16P 0
      DLoadNumber                     50A
      DMessage                       100A
