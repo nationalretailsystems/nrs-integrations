@@ -26,7 +26,7 @@ pgmmodels:
             default: ""
           ContainerType:
             type: Character
-            length: 5
+            length: 20
             default: ""
           FourKitesLoadId:
             type: Packed
