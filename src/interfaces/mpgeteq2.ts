@@ -25,12 +25,12 @@ export interface CustFldsDS {
     customFieldKey: number;
     /**
      * @size 24 characters
-     * @default ` `
+     * @default ``
      */
     fieldName: string;
     /**
      * @size 100 characters
-     * @default ` `
+     * @default ``
      */
     value: string;
 }
@@ -70,25 +70,27 @@ export function convertRqAssetAllToObject(dataIn: string): RqAssetAll {
 export interface AssetAllDS {
     /**
      * @size 10 digits
+     * @default `0`
      */
     assetKey: number;
     /**
      * @size 50 characters
-     * @default ` `
+     * @default ``
      */
     entityName: string;
     /**
      * @size 24 characters
+     * @default ``
      */
     assetId: string;
     /**
      * @size 24 characters
-     * @default ` `
+     * @default ``
      */
     parentAssetId: string;
     /**
      * @size 50 characters
-     * @default ` `
+     * @default ``
      */
     description: string;
     /**
@@ -98,57 +100,57 @@ export interface AssetAllDS {
     groupKey: number;
     /**
      * @size 24 characters
-     * @default ` `
+     * @default ``
      */
     groupId: string;
     /**
      * @size 24 characters
-     * @default ` `
+     * @default ``
      */
     categoryId: string;
     /**
      * @size 24 characters
-     * @default ` `
+     * @default ``
      */
     typeId: string;
     /**
      * @size 24 characters
-     * @default ` `
+     * @default ``
      */
     budgetGroupId: string;
     /**
      * @size 24 characters
-     * @default ` `
+     * @default ``
      */
     budgetId: string;
     /**
      * @size 24 characters
-     * @default ` `
+     * @default ``
      */
     statusId: string;
     /**
      * @size 50 characters
-     * @default ` `
+     * @default ``
      */
     barcode: string;
     /**
      * @size 24 characters
-     * @default ` `
+     * @default ``
      */
     manufacturer: string;
     /**
      * @size 32 characters
-     * @default ` `
+     * @default ``
      */
     model: string;
     /**
      * @size 32 characters
-     * @default ` `
+     * @default ``
      */
     serialNumber: string;
     /**
      * @size 50 characters
-     * @default ` `
+     * @default ``
      */
     customer: string;
     /**
@@ -157,9 +159,10 @@ export interface AssetAllDS {
      */
     customerKey: number;
     /**
+     * @size 19 characters
      * @default `0001-01-01`
      */
-    purchaseDate: Date;
+    purchaseDate: string;
     /**
      * @size 15 digits
      * @precision 2 decimals
@@ -177,30 +180,25 @@ export interface AssetAllDS {
 export function convertObjectToAssetAllDS(dataIn: AssetAllDS): string {
     let dataOut: string = '';
 
-    dataOut +=
-        dataIn?.assetKey?.toFixed()?.substring(0, 11)?.padEnd(11) ??
-        missingInput(`dataIn.assetKey`, 'integer', dataIn?.assetKey);
-    dataOut += dataIn?.entityName?.substring(0, 50)?.padEnd(50) ?? ' '.substring(0, 50).padEnd(50);
-    dataOut += dataIn?.assetId?.substring(0, 24)?.padEnd(24) ?? missingInput(`dataIn.assetId`, 'char', dataIn?.assetId);
-    dataOut += dataIn?.parentAssetId?.substring(0, 24)?.padEnd(24) ?? ' '.substring(0, 24).padEnd(24);
-    dataOut += dataIn?.description?.substring(0, 50)?.padEnd(50) ?? ' '.substring(0, 50).padEnd(50);
+    dataOut += dataIn?.assetKey?.toFixed()?.substring(0, 11)?.padEnd(11) ?? '0'.substring(0, 11).padEnd(11);
+    dataOut += dataIn?.entityName?.substring(0, 50)?.padEnd(50) ?? ''.substring(0, 50).padEnd(50);
+    dataOut += dataIn?.assetId?.substring(0, 24)?.padEnd(24) ?? ''.substring(0, 24).padEnd(24);
+    dataOut += dataIn?.parentAssetId?.substring(0, 24)?.padEnd(24) ?? ''.substring(0, 24).padEnd(24);
+    dataOut += dataIn?.description?.substring(0, 50)?.padEnd(50) ?? ''.substring(0, 50).padEnd(50);
     dataOut += dataIn?.groupKey?.toFixed()?.substring(0, 11)?.padEnd(11) ?? '0'.substring(0, 11).padEnd(11);
-    dataOut += dataIn?.groupId?.substring(0, 24)?.padEnd(24) ?? ' '.substring(0, 24).padEnd(24);
-    dataOut += dataIn?.categoryId?.substring(0, 24)?.padEnd(24) ?? ' '.substring(0, 24).padEnd(24);
-    dataOut += dataIn?.typeId?.substring(0, 24)?.padEnd(24) ?? ' '.substring(0, 24).padEnd(24);
-    dataOut += dataIn?.budgetGroupId?.substring(0, 24)?.padEnd(24) ?? ' '.substring(0, 24).padEnd(24);
-    dataOut += dataIn?.budgetId?.substring(0, 24)?.padEnd(24) ?? ' '.substring(0, 24).padEnd(24);
-    dataOut += dataIn?.statusId?.substring(0, 24)?.padEnd(24) ?? ' '.substring(0, 24).padEnd(24);
-    dataOut += dataIn?.barcode?.substring(0, 50)?.padEnd(50) ?? ' '.substring(0, 50).padEnd(50);
-    dataOut += dataIn?.manufacturer?.substring(0, 24)?.padEnd(24) ?? ' '.substring(0, 24).padEnd(24);
-    dataOut += dataIn?.model?.substring(0, 32)?.padEnd(32) ?? ' '.substring(0, 32).padEnd(32);
-    dataOut += dataIn?.serialNumber?.substring(0, 32)?.padEnd(32) ?? ' '.substring(0, 32).padEnd(32);
-    dataOut += dataIn?.customer?.substring(0, 50)?.padEnd(50) ?? ' '.substring(0, 50).padEnd(50);
+    dataOut += dataIn?.groupId?.substring(0, 24)?.padEnd(24) ?? ''.substring(0, 24).padEnd(24);
+    dataOut += dataIn?.categoryId?.substring(0, 24)?.padEnd(24) ?? ''.substring(0, 24).padEnd(24);
+    dataOut += dataIn?.typeId?.substring(0, 24)?.padEnd(24) ?? ''.substring(0, 24).padEnd(24);
+    dataOut += dataIn?.budgetGroupId?.substring(0, 24)?.padEnd(24) ?? ''.substring(0, 24).padEnd(24);
+    dataOut += dataIn?.budgetId?.substring(0, 24)?.padEnd(24) ?? ''.substring(0, 24).padEnd(24);
+    dataOut += dataIn?.statusId?.substring(0, 24)?.padEnd(24) ?? ''.substring(0, 24).padEnd(24);
+    dataOut += dataIn?.barcode?.substring(0, 50)?.padEnd(50) ?? ''.substring(0, 50).padEnd(50);
+    dataOut += dataIn?.manufacturer?.substring(0, 24)?.padEnd(24) ?? ''.substring(0, 24).padEnd(24);
+    dataOut += dataIn?.model?.substring(0, 32)?.padEnd(32) ?? ''.substring(0, 32).padEnd(32);
+    dataOut += dataIn?.serialNumber?.substring(0, 32)?.padEnd(32) ?? ''.substring(0, 32).padEnd(32);
+    dataOut += dataIn?.customer?.substring(0, 50)?.padEnd(50) ?? ''.substring(0, 50).padEnd(50);
     dataOut += dataIn?.customerKey?.toFixed()?.substring(0, 11)?.padEnd(11) ?? '0'.substring(0, 11).padEnd(11);
-    dataOut +=
-        dataIn?.purchaseDate !== undefined
-            ? toIbmiDate(dataIn?.purchaseDate)
-            : '0001-01-01'.substring(0, 10).padEnd(10);
+    dataOut += dataIn?.purchaseDate?.substring(0, 19)?.padEnd(19) ?? '0001-01-01'.substring(0, 19).padEnd(19);
     dataOut += dataIn?.purchaseCost?.toFixed(2)?.substring(0, 17)?.padEnd(17) ?? '0'.substring(0, 17).padEnd(17);
     for (let i: number = 0; i < 100; ++i) {
         dataOut +=
@@ -208,8 +206,8 @@ export function convertObjectToAssetAllDS(dataIn: AssetAllDS): string {
         dataOut +=
             dataIn?.customFields[i]?.customFieldKey?.toFixed()?.substring(0, 11)?.padEnd(11) ??
             '0'.substring(0, 11).padEnd(11);
-        dataOut += dataIn?.customFields[i]?.fieldName?.substring(0, 24)?.padEnd(24) ?? ' '.substring(0, 24).padEnd(24);
-        dataOut += dataIn?.customFields[i]?.value?.substring(0, 100)?.padEnd(100) ?? ' '.substring(0, 100).padEnd(100);
+        dataOut += dataIn?.customFields[i]?.fieldName?.substring(0, 24)?.padEnd(24) ?? ''.substring(0, 24).padEnd(24);
+        dataOut += dataIn?.customFields[i]?.value?.substring(0, 100)?.padEnd(100) ?? ''.substring(0, 100).padEnd(100);
     }
 
     return dataOut;

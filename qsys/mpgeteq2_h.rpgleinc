@@ -35,9 +35,9 @@
 
       ************************************
       * AssetAllDS data structure
-      * Record length: 15140
+      * Record length: 15149
       ************************************
-     DAssetAllDSLen    C                   15140
+     DAssetAllDSLen    C                   15149
      DAssetAllDS       DS                  Qualified
      D                                     Template
      Dassetkey                       10I 0
@@ -58,7 +58,7 @@
      Dsrlnumb                        32A
      Dcustomer                       50A
      Dcustkey                        10I 0
-     Dpurchdate                        D
+     Dpurchdate                      19A
      Dpurchcost                      15P 2
      DcustomFields                         LikeDS(CustFldsDS)
      D                                     Dim(100)
@@ -67,5 +67,5 @@
       * Convert buffer to AssetAllDS
       ************************************
      DBufToAssetAllDS  PR
-     DBuffer                      15140A
+     DBuffer                      15149A
      DDataStruct                           LikeDS(AssetAllDS)
