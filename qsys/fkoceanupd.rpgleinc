@@ -24,7 +24,7 @@
      DStatus                         30A
      DStatusCode                      5A
      DStopName                       50A
-     DTags                           50A   Dim(10)
+     DTags                           50A   Dim(15)
      DTimestamp                        Z
      DVesselName                     30A
      DVoyageNumber                   25A
