@@ -69,7 +69,7 @@ pgmmodels:
             type: Character
             length: 50
             default: ""
-            dim: 10
+            dim: 15
           Timestamp:
             type: Timestamp
           VesselName:
