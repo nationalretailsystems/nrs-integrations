@@ -25,12 +25,12 @@ datastructures:
         rpgName: custfldnam
         type: Character
         length: 24
-        default: " "
+        default: ""
       value:
         rpgName: cstfldval
         type: Character
         length: 100
-        default: " "
+        default: ""
 formats:
   RqAssetAll:
     recordType: request
@@ -51,25 +51,27 @@ formats:
         type: Integer
         length: 10
         precision: 0
+        default: 0
       entityName:
         rpgName: entname
         type: Character
         length: 50
-        default: " "
+        default: ""
       assetId:
         rpgName: assetid
         type: Character
         length: 24
+        default: ""
       parentAssetId:
         rpgName: pasassid
         type: Character
         length: 24
-        default: " "
+        default: ""
       description:
         rpgName: descript
         type: Character
         length: 50
-        default: " "
+        default: ""
       groupKey:
         rpgName: groupkey
         type: Integer
@@ -80,57 +82,57 @@ formats:
         rpgName: groupid
         type: Character
         length: 24
-        default: " "
+        default: ""
       categoryId:
         rpgName: catid
         type: Character
         length: 24
-        default: " "
+        default: ""
       typeId:
         rpgName: typeid
         type: Character
         length: 24
-        default: " "
+        default: ""
       budgetGroupId:
         rpgName: budgrpid
         type: Character
         length: 24
-        default: " "
+        default: ""
       budgetId:
         rpgName: budgtid
         type: Character
         length: 24
-        default: " "
+        default: ""
       statusId:
         rpgName: statusid
         type: Character
         length: 24
-        default: " "
+        default: ""
       barcode:
         rpgName: barcode
         type: Character
         length: 50
-        default: " "
+        default: ""
       manufacturer:
         rpgName: manufac
         type: Character
         length: 24
-        default: " "
+        default: ""
       model:
         rpgName: model
         type: Character
         length: 32
-        default: " "
+        default: ""
       serialNumber:
         rpgName: srlnumb
         type: Character
         length: 32
-        default: " "
+        default: ""
       customer:
         rpgName: customer
         type: Character
         length: 50
-        default: " "
+        default: ""
       customerKey:
         rpgName: custkey
         type: Integer
@@ -139,7 +141,8 @@ formats:
         default: 0
       purchaseDate:
         rpgName: purchdate
-        type: Date
+        type: Character
+        length: 19
         default: "0001-01-01"
       purchaseCost:
         rpgName: purchcost

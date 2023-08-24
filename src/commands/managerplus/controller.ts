@@ -100,17 +100,17 @@ export const getAssetChanges: ECCHandlerFunction = async (reqkey, data, ecc) => 
         return ecc.sendEccResult('ECC9100', err.message, nextReqKey);
     }
 
-    try {
-        await fs.writeFile(reqFields.filename, JSON.stringify(result.data), 'utf-8');
-    } catch (err) {
-        return ecc.sendEccResult('ECC9200', err.message, nextReqKey);
-    }
+    // try {
+    //    await fs.writeFile(reqFields.filename, JSON.stringify(result.data), 'utf-8');
+    // } catch (err) {
+    //    return ecc.sendEccResult('ECC9200', err.message, nextReqKey);
+    // }
 
     // Send the result info
 
     try {
-        let responseData = sanitizeValues(result.data, safeValues);
-
+        // let responseData = sanitizeValues(result.data, safeValues);
+        let responseData = result.data;
         logger.debug('ECC0000', 'Success', nextReqKey);
         nextReqKey = await ecc.sendEccResult('ECC0000', 'Success', nextReqKey);
         nextReqKey = await ecc.sendObjectsToCaller(responseData, converter.convertObjectToAssetChgDS, nextReqKey);
@@ -153,11 +153,11 @@ export const getAssetAll: ECCHandlerFunction = async (reqkey, data, ecc) => {
         return ecc.sendEccResult('ECC9100', err.message, nextReqKey);
     }
 
-    try {
-        await fs.writeFile(reqFields.filename, JSON.stringify(result.data), 'utf-8');
-    } catch (err) {
-        return ecc.sendEccResult('ECC9200', err.message, nextReqKey);
-    }
+    // try {
+    //     await fs.writeFile(reqFields.filename, JSON.stringify(result.data), 'utf-8');
+    // } catch (err) {
+    //     return ecc.sendEccResult('ECC9200', err.message, nextReqKey);
+    // }
 
     // Send the result info
     try {
@@ -175,7 +175,7 @@ export const getAssetAll: ECCHandlerFunction = async (reqkey, data, ecc) => {
 };
 export const putLogMileage: ECCHandlerFunction = async (reqkey, data, ecc) => {
     logger.debug(`Received putLogMileage request`, { reqkey, data });
-    // Get parameters from incomming data buffer
+    // Get parameters from incoming data buffer
     const reqFields = converter3.convertReqAddLogToObject(data);
     // Call web service
 
@@ -192,7 +192,7 @@ export const putLogMileage: ECCHandlerFunction = async (reqkey, data, ecc) => {
     } catch (err) {
         if (err?.response?.data === 'Asset Id not found') {
             // If the request was made and the server responded with a status code
-            // Of 400, return the data and ECC8400 to recird the bad asset id
+            // Of 400, return the data and ECC8400 to record the bad asset id
             return ecc.sendEccResult('ECC8400', err.response.status + '-' + err.response.data, nextReqKey);
         } else {
             if (err.response) {
@@ -226,7 +226,7 @@ export const putLogMileage: ECCHandlerFunction = async (reqkey, data, ecc) => {
 
 export const getWorkOrderChanges: ECCHandlerFunction = async (reqkey, data, ecc) => {
     logger.debug(`Received getWorkOrderChanges request`, { reqkey, data });
-    // Get parameters from incomming data buffer
+    // Get parameters from incoming data buffer
     const reqFields = converterwoch.convertReqWoChgToObject(data);
     let reqDate = reqFields.since.toISOString().split('T')[0];
     // Call web service
@@ -329,7 +329,7 @@ export const getWorkOrderHours: ECCHandlerFunction = async (reqkey, data, ecc) =
 };
 export const putNewWorkOrder: ECCHandlerFunction = async (reqkey, data, ecc) => {
     logger.debug(`Received putNewWorkOrder request`, { reqkey, data });
-    // Get parameters from incomming data buffer
+    // Get parameters from incoming data buffer
     const reqFields = converterwkor.convertReqAddWoToObject(data);
     // Call web service
 
@@ -346,7 +346,7 @@ export const putNewWorkOrder: ECCHandlerFunction = async (reqkey, data, ecc) => 
     } catch (err) {
         if (err?.response?.data === 'Asset Id not found') {
             // If the request was made and the server responded with a status code
-            // Of 400, return the data and ECC8400 to recird the bad asset id
+            // Of 400, return the data and ECC8400 to record the bad asset id
             return ecc.sendEccResult('ECC8400', err.response.status + '-' + err.response.data, nextReqKey);
         } else {
             if (err.response) {
@@ -379,7 +379,7 @@ export const putNewWorkOrder: ECCHandlerFunction = async (reqkey, data, ecc) => 
 };
 export const getVendor: ECCHandlerFunction = async (reqkey, data, ecc) => {
     logger.debug(`Received getVendor request`, { reqkey, data });
-    // Get parameters from incomming data buffer
+    // Get parameters from incoming data buffer
     const reqFields = convertervndr.convertReqVendrToObject(data);
     // Call web service
     let result;
@@ -425,7 +425,7 @@ export const getVendor: ECCHandlerFunction = async (reqkey, data, ecc) => {
 };
 export const getEmploy: ECCHandlerFunction = async (reqkey, data, ecc) => {
     logger.debug(`Received getEmploy request`, { reqkey, data });
-    // Get parameters from incomming data buffer
+    // Get parameters from incoming data buffer
     const reqFields = converterempl.convertReqEmplToObject(data);
     // Call web service
     let result;
