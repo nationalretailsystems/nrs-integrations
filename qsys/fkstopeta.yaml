@@ -53,7 +53,7 @@ pgmmodels:
             type: Character
             length: 50
             default: ""
-            dim: 15
+            dim: 20
           Scac:
             type: Character
             length: 4
