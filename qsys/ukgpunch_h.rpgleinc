@@ -130,9 +130,9 @@
      DendTimeZone                          LikeDS(endTimeZoneDS)
      DexceptionType                        LikeDS(exceptionTypeDS)
      DorgJob                               LikeDS(orgJobDS)
-     Doverlimithrs                    3P 2
+     Doverlimithrs                    5P 2
      DstartTimeZone                        LikeDS(startTimeZoneDS)
-     Dviolationhrs                    3P 2
+     Dviolationhrs                    5P 2
      DworkRule                             LikeDS(workRuleDS)
      DpunchEvent                           LikeDS(punchEventDS)
      DexcusedAbs                       N
@@ -193,9 +193,9 @@
 
       ************************************
       * PunchRes data structure
-      * Record length: 15538
+      * Record length: 15698
       ************************************
-     DPunchResLen      C                   15538
+     DPunchResLen      C                   15698
      DPunchRes         DS                  Qualified
      D                                     Template
      DstartDate                      19A
@@ -207,5 +207,5 @@
       * Convert buffer to PunchRes
       ************************************
      DBufToPunchRes    PR
-     DBuffer                      15538A
+     DBuffer                      15698A
      DDataStruct                           LikeDS(PunchRes)

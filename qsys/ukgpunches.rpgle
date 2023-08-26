@@ -49,7 +49,7 @@
      PBufToPunchRes    B                   Export
 
      DBufToPunchRes    PI
-     DBuffer                      15538A
+     DBuffer                      15698A
      DDataStruct                           LikeDS(PunchRes)
 
       * Initialize to begining of buffer
@@ -138,12 +138,12 @@
        BufPtr += 19;
        DataStruct.punches(i).exceptions(j).orgJob.id = %int(%subst(CharBuf:1:6));
        BufPtr += 6;
-       DataStruct.punches(i).exceptions(j).overlimithrs = %dec(%subst(CharBuf:1:5):3:2);
-       BufPtr += 5;
+       DataStruct.punches(i).exceptions(j).overlimithrs = %dec(%subst(CharBuf:1:7):5:2);
+       BufPtr += 7;
        DataStruct.punches(i).exceptions(j).startTimeZone.id = %int(%subst(CharBuf:1:11));
        BufPtr += 11;
-       DataStruct.punches(i).exceptions(j).violationhrs = %dec(%subst(CharBuf:1:5):3:2);
-       BufPtr += 5;
+       DataStruct.punches(i).exceptions(j).violationhrs = %dec(%subst(CharBuf:1:7):5:2);
+       BufPtr += 7;
        DataStruct.punches(i).exceptions(j).workRule.id = %int(%subst(CharBuf:1:6));
        BufPtr += 6;
        DataStruct.punches(i).exceptions(j).workRule.qualifier = %subst(CharBuf:1:5);

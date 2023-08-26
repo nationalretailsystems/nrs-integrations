@@ -198,7 +198,7 @@ datastructures:
       overLimitInHours:
         rpgName: overlimithrs
         type: Packed
-        length: 3
+        length: 5
         precision: 2
         default: 0
       startTimeZone:
@@ -207,7 +207,7 @@ datastructures:
       violationInHours:
         rpgName: violationhrs
         type: Packed
-        length: 3
+        length: 5
         precision: 2
         default: 0
       workRule:
