@@ -18,7 +18,7 @@ const {
  */
 export interface HyRequest {
     /**
-     * @size 10 characters
+     * @size 11 characters
      */
     reqDate: string
 }
@@ -32,8 +32,8 @@ export function convertHyRequestToObject(dataIn: string): HyRequest {
     };
   let pos: number = 0;
 
-  dataOut.reqDate = dataIn.substring(pos, pos + 10).trimEnd();
-  pos += 10;
+  dataOut.reqDate = dataIn.substring(pos, pos + 11).trimEnd();
+  pos += 11;
 
   return dataOut;
 }

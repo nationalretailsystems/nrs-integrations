@@ -26,14 +26,14 @@
      DHyRequestToBuf   PI
      DDataStruct                           LikeDS(HyRequest)
      D                                     Const
-     DBuffer                         10A
+     DBuffer                         11A
 
       * Initialize to beginning of buffer
        BufPtr = %addr(Buffer);
 
       * Write fields from DS to buffer
-       %subst(CharBuf:1:10) = DataStruct.reqdate;
-       BufPtr += 10;
+       %subst(CharBuf:1:11) = DataStruct.reqdate;
+       BufPtr += 11;
 
        return ;
 

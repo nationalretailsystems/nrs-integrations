@@ -7,12 +7,12 @@
 
       ************************************
       * HyRequest data structure
-      * Record length: 10
+      * Record length: 11
       ************************************
-     DHyRequestLen     C                   10
+     DHyRequestLen     C                   11
      DHyRequest        DS                  Qualified
      D                                     Template
-     Dreqdate                        10A
+     Dreqdate                        11A
 
       ************************************
       * Convert HyRequest to buffer
@@ -20,4 +20,4 @@
      DHyRequestToBuf   PR
      DDataStruct                           LikeDS(HyRequest)
      D                                     Const
-     DBuffer                         10A
+     DBuffer                         11A

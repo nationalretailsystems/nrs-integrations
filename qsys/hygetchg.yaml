@@ -8,5 +8,5 @@ formats:
       reqDate:
         rpgName: reqdate
         type: Character
-        length: 10
+        length: 11
       
