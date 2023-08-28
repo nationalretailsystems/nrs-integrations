@@ -1,0 +1,24 @@
+      ************************************
+      * Module: hygetchg
+      * Generated RPG data structures
+      * and prototypes
+      * Do not modify
+      ************************************
+
+      ************************************
+      * HyRequest data structure
+      * Record length: 16
+      ************************************
+     DHyRequestLen     C                   16
+     DHyRequest        DS                  Qualified
+     D                                     Template
+     Dstartdate                       8A
+     Denddate                         8A
+
+      ************************************
+      * Convert HyRequest to buffer
+      ************************************
+     DHyRequestToBuf   PR
+     DDataStruct                           LikeDS(HyRequest)
+     D                                     Const
+     DBuffer                         16A
