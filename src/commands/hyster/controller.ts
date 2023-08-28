@@ -5,6 +5,7 @@ import createLogger from 'src/services/logger';
 import bulk from '@eradani-inc/ec-bulk';
 import _ from 'lodash';
 import { XMLParser, XMLBuilder, XMLValidator } from 'fast-xml-parser';
+import * as converter from 'src/interfaces/hygetchg';
 
 let xml = null;
 const logger = createLogger('commands/hyster');
@@ -15,7 +16,7 @@ const parser = new XMLParser();
 export const getLatestSessions: ECCHandlerFunction = async (reqkey, data, ecc) => {
     logger.debug(`Received getLatestSessions request`, { reqkey, data });
     // Get parameters from incoming data buffer
-    // const reqFields = converter.convertRqAssetChgToObject(data);
+    const reqFields = converter.convertHyRequestToObject(data);
     // let reqDate = reqFields.sincedate.toISOString().split('T')[0];
     // Call web service
     let result;
@@ -31,10 +32,10 @@ export const getLatestSessions: ECCHandlerFunction = async (reqkey, data, ecc) =
         '<password>' +
         config.hyster.password +
         '<startDateEq>' +
-        startDate +
+        reqFields.reqDate + ' 00:00:00' +
         '</startDateEq>' +
         '<endDateEq>' +
-        endDate +
+        reqFields.reqDate + ' 23:59:59' +
         '</endDateEq>' +
         '<cultureCode>en-US</cultureCode>' +
         '</GetLatestSessions>' +
