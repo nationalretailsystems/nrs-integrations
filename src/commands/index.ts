@@ -83,7 +83,7 @@ export default async function registerCommands(router: ECCRouter) {
     router.use('ukg', ukg);
 
     const hyster = new ECCRouter.Router();
-    registerHYSTER(ukg);
+    registerHYSTER(hyster);
     router.use('hyster', hyster);
 
     return router;
