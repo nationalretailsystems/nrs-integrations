@@ -37,6 +37,7 @@
     "homepage": "https://github.com/eradani-inc/eradani-inout-template#readme",
     "dependencies": {
         "@duosecurity/duo_api": "^1.2.2",
+        "@eradani-inc/ec-bulk": "^1.2.0",
         "@eradani-inc/ec-client": "^3.6.3",
         "@eradani-inc/ecc-router": "^0.6.5",
         "@eradani-inc/eradani-connect": "^2.8.3",
@@ -71,6 +72,7 @@
         "express": "^4.18.1",
         "express-oas-generator": "^1.0.41",
         "express-validator": "^6.14.0",
+        "fast-xml-parser": "^4.2.7",
         "form-data": "^4.0.0",
         "https-proxy-agent": "^5.0.1",
         "jsonwebtoken": "^8.5.1",
