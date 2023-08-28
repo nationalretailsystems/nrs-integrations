@@ -23,7 +23,8 @@ MODS = dspjk \
 	   tstrmgtmi \
 	   tstzplapi \
 	   tstboapay \
-	   tstukgttls
+	   tstukgttls \
+	   tstukgpnch
 
 GENMODS = icndbapi \
           lblapi \
@@ -118,7 +119,8 @@ PGMS = dspjk \
 	   tstrmgetmi \
 	   tstzplapi \
 	   tstboapay \
-	   tstukgttls
+	   tstukgttls \
+	   tstukgpnch
 
 CMDS = dspjk \
        dsptrfc \
