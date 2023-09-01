@@ -1,0 +1,80 @@
+      ************************************
+      * Module: ukgputhr
+      * Generated RPG data structures
+      * and prototypes
+      * Do not modify
+      ************************************
+
+      ************************************
+      * employee1DS data structure
+      ************************************
+     Demployee1DS      DS                  Qualified
+     D                                     Template
+     Did                              5P 0
+
+      ************************************
+      * dateRangeDS data structure
+      ************************************
+     DdateRangeDS      DS                  Qualified
+     D                                     Template
+     DstartDate                      23A
+     DendDate                        23A
+
+      ************************************
+      * whereDS data structure
+      ************************************
+     DwhereDS          DS                  Qualified
+     D                                     Template
+     Demployee                             LikeDS(employee1DS)
+     DdateRange                            LikeDS(dateRangeDS)
+
+      ************************************
+      * employee2DS data structure
+      ************************************
+     Demployee2DS      DS                  Qualified
+     D                                     Template
+     Did                              5P 0
+
+      ************************************
+      * addedDS data structure
+      ************************************
+     DaddedDS          DS                  Qualified
+     D                                     Template
+     Demployee                             LikeDS(employee2DS)
+     DdurationInHours                 5P 2
+     DstartDateTime                  23A
+     Did                              5P 0
+
+      ************************************
+      * hoursWorkedDS data structure
+      ************************************
+     DhoursWorkedDS    DS                  Qualified
+     D                                     Template
+     Dadded                                LikeDS(addedDS)
+     D                                     Dim(1)
+
+      ************************************
+      * doDS data structure
+      ************************************
+     DdoDS             DS                  Qualified
+     D                                     Template
+     DhoursWorked                          LikeDS(hoursWorkedDS)
+     DonlyValidate                     N
+
+      ************************************
+      * FormatName data structure
+      * Record length: 98
+      ************************************
+     DFormatNameLen    C                   98
+     DFormatName       DS                  Qualified
+     D                                     Template
+     Dwhere                                LikeDS(whereDS)
+     Ddo                                   LikeDS(doDS)
+
+      ************************************
+      * Convert FormatName to buffer
+      ************************************
+     DFormatNameToBuf  PR
+     DDataStruct                           LikeDS(FormatName)
+     D                                     Const
+     DBuffer                         98A

@@ -1,0 +1,27 @@
+{
+    "where": {
+        "employee": {
+            "id": 20253
+        },
+        "dateRange": {
+            "startDate": "2023-06-10T08:00:00.000",
+              "endDate": "2023-06-10T08:00:00.000"
+        }
+    },
+      "do": 
+      {
+      "hoursWorked": {
+        "added": [
+            {
+              "employee": {
+                 "id": 20253
+             },
+            "durationInHours": 25,
+            "startDateTime": "2023-06-10T08:00:00.000",
+            "id": 1551
+          }
+        ]
+      },
+      "onlyValidate": false
+    }
+  }
