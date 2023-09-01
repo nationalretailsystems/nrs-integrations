@@ -64,7 +64,8 @@ GENMODS = icndbapi \
 		  ukgtotals \
 		  ukgpunches \
 		  ukgtchours \
-		  hygetchg
+		  hygetchg \
+		  ukgputhr
 
 GENHDRS = icndbapi_h \
           lblapi_h \
@@ -101,7 +102,8 @@ GENHDRS = icndbapi_h \
 		  ukgtotal_h \
 		  ukgpunch_h \
 		  ukg_hours_h \
-		  hygetchg_h
+		  hygetchg_h \
+		  ukgputhr_h
 
 SRVPGMS = ecctmpgen
 
