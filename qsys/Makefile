@@ -566,6 +566,12 @@ $(libdir)/qrpglesrc.file/ukgpunches.mbr $(libdir)/qrpglesrc.file/ukgpunch_h.mbr 
 	system "CPYFRMSTMF FROMSTMF('ukgpunches.rpgle') TOMBR('$(libdir)/qrpglesrc.file/ukgpunches.mbr') MBROPT(*REPLACE)"
 	system "CPYFRMSTMF FROMSTMF('ukgpunch_h.rpgleinc') TOMBR('$(libdir)/qrpglesrc.file/ukgpunch_h.mbr') MBROPT(*REPLACE)"
 
+$(libdir)/qrpglesrc.file/ukgputhr.mbr $(libdir)/qrpglesrc.file/ukgputhr_h.mbr ../src/interfaces/ukgputhr.ts: ukgputhr.yaml
+	npx ec-generate -f $<
+	cp ukgputhr.ts ../src/interfaces/ukgputhr.ts
+	system "CPYFRMSTMF FROMSTMF('ukgputhr.rpgle') TOMBR('$(libdir)/qrpglesrc.file/ukgputhr.mbr') MBROPT(*REPLACE)"
+	system "CPYFRMSTMF FROMSTMF('ukgputhr_h.rpgleinc') TOMBR('$(libdir)/qrpglesrc.file/ukgputhr_h.mbr') MBROPT(*REPLACE)"	
+
 .PHONY: library
 library:
 	-system "CRTLIB $(LIB)"
