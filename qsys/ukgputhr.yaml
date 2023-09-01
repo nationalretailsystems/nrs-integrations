@@ -1,0 +1,68 @@
+---
+name: ukgputhr
+rpgIncName: ukgputhr_h
+datastructures:
+  employee1DS:
+    subfields:
+      id:
+        type: Packed
+        length: 5
+  dateRangeDS:
+    subfields:
+      startDate:
+        type: Character
+        length: 23
+      endDate:
+        type: Character
+        length: 23
+  whereDS:
+    subfields:
+      employee:
+        type: DataStruct
+        dsName: employee1DS
+      dateRange:
+        type: DataStruct
+        dsName: dateRangeDS
+  employee2DS:
+    subfields:
+      id:
+        type: Packed
+        length: 5
+  addedDS:
+    subfields:
+      employee:
+        type: DataStruct
+        dsName: employee2DS
+      durationInHours:
+        type: Packed
+        length: 5
+        precision: 2
+      startDateTime:
+        type: Character
+        length: 23
+      id:
+        type: Packed
+        length: 5
+  hoursWorkedDS:
+    subfields:
+      added:
+        type: DataStruct
+        dsName: addedDS
+        dim: 1
+  doDS:
+    subfields:
+      hoursWorked:
+        type: DataStruct
+        dsName: hoursWorkedDS
+      onlyValidate:
+        type: Boolean
+formats:
+  FormatName:
+    recordType: request
+    subfields:
+      where:
+        type: DataStruct
+        dsName: whereDS
+      do:
+        type: DataStruct
+        dsName: doDS

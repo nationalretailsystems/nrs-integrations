@@ -5,6 +5,7 @@ import createLogger from 'src/services/logger';
 import * as converterukgs from 'src/interfaces/ukgdlysumm';
 import * as converterukgp from 'src/interfaces/ukgpunches';
 import * as converterukgt from 'src/interfaces/ukgtotals';
+import * as converterukgh from 'src/interfaces/ukgputhr';
 import { getTokenUkg } from 'src/services/get-token';
 import { sanitizeValues } from 'src/services/safe-values';
 
@@ -244,5 +245,52 @@ export const getTotals: ECCHandlerFunction = async function (reqkey, datax, ecc)
     nextReqKey = await ecc.sendEccResult('ECC0000', 'Success', nextReqKey);
     // logger.error('Call test1 failed');
     return ecc.sendObjectToCaller(result.data, converterukgt.convertObjectToTotalsRes, nextReqKey);
+    logger.error(nextReqKey);
+};
+export const putHours: ECCHandlerFunction = async function (reqkey, datax, ecc) {
+    // Get parameters from incoming data buffer
+    const reqFields = converterukgh.convertFormatNameToObject(datax);
+
+    logger.debug(`Received putHours request`, { reqkey, datax });
+
+    // Call web service
+    let result;
+    let response;
+    let nextReqKey = reqkey;
+    // const jsonData = reqFields;
+    try {
+        logger.error('Requesting token');
+        const token = await getTokenUkg();
+        result = await axiosInstance.post('/v1/timekeeping/timecard', {
+            reqFields,
+            headers: {
+                Authorization: token,
+                appkey: ukg.prd.appkey,
+                'content-type': 'application/json',
+                accept: 'application/json'
+            }
+        });
+    } catch (err) {
+        if (err.response) {
+            // If the request was made and the server responded with a status code
+            // That falls out of the range of 2xx
+            // Note: These error formats are dependent on the web service
+            return ecc.sendEccResult('ECC1000', err.response.status + '-' + err.response.statusText, nextReqKey);
+        }
+
+        // Else the request was made but no response was received
+        // Note: This error format has nothing to do with the web service. This is
+        // Mainly TCP/IP errors.
+        return ecc.sendEccResult('ECC1000', err.message, nextReqKey);
+    }
+
+    // const responseData= result;
+    // Send the result info
+    // let responseData = sanitizeValues(result.data[0][1], safeValuesACH);
+    // let responseData = result.data[0][1];
+    // let responseData = sanitizeValues(result.data, safeValues);
+    nextReqKey = await ecc.sendEccResult('ECC0000', 'Success', nextReqKey);
+    return response;
+    // logger.error('Call test1 failed');
     logger.error(nextReqKey);
 };
