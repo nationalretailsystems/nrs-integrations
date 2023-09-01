@@ -26,7 +26,7 @@
      DFormatNameToBuf  PI
      DDataStruct                           LikeDS(FormatName)
      D                                     Const
-     DBuffer                         98A
+     DBuffer                        142A
 
       * Initialize to beginning of buffer
        BufPtr = %addr(Buffer);
@@ -38,14 +38,16 @@
        BufPtr += 23;
        %subst(CharBuf:1:23) = DataStruct.where.dateRange.endDate;
        BufPtr += 23;
-       %subst(CharBuf:1:7) = %char(DataStruct.do.hoursWorked.added.employee.id);
+       for k = 1 to 2;
+       %subst(CharBuf:1:7) = %char(DataStruct.do.hoursWorked.added(k).employee.id);
        BufPtr += 7;
-       %subst(CharBuf:1:7) = %char(DataStruct.do.hoursWorked.added.durationInHours);
+       %subst(CharBuf:1:7) = %char(DataStruct.do.hoursWorked.added(k).durationInHours);
        BufPtr += 7;
-       %subst(CharBuf:1:23) = DataStruct.do.hoursWorked.added.startDateTime;
+       %subst(CharBuf:1:23) = DataStruct.do.hoursWorked.added(k).startDateTime;
        BufPtr += 23;
-       %subst(CharBuf:1:7) = %char(DataStruct.do.hoursWorked.added.id);
+       %subst(CharBuf:1:7) = %char(DataStruct.do.hoursWorked.added(k).id);
        BufPtr += 7;
+       endfor;
        %subst(CharBuf:1:1) = DataStruct.do.onlyValidate;
        BufPtr += 1;
 
