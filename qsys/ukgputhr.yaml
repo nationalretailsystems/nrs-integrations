@@ -7,14 +7,17 @@ datastructures:
       id:
         type: Packed
         length: 5
+        default: 0
   dateRangeDS:
     subfields:
       startDate:
         type: Character
         length: 23
+        default: ""
       endDate:
         type: Character
         length: 23
+        default: ""
   whereDS:
     subfields:
       employee:
@@ -28,6 +31,7 @@ datastructures:
       id:
         type: Packed
         length: 5
+        default: 0
   addedDS:
     subfields:
       employee:
@@ -37,12 +41,15 @@ datastructures:
         type: Packed
         length: 5
         precision: 2
+        default: 0
       startDateTime:
         type: Character
         length: 23
+        default: ""
       id:
         type: Packed
         length: 5
+        default: 0
   hoursWorkedDS:
     subfields:
       added:
@@ -56,6 +63,7 @@ datastructures:
         dsName: hoursWorkedDS
       onlyValidate:
         type: Boolean
+        default: false
 formats:
   FormatName:
     recordType: request

@@ -20,6 +20,7 @@ export interface employee1DS {
     /**
      * @size 5 digits
      * @precision 0 decimals
+     * @default `0`
      */
     id: number
 }
@@ -30,10 +31,12 @@ export interface employee1DS {
 export interface dateRangeDS {
     /**
      * @size 23 characters
+     * @default ``
      */
     startDate: string,
     /**
      * @size 23 characters
+     * @default ``
      */
     endDate: string
 }
@@ -57,6 +60,7 @@ export interface employee2DS {
     /**
      * @size 5 digits
      * @precision 0 decimals
+     * @default `0`
      */
     id: number
 }
@@ -71,15 +75,18 @@ export interface addedDS {
     /**
      * @size 5 digits
      * @precision 2 decimals
+     * @default `0`
      */
     durationInHours: number,
     /**
      * @size 23 characters
+     * @default ``
      */
     startDateTime: string,
     /**
      * @size 5 digits
      * @precision 0 decimals
+     * @default `0`
      */
     id: number
 }
@@ -101,6 +108,7 @@ export interface doDS {
      */
     hoursWorked: hoursWorkedDS,
     /**
+     * @default `false`
      */
     onlyValidate: boolean
 }
