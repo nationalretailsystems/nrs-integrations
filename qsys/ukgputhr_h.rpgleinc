@@ -51,7 +51,6 @@
      DhoursWorkedDS    DS                  Qualified
      D                                     Template
      Dadded                                LikeDS(addedDS)
-     D                                     Dim(2)
 
       ************************************
       * doDS data structure
@@ -63,9 +62,9 @@
 
       ************************************
       * FormatName data structure
-      * Record length: 142
+      * Record length: 98
       ************************************
-     DFormatNameLen    C                   142
+     DFormatNameLen    C                   98
      DFormatName       DS                  Qualified
      D                                     Template
      Dwhere                                LikeDS(whereDS)
@@ -77,4 +76,4 @@
      DFormatNameToBuf  PR
      DDataStruct                           LikeDS(FormatName)
      D                                     Const
-     DBuffer                        142A
+     DBuffer                         98A

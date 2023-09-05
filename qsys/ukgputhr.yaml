@@ -55,7 +55,6 @@ datastructures:
       added:
         type: DataStruct
         dsName: addedDS
-        dim: 2
   doDS:
     subfields:
       hoursWorked:
