@@ -97,7 +97,7 @@ export interface addedDS {
 export interface hoursWorkedDS {
     /**
      */
-    added: Array<addedDS>
+    added: addedDS
 }
 
 /**
@@ -155,25 +155,20 @@ export function convertFormatNameToObject(dataIn: string): FormatName {
   dataOut.do.hoursWorked =   {
   
     };
-  dataOut.do.hoursWorked.added = [
-    
-  ];
-  for (let i: number = 0; i < 2; ++i) {
-  dataOut.do.hoursWorked.added[i] =   {
+  dataOut.do.hoursWorked.added =   {
   
     };
-  dataOut.do.hoursWorked.added[i].employee =   {
+  dataOut.do.hoursWorked.added.employee =   {
   
     };
-  dataOut.do.hoursWorked.added[i].employee.id = Number(dataIn.substring(pos, pos + 7).trimEnd());
+  dataOut.do.hoursWorked.added.employee.id = Number(dataIn.substring(pos, pos + 7).trimEnd());
   pos += 7;
-  dataOut.do.hoursWorked.added[i].durationInHours = Number(dataIn.substring(pos, pos + 7).trimEnd());
+  dataOut.do.hoursWorked.added.durationInHours = Number(dataIn.substring(pos, pos + 7).trimEnd());
   pos += 7;
-  dataOut.do.hoursWorked.added[i].startDateTime = dataIn.substring(pos, pos + 23).trimEnd();
+  dataOut.do.hoursWorked.added.startDateTime = dataIn.substring(pos, pos + 23).trimEnd();
   pos += 23;
-  dataOut.do.hoursWorked.added[i].id = Number(dataIn.substring(pos, pos + 7).trimEnd());
+  dataOut.do.hoursWorked.added.id = Number(dataIn.substring(pos, pos + 7).trimEnd());
   pos += 7;
-  }
   dataOut.do.onlyValidate = dataIn.substring(pos, pos + 1).trimEnd() === "1";
   pos += 1;
 
