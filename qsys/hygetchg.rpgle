@@ -33,7 +33,7 @@
 
       * Write fields from DS to buffer
        %subst(CharBuf:1:11) = DataStruct.reqdate;
-       BufPtr += 11;
+       BufPtr += 11;  
 
        return ;
 
