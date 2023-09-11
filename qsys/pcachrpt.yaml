@@ -40,7 +40,7 @@ datastructures:
         rpgName: account
         type: Character
         length: 10
-        default: " "
+        default: ""
       transaction_id:
         rpgName: transid
         type: Integer
@@ -50,32 +50,32 @@ datastructures:
         rpgName: payor
         type: Character
         length: 50
-        default: " "
+        default: ""
       payee:
         rpgName: payee
         type: Character
         length: 50
-        default: " "
+        default: ""
       category:
         rpgName: category
         type: Character
         length: 25
-        default: " "
+        default: ""
       transaction_type:
         rpgName: transtype
         type: Character
         length: 25
-        default: " "
+        default: ""
       number:
         rpgName: number
         type: Character
         length: 25
-        default: " "
+        default: ""
       debitCredit:
         rpgName: debitcredit
         type: Character
         length: 10
-        default: " "
+        default: ""
       debitAmount:
         rpgName: debitamt
         type: Packed
@@ -97,7 +97,7 @@ datastructures:
         rpgName: payordate
         type: Character
         length: 24
-        default: " "
+        default: ""
       payeeBatch:
         rpgName: payeebatch
         type: Integer
@@ -107,47 +107,47 @@ datastructures:
         rpgName: payeedate
         type: Character
         length: 24
-        default: " "
+        default: ""
       payorID:
         rpgName: payorid
         type: Character
         length: 10
-        default: " "
+        default: ""
       payeeID:
         rpgName: payeeid
         type: Character
         length: 10
-        default: " "
+        default: ""
       customer_reference_number:
         rpgName: custrefnum
         type: Character
         length: 25
-        default: " "
+        default: ""
       shipper_reference_number:
         rpgName: shiprefnum
         type: Character
         length: 25
-        default: " "
+        default: ""
       parent:
         rpgName: parent
         type: Character
         length: 25
-        default: " "
+        default: ""
       approvalDate:
         rpgName: approvaldate
         type: Character
         length: 24
-        default: " "
+        default: ""
       approvedByUserName:
         rpgName: appbyuser
         type: Character
         length: 25
-        default: " "
+        default: ""
       currency:
         rpgName: currency
         type: Character
         length: 3
-        default: " "
+        default: ""
       payerId:
         rpgName: payerid
         type: Integer
@@ -162,47 +162,47 @@ datastructures:
         rpgName: payrefnum
         type: Character
         length: 10
-        default: " "
+        default: ""
       origin:
         rpgName: origin
         type: Character
         length: 25
-        default: " "
+        default: ""
       destination:
         rpgName: destination
         type: Character
         length: 25
-        default: " "
+        default: ""
       payerInternalNumber:
         rpgName: payerintnum
         type: Character
         length: 25
-        default: " "
+        default: ""
       payerFileNumber:
         rpgName: payerfilenum
         type: Character
         length: 25
-        default: " "
+        default: ""
       payerVoucherNumber:
         rpgName: payervouch
         type: Character
         length: 25
-        default: " "
+        default: ""
       payerProductNumber:
         rpgName: payerprodnum
         type: Character
         length: 25
-        default: " "
+        default: ""
       payerInvoiceNumber:
         rpgName: payerinvnum
         type: Character
         length: 25
-        default: " "
+        default: ""
       bolLink:
         rpgName: bollink
         type: Character
         length: 50
-        default: " "
+        default: ""
   OverallDS:
     qualified: true
     subfields:
@@ -210,16 +210,19 @@ datastructures:
         rpgName: count
         type: Integer
         length: 10
+        default: 0
       debitamount:
         rpgName: debitamt
         type: Packed
         length: 15
         precision: 5
+        default: 0
       creditamount:
         rpgName: creditamt
         type: Packed
         length: 15
         precision: 5
+        default: 0
   PayorDS:
     qualified: true
     subfields:
@@ -227,11 +230,13 @@ datastructures:
         rpgName: batch
         type: Integer
         length: 10
+        default: 0
       amount:
         rpgName: amount
         type: Packed
         length: 15
         precision: 5
+        default: 0
   DataDS:
     qualified: true
     subfields:
