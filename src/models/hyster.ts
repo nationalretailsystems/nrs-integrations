@@ -1,9 +1,8 @@
 import config from 'config';
 import ec from '@eradani-inc/eradani-connect';
-import { JSONObject } from 'src/types';
 
 export const insertHysterRecord = new ec.run.Sql(
-    `insert into ${config.native.hysterLibrary}.HysterLog values (?, ?, ?, ?, ?, ?,? ?)`,
+    `insert into ${config.native.hysterLibrary}.HysterLog values (?, ?, ?, ?, ?, ?, ?, ?) with NC`,
     {
         params: [
             { name: 'SessionID', type: new ec.dataTypes.Char(15) },
