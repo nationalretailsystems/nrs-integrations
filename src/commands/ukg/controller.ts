@@ -257,18 +257,17 @@ export const putHours: ECCHandlerFunction = async function (reqkey, datax, ecc) 
     let result;
     let response;
     let nextReqKey = reqkey;
-    // const jsonData = reqFields;
+    const jsonData = JSON.stringify(reqFields);
     try {
         logger.error('Requesting token');
         const token = await getTokenUkg();
-        result = await axiosInstance.post('/v1/timekeeping/timecard', {
-            reqFields,
+        result = await axiosInstance.post('/v1/timekeeping/timecard', reqFields,{
             headers: {
                 Authorization: token,
                 appkey: ukg.prd.appkey,
                 'content-type': 'application/json',
                 accept: 'application/json'
-            }
+            },
         });
     } catch (err) {
         if (err.response) {
