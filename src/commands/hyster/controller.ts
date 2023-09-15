@@ -81,7 +81,9 @@ export const getLatestSessions: ECCHandlerFunction = async (reqkey, data, ecc) =
             StartMainServiceMeter: sessionEvents[i]["a:StartMainServiceMeter"].toString(),
             EndMainServiceMeter: sessionEvents[i]["a:EndMainServiceMeter"].toString(),
             UpdateFlag: " ", 
-            UpdateStamp: DateTime.now().toFormat("yyyy-MM-dd'-'HH.mm.ss.SSS'000000'")
+            UpdateStamp: DateTime.now().toFormat("yyyy-MM-dd'-'HH.mm.ss.SSS'000000'"),
+            StatusCode: " ",
+            Msg: " "
         };
         transport
         .execute(insertHysterRecord,record)

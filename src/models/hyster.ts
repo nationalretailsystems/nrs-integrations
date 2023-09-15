@@ -2,7 +2,7 @@ import config from 'config';
 import ec from '@eradani-inc/eradani-connect';
 
 export const insertHysterRecord = new ec.run.Sql(
-    `insert into ${config.native.hysterLibrary}.HysterLog values (?, ?, ?, ?, ?, ?, ?, ?) with NC`,
+    `insert into ${config.native.hysterLibrary}.HysterLog values (?, ?, ?, ?, ?, ?, ?, ?, ?, ?) with NC`,
     {
         params: [
             { name: 'SessionID', type: new ec.dataTypes.Char(15) },
@@ -12,7 +12,9 @@ export const insertHysterRecord = new ec.run.Sql(
             { name: 'StartMainServiceMeter', type: new ec.dataTypes.Char(15) },
             { name: 'EndMainServiceMeter', type: new ec.dataTypes.Char(15) },
             { name: 'UpdateFlag', type: new ec.dataTypes.Char(1) },
-            { name: 'UpdateStamp', type: new ec.dataTypes.Timestamp() }
+            { name: 'UpdateStamp', type: new ec.dataTypes.Timestamp() },
+            { name: 'StatusCode', type: new ec.dataTypes.Char(10)},
+            { name: 'Msg', type: new ec.dataTypes.Char(80)}
         ]
     }
 );
