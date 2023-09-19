@@ -117,7 +117,7 @@
       ************************************
      DprefprofdtentDS  DS                  Qualified
      D                                     Template
-     DpreferenceProfile                16A
+     Dprefprof                       16A
      Dprefprofid                      3P 0
      Dschperid                        1P 0
      DusingShiftLabel                  N

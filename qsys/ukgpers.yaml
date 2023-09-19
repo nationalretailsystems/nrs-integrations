@@ -230,6 +230,7 @@ datastructures:
     rpgName: prefprofdtentDS
     subfields:
       preferenceProfile:
+        rpgName: prefprof
         type: Character
         length: 16
         default: ""
