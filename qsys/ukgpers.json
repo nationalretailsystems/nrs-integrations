@@ -1,0 +1,255 @@
+{
+    "employeeExtension": {
+        "accessProfile": "Super Access",
+        "accessProfileId": -1,
+        "accountLocked": false,
+        "active": true,
+        "approvalMethod": "Single Approver",
+        "approvalMethodId": 0,
+        "authenticationType": "Federated",
+        "authenticationTypeId": 2,
+        "clockOnlyUser": false,
+        "consecutiveBadLogons": 0,
+        "dataAccessExtensionGroups": [
+            {
+                "assignDAGID": 1652,
+                "dataAccessGroup": "All Access",
+                "dataAccessGroupId": -1,
+                "dataAccessGroupRole": "MANAGER_ROLE",
+                "dataAccessGroupRoleId": -2,
+                "defaultSwitch": true,
+                "effectiveDate": "2023-06-05",
+                "expirationDate": "3000-01-01",
+                "personID": 1280
+            }
+        ],
+        "dataAccessGroupsForSnapshotDate": [],
+        "delegateProfile": "Empty Profile",
+        "delegateProfileId": -2,
+        "effDatedAccountStatuses": [
+            {
+                "accountStatus": "Active",
+                "accountStatusTypeId": 1,
+                "effectiveDate": "2020-08-23",
+                "expirationDate": "3000-01-01"
+            }
+        ],
+        "effDatedAccountStatusesForExtensionSnapshotDate": [],
+        "effDatedPrimaryJobAccountEntries": [
+            {
+                "effDatedCostCenterEntries": [],
+                "effectiveDate": "2017-06-19",
+                "expirationDate": "3000-01-01",
+                "primaryJob": "National Retail Systems/NRT/CFO-IT/SAS East Coast/Headquarters, NJ/Information Technology/Job",
+                "primaryLaborCategory": ",BiWeekly,1ST SHIFT-DAY,DIRECTOR - SOFTWARE DEVELOPMENT",
+                "primaryLaborCategoryId": 1951,
+                "primaryOrganizationId": 1366
+            }
+        ],
+        "effDatedPrimaryJobAccountForSnapshotDate": [],
+        "emailContactDataEntries": [
+            {
+                "contactData": "mike.corbo@nrsonline.com",
+                "contactType": "Work",
+                "contactTypeId": 4,
+                "hasEmailNotificationDelivery": true
+            }
+        ],
+        "employmentStatuses": [
+            {
+                "effectiveDate": "2020-08-23",
+                "employmentStatus": "Active",
+                "employmentStatusTypeId": 1,
+                "expirationDate": "3000-01-01"
+            }
+        ],
+        "employmentStatusesForExtensionSnapshotDate": [],
+        "faceRequiredFlag": false,
+        "fingerRequiredFlag": true,
+        "firstName": "Michael",
+        "fullName": "Corbo, Michael A",
+        "hasKmailNotificationDelivery": true,
+        "hireDate": "2017-06-19",
+        "identifier": {
+            "identifier": "EMPLOYEE_EXTENSION"
+        },
+        "isEmployee": true,
+        "isManager": true,
+        "jobAssigmentId": 1280,
+        "jobAssignmentId": 1280,
+        "lastName": "Corbo",
+        "learnPath": "",
+        "licenseTypeList": [
+            {
+                "active": true,
+                "licenseId": 2,
+                "licenseType": "Employee",
+                "licenseTypeName": "Workforce_Professional_Employee"
+            },
+            {
+                "active": true,
+                "licenseId": 3,
+                "licenseType": "Manager",
+                "licenseTypeName": "Workforce_Manager"
+            },
+            {
+                "active": true,
+                "licenseId": 35,
+                "licenseType": "Absence",
+                "licenseTypeName": "absence_management"
+            },
+            {
+                "active": true,
+                "licenseId": 21,
+                "licenseType": "Workforce MobileManager",
+                "licenseTypeName": "Workforce_Mobile_Manager"
+            },
+            {
+                "active": true,
+                "licenseId": 22,
+                "licenseType": "Workforce MobileEmployee",
+                "licenseTypeName": "Workforce_Mobile_Employee"
+            },
+            {
+                "active": true,
+                "licenseId": 23,
+                "licenseType": "Workforce TabletManager",
+                "licenseTypeName": "Workforce_Tablet_Manager"
+            },
+            {
+                "active": true,
+                "licenseId": 24,
+                "licenseType": "Workforce TabletEmployee",
+                "licenseTypeName": "Workforce_Tablet_Employee"
+            },
+            {
+                "active": true,
+                "licenseId": 29,
+                "licenseType": "Hourly Timekeeping",
+                "licenseTypeName": "hourly_timekeeping"
+            }
+        ],
+        "lockoutResetDateTime": "3000-01-01T00:00:00",
+        "logonProfile": "Default",
+        "logonProfileId": 2,
+        "mfaRequired": false,
+        "middleName": "A",
+        "notificationProfile": "E-mail and Control Center",
+        "passwordUpdateRequired": false,
+        "passwordUpdatedDateTime": "2023-06-05T15:31:49",
+        "personCustomDataEntries": [
+            {
+                "customDataType": "Union Code",
+                "customDataTypeId": 1
+            },
+            {
+                "customDataType": "Person Import Compound Key",
+                "customDataTypeId": 2,
+                "customText": "NRS Super Access"
+            },
+            {
+                "customDataType": "Person Import Time Stamp",
+                "customDataTypeId": 3,
+                "customText": "20230915 154701.687"
+            },
+            {
+                "customDataType": "Prepaid",
+                "customDataTypeId": 52
+            }
+        ],
+        "personDatesEntries": [
+            {
+                "customDateTypeId": 1,
+                "dateName": "Accrual Calc Date",
+                "defaultDate": "2017-06-19",
+                "description": "Date of Hire",
+                "overrideDate": "2017-06-19"
+            },
+            {
+                "customDateTypeId": 101,
+                "dateName": "Birthday",
+                "defaultDate": "2017-06-19",
+                "description": "Date of Hire"
+            },
+            {
+                "customDateTypeId": 151,
+                "dateName": "HC_EarliestDate",
+                "defaultDate": "2017-06-19",
+                "description": "Date of Hire"
+            },
+            {
+                "customDateTypeId": 152,
+                "dateName": "HC_LatestDate",
+                "defaultDate": "2017-06-19",
+                "description": "Date of Hire"
+            },
+            {
+                "customDateTypeId": 153,
+                "dateName": "HC_ProcessedDate",
+                "defaultDate": "2017-06-19",
+                "description": "Date of Hire"
+            },
+            {
+                "customDateTypeId": 154,
+                "dateName": "HC_Requested",
+                "defaultDate": "2017-06-19",
+                "description": "Date of Hire"
+            },
+            {
+                "customDateTypeId": 155,
+                "dateName": "HC_RunDate",
+                "defaultDate": "2017-06-19",
+                "description": "Date of Hire"
+            }
+        ],
+        "personId": 1280,
+        "personNumber": "015790",
+        "postalAddressDataEntries": [
+            {
+                "city": "Lyndhurst",
+                "contactType": "Home",
+                "contactTypeId": 5,
+                "country": "USA",
+                "state": "NJ",
+                "street": "243 Post Avenue",
+                "zipCode": "07071"
+            }
+        ],
+        "preferenceProfile": "NRS Super Access",
+        "preferenceProfileDataEntry": {
+            "preferenceProfile": "NRS Super Access",
+            "preferenceProfileId": 202,
+            "schedulePeriodId": 1,
+            "usingShiftLabel": false,
+            "usesTwelveHourFormat": false
+        },
+        "processEmployeeProfile": "Empty Profile",
+        "processManagerProfile": "Empty Profile",
+        "requirePassChange": false,
+        "restrictedUser": false,
+        "seniorityDate": "2017-06-19",
+        "shortName": "Michael",
+        "supervisorFullName": "Cole, Gregory P",
+        "supervisorPersonId": 26551,
+        "supervisorPersonNumber": "99999",
+        "telContactDataEntries": [
+            {
+                "contactData": "(201) 507-9284",
+                "contactType": "Phone 1",
+                "contactTypeId": 1,
+                "smsswitch": false
+            },
+            {
+                "contactData": "+1 (  551) 4971703",
+                "contactType": "Phone 2",
+                "contactTypeId": 2,
+                "smsswitch": false
+            }
+        ],
+        "timeZone": "(GMT -05:00) Eastern Time",
+        "timeZoneId": 13411,
+        "userAccountId": 1280,
+        "userName": "mike.corbo@nrsonline.com"
+    },
+    "exceptionPresent": false
+}

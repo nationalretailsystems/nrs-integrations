@@ -1,0 +1,530 @@
+---
+name: ukgpers
+rpgIncName: ukgpers_h
+datastructures:
+  dataAccessExtensionGroupsDS:
+    subfields:
+      assignDAGID:
+        type: Packed
+        length: 4
+        default: 0
+      dataAccessGroup:
+        type: Character
+        length: 10
+        default: ""
+      dataAccessGroupId:
+        rpgName: dataaccgrpid
+        type: Packed
+        length: 2
+        default: 0
+      dataAccessGroupRole:
+        rpgName: dataaccgrprol
+        type: Character
+        length: 12
+        default: ""
+      dataAccessGroupRoleId:
+        rpgName: dataaccgrprid
+        type: Packed
+        length: 2
+        default: 0
+      defaultSwitch:
+        type: Boolean
+      effectiveDate:
+        type: Character
+        length: 10
+        default: ""
+      expirationDate:
+        type: Character
+        length: 10
+        default: ""
+      personID:
+        type: Packed
+        length: 4
+        default: 0
+  effDatedAccountStatusesDS:
+    subfields:
+      accountStatus:
+        type: Character
+        length: 6
+        default: ""
+      accountStatusTypeId:
+        rpgName: acctststypid
+        type: Packed
+        length: 1
+        default: 0
+      effectiveDate:
+        type: Character
+        length: 10
+        default: ""
+      expirationDate:
+        type: Character
+        length: 10
+        default: ""
+  effDatedPrimaryJobAccountEntriesDS:
+    subfields:
+      effDatedCostCenterEntries:
+        rpgName: effdataccent
+        type: Character
+        length: 26
+        default: ""
+      effectiveDate:
+        type: Character
+        length: 10
+        default: ""
+      expirationDate:
+        type: Character
+        length: 10
+        default: ""
+      primaryJob:
+        type: Character
+        length: 93
+        default: ""
+      primaryLaborCategory:
+        rpgName: primlabcat
+        type: Character
+        length: 55
+        default: ""
+      primaryLaborCategoryId:
+        rpgName: primlabcatid
+        type: Packed
+        length: 4
+        default: 0
+      primaryOrganizationId:
+        rpgName: primorgid
+        type: Packed
+        length: 4
+        default: 0
+  emailContactDataEntriesDS:
+    subfields:
+      contactData:
+        type: Character
+        length: 24
+        default: ""
+      contactType:
+        type: Character
+        length: 4
+        default: ""
+      contactTypeId:
+        type: Packed
+        length: 1
+        default: 0
+      hasEmailNotificationDelivery:
+        rpgName: hasemlnotdel
+        type: Boolean
+  employmentStatusesDS:
+    subfields:
+      effectiveDate:
+        type: Character
+        length: 10
+        default: ""
+      employmentStatus:
+        rpgName: empostatus
+        type: Character
+        length: 6
+        default: ""
+      employmentStatusTypeId:
+        rpgName: empststypid
+        type: Packed
+        length: 1
+        default: 0
+      expirationDate:
+        type: Character
+        length: 10
+        default: ""
+  identifierDS:
+    subfields:
+      identifier:
+        type: Character
+        length: 18
+        default: ""
+  licenseTypeListDS:
+    subfields:
+      active:
+        type: Boolean
+      licenseId:
+        type: Packed
+        length: 1
+        default: 0
+      licenseType:
+        type: Character
+        length: 8
+        default: ""
+      licenseTypeName:
+        type: Character
+        length: 31
+        default: ""
+  personCustomDataEntriesDS:
+    subfields:
+      customDataType:
+        type: Character
+        length: 10
+        default: ""
+      customDataTypeId:
+        rpgName: cstmdatatypid
+        type: Packed
+        length: 1
+        default: 0
+  personDatesEntriesDS:
+    subfields:
+      customDateTypeId:
+        rpgName: cstmdatatypid
+        type: Packed
+        length: 1
+        default: 0
+      dateName:
+        type: Character
+        length: 17
+        default: ""
+      defaultDate:
+        type: Character
+        length: 10
+        default: ""
+      description:
+        type: Character
+        length: 12
+        default: ""
+      overrideDate:
+        type: Character
+        length: 10
+        default: ""
+  postalAddressDataEntriesDS:
+    subfields:
+      city:
+        type: Character
+        length: 9
+        default: ""
+      contactType:
+        type: Character
+        length: 4
+        default: ""
+      contactTypeId:
+        type: Packed
+        length: 1
+        default: 0
+      country:
+        type: Character
+        length: 3
+        default: ""
+      state:
+        type: Character
+        length: 2
+        default: ""
+      street:
+        type: Character
+        length: 15
+        default: ""
+      zipCode:
+        type: Character
+        length: 5
+        default: ""
+  preferenceProfileDataEntryDS:
+    subfields:
+      preferenceProfile:
+        type: Character
+        length: 16
+        default: ""
+      preferenceProfileId:
+        rpgName: prefprofid
+        type: Packed
+        length: 3
+        default: 0
+      schedulePeriodId:
+        rpgName: schperid
+        type: Packed
+        length: 1
+        default: 0
+      usingShiftLabel:
+        type: Boolean
+      usesTwelveHourFormat:
+        rpgName: uses12hrfmt
+        type: Boolean
+  telContactDataEntriesDS:
+    subfields:
+      contactData:
+        type: Character
+        length: 14
+        default: ""
+      contactType:
+        type: Character
+        length: 7
+        default: ""
+      contactTypeId:
+        type: Packed
+        length: 1
+        default: 0
+      smsswitch:
+        type: Boolean
+  employeeExtensionDS:
+    subfields:
+      accessProfile:
+        type: Character
+        length: 12
+        default: ""
+      accessProfileId:
+        type: Packed
+        length: 2
+        default: 0
+      accountLocked:
+        type: Boolean
+      active:
+        type: Boolean
+      approvalMethod:
+        type: Character
+        length: 15
+        default: ""
+      approvalMethodId:
+        rpgName: appmethid
+        type: Packed
+        length: 1
+        default: 0
+      authenticationType:
+        rpgName: authtype
+        type: Character
+        length: 9
+        default: ""
+      authenticationTypeId:
+        rpgName: authtypeid
+        type: Packed
+        length: 1
+        default: 0
+      clockOnlyUser:
+        type: Boolean
+      consecutiveBadLogons:
+        rpgName: consbadlogin
+        type: Packed
+        length: 1
+        default: 0
+      dataAccessExtensionGroups:
+        type: DataStruct
+        dsName: dataAccessExtensionGroupsDS
+      dataAccessGroupsForSnapshotDate:
+        rpgName: dataaccgrpsnp
+        type: Character
+        length: 26
+        default: ""
+      delegateProfile:
+        type: Character
+        length: 13
+        default: ""
+      delegateProfileId:
+        rpgName: delgprofid
+        type: Packed
+        length: 2
+        default: 0
+      effDatedAccountStatuses:
+        rpgName: effdatactsts
+        type: DataStruct
+        dsName: effDatedAccountStatusesDS
+      effDatedAccountStatusesForExtensionSnapshotDate:
+        rpgName: effactstssnp
+        type: Character
+        length: 26
+        default: ""
+      effDatedPrimaryJobAccountEntries:
+        rpgName: effprmjobact
+        type: DataStruct
+        dsName: effDatedPrimaryJobAccountEntriesDS
+      effDatedPrimaryJobAccountForSnapshotDate:
+        rpgName: effprmsnpdat
+        type: Character
+        length: 26
+        default: ""
+      emailContactDataEntries:
+        rpgName: erlcondata
+        type: DataStruct
+        dsName: emailContactDataEntriesDS
+      employmentStatuses:
+        rpgName: empstatuses
+        type: DataStruct
+        dsName: employmentStatusesDS
+      employmentStatusesForExtensionSnapshotDate:
+        rpgName: empstsextsnp
+        type: Character
+        length: 26
+        default: ""
+      faceRequiredFlag:
+        rpgName: facereqflag
+        type: Boolean
+      fingerRequiredFlag:
+        rpgName: fngreqflag
+        type: Boolean
+      firstName:
+        type: Character
+        length: 7
+        default: ""
+      fullName:
+        type: Character
+        length: 16
+        default: ""
+      hasKmailNotificationDelivery:
+        rpgName: haskmailnd
+        type: Boolean
+      hireDate:
+        type: Character
+        length: 10
+        default: ""
+      identifier:
+        type: DataStruct
+        dsName: identifierDS
+      isEmployee:
+        type: Boolean
+      isManager:
+        type: Boolean
+      jobAssigmentId:
+        type: Packed
+        length: 4
+        default: 0
+      jobAssignmentId:
+        type: Packed
+        length: 4
+        default: 0
+      lastName:
+        type: Character
+        length: 5
+        default: ""
+      learnPath:
+        type: Character
+        length: 10
+        default: ""
+      licenseTypeList:
+        type: DataStruct
+        dsName: licenseTypeListDS
+        dim: 8
+      lockoutResetDateTime:
+        rpgName: lckoutrdt
+        type: Character
+        length: 19
+        default: ""
+      logonProfile:
+        type: Character
+        length: 7
+        default: ""
+      logonProfileId:
+        type: Packed
+        length: 1
+        default: 0
+      mfaRequired:
+        type: Boolean
+      middleName:
+        type: Character
+        length: 1
+        default: ""
+      notificationProfile:
+        rpgName: notifprof
+        type: Character
+        length: 25
+        default: ""
+      passwordUpdateRequired:
+        rpgName: pwdupdreq
+        type: Boolean
+      passwordUpdatedDateTime:
+        rpgName: pwdupddt
+        type: Character
+        length: 19
+        default: ""
+      personCustomDataEntries:
+        rpgName: perscustdta
+        type: DataStruct
+        dsName: personCustomDataEntriesDS
+        dim: 4
+      personDatesEntries:
+        rpgName: persdates
+        type: DataStruct
+        dsName: personDatesEntriesDS
+        dim: 7
+      personId:
+        type: Packed
+        length: 4
+        default: 0
+      personNumber:
+        type: Character
+        length: 6
+        default: ""
+      postalAddressDataEntries:
+        rpgName: postadddata
+        type: DataStruct
+        dsName: postalAddressDataEntriesDS
+      preferenceProfile:
+        rpgName: prefprof
+        type: Character
+        length: 16
+        default: ""
+      preferenceProfileDataEntry:
+        rpgName: prefproddata
+        type: DataStruct
+        dsName: preferenceProfileDataEntryDS
+      processEmployeeProfile:
+        rpgName: procempprof
+        type: Character
+        length: 13
+        default: ""
+      processManagerProfile:
+        rpgName: propmgrprof
+        type: Character
+        length: 13
+        default: ""
+      requirePassChange:
+        rpgName: reqpasschg
+        type: Boolean
+      restrictedUser:
+        type: Boolean
+      seniorityDate:
+        type: Character
+        length: 10
+        default: ""
+      shortName:
+        type: Character
+        length: 7
+        default: ""
+      supervisorFullName:
+        rpgName: superfn
+        type: Character
+        length: 15
+        default: ""
+      supervisorPersonId:
+        rpgName: superpersid
+        type: Packed
+        length: 5
+        default: 0
+      supervisorPersonNumber:
+        rpgName: superpersnum
+        type: Character
+        length: 5
+        default: ""
+      telContactDataEntries:
+        rpgName: telcontentr
+        type: DataStruct
+        dsName: telContactDataEntriesDS
+        dim: 2
+      timeZone:
+        type: Character
+        length: 25
+        default: ""
+      timeZoneId:
+        type: Packed
+        length: 5
+        default: 0
+      userAccountId:
+        type: Packed
+        length: 4
+        default: 0
+      userName:
+        type: Character
+        length: 24
+        default: ""
+formats:
+  personResp:
+    recordType: response
+    subfields:
+      employeeExtension:
+        type: DataStruct
+        dsName: employeeExtensionDS
+      exceptionPresent:
+        type: Boolean
+  personReq:
+    recordType: request
+    subfields:
+      employeenumber:
+        rpgName: empno
+        type: Character
+        length: 6
