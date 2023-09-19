@@ -307,6 +307,7 @@ datastructures:
         length: 1
         default: 0
       dataAccessExtensionGroups:
+        rpgName: dataccextgrp
         type: DataStruct
         dsName: dataAccessExtensionGroupsDS
       dataAccessGroupsForSnapshotDate:
