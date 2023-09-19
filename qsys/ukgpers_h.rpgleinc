@@ -182,7 +182,7 @@
      Dnotifprof                      25A
      Dpwdupdreq                        N
      Dpwdupddt                       19A
-     Dperscustdta                          LikeDS(prscustdatentDS)
+     DpersonCustomDataEntries                      LikeDS(prscustdatentDS)
      D                                     Dim(4)
      Dpersdates                            LikeDS(persdatentDS)
      D                                     Dim(7)
@@ -200,7 +200,7 @@
      Dsuperfn                        15A
      Dsuperpersid                     5P 0
      Dsuperpersnum                    5A
-     Dtelcontentr                          LikeDS(telcondatentDS)
+     DtelContactDataEntries                      LikeDS(telcondatentDS)
      D                                     Dim(2)
      DtimeZone                       25A
      DtimeZoneId                      5P 0
