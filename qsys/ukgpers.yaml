@@ -3,6 +3,7 @@ name: ukgpers
 rpgIncName: ukgpers_h
 datastructures:
   dataAccessExtensionGroupsDS:
+    rpgName: dataaccextgrpDS
     subfields:
       assignDAGID:
         type: Packed
@@ -42,6 +43,7 @@ datastructures:
         length: 4
         default: 0
   effDatedAccountStatusesDS:
+    rpgName: effdtaaccstsDS
     subfields:
       accountStatus:
         type: Character
@@ -61,6 +63,7 @@ datastructures:
         length: 10
         default: ""
   effDatedPrimaryJobAccountEntriesDS:
+    rpgName: effdtpjaccentDS
     subfields:
       effDatedCostCenterEntries:
         rpgName: effdataccent
@@ -95,6 +98,7 @@ datastructures:
         length: 4
         default: 0
   emailContactDataEntriesDS:
+    rpgName: emlcondatentDS
     subfields:
       contactData:
         type: Character
@@ -112,6 +116,7 @@ datastructures:
         rpgName: hasemlnotdel
         type: Boolean
   employmentStatusesDS:
+    rpgName: empstsDS
     subfields:
       effectiveDate:
         type: Character
@@ -138,6 +143,7 @@ datastructures:
         length: 18
         default: ""
   licenseTypeListDS:
+    rpgName: lictypelistDS
     subfields:
       active:
         type: Boolean
@@ -154,6 +160,7 @@ datastructures:
         length: 31
         default: ""
   personCustomDataEntriesDS:
+    rpgName: prscustdatentDS
     subfields:
       customDataType:
         type: Character
@@ -165,6 +172,7 @@ datastructures:
         length: 1
         default: 0
   personDatesEntriesDS:
+    rpgName: persdatentDS
     subfields:
       customDateTypeId:
         rpgName: cstmdatatypid
@@ -188,6 +196,7 @@ datastructures:
         length: 10
         default: ""
   postalAddressDataEntriesDS:
+    rpgName: postadddatentDS
     subfields:
       city:
         type: Character
@@ -218,6 +227,7 @@ datastructures:
         length: 5
         default: ""
   preferenceProfileDataEntryDS:
+    rpgName: prefprofdtentDS
     subfields:
       preferenceProfile:
         type: Character
@@ -239,6 +249,7 @@ datastructures:
         rpgName: uses12hrfmt
         type: Boolean
   telContactDataEntriesDS:
+    rpgName: telcondatentDS
     subfields:
       contactData:
         type: Character
@@ -255,6 +266,7 @@ datastructures:
       smsswitch:
         type: Boolean
   employeeExtensionDS:
+    rpgName: empextDS
     subfields:
       accessProfile:
         type: Character
@@ -517,9 +529,11 @@ formats:
     recordType: response
     subfields:
       employeeExtension:
+        rpgName: empextension
         type: DataStruct
         dsName: employeeExtensionDS
       exceptionPresent:
+        rpgName: exceptpresent
         type: Boolean
   personReq:
     recordType: request
