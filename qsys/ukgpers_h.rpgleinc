@@ -1,0 +1,242 @@
+      ************************************
+      * Module: ukgpers
+      * Generated RPG data structures
+      * and prototypes
+      * Do not modify
+      ************************************
+
+      ************************************
+      * dataAccessExtensionGroupsDS data structure
+      ************************************
+     DdataAccessExtensionGroupsDS  DS                  Qualified
+     D                                     Template
+     DassignDAGID                     4P 0
+     DdataAccessGroup                10A
+     Ddataaccgrpid                    2P 0
+     Ddataaccgrprol                  12A
+     Ddataaccgrprid                   2P 0
+     DdefaultSwitch                    N
+     DeffectiveDate                  10A
+     DexpirationDate                 10A
+     DpersonID                        4P 0
+
+      ************************************
+      * effDatedAccountStatusesDS data structure
+      ************************************
+     DeffDatedAccountStatusesDS  DS                  Qualified
+     D                                     Template
+     DaccountStatus                   6A
+     Dacctststypid                    1P 0
+     DeffectiveDate                  10A
+     DexpirationDate                 10A
+
+      ************************************
+      * effDatedPrimaryJobAccountEntriesDS data structure
+      ************************************
+     DeffDatedPrimaryJobAccountEntriesDS  DS                  Qualified
+     D                                     Template
+     Deffdataccent                   26A
+     DeffectiveDate                  10A
+     DexpirationDate                 10A
+     DprimaryJob                     93A
+     Dprimlabcat                     55A
+     Dprimlabcatid                    4P 0
+     Dprimorgid                       4P 0
+
+      ************************************
+      * emailContactDataEntriesDS data structure
+      ************************************
+     DemailContactDataEntriesDS  DS                  Qualified
+     D                                     Template
+     DcontactData                    24A
+     DcontactType                     4A
+     DcontactTypeId                   1P 0
+     Dhasemlnotdel                     N
+
+      ************************************
+      * employmentStatusesDS data structure
+      ************************************
+     DemploymentStatusesDS  DS                  Qualified
+     D                                     Template
+     DeffectiveDate                  10A
+     Dempostatus                      6A
+     Dempststypid                     1P 0
+     DexpirationDate                 10A
+
+      ************************************
+      * identifierDS data structure
+      ************************************
+     DidentifierDS     DS                  Qualified
+     D                                     Template
+     Didentifier                     18A
+
+      ************************************
+      * licenseTypeListDS data structure
+      ************************************
+     DlicenseTypeListDS  DS                  Qualified
+     D                                     Template
+     Dactive                           N
+     DlicenseId                       1P 0
+     DlicenseType                     8A
+     DlicenseTypeName                31A
+
+      ************************************
+      * personCustomDataEntriesDS data structure
+      ************************************
+     DpersonCustomDataEntriesDS  DS                  Qualified
+     D                                     Template
+     DcustomDataType                 10A
+     Dcstmdatatypid                   1P 0
+
+      ************************************
+      * personDatesEntriesDS data structure
+      ************************************
+     DpersonDatesEntriesDS  DS                  Qualified
+     D                                     Template
+     Dcstmdatatypid                   1P 0
+     DdateName                       17A
+     DdefaultDate                    10A
+     Ddescription                    12A
+     DoverrideDate                   10A
+
+      ************************************
+      * postalAddressDataEntriesDS data structure
+      ************************************
+     DpostalAddressDataEntriesDS  DS                  Qualified
+     D                                     Template
+     Dcity                            9A
+     DcontactType                     4A
+     DcontactTypeId                   1P 0
+     Dcountry                         3A
+     Dstate                           2A
+     Dstreet                         15A
+     DzipCode                         5A
+
+      ************************************
+      * preferenceProfileDataEntryDS data structure
+      ************************************
+     DpreferenceProfileDataEntryDS  DS                  Qualified
+     D                                     Template
+     DpreferenceProfile                16A
+     Dprefprofid                      3P 0
+     Dschperid                        1P 0
+     DusingShiftLabel                  N
+     Duses12hrfmt                      N
+
+      ************************************
+      * telContactDataEntriesDS data structure
+      ************************************
+     DtelContactDataEntriesDS  DS                  Qualified
+     D                                     Template
+     DcontactData                    14A
+     DcontactType                     7A
+     DcontactTypeId                   1P 0
+     Dsmsswitch                        N
+
+      ************************************
+      * employeeExtensionDS data structure
+      ************************************
+     DemployeeExtensionDS  DS                  Qualified
+     D                                     Template
+     DaccessProfile                  12A
+     DaccessProfileId                 2P 0
+     DaccountLocked                    N
+     Dactive                           N
+     DapprovalMethod                 15A
+     Dappmethid                       1P 0
+     Dauthtype                        9A
+     Dauthtypeid                      1P 0
+     DclockOnlyUser                    N
+     Dconsbadlogin                    1P 0
+     DdataAccessExtensionGroups                      LikeDS(dataAccessExtensionGroupsDS)
+     Ddataaccgrpsnp                  26A
+     DdelegateProfile                13A
+     Ddelgprofid                      2P 0
+     Deffdatactsts                         LikeDS(effDatedAccountStatusesDS)
+     Deffactstssnp                   26A
+     Deffprmjobact                         LikeDS(effDatedPrimaryJobAccountEntriesDS)
+     Deffprmsnpdat                   26A
+     Derlcondata                           LikeDS(emailContactDataEntriesDS)
+     Dempstatuses                          LikeDS(employmentStatusesDS)
+     Dempstsextsnp                   26A
+     Dfacereqflag                      N
+     Dfngreqflag                       N
+     DfirstName                       7A
+     DfullName                       16A
+     Dhaskmailnd                       N
+     DhireDate                       10A
+     Didentifier                           LikeDS(identifierDS)
+     DisEmployee                       N
+     DisManager                        N
+     DjobAssigmentId                  4P 0
+     DjobAssignmentId                 4P 0
+     DlastName                        5A
+     DlearnPath                      10A
+     DlicenseTypeList                      LikeDS(licenseTypeListDS)
+     D                                     Dim(8)
+     Dlckoutrdt                      19A
+     DlogonProfile                    7A
+     DlogonProfileId                  1P 0
+     DmfaRequired                      N
+     DmiddleName                      1A
+     Dnotifprof                      25A
+     Dpwdupdreq                        N
+     Dpwdupddt                       19A
+     Dperscustdta                          LikeDS(personCustomDataEntriesDS)
+     D                                     Dim(4)
+     Dpersdates                            LikeDS(personDatesEntriesDS)
+     D                                     Dim(7)
+     DpersonId                        4P 0
+     DpersonNumber                    6A
+     Dpostadddata                          LikeDS(postalAddressDataEntriesDS)
+     Dprefprof                       16A
+     Dprefproddata                         LikeDS(preferenceProfileDataEntryDS)
+     Dprocempprof                    13A
+     Dpropmgrprof                    13A
+     Dreqpasschg                       N
+     DrestrictedUser                   N
+     DseniorityDate                  10A
+     DshortName                       7A
+     Dsuperfn                        15A
+     Dsuperpersid                     5P 0
+     Dsuperpersnum                    5A
+     Dtelcontentr                          LikeDS(telContactDataEntriesDS)
+     D                                     Dim(2)
+     DtimeZone                       25A
+     DtimeZoneId                      5P 0
+     DuserAccountId                   4P 0
+     DuserName                       24A
+
+      ************************************
+      * personReq data structure
+      * Record length: 6
+      ************************************
+     DpersonReqLen     C                   6
+     DpersonReq        DS                  Qualified
+     D                                     Template
+     Dempno                           6A
+
+      ************************************
+      * Convert personReq to buffer
+      ************************************
+     DpersonReqToBuf   PR
+     DDataStruct                           LikeDS(personReq)
+     D                                     Const
+     DBuffer                          6A
+
+      ************************************
+      * personResp data structure
+      * Record length: 1731
+      ************************************
+     DpersonRespLen    C                   1731
+     DpersonResp       DS                  Qualified
+     D                                     Template
+     DemployeeExtension                      LikeDS(employeeExtensionDS)
+     DexceptionPresent                  N
+
+      ************************************
+      * Convert buffer to personResp
+      ************************************
+     DBufTopersonResp  PR
+     DBuffer                       1731A
+     DDataStruct                           LikeDS(personResp)
