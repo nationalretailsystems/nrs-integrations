@@ -230,7 +230,7 @@
        BufPtr += 5;
        DataStruct.empextension.prefprof = %subst(CharBuf:1:16);
        BufPtr += 16;
-       DataStruct.empextension.prefproddata.preferenceProfile = %subst(CharBuf:1:16);
+       DataStruct.empextension.prefproddata.prefprof = %subst(CharBuf:1:16);
        BufPtr += 16;
        DataStruct.empextension.prefproddata.prefprofid = %dec(%subst(CharBuf:1:5):3:0);
        BufPtr += 5;
