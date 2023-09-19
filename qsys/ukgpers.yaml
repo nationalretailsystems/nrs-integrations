@@ -437,6 +437,7 @@ datastructures:
         length: 19
         default: ""
       personCustomDataEntries:
+        rpgName: perscustdata
         type: DataStruct
         dsName: personCustomDataEntriesDS
         dim: 4
@@ -505,6 +506,7 @@ datastructures:
         length: 5
         default: ""
       telContactDataEntries:
+        rpgName: telcontactdata
         type: DataStruct
         dsName: telContactDataEntriesDS
         dim: 2
