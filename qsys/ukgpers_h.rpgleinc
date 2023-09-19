@@ -172,7 +172,7 @@
      DjobAssignmentId                 4P 0
      DlastName                        5A
      DlearnPath                      10A
-     DlicenseTypeList                      LikeDS(lictypelistDS)
+     DlicTypeList                          LikeDS(lictypelistDS)
      D                                     Dim(8)
      Dlckoutrdt                      19A
      DlogonProfile                    7A
@@ -185,7 +185,6 @@
      Dperscustdata                         LikeDS(prscustdatentDS)
      D                                     Dim(4)
      Dpersdates                            LikeDS(persdatentDS)
-     D                                     Dim(7)
      DpersonId                        4P 0
      DpersonNumber                    6A
      Dpostadddata                          LikeDS(postadddatentDS)
