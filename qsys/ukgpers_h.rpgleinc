@@ -148,7 +148,7 @@
      Dauthtypeid                      1P 0
      DclockOnlyUser                    N
      Dconsbadlogin                    1P 0
-     DdataAccessExtensionGroups                      LikeDS(dataaccextgrpDS)
+     Ddataccextgrp                         LikeDS(dataaccextgrpDS)
      Ddataaccgrpsnp                  26A
      DdelegateProfile                13A
      Ddelgprofid                      2P 0
