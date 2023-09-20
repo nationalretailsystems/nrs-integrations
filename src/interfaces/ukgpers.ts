@@ -59,7 +59,7 @@ export interface dataAccessExtensionGroupsDS {
      */
     expirationDate: string,
     /**
-     * @size 4 digits
+     * @size 6 digits
      * @precision 0 decimals
      * @default `0`
      */
@@ -569,7 +569,7 @@ export interface employeeExtensionDS {
      */
     personDatesEntries: Array<personDatesEntriesDS>,
     /**
-     * @size 4 digits
+     * @size 6 digits
      * @precision 0 decimals
      * @default `0`
      */
@@ -720,7 +720,7 @@ export function convertObjectTopersonResp(dataIn: personResp): string {
   dataOut += (dataIn?.employeeExtension?.dataAccessExtensionGroups?.defaultSwitch !== undefined ? (dataIn?.employeeExtension?.dataAccessExtensionGroups?.defaultSwitch ? "1" : "0") : missingInput(`dataIn.employeeExtension.dataAccessExtensionGroups.defaultSwitch`, "bool", dataIn?.employeeExtension?.dataAccessExtensionGroups?.defaultSwitch));
   dataOut += dataIn?.employeeExtension?.dataAccessExtensionGroups?.effectiveDate?.substring(0, 10)?.padEnd(10) ?? "".substring(0, 10).padEnd(10);
   dataOut += dataIn?.employeeExtension?.dataAccessExtensionGroups?.expirationDate?.substring(0, 10)?.padEnd(10) ?? "".substring(0, 10).padEnd(10);
-  dataOut += dataIn?.employeeExtension?.dataAccessExtensionGroups?.personID?.toFixed(0)?.substring(0, 6)?.padEnd(6) ?? "0".substring(0, 6).padEnd(6);
+  dataOut += dataIn?.employeeExtension?.dataAccessExtensionGroups?.personID?.toFixed(0)?.substring(0, 8)?.padEnd(8) ?? "0".substring(0, 8).padEnd(8);
   dataOut += dataIn?.employeeExtension?.dataAccessGroupsForSnapshotDate?.substring(0, 26)?.padEnd(26) ?? "".substring(0, 26).padEnd(26);
   dataOut += dataIn?.employeeExtension?.delegateProfile?.substring(0, 13)?.padEnd(13) ?? "".substring(0, 13).padEnd(13);
   dataOut += dataIn?.employeeExtension?.delegateProfileId?.toFixed(0)?.substring(0, 4)?.padEnd(4) ?? "0".substring(0, 4).padEnd(4);
@@ -784,7 +784,7 @@ export function convertObjectTopersonResp(dataIn: personResp): string {
   dataOut += dataIn?.employeeExtension?.personDatesEntries[j]?.description?.substring(0, 12)?.padEnd(12) ?? "".substring(0, 12).padEnd(12);
   dataOut += dataIn?.employeeExtension?.personDatesEntries[j]?.overrideDate?.substring(0, 10)?.padEnd(10) ?? "".substring(0, 10).padEnd(10);
   }
-  dataOut += dataIn?.employeeExtension?.personId?.toFixed(0)?.substring(0, 6)?.padEnd(6) ?? "0".substring(0, 6).padEnd(6);
+  dataOut += dataIn?.employeeExtension?.personId?.toFixed(0)?.substring(0, 8)?.padEnd(8) ?? "0".substring(0, 8).padEnd(8);
   dataOut += dataIn?.employeeExtension?.personNumber?.substring(0, 6)?.padEnd(6) ?? "".substring(0, 6).padEnd(6);
   dataOut += dataIn?.employeeExtension?.postalAddressDataEntries?.city?.substring(0, 9)?.padEnd(9) ?? "".substring(0, 9).padEnd(9);
   dataOut += dataIn?.employeeExtension?.postalAddressDataEntries?.contactType?.substring(0, 4)?.padEnd(4) ?? "".substring(0, 4).padEnd(4);
