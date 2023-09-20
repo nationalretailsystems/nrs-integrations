@@ -40,7 +40,7 @@ datastructures:
         default: ""
       personID:
         type: Packed
-        length: 4
+        length: 6
         default: 0
   effDatedAccountStatusesDS:
     rpgName: effdtaaccstsDS
@@ -448,7 +448,7 @@ datastructures:
         dim: 7
       personId:
         type: Packed
-        length: 4
+        length: 6
         default: 0
       personNumber:
         type: Character

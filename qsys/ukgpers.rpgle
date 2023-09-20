@@ -45,7 +45,7 @@
      PBufTopersonResp  B                   Export
 
      DBufTopersonResp  PI
-     DBuffer                       1731A
+     DBuffer                       1735A
      DDataStruct                           LikeDS(personResp)
 
       * Initialize to begining of buffer
@@ -88,8 +88,8 @@
        BufPtr += 10;
        DataStruct.empextension.dataccextgrp.expirationDate = %subst(CharBuf:1:10);
        BufPtr += 10;
-       DataStruct.empextension.dataccextgrp.personID = %dec(%subst(CharBuf:1:6):4:0);
-       BufPtr += 6;
+       DataStruct.empextension.dataccextgrp.personID = %dec(%subst(CharBuf:1:8):6:0);
+       BufPtr += 8;
        DataStruct.empextension.dataaccgrpsnp = %subst(CharBuf:1:26);
        BufPtr += 26;
        DataStruct.empextension.delegateProfile = %subst(CharBuf:1:13);
@@ -167,13 +167,13 @@
        DataStruct.empextension.learnPath = %subst(CharBuf:1:10);
        BufPtr += 10;
        for i = 1 to 8;
-       DataStruct.empextension.licTypeList(i).active = %subst(CharBuf:1:1);
+       DataStruct.empextension.licenseTypeList(i).active = %subst(CharBuf:1:1);
        BufPtr += 1;
-       DataStruct.empextension.licTypeList(i).licenseId = %dec(%subst(CharBuf:1:3):1:0);
+       DataStruct.empextension.licenseTypeList(i).licenseId = %dec(%subst(CharBuf:1:3):1:0);
        BufPtr += 3;
-       DataStruct.empextension.licTypeList(i).licenseType = %subst(CharBuf:1:8);
+       DataStruct.empextension.licenseTypeList(i).licenseType = %subst(CharBuf:1:8);
        BufPtr += 8;
-       DataStruct.empextension.licTypeList(i).licenseTypeName = %subst(CharBuf:1:31);
+       DataStruct.empextension.licenseTypeList(i).licenseTypeName = %subst(CharBuf:1:31);
        BufPtr += 31;
        endfor;
        DataStruct.empextension.lckoutrdt = %subst(CharBuf:1:19);
@@ -210,8 +210,8 @@
        DataStruct.empextension.persDates(i).overrideDate = %subst(CharBuf:1:10);
        BufPtr += 10;
        endfor;
-       DataStruct.empextension.personId = %dec(%subst(CharBuf:1:6):4:0);
-       BufPtr += 6;
+       DataStruct.empextension.personId = %dec(%subst(CharBuf:1:8):6:0);
+       BufPtr += 8;
        DataStruct.empextension.personNumber = %subst(CharBuf:1:6);
        BufPtr += 6;
        DataStruct.empextension.postadddata.city = %subst(CharBuf:1:9);
@@ -259,13 +259,13 @@
        DataStruct.empextension.superpersnum = %subst(CharBuf:1:5);
        BufPtr += 5;
        for i = 1 to 2;
-       DataStruct.empextension.Dtelcontactdata(i).contactData = %subst(CharBuf:1:14);
+       DataStruct.empextension.telcontactdata(i).contactData = %subst(CharBuf:1:14);
        BufPtr += 14;
-       DataStruct.empextension.Dtelcontactdata(i).contactType = %subst(CharBuf:1:7);
+       DataStruct.empextension.telcontactdata(i).contactType = %subst(CharBuf:1:7);
        BufPtr += 7;
-       DataStruct.empextension.Dtelcontactdata(i).contactTypeId = %dec(%subst(CharBuf:1:3):1:0);
+       DataStruct.empextension.telcontactdata(i).contactTypeId = %dec(%subst(CharBuf:1:3):1:0);
        BufPtr += 3;
-       DataStruct.empextension.Dtelcontactdata(i).smsswitch = %subst(CharBuf:1:1);
+       DataStruct.empextension.telcontactdata(i).smsswitch = %subst(CharBuf:1:1);
        BufPtr += 1;
        endfor;
        DataStruct.empextension.timeZone = %subst(CharBuf:1:25);

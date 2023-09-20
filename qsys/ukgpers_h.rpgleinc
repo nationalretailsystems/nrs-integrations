@@ -18,7 +18,7 @@
      DdefaultSwitch                    N
      DeffectiveDate                  10A
      DexpirationDate                 10A
-     DpersonID                        4P 0
+     DpersonID                        6P 0
 
       ************************************
       * effDatedAccountStatusesDS data structure
@@ -172,7 +172,7 @@
      DjobAssignmentId                 4P 0
      DlastName                        5A
      DlearnPath                      10A
-     DlicTypeList                          LikeDS(lictypelistDS)
+     DlicenseTypeList                      LikeDS(lictypelistDS)
      D                                     Dim(8)
      Dlckoutrdt                      19A
      DlogonProfile                    7A
@@ -185,7 +185,8 @@
      Dperscustdata                         LikeDS(prscustdatentDS)
      D                                     Dim(4)
      Dpersdates                            LikeDS(persdatentDS)
-     DpersonId                        4P 0
+     D                                     Dim(7)
+     DpersonId                        6P 0
      DpersonNumber                    6A
      Dpostadddata                          LikeDS(postadddatentDS)
      Dprefprof                       16A
@@ -225,9 +226,9 @@
 
       ************************************
       * personResp data structure
-      * Record length: 1731
+      * Record length: 1735
       ************************************
-     DpersonRespLen    C                   1731
+     DpersonRespLen    C                   1735
      DpersonResp       DS                  Qualified
      D                                     Template
      Dempextension                         LikeDS(empextDS)
@@ -237,5 +238,5 @@
       * Convert buffer to personResp
       ************************************
      DBufTopersonResp  PR
-     DBuffer                       1731A
+     DBuffer                       1735A
      DDataStruct                           LikeDS(personResp)
