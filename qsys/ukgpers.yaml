@@ -30,6 +30,7 @@ datastructures:
         default: 0
       defaultSwitch:
         type: Boolean
+        default: false
       effectiveDate:
         type: Character
         length: 10
@@ -115,6 +116,7 @@ datastructures:
       hasEmailNotificationDelivery:
         rpgName: hasemlnotdel
         type: Boolean
+        default: false
   employmentStatusesDS:
     rpgName: empstsDS
     subfields:
@@ -147,6 +149,7 @@ datastructures:
     subfields:
       active:
         type: Boolean
+        default: false
       licenseId:
         type: Packed
         length: 1
@@ -246,9 +249,11 @@ datastructures:
         default: 0
       usingShiftLabel:
         type: Boolean
+        default: false
       usesTwelveHourFormat:
         rpgName: uses12hrfmt
         type: Boolean
+        default: false
   telContactDataEntriesDS:
     rpgName: telcondatentDS
     subfields:
@@ -266,6 +271,7 @@ datastructures:
         default: 0
       smsswitch:
         type: Boolean
+        default: false
   employeeExtensionDS:
     rpgName: empextDS
     subfields:
@@ -279,8 +285,10 @@ datastructures:
         default: 0
       accountLocked:
         type: Boolean
+        default: false
       active:
         type: Boolean
+        default: false
       approvalMethod:
         type: Character
         length: 15
@@ -302,6 +310,7 @@ datastructures:
         default: 0
       clockOnlyUser:
         type: Boolean
+        default: false
       consecutiveBadLogons:
         rpgName: consbadlogin
         type: Packed
@@ -359,9 +368,11 @@ datastructures:
       faceRequiredFlag:
         rpgName: facereqflag
         type: Boolean
+        default: false
       fingerRequiredFlag:
         rpgName: fngreqflag
         type: Boolean
+        default: false
       firstName:
         type: Character
         length: 7
@@ -373,6 +384,7 @@ datastructures:
       hasKmailNotificationDelivery:
         rpgName: haskmailnd
         type: Boolean
+        default: false
       hireDate:
         type: Character
         length: 10
@@ -382,8 +394,10 @@ datastructures:
         dsName: identifierDS
       isEmployee:
         type: Boolean
+        default: false
       isManager:
         type: Boolean
+        default: false
       jobAssigmentId:
         type: Packed
         length: 4
@@ -419,6 +433,7 @@ datastructures:
         default: 0
       mfaRequired:
         type: Boolean
+        default: false
       middleName:
         type: Character
         length: 1
@@ -431,6 +446,7 @@ datastructures:
       passwordUpdateRequired:
         rpgName: pwdupdreq
         type: Boolean
+        default: false
       passwordUpdatedDateTime:
         rpgName: pwdupddt
         type: Character
@@ -480,8 +496,10 @@ datastructures:
       requirePassChange:
         rpgName: reqpasschg
         type: Boolean
+        default: false
       restrictedUser:
         type: Boolean
+        default: false
       seniorityDate:
         type: Character
         length: 10
@@ -537,6 +555,7 @@ formats:
       exceptionPresent:
         rpgName: exceptpresent
         type: Boolean
+        default: false
   personReq:
     recordType: request
     subfields:

@@ -307,7 +307,7 @@ export const getPers: ECCHandlerFunction = async function (reqkey, datax, ecc) {
     try {
         logger.error('Requesting token');
         const token = await getTokenUkg();
-        result = await axiosInstance.get('/v1/timekeeping/timecard', {
+        result = await axiosInstance.get('/v1/commons/persons/employee', {
             /* eslint-disable */
             params: {
                 person_number: reqFields.employeenumber
@@ -342,6 +342,6 @@ export const getPers: ECCHandlerFunction = async function (reqkey, datax, ecc) {
     let responseData = result.data;
     nextReqKey = await ecc.sendEccResult('ECC0000', 'Success', nextReqKey);
     // logger.error('Call test1 failed');
-    return ecc.sendObjectToCaller(responseData, converterukgs.convertObjectToSummaryRes, nextReqKey);
+    return ecc.sendObjectToCaller(responseData, converterukgpers.convertObjectTopersonResp, nextReqKey);
     logger.error(nextReqKey);
 };
