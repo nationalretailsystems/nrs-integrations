@@ -511,7 +511,7 @@ export interface employeeExtensionDS {
     employmentStatuses: employmentStatusesDS,
     /**
      */
-    employmentStatusesForExtensionSnapshotDate: employmentStatusesForExtensionSnapshotDate,
+    employmentStatusesForExtensionSnapshotDate: employmentStatusesForExtensionSnapshotDateDS,
     /**
      * @default `false`
      */
@@ -800,6 +800,7 @@ export function convertObjectTopersonResp(dataIn: personResp): string {
   dataOut += dataIn?.employeeExtension?.employmentStatuses?.employmentStatus?.substring(0, 6)?.padEnd(6) ?? "".substring(0, 6).padEnd(6);
   dataOut += dataIn?.employeeExtension?.employmentStatuses?.employmentStatusTypeId?.toFixed(0)?.substring(0, 3)?.padEnd(3) ?? "0".substring(0, 3).padEnd(3);
   dataOut += dataIn?.employeeExtension?.employmentStatuses?.expirationDate?.substring(0, 10)?.padEnd(10) ?? "".substring(0, 10).padEnd(10);
+  dataOut += dataIn?.employeeExtension?.employmentStatusesForExtensionSnapshotDate?.employmentStatusesForExtensionSnapshotDate?.substring(0, 10)?.padEnd(10) ?? "".substring(0, 10).padEnd(10);
   dataOut += (dataIn?.employeeExtension?.faceRequiredFlag !== undefined ? (dataIn?.employeeExtension?.faceRequiredFlag ? "1" : "0") : "0");
   dataOut += (dataIn?.employeeExtension?.fingerRequiredFlag !== undefined ? (dataIn?.employeeExtension?.fingerRequiredFlag ? "1" : "0") : "0");
   dataOut += dataIn?.employeeExtension?.firstName?.substring(0, 7)?.padEnd(7) ?? "".substring(0, 7).padEnd(7);

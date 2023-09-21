@@ -45,7 +45,7 @@
      PBufTopersonResp  B                   Export
 
      DBufTopersonResp  PI
-     DBuffer                       1661A
+     DBuffer                       1671A
      DDataStruct                           LikeDS(personResp)
 
       * Initialize to begining of buffer
@@ -137,6 +137,8 @@
        DataStruct.empextension.empstatuses.empststypid = %dec(%subst(CharBuf:1:3):1:0);
        BufPtr += 3;
        DataStruct.empextension.empstatuses.expirationDate = %subst(CharBuf:1:10);
+       BufPtr += 10;
+       DataStruct.empextension.empstsextsnp.employmentStatusesForExtensionSnapshotDate = %subst(CharBuf:1:10);
        BufPtr += 10;
        DataStruct.empextension.facereqflag = %subst(CharBuf:1:1);
        BufPtr += 1;

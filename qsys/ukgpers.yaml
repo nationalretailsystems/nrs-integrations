@@ -388,7 +388,7 @@ datastructures:
       employmentStatusesForExtensionSnapshotDate:
         rpgName: empstsextsnp
         type: DataStruct
-        dsName: employmentStatusesForExtensionSnapshotDate
+        dsName: employmentStatusesForExtensionSnapshotDateDS
       faceRequiredFlag:
         rpgName: facereqflag
         type: Boolean
