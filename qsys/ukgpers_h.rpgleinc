@@ -186,7 +186,7 @@
      Deffprmsnpdat                         LikeDS(edpjafsdDS)
      Derlcondata                           LikeDS(emlcondatentDS)
      Dempstatuses                          LikeDS(empstsDS)
-     Dempstsextsnp                         LikeDS(employmentStatusesForExtensionSnapshotDate)
+     Dempstsextsnp                         LikeDS(eesfesdDS)
      Dfacereqflag                      N
      Dfngreqflag                       N
      DfirstName                       7A
@@ -254,9 +254,9 @@
 
       ************************************
       * personResp data structure
-      * Record length: 1661
+      * Record length: 1671
       ************************************
-     DpersonRespLen    C                   1661
+     DpersonRespLen    C                   1671
      DpersonResp       DS                  Qualified
      D                                     Template
      Dempextension                         LikeDS(empextDS)
@@ -266,5 +266,5 @@
       * Convert buffer to personResp
       ************************************
      DBufTopersonResp  PR
-     DBuffer                       1661A
+     DBuffer                       1671A
      DDataStruct                           LikeDS(personResp)
