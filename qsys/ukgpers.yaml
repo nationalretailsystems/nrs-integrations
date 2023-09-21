@@ -6,6 +6,7 @@ datastructures:
     rpgName: dagfsdDS
     subfields:
       dataAccessGroupsForSnapshotDate:
+        rpgName: dagfsd
         type: Character
         length: 10
         default: ""
@@ -13,6 +14,7 @@ datastructures:
     rpgName: dagedasfesdDS
     subfields:
       effDatedAccountStatusesForExtensionSnapshotDate:
+        rpgName: efasfesd
         type: Character
         length: 10
         default: ""
@@ -20,6 +22,7 @@ datastructures:
     rpgName: edpjafsdDS
     subfields:
       effDatedPrimaryJobAccountForSnapshotDate:
+        rpgName: efdpjafsd
         type: Character
         length: 10
         default: ""
@@ -27,6 +30,7 @@ datastructures:
     rpgName: eesfesdDS
     subfields:
       employmentStatusesForExtensionSnapshotDate:
+        rpgName: esfesd
         type: Character
         length: 10
         default: ""
@@ -81,7 +85,7 @@ datastructures:
       accountStatusTypeId:
         rpgName: acctststypid
         type: Packed
-        length: 1
+        length: 6
         default: 0
       effectiveDate:
         type: Character
@@ -139,7 +143,7 @@ datastructures:
         default: ""
       contactTypeId:
         type: Packed
-        length: 2
+        length: 6
         default: 0
       hasEmailNotificationDelivery:
         rpgName: hasemlnotdel
@@ -160,7 +164,7 @@ datastructures:
       employmentStatusTypeId:
         rpgName: empststypid
         type: Packed
-        length: 1
+        length: 6
         default: 0
       expirationDate:
         type: Character
@@ -180,7 +184,7 @@ datastructures:
         default: false
       licenseId:
         type: Packed
-        length: 1
+        length: 6
         default: 0
       licenseType:
         type: Character
@@ -200,7 +204,7 @@ datastructures:
       customDataTypeId:
         rpgName: cstmdatatypid
         type: Packed
-        length: 1
+        length: 6
         default: 0
   personDatesEntriesDS:
     rpgName: persdatentDS
@@ -208,7 +212,7 @@ datastructures:
       customDateTypeId:
         rpgName: cstmdatatypid
         type: Packed
-        length: 1
+        length: 6
         default: 0
       dateName:
         type: Character
@@ -239,7 +243,7 @@ datastructures:
         default: ""
       contactTypeId:
         type: Packed
-        length: 1
+        length: 6
         default: 0
       country:
         type: Character
@@ -268,12 +272,12 @@ datastructures:
       preferenceProfileId:
         rpgName: prefprofid
         type: Packed
-        length: 3
+        length: 6
         default: 0
       schedulePeriodId:
         rpgName: schperid
         type: Packed
-        length: 1
+        length: 6
         default: 0
       usingShiftLabel:
         type: Boolean
@@ -295,7 +299,7 @@ datastructures:
         default: ""
       contactTypeId:
         type: Packed
-        length: 1
+        length: 6
         default: 0
       smsswitch:
         type: Boolean
@@ -309,7 +313,7 @@ datastructures:
         default: ""
       accessProfileId:
         type: Packed
-        length: 4
+        length: 6
         default: 0
       accountLocked:
         type: Boolean
@@ -324,7 +328,7 @@ datastructures:
       approvalMethodId:
         rpgName: appmethid
         type: Packed
-        length: 1
+        length: 6
         default: 0
       authenticationType:
         rpgName: authtype
@@ -334,7 +338,7 @@ datastructures:
       authenticationTypeId:
         rpgName: authtypeid
         type: Packed
-        length: 1
+        length: 6
         default: 0
       clockOnlyUser:
         type: Boolean
@@ -359,7 +363,7 @@ datastructures:
       delegateProfileId:
         rpgName: delgprofid
         type: Packed
-        length: 2
+        length: 6
         default: 0
       effDatedAccountStatuses:
         rpgName: effdatactsts
@@ -554,7 +558,7 @@ datastructures:
         default: ""
       timeZoneId:
         type: Packed
-        length: 5
+        length: 6
         default: 0
       userAccountId:
         type: Packed

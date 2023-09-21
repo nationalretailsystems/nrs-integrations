@@ -10,28 +10,28 @@
       ************************************
      DdagfsdDS         DS                  Qualified
      D                                     Template
-     DdataAccessGroupsForSnapshotDate                10A
+     Ddagfsd                         10A
 
       ************************************
       * effDatedAccountStatusesForExtensionSnapshotDateDS data structure
       ************************************
      DdagedasfesdDS    DS                  Qualified
      D                                     Template
-     DeffDatedAccountStatusesForExtensionSnapshotDate                10A
+     Defasfesd                       10A
 
       ************************************
       * effDatedPrimaryJobAccountForSnapshotDateDS data structure
       ************************************
      DedpjafsdDS       DS                  Qualified
      D                                     Template
-     DeffDatedPrimaryJobAccountForSnapshotDate                10A
+     Defdpjafsd                      10A
 
       ************************************
       * employmentStatusesForExtensionSnapshotDateDS data structure
       ************************************
      DeesfesdDS        DS                  Qualified
      D                                     Template
-     DemploymentStatusesForExtensionSnapshotDate                10A
+     Desfesd                         10A
 
       ************************************
       * dataAccessExtensionGroupsDS data structure
@@ -54,7 +54,7 @@
      DeffdtaaccstsDS   DS                  Qualified
      D                                     Template
      DaccountStatus                   6A
-     Dacctststypid                    1P 0
+     Dacctststypid                    6P 0
      DeffectiveDate                  10A
      DexpirationDate                 10A
 
@@ -78,7 +78,7 @@
      D                                     Template
      DcontactData                    24A
      DcontactType                     4A
-     DcontactTypeId                   2P 0
+     DcontactTypeId                   6P 0
      Dhasemlnotdel                     N
 
       ************************************
@@ -88,7 +88,7 @@
      D                                     Template
      DeffectiveDate                  10A
      Dempostatus                      6A
-     Dempststypid                     1P 0
+     Dempststypid                     6P 0
      DexpirationDate                 10A
 
       ************************************
@@ -104,7 +104,7 @@
      DlictypelistDS    DS                  Qualified
      D                                     Template
      Dactive                           N
-     DlicenseId                       1P 0
+     DlicenseId                       6P 0
      DlicenseType                     8A
      DlicenseTypeName                31A
 
@@ -114,14 +114,14 @@
      DprscustdatentDS  DS                  Qualified
      D                                     Template
      DcustomDataType                 10A
-     Dcstmdatatypid                   1P 0
+     Dcstmdatatypid                   6P 0
 
       ************************************
       * personDatesEntriesDS data structure
       ************************************
      DpersdatentDS     DS                  Qualified
      D                                     Template
-     Dcstmdatatypid                   1P 0
+     Dcstmdatatypid                   6P 0
      DdateName                       17A
      DdefaultDate                    10A
      Ddescription                    12A
@@ -134,7 +134,7 @@
      D                                     Template
      Dcity                            9A
      DcontactType                     4A
-     DcontactTypeId                   1P 0
+     DcontactTypeId                   6P 0
      Dcountry                         3A
      Dstate                           2A
      Dstreet                         15A
@@ -146,8 +146,8 @@
      DprefprofdtentDS  DS                  Qualified
      D                                     Template
      Dprefprof                       16A
-     Dprefprofid                      3P 0
-     Dschperid                        1P 0
+     Dprefprofid                      6P 0
+     Dschperid                        6P 0
      DusingShiftLabel                  N
      Duses12hrfmt                      N
 
@@ -158,7 +158,7 @@
      D                                     Template
      DcontactData                    14A
      DcontactType                     7A
-     DcontactTypeId                   1P 0
+     DcontactTypeId                   6P 0
      Dsmsswitch                        N
 
       ************************************
@@ -167,19 +167,19 @@
      DempextDS         DS                  Qualified
      D                                     Template
      DaccessProfile                  25A
-     DaccessProfileId                 4P 0
+     DaccessProfileId                 6P 0
      DaccountLocked                    N
      Dactive                           N
      DapprovalMethod                 15A
-     Dappmethid                       1P 0
+     Dappmethid                       6P 0
      Dauthtype                        9A
-     Dauthtypeid                      1P 0
+     Dauthtypeid                      6P 0
      DclockOnlyUser                    N
      Dconsbadlogin                    1P 0
      Ddataccextgrp                         LikeDS(dataaccextgrpDS)
      Ddataaccgrpsnp                        LikeDS(dagfsdDS)
      DdelegateProfile                13A
-     Ddelgprofid                      2P 0
+     Ddelgprofid                      6P 0
      Deffdatactsts                         LikeDS(effdtaaccstsDS)
      Deffactstssnp                         LikeDS(dagedasfesdDS)
      Deffprmjobact                         LikeDS(effdtpjaccentDS)
@@ -230,7 +230,7 @@
      Dtelcontactdata                       LikeDS(telcondatentDS)
      D                                     Dim(2)
      DtimeZone                       25A
-     DtimeZoneId                      5P 0
+     DtimeZoneId                      6P 0
      DuserAccountId                   6P 0
      DuserName                       24A
 
@@ -253,9 +253,9 @@
 
       ************************************
       * personResp data structure
-      * Record length: 1714
+      * Record length: 1863
       ************************************
-     DpersonRespLen    C                   1714
+     DpersonRespLen    C                   1863
      DpersonResp       DS                  Qualified
      D                                     Template
      Dempextension                         LikeDS(empextDS)
@@ -265,5 +265,5 @@
       * Convert buffer to personResp
       ************************************
      DBufTopersonResp  PR
-     DBuffer                       1714A
+     DBuffer                       1863A
      DDataStruct                           LikeDS(personResp)
