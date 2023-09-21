@@ -45,7 +45,7 @@
      PBufTopersonResp  B                   Export
 
      DBufTopersonResp  PI
-     DBuffer                       1686A
+     DBuffer                       1714A
      DDataStruct                           LikeDS(personResp)
 
       * Initialize to begining of buffer
@@ -72,16 +72,16 @@
        BufPtr += 1;
        DataStruct.empextension.consbadlogin = %dec(%subst(CharBuf:1:3):1:0);
        BufPtr += 3;
-       DataStruct.empextension.dataccextgrp.assignDAGID = %dec(%subst(CharBuf:1:6):4:0);
-       BufPtr += 6;
+       DataStruct.empextension.dataccextgrp.assignDAGID = %dec(%subst(CharBuf:1:8):6:0);
+       BufPtr += 8;
        DataStruct.empextension.dataccextgrp.dataAccessGroup = %subst(CharBuf:1:10);
        BufPtr += 10;
-       DataStruct.empextension.dataccextgrp.dataaccgrpid = %dec(%subst(CharBuf:1:4):2:0);
-       BufPtr += 4;
-       DataStruct.empextension.dataccextgrp.dataaccgrprol = %subst(CharBuf:1:12);
-       BufPtr += 12;
-       DataStruct.empextension.dataccextgrp.dataaccgrprid = %dec(%subst(CharBuf:1:4):2:0);
-       BufPtr += 4;
+       DataStruct.empextension.dataccextgrp.dataaccgrpid = %dec(%subst(CharBuf:1:8):6:0);
+       BufPtr += 8;
+       DataStruct.empextension.dataccextgrp.dataaccgrprol = %subst(CharBuf:1:20);
+       BufPtr += 20;
+       DataStruct.empextension.dataccextgrp.dataaccgrprid = %dec(%subst(CharBuf:1:8):6:0);
+       BufPtr += 8;
        DataStruct.empextension.dataccextgrp.defaultSwitch = %subst(CharBuf:1:1);
        BufPtr += 1;
        DataStruct.empextension.dataccextgrp.effectiveDate = %subst(CharBuf:1:10);
@@ -116,18 +116,18 @@
        BufPtr += 93;
        DataStruct.empextension.effprmjobact.primlabcat = %subst(CharBuf:1:55);
        BufPtr += 55;
-       DataStruct.empextension.effprmjobact.primlabcatid = %dec(%subst(CharBuf:1:6):4:0);
-       BufPtr += 6;
-       DataStruct.empextension.effprmjobact.primorgid = %dec(%subst(CharBuf:1:6):4:0);
-       BufPtr += 6;
+       DataStruct.empextension.effprmjobact.primlabcatid = %dec(%subst(CharBuf:1:8):6:0);
+       BufPtr += 8;
+       DataStruct.empextension.effprmjobact.primorgid = %dec(%subst(CharBuf:1:8):6:0);
+       BufPtr += 8;
        DataStruct.empextension.effprmsnpdat.effDatedPrimaryJobAccountForSnapshotDate = %subst(CharBuf:1:10);
        BufPtr += 10;
        DataStruct.empextension.erlcondata.contactData = %subst(CharBuf:1:24);
        BufPtr += 24;
        DataStruct.empextension.erlcondata.contactType = %subst(CharBuf:1:4);
        BufPtr += 4;
-       DataStruct.empextension.erlcondata.contactTypeId = %dec(%subst(CharBuf:1:3):1:0);
-       BufPtr += 3;
+       DataStruct.empextension.erlcondata.contactTypeId = %dec(%subst(CharBuf:1:4):2:0);
+       BufPtr += 4;
        DataStruct.empextension.erlcondata.hasemlnotdel = %subst(CharBuf:1:1);
        BufPtr += 1;
        DataStruct.empextension.empstatuses.effectiveDate = %subst(CharBuf:1:10);
@@ -158,10 +158,8 @@
        BufPtr += 1;
        DataStruct.empextension.isManager = %subst(CharBuf:1:1);
        BufPtr += 1;
-       DataStruct.empextension.jobAssigmentId = %dec(%subst(CharBuf:1:6):4:0);
-       BufPtr += 6;
-       DataStruct.empextension.jobAssignmentId = %dec(%subst(CharBuf:1:6):4:0);
-       BufPtr += 6;
+       DataStruct.empextension.jobAssigmentId = %dec(%subst(CharBuf:1:8):6:0);
+       BufPtr += 8;
        DataStruct.empextension.lastName = %subst(CharBuf:1:5);
        BufPtr += 5;
        DataStruct.empextension.learnPath = %subst(CharBuf:1:10);
@@ -180,8 +178,8 @@
        BufPtr += 19;
        DataStruct.empextension.logonProfile = %subst(CharBuf:1:7);
        BufPtr += 7;
-       DataStruct.empextension.logonProfileId = %dec(%subst(CharBuf:1:3):1:0);
-       BufPtr += 3;
+       DataStruct.empextension.logonProfileId = %dec(%subst(CharBuf:1:8):6:0);
+       BufPtr += 8;
        DataStruct.empextension.mfaRequired = %subst(CharBuf:1:1);
        BufPtr += 1;
        DataStruct.empextension.middleName = %subst(CharBuf:1:1);
@@ -254,10 +252,10 @@
        BufPtr += 7;
        DataStruct.empextension.superfn = %subst(CharBuf:1:15);
        BufPtr += 15;
-       DataStruct.empextension.superpersid = %dec(%subst(CharBuf:1:7):5:0);
-       BufPtr += 7;
-       DataStruct.empextension.superpersnum = %subst(CharBuf:1:5);
-       BufPtr += 5;
+       DataStruct.empextension.superpersid = %dec(%subst(CharBuf:1:8):6:0);
+       BufPtr += 8;
+       DataStruct.empextension.superpersnum = %subst(CharBuf:1:6);
+       BufPtr += 6;
        for i = 1 to 2;
        DataStruct.empextension.telContactDataEntries(i).contactData = %subst(CharBuf:1:14);
        BufPtr += 14;
@@ -272,8 +270,8 @@
        BufPtr += 25;
        DataStruct.empextension.timeZoneId = %dec(%subst(CharBuf:1:7):5:0);
        BufPtr += 7;
-       DataStruct.empextension.userAccountId = %dec(%subst(CharBuf:1:6):4:0);
-       BufPtr += 6;
+       DataStruct.empextension.userAccountId = %dec(%subst(CharBuf:1:8):6:0);
+       BufPtr += 8;
        DataStruct.empextension.userName = %subst(CharBuf:1:24);
        BufPtr += 24;
        DataStruct.exceptpresent = %subst(CharBuf:1:1);

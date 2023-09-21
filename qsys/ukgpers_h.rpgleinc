@@ -38,11 +38,11 @@
       ************************************
      DdataaccextgrpDS  DS                  Qualified
      D                                     Template
-     DassignDAGID                     4P 0
+     DassignDAGID                     6P 0
      DdataAccessGroup                10A
-     Ddataaccgrpid                    2P 0
-     Ddataaccgrprol                  12A
-     Ddataaccgrprid                   2P 0
+     Ddataaccgrpid                    6P 0
+     Ddataaccgrprol                  20A
+     Ddataaccgrprid                   6P 0
      DdefaultSwitch                    N
      DeffectiveDate                  10A
      DexpirationDate                 10A
@@ -68,8 +68,8 @@
      DexpirationDate                 10A
      DprimaryJob                     93A
      Dprimlabcat                     55A
-     Dprimlabcatid                    4P 0
-     Dprimorgid                       4P 0
+     Dprimlabcatid                    6P 0
+     Dprimorgid                       6P 0
 
       ************************************
       * emailContactDataEntriesDS data structure
@@ -78,7 +78,7 @@
      D                                     Template
      DcontactData                    24A
      DcontactType                     4A
-     DcontactTypeId                   1P 0
+     DcontactTypeId                   2P 0
      Dhasemlnotdel                     N
 
       ************************************
@@ -196,15 +196,14 @@
      Didentifier                           LikeDS(identifierDS)
      DisEmployee                       N
      DisManager                        N
-     DjobAssigmentId                  4P 0
-     DjobAssignmentId                 4P 0
+     DjobAssigmentId                  6P 0
      DlastName                        5A
      DlearnPath                      10A
      DlicenseTypeList                      LikeDS(lictypelistDS)
      D                                     Dim(8)
      Dlckoutrdt                      19A
      DlogonProfile                    7A
-     DlogonProfileId                  1P 0
+     DlogonProfileId                  6P 0
      DmfaRequired                      N
      DmiddleName                      1A
      Dnotifprof                      25A
@@ -226,13 +225,13 @@
      DseniorityDate                  10A
      DshortName                       7A
      Dsuperfn                        15A
-     Dsuperpersid                     5P 0
-     Dsuperpersnum                    5A
+     Dsuperpersid                     6P 0
+     Dsuperpersnum                    6A
      Dtelcontactdata                       LikeDS(telcondatentDS)
      D                                     Dim(2)
      DtimeZone                       25A
      DtimeZoneId                      5P 0
-     DuserAccountId                   4P 0
+     DuserAccountId                   6P 0
      DuserName                       24A
 
       ************************************
@@ -254,9 +253,9 @@
 
       ************************************
       * personResp data structure
-      * Record length: 1686
+      * Record length: 1714
       ************************************
-     DpersonRespLen    C                   1686
+     DpersonRespLen    C                   1714
      DpersonResp       DS                  Qualified
      D                                     Template
      Dempextension                         LikeDS(empextDS)
@@ -266,5 +265,5 @@
       * Convert buffer to personResp
       ************************************
      DBufTopersonResp  PR
-     DBuffer                       1686A
+     DBuffer                       1714A
      DDataStruct                           LikeDS(personResp)
