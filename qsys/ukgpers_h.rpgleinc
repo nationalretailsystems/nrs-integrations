@@ -6,6 +6,34 @@
       ************************************
 
       ************************************
+      * dataAccessGroupsForSnapshotDateDS data structure
+      ************************************
+     DdagfsdDS         DS                  Qualified
+     D                                     Template
+     DdataAccessGroupsForSnapshotDate                10A
+
+      ************************************
+      * effDatedAccountStatusesForExtensionSnapshotDateDS data structure
+      ************************************
+     DdagedasfesdDS    DS                  Qualified
+     D                                     Template
+     DeffDatedAccountStatusesForExtensionSnapshotDate                10A
+
+      ************************************
+      * effDatedPrimaryJobAccountForSnapshotDateDS data structure
+      ************************************
+     DedpjafsdDS       DS                  Qualified
+     D                                     Template
+     DeffDatedPrimaryJobAccountForSnapshotDate                10A
+
+      ************************************
+      * employmentStatusesForExtensionSnapshotDateDS data structure
+      ************************************
+     DeesfesdDS        DS                  Qualified
+     D                                     Template
+     DemploymentStatusesForExtensionSnapshotDate                10A
+
+      ************************************
       * dataAccessExtensionGroupsDS data structure
       ************************************
      DdataaccextgrpDS  DS                  Qualified
@@ -149,16 +177,16 @@
      DclockOnlyUser                    N
      Dconsbadlogin                    1P 0
      Ddataccextgrp                         LikeDS(dataaccextgrpDS)
-     Ddataaccgrpsnp                  26A
+     Ddataaccgrpsnp                        LikeDS(dagfsdDS)
      DdelegateProfile                13A
      Ddelgprofid                      2P 0
      Deffdatactsts                         LikeDS(effdtaaccstsDS)
-     Deffactstssnp                   26A
+     Deffactstssnp                         LikeDS(dagedasfesdDS)
      Deffprmjobact                         LikeDS(effdtpjaccentDS)
-     Deffprmsnpdat                   26A
+     Deffprmsnpdat                         LikeDS(edpjafsdDS)
      Derlcondata                           LikeDS(emlcondatentDS)
      Dempstatuses                          LikeDS(empstsDS)
-     Dempstsextsnp                   26A
+     Dempstsextsnp                         LikeDS(employmentStatusesForExtensionSnapshotDate)
      Dfacereqflag                      N
      Dfngreqflag                       N
      DfirstName                       7A
@@ -226,9 +254,9 @@
 
       ************************************
       * personResp data structure
-      * Record length: 1735
+      * Record length: 1661
       ************************************
-     DpersonRespLen    C                   1735
+     DpersonRespLen    C                   1661
      DpersonResp       DS                  Qualified
      D                                     Template
      Dempextension                         LikeDS(empextDS)
@@ -238,5 +266,5 @@
       * Convert buffer to personResp
       ************************************
      DBufTopersonResp  PR
-     DBuffer                       1735A
+     DBuffer                       1661A
      DDataStruct                           LikeDS(personResp)

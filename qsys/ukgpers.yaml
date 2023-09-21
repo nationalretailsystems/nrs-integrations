@@ -2,6 +2,34 @@
 name: ukgpers
 rpgIncName: ukgpers_h
 datastructures:
+  dataAccessGroupsForSnapshotDateDS:
+    rpgName: dagfsdDS
+    subfields:
+      dataAccessGroupsForSnapshotDate:
+        type: Character
+        length: 10
+        default: ""
+  effDatedAccountStatusesForExtensionSnapshotDateDS:
+    rpgName: dagedasfesdDS
+    subfields:
+      effDatedAccountStatusesForExtensionSnapshotDate:
+        type: Character
+        length: 10
+        default: ""
+  effDatedPrimaryJobAccountForSnapshotDateDS:
+    rpgName: edpjafsdDS
+    subfields:
+      effDatedPrimaryJobAccountForSnapshotDate:
+        type: Character
+        length: 10
+        default: ""
+  employmentStatusesForExtensionSnapshotDateDS:
+    rpgName: eesfesdDS
+    subfields:
+      employmentStatusesForExtensionSnapshotDate:
+        type: Character
+        length: 10
+        default: ""
   dataAccessExtensionGroupsDS:
     rpgName: dataaccextgrpDS
     subfields:
@@ -322,9 +350,8 @@ datastructures:
         dsName: dataAccessExtensionGroupsDS
       dataAccessGroupsForSnapshotDate:
         rpgName: dataaccgrpsnp
-        type: Character
-        length: 26
-        default: ""
+        type: DataStruct
+        dsName: dataAccessGroupsForSnapshotDateDS
       delegateProfile:
         type: Character
         length: 13
@@ -340,18 +367,16 @@ datastructures:
         dsName: effDatedAccountStatusesDS
       effDatedAccountStatusesForExtensionSnapshotDate:
         rpgName: effactstssnp
-        type: Character
-        length: 26
-        default: ""
+        type: DataStruct
+        dsName: effDatedAccountStatusesForExtensionSnapshotDateDS
       effDatedPrimaryJobAccountEntries:
         rpgName: effprmjobact
         type: DataStruct
         dsName: effDatedPrimaryJobAccountEntriesDS
       effDatedPrimaryJobAccountForSnapshotDate:
         rpgName: effprmsnpdat
-        type: Character
-        length: 26
-        default: ""
+        type: DataStruct
+        dsName: effDatedPrimaryJobAccountForSnapshotDateDS
       emailContactDataEntries:
         rpgName: erlcondata
         type: DataStruct
@@ -362,9 +387,8 @@ datastructures:
         dsName: employmentStatusesDS
       employmentStatusesForExtensionSnapshotDate:
         rpgName: empstsextsnp
-        type: Character
-        length: 26
-        default: ""
+        type: DataStruct
+        dsName: employmentStatusesForExtensionSnapshotDate
       faceRequiredFlag:
         rpgName: facereqflag
         type: Boolean
