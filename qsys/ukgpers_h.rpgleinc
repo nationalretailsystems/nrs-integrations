@@ -166,8 +166,8 @@
       ************************************
      DempextDS         DS                  Qualified
      D                                     Template
-     DaccessProfile                  12A
-     DaccessProfileId                 2P 0
+     DaccessProfile                  25A
+     DaccessProfileId                 4P 0
      DaccountLocked                    N
      Dactive                           N
      DapprovalMethod                 15A
@@ -254,9 +254,9 @@
 
       ************************************
       * personResp data structure
-      * Record length: 1671
+      * Record length: 1686
       ************************************
-     DpersonRespLen    C                   1671
+     DpersonRespLen    C                   1686
      DpersonResp       DS                  Qualified
      D                                     Template
      Dempextension                         LikeDS(empextDS)
@@ -266,5 +266,5 @@
       * Convert buffer to personResp
       ************************************
      DBufTopersonResp  PR
-     DBuffer                       1671A
+     DBuffer                       1686A
      DDataStruct                           LikeDS(personResp)

@@ -305,11 +305,11 @@ datastructures:
     subfields:
       accessProfile:
         type: Character
-        length: 12
+        length: 25
         default: ""
       accessProfileId:
         type: Packed
-        length: 2
+        length: 4
         default: 0
       accountLocked:
         type: Boolean

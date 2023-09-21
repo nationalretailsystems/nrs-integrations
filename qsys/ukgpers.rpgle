@@ -45,17 +45,17 @@
      PBufTopersonResp  B                   Export
 
      DBufTopersonResp  PI
-     DBuffer                       1671A
+     DBuffer                       1686A
      DDataStruct                           LikeDS(personResp)
 
       * Initialize to begining of buffer
        BufPtr = %addr(Buffer);
 
       * Read fields from buffer into DS
-       DataStruct.empextension.accessProfile = %subst(CharBuf:1:12);
-       BufPtr += 12;
-       DataStruct.empextension.accessProfileId = %dec(%subst(CharBuf:1:4):2:0);
-       BufPtr += 4;
+       DataStruct.empextension.accessProfile = %subst(CharBuf:1:25);
+       BufPtr += 25;
+       DataStruct.empextension.accessProfileId = %dec(%subst(CharBuf:1:6):4:0);
+       BufPtr += 6;
        DataStruct.empextension.accountLocked = %subst(CharBuf:1:1);
        BufPtr += 1;
        DataStruct.empextension.active = %subst(CharBuf:1:1);
