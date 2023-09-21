@@ -424,12 +424,12 @@ export interface telContactDataEntriesDS {
  */
 export interface employeeExtensionDS {
     /**
-     * @size 12 characters
+     * @size 25 characters
      * @default ``
      */
     accessProfile: string,
     /**
-     * @size 2 digits
+     * @size 4 digits
      * @precision 0 decimals
      * @default `0`
      */
@@ -757,8 +757,8 @@ export interface personResp {
 export function convertObjectTopersonResp(dataIn: personResp): string {
   let dataOut: string = "";
 
-  dataOut += dataIn?.employeeExtension?.accessProfile?.substring(0, 12)?.padEnd(12) ?? "".substring(0, 12).padEnd(12);
-  dataOut += dataIn?.employeeExtension?.accessProfileId?.toFixed(0)?.substring(0, 4)?.padEnd(4) ?? "0".substring(0, 4).padEnd(4);
+  dataOut += dataIn?.employeeExtension?.accessProfile?.substring(0, 25)?.padEnd(25) ?? "".substring(0, 25).padEnd(25);
+  dataOut += dataIn?.employeeExtension?.accessProfileId?.toFixed(0)?.substring(0, 6)?.padEnd(6) ?? "0".substring(0, 6).padEnd(6);
   dataOut += (dataIn?.employeeExtension?.accountLocked !== undefined ? (dataIn?.employeeExtension?.accountLocked ? "1" : "0") : "0");
   dataOut += (dataIn?.employeeExtension?.active !== undefined ? (dataIn?.employeeExtension?.active ? "1" : "0") : "0");
   dataOut += dataIn?.employeeExtension?.approvalMethod?.substring(0, 15)?.padEnd(15) ?? "".substring(0, 15).padEnd(15);
