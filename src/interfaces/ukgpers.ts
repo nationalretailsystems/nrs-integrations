@@ -121,7 +121,7 @@ export interface effDatedAccountStatusesDS {
      */
     accountStatus: string,
     /**
-     * @size 1 digits
+     * @size 6 digits
      * @precision 0 decimals
      * @default `0`
      */
@@ -196,7 +196,7 @@ export interface emailContactDataEntriesDS {
      */
     contactType: string,
     /**
-     * @size 2 digits
+     * @size 6 digits
      * @precision 0 decimals
      * @default `0`
      */
@@ -222,7 +222,7 @@ export interface employmentStatusesDS {
      */
     employmentStatus: string,
     /**
-     * @size 1 digits
+     * @size 6 digits
      * @precision 0 decimals
      * @default `0`
      */
@@ -254,7 +254,7 @@ export interface licenseTypeListDS {
      */
     active: boolean,
     /**
-     * @size 1 digits
+     * @size 6 digits
      * @precision 0 decimals
      * @default `0`
      */
@@ -281,7 +281,7 @@ export interface personCustomDataEntriesDS {
      */
     customDataType: string,
     /**
-     * @size 1 digits
+     * @size 6 digits
      * @precision 0 decimals
      * @default `0`
      */
@@ -293,7 +293,7 @@ export interface personCustomDataEntriesDS {
  */
 export interface personDatesEntriesDS {
     /**
-     * @size 1 digits
+     * @size 6 digits
      * @precision 0 decimals
      * @default `0`
      */
@@ -335,7 +335,7 @@ export interface postalAddressDataEntriesDS {
      */
     contactType: string,
     /**
-     * @size 1 digits
+     * @size 6 digits
      * @precision 0 decimals
      * @default `0`
      */
@@ -372,13 +372,13 @@ export interface preferenceProfileDataEntryDS {
      */
     preferenceProfile: string,
     /**
-     * @size 3 digits
+     * @size 6 digits
      * @precision 0 decimals
      * @default `0`
      */
     preferenceProfileId: number,
     /**
-     * @size 1 digits
+     * @size 6 digits
      * @precision 0 decimals
      * @default `0`
      */
@@ -408,7 +408,7 @@ export interface telContactDataEntriesDS {
      */
     contactType: string,
     /**
-     * @size 1 digits
+     * @size 6 digits
      * @precision 0 decimals
      * @default `0`
      */
@@ -429,7 +429,7 @@ export interface employeeExtensionDS {
      */
     accessProfile: string,
     /**
-     * @size 4 digits
+     * @size 6 digits
      * @precision 0 decimals
      * @default `0`
      */
@@ -448,7 +448,7 @@ export interface employeeExtensionDS {
      */
     approvalMethod: string,
     /**
-     * @size 1 digits
+     * @size 6 digits
      * @precision 0 decimals
      * @default `0`
      */
@@ -459,7 +459,7 @@ export interface employeeExtensionDS {
      */
     authenticationType: string,
     /**
-     * @size 1 digits
+     * @size 6 digits
      * @precision 0 decimals
      * @default `0`
      */
@@ -486,7 +486,7 @@ export interface employeeExtensionDS {
      */
     delegateProfile: string,
     /**
-     * @size 2 digits
+     * @size 6 digits
      * @precision 0 decimals
      * @default `0`
      */
@@ -689,7 +689,7 @@ export interface employeeExtensionDS {
      */
     timeZone: string,
     /**
-     * @size 5 digits
+     * @size 6 digits
      * @precision 0 decimals
      * @default `0`
      */
@@ -752,13 +752,13 @@ export function convertObjectTopersonResp(dataIn: personResp): string {
   let dataOut: string = "";
 
   dataOut += dataIn?.employeeExtension?.accessProfile?.substring(0, 25)?.padEnd(25) ?? "".substring(0, 25).padEnd(25);
-  dataOut += dataIn?.employeeExtension?.accessProfileId?.toFixed(0)?.substring(0, 6)?.padEnd(6) ?? "0".substring(0, 6).padEnd(6);
+  dataOut += dataIn?.employeeExtension?.accessProfileId?.toFixed(0)?.substring(0, 8)?.padEnd(8) ?? "0".substring(0, 8).padEnd(8);
   dataOut += (dataIn?.employeeExtension?.accountLocked !== undefined ? (dataIn?.employeeExtension?.accountLocked ? "1" : "0") : "0");
   dataOut += (dataIn?.employeeExtension?.active !== undefined ? (dataIn?.employeeExtension?.active ? "1" : "0") : "0");
   dataOut += dataIn?.employeeExtension?.approvalMethod?.substring(0, 15)?.padEnd(15) ?? "".substring(0, 15).padEnd(15);
-  dataOut += dataIn?.employeeExtension?.approvalMethodId?.toFixed(0)?.substring(0, 3)?.padEnd(3) ?? "0".substring(0, 3).padEnd(3);
+  dataOut += dataIn?.employeeExtension?.approvalMethodId?.toFixed(0)?.substring(0, 8)?.padEnd(8) ?? "0".substring(0, 8).padEnd(8);
   dataOut += dataIn?.employeeExtension?.authenticationType?.substring(0, 9)?.padEnd(9) ?? "".substring(0, 9).padEnd(9);
-  dataOut += dataIn?.employeeExtension?.authenticationTypeId?.toFixed(0)?.substring(0, 3)?.padEnd(3) ?? "0".substring(0, 3).padEnd(3);
+  dataOut += dataIn?.employeeExtension?.authenticationTypeId?.toFixed(0)?.substring(0, 8)?.padEnd(8) ?? "0".substring(0, 8).padEnd(8);
   dataOut += (dataIn?.employeeExtension?.clockOnlyUser !== undefined ? (dataIn?.employeeExtension?.clockOnlyUser ? "1" : "0") : "0");
   dataOut += dataIn?.employeeExtension?.consecutiveBadLogons?.toFixed(0)?.substring(0, 3)?.padEnd(3) ?? "0".substring(0, 3).padEnd(3);
   dataOut += dataIn?.employeeExtension?.dataAccessExtensionGroups?.assignDAGID?.toFixed(0)?.substring(0, 8)?.padEnd(8) ?? "0".substring(0, 8).padEnd(8);
@@ -772,9 +772,9 @@ export function convertObjectTopersonResp(dataIn: personResp): string {
   dataOut += dataIn?.employeeExtension?.dataAccessExtensionGroups?.personID?.toFixed(0)?.substring(0, 8)?.padEnd(8) ?? "0".substring(0, 8).padEnd(8);
   dataOut += dataIn?.employeeExtension?.dataAccessGroupsForSnapshotDate?.dataAccessGroupsForSnapshotDate?.substring(0, 10)?.padEnd(10) ?? "".substring(0, 10).padEnd(10);
   dataOut += dataIn?.employeeExtension?.delegateProfile?.substring(0, 13)?.padEnd(13) ?? "".substring(0, 13).padEnd(13);
-  dataOut += dataIn?.employeeExtension?.delegateProfileId?.toFixed(0)?.substring(0, 4)?.padEnd(4) ?? "0".substring(0, 4).padEnd(4);
+  dataOut += dataIn?.employeeExtension?.delegateProfileId?.toFixed(0)?.substring(0, 8)?.padEnd(8) ?? "0".substring(0, 8).padEnd(8);
   dataOut += dataIn?.employeeExtension?.effDatedAccountStatuses?.accountStatus?.substring(0, 6)?.padEnd(6) ?? "".substring(0, 6).padEnd(6);
-  dataOut += dataIn?.employeeExtension?.effDatedAccountStatuses?.accountStatusTypeId?.toFixed(0)?.substring(0, 3)?.padEnd(3) ?? "0".substring(0, 3).padEnd(3);
+  dataOut += dataIn?.employeeExtension?.effDatedAccountStatuses?.accountStatusTypeId?.toFixed(0)?.substring(0, 8)?.padEnd(8) ?? "0".substring(0, 8).padEnd(8);
   dataOut += dataIn?.employeeExtension?.effDatedAccountStatuses?.effectiveDate?.substring(0, 10)?.padEnd(10) ?? "".substring(0, 10).padEnd(10);
   dataOut += dataIn?.employeeExtension?.effDatedAccountStatuses?.expirationDate?.substring(0, 10)?.padEnd(10) ?? "".substring(0, 10).padEnd(10);
   dataOut += dataIn?.employeeExtension?.effDatedAccountStatusesForExtensionSnapshotDate?.effDatedAccountStatusesForExtensionSnapshotDate?.substring(0, 10)?.padEnd(10) ?? "".substring(0, 10).padEnd(10);
@@ -788,11 +788,11 @@ export function convertObjectTopersonResp(dataIn: personResp): string {
   dataOut += dataIn?.employeeExtension?.effDatedPrimaryJobAccountForSnapshotDate?.effDatedPrimaryJobAccountForSnapshotDate?.substring(0, 10)?.padEnd(10) ?? "".substring(0, 10).padEnd(10);
   dataOut += dataIn?.employeeExtension?.emailContactDataEntries?.contactData?.substring(0, 24)?.padEnd(24) ?? "".substring(0, 24).padEnd(24);
   dataOut += dataIn?.employeeExtension?.emailContactDataEntries?.contactType?.substring(0, 4)?.padEnd(4) ?? "".substring(0, 4).padEnd(4);
-  dataOut += dataIn?.employeeExtension?.emailContactDataEntries?.contactTypeId?.toFixed(0)?.substring(0, 4)?.padEnd(4) ?? "0".substring(0, 4).padEnd(4);
+  dataOut += dataIn?.employeeExtension?.emailContactDataEntries?.contactTypeId?.toFixed(0)?.substring(0, 8)?.padEnd(8) ?? "0".substring(0, 8).padEnd(8);
   dataOut += (dataIn?.employeeExtension?.emailContactDataEntries?.hasEmailNotificationDelivery !== undefined ? (dataIn?.employeeExtension?.emailContactDataEntries?.hasEmailNotificationDelivery ? "1" : "0") : "0");
   dataOut += dataIn?.employeeExtension?.employmentStatuses?.effectiveDate?.substring(0, 10)?.padEnd(10) ?? "".substring(0, 10).padEnd(10);
   dataOut += dataIn?.employeeExtension?.employmentStatuses?.employmentStatus?.substring(0, 6)?.padEnd(6) ?? "".substring(0, 6).padEnd(6);
-  dataOut += dataIn?.employeeExtension?.employmentStatuses?.employmentStatusTypeId?.toFixed(0)?.substring(0, 3)?.padEnd(3) ?? "0".substring(0, 3).padEnd(3);
+  dataOut += dataIn?.employeeExtension?.employmentStatuses?.employmentStatusTypeId?.toFixed(0)?.substring(0, 8)?.padEnd(8) ?? "0".substring(0, 8).padEnd(8);
   dataOut += dataIn?.employeeExtension?.employmentStatuses?.expirationDate?.substring(0, 10)?.padEnd(10) ?? "".substring(0, 10).padEnd(10);
   dataOut += dataIn?.employeeExtension?.employmentStatusesForExtensionSnapshotDate?.employmentStatusesForExtensionSnapshotDate?.substring(0, 10)?.padEnd(10) ?? "".substring(0, 10).padEnd(10);
   dataOut += (dataIn?.employeeExtension?.faceRequiredFlag !== undefined ? (dataIn?.employeeExtension?.faceRequiredFlag ? "1" : "0") : "0");
@@ -809,7 +809,7 @@ export function convertObjectTopersonResp(dataIn: personResp): string {
   dataOut += dataIn?.employeeExtension?.learnPath?.substring(0, 10)?.padEnd(10) ?? "".substring(0, 10).padEnd(10);
   for (let j: number = 0; j < 8; ++j) {
   dataOut += (dataIn?.employeeExtension?.licenseTypeList[j]?.active !== undefined ? (dataIn?.employeeExtension?.licenseTypeList[j]?.active ? "1" : "0") : "0");
-  dataOut += dataIn?.employeeExtension?.licenseTypeList[j]?.licenseId?.toFixed(0)?.substring(0, 3)?.padEnd(3) ?? "0".substring(0, 3).padEnd(3);
+  dataOut += dataIn?.employeeExtension?.licenseTypeList[j]?.licenseId?.toFixed(0)?.substring(0, 8)?.padEnd(8) ?? "0".substring(0, 8).padEnd(8);
   dataOut += dataIn?.employeeExtension?.licenseTypeList[j]?.licenseType?.substring(0, 8)?.padEnd(8) ?? "".substring(0, 8).padEnd(8);
   dataOut += dataIn?.employeeExtension?.licenseTypeList[j]?.licenseTypeName?.substring(0, 31)?.padEnd(31) ?? "".substring(0, 31).padEnd(31);
   }
@@ -823,10 +823,10 @@ export function convertObjectTopersonResp(dataIn: personResp): string {
   dataOut += dataIn?.employeeExtension?.passwordUpdatedDateTime?.substring(0, 19)?.padEnd(19) ?? "".substring(0, 19).padEnd(19);
   for (let j: number = 0; j < 4; ++j) {
   dataOut += dataIn?.employeeExtension?.personCustomDataEntries[j]?.customDataType?.substring(0, 10)?.padEnd(10) ?? "".substring(0, 10).padEnd(10);
-  dataOut += dataIn?.employeeExtension?.personCustomDataEntries[j]?.customDataTypeId?.toFixed(0)?.substring(0, 3)?.padEnd(3) ?? "0".substring(0, 3).padEnd(3);
+  dataOut += dataIn?.employeeExtension?.personCustomDataEntries[j]?.customDataTypeId?.toFixed(0)?.substring(0, 8)?.padEnd(8) ?? "0".substring(0, 8).padEnd(8);
   }
   for (let j: number = 0; j < 7; ++j) {
-  dataOut += dataIn?.employeeExtension?.personDatesEntries[j]?.customDateTypeId?.toFixed(0)?.substring(0, 3)?.padEnd(3) ?? "0".substring(0, 3).padEnd(3);
+  dataOut += dataIn?.employeeExtension?.personDatesEntries[j]?.customDateTypeId?.toFixed(0)?.substring(0, 8)?.padEnd(8) ?? "0".substring(0, 8).padEnd(8);
   dataOut += dataIn?.employeeExtension?.personDatesEntries[j]?.dateName?.substring(0, 17)?.padEnd(17) ?? "".substring(0, 17).padEnd(17);
   dataOut += dataIn?.employeeExtension?.personDatesEntries[j]?.defaultDate?.substring(0, 10)?.padEnd(10) ?? "".substring(0, 10).padEnd(10);
   dataOut += dataIn?.employeeExtension?.personDatesEntries[j]?.description?.substring(0, 12)?.padEnd(12) ?? "".substring(0, 12).padEnd(12);
@@ -836,15 +836,15 @@ export function convertObjectTopersonResp(dataIn: personResp): string {
   dataOut += dataIn?.employeeExtension?.personNumber?.substring(0, 6)?.padEnd(6) ?? "".substring(0, 6).padEnd(6);
   dataOut += dataIn?.employeeExtension?.postalAddressDataEntries?.city?.substring(0, 9)?.padEnd(9) ?? "".substring(0, 9).padEnd(9);
   dataOut += dataIn?.employeeExtension?.postalAddressDataEntries?.contactType?.substring(0, 4)?.padEnd(4) ?? "".substring(0, 4).padEnd(4);
-  dataOut += dataIn?.employeeExtension?.postalAddressDataEntries?.contactTypeId?.toFixed(0)?.substring(0, 3)?.padEnd(3) ?? "0".substring(0, 3).padEnd(3);
+  dataOut += dataIn?.employeeExtension?.postalAddressDataEntries?.contactTypeId?.toFixed(0)?.substring(0, 8)?.padEnd(8) ?? "0".substring(0, 8).padEnd(8);
   dataOut += dataIn?.employeeExtension?.postalAddressDataEntries?.country?.substring(0, 3)?.padEnd(3) ?? "".substring(0, 3).padEnd(3);
   dataOut += dataIn?.employeeExtension?.postalAddressDataEntries?.state?.substring(0, 2)?.padEnd(2) ?? "".substring(0, 2).padEnd(2);
   dataOut += dataIn?.employeeExtension?.postalAddressDataEntries?.street?.substring(0, 15)?.padEnd(15) ?? "".substring(0, 15).padEnd(15);
   dataOut += dataIn?.employeeExtension?.postalAddressDataEntries?.zipCode?.substring(0, 5)?.padEnd(5) ?? "".substring(0, 5).padEnd(5);
   dataOut += dataIn?.employeeExtension?.preferenceProfile?.substring(0, 16)?.padEnd(16) ?? "".substring(0, 16).padEnd(16);
   dataOut += dataIn?.employeeExtension?.preferenceProfileDataEntry?.preferenceProfile?.substring(0, 16)?.padEnd(16) ?? "".substring(0, 16).padEnd(16);
-  dataOut += dataIn?.employeeExtension?.preferenceProfileDataEntry?.preferenceProfileId?.toFixed(0)?.substring(0, 5)?.padEnd(5) ?? "0".substring(0, 5).padEnd(5);
-  dataOut += dataIn?.employeeExtension?.preferenceProfileDataEntry?.schedulePeriodId?.toFixed(0)?.substring(0, 3)?.padEnd(3) ?? "0".substring(0, 3).padEnd(3);
+  dataOut += dataIn?.employeeExtension?.preferenceProfileDataEntry?.preferenceProfileId?.toFixed(0)?.substring(0, 8)?.padEnd(8) ?? "0".substring(0, 8).padEnd(8);
+  dataOut += dataIn?.employeeExtension?.preferenceProfileDataEntry?.schedulePeriodId?.toFixed(0)?.substring(0, 8)?.padEnd(8) ?? "0".substring(0, 8).padEnd(8);
   dataOut += (dataIn?.employeeExtension?.preferenceProfileDataEntry?.usingShiftLabel !== undefined ? (dataIn?.employeeExtension?.preferenceProfileDataEntry?.usingShiftLabel ? "1" : "0") : "0");
   dataOut += (dataIn?.employeeExtension?.preferenceProfileDataEntry?.usesTwelveHourFormat !== undefined ? (dataIn?.employeeExtension?.preferenceProfileDataEntry?.usesTwelveHourFormat ? "1" : "0") : "0");
   dataOut += dataIn?.employeeExtension?.processEmployeeProfile?.substring(0, 13)?.padEnd(13) ?? "".substring(0, 13).padEnd(13);
@@ -859,11 +859,11 @@ export function convertObjectTopersonResp(dataIn: personResp): string {
   for (let j: number = 0; j < 2; ++j) {
   dataOut += dataIn?.employeeExtension?.telContactDataEntries[j]?.contactData?.substring(0, 14)?.padEnd(14) ?? "".substring(0, 14).padEnd(14);
   dataOut += dataIn?.employeeExtension?.telContactDataEntries[j]?.contactType?.substring(0, 7)?.padEnd(7) ?? "".substring(0, 7).padEnd(7);
-  dataOut += dataIn?.employeeExtension?.telContactDataEntries[j]?.contactTypeId?.toFixed(0)?.substring(0, 3)?.padEnd(3) ?? "0".substring(0, 3).padEnd(3);
+  dataOut += dataIn?.employeeExtension?.telContactDataEntries[j]?.contactTypeId?.toFixed(0)?.substring(0, 8)?.padEnd(8) ?? "0".substring(0, 8).padEnd(8);
   dataOut += (dataIn?.employeeExtension?.telContactDataEntries[j]?.smsswitch !== undefined ? (dataIn?.employeeExtension?.telContactDataEntries[j]?.smsswitch ? "1" : "0") : "0");
   }
   dataOut += dataIn?.employeeExtension?.timeZone?.substring(0, 25)?.padEnd(25) ?? "".substring(0, 25).padEnd(25);
-  dataOut += dataIn?.employeeExtension?.timeZoneId?.toFixed(0)?.substring(0, 7)?.padEnd(7) ?? "0".substring(0, 7).padEnd(7);
+  dataOut += dataIn?.employeeExtension?.timeZoneId?.toFixed(0)?.substring(0, 8)?.padEnd(8) ?? "0".substring(0, 8).padEnd(8);
   dataOut += dataIn?.employeeExtension?.userAccountId?.toFixed(0)?.substring(0, 8)?.padEnd(8) ?? "0".substring(0, 8).padEnd(8);
   dataOut += dataIn?.employeeExtension?.userName?.substring(0, 24)?.padEnd(24) ?? "".substring(0, 24).padEnd(24);
   dataOut += (dataIn?.exceptionPresent !== undefined ? (dataIn?.exceptionPresent ? "1" : "0") : "0");
