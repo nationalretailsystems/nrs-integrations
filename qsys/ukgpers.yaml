@@ -35,7 +35,7 @@ datastructures:
     subfields:
       assignDAGID:
         type: Packed
-        length: 4
+        length: 6
         default: 0
       dataAccessGroup:
         type: Character
@@ -44,17 +44,17 @@ datastructures:
       dataAccessGroupId:
         rpgName: dataaccgrpid
         type: Packed
-        length: 2
+        length: 6
         default: 0
       dataAccessGroupRole:
         rpgName: dataaccgrprol
         type: Character
-        length: 12
+        length: 20
         default: ""
       dataAccessGroupRoleId:
         rpgName: dataaccgrprid
         type: Packed
-        length: 2
+        length: 6
         default: 0
       defaultSwitch:
         type: Boolean
@@ -119,12 +119,12 @@ datastructures:
       primaryLaborCategoryId:
         rpgName: primlabcatid
         type: Packed
-        length: 4
+        length: 6
         default: 0
       primaryOrganizationId:
         rpgName: primorgid
         type: Packed
-        length: 4
+        length: 6
         default: 0
   emailContactDataEntriesDS:
     rpgName: emlcondatentDS
@@ -139,7 +139,7 @@ datastructures:
         default: ""
       contactTypeId:
         type: Packed
-        length: 1
+        length: 2
         default: 0
       hasEmailNotificationDelivery:
         rpgName: hasemlnotdel
@@ -424,11 +424,7 @@ datastructures:
         default: false
       jobAssigmentId:
         type: Packed
-        length: 4
-        default: 0
-      jobAssignmentId:
-        type: Packed
-        length: 4
+        length: 6
         default: 0
       lastName:
         type: Character
@@ -453,7 +449,7 @@ datastructures:
         default: ""
       logonProfileId:
         type: Packed
-        length: 1
+        length: 6
         default: 0
       mfaRequired:
         type: Boolean
@@ -540,12 +536,12 @@ datastructures:
       supervisorPersonId:
         rpgName: superpersid
         type: Packed
-        length: 5
+        length: 6
         default: 0
       supervisorPersonNumber:
         rpgName: superpersnum
         type: Character
-        length: 5
+        length: 6
         default: ""
       telContactDataEntries:
         rpgName: telcontactdata
@@ -562,7 +558,7 @@ datastructures:
         default: 0
       userAccountId:
         type: Packed
-        length: 4
+        length: 6
         default: 0
       userName:
         type: Character
