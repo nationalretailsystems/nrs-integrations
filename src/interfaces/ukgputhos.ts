@@ -78,7 +78,7 @@ export interface AddedDS {
 export interface payCodeEditsDS {
     /**
      */
-    added: Array<AddedDS>
+    added: AddedDS
 }
 
 /**
