@@ -1,0 +1,77 @@
+---
+name: ukgputhos
+rpgIncName: ukgputho_h
+datastructures:
+  employeeDS:
+    subfields:
+      id:
+        type: Packed
+        length: 6
+  paycodeDS:
+    subfields:
+      id:
+        type: Packed
+        length: 10
+  AddedDS:
+    subfields:
+      employee:
+        type: DataStruct
+        dsName: employeeDS
+      paycode:
+        type: DataStruct
+        dsName: paycodeDS
+      amountType:
+        type: Character
+        length: 4
+      approvableByManager:
+        type: Boolean
+      durationInHours:
+        type: Packed
+        length: 4
+        precision: 1
+      endDateTime:
+        type: Character
+        length: 23
+      id:
+        type: Packed
+        length: 10
+      startDateTime:
+        type: Character
+        length: 23
+  payCodeEditsDS:
+    subfields:
+      added:
+        type: DataStruct
+        dsName: AddedDS
+        dim: 1
+  doDS:
+    subfields:
+      payCodeEdits:
+        type: DataStruct
+        dsName: payCodeEditsDS
+  dateRangeDS:
+    subfields:
+      endDate:
+        type: Character
+        length: 23
+      startDate:
+        type: Character
+        length: 23
+  whereDS:
+    subfields:
+      dateRange:
+        type: DataStruct
+        dsName: dateRangeDS
+      employee:
+        type: DataStruct
+        dsName: employeeDS
+formats:
+  puthosReq:
+    recordType: request
+    subfields:
+      do:
+        type: DataStruct
+        dsName: doDS
+      where:
+        type: DataStruct
+        dsName: whereDS

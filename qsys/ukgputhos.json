@@ -1,0 +1,31 @@
+{
+    "do": {
+      "payCodeEdits": {
+        "added": [
+          {
+            "employee": {
+              "id": 123456
+            },
+            "paycode": {
+              "id": 2000000008
+            },
+            "amountType": "HOUR",
+            "approvableByManager": true,
+            "durationInHours": 123.50,
+            "endDateTime": "2023-09-23T08:00:00.000",
+            "id": 2000000008,
+            "startDateTime": "2023-09-23T08:00:00.000"
+          }
+        ]
+      }
+    },
+    "where": {
+      "dateRange": {
+        "endDate": "2023-09-23T08:00:00.000",
+        "startDate": "2023-09-23T08:00:00.000"
+      },
+      "employee": {
+        "id": 123456
+      }
+    }
+  }
