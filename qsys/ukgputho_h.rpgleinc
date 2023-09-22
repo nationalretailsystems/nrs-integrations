@@ -1,0 +1,83 @@
+      ************************************
+      * Module: ukgputhos
+      * Generated RPG data structures
+      * and prototypes
+      * Do not modify
+      ************************************
+
+      ************************************
+      * employeeDS data structure
+      ************************************
+     DemployeeDS       DS                  Qualified
+     D                                     Template
+     Did                              6P 0
+
+      ************************************
+      * paycodeDS data structure
+      ************************************
+     DpaycodeDS        DS                  Qualified
+     D                                     Template
+     Did                             10P 0
+
+      ************************************
+      * AddedDS data structure
+      ************************************
+     DAddedDS          DS                  Qualified
+     D                                     Template
+     Demployee                             LikeDS(employeeDS)
+     Dpaycode                              LikeDS(paycodeDS)
+     DamountType                      4A
+     DapprovableByManager                  N
+     DdurationInHours                 4P 1
+     DendDateTime                    23A
+     Did                             10P 0
+     DstartDateTime                  23A
+
+      ************************************
+      * payCodeEditsDS data structure
+      ************************************
+     DpayCodeEditsDS   DS                  Qualified
+     D                                     Template
+     Dadded                                LikeDS(AddedDS)
+     D                                     Dim(1)
+
+      ************************************
+      * doDS data structure
+      ************************************
+     DdoDS             DS                  Qualified
+     D                                     Template
+     DpayCodeEdits                         LikeDS(payCodeEditsDS)
+
+      ************************************
+      * dateRangeDS data structure
+      ************************************
+     DdateRangeDS      DS                  Qualified
+     D                                     Template
+     DendDate                        23A
+     DstartDate                      23A
+
+      ************************************
+      * whereDS data structure
+      ************************************
+     DwhereDS          DS                  Qualified
+     D                                     Template
+     DdateRange                            LikeDS(dateRangeDS)
+     Demployee                             LikeDS(employeeDS)
+
+      ************************************
+      * puthosReq data structure
+      * Record length: 143
+      ************************************
+     DputhosReqLen     C                   143
+     DputhosReq        DS                  Qualified
+     D                                     Template
+     Ddo                                   LikeDS(doDS)
+     Dwhere                                LikeDS(whereDS)
+
+      ************************************
+      * Convert puthosReq to buffer
+      ************************************
+     DputhosReqToBuf   PR
+     DDataStruct                           LikeDS(puthosReq)
+     D                                     Const
+     DBuffer                        143A
