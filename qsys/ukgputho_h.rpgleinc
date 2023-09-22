@@ -39,7 +39,6 @@
      DpayCodeEditsDS   DS                  Qualified
      D                                     Template
      Dadded                                LikeDS(AddedDS)
-     D                                     Dim(1)
 
       ************************************
       * doDS data structure

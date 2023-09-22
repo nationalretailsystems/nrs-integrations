@@ -44,7 +44,6 @@ datastructures:
       added:
         type: DataStruct
         dsName: AddedDS
-        dim: 1
   doDS:
     subfields:
       payCodeEdits:
