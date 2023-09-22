@@ -66,7 +66,8 @@ GENMODS = icndbapi \
 		  ukgtchours \
 		  hygetchg \
 		  ukgputhr \
-		  ukgpers
+		  ukgpers \
+		  ukgputhos
 
 GENHDRS = icndbapi_h \
           lblapi_h \
@@ -105,7 +106,8 @@ GENHDRS = icndbapi_h \
 		  ukg_hours_h \
 		  hygetchg_h \
 		  ukgputhr_h \
-		  ukgpers_h
+		  ukgpers_h \
+		  ukgputho_h
 
 SRVPGMS = ecctmpgen
 
@@ -579,6 +581,12 @@ $(libdir)/qrpglesrc.file/ukgpers.mbr $(libdir)/qrpglesrc.file/ukgpers_h.mbr ../s
 	cp ukgpers.ts ../src/interfaces/ukgpers.ts
 	system "CPYFRMSTMF FROMSTMF('ukgpers.rpgle') TOMBR('$(libdir)/qrpglesrc.file/ukgpers.mbr') MBROPT(*REPLACE)"
 	system "CPYFRMSTMF FROMSTMF('ukgpers_h.rpgleinc') TOMBR('$(libdir)/qrpglesrc.file/ukgpers_h.mbr') MBROPT(*REPLACE)"
+
+$(libdir)/qrpglesrc.file/ukgputhos.mbr $(libdir)/qrpglesrc.file/ukgputho_h.mbr ../src/interfaces/ukgputhos.ts: ukgputhos.yaml
+	npx ec-generate -f $<
+	cp ukgputhos.ts ../src/interfaces/ukgputhos.ts
+	system "CPYFRMSTMF FROMSTMF('ukgputhos.rpgle') TOMBR('$(libdir)/qrpglesrc.file/ukgputhos.mbr') MBROPT(*REPLACE)"
+	system "CPYFRMSTMF FROMSTMF('ukgputho_h.rpgleinc') TOMBR('$(libdir)/qrpglesrc.file/ukgputho_h.mbr') MBROPT(*REPLACE)"		
 
 .PHONY: library
 library:
