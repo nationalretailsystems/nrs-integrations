@@ -27,7 +27,7 @@
      Demployee                             LikeDS(employeeDS)
      Dpaycode                              LikeDS(paycodeDS)
      DamountType                      4A
-     DapprovableByManager                  N
+     Dappbymgr                         N
      DdurationInHours                 4P 1
      DendDateTime                    23A
      Did                             10P 0

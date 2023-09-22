@@ -24,6 +24,7 @@ datastructures:
         type: Character
         length: 4
       approvableByManager:
+        rpgName: appbymgr
         type: Boolean
       durationInHours:
         type: Packed
