@@ -38,7 +38,7 @@
        BufPtr += 12;
        %subst(CharBuf:1:4) = DataStruct.do.payCodeEdits.added.amountType;
        BufPtr += 4;
-       %subst(CharBuf:1:1) = DataStruct.do.payCodeEdits.added.approvableByManager;
+       %subst(CharBuf:1:1) = DataStruct.do.payCodeEdits.added.appbymgr;
        BufPtr += 1;
        %subst(CharBuf:1:6) = %char(DataStruct.do.payCodeEdits.added.durationInHours);
        BufPtr += 6;
