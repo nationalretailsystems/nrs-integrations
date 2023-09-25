@@ -551,7 +551,6 @@ datastructures:
         rpgName: telcontactdata
         type: DataStruct
         dsName: telContactDataEntriesDS
-        dim: 2
       timeZone:
         type: Character
         length: 25
