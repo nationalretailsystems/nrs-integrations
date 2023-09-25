@@ -682,7 +682,7 @@ export interface employeeExtensionDS {
     supervisorPersonNumber: string,
     /**
      */
-    telContactDataEntries: Array<telContactDataEntriesDS>,
+    telContactDataEntries: telContactDataEntriesDS,
     /**
      * @size 25 characters
      * @default ``
@@ -856,12 +856,10 @@ export function convertObjectTopersonResp(dataIn: personResp): string {
   dataOut += dataIn?.employeeExtension?.supervisorFullName?.substring(0, 15)?.padEnd(15) ?? "".substring(0, 15).padEnd(15);
   dataOut += dataIn?.employeeExtension?.supervisorPersonId?.toFixed(0)?.substring(0, 8)?.padEnd(8) ?? "0".substring(0, 8).padEnd(8);
   dataOut += dataIn?.employeeExtension?.supervisorPersonNumber?.substring(0, 6)?.padEnd(6) ?? "".substring(0, 6).padEnd(6);
-  for (let j: number = 0; j < 2; ++j) {
-  dataOut += dataIn?.employeeExtension?.telContactDataEntries[j]?.contactData?.substring(0, 14)?.padEnd(14) ?? "".substring(0, 14).padEnd(14);
-  dataOut += dataIn?.employeeExtension?.telContactDataEntries[j]?.contactType?.substring(0, 7)?.padEnd(7) ?? "".substring(0, 7).padEnd(7);
-  dataOut += dataIn?.employeeExtension?.telContactDataEntries[j]?.contactTypeId?.toFixed(0)?.substring(0, 8)?.padEnd(8) ?? "0".substring(0, 8).padEnd(8);
-  dataOut += (dataIn?.employeeExtension?.telContactDataEntries[j]?.smsswitch !== undefined ? (dataIn?.employeeExtension?.telContactDataEntries[j]?.smsswitch ? "1" : "0") : "0");
-  }
+  dataOut += dataIn?.employeeExtension?.telContactDataEntries?.contactData?.substring(0, 14)?.padEnd(14) ?? "".substring(0, 14).padEnd(14);
+  dataOut += dataIn?.employeeExtension?.telContactDataEntries?.contactType?.substring(0, 7)?.padEnd(7) ?? "".substring(0, 7).padEnd(7);
+  dataOut += dataIn?.employeeExtension?.telContactDataEntries?.contactTypeId?.toFixed(0)?.substring(0, 8)?.padEnd(8) ?? "0".substring(0, 8).padEnd(8);
+  dataOut += (dataIn?.employeeExtension?.telContactDataEntries?.smsswitch !== undefined ? (dataIn?.employeeExtension?.telContactDataEntries?.smsswitch ? "1" : "0") : "0");
   dataOut += dataIn?.employeeExtension?.timeZone?.substring(0, 25)?.padEnd(25) ?? "".substring(0, 25).padEnd(25);
   dataOut += dataIn?.employeeExtension?.timeZoneId?.toFixed(0)?.substring(0, 8)?.padEnd(8) ?? "0".substring(0, 8).padEnd(8);
   dataOut += dataIn?.employeeExtension?.userAccountId?.toFixed(0)?.substring(0, 8)?.padEnd(8) ?? "0".substring(0, 8).padEnd(8);

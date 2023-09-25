@@ -228,7 +228,6 @@
      Dsuperpersid                     6P 0
      Dsuperpersnum                    6A
      Dtelcontactdata                       LikeDS(telcondatentDS)
-     D                                     Dim(2)
      DtimeZone                       25A
      DtimeZoneId                      6P 0
      DuserAccountId                   6P 0
@@ -253,9 +252,9 @@
 
       ************************************
       * personResp data structure
-      * Record length: 1863
+      * Record length: 1833
       ************************************
-     DpersonRespLen    C                   1863
+     DpersonRespLen    C                   1833
      DpersonResp       DS                  Qualified
      D                                     Template
      Dempextension                         LikeDS(empextDS)
@@ -265,5 +264,5 @@
       * Convert buffer to personResp
       ************************************
      DBufTopersonResp  PR
-     DBuffer                       1863A
+     DBuffer                       1833A
      DDataStruct                           LikeDS(personResp)
