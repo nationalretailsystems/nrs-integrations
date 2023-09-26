@@ -14,5 +14,4 @@ export default function registerUKG(router: ECCInternalRouter) {
     router.use('puthours', puthours, putHours);
     router.use('getpers', getpers, getPers);
     router.use('puthos', puthos, putHos);
-    
 }

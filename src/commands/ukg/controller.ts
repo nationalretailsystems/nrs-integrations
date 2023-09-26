@@ -389,6 +389,6 @@ export const putHos: ECCHandlerFunction = async function (reqkey, datax, ecc) {
     // let responseData = sanitizeValues(result.data, safeValues);
     nextReqKey = await ecc.sendEccResult('ECC0000', 'Success', nextReqKey);
     return response;
-    // logger.error('Call test1 failed');
+    logger.error('Call puthos Success');
     logger.error(nextReqKey);
 };
