@@ -66,7 +66,7 @@
      Deffdataccent                   26A
      DeffectiveDate                  10A
      DexpirationDate                 10A
-     DprimaryJob                     93A
+     DprimaryJob                    100A
      Dprimlabcat                     55A
      Dprimlabcatid                    6P 0
      Dprimorgid                       6P 0
@@ -132,7 +132,7 @@
       ************************************
      DpostadddatentDS  DS                  Qualified
      D                                     Template
-     Dcity                            9A
+     Dcity                           15A
      DcontactType                     4A
      DcontactTypeId                   6P 0
      Dcountry                         3A
@@ -156,7 +156,7 @@
       ************************************
      DtelcondatentDS   DS                  Qualified
      D                                     Template
-     DcontactData                    14A
+     DcontactData                    20A
      DcontactType                     7A
      DcontactTypeId                   6P 0
      Dsmsswitch                        N
@@ -216,15 +216,15 @@
      DpersonId                        6P 0
      DpersonNumber                    6A
      Dpostadddata                          LikeDS(postadddatentDS)
-     Dprefprof                       16A
+     Dprefprof                       30A
      Dprefproddata                         LikeDS(prefprofdtentDS)
      Dprocempprof                    13A
      Dpropmgrprof                    13A
      Dreqpasschg                       N
      DrestrictedUser                   N
      DseniorityDate                  10A
-     DshortName                       7A
-     Dsuperfn                        15A
+     DshortName                      15A
+     Dsuperfn                        25A
      Dsuperpersid                     6P 0
      Dsuperpersnum                    6A
      Dtelcontactdata                       LikeDS(telcondatentDS)
@@ -252,9 +252,9 @@
 
       ************************************
       * personResp data structure
-      * Record length: 1833
+      * Record length: 1884
       ************************************
-     DpersonRespLen    C                   1833
+     DpersonRespLen    C                   1884
      DpersonResp       DS                  Qualified
      D                                     Template
      Dempextension                         LikeDS(empextDS)
@@ -264,5 +264,5 @@
       * Convert buffer to personResp
       ************************************
      DBufTopersonResp  PR
-     DBuffer                       1833A
+     DBuffer                       1884A
      DDataStruct                           LikeDS(personResp)

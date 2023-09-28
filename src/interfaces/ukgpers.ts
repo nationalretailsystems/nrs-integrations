@@ -158,7 +158,7 @@ export interface effDatedPrimaryJobAccountEntriesDS {
      */
     expirationDate: string,
     /**
-     * @size 93 characters
+     * @size 100 characters
      * @default ``
      */
     primaryJob: string,
@@ -325,7 +325,7 @@ export interface personDatesEntriesDS {
  */
 export interface postalAddressDataEntriesDS {
     /**
-     * @size 9 characters
+     * @size 15 characters
      * @default ``
      */
     city: string,
@@ -398,7 +398,7 @@ export interface preferenceProfileDataEntryDS {
  */
 export interface telContactDataEntriesDS {
     /**
-     * @size 14 characters
+     * @size 20 characters
      * @default ``
      */
     contactData: string,
@@ -629,7 +629,7 @@ export interface employeeExtensionDS {
      */
     postalAddressDataEntries: postalAddressDataEntriesDS,
     /**
-     * @size 16 characters
+     * @size 30 characters
      * @default ``
      */
     preferenceProfile: string,
@@ -660,12 +660,12 @@ export interface employeeExtensionDS {
      */
     seniorityDate: string,
     /**
-     * @size 7 characters
+     * @size 15 characters
      * @default ``
      */
     shortName: string,
     /**
-     * @size 15 characters
+     * @size 25 characters
      * @default ``
      */
     supervisorFullName: string,
@@ -781,7 +781,7 @@ export function convertObjectTopersonResp(dataIn: personResp): string {
   dataOut += dataIn?.employeeExtension?.effDatedPrimaryJobAccountEntries?.effDatedCostCenterEntries?.substring(0, 26)?.padEnd(26) ?? "".substring(0, 26).padEnd(26);
   dataOut += dataIn?.employeeExtension?.effDatedPrimaryJobAccountEntries?.effectiveDate?.substring(0, 10)?.padEnd(10) ?? "".substring(0, 10).padEnd(10);
   dataOut += dataIn?.employeeExtension?.effDatedPrimaryJobAccountEntries?.expirationDate?.substring(0, 10)?.padEnd(10) ?? "".substring(0, 10).padEnd(10);
-  dataOut += dataIn?.employeeExtension?.effDatedPrimaryJobAccountEntries?.primaryJob?.substring(0, 93)?.padEnd(93) ?? "".substring(0, 93).padEnd(93);
+  dataOut += dataIn?.employeeExtension?.effDatedPrimaryJobAccountEntries?.primaryJob?.substring(0, 100)?.padEnd(100) ?? "".substring(0, 100).padEnd(100);
   dataOut += dataIn?.employeeExtension?.effDatedPrimaryJobAccountEntries?.primaryLaborCategory?.substring(0, 55)?.padEnd(55) ?? "".substring(0, 55).padEnd(55);
   dataOut += dataIn?.employeeExtension?.effDatedPrimaryJobAccountEntries?.primaryLaborCategoryId?.toFixed(0)?.substring(0, 8)?.padEnd(8) ?? "0".substring(0, 8).padEnd(8);
   dataOut += dataIn?.employeeExtension?.effDatedPrimaryJobAccountEntries?.primaryOrganizationId?.toFixed(0)?.substring(0, 8)?.padEnd(8) ?? "0".substring(0, 8).padEnd(8);
@@ -834,14 +834,14 @@ export function convertObjectTopersonResp(dataIn: personResp): string {
   }
   dataOut += dataIn?.employeeExtension?.personId?.toFixed(0)?.substring(0, 8)?.padEnd(8) ?? "0".substring(0, 8).padEnd(8);
   dataOut += dataIn?.employeeExtension?.personNumber?.substring(0, 6)?.padEnd(6) ?? "".substring(0, 6).padEnd(6);
-  dataOut += dataIn?.employeeExtension?.postalAddressDataEntries?.city?.substring(0, 9)?.padEnd(9) ?? "".substring(0, 9).padEnd(9);
+  dataOut += dataIn?.employeeExtension?.postalAddressDataEntries?.city?.substring(0, 15)?.padEnd(15) ?? "".substring(0, 15).padEnd(15);
   dataOut += dataIn?.employeeExtension?.postalAddressDataEntries?.contactType?.substring(0, 4)?.padEnd(4) ?? "".substring(0, 4).padEnd(4);
   dataOut += dataIn?.employeeExtension?.postalAddressDataEntries?.contactTypeId?.toFixed(0)?.substring(0, 8)?.padEnd(8) ?? "0".substring(0, 8).padEnd(8);
   dataOut += dataIn?.employeeExtension?.postalAddressDataEntries?.country?.substring(0, 3)?.padEnd(3) ?? "".substring(0, 3).padEnd(3);
   dataOut += dataIn?.employeeExtension?.postalAddressDataEntries?.state?.substring(0, 2)?.padEnd(2) ?? "".substring(0, 2).padEnd(2);
   dataOut += dataIn?.employeeExtension?.postalAddressDataEntries?.street?.substring(0, 15)?.padEnd(15) ?? "".substring(0, 15).padEnd(15);
   dataOut += dataIn?.employeeExtension?.postalAddressDataEntries?.zipCode?.substring(0, 5)?.padEnd(5) ?? "".substring(0, 5).padEnd(5);
-  dataOut += dataIn?.employeeExtension?.preferenceProfile?.substring(0, 16)?.padEnd(16) ?? "".substring(0, 16).padEnd(16);
+  dataOut += dataIn?.employeeExtension?.preferenceProfile?.substring(0, 30)?.padEnd(30) ?? "".substring(0, 30).padEnd(30);
   dataOut += dataIn?.employeeExtension?.preferenceProfileDataEntry?.preferenceProfile?.substring(0, 16)?.padEnd(16) ?? "".substring(0, 16).padEnd(16);
   dataOut += dataIn?.employeeExtension?.preferenceProfileDataEntry?.preferenceProfileId?.toFixed(0)?.substring(0, 8)?.padEnd(8) ?? "0".substring(0, 8).padEnd(8);
   dataOut += dataIn?.employeeExtension?.preferenceProfileDataEntry?.schedulePeriodId?.toFixed(0)?.substring(0, 8)?.padEnd(8) ?? "0".substring(0, 8).padEnd(8);
@@ -852,11 +852,11 @@ export function convertObjectTopersonResp(dataIn: personResp): string {
   dataOut += (dataIn?.employeeExtension?.requirePassChange !== undefined ? (dataIn?.employeeExtension?.requirePassChange ? "1" : "0") : "0");
   dataOut += (dataIn?.employeeExtension?.restrictedUser !== undefined ? (dataIn?.employeeExtension?.restrictedUser ? "1" : "0") : "0");
   dataOut += dataIn?.employeeExtension?.seniorityDate?.substring(0, 10)?.padEnd(10) ?? "".substring(0, 10).padEnd(10);
-  dataOut += dataIn?.employeeExtension?.shortName?.substring(0, 7)?.padEnd(7) ?? "".substring(0, 7).padEnd(7);
-  dataOut += dataIn?.employeeExtension?.supervisorFullName?.substring(0, 15)?.padEnd(15) ?? "".substring(0, 15).padEnd(15);
+  dataOut += dataIn?.employeeExtension?.shortName?.substring(0, 15)?.padEnd(15) ?? "".substring(0, 15).padEnd(15);
+  dataOut += dataIn?.employeeExtension?.supervisorFullName?.substring(0, 25)?.padEnd(25) ?? "".substring(0, 25).padEnd(25);
   dataOut += dataIn?.employeeExtension?.supervisorPersonId?.toFixed(0)?.substring(0, 8)?.padEnd(8) ?? "0".substring(0, 8).padEnd(8);
   dataOut += dataIn?.employeeExtension?.supervisorPersonNumber?.substring(0, 6)?.padEnd(6) ?? "".substring(0, 6).padEnd(6);
-  dataOut += dataIn?.employeeExtension?.telContactDataEntries?.contactData?.substring(0, 14)?.padEnd(14) ?? "".substring(0, 14).padEnd(14);
+  dataOut += dataIn?.employeeExtension?.telContactDataEntries?.contactData?.substring(0, 20)?.padEnd(20) ?? "".substring(0, 20).padEnd(20);
   dataOut += dataIn?.employeeExtension?.telContactDataEntries?.contactType?.substring(0, 7)?.padEnd(7) ?? "".substring(0, 7).padEnd(7);
   dataOut += dataIn?.employeeExtension?.telContactDataEntries?.contactTypeId?.toFixed(0)?.substring(0, 8)?.padEnd(8) ?? "0".substring(0, 8).padEnd(8);
   dataOut += (dataIn?.employeeExtension?.telContactDataEntries?.smsswitch !== undefined ? (dataIn?.employeeExtension?.telContactDataEntries?.smsswitch ? "1" : "0") : "0");

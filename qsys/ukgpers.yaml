@@ -113,7 +113,7 @@ datastructures:
         default: ""
       primaryJob:
         type: Character
-        length: 93
+        length: 100
         default: ""
       primaryLaborCategory:
         rpgName: primlabcat
@@ -235,7 +235,7 @@ datastructures:
     subfields:
       city:
         type: Character
-        length: 9
+        length: 15
         default: ""
       contactType:
         type: Character
@@ -291,7 +291,7 @@ datastructures:
     subfields:
       contactData:
         type: Character
-        length: 14
+        length: 20
         default: ""
       contactType:
         type: Character
@@ -501,7 +501,7 @@ datastructures:
       preferenceProfile:
         rpgName: prefprof
         type: Character
-        length: 16
+        length: 30
         default: ""
       preferenceProfileDataEntry:
         rpgName: prefproddata
@@ -530,12 +530,12 @@ datastructures:
         default: ""
       shortName:
         type: Character
-        length: 7
+        length: 15
         default: ""
       supervisorFullName:
         rpgName: superfn
         type: Character
-        length: 15
+        length: 25
         default: ""
       supervisorPersonId:
         rpgName: superpersid
