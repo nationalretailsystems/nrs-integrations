@@ -1,4 +1,4 @@
-     H Nomain
+     H Nomain EXPROPTS(*ALWBLANKNUM)  
 
       ************************************
       * Module: mpgeteqip
@@ -47,7 +47,7 @@
      PBufToAssetChgDS  B                   Export
 
      DBufToAssetChgDS  PI
-     DBuffer                      15140A
+     DBuffer                      18049A
      DDataStruct                           LikeDS(AssetChgDS)
 
       * Initialize to begining of buffer
@@ -90,8 +90,8 @@
        BufPtr += 50;
        DataStruct.custkey = %int(%subst(CharBuf:1:11));
        BufPtr += 11;
-       DataStruct.purchdate = %date(%subst(CharBuf:1:10):*ISO);
-       BufPtr += 10;
+       DataStruct.purchdate = %subst(CharBuf:1:19);
+       BufPtr += 19;
        DataStruct.purchcost = %dec(%subst(CharBuf:1:17):15:2);
        BufPtr += 17;
        for i = 1 to 100;
@@ -103,6 +103,10 @@
        BufPtr += 24;
        DataStruct.customFields(i).cstfldval = %subst(CharBuf:1:100);
        BufPtr += 100;
+       DataStruct.customFields(i).moddate = %subst(CharBuf:1:19);
+       BufPtr += 19;
+       DataStruct.customFields(i).updtype = %subst(CharBuf:1:10);
+       BufPtr += 10;
        endfor;
 
        return ;

@@ -69,7 +69,7 @@ const safeValues: any = {
 
 export const getAssetChanges: ECCHandlerFunction = async (reqkey, data, ecc) => {
     logger.debug(`Received getAssetChanges request`, { reqkey, data });
-    // Get parameters from incomming data buffer
+    // Get parameters from incoming data buffer
     const reqFields = converter.convertRqAssetChgToObject(data);
     let reqDate = reqFields.sincedate.toISOString().split('T')[0];
     // Call web service
@@ -123,7 +123,7 @@ export const getAssetChanges: ECCHandlerFunction = async (reqkey, data, ecc) => 
 };
 export const getAssetAll: ECCHandlerFunction = async (reqkey, data, ecc) => {
     logger.debug(`Received getAssetAll request`, { reqkey, data });
-    // Get parameters from incomming data buffer
+    // Get parameters from incoming data buffer
     const reqFields = converter2.convertRqAssetAllToObject(data);
     // Call web service
     let result;

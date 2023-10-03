@@ -14,6 +14,8 @@
      Dcustfldky                      10I 0
      Dcustfldnam                     24A
      Dcstfldval                     100A
+     Dmoddate                        19A
+     Dupdtype                        10A
 
       ************************************
       * RqAssetChg data structure
@@ -35,9 +37,9 @@
 
       ************************************
       * AssetChgDS data structure
-      * Record length: 15140
+      * Record length: 18049
       ************************************
-     DAssetChgDSLen    C                   15140
+     DAssetChgDSLen    C                   18049
      DAssetChgDS       DS                  Qualified
      D                                     Template
      Dassetkey                       10I 0
@@ -58,7 +60,7 @@
      Dsrlnumb                        32A
      Dcustomer                       50A
      Dcustkey                        10I 0
-     Dpurchdate                        D
+     Dpurchdate                      19A
      Dpurchcost                      15P 2
      DcustomFields                         LikeDS(CustFldsDS)
      D                                     Dim(100)
@@ -67,5 +69,5 @@
       * Convert buffer to AssetChgDS
       ************************************
      DBufToAssetChgDS  PR
-     DBuffer                      15140A
+     DBuffer                      18049A
      DDataStruct                           LikeDS(AssetChgDS)

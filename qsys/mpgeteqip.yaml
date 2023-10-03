@@ -31,6 +31,16 @@ datastructures:
         type: Character
         length: 100
         default: ""
+      modificationDate:
+        rpgName: moddate
+        type: Character
+        length: 19
+        default: ""
+      updateType:
+        rpgName: updtype
+        type: Character
+        length: 10
+        default: ""
 formats:
   RqAssetChg:
     recordType: request
@@ -138,8 +148,9 @@ formats:
         default: 0
       purchaseDate:
         rpgName: purchdate
-        type: Date
-        default: "0001-01-01"
+        type: Character
+        length: 19
+        default: ""
       purchaseCost:
         rpgName: purchcost
         type: Packed
