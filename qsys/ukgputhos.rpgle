@@ -26,7 +26,7 @@
      DputhosReqToBuf   PI
      DDataStruct                           LikeDS(puthosReq)
      D                                     Const
-     DBuffer                        143A
+     DBuffer                         95A
 
       * Initialize to beginning of buffer
        BufPtr = %addr(Buffer);
@@ -38,16 +38,10 @@
        BufPtr += 12;
        %subst(CharBuf:1:4) = DataStruct.do.payCodeEdits.added.amountType;
        BufPtr += 4;
-       %subst(CharBuf:1:1) = DataStruct.do.payCodeEdits.added.appbymgr;
-       BufPtr += 1;
-       %subst(CharBuf:1:6) = %char(DataStruct.do.payCodeEdits.added.durationInHours);
-       BufPtr += 6;
-       %subst(CharBuf:1:23) = DataStruct.do.payCodeEdits.added.endDateTime;
-       BufPtr += 23;
-       %subst(CharBuf:1:12) = %char(DataStruct.do.payCodeEdits.added.id);
-       BufPtr += 12;
-       %subst(CharBuf:1:23) = DataStruct.do.payCodeEdits.added.startDateTime;
-       BufPtr += 23;
+       %subst(CharBuf:1:10) = DataStruct.do.payCodeEdits.added.applyDate;
+       BufPtr += 10;
+       %subst(CharBuf:1:7) = %char(DataStruct.do.payCodeEdits.added.durationInHours);
+       BufPtr += 7;
        %subst(CharBuf:1:23) = DataStruct.where.dateRange.endDate;
        BufPtr += 23;
        %subst(CharBuf:1:23) = DataStruct.where.dateRange.startDate;

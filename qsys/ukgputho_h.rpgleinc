@@ -27,11 +27,8 @@
      Demployee                             LikeDS(employeeDS)
      Dpaycode                              LikeDS(paycodeDS)
      DamountType                      4A
-     Dappbymgr                         N
-     DdurationInHours                 4P 1
-     DendDateTime                    23A
-     Did                             10P 0
-     DstartDateTime                  23A
+     DapplyDate                      10A
+     DdurationInHours                 5P 2
 
       ************************************
       * payCodeEditsDS data structure
@@ -65,9 +62,9 @@
 
       ************************************
       * puthosReq data structure
-      * Record length: 143
+      * Record length: 95
       ************************************
-     DputhosReqLen     C                   143
+     DputhosReqLen     C                   95
      DputhosReq        DS                  Qualified
      D                                     Template
      Ddo                                   LikeDS(doDS)
@@ -79,4 +76,4 @@
      DputhosReqToBuf   PR
      DDataStruct                           LikeDS(puthosReq)
      D                                     Const
-     DBuffer                        143A
+     DBuffer                         95A

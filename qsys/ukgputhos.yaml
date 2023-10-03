@@ -23,22 +23,13 @@ datastructures:
       amountType:
         type: Character
         length: 4
-      approvableByManager:
-        rpgName: appbymgr
-        type: Boolean
+      applyDate:
+        type: Character
+        length: 10
       durationInHours:
         type: Packed
-        length: 4
-        precision: 1
-      endDateTime:
-        type: Character
-        length: 23
-      id:
-        type: Packed
-        length: 10
-      startDateTime:
-        type: Character
-        length: 23
+        length: 5
+        precision: 2
   payCodeEditsDS:
     subfields:
       added:
