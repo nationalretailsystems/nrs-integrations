@@ -50,26 +50,14 @@ export interface AddedDS {
      */
     amountType: string,
     /**
+     * @size 10 characters
      */
-    approvableByManager: boolean,
+    applyDate: string,
     /**
-     * @size 4 digits
-     * @precision 1 decimals
+     * @size 5 digits
+     * @precision 2 decimals
      */
-    durationInHours: number,
-    /**
-     * @size 23 characters
-     */
-    endDateTime: string,
-    /**
-     * @size 10 digits
-     * @precision 0 decimals
-     */
-    id: number,
-    /**
-     * @size 23 characters
-     */
-    startDateTime: string
+    durationInHours: number
 }
 
 /**
@@ -158,16 +146,10 @@ export function convertputhosReqToObject(dataIn: string): puthosReq {
   pos += 12;
   dataOut.do.payCodeEdits.added.amountType = dataIn.substring(pos, pos + 4).trimEnd();
   pos += 4;
-  dataOut.do.payCodeEdits.added.approvableByManager = dataIn.substring(pos, pos + 1).trimEnd() === "1";
-  pos += 1;
-  dataOut.do.payCodeEdits.added.durationInHours = Number(dataIn.substring(pos, pos + 6).trimEnd());
-  pos += 6;
-  dataOut.do.payCodeEdits.added.endDateTime = dataIn.substring(pos, pos + 23).trimEnd();
-  pos += 23;
-  dataOut.do.payCodeEdits.added.id = Number(dataIn.substring(pos, pos + 12).trimEnd());
-  pos += 12;
-  dataOut.do.payCodeEdits.added.startDateTime = dataIn.substring(pos, pos + 23).trimEnd();
-  pos += 23;
+  dataOut.do.payCodeEdits.added.applyDate = dataIn.substring(pos, pos + 10).trimEnd();
+  pos += 10;
+  dataOut.do.payCodeEdits.added.durationInHours = Number(dataIn.substring(pos, pos + 7).trimEnd());
+  pos += 7;
   dataOut.where =   {
   
     };
