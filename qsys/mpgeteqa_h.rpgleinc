@@ -18,28 +18,28 @@
      Dupdtype                        10A
 
       ************************************
-      * ReqAssetChg data structure
+      * ReqAssetCh data structure
       * Record length: 10
       ************************************
-     DReqAssetChgLen   C                   10
-     DReqAssetChg      DS                  Qualified
+     DReqAssetChLen    C                   10
+     DReqAssetCh       DS                  Qualified
      D                                     Template
      Dassetid                        10A
 
       ************************************
-      * Convert ReqAssetChg to buffer
+      * Convert ReqAssetCh to buffer
       ************************************
-     DReqAssetChgToBuf  PR
-     DDataStruct                           LikeDS(ReqAssetChg)
+     DReqAssetChToBuf  PR
+     DDataStruct                           LikeDS(ReqAssetCh)
      D                                     Const
      DBuffer                         10A
 
       ************************************
-      * ResAssetChg data structure
+      * ResAssetCh data structure
       * Record length: 18049
       ************************************
-     DResAssetChgLen   C                   18049
-     DResAssetChg      DS                  Qualified
+     DResAssetChLen    C                   18049
+     DResAssetCh       DS                  Qualified
      D                                     Template
      Dassetkey                       10I 0
      Dentname                        50A
@@ -65,8 +65,8 @@
      D                                     Dim(100)
 
       ************************************
-      * Convert buffer to ResAssetChg
+      * Convert buffer to ResAssetCh
       ************************************
-     DBufToResAssetChg  PR
+     DBufToResAssetCh  PR
      DBuffer                      18049A
-     DDataStruct                           LikeDS(ResAssetChg)
+     DDataStruct                           LikeDS(ResAssetCh)

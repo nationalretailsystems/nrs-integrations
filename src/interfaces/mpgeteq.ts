@@ -55,7 +55,7 @@ export interface CustFldsDS {
 /**
  * Output interface
  */
-export interface ReqAssetChg {
+export interface ReqAssetCh {
     /**
      * @size 10 characters
      */
@@ -63,9 +63,9 @@ export interface ReqAssetChg {
 }
 
 /**
- * Convert ReqAssetChg record to TypeScript object
+ * Convert ReqAssetCh record to TypeScript object
  */
-export function convertReqAssetChgToObject(dataIn: string): ReqAssetChg {
+export function convertReqAssetChToObject(dataIn: string): ReqAssetCh {
   const dataOut: any =   {
   
     };
@@ -80,7 +80,7 @@ export function convertReqAssetChgToObject(dataIn: string): ReqAssetChg {
 /**
  * Input interface
  */
-export interface ResAssetChg {
+export interface ResAssetCh {
     /**
      * @size 10 digits
      */
@@ -187,9 +187,9 @@ export interface ResAssetChg {
 }
 
 /**
- * Convert JavaScript object to ResAssetChg record
+ * Convert JavaScript object to ResAssetCh record
  */
-export function convertObjectToResAssetChg(dataIn: ResAssetChg): string {
+export function convertObjectToResAssetCh(dataIn: ResAssetCh): string {
   let dataOut: string = "";
 
   dataOut += dataIn?.assetKey?.toFixed()?.substring(0, 11)?.padEnd(11) ?? missingInput(`dataIn.assetKey`, "integer", dataIn?.assetKey);

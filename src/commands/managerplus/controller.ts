@@ -519,7 +519,7 @@ export const getSvcItem: ECCHandlerFunction = async (reqkey, data, ecc) => {
 export const getAsset: ECCHandlerFunction = async (reqkey, data, ecc) => {
     logger.debug(`Received getAsset request`, { reqkey, data });
     // Get parameters from incoming data buffer
-    const reqFields = converterasset.convertReqAssetChgToObject(data);
+    const reqFields = converterasset.convertReqAssetChToObject(data);
     // Call web service
     let result;
     let nextReqKey = reqkey;
@@ -549,7 +549,7 @@ export const getAsset: ECCHandlerFunction = async (reqkey, data, ecc) => {
         let responseData = result.data;
         logger.debug('ECC0000', 'Success', nextReqKey);
         nextReqKey = await ecc.sendEccResult('ECC0000', 'Success', nextReqKey);
-        nextReqKey = await ecc.sendObjectToCaller(responseData, converterasset.convertObjectToResAssetChg, nextReqKey);
+        nextReqKey = await ecc.sendObjectToCaller(responseData, converterasset.convertObjectToResAssetCh, nextReqKey);
         logger.debug('Sent data to RPG');
         return nextReqKey;
     } catch (err) {

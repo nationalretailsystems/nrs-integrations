@@ -42,14 +42,14 @@ datastructures:
         length: 10
         default: ""
 formats:
-  ReqAssetChg:
+  ReqAssetCh:
     recordType: request
     subfields:
       assetid:
         rpgName: assetid
         type: Character
         length: 10
-  ResAssetChg:
+  ResAssetCh:
     recordType: response
     subfields:
       assetKey:
