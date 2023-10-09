@@ -67,7 +67,8 @@ GENMODS = icndbapi \
 		  hygetchg \
 		  ukgputhr \
 		  ukgpers \
-		  ukgputhos
+		  ukgputhos \
+		  mpgeteq
 
 GENHDRS = icndbapi_h \
           lblapi_h \
@@ -107,7 +108,8 @@ GENHDRS = icndbapi_h \
 		  hygetchg_h \
 		  ukgputhr_h \
 		  ukgpers_h \
-		  ukgputho_h
+		  ukgputho_h \
+		  mpgeteqa_h
 
 SRVPGMS = ecctmpgen
 
@@ -409,7 +411,13 @@ $(libdir)/qrpglesrc.file/mpgeteq2.mbr $(libdir)/qrpglesrc.file/mpgeteq2_h.mbr ..
 	#npx ec-generate -f $<
 	#cp mpgeteq2.ts ../src/interfaces/mpgeteq2.ts
 	system "CPYFRMSTMF FROMSTMF('mpgeteq2.rpgle') TOMBR('$(libdir)/qrpglesrc.file/mpgeteq2.mbr') MBROPT(*REPLACE)"
-	system "CPYFRMSTMF FROMSTMF('mpgeteq2_h.rpgleinc') TOMBR('$(libdir)/qrpglesrc.file/mpgeteq2_h.mbr') MBROPT(*REPLACE)"		
+	system "CPYFRMSTMF FROMSTMF('mpgeteq2_h.rpgleinc') TOMBR('$(libdir)/qrpglesrc.file/mpgeteq2_h.mbr') MBROPT(*REPLACE)"	
+
+$(libdir)/qrpglesrc.file/mpgeteq.mbr $(libdir)/qrpglesrc.file/mpgeteqa_h.mbr ../src/interfaces/mpgeteq.ts: mpgeteq.yaml
+	#npx ec-generate -f $<
+	#cp mpgeteq.ts ../src/interfaces/mpgeteq.ts
+	system "CPYFRMSTMF FROMSTMF('mpgeteq.rpgle') TOMBR('$(libdir)/qrpglesrc.file/mpgeteq.mbr') MBROPT(*REPLACE)"
+	system "CPYFRMSTMF FROMSTMF('mpgeteqa_h.rpgleinc') TOMBR('$(libdir)/qrpglesrc.file/mpgeteqa_h.mbr') MBROPT(*REPLACE)"			
 
 $(libdir)/qrpglesrc.file/rmgetstmi.mbr $(libdir)/qrpglesrc.file/rmgetstm_h.mbr ../src/interfaces/rmgetstmi.ts: rmgetstmi.yaml
 	#npx ec-generate -f $<
