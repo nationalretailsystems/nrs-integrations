@@ -1,0 +1,164 @@
+---
+name: mpgeteq
+rpgIncName: mpgeteqa_h
+codeblocks:
+  typescript:
+    - import eradaniConnect from "@eradani-inc/eradani-connect";
+    - const { dataTypes } = eradaniConnect;
+datastructures:
+  CustFldsDS:
+    qualified: true
+    subfields:
+      key:
+        rpgName: key
+        type: Integer
+        length: 10
+        precision: 0
+        default: 0
+      customFieldKey:
+        rpgName: custfldky
+        type: Integer
+        length: 10
+        precision: 0
+        default: 0
+      fieldName:
+        rpgName: custfldnam
+        type: Character
+        length: 24
+        default: ""
+      value:
+        rpgName: cstfldval
+        type: Character
+        length: 100
+        default: ""
+      modificationDate:
+        rpgName: moddate
+        type: Character
+        length: 19
+        default: ""
+      updateType:
+        rpgName: updtype
+        type: Character
+        length: 10
+        default: ""
+formats:
+  ReqAssetChg:
+    recordType: request
+    subfields:
+      assetid:
+        rpgName: assetid
+        type: Character
+        length: 10
+  ResAssetChg:
+    recordType: response
+    subfields:
+      assetKey:
+        rpgName: assetkey
+        type: Integer
+        length: 10
+        precision: 0
+      entityName:
+        rpgName: entname
+        type: Character
+        length: 50
+        default: ""
+      assetId:
+        rpgName: assetid
+        type: Character
+        length: 24
+        default: ""
+      parentAssetId:
+        rpgName: pasassid
+        type: Character
+        length: 24
+        default: ""
+      description:
+        rpgName: descript
+        type: Character
+        length: 50
+        default: ""
+      groupKey:
+        rpgName: groupkey
+        type: Integer
+        length: 10
+        precision: 0
+        default: 0
+      groupId:
+        rpgName: groupid
+        type: Character
+        length: 24
+        default: ""
+      categoryId:
+        rpgName: catid
+        type: Character
+        length: 24
+        default: ""
+      typeId:
+        rpgName: typeid
+        type: Character
+        length: 24
+        default: ""
+      budgetGroupId:
+        rpgName: budgrpid
+        type: Character
+        length: 24
+        default: ""
+      budgetId:
+        rpgName: budgtid
+        type: Character
+        length: 24
+        default: ""
+      statusId:
+        rpgName: statusid
+        type: Character
+        length: 24
+        default: ""
+      barcode:
+        rpgName: barcode
+        type: Character
+        length: 50
+        default: ""
+      manufacturer:
+        rpgName: manufac
+        type: Character
+        length: 24
+        default: ""
+      model:
+        rpgName: model
+        type: Character
+        length: 32
+        default: ""
+      serialNumber:
+        rpgName: srlnumb
+        type: Character
+        length: 32
+        default: ""
+      customer:
+        rpgName: customer
+        type: Character
+        length: 50
+        default: ""
+      customerKey:
+        rpgName: custkey
+        type: Integer
+        length: 10
+        precision: 0
+        default: 0
+      purchaseDate:
+        rpgName: purchdate
+        type: Character
+        length: 19
+        default: ""
+      purchaseCost:
+        rpgName: purchcost
+        type: Packed
+        length: 15
+        precision: 2
+        default: 0
+      customFields:
+        type: DataStruct
+        dsName: CustFldsDS 
+        dim: 100    
+
+
+
