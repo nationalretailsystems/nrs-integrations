@@ -19,12 +19,12 @@
      Dl                S             10U 0
 
       ************************************
-      * Convert ReqAssetChg to buffer
+      * Convert ReqAssetCh to buffer
       ************************************
-     PReqAssetChgToBuf  B                   Export
+     PReqAssetChToBuf  B                   Export
 
-     DReqAssetChgToBuf  PI
-     DDataStruct                           LikeDS(ReqAssetChg)
+     DReqAssetChToBuf  PI
+     DDataStruct                           LikeDS(ReqAssetCh)
      D                                     Const
      DBuffer                         10A
 
@@ -37,16 +37,16 @@
 
        return ;
 
-     PReqAssetChgToBuf  E
+     PReqAssetChToBuf  E
 
       ************************************
-      * Convert buffer to ResAssetChg
+      * Convert buffer to ResAssetCh
       ************************************
-     PBufToResAssetChg  B                   Export
+     PBufToResAssetCh  B                   Export
 
-     DBufToResAssetChg  PI
+     DBufToResAssetCh  PI
      DBuffer                      18049A
-     DDataStruct                           LikeDS(ResAssetChg)
+     DDataStruct                           LikeDS(ResAssetCh)
 
       * Initialize to begining of buffer
        BufPtr = %addr(Buffer);
@@ -109,4 +109,4 @@
 
        return ;
 
-     PBufToResAssetChg  E
+     PBufToResAssetCh  E
