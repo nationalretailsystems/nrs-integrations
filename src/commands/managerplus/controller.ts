@@ -528,6 +528,7 @@ export const getAsset: ECCHandlerFunction = async (reqkey, data, ecc) => {
         result = await axiosInstance.get('/Assets' , {
         params: {
             '$filter': 'assetId eq ' + "'" + reqFields.assetid + "'",
+            '$select': 'assetKey'
         },
             headers: {
                 accept: 'application/json',

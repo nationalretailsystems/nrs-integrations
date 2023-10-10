@@ -6,6 +6,13 @@
       ************************************
 
       ************************************
+      * AssetsDS data structure
+      ************************************
+     DAssetsDS         DS                  Qualified
+     D                                     Template
+     Dassetkey                       10I 0
+
+      ************************************
       * ReqAssetCh data structure
       * Record length: 10
       ************************************
@@ -29,7 +36,8 @@
      DResAssetChLen    C                   11
      DResAssetCh       DS                  Qualified
      D                                     Template
-     Dassetkey                       10I 0
+     Dasset                                LikeDS(AssetsDS)
+     D                                     Dim(1)
 
       ************************************
       * Convert buffer to ResAssetCh

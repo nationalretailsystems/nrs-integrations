@@ -52,7 +52,7 @@
        BufPtr = %addr(Buffer);
 
       * Read fields from buffer into DS
-       DataStruct.assetkey = %int(%subst(CharBuf:1:11));
+       DataStruct.asset.assetkey = %int(%subst(CharBuf:1:11));
        BufPtr += 11;
 
        return ;

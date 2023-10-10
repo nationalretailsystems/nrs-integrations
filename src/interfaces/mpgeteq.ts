@@ -14,7 +14,17 @@ const {
 } = ibmiConversions;
 
 import eradaniConnect from "@eradani-inc/eradani-connect";
-const { dataTypes } = eradaniConnect;
+const { dataTypes } = eradaniConnect;+
+
+/**
+ * Output interface
+ */
+export interface AssetsDS {
+    /**
+     * @size 10 digits
+     */
+    assetKey: number
+}
 
 /**
  * Output interface
@@ -46,9 +56,8 @@ export function convertReqAssetChToObject(dataIn: string): ReqAssetCh {
  */
 export interface ResAssetCh {
     /**
-     * @size 10 digits
      */
-    assetKey: number
+    asset: Array<AssetsDS>
 }
 
 /**
@@ -57,7 +66,7 @@ export interface ResAssetCh {
 export function convertObjectToResAssetCh(dataIn: ResAssetCh): string {
   let dataOut: string = "";
 
-  dataOut += dataIn?.assetKey?.toFixed()?.substring(0, 11)?.padEnd(11) ?? missingInput(`dataIn.assetKey`, "integer", dataIn?.assetKey);
+  dataOut += dataIn?.asset?.assetKey?.toFixed()?.substring(0, 11)?.padEnd(11) ?? missingInput(`dataIn.asset.assetKey`, "integer", dataIn?.asset?.assetKey);
 
   return dataOut;
 }
