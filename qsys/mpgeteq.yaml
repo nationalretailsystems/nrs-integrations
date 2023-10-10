@@ -4,15 +4,22 @@ rpgIncName: mpgeteqa_h
 codeblocks:
   typescript:
     - import eradaniConnect from "@eradani-inc/eradani-connect";
-    - const { dataTypes } = eradaniConnect;+
+    - const { dataTypes } = eradaniConnect;
 datastructures:
   AssetsDS:
+    qualified: true
     subfields:
       assetKey:
         rpgName: assetkey
         type: Integer
         length: 10
         precision: 0
+        default: 0
+      assetId:
+        rpgName: assetid
+        type: Character
+        length: 10
+        default: ""
 formats:
   ReqAssetCh:
     recordType: request
@@ -22,9 +29,9 @@ formats:
         type: Character
         length: 10
   ResAssetCh:
-    recordType: result
+    recordType: response
     subfields:
       asset:
-       type: DataStruct
-       dsName: AssetsDS
-       dim: 1
+        type: DataStruct
+        dsName: AssetsDS
+        dim: 2

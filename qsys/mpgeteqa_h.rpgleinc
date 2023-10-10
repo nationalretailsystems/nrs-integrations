@@ -11,6 +11,7 @@
      DAssetsDS         DS                  Qualified
      D                                     Template
      Dassetkey                       10I 0
+     Dassetid                        10A
 
       ************************************
       * ReqAssetCh data structure
@@ -31,17 +32,17 @@
 
       ************************************
       * ResAssetCh data structure
-      * Record length: 11
+      * Record length: 42
       ************************************
-     DResAssetChLen    C                   11
+     DResAssetChLen    C                   42
      DResAssetCh       DS                  Qualified
      D                                     Template
      Dasset                                LikeDS(AssetsDS)
-     D                                     Dim(1)
+     D                                     Dim(2)
 
       ************************************
       * Convert buffer to ResAssetCh
       ************************************
      DBufToResAssetCh  PR
-     DBuffer                         11A
+     DBuffer                         42A
      DDataStruct                           LikeDS(ResAssetCh)

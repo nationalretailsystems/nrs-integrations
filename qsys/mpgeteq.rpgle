@@ -45,15 +45,19 @@
      PBufToResAssetCh  B                   Export
 
      DBufToResAssetCh  PI
-     DBuffer                         11A
+     DBuffer                         42A
      DDataStruct                           LikeDS(ResAssetCh)
 
       * Initialize to begining of buffer
        BufPtr = %addr(Buffer);
 
       * Read fields from buffer into DS
-       DataStruct.asset.assetkey = %int(%subst(CharBuf:1:11));
+       for i = 1 to 2;
+       DataStruct.asset(i).assetkey = %int(%subst(CharBuf:1:11));
        BufPtr += 11;
+       DataStruct.asset(i).assetid = %subst(CharBuf:1:10);
+       BufPtr += 10;
+       endfor;
 
        return ;
 
