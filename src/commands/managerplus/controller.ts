@@ -523,9 +523,12 @@ export const getAsset: ECCHandlerFunction = async (reqkey, data, ecc) => {
     // Call web service
     let result;
     let nextReqKey = reqkey;
-
+    
     try {
-        result = await axiosInstance.get('/Assets' + reqFields.assetid, {
+        result = await axiosInstance.get('/Assets' , {
+        params: {
+            '$filter': 'assetId eq ' + "'" + reqFields.assetid + "'",
+        },
             headers: {
                 accept: 'application/json',
                 Authorization: managerplus.apikey
