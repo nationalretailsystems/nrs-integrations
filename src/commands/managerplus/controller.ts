@@ -550,7 +550,7 @@ export const getAsset: ECCHandlerFunction = async (reqkey, data, ecc) => {
     }
     // Send the result info
     try {
-        let responseData = result.data;
+        let responseData = result.data[0];
         logger.debug('ECC0000', 'Success', nextReqKey);
         nextReqKey = await ecc.sendEccResult('ECC0000', 'Success', nextReqKey);
         nextReqKey = await ecc.sendObjectToCaller(responseData, converterasset.convertObjectToResAssetCh, nextReqKey);
