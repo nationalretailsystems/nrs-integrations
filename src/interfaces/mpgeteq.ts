@@ -19,6 +19,22 @@ const { dataTypes } = eradaniConnect;
 /**
  * Output interface
  */
+export interface AssetsDS {
+    /**
+     * @size 10 digits
+     * @default `0`
+     */
+    assetKey: number,
+    /**
+     * @size 10 characters
+     * @default ``
+     */
+    assetId: string
+}
+
+/**
+ * Output interface
+ */
 export interface ReqAssetCh {
     /**
      * @size 10 characters
@@ -46,9 +62,8 @@ export function convertReqAssetChToObject(dataIn: string): ReqAssetCh {
  */
 export interface ResAssetCh {
     /**
-     * @size 10 digits
      */
-    assetKey: number
+    asset: Array<AssetsDS>
 }
 
 /**
@@ -57,7 +72,10 @@ export interface ResAssetCh {
 export function convertObjectToResAssetCh(dataIn: ResAssetCh): string {
   let dataOut: string = "";
 
-  dataOut += dataIn?.assetKey?.toFixed()?.substring(0, 11)?.padEnd(11) ?? missingInput(`dataIn.assetKey`, "integer", dataIn?.assetKey);
+  for (let i: number = 0; i < 2; ++i) {
+  dataOut += dataIn?.asset[i]?.assetKey?.toFixed()?.substring(0, 11)?.padEnd(11) ?? "0".substring(0, 11).padEnd(11);
+  dataOut += dataIn?.asset[i]?.assetId?.substring(0, 10)?.padEnd(10) ?? "".substring(0, 10).padEnd(10);
+  }
 
   return dataOut;
 }
