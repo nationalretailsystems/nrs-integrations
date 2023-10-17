@@ -31,7 +31,7 @@
       ************************************
       * AddressKeyFormatDS data structure
       ************************************
-     Daddkeyfmt        DS                  Qualified
+     Daddkeyfmtds      DS                  Qualified
      D                                     Template
      DConsigneeName                  50A
      DAddressLine                   100A
@@ -44,11 +44,11 @@
      DCountryCode                     2A
 
       ************************************
-      * AnonymousDS data structure
+      * CandidateDS data structure
       ************************************
-     DAnonymousDS      DS                  Qualified
+     DCandidateDS      DS                  Qualified
      D                                     Template
-     Daddkeyfmt                            LikeDS(addkeyfmt)
+     Daddkeyfmt                            LikeDS(addkeyfmtds)
 
       ************************************
       * XAVResponseDS data structure
@@ -57,7 +57,7 @@
      D                                     Template
      DResponse                             LikeDS(ResponseDS)
      Dambaddind                       0A
-     DCandidate                            LikeDS(AnonymousDS)
+     DCandidate                            LikeDS(CandidateDS)
      D                                     Dim(5)
 
       ************************************
@@ -65,7 +65,7 @@
       ************************************
      DXAVRequestDS     DS                  Qualified
      D                                     Template
-     Daddkeyfmt                            LikeDS(addkeyfmt)
+     Daddkeyfmt                            LikeDS(addkeyfmtds)
 
       ************************************
       * RequestFmt data structure
