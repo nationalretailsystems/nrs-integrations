@@ -1,0 +1,88 @@
+---
+name: upsval
+rpgIncName: upsval_h
+datastructures:
+  ResponseStatusDS:
+    subfields:
+      Code:
+        type: Character
+        length: 10
+      Description:
+        type: Character
+        length: 150
+  TransactionReferenceDS:
+    subfields:
+      CustomerContext:
+        type: Character
+        length: 88
+  ResponseDS:
+    subfields:
+      ResponseStatus:
+        type: DataStruct
+        dsName: ResponseStatusDS
+      TransactionReference:
+        type: DataStruct
+        dsName: TransactionReferenceDS
+  AddressKeyFormatDS:
+    subfields:
+      ConsigneeName:
+        type: Character
+        length: 50    
+      AddressLine:
+        type: Character
+        length: 100
+      PoliticalDivision2:
+        type: Character
+        length: 30
+      PoliticalDivision1:
+        type: Character
+        length: 30
+      PostcodePrimaryLow:
+        type: Character
+        length: 10
+      PostCodeExtendedLow:
+        type: Character
+        length: 10
+      Urbanization:
+        type: Character
+        length: 30
+      Region:
+        type: Character
+        length: 100
+      CountryCode:
+        type: Character
+        length: 2
+  AnonymousDS:
+    subfields:
+      AddressKeyFormat:
+        type: DataStruct
+        dsName: AddressKeyFormatDS
+  XAVResponseDS:
+    subfields:
+      Response:
+        type: DataStruct
+        dsName: ResponseDS
+      AmbiguousAddressIndicator:
+        type: Character
+      Candidate:
+        type: DataStruct
+        dsName: AnonymousDS
+        dim: 5
+  XAVRequestDS:
+    subfields:
+      AddressKeyFormat:
+        type: DataStruct
+        dsName: AddressKeyFormatDS        
+formats:
+  ResponseFmt:
+    recordType: response
+    subfields:
+      XAVResponse:
+        type: DataStruct
+        dsName: XAVResponseDS
+  RequestFmt:
+    recordType: request
+    subfields:
+      XAVRequest:
+        type: DataStruct
+        dsName: XAVRequestDS        
