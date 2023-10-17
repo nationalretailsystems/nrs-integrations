@@ -68,7 +68,8 @@ GENMODS = icndbapi \
 		  ukgputhr \
 		  ukgpers \
 		  ukgputhos \
-		  mpgeteq
+		  mpgeteq \
+		  upsval
 
 GENHDRS = icndbapi_h \
           lblapi_h \
@@ -109,7 +110,8 @@ GENHDRS = icndbapi_h \
 		  ukgputhr_h \
 		  ukgpers_h \
 		  ukgputho_h \
-		  mpgeteqa_h
+		  mpgeteqa_h \
+		  upsval_h
 
 SRVPGMS = ecctmpgen
 
@@ -594,7 +596,13 @@ $(libdir)/qrpglesrc.file/ukgputhos.mbr $(libdir)/qrpglesrc.file/ukgputho_h.mbr .
 	npx ec-generate -f $<
 	cp ukgputhos.ts ../src/interfaces/ukgputhos.ts
 	system "CPYFRMSTMF FROMSTMF('ukgputhos.rpgle') TOMBR('$(libdir)/qrpglesrc.file/ukgputhos.mbr') MBROPT(*REPLACE)"
-	system "CPYFRMSTMF FROMSTMF('ukgputho_h.rpgleinc') TOMBR('$(libdir)/qrpglesrc.file/ukgputho_h.mbr') MBROPT(*REPLACE)"		
+	system "CPYFRMSTMF FROMSTMF('ukgputho_h.rpgleinc') TOMBR('$(libdir)/qrpglesrc.file/ukgputho_h.mbr') MBROPT(*REPLACE)"	
+
+$(libdir)/qrpglesrc.file/upsval.mbr $(libdir)/qrpglesrc.file/upsval_h.mbr ../src/interfaces/upsval.ts: upsval.yaml
+	npx ec-generate -f $<
+	cp upsval.ts ../src/interfaces/upsval.ts
+	system "CPYFRMSTMF FROMSTMF('upsval.rpgle') TOMBR('$(libdir)/qrpglesrc.file/upsval.mbr') MBROPT(*REPLACE)"
+	system "CPYFRMSTMF FROMSTMF('upsval_h.rpgleinc') TOMBR('$(libdir)/qrpglesrc.file/upsval_h.mbr') MBROPT(*REPLACE)"		
 
 .PHONY: library
 library:
