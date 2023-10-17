@@ -61,7 +61,7 @@
      PBufToRespFmt     B                   Export
 
      DBufToRespFmt     PI
-     DBuffer                       2058A
+     DBuffer                       2059A
      DDataStruct                           LikeDS(RespFmt)
 
       * Initialize to begining of buffer
@@ -74,8 +74,8 @@
        BufPtr += 150;
        DataStruct.XAVResponse.Response.transref.CustomerContext = %subst(CharBuf:1:88);
        BufPtr += 88;
-       DataStruct.XAVResponse.ambaddind = %subst(CharBuf:1:0);
-       BufPtr += 0;
+       DataStruct.XAVResponse.ambaddind = %subst(CharBuf:1:1);
+       BufPtr += 1;
        for i = 1 to 5;
        DataStruct.XAVResponse.Candidate(i).addkeyfmt.ConsigneeName = %subst(CharBuf:1:50);
        BufPtr += 50;

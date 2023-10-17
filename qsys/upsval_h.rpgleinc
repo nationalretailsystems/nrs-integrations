@@ -56,7 +56,7 @@
      DXAVResponseDS    DS                  Qualified
      D                                     Template
      DResponse                             LikeDS(ResponseDS)
-     Dambaddind                       0A
+     Dambaddind                       1A
      DCandidate                            LikeDS(CandidateDS)
      D                                     Dim(5)
 
@@ -86,9 +86,9 @@
 
       ************************************
       * RespFmt data structure
-      * Record length: 2058
+      * Record length: 2059
       ************************************
-     DRespFmtLen       C                   2058
+     DRespFmtLen       C                   2059
      DRespFmt          DS                  Qualified
      D                                     Template
      DXAVResponse                          LikeDS(XAVResponseDS)
@@ -97,5 +97,5 @@
       * Convert buffer to RespFmt
       ************************************
      DBufToRespFmt     PR
-     DBuffer                       2058A
+     DBuffer                       2059A
      DDataStruct                           LikeDS(RespFmt)

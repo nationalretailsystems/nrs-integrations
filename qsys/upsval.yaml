@@ -74,6 +74,7 @@ datastructures:
       AmbiguousAddressIndicator:
         rpgName: ambaddind
         type: Character
+        length: 1
       Candidate:
         type: DataStruct
         dsName: CandidateDS

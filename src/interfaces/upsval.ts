@@ -108,7 +108,7 @@ export interface XAVResponseDS {
      */
     Response: ResponseDS,
     /**
-     * @size 0 characters
+     * @size 1 characters
      */
     AmbiguousAddressIndicator: string,
     /**
@@ -189,7 +189,7 @@ export function convertObjectToRespFmt(dataIn: RespFmt): string {
   dataOut += dataIn?.XAVResponse?.Response?.ResponseStatus?.Code?.substring(0, 10)?.padEnd(10) ?? missingInput(`dataIn.XAVResponse.Response.ResponseStatus.Code`, "char", dataIn?.XAVResponse?.Response?.ResponseStatus?.Code);
   dataOut += dataIn?.XAVResponse?.Response?.ResponseStatus?.Description?.substring(0, 150)?.padEnd(150) ?? missingInput(`dataIn.XAVResponse.Response.ResponseStatus.Description`, "char", dataIn?.XAVResponse?.Response?.ResponseStatus?.Description);
   dataOut += dataIn?.XAVResponse?.Response?.TransactionReference?.CustomerContext?.substring(0, 88)?.padEnd(88) ?? missingInput(`dataIn.XAVResponse.Response.TransactionReference.CustomerContext`, "char", dataIn?.XAVResponse?.Response?.TransactionReference?.CustomerContext);
-  dataOut += dataIn?.XAVResponse?.AmbiguousAddressIndicator?.substring(0, 0)?.padEnd(0) ?? missingInput(`dataIn.XAVResponse.AmbiguousAddressIndicator`, "char", dataIn?.XAVResponse?.AmbiguousAddressIndicator);
+  dataOut += dataIn?.XAVResponse?.AmbiguousAddressIndicator?.substring(0, 1)?.padEnd(1) ?? missingInput(`dataIn.XAVResponse.AmbiguousAddressIndicator`, "char", dataIn?.XAVResponse?.AmbiguousAddressIndicator);
   for (let j: number = 0; j < 5; ++j) {
   dataOut += dataIn?.XAVResponse?.Candidate[j]?.AddressKeyFormat?.ConsigneeName?.substring(0, 50)?.padEnd(50) ?? missingInput(`dataIn.XAVResponse.Candidate[${j}].AddressKeyFormat.ConsigneeName`, "char", dataIn?.XAVResponse?.Candidate[j]?.AddressKeyFormat?.ConsigneeName);
   dataOut += dataIn?.XAVResponse?.Candidate[j]?.AddressKeyFormat?.AddressLine?.substring(0, 100)?.padEnd(100) ?? missingInput(`dataIn.XAVResponse.Candidate[${j}].AddressKeyFormat.AddressLine`, "char", dataIn?.XAVResponse?.Candidate[j]?.AddressKeyFormat?.AddressLine);
