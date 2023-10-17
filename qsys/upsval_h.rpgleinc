@@ -1,0 +1,101 @@
+      ************************************
+      * Module: upsval
+      * Generated RPG data structures
+      * and prototypes
+      * Do not modify
+      ************************************
+
+      ************************************
+      * ResponseStatusDS data structure
+      ************************************
+     DResponseStatusDS  DS                  Qualified
+     D                                     Template
+     DCode                           10A
+     DDescription                   150A
+
+      ************************************
+      * TransactionReferenceDS data structure
+      ************************************
+     DTransactionReferenceDS  DS                  Qualified
+     D                                     Template
+     DCustomerContext                88A
+
+      ************************************
+      * ResponseDS data structure
+      ************************************
+     DResponseDS       DS                  Qualified
+     D                                     Template
+     DResponseStatus                       LikeDS(ResponseStatusDS)
+     DTransactionReference                      LikeDS(TransactionReferenceDS)
+
+      ************************************
+      * AddressKeyFormatDS data structure
+      ************************************
+     DAddressKeyFormatDS  DS                  Qualified
+     D                                     Template
+     DConsigneeName                  50A
+     DAddressLine                   100A
+     DPoliticalDivision2                30A
+     DPoliticalDivision1                30A
+     DPostcodePrimaryLow                10A
+     DPostCodeExtendedLow                10A
+     DUrbanization                   30A
+     DRegion                        100A
+     DCountryCode                     2A
+
+      ************************************
+      * AnonymousDS data structure
+      ************************************
+     DAnonymousDS      DS                  Qualified
+     D                                     Template
+     DAddressKeyFormat                      LikeDS(AddressKeyFormatDS)
+
+      ************************************
+      * XAVResponseDS data structure
+      ************************************
+     DXAVResponseDS    DS                  Qualified
+     D                                     Template
+     DResponse                             LikeDS(ResponseDS)
+     DAmbiguousAddressIndicator                 0A
+     DCandidate                            LikeDS(AnonymousDS)
+     D                                     Dim(5)
+
+      ************************************
+      * XAVRequestDS data structure
+      ************************************
+     DXAVRequestDS     DS                  Qualified
+     D                                     Template
+     DAddressKeyFormat                      LikeDS(AddressKeyFormatDS)
+
+      ************************************
+      * RequestFmt data structure
+      * Record length: 362
+      ************************************
+     DRequestFmtLen    C                   362
+     DRequestFmt       DS                  Qualified
+     D                                     Template
+     DXAVRequest                           LikeDS(XAVRequestDS)
+
+      ************************************
+      * Convert RequestFmt to buffer
+      ************************************
+     DRequestFmtToBuf  PR
+     DDataStruct                           LikeDS(RequestFmt)
+     D                                     Const
+     DBuffer                        362A
+
+      ************************************
+      * ResponseFmt data structure
+      * Record length: 2058
+      ************************************
+     DResponseFmtLen   C                   2058
+     DResponseFmt      DS                  Qualified
+     D                                     Template
+     DXAVResponse                          LikeDS(XAVResponseDS)
+
+      ************************************
+      * Convert buffer to ResponseFmt
+      ************************************
+     DBufToResponseFmt  PR
+     DBuffer                       2058A
+     DDataStruct                           LikeDS(ResponseFmt)

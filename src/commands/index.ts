@@ -16,6 +16,7 @@ import registerPaycargo from './paycargo';
 import registerProject44 from './project44';
 import registerUKG from './ukg';
 import registerHYSTER from './hyster';
+import registerUPS from './ups';
 
 export default async function registerCommands(router: ECCRouter) {
     const jokes = new ECCRouter.Router();
@@ -85,6 +86,10 @@ export default async function registerCommands(router: ECCRouter) {
     const hyster = new ECCRouter.Router();
     registerHYSTER(hyster);
     router.use('hyster', hyster);
+
+    const ups = new ECCRouter.Router();
+    registerUPS(ups);
+    router.use('ups', ups);
 
     return router;
 }

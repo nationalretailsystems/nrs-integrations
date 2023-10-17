@@ -1,0 +1,38 @@
+{ "XAVResponse": {
+    "Response": {
+    "ResponseStatus": {
+    "Code": "1",
+    "Description": "Success"
+    },
+    "TransactionReference": {
+    "CustomerContext": "Verify that an XAV request with an Address Line 1 element returns a successful response."
+    }
+    },
+    "AmbiguousAddressIndicator": "",
+    "Candidate": [{
+    "AddressKeyFormat": {
+    "PoliticalDivision2": "ROSWELL",
+    "PoliticalDivision1": "GA",
+    "PostcodePrimaryLow": "30076",
+    "Region": "ROSWELL GA 30076",
+    "CountryCode": "US"
+    }
+    }, {
+    "AddressKeyFormat": {
+    "PoliticalDivision2": "ROSWELL",
+    "PoliticalDivision1": "GA",
+    "PostcodePrimaryLow": "30075",
+    "Region": "ROSWELL GA 30075",
+    "CountryCode": "US"
+    }
+    }, {
+    "AddressKeyFormat": {
+    "PoliticalDivision2": "ROSWELL",
+    "PoliticalDivision1": "GA",
+    "PostcodePrimaryLow": "30077",
+    "Region": "ROSWELL GA 30077",
+    "CountryCode": "US"
+    }
+    }]
+    }
+    }
