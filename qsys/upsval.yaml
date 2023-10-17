@@ -85,13 +85,13 @@ datastructures:
         type: DataStruct
         dsName: AddressKeyFormatDS        
 formats:
-  ResponseFmt:
+  RespFmt:
     recordType: response
     subfields:
       XAVResponse:
         type: DataStruct
         dsName: XAVResponseDS
-  RequestFmt:
+  ReqFmt:
     recordType: request
     subfields:
       XAVRequest:
