@@ -128,16 +128,16 @@ export interface XAVRequestDS {
 /**
  * Output interface
  */
-export interface RequestFmt {
+export interface ReqFmt {
     /**
      */
     XAVRequest: XAVRequestDS
 }
 
 /**
- * Convert RequestFmt record to TypeScript object
+ * Convert ReqFmt record to TypeScript object
  */
-export function convertRequestFmtToObject(dataIn: string): RequestFmt {
+export function convertReqFmtToObject(dataIn: string): ReqFmt {
   const dataOut: any =   {
   
     };
@@ -174,16 +174,16 @@ export function convertRequestFmtToObject(dataIn: string): RequestFmt {
 /**
  * Input interface
  */
-export interface ResponseFmt {
+export interface RespFmt {
     /**
      */
     XAVResponse: XAVResponseDS
 }
 
 /**
- * Convert JavaScript object to ResponseFmt record
+ * Convert JavaScript object to RespFmt record
  */
-export function convertObjectToResponseFmt(dataIn: ResponseFmt): string {
+export function convertObjectToRespFmt(dataIn: RespFmt): string {
   let dataOut: string = "";
 
   dataOut += dataIn?.XAVResponse?.Response?.ResponseStatus?.Code?.substring(0, 10)?.padEnd(10) ?? missingInput(`dataIn.XAVResponse.Response.ResponseStatus.Code`, "char", dataIn?.XAVResponse?.Response?.ResponseStatus?.Code);

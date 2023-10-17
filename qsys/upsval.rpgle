@@ -19,12 +19,12 @@
      Dl                S             10U 0
 
       ************************************
-      * Convert RequestFmt to buffer
+      * Convert ReqFmt to buffer
       ************************************
-     PRequestFmtToBuf  B                   Export
+     PReqFmtToBuf      B                   Export
 
-     DRequestFmtToBuf  PI
-     DDataStruct                           LikeDS(RequestFmt)
+     DReqFmtToBuf      PI
+     DDataStruct                           LikeDS(ReqFmt)
      D                                     Const
      DBuffer                        362A
 
@@ -53,16 +53,16 @@
 
        return ;
 
-     PRequestFmtToBuf  E
+     PReqFmtToBuf      E
 
       ************************************
-      * Convert buffer to ResponseFmt
+      * Convert buffer to RespFmt
       ************************************
-     PBufToResponseFmt  B                   Export
+     PBufToRespFmt     B                   Export
 
-     DBufToResponseFmt  PI
+     DBufToRespFmt     PI
      DBuffer                       2058A
-     DDataStruct                           LikeDS(ResponseFmt)
+     DDataStruct                           LikeDS(RespFmt)
 
       * Initialize to begining of buffer
        BufPtr = %addr(Buffer);
@@ -99,4 +99,4 @@
 
        return ;
 
-     PBufToResponseFmt  E
+     PBufToRespFmt     E

@@ -68,34 +68,34 @@
      Daddkeyfmt                            LikeDS(addkeyfmtds)
 
       ************************************
-      * RequestFmt data structure
+      * ReqFmt data structure
       * Record length: 362
       ************************************
-     DRequestFmtLen    C                   362
-     DRequestFmt       DS                  Qualified
+     DReqFmtLen        C                   362
+     DReqFmt           DS                  Qualified
      D                                     Template
      DXAVRequest                           LikeDS(XAVRequestDS)
 
       ************************************
-      * Convert RequestFmt to buffer
+      * Convert ReqFmt to buffer
       ************************************
-     DRequestFmtToBuf  PR
-     DDataStruct                           LikeDS(RequestFmt)
+     DReqFmtToBuf      PR
+     DDataStruct                           LikeDS(ReqFmt)
      D                                     Const
      DBuffer                        362A
 
       ************************************
-      * ResponseFmt data structure
+      * RespFmt data structure
       * Record length: 2058
       ************************************
-     DResponseFmtLen   C                   2058
-     DResponseFmt      DS                  Qualified
+     DRespFmtLen       C                   2058
+     DRespFmt          DS                  Qualified
      D                                     Template
      DXAVResponse                          LikeDS(XAVResponseDS)
 
       ************************************
-      * Convert buffer to ResponseFmt
+      * Convert buffer to RespFmt
       ************************************
-     DBufToResponseFmt  PR
+     DBufToRespFmt     PR
      DBuffer                       2058A
-     DDataStruct                           LikeDS(ResponseFmt)
+     DDataStruct                           LikeDS(RespFmt)
