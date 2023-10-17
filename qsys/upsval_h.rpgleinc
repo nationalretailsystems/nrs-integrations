@@ -8,7 +8,7 @@
       ************************************
       * ResponseStatusDS data structure
       ************************************
-     DResponseStatusDS  DS                  Qualified
+     Drespstatusds     DS                  Qualified
      D                                     Template
      DCode                           10A
      DDescription                   150A
@@ -16,7 +16,7 @@
       ************************************
       * TransactionReferenceDS data structure
       ************************************
-     DTransactionReferenceDS  DS                  Qualified
+     DtransrefDS       DS                  Qualified
      D                                     Template
      DCustomerContext                88A
 
@@ -25,20 +25,20 @@
       ************************************
      DResponseDS       DS                  Qualified
      D                                     Template
-     DResponseStatus                       LikeDS(ResponseStatusDS)
-     DTransactionReference                      LikeDS(TransactionReferenceDS)
+     DResponseStatus                       LikeDS(respstatusds)
+     Dtransref                             LikeDS(transrefDS)
 
       ************************************
       * AddressKeyFormatDS data structure
       ************************************
-     DAddressKeyFormatDS  DS                  Qualified
+     Daddkeyfmt        DS                  Qualified
      D                                     Template
      DConsigneeName                  50A
      DAddressLine                   100A
-     DPoliticalDivision2                30A
-     DPoliticalDivision1                30A
-     DPostcodePrimaryLow                10A
-     DPostCodeExtendedLow                10A
+     Dpoldiv2                        30A
+     Dpoldiv1                        30A
+     Dpostcodepl                     10A
+     Dpostcodeel                     10A
      DUrbanization                   30A
      DRegion                        100A
      DCountryCode                     2A
@@ -48,7 +48,7 @@
       ************************************
      DAnonymousDS      DS                  Qualified
      D                                     Template
-     DAddressKeyFormat                      LikeDS(AddressKeyFormatDS)
+     Daddkeyfmt                            LikeDS(addkeyfmt)
 
       ************************************
       * XAVResponseDS data structure
@@ -56,7 +56,7 @@
      DXAVResponseDS    DS                  Qualified
      D                                     Template
      DResponse                             LikeDS(ResponseDS)
-     DAmbiguousAddressIndicator                 0A
+     Dambaddind                       0A
      DCandidate                            LikeDS(AnonymousDS)
      D                                     Dim(5)
 
@@ -65,7 +65,7 @@
       ************************************
      DXAVRequestDS     DS                  Qualified
      D                                     Template
-     DAddressKeyFormat                      LikeDS(AddressKeyFormatDS)
+     Daddkeyfmt                            LikeDS(addkeyfmt)
 
       ************************************
       * RequestFmt data structure
