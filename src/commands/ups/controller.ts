@@ -12,7 +12,7 @@ const axiosInstance = axios.create(ups.axios);
 
 export const validateAddress: ECCHandlerFunction = async function (reqkey, datax, ecc) {
     // Get parameters from incoming data buffer
-    const reqFields = converterUPS.convertRequestFmtToObject(datax);
+    const reqFields = converterUPS.convertReqFmtToObject(datax);
 
     logger.debug(`Received validate address request`, { reqkey, datax });
 
@@ -51,7 +51,7 @@ export const validateAddress: ECCHandlerFunction = async function (reqkey, datax
     }
     let responseData = result.data;
     nextReqKey = await ecc.sendEccResult('ECC0000', 'Success', nextReqKey);
-    return ecc.sendObjectToCaller(responseData, converterUPS.convertObjectToResponseFmt, nextReqKey);
+    return ecc.sendObjectToCaller(responseData, converterUPS.convertObjectToRespFmt, nextReqKey);
     // logger.error('Call test1 failed');
     logger.error(nextReqKey);
 };
