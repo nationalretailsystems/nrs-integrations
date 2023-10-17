@@ -3,6 +3,7 @@ name: upsval
 rpgIncName: upsval_h
 datastructures:
   ResponseStatusDS:
+    rpgName: respstatusds
     subfields:
       Code:
         type: Character
@@ -11,6 +12,7 @@ datastructures:
         type: Character
         length: 150
   TransactionReferenceDS:
+    rpgName: transrefDS
     subfields:
       CustomerContext:
         type: Character
@@ -21,9 +23,11 @@ datastructures:
         type: DataStruct
         dsName: ResponseStatusDS
       TransactionReference:
+        rpgName: transref
         type: DataStruct
         dsName: TransactionReferenceDS
   AddressKeyFormatDS:
+    rpgName: addkeyfmt
     subfields:
       ConsigneeName:
         type: Character
@@ -32,15 +36,19 @@ datastructures:
         type: Character
         length: 100
       PoliticalDivision2:
+        rpgName: poldiv2
         type: Character
         length: 30
       PoliticalDivision1:
+        rpgName: poldiv1
         type: Character
         length: 30
       PostcodePrimaryLow:
+        rpgName: postcodepl
         type: Character
         length: 10
       PostCodeExtendedLow:
+        rpgName: postcodeel
         type: Character
         length: 10
       Urbanization:
@@ -55,6 +63,7 @@ datastructures:
   AnonymousDS:
     subfields:
       AddressKeyFormat:
+        rpgName: addkeyfmt
         type: DataStruct
         dsName: AddressKeyFormatDS
   XAVResponseDS:
@@ -63,6 +72,7 @@ datastructures:
         type: DataStruct
         dsName: ResponseDS
       AmbiguousAddressIndicator:
+        rpgName: ambaddind
         type: Character
       Candidate:
         type: DataStruct
@@ -71,6 +81,7 @@ datastructures:
   XAVRequestDS:
     subfields:
       AddressKeyFormat:
+        rpgName: addkeyfmt
         type: DataStruct
         dsName: AddressKeyFormatDS        
 formats:
