@@ -94,7 +94,7 @@ export interface AddressKeyFormatDS {
 /**
  * Output interface
  */
-export interface AnonymousDS {
+export interface CandidateDS {
     /**
      */
     AddressKeyFormat: AddressKeyFormatDS
@@ -113,7 +113,7 @@ export interface XAVResponseDS {
     AmbiguousAddressIndicator: string,
     /**
      */
-    Candidate: Array<AnonymousDS>
+    Candidate: Array<CandidateDS>
 }
 
 /**

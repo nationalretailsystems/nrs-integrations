@@ -27,7 +27,7 @@ datastructures:
         type: DataStruct
         dsName: TransactionReferenceDS
   AddressKeyFormatDS:
-    rpgName: addkeyfmt
+    rpgName: addkeyfmtds
     subfields:
       ConsigneeName:
         type: Character
@@ -60,7 +60,7 @@ datastructures:
       CountryCode:
         type: Character
         length: 2
-  AnonymousDS:
+  CandidateDS:
     subfields:
       AddressKeyFormat:
         rpgName: addkeyfmt
@@ -76,7 +76,7 @@ datastructures:
         type: Character
       Candidate:
         type: DataStruct
-        dsName: AnonymousDS
+        dsName: CandidateDS
         dim: 5
   XAVRequestDS:
     subfields:
