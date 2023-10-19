@@ -13,22 +13,11 @@ datastructures:
         type: Character
         length: 150
         default: ""
-  TransactionReferenceDS:
-    rpgName: transrefDS
-    subfields:
-      CustomerContext:
-        type: Character
-        length: 88
-        default: ""
   ResponseDS:
     subfields:
       ResponseStatus:
         type: DataStruct
         dsName: ResponseStatusDS
-      TransactionReference:
-        rpgName: transref
-        type: DataStruct
-        dsName: TransactionReferenceDS
   AddressKeyFormatDS:
     rpgName: addkeyfmtds
     subfields:
