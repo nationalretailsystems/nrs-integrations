@@ -14,19 +14,11 @@
      DDescription                   150A
 
       ************************************
-      * TransactionReferenceDS data structure
-      ************************************
-     DtransrefDS       DS                  Qualified
-     D                                     Template
-     DCustomerContext                88A
-
-      ************************************
       * ResponseDS data structure
       ************************************
      DResponseDS       DS                  Qualified
      D                                     Template
      DResponseStatus                       LikeDS(respstatusds)
-     Dtransref                             LikeDS(transrefDS)
 
       ************************************
       * AddressKeyFormatDS data structure
@@ -86,9 +78,9 @@
 
       ************************************
       * RespFmt data structure
-      * Record length: 2059
+      * Record length: 1971
       ************************************
-     DRespFmtLen       C                   2059
+     DRespFmtLen       C                   1971
      DRespFmt          DS                  Qualified
      D                                     Template
      DXAVResponse                          LikeDS(XAVResponseDS)
@@ -97,5 +89,5 @@
       * Convert buffer to RespFmt
       ************************************
      DBufToRespFmt     PR
-     DBuffer                       2059A
+     DBuffer                       1971A
      DDataStruct                           LikeDS(RespFmt)

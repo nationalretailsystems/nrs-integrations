@@ -19,22 +19,14 @@ const {
 export interface ResponseStatusDS {
     /**
      * @size 10 characters
+     * @default ``
      */
     Code: string,
     /**
      * @size 150 characters
+     * @default ``
      */
     Description: string
-}
-
-/**
- * Output interface
- */
-export interface TransactionReferenceDS {
-    /**
-     * @size 88 characters
-     */
-    CustomerContext: string
 }
 
 /**
@@ -43,10 +35,7 @@ export interface TransactionReferenceDS {
 export interface ResponseDS {
     /**
      */
-    ResponseStatus: ResponseStatusDS,
-    /**
-     */
-    TransactionReference: TransactionReferenceDS
+    ResponseStatus: ResponseStatusDS
 }
 
 /**
@@ -55,38 +44,47 @@ export interface ResponseDS {
 export interface AddressKeyFormatDS {
     /**
      * @size 50 characters
+     * @default ``
      */
     ConsigneeName: string,
     /**
      * @size 100 characters
+     * @default ``
      */
     AddressLine: string,
     /**
      * @size 30 characters
+     * @default ``
      */
     PoliticalDivision2: string,
     /**
      * @size 30 characters
+     * @default ``
      */
     PoliticalDivision1: string,
     /**
      * @size 10 characters
+     * @default ``
      */
     PostcodePrimaryLow: string,
     /**
      * @size 10 characters
+     * @default ``
      */
     PostCodeExtendedLow: string,
     /**
      * @size 30 characters
+     * @default ``
      */
     Urbanization: string,
     /**
      * @size 100 characters
+     * @default ``
      */
     Region: string,
     /**
      * @size 2 characters
+     * @default ``
      */
     CountryCode: string
 }
@@ -109,6 +107,7 @@ export interface XAVResponseDS {
     Response: ResponseDS,
     /**
      * @size 1 characters
+     * @default ``
      */
     AmbiguousAddressIndicator: string,
     /**
@@ -186,20 +185,19 @@ export interface RespFmt {
 export function convertObjectToRespFmt(dataIn: RespFmt): string {
   let dataOut: string = "";
 
-  dataOut += dataIn?.XAVResponse?.Response?.ResponseStatus?.Code?.substring(0, 10)?.padEnd(10) ?? missingInput(`dataIn.XAVResponse.Response.ResponseStatus.Code`, "char", dataIn?.XAVResponse?.Response?.ResponseStatus?.Code);
-  dataOut += dataIn?.XAVResponse?.Response?.ResponseStatus?.Description?.substring(0, 150)?.padEnd(150) ?? missingInput(`dataIn.XAVResponse.Response.ResponseStatus.Description`, "char", dataIn?.XAVResponse?.Response?.ResponseStatus?.Description);
-  dataOut += dataIn?.XAVResponse?.Response?.TransactionReference?.CustomerContext?.substring(0, 88)?.padEnd(88) ?? missingInput(`dataIn.XAVResponse.Response.TransactionReference.CustomerContext`, "char", dataIn?.XAVResponse?.Response?.TransactionReference?.CustomerContext);
-  dataOut += dataIn?.XAVResponse?.AmbiguousAddressIndicator?.substring(0, 1)?.padEnd(1) ?? missingInput(`dataIn.XAVResponse.AmbiguousAddressIndicator`, "char", dataIn?.XAVResponse?.AmbiguousAddressIndicator);
+  dataOut += dataIn?.XAVResponse?.Response?.ResponseStatus?.Code?.substring(0, 10)?.padEnd(10) ?? "".substring(0, 10).padEnd(10);
+  dataOut += dataIn?.XAVResponse?.Response?.ResponseStatus?.Description?.substring(0, 150)?.padEnd(150) ?? "".substring(0, 150).padEnd(150);
+  dataOut += dataIn?.XAVResponse?.AmbiguousAddressIndicator?.substring(0, 1)?.padEnd(1) ?? "".substring(0, 1).padEnd(1);
   for (let j: number = 0; j < 5; ++j) {
-  dataOut += dataIn?.XAVResponse?.Candidate[j]?.AddressKeyFormat?.ConsigneeName?.substring(0, 50)?.padEnd(50) ?? missingInput(`dataIn.XAVResponse.Candidate[${j}].AddressKeyFormat.ConsigneeName`, "char", dataIn?.XAVResponse?.Candidate[j]?.AddressKeyFormat?.ConsigneeName);
-  dataOut += dataIn?.XAVResponse?.Candidate[j]?.AddressKeyFormat?.AddressLine?.substring(0, 100)?.padEnd(100) ?? missingInput(`dataIn.XAVResponse.Candidate[${j}].AddressKeyFormat.AddressLine`, "char", dataIn?.XAVResponse?.Candidate[j]?.AddressKeyFormat?.AddressLine);
-  dataOut += dataIn?.XAVResponse?.Candidate[j]?.AddressKeyFormat?.PoliticalDivision2?.substring(0, 30)?.padEnd(30) ?? missingInput(`dataIn.XAVResponse.Candidate[${j}].AddressKeyFormat.PoliticalDivision2`, "char", dataIn?.XAVResponse?.Candidate[j]?.AddressKeyFormat?.PoliticalDivision2);
-  dataOut += dataIn?.XAVResponse?.Candidate[j]?.AddressKeyFormat?.PoliticalDivision1?.substring(0, 30)?.padEnd(30) ?? missingInput(`dataIn.XAVResponse.Candidate[${j}].AddressKeyFormat.PoliticalDivision1`, "char", dataIn?.XAVResponse?.Candidate[j]?.AddressKeyFormat?.PoliticalDivision1);
-  dataOut += dataIn?.XAVResponse?.Candidate[j]?.AddressKeyFormat?.PostcodePrimaryLow?.substring(0, 10)?.padEnd(10) ?? missingInput(`dataIn.XAVResponse.Candidate[${j}].AddressKeyFormat.PostcodePrimaryLow`, "char", dataIn?.XAVResponse?.Candidate[j]?.AddressKeyFormat?.PostcodePrimaryLow);
-  dataOut += dataIn?.XAVResponse?.Candidate[j]?.AddressKeyFormat?.PostCodeExtendedLow?.substring(0, 10)?.padEnd(10) ?? missingInput(`dataIn.XAVResponse.Candidate[${j}].AddressKeyFormat.PostCodeExtendedLow`, "char", dataIn?.XAVResponse?.Candidate[j]?.AddressKeyFormat?.PostCodeExtendedLow);
-  dataOut += dataIn?.XAVResponse?.Candidate[j]?.AddressKeyFormat?.Urbanization?.substring(0, 30)?.padEnd(30) ?? missingInput(`dataIn.XAVResponse.Candidate[${j}].AddressKeyFormat.Urbanization`, "char", dataIn?.XAVResponse?.Candidate[j]?.AddressKeyFormat?.Urbanization);
-  dataOut += dataIn?.XAVResponse?.Candidate[j]?.AddressKeyFormat?.Region?.substring(0, 100)?.padEnd(100) ?? missingInput(`dataIn.XAVResponse.Candidate[${j}].AddressKeyFormat.Region`, "char", dataIn?.XAVResponse?.Candidate[j]?.AddressKeyFormat?.Region);
-  dataOut += dataIn?.XAVResponse?.Candidate[j]?.AddressKeyFormat?.CountryCode?.substring(0, 2)?.padEnd(2) ?? missingInput(`dataIn.XAVResponse.Candidate[${j}].AddressKeyFormat.CountryCode`, "char", dataIn?.XAVResponse?.Candidate[j]?.AddressKeyFormat?.CountryCode);
+  dataOut += dataIn?.XAVResponse?.Candidate[j]?.AddressKeyFormat?.ConsigneeName?.substring(0, 50)?.padEnd(50) ?? "".substring(0, 50).padEnd(50);
+  dataOut += dataIn?.XAVResponse?.Candidate[j]?.AddressKeyFormat?.AddressLine?.substring(0, 100)?.padEnd(100) ?? "".substring(0, 100).padEnd(100);
+  dataOut += dataIn?.XAVResponse?.Candidate[j]?.AddressKeyFormat?.PoliticalDivision2?.substring(0, 30)?.padEnd(30) ?? "".substring(0, 30).padEnd(30);
+  dataOut += dataIn?.XAVResponse?.Candidate[j]?.AddressKeyFormat?.PoliticalDivision1?.substring(0, 30)?.padEnd(30) ?? "".substring(0, 30).padEnd(30);
+  dataOut += dataIn?.XAVResponse?.Candidate[j]?.AddressKeyFormat?.PostcodePrimaryLow?.substring(0, 10)?.padEnd(10) ?? "".substring(0, 10).padEnd(10);
+  dataOut += dataIn?.XAVResponse?.Candidate[j]?.AddressKeyFormat?.PostCodeExtendedLow?.substring(0, 10)?.padEnd(10) ?? "".substring(0, 10).padEnd(10);
+  dataOut += dataIn?.XAVResponse?.Candidate[j]?.AddressKeyFormat?.Urbanization?.substring(0, 30)?.padEnd(30) ?? "".substring(0, 30).padEnd(30);
+  dataOut += dataIn?.XAVResponse?.Candidate[j]?.AddressKeyFormat?.Region?.substring(0, 100)?.padEnd(100) ?? "".substring(0, 100).padEnd(100);
+  dataOut += dataIn?.XAVResponse?.Candidate[j]?.AddressKeyFormat?.CountryCode?.substring(0, 2)?.padEnd(2) ?? "".substring(0, 2).padEnd(2);
   }
 
   return dataOut;
