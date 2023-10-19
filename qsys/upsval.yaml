@@ -8,15 +8,18 @@ datastructures:
       Code:
         type: Character
         length: 10
+        default: ""
       Description:
         type: Character
         length: 150
+        default: ""
   TransactionReferenceDS:
     rpgName: transrefDS
     subfields:
       CustomerContext:
         type: Character
         length: 88
+        default: ""
   ResponseDS:
     subfields:
       ResponseStatus:
@@ -31,35 +34,44 @@ datastructures:
     subfields:
       ConsigneeName:
         type: Character
-        length: 50    
+        length: 50
+        default: ""
       AddressLine:
         type: Character
         length: 100
+        default: ""
       PoliticalDivision2:
         rpgName: poldiv2
         type: Character
         length: 30
+        default: ""
       PoliticalDivision1:
         rpgName: poldiv1
         type: Character
         length: 30
+        default: ""
       PostcodePrimaryLow:
         rpgName: postcodepl
         type: Character
         length: 10
+        default: ""
       PostCodeExtendedLow:
         rpgName: postcodeel
         type: Character
         length: 10
+        default: ""
       Urbanization:
         type: Character
         length: 30
+        default: ""
       Region:
         type: Character
         length: 100
+        default: ""
       CountryCode:
         type: Character
         length: 2
+        default: ""
   CandidateDS:
     subfields:
       AddressKeyFormat:
@@ -75,6 +87,7 @@ datastructures:
         rpgName: ambaddind
         type: Character
         length: 1
+        default: ""
       Candidate:
         type: DataStruct
         dsName: CandidateDS

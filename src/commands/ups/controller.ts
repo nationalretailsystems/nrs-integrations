@@ -20,21 +20,21 @@ export const validateAddress: ECCHandlerFunction = async function (reqkey, datax
     let result;
     let response;
     let nextReqKey = reqkey;
+    const headers = {
+        Username: ups.username,
+        Password: ups.password,
+        AccessLicenseNumber: ups.accesslicensenumber,
+        'Content-Type': 'application/json',
+        Accept: 'application/json'
+    }
     const jsonData = JSON.stringify(reqFields);
     try {
-        logger.error('Requesting token');
-        result = await axiosInstance.post(ups.baseurl, reqFields,{
-            headers: {
-                Username: ups.username,
-                Password: ups.password,
-                AccessLicenseNumber: ups.accesslicensenumber,
-                'Content-Type': 'application/json',
-                Accept: 'application/json'
-            },
-            params: {
-               requestregionalindicator: false,
-               maximumcandidatesize: 5 
-            }
+        result = await axiosInstance.post('/addressvalidation/v1/3', jsonData, {
+             headers: headers,
+             params: {
+                 regionalrequestindicator: false,
+                 maximumcadidatelistsize: 5
+             }
         });
     } catch (err) {
         if (err.response) {
