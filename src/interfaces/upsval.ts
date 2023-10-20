@@ -41,6 +41,22 @@ export interface ResponseDS {
 /**
  * Output interface
  */
+export interface AddressClassificationDS {
+    /**
+     * @size 10 characters
+     * @default ``
+     */
+    Code: string,
+    /**
+     * @size 150 characters
+     * @default ``
+     */
+    Description: string
+}
+
+/**
+ * Output interface
+ */
 export interface AddressKeyFormatDS {
     /**
      * @size 50 characters
@@ -95,6 +111,9 @@ export interface AddressKeyFormatDS {
 export interface CandidateDS {
     /**
      */
+    AddressClassification: AddressClassificationDS,
+    /**
+     */
     AddressKeyFormat: AddressKeyFormatDS
 }
 
@@ -110,6 +129,11 @@ export interface XAVResponseDS {
      * @default ``
      */
     AmbiguousAddressIndicator: string,
+    /**
+     * @size 1 characters
+     * @default ``
+     */
+    ValidAddressIndicator: string,
     /**
      */
     Candidate: Array<CandidateDS>
@@ -188,7 +212,10 @@ export function convertObjectToRespFmt(dataIn: RespFmt): string {
   dataOut += dataIn?.XAVResponse?.Response?.ResponseStatus?.Code?.substring(0, 10)?.padEnd(10) ?? "".substring(0, 10).padEnd(10);
   dataOut += dataIn?.XAVResponse?.Response?.ResponseStatus?.Description?.substring(0, 150)?.padEnd(150) ?? "".substring(0, 150).padEnd(150);
   dataOut += dataIn?.XAVResponse?.AmbiguousAddressIndicator?.substring(0, 1)?.padEnd(1) ?? "".substring(0, 1).padEnd(1);
+  dataOut += dataIn?.XAVResponse?.ValidAddressIndicator?.substring(0, 1)?.padEnd(1) ?? "".substring(0, 1).padEnd(1);
   for (let j: number = 0; j < 5; ++j) {
+  dataOut += dataIn?.XAVResponse?.Candidate[j]?.AddressClassification?.Code?.substring(0, 10)?.padEnd(10) ?? "".substring(0, 10).padEnd(10);
+  dataOut += dataIn?.XAVResponse?.Candidate[j]?.AddressClassification?.Description?.substring(0, 150)?.padEnd(150) ?? "".substring(0, 150).padEnd(150);
   dataOut += dataIn?.XAVResponse?.Candidate[j]?.AddressKeyFormat?.ConsigneeName?.substring(0, 50)?.padEnd(50) ?? "".substring(0, 50).padEnd(50);
   dataOut += dataIn?.XAVResponse?.Candidate[j]?.AddressKeyFormat?.AddressLine?.substring(0, 100)?.padEnd(100) ?? "".substring(0, 100).padEnd(100);
   dataOut += dataIn?.XAVResponse?.Candidate[j]?.AddressKeyFormat?.PoliticalDivision2?.substring(0, 30)?.padEnd(30) ?? "".substring(0, 30).padEnd(30);

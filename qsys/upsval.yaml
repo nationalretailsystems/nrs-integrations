@@ -18,6 +18,17 @@ datastructures:
       ResponseStatus:
         type: DataStruct
         dsName: ResponseStatusDS
+  AddressClassificationDS:
+    rpgName: addclassds
+    subfields:
+      Code:
+        type: Character
+        length: 10
+        default: ""
+      Description:
+        type: Character
+        length: 150
+        default: ""
   AddressKeyFormatDS:
     rpgName: addkeyfmtds
     subfields:
@@ -63,6 +74,10 @@ datastructures:
         default: ""
   CandidateDS:
     subfields:
+      AddressClassification:
+        rpgName: addclass
+        type: DataStruct
+        dsName: AddressClassificationDS
       AddressKeyFormat:
         rpgName: addkeyfmt
         type: DataStruct
@@ -74,6 +89,11 @@ datastructures:
         dsName: ResponseDS
       AmbiguousAddressIndicator:
         rpgName: ambaddind
+        type: Character
+        length: 1
+        default: ""
+      ValidAddressIndicator:
+        rpgName: valaddind
         type: Character
         length: 1
         default: ""
