@@ -21,6 +21,14 @@
      DResponseStatus                       LikeDS(respstatusds)
 
       ************************************
+      * AddressClassificationDS data structure
+      ************************************
+     Daddclassds       DS                  Qualified
+     D                                     Template
+     DCode                           10A
+     DDescription                   150A
+
+      ************************************
       * AddressKeyFormatDS data structure
       ************************************
      Daddkeyfmtds      DS                  Qualified
@@ -40,6 +48,7 @@
       ************************************
      DCandidateDS      DS                  Qualified
      D                                     Template
+     Daddclass                             LikeDS(addclassds)
      Daddkeyfmt                            LikeDS(addkeyfmtds)
 
       ************************************
@@ -49,6 +58,7 @@
      D                                     Template
      DResponse                             LikeDS(ResponseDS)
      Dambaddind                       1A
+     Dvaladdind                       1A
      DCandidate                            LikeDS(CandidateDS)
      D                                     Dim(5)
 
@@ -78,9 +88,9 @@
 
       ************************************
       * RespFmt data structure
-      * Record length: 1971
+      * Record length: 2772
       ************************************
-     DRespFmtLen       C                   1971
+     DRespFmtLen       C                   2772
      DRespFmt          DS                  Qualified
      D                                     Template
      DXAVResponse                          LikeDS(XAVResponseDS)
@@ -89,5 +99,5 @@
       * Convert buffer to RespFmt
       ************************************
      DBufToRespFmt     PR
-     DBuffer                       1971A
+     DBuffer                       2772A
      DDataStruct                           LikeDS(RespFmt)
