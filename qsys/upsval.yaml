@@ -40,6 +40,7 @@ datastructures:
         type: Character
         length: 100
         default: ""
+        dim: 2
       PoliticalDivision2:
         rpgName: poldiv2
         type: Character

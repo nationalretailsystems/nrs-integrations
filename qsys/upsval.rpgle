@@ -26,7 +26,7 @@
      DReqFmtToBuf      PI
      DDataStruct                           LikeDS(ReqFmt)
      D                                     Const
-     DBuffer                        362A
+     DBuffer                        462A
 
       * Initialize to beginning of buffer
        BufPtr = %addr(Buffer);
@@ -34,8 +34,10 @@
       * Write fields from DS to buffer
        %subst(CharBuf:1:50) = DataStruct.XAVRequest.addkeyfmt.ConsigneeName;
        BufPtr += 50;
-       %subst(CharBuf:1:100) = DataStruct.XAVRequest.addkeyfmt.AddressLine;
+       for k = 1 to 2;
+       %subst(CharBuf:1:100) = DataStruct.XAVRequest.addkeyfmt.AddressLine(k);
        BufPtr += 100;
+       endfor;
        %subst(CharBuf:1:30) = DataStruct.XAVRequest.addkeyfmt.poldiv2;
        BufPtr += 30;
        %subst(CharBuf:1:30) = DataStruct.XAVRequest.addkeyfmt.poldiv1;
@@ -61,7 +63,7 @@
      PBufToRespFmt     B                   Export
 
      DBufToRespFmt     PI
-     DBuffer                       2772A
+     DBuffer                       3272A
      DDataStruct                           LikeDS(RespFmt)
 
       * Initialize to begining of buffer
@@ -83,8 +85,10 @@
        BufPtr += 150;
        DataStruct.XAVResponse.Candidate(i).addkeyfmt.ConsigneeName = %subst(CharBuf:1:50);
        BufPtr += 50;
-       DataStruct.XAVResponse.Candidate(i).addkeyfmt.AddressLine = %subst(CharBuf:1:100);
+       for j = 1 to 2;
+       DataStruct.XAVResponse.Candidate(i).addkeyfmt.AddressLine(j) = %subst(CharBuf:1:100);
        BufPtr += 100;
+       endfor;
        DataStruct.XAVResponse.Candidate(i).addkeyfmt.poldiv2 = %subst(CharBuf:1:30);
        BufPtr += 30;
        DataStruct.XAVResponse.Candidate(i).addkeyfmt.poldiv1 = %subst(CharBuf:1:30);
