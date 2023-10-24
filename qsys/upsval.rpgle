@@ -26,7 +26,7 @@
      DReqFmtToBuf      PI
      DDataStruct                           LikeDS(ReqFmt)
      D                                     Const
-     DBuffer                        462A
+     DBuffer                        362A
 
       * Initialize to beginning of buffer
        BufPtr = %addr(Buffer);
@@ -34,10 +34,8 @@
       * Write fields from DS to buffer
        %subst(CharBuf:1:50) = DataStruct.XAVRequest.addkeyfmt.ConsigneeName;
        BufPtr += 50;
-       for k = 1 to 2;
-       %subst(CharBuf:1:100) = DataStruct.XAVRequest.addkeyfmt.AddressLine(k);
+       %subst(CharBuf:1:100) = DataStruct.XAVRequest.addkeyfmt.AddressLine;
        BufPtr += 100;
-       endfor;
        %subst(CharBuf:1:30) = DataStruct.XAVRequest.addkeyfmt.poldiv2;
        BufPtr += 30;
        %subst(CharBuf:1:30) = DataStruct.XAVRequest.addkeyfmt.poldiv1;

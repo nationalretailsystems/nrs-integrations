@@ -73,6 +73,49 @@ datastructures:
         type: Character
         length: 2
         default: ""
+  AddressKeyFormat2DS:
+    rpgName: addkeyfmt2ds
+    subfields:
+      ConsigneeName:
+        type: Character
+        length: 50
+        default: ""
+      AddressLine:
+        type: Character
+        length: 100
+        default: ""
+      PoliticalDivision2:
+        rpgName: poldiv2
+        type: Character
+        length: 30
+        default: ""
+      PoliticalDivision1:
+        rpgName: poldiv1
+        type: Character
+        length: 30
+        default: ""
+      PostcodePrimaryLow:
+        rpgName: postcodepl
+        type: Character
+        length: 10
+        default: ""
+      PostCodeExtendedLow:
+        rpgName: postcodeel
+        type: Character
+        length: 10
+        default: ""
+      Urbanization:
+        type: Character
+        length: 30
+        default: ""
+      Region:
+        type: Character
+        length: 100
+        default: ""
+      CountryCode:
+        type: Character
+        length: 2
+        default: ""
   CandidateDS:
     subfields:
       AddressClassification:
@@ -107,7 +150,7 @@ datastructures:
       AddressKeyFormat:
         rpgName: addkeyfmt
         type: DataStruct
-        dsName: AddressKeyFormatDS        
+        dsName: AddressKeyFormat2DS        
 formats:
   RespFmt:
     recordType: response

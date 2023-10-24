@@ -108,6 +108,57 @@ export interface AddressKeyFormatDS {
 /**
  * Output interface
  */
+export interface AddressKeyFormat2DS {
+    /**
+     * @size 50 characters
+     * @default ``
+     */
+    ConsigneeName: string,
+    /**
+     * @size 100 characters
+     * @default ``
+     */
+    AddressLine: string,
+    /**
+     * @size 30 characters
+     * @default ``
+     */
+    PoliticalDivision2: string,
+    /**
+     * @size 30 characters
+     * @default ``
+     */
+    PoliticalDivision1: string,
+    /**
+     * @size 10 characters
+     * @default ``
+     */
+    PostcodePrimaryLow: string,
+    /**
+     * @size 10 characters
+     * @default ``
+     */
+    PostCodeExtendedLow: string,
+    /**
+     * @size 30 characters
+     * @default ``
+     */
+    Urbanization: string,
+    /**
+     * @size 100 characters
+     * @default ``
+     */
+    Region: string,
+    /**
+     * @size 2 characters
+     * @default ``
+     */
+    CountryCode: string
+}
+
+/**
+ * Output interface
+ */
 export interface CandidateDS {
     /**
      */
@@ -145,7 +196,7 @@ export interface XAVResponseDS {
 export interface XAVRequestDS {
     /**
      */
-    AddressKeyFormat: AddressKeyFormatDS
+    AddressKeyFormat: AddressKeyFormat2DS
 }
 
 /**
@@ -174,13 +225,8 @@ export function convertReqFmtToObject(dataIn: string): ReqFmt {
     };
   dataOut.XAVRequest.AddressKeyFormat.ConsigneeName = dataIn.substring(pos, pos + 50).trimEnd();
   pos += 50;
-  dataOut.XAVRequest.AddressKeyFormat.AddressLine = [
-    
-  ];
-  for (let i: number = 0; i < 2; ++i) {
-  dataOut.XAVRequest.AddressKeyFormat.AddressLine[i] = dataIn.substring(pos, pos + 100).trimEnd();
+  dataOut.XAVRequest.AddressKeyFormat.AddressLine = dataIn.substring(pos, pos + 100).trimEnd();
   pos += 100;
-  }
   dataOut.XAVRequest.AddressKeyFormat.PoliticalDivision2 = dataIn.substring(pos, pos + 30).trimEnd();
   pos += 30;
   dataOut.XAVRequest.AddressKeyFormat.PoliticalDivision1 = dataIn.substring(pos, pos + 30).trimEnd();

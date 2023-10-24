@@ -44,6 +44,21 @@
      DCountryCode                     2A
 
       ************************************
+      * AddressKeyFormat2DS data structure
+      ************************************
+     Daddkeyfmt2ds     DS                  Qualified
+     D                                     Template
+     DConsigneeName                  50A
+     DAddressLine                   100A
+     Dpoldiv2                        30A
+     Dpoldiv1                        30A
+     Dpostcodepl                     10A
+     Dpostcodeel                     10A
+     DUrbanization                   30A
+     DRegion                        100A
+     DCountryCode                     2A
+
+      ************************************
       * CandidateDS data structure
       ************************************
      DCandidateDS      DS                  Qualified
@@ -67,13 +82,13 @@
       ************************************
      DXAVRequestDS     DS                  Qualified
      D                                     Template
-     Daddkeyfmt                            LikeDS(addkeyfmtds)
+     Daddkeyfmt                            LikeDS(addkeyfmt2ds)
 
       ************************************
       * ReqFmt data structure
-      * Record length: 462
+      * Record length: 362
       ************************************
-     DReqFmtLen        C                   462
+     DReqFmtLen        C                   362
      DReqFmt           DS                  Qualified
      D                                     Template
      DXAVRequest                           LikeDS(XAVRequestDS)
@@ -84,7 +99,7 @@
      DReqFmtToBuf      PR
      DDataStruct                           LikeDS(ReqFmt)
      D                                     Const
-     DBuffer                        462A
+     DBuffer                        362A
 
       ************************************
       * RespFmt data structure
