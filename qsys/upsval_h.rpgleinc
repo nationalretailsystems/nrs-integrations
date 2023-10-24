@@ -34,7 +34,7 @@
      Daddkeyfmtds      DS                  Qualified
      D                                     Template
      DConsigneeName                  50A
-     DAddressLine                   100A
+     DAddressLine                   100A   Dim(2)
      Dpoldiv2                        30A
      Dpoldiv1                        30A
      Dpostcodepl                     10A
@@ -71,9 +71,9 @@
 
       ************************************
       * ReqFmt data structure
-      * Record length: 362
+      * Record length: 462
       ************************************
-     DReqFmtLen        C                   362
+     DReqFmtLen        C                   462
      DReqFmt           DS                  Qualified
      D                                     Template
      DXAVRequest                           LikeDS(XAVRequestDS)
@@ -84,13 +84,13 @@
      DReqFmtToBuf      PR
      DDataStruct                           LikeDS(ReqFmt)
      D                                     Const
-     DBuffer                        362A
+     DBuffer                        462A
 
       ************************************
       * RespFmt data structure
-      * Record length: 2772
+      * Record length: 3272
       ************************************
-     DRespFmtLen       C                   2772
+     DRespFmtLen       C                   3272
      DRespFmt          DS                  Qualified
      D                                     Template
      DXAVResponse                          LikeDS(XAVResponseDS)
@@ -99,5 +99,5 @@
       * Convert buffer to RespFmt
       ************************************
      DBufToRespFmt     PR
-     DBuffer                       2772A
+     DBuffer                       3272A
      DDataStruct                           LikeDS(RespFmt)

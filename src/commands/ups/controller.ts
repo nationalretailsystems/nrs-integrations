@@ -8,6 +8,7 @@ const logger = createLogger('commands/ups');
 const { ups } = config;
 const axiosInstance = axios.create(ups.axios);
 
+    
 /* eslint-enable */
 
 export const validateAddress: ECCHandlerFunction = async function (reqkey, datax, ecc) {
@@ -49,6 +50,21 @@ export const validateAddress: ECCHandlerFunction = async function (reqkey, datax
         // Mainly TCP/IP errors.
         return ecc.sendEccResult('ECC1000', err.message, nextReqKey);
     }
+    let candidate = result.data.XAVResponse.Candidate;
+    result.data.XAVResponse.Candidate = Array.isArray(candidate) ? candidate : [candidate];
+
+    result.data.XAVResponse.Candidate = result.data.XAVResponse.Candidate.map((candidate: any) => {
+        // For each Candidate in the array
+        // Store the addressLine in a variable to shorten our lines of code as we did earlier
+        let addressLine = candidate.AddressKeyFormat?.AddressLine;
+
+        // Wrap the AddressLine in an array if it isn't already an array
+        candidate.AddressKeyFormat.AddressLine = Array.isArray(addressLine) ? addressLine : [addressLine];
+
+        // Return the updated Candidate so it will be used in place of the original Candidate in the main array when we're done
+        // return candidate;
+     });
+
     let responseData = result.data;
     nextReqKey = await ecc.sendEccResult('ECC0000', 'Success', nextReqKey);
     return ecc.sendObjectToCaller(responseData, converterUPS.convertObjectToRespFmt, nextReqKey);

@@ -67,7 +67,7 @@ export interface AddressKeyFormatDS {
      * @size 100 characters
      * @default ``
      */
-    AddressLine: string,
+    AddressLine: Array<string>,
     /**
      * @size 30 characters
      * @default ``
@@ -174,8 +174,13 @@ export function convertReqFmtToObject(dataIn: string): ReqFmt {
     };
   dataOut.XAVRequest.AddressKeyFormat.ConsigneeName = dataIn.substring(pos, pos + 50).trimEnd();
   pos += 50;
-  dataOut.XAVRequest.AddressKeyFormat.AddressLine = dataIn.substring(pos, pos + 100).trimEnd();
+  dataOut.XAVRequest.AddressKeyFormat.AddressLine = [
+    
+  ];
+  for (let i: number = 0; i < 2; ++i) {
+  dataOut.XAVRequest.AddressKeyFormat.AddressLine[i] = dataIn.substring(pos, pos + 100).trimEnd();
   pos += 100;
+  }
   dataOut.XAVRequest.AddressKeyFormat.PoliticalDivision2 = dataIn.substring(pos, pos + 30).trimEnd();
   pos += 30;
   dataOut.XAVRequest.AddressKeyFormat.PoliticalDivision1 = dataIn.substring(pos, pos + 30).trimEnd();
@@ -217,7 +222,9 @@ export function convertObjectToRespFmt(dataIn: RespFmt): string {
   dataOut += dataIn?.XAVResponse?.Candidate[j]?.AddressClassification?.Code?.substring(0, 10)?.padEnd(10) ?? "".substring(0, 10).padEnd(10);
   dataOut += dataIn?.XAVResponse?.Candidate[j]?.AddressClassification?.Description?.substring(0, 150)?.padEnd(150) ?? "".substring(0, 150).padEnd(150);
   dataOut += dataIn?.XAVResponse?.Candidate[j]?.AddressKeyFormat?.ConsigneeName?.substring(0, 50)?.padEnd(50) ?? "".substring(0, 50).padEnd(50);
-  dataOut += dataIn?.XAVResponse?.Candidate[j]?.AddressKeyFormat?.AddressLine?.substring(0, 100)?.padEnd(100) ?? "".substring(0, 100).padEnd(100);
+  for (let m: number = 0; m < 2; ++m) {
+  dataOut += dataIn?.XAVResponse?.Candidate[j]?.AddressKeyFormat?.AddressLine[m]?.substring(0, 100)?.padEnd(100) ?? "".substring(0, 100).padEnd(100);
+  }
   dataOut += dataIn?.XAVResponse?.Candidate[j]?.AddressKeyFormat?.PoliticalDivision2?.substring(0, 30)?.padEnd(30) ?? "".substring(0, 30).padEnd(30);
   dataOut += dataIn?.XAVResponse?.Candidate[j]?.AddressKeyFormat?.PoliticalDivision1?.substring(0, 30)?.padEnd(30) ?? "".substring(0, 30).padEnd(30);
   dataOut += dataIn?.XAVResponse?.Candidate[j]?.AddressKeyFormat?.PostcodePrimaryLow?.substring(0, 10)?.padEnd(10) ?? "".substring(0, 10).padEnd(10);
