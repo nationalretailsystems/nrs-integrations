@@ -23,7 +23,7 @@ export const getToken = async (): Promise<string> => {
         apiKey: paycargo.apikey,
         apiSecret: paycargo.apisecret
     };
-
+    logger.debug('Attempting to Get New Token');
     const response = await axiosInstance.post('/login/developer', credentials);
     _token = response.data.token;
     _expiration = Date.now() + 1000 * 60 * 60 * 8; // 1000ms * 60s * 60m * 8h = 8 hours
