@@ -11,6 +11,7 @@ let _token: string;
 let _expiration: number;
 
 export const getToken = async (): Promise<string> => {
+    logger.debug('Entering GetToken Routine');
     if (_token && _expiration > Date.now() + 300000) {
         logger.debug('old token: expiration-' + _expiration + ' ' + _token);
         return _token;
