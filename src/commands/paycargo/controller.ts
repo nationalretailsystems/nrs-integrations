@@ -68,15 +68,6 @@ const safeValues: any = {
 };
 /* eslint-disable camelcase */
 const safeValuesACH: any = {
-    // parms: {
-    //     branchClientId: '',
-    //     startDate: '',
-    //     endDate: '',
-    //     client_id: '',
-    //     report_action_name: '',
-    //     type: '',
-    //     accountname: ''
-    // },
     recordset: {
         '*50': {
             account: '',
