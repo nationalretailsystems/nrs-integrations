@@ -12,6 +12,7 @@ let _expiration: number;
 
 export const getToken = async (): Promise<string> => {
     if (_token && _expiration > Date.now() + 300000) {
+        logger.debug('old token: expiration-' + _expiration + ' ' + _token);
         return _token;
     }
 
@@ -25,6 +26,7 @@ export const getToken = async (): Promise<string> => {
     const response = await axiosInstance.post('/login/developer', credentials);
     _token = response.data.token;
     _expiration = Date.now() + 1000 * 60 * 60 * 8; // 1000ms * 60s * 60m * 8h = 8 hours
+    logger.debug('new token: expiration-' + _expiration + ' ' + _token);
     return _token;
 };
 
