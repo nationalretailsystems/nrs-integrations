@@ -128,6 +128,7 @@ export const getAchrpt: ECCHandlerFunction = async function (reqkey, datax, ecc)
     // const jsonData = reqFields;
     try {
         const token = await getToken();
+        logger.debug('Calling paycargo axios now');
         result = await axiosInstance.get('/reports/singleReport', {
             /* eslint-disable */
             params: {
