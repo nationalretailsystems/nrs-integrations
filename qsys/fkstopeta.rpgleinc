@@ -12,7 +12,7 @@
      DBillOfLading                   30A
      DBookingNumber                  20A
      DContainerNumber                20A
-     DContainerType                  10A
+     DContainerType                  30A
      DEncryptedAccessToken               125A
      DFourKitesLoadId                16P 0
      DLoadNumber                     50A
@@ -21,7 +21,7 @@
      DRefNumbers                     50A   Dim(20)
      DScac                            4A
      DShipper                        30A
-     DStopName                       50A
+     DStopName                       60A
      DStopReferenceId                15A
      DStopSequence                    7P 0
      DStopStatus                     20A

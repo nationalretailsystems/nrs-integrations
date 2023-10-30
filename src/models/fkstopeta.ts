@@ -34,7 +34,7 @@ export const FKSTOPETAModel =   new eradaniConnect.run.Pgm("FKSTOPETA",   {
     },
       {
       name: "ContainerType",
-      type: new dataTypes.Char(10),
+      type: new dataTypes.Char(30),
       defaultValue: ""
     },
       {
@@ -80,7 +80,7 @@ export const FKSTOPETAModel =   new eradaniConnect.run.Pgm("FKSTOPETA",   {
     },
       {
       name: "StopName",
-      type: new dataTypes.Char(50),
+      type: new dataTypes.Char(60),
       defaultValue: ""
     },
       {
@@ -176,7 +176,7 @@ export interface FKSTOPETAInput {
      */
     ContainerNumber?: string,
     /**
-     * @size 10 characters
+     * @size 30 characters
      * @default ``
      */
     ContainerType?: string,
@@ -222,7 +222,7 @@ export interface FKSTOPETAInput {
      */
     Shipper?: string,
     /**
-     * @size 50 characters
+     * @size 60 characters
      * @default ``
      */
     StopName?: string,
@@ -317,7 +317,7 @@ export interface FKSTOPETAOutput {
      */
     ContainerNumber: string,
     /**
-     * @size 10 characters
+     * @size 30 characters
      * @default ``
      */
     ContainerType: string,
@@ -363,7 +363,7 @@ export interface FKSTOPETAOutput {
      */
     Shipper: string,
     /**
-     * @size 50 characters
+     * @size 60 characters
      * @default ``
      */
     StopName: string,
