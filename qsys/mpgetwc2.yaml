@@ -1,0 +1,59 @@
+---
+name: mpgetwc2
+rpgIncName: mpgetwc2_h
+codeblocks:
+  typescript:
+    - import eradaniConnect from "@eradani-inc/eradani-connect";
+    - const { dataTypes } = eradaniConnect;
+formats:
+  ResWo2Chg:
+    recordType: response
+    subfields:
+      workOrderKey:
+        rpgName: wkordkey
+        type: Integer
+        length: 10
+        default: 0
+      workOrderNumber:
+        rpgName: wkordnum
+        type: Integer
+        length: 10
+        default: 0
+      assetId:
+        rpgName: assetid
+        type: Character
+        length: 24
+        default: ""
+      purpose:
+        rpgName: purpose
+        type: Character
+        length: 50
+        default: ""
+      budgetId:
+        rpgName: budgetid
+        type: Character
+        length: 24
+        default: ""
+      statusId:
+        rpgName: statusid
+        type: Character
+        length: 24
+        default: ""
+      dateCreated:
+        rpgName: dtcreate
+        type: Date
+        default: ""
+      dateCompleted:
+        rpgName: dtcomplete
+        type: Date
+        default: ""
+  ReqWo2Chg:
+    recordType: request
+    subfields:
+      since:
+        rpgName: since
+        type: Date
+      assetId:
+        rpgName: assetid
+        type: Character
+        length: 24
