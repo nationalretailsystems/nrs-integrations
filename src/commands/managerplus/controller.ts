@@ -574,7 +574,13 @@ export const getWOChanges2: ECCHandlerFunction = async (reqkey, data, ecc) => {
     try {
         result = await axiosInstance.get('/WorkOrders/Modified', {
             params: {
-                since: reqDate
+                since: reqDate,
+                $filter: 'assetId eq ' + "'" + reqFields.assetId + 
+                    ' and statusId = ' + '"OPEN"',
+                $select: 'workOderKey,workOrderNumber,assetId,purpose,' +
+                    'budgetId, statusId, dateCreated, dateCompleted'
+
+
             },
             headers: {
                 accept: 'application/json',
