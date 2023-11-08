@@ -41,12 +41,12 @@ formats:
         default: ""
       dateCreated:
         rpgName: dtcreate
-        type: Date
+        type: Timestamp
         default: ""
       dateCompleted:
         rpgName: dtcomplete
-        type: Date
-        default: ""
+        type: Timestamp
+        default: 0001-01-01-00.00.00.000
   ReqWo2Chg:
     recordType: request
     subfields:

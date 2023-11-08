@@ -47,7 +47,7 @@
      PBufToResWo2Chg   B                   Export
 
      DBufToResWo2Chg   PI
-     DBuffer                        164A
+     DBuffer                        196A
      DDataStruct                           LikeDS(ResWo2Chg)
 
       * Initialize to begining of buffer
@@ -66,10 +66,10 @@
        BufPtr += 24;
        DataStruct.statusid = %subst(CharBuf:1:24);
        BufPtr += 24;
-       DataStruct.dtcreate = %date(%subst(CharBuf:1:10):*ISO);
-       BufPtr += 10;
-       DataStruct.dtcomplete = %date(%subst(CharBuf:1:10):*ISO);
-       BufPtr += 10;
+       DataStruct.dtcreate = %timestamp(%subst(CharBuf:1:26):*ISO:6);
+       BufPtr += 26;
+       DataStruct.dtcomplete = %timestamp(%subst(CharBuf:1:26):*ISO:6);
+       BufPtr += 26;
 
        return ;
 

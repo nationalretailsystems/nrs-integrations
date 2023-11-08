@@ -603,7 +603,8 @@ export const getWOChanges2: ECCHandlerFunction = async (reqkey, data, ecc) => {
 
     try {
         // let responseData = result.data.map((record: any) => sanitizeValues(record, safeValues));
-        let responseData = result.data;
+        let responseData = result.data[0];
+
         logger.debug('ECC0000', 'Success', nextReqKey);
         nextReqKey = await ecc.sendEccResult('ECC0000', 'Success', nextReqKey);
         nextReqKey = await ecc.sendObjectToCaller(responseData, converterwc2.convertObjectToResWo2Chg, nextReqKey);
