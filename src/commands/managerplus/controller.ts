@@ -606,7 +606,7 @@ export const getWOChanges2: ECCHandlerFunction = async (reqkey, data, ecc) => {
         let responseData = result.data;
         logger.debug('ECC0000', 'Success', nextReqKey);
         nextReqKey = await ecc.sendEccResult('ECC0000', 'Success', nextReqKey);
-        nextReqKey = await ecc.sendObjectsToCaller(responseData, converterwc2.convertObjectToResWo2Chg, nextReqKey);
+        nextReqKey = await ecc.sendObjectToCaller(responseData, converterwc2.convertObjectToResWo2Chg, nextReqKey);
         logger.debug('Sent data to RPG');
         return nextReqKey;
     } catch (err) {

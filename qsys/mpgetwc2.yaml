@@ -5,9 +5,9 @@ codeblocks:
   typescript:
     - import eradaniConnect from "@eradani-inc/eradani-connect";
     - const { dataTypes } = eradaniConnect;
-datastructures:
-  responseDS:
-    qualified: response
+formats:
+  ResWo2Chg:
+    recordType: response
     subfields:
       workOrderKey:
         rpgName: wkordkey
@@ -47,14 +47,6 @@ datastructures:
         rpgName: dtcomplete
         type: Date
         default: ""
-formats:
-  ResWo2Chg:
-    recordType: response
-    subfields:        
-      wrkorddata:
-        type: DataStruct
-        dsName: responseDS
-        dim: 2
   ReqWo2Chg:
     recordType: request
     subfields:
