@@ -47,29 +47,31 @@
      PBufToResWo2Chg   B                   Export
 
      DBufToResWo2Chg   PI
-     DBuffer                        164A
+     DBuffer                        328A
      DDataStruct                           LikeDS(ResWo2Chg)
 
       * Initialize to begining of buffer
        BufPtr = %addr(Buffer);
 
       * Read fields from buffer into DS
-       DataStruct.wkordkey = %int(%subst(CharBuf:1:11));
+       for i = 1 to 2;
+       DataStruct.wrkorddata(i).wkordkey = %int(%subst(CharBuf:1:11));
        BufPtr += 11;
-       DataStruct.wkordnum = %int(%subst(CharBuf:1:11));
+       DataStruct.wrkorddata(i).wkordnum = %int(%subst(CharBuf:1:11));
        BufPtr += 11;
-       DataStruct.assetid = %subst(CharBuf:1:24);
+       DataStruct.wrkorddata(i).assetid = %subst(CharBuf:1:24);
        BufPtr += 24;
-       DataStruct.purpose = %subst(CharBuf:1:50);
+       DataStruct.wrkorddata(i).purpose = %subst(CharBuf:1:50);
        BufPtr += 50;
-       DataStruct.budgetid = %subst(CharBuf:1:24);
+       DataStruct.wrkorddata(i).budgetid = %subst(CharBuf:1:24);
        BufPtr += 24;
-       DataStruct.statusid = %subst(CharBuf:1:24);
+       DataStruct.wrkorddata(i).statusid = %subst(CharBuf:1:24);
        BufPtr += 24;
-       DataStruct.dtcreate = %date(%subst(CharBuf:1:10):*ISO);
+       DataStruct.wrkorddata(i).dtcreate = %date(%subst(CharBuf:1:10):*ISO);
        BufPtr += 10;
-       DataStruct.dtcomplete = %date(%subst(CharBuf:1:10):*ISO);
+       DataStruct.wrkorddata(i).dtcomplete = %date(%subst(CharBuf:1:10):*ISO);
        BufPtr += 10;
+       endfor;
 
        return ;
 
