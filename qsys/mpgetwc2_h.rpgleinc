@@ -6,6 +6,19 @@
       ************************************
 
       ************************************
+      * responseDS data structure
+      ************************************
+     DresponseDS       DS                  Template
+     Dwkordkey                       10I 0
+     Dwkordnum                       10I 0
+     Dassetid                        24A
+     Dpurpose                        50A
+     Dbudgetid                       24A
+     Dstatusid                       24A
+     Ddtcreate                         D
+     Ddtcomplete                       D
+
+      ************************************
       * ReqWo2Chg data structure
       * Record length: 34
       ************************************
@@ -25,23 +38,17 @@
 
       ************************************
       * ResWo2Chg data structure
-      * Record length: 164
+      * Record length: 328
       ************************************
-     DResWo2ChgLen     C                   164
+     DResWo2ChgLen     C                   328
      DResWo2Chg        DS                  Qualified
      D                                     Template
-     Dwkordkey                       10I 0
-     Dwkordnum                       10I 0
-     Dassetid                        24A
-     Dpurpose                        50A
-     Dbudgetid                       24A
-     Dstatusid                       24A
-     Ddtcreate                         D
-     Ddtcomplete                       D
+     Dwrkorddata                           LikeDS(responseDS)
+     D                                     Dim(2)
 
       ************************************
       * Convert buffer to ResWo2Chg
       ************************************
      DBufToResWo2Chg   PR
-     DBuffer                        164A
+     DBuffer                        328A
      DDataStruct                           LikeDS(ResWo2Chg)

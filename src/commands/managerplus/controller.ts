@@ -567,20 +567,18 @@ export const getWOChanges2: ECCHandlerFunction = async (reqkey, data, ecc) => {
     // Get parameters from incoming data buffer
     const reqFields = converterwc2.convertReqWo2ChgToObject(data);
     let reqDate = reqFields.since.toISOString().split('T')[0];
+    let compDate = reqFields.since.toISOString();
     // Call web service
     let result;
     let nextReqKey = reqkey;
 
     try {
-        result = await axiosInstance.get('/WorkOrders/Modified', {
+        result = await axiosInstance.get('/WorkOrders', {
+        // result = await axiosInstance.get('/WorkOrders/Modified', {    
             params: {
-                since: reqDate,
-                $filter: 'assetId eq ' + "'" + reqFields.assetId + 
-                    ' and statusId = ' + '"OPEN"',
-                $select: 'workOderKey,workOrderNumber,assetId,purpose,' +
-                    'budgetId, statusId, dateCreated, dateCompleted'
-
-
+                // since: reqDate,
+                '$filter': 'assetId eq ' + "'" + reqFields.assetId + "'" + " and statusId eq 'OPEN' and dateCreated gt " + compDate,
+                $select: 'workOrderKey,workOrderNumber,assetId,purpose,budgetId, statusId, dateCreated, dateCompleted'
             },
             headers: {
                 accept: 'application/json',
@@ -604,14 +602,8 @@ export const getWOChanges2: ECCHandlerFunction = async (reqkey, data, ecc) => {
     // Send the result info
 
     try {
-        let responseData = result.data.map((record: any) => sanitizeValues(record, safeValues));
-
-        try {
-            await fs.writeFile('/eradani/tests/wochanges2.json', JSON.stringify(responseData), 'utf-8');
-        } catch (err) {
-            return ecc.sendEccResult('ECC9200', err.message, nextReqKey);
-        }
-
+        // let responseData = result.data.map((record: any) => sanitizeValues(record, safeValues));
+        let responseData = result.data;
         logger.debug('ECC0000', 'Success', nextReqKey);
         nextReqKey = await ecc.sendEccResult('ECC0000', 'Success', nextReqKey);
         nextReqKey = await ecc.sendObjectsToCaller(responseData, converterwc2.convertObjectToResWo2Chg, nextReqKey);
