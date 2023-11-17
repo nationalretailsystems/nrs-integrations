@@ -1,0 +1,69 @@
+      ************************************
+      * Module: t4300inv
+      * Generated RPG data structures
+      * and prototypes
+      * Do not modify
+      ************************************
+
+      ************************************
+      * SlotsDS data structure
+      ************************************
+     DSlotsDS          DS                  Qualified
+     D                                     Template
+     DPhysicalNumb...
+     Der                              3P 0
+     DLogicalNumbe...
+     Dr                               4A
+     DModule                          1P 0
+     DLogicalLibra...
+     Dry                              1P 0
+     DMailslot                         N
+     DCartridge                        N
+     DBarcode                         8A
+     DCartridgeTyp...
+     De                              10A
+     DCartridgeSub...
+     DType                            1P 0
+     DCartridgeGen...
+     Deration                         1P 0
+     DCartridgeEnc...
+     Drypted                           N
+     DAccess                           N
+     DBlocked                          N
+
+      ************************************
+      * DrivesDS data structure
+      ************************************
+     DDrivesDS         DS                  Qualified
+     D                                     Template
+     DPhysicalNumb...
+     Der                              2P 0
+     DLogicalNumbe...
+     Dr                               1P 0
+     DModule                          1P 0
+     DLogicalLibra...
+     Dry                              1P 0
+     DBarcode                         8A
+     DVendor                          3A
+     DProduct                        11A
+     DFWRevision                      4A
+     DSerialNumber                   10A
+
+      ************************************
+      * TapeInvRes data structure
+      * Record length: 1858
+      ************************************
+     DTapeInvResLen    C                   1858
+     DTapeInvRes       DS                  Qualified
+     D                                     Template
+     DSlots                                LikeDS(SlotsDS)
+     D                                     Dim(40)
+     DDrives                               LikeDS(DrivesDS)
+     D                                     Dim(2)
+
+      ************************************
+      * Convert buffer to TapeInvRes
+      ************************************
+     DBufToTapeInvRes  PR
+     DBuffer                       1858A
+     DDataStruct                           LikeDS(TapeInvRes)
