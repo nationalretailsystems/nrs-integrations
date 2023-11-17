@@ -9,87 +9,108 @@ datastructures:
   SlotsDS:
     subfields:
       PhysicalNumber:
+        rpgName: phynum
         type: Packed
         length: 3
         default: 0
       LogicalNumber:
+        rpgName: lognum
         type: Character
         length: 4
         default: ""
       Module:
+        rpgName: module
         type: Packed
         length: 1
         default: 0
       LogicalLibrary:
+        rpgName: loglib
         type: Packed
         length: 1
         default: 0
       Mailslot:
+        rpgName: mailslot
         type: Boolean
         default: false
       Cartridge:
+        rpgName: cart
         type: Boolean
         default: true
       Barcode:
+        rpgName: barcode
         type: Character
         length: 8
         default: ""
       CartridgeType:
+        rpgName: carttype
         type: Character
         length: 10
         default: ""
       CartridgeSubType:
+        rpgName: cartsubt
         type: Packed
         length: 1
         default: 0
       CartridgeGeneration:
+        rpgName: cartgen
         type: Packed
         length: 1
         default: 0
       CartridgeEncrypted:
+        rpgName: cartenc
         type: Boolean
         default: false
       Access:
         type: Boolean
         default: true
       Blocked:
+        rpgName: blocked
         type: Boolean
         default: false
   DrivesDS:
     subfields:
       PhysicalNumber:
+        rpgName: phynumd
         type: Packed
         length: 2
         default: 0
       LogicalNumber:
+        rpgName: lognumd
         type: Packed
         length: 1
         default: 0
       Module:
+        rpgName: moduled
         type: Packed
         length: 1
         default: 0
       LogicalLibrary:
+        rpgName: loglibd
         type: Packed
         length: 1
         default: 0
       Barcode:
+        rpgName: barcoded
         type: Character
         length: 8
         default: ""
       Vendor:
+        rpgName: vendor
         type: Character
         length: 3
         default: ""
       Product:
+        rpgName: product
         type: Character
         length: 11
         default: ""
       FWRevision:
+        rpgName: fwrev
         type: Character
         length: 4
         default: ""
       SerialNumber:
+        rpgName: sernum
         type: Character
         length: 10
         default: ""

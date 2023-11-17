@@ -10,44 +10,34 @@
       ************************************
      DSlotsDS          DS                  Qualified
      D                                     Template
-     DPhysicalNumb...
-     Der                              3P 0
-     DLogicalNumbe...
-     Dr                               4A
-     DModule                          1P 0
-     DLogicalLibra...
-     Dry                              1P 0
-     DMailslot                         N
-     DCartridge                        N
-     DBarcode                         8A
-     DCartridgeTyp...
-     De                              10A
-     DCartridgeSub...
-     DType                            1P 0
-     DCartridgeGen...
-     Deration                         1P 0
-     DCartridgeEnc...
-     Drypted                           N
+     Dphynum                          3P 0
+     Dlognum                          4A
+     Dmodule                          1P 0
+     Dloglib                          1P 0
+     Dmailslot                         N
+     Dcart                             N
+     Dbarcode                         8A
+     Dcarttype                       10A
+     Dcartsubt                        1P 0
+     Dcartgen                         1P 0
+     Dcartenc                          N
      DAccess                           N
-     DBlocked                          N
+     Dblocked                          N
 
       ************************************
       * DrivesDS data structure
       ************************************
      DDrivesDS         DS                  Qualified
      D                                     Template
-     DPhysicalNumb...
-     Der                              2P 0
-     DLogicalNumbe...
-     Dr                               1P 0
-     DModule                          1P 0
-     DLogicalLibra...
-     Dry                              1P 0
-     DBarcode                         8A
-     DVendor                          3A
-     DProduct                        11A
-     DFWRevision                      4A
-     DSerialNumber                   10A
+     Dphynumd                         2P 0
+     Dlognumd                         1P 0
+     Dmoduled                         1P 0
+     Dloglibd                         1P 0
+     Dbarcoded                        8A
+     Dvendor                          3A
+     Dproduct                        11A
+     Dfwrev                           4A
+     Dsernum                         10A
 
       ************************************
       * TapeInvRes data structure
