@@ -1,5 +1,5 @@
 import config from 'config';
-const { paycargo, ukg } = config;
+const { paycargo, ukg, ts4300 } = config;
 import axios from 'axios';
 import createLogger from 'src/services/logger';
 const logger = createLogger('commands/ukgtoken');
@@ -63,4 +63,25 @@ export const getTokenUkg = async (): Promise<string> => {
     _expirationukg = Date.now() + response.data.expires_in * 1000; // 1000ms * 60s * 60m * 8h = 8 hours
     logger.error('returning token');
     return _tokenukg;
+};
+const axiosInstanceTS = axios.create(ts4300.axios);
+let _tokents: string;
+let _expirationts: number;
+
+export const getTokenTS = async (): Promise<string> => {
+    if (_tokents && _expirationts > Date.now() + 300000) {
+        return _tokents;
+    }
+
+    const credentials = {
+        // apiKey: paycargo_dev.apikey,
+        // apiSecret: paycargo_dev.apisecret
+        username: ts4300.username,
+        password: ts4300.password        
+    };
+    logger.debug('Attempting to Get TS4300 New Token');
+    const response = await axiosInstance.post('/login/developer', credentials);
+    _tokents = response.data.token;
+    _expirationts = Date.now() + 1000 * 60 * 60 * 8; // 1000ms * 60s * 60m * 8h = 8 hours
+    return _tokents;
 };

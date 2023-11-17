@@ -1,0 +1,107 @@
+---
+name: t4300inv
+rpgIncName: t4300inv_h
+codeblocks:
+  typescript:
+    - import eradaniConnect from "@eradani-inc/eradani-connect";
+    - const { dataTypes } = eradaniConnect;
+datastructures:
+  SlotsDS:
+    subfields:
+      PhysicalNumber:
+        type: Packed
+        length: 3
+        default: 0
+      LogicalNumber:
+        type: Character
+        length: 4
+        default: ""
+      Module:
+        type: Packed
+        length: 1
+        default: 0
+      LogicalLibrary:
+        type: Packed
+        length: 1
+        default: 0
+      Mailslot:
+        type: Boolean
+        default: false
+      Cartridge:
+        type: Boolean
+        default: true
+      Barcode:
+        type: Character
+        length: 8
+        default: ""
+      CartridgeType:
+        type: Character
+        length: 10
+        default: ""
+      CartridgeSubType:
+        type: Packed
+        length: 1
+        default: 0
+      CartridgeGeneration:
+        type: Packed
+        length: 1
+        default: 0
+      CartridgeEncrypted:
+        type: Boolean
+        default: false
+      Access:
+        type: Boolean
+        default: true
+      Blocked:
+        type: Boolean
+        default: false
+  DrivesDS:
+    subfields:
+      PhysicalNumber:
+        type: Packed
+        length: 2
+        default: 0
+      LogicalNumber:
+        type: Packed
+        length: 1
+        default: 0
+      Module:
+        type: Packed
+        length: 1
+        default: 0
+      LogicalLibrary:
+        type: Packed
+        length: 1
+        default: 0
+      Barcode:
+        type: Character
+        length: 8
+        default: ""
+      Vendor:
+        type: Character
+        length: 3
+        default: ""
+      Product:
+        type: Character
+        length: 11
+        default: ""
+      FWRevision:
+        type: Character
+        length: 4
+        default: ""
+      SerialNumber:
+        type: Character
+        length: 10
+        default: ""
+formats:
+  TapeInvRes:
+    recordType: result
+    subfields:
+      Slots:
+        type: DataStruct
+        dsName: SlotsDS
+        dim: 40
+      Drives:
+        type: DataStruct
+        dsName: DrivesDS
+        dim: 2
