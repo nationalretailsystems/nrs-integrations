@@ -1,0 +1,14 @@
+---
+name: ukgdelof
+rpgIncName: ukgdelof_h
+formats:
+  DelSOReq:
+    recordType: request
+    subfields:
+      id:
+        type: Packed
+        length: 5
+      start_date:
+        type: Date
+      end_date:
+        type: Date

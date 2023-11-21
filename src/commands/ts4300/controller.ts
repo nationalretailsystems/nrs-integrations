@@ -3,7 +3,6 @@ import axios from 'axios';
 import config from 'config';
 import createLogger from 'src/services/logger';
 import * as converter from 'src/interfaces/t4300inv';
-import { DateTime } from 'luxon';
 import { getTokenTS } from 'src/services/get-token';
 
 const logger = createLogger('commands/t4300');
@@ -11,7 +10,7 @@ const { ts4300 } = config;
 const axiosInstance = axios.create(ts4300.axios);
 
 export const getCartInventory: ECCHandlerFunction = async (reqkey, data, ecc) => {
-    logger.debug(`Received getLatestSessions request`, { reqkey, data });
+    logger.debug(`Received getCartInventory request`, { reqkey, data });
     // Get parameters from incoming data buffer
     // const reqFields = converter.convertHyRequestToObject(data);
     // let reqDate = reqFields.sincedate.toISOString().split('T')[0];
@@ -21,7 +20,7 @@ export const getCartInventory: ECCHandlerFunction = async (reqkey, data, ecc) =>
 
     try {
         const token = await getTokenTS();
-        result = await axiosInstance.post('/v1/login', null, {
+        result = await axiosInstance.get('/v1/library/inventory', {
             headers: {
                 Authorization: token
             }
@@ -43,5 +42,5 @@ export const getCartInventory: ECCHandlerFunction = async (reqkey, data, ecc) =>
     let responseData = result.data;
     logger.debug('ECC0000', 'Success', nextReqKey);
     nextReqKey = await ecc.sendEccResult('ECC0000', 'Success', nextReqKey);
-    return ecc.sendObjectToCaller(result, converter.convertObjectToTapeInvRes, nextReqKey);
+    return ecc.sendObjectToCaller(responseData, converter.convertObjectToTapeInvRes, nextReqKey);
 };
