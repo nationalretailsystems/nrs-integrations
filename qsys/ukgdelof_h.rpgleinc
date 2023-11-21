@@ -7,12 +7,12 @@
 
       ************************************
       * DelSOReq data structure
-      * Record length: 27
+      * Record length: 28
       ************************************
-     DDelSOReqLen      C                   27
+     DDelSOReqLen      C                   28
      DDelSOReq         DS                  Qualified
      D                                     Template
-     Did                              5P 0
+     Did                              6P 0
      Dstart_date                       D
      Dend_date                         D
 
@@ -22,4 +22,4 @@
      DDelSOReqToBuf    PR
      DDataStruct                           LikeDS(DelSOReq)
      D                                     Const
-     DBuffer                         27A
+     DBuffer                         28A
