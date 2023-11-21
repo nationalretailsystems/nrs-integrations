@@ -26,14 +26,14 @@
      DDelSOReqToBuf    PI
      DDataStruct                           LikeDS(DelSOReq)
      D                                     Const
-     DBuffer                         27A
+     DBuffer                         28A
 
       * Initialize to beginning of buffer
        BufPtr = %addr(Buffer);
 
       * Write fields from DS to buffer
-       %subst(CharBuf:1:7) = %char(DataStruct.id);
-       BufPtr += 7;
+       %subst(CharBuf:1:8) = %char(DataStruct.id);
+       BufPtr += 8;
        %subst(CharBuf:1:10) = %char(DataStruct.start_date:*ISO);
        BufPtr += 10;
        %subst(CharBuf:1:10) = %char(DataStruct.end_date:*ISO);

@@ -403,15 +403,17 @@ export const delSignoff: ECCHandlerFunction = async function (reqkey, datax, ecc
     let result;
     let response;
     let nextReqKey = reqkey;
+    let startdate = reqFields.start_date.toISOString().substring(0,10);
+    let enddate = reqFields.end_date.toISOString().substring(0,10); 
     // const jsonData = JSON.stringify(reqFields.id);
     try {
         logger.error('Requesting token');
         const token = await getTokenUkg();
-        result = await axiosInstance.delete('/v1/timekeeping/timecard', {
+        result = await axiosInstance.delete('/v1/timekeeping/timecard_signoffs', {
             /* eslint-disable */
             params:{
-                start_date: reqFields.start_date,
-                end_date: reqFields.end_date
+                start_date: startdate,
+                end_date: enddate
             },
             /* eslint-enable */
             headers: {
@@ -421,7 +423,7 @@ export const delSignoff: ECCHandlerFunction = async function (reqkey, datax, ecc
                 accept: 'application/json'
             },
             data: {
-                in: reqFields.id
+                id: reqFields.id
             }
         });
     } catch (err) {
@@ -443,8 +445,9 @@ export const delSignoff: ECCHandlerFunction = async function (reqkey, datax, ecc
     // let responseData = sanitizeValues(result.data[0][1], safeValuesACH);
     // let responseData = result.data[0][1];
     // let responseData = sanitizeValues(result.data, safeValues);
-    nextReqKey = await ecc.sendEccResult('ECC0000', 'Success', nextReqKey);
-    return response;
+    response = result.status;
+    nextReqKey = await ecc.sendEccResult('ECC0000', response.toString(), nextReqKey);
     logger.error('Call puthos Success');
     logger.error(nextReqKey);
+    return response;
 };

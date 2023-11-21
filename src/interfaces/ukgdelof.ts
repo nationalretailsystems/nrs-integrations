@@ -18,7 +18,7 @@ const {
  */
 export interface DelSOReq {
     /**
-     * @size 5 digits
+     * @size 6 digits
      * @precision 0 decimals
      */
     id: number,
@@ -39,8 +39,8 @@ export function convertDelSOReqToObject(dataIn: string): DelSOReq {
     };
   let pos: number = 0;
 
-  dataOut.id = Number(dataIn.substring(pos, pos + 7).trimEnd());
-  pos += 7;
+  dataOut.id = Number(dataIn.substring(pos, pos + 8).trimEnd());
+  pos += 8;
   dataOut.start_date = fromIbmiDate(dataIn.substring(pos, pos + 10).trimEnd());
   pos += 10;
   dataOut.end_date = fromIbmiDate(dataIn.substring(pos, pos + 10).trimEnd());
