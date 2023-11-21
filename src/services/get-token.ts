@@ -3,7 +3,7 @@ const { paycargo, ukg, ts4300 } = config;
 import axios from 'axios';
 import createLogger from 'src/services/logger';
 const logger = createLogger('commands/ukgtoken');
-
+process.env['NODE_TLS_REJECT_UNAUTHORIZED'] = '0';
 // const axiosInstance = axios.create(paycargo_dev.axios);
 const axiosInstance = axios.create(paycargo.axios);
 
@@ -64,6 +64,8 @@ export const getTokenUkg = async (): Promise<string> => {
     logger.error('returning token');
     return _tokenukg;
 };
+// const https = require('https');
+// const httpsAgent = new https.Agent({ rejectUnauthorized: false});
 const axiosInstanceTS = axios.create(ts4300.axios);
 let _tokents: string;
 let _expirationts: number;
@@ -80,8 +82,13 @@ export const getTokenTS = async (): Promise<string> => {
         password: ts4300.password        
     };
     logger.debug('Attempting to Get TS4300 New Token');
-    const response = await axiosInstance.post('/login/developer', credentials);
+    try {
+    const response = await axiosInstanceTS.post('/v1/login', credentials);
     _tokents = response.data.token;
     _expirationts = Date.now() + 1000 * 60 * 60 * 8; // 1000ms * 60s * 60m * 8h = 8 hours
     return _tokents;
+    } catch(err) {
+        logger.error(err);
+        return err;
+    }
 };

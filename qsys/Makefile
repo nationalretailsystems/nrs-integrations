@@ -71,7 +71,8 @@ GENMODS = icndbapi \
 		  mpgeteq \
 		  upsval \
 		  mpgetwc2 \
-		  t4300inv
+		  t4300inv \
+		  ukgdelof
 
 GENHDRS = icndbapi_h \
           lblapi_h \
@@ -115,7 +116,8 @@ GENHDRS = icndbapi_h \
 		  mpgeteqa_h \
 		  upsval_h \
 		  mpgetwc2_h \
-		  t4300inv_h
+		  t4300inv_h \
+		  ukfdelof_h
 
 SRVPGMS = ecctmpgen
 
@@ -619,6 +621,12 @@ $(libdir)/qrpglesrc.file/t4300inv.mbr $(libdir)/qrpglesrc.file/t4300inv_h.mbr ..
 	cp t4300inv.ts ../src/interfaces/t4300inv.ts
 	system "CPYFRMSTMF FROMSTMF('t4300inv.rpgle') TOMBR('$(libdir)/qrpglesrc.file/t4300inv.mbr') MBROPT(*REPLACE)"
 	system "CPYFRMSTMF FROMSTMF('t4300inv_h.rpgleinc') TOMBR('$(libdir)/qrpglesrc.file/t4300inv_h.mbr') MBROPT(*REPLACE)"	
+
+$(libdir)/qrpglesrc.file/ukgdelof.mbr $(libdir)/qrpglesrc.file/ukgdelof_h.mbr ../src/interfaces/ukgdelof.ts: ukgdelof.yaml
+	npx ec-generate -f $<
+	cp ukgdelof.ts ../src/interfaces/ukgdelof.ts
+	system "CPYFRMSTMF FROMSTMF('ukgdelof.rpgle') TOMBR('$(libdir)/qrpglesrc.file/ukgdelof.mbr') MBROPT(*REPLACE)"
+	system "CPYFRMSTMF FROMSTMF('ukgdelof_h.rpgleinc') TOMBR('$(libdir)/qrpglesrc.file/ukgdelof_h.mbr') MBROPT(*REPLACE)"	
 
 .PHONY: library
 library:
