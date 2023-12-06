@@ -3,6 +3,7 @@ const { paycargo, ukg, ts4300 } = config;
 import axios from 'axios';
 import createLogger from 'src/services/logger';
 const logger = createLogger('commands/ukgtoken');
+// FIXME: This is a temporary workaround to allow self-signed certificates
 process.env['NODE_TLS_REJECT_UNAUTHORIZED'] = '0';
 // const axiosInstance = axios.create(paycargo_dev.axios);
 const axiosInstance = axios.create(paycargo.axios);
@@ -71,9 +72,9 @@ let _tokents: string;
 let _expirationts: number;
 
 export const getTokenTS = async (): Promise<string> => {
-    if (_tokents && _expirationts > Date.now() + 300000) {
-        return _tokents;
-    }
+    // if (_tokents && _expirationts > Date.now() + 300000) {
+    //     return _tokents;
+    // }
 
     const credentials = {
         // apiKey: paycargo_dev.apikey,
