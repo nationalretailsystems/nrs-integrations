@@ -1,0 +1,38 @@
+---
+name: t4300mov
+rpgIncName: t4300mov_h
+codeblocks:
+  typescript:
+    - import eradaniConnect from "@eradani-inc/eradani-connect";
+    - const { dataTypes } = eradaniConnect;
+formats:
+  TapeMovReq:
+    recordType: request
+    subfields:
+      SrcType:
+        rpgName: srctype
+        type: Character
+        length: 5
+      SrcAddress:
+        rpgName: srcaddr
+        type: Character
+        length: 4
+      DestType:
+        rpgName: desttype
+        type: Character
+        length: 5
+      DestAddress:
+        rpgName: destaddr
+        type: Character
+        length: 4
+  TapeMovRes:
+    recordType: response        
+    subfields:
+      Code:
+        rpgName: code
+        type: Character
+        length: 100
+      Message:
+        rpgName: message
+        type: Character
+        length: 100  

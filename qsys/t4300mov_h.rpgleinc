@@ -1,0 +1,43 @@
+      ************************************
+      * Module: t4300mov
+      * Generated RPG data structures
+      * and prototypes
+      * Do not modify
+      ************************************
+
+      ************************************
+      * TapeMovReq data structure
+      * Record length: 18
+      ************************************
+     DTapeMovReqLen    C                   18
+     DTapeMovReq       DS                  Qualified
+     D                                     Template
+     Dsrctype                         5A
+     Dsrcaddr                         4A
+     Ddesttype                        5A
+     Ddestaddr                        4A
+
+      ************************************
+      * Convert TapeMovReq to buffer
+      ************************************
+     DTapeMovReqToBuf  PR
+     DDataStruct                           LikeDS(TapeMovReq)
+     D                                     Const
+     DBuffer                         18A
+
+      ************************************
+      * TapeMovRes data structure
+      * Record length: 200
+      ************************************
+     DTapeMovResLen    C                   200
+     DTapeMovRes       DS                  Qualified
+     D                                     Template
+     Dcode                          100A
+     Dmessage                       100A
+
+      ************************************
+      * Convert buffer to TapeMovRes
+      ************************************
+     DBufToTapeMovRes  PR
+     DBuffer                        200A
+     DDataStruct                           LikeDS(TapeMovRes)
