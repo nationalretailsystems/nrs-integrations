@@ -27,11 +27,12 @@
 
       ************************************
       * TapeMovRes data structure
-      * Record length: 200
+      * Record length: 203
       ************************************
-     DTapeMovResLen    C                   200
+     DTapeMovResLen    C                   203
      DTapeMovRes       DS                  Qualified
      D                                     Template
+     Dstatus                          3A
      Dcode                          100A
      Dmessage                       100A
 
@@ -39,5 +40,5 @@
       * Convert buffer to TapeMovRes
       ************************************
      DBufToTapeMovRes  PR
-     DBuffer                        200A
+     DBuffer                        203A
      DDataStruct                           LikeDS(TapeMovRes)
