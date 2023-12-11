@@ -28,11 +28,18 @@ formats:
   TapeMovRes:
     recordType: response        
     subfields:
+      status:
+        rpgName: status
+        type: Character
+        length: 3
+        default: ""
       Code:
         rpgName: code
         type: Character
         length: 100
+        default: ""
       Message:
         rpgName: message
         type: Character
-        length: 100  
+        length: 100
+        default: ""

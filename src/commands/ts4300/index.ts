@@ -5,5 +5,5 @@ import * as postcartmove from 'src/interfaces/t4300mov';
 
 export default function registerTS4300(router: ECCInternalRouter) {
     router.use('getCartInventory', getcartinventory, getCartInventory);
-    router.use('postCarttMove', postcartmove, postCartMove);
+    router.use('postCartMove', postcartmove, postCartMove);
 }

@@ -51,13 +51,15 @@
      PBufToTapeMovRes  B                   Export
 
      DBufToTapeMovRes  PI
-     DBuffer                        200A
+     DBuffer                        203A
      DDataStruct                           LikeDS(TapeMovRes)
 
       * Initialize to begining of buffer
        BufPtr = %addr(Buffer);
 
       * Read fields from buffer into DS
+       DataStruct.status = %subst(CharBuf:1:3);
+       BufPtr += 3;
        DataStruct.code = %subst(CharBuf:1:100);
        BufPtr += 100;
        DataStruct.message = %subst(CharBuf:1:100);

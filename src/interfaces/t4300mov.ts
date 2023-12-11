@@ -64,11 +64,18 @@ export function convertTapeMovReqToObject(dataIn: string): TapeMovReq {
  */
 export interface TapeMovRes {
     /**
+     * @size 3 characters
+     * @default ``
+     */
+    status: string,
+    /**
      * @size 100 characters
+     * @default ``
      */
     Code: string,
     /**
      * @size 100 characters
+     * @default ``
      */
     Message: string
 }
@@ -79,8 +86,9 @@ export interface TapeMovRes {
 export function convertObjectToTapeMovRes(dataIn: TapeMovRes): string {
   let dataOut: string = "";
 
-  dataOut += dataIn?.Code?.substring(0, 100)?.padEnd(100) ?? missingInput(`dataIn.Code`, "char", dataIn?.Code);
-  dataOut += dataIn?.Message?.substring(0, 100)?.padEnd(100) ?? missingInput(`dataIn.Message`, "char", dataIn?.Message);
+  dataOut += dataIn?.status?.substring(0, 3)?.padEnd(3) ?? "".substring(0, 3).padEnd(3);
+  dataOut += dataIn?.Code?.substring(0, 100)?.padEnd(100) ?? "".substring(0, 100).padEnd(100);
+  dataOut += dataIn?.Message?.substring(0, 100)?.padEnd(100) ?? "".substring(0, 100).padEnd(100);
 
   return dataOut;
 }
