@@ -73,7 +73,8 @@ GENMODS = icndbapi \
 		  mpgetwc2 \
 		  t4300inv \
 		  ukgdelof \
-		  t4300mov
+		  t4300mov \
+		  mpgetwo
 
 GENHDRS = icndbapi_h \
           lblapi_h \
@@ -119,7 +120,8 @@ GENHDRS = icndbapi_h \
 		  mpgetwc2_h \
 		  t4300inv_h \
 		  ukfdelof_h \
-		  t4300mov_h
+		  t4300mov_h \
+		  mpgetwo_h
 
 SRVPGMS = ecctmpgen
 
@@ -635,6 +637,13 @@ $(libdir)/qrpglesrc.file/t4300mov.mbr $(libdir)/qrpglesrc.file/t4300mov_h.mbr ..
 	cp t4300mov.ts ../src/interfaces/t4300mov.ts
 	system "CPYFRMSTMF FROMSTMF('t4300mov.rpgle') TOMBR('$(libdir)/qrpglesrc.file/t4300mov.mbr') MBROPT(*REPLACE)"
 	system "CPYFRMSTMF FROMSTMF('t4300mov_h.rpgleinc') TOMBR('$(libdir)/qrpglesrc.file/t4300mov_h.mbr') MBROPT(*REPLACE)"	
+
+$(libdir)/qrpglesrc.file/mpgetwo.mbr $(libdir)/qrpglesrc.file/mpgetwo_h.mbr ../src/interfaces/mpgetwo.ts: mpgetwo.yaml
+	#npx ec-generate -f $<
+	#cp mpgetwo.ts ../src/interfaces/mpgetwo.ts
+	system "CPYFRMSTMF FROMSTMF('mpgetwo.rpgle') TOMBR('$(libdir)/qrpglesrc.file/mpgetwo.mbr') MBROPT(*REPLACE)"
+	system "CPYFRMSTMF FROMSTMF('mpgetwo_h.rpgleinc') TOMBR('$(libdir)/qrpglesrc.file/mpgetwo_h.mbr') MBROPT(*REPLACE)"
+	
 
 .PHONY: library
 library:

@@ -1,0 +1,156 @@
+---
+name: mpgetwo
+rpgIncName: mpgetwo_h
+codeblocks:
+  typescript:
+    - import eradaniConnect from "@eradani-inc/eradani-connect";
+    - const { dataTypes } = eradaniConnect;
+datastructures:
+  customFldsDs:
+    qualified: true
+    subfields:
+      key:
+        rpgName: key
+        type: Integer
+        length: 10
+      customFieldKey:
+        rpgName: custfldkey
+        type: Integer
+        length: 10      
+      fieldName:
+        rpgName: fldname
+        type: Character
+        length: 24
+      value:
+        rpgName: value
+        type: Character
+        length: 50
+formats:
+  ResGetWo:
+    recordType: response
+    subfields:
+      workOrderKey:
+        rpgName: wkordkey
+        type: Integer
+        length: 10
+      workOrderNumber:
+        rpgName: wkordnum
+        type: Integer
+        length: 10      
+      entityName:
+        rpgName: entname
+        type: Character
+        length: 50
+      assetId:
+        rpgName: assetid
+        type: Character
+        length: 24      
+      workTypeId:
+        rpgName: wktypeid
+        type: Character
+        length: 24      
+      purpose:
+        rpgName: purpose
+        type: Character
+        length: 24      
+      failureCode:
+        rpgName: failcode
+        type: Character
+        length: 24      
+      priorityId:
+        rpgName: ptyid
+        type: Character
+        length: 24      
+      assigned:
+        rpgName: assigned
+        type: Character
+        length: 50      
+      budgetId:
+        rpgName: budgetid
+        type: Character
+        length: 24      
+      statusId:
+        rpgName: statusid
+        type: Character
+        length: 24      
+      dateCreated:
+        rpgName: dtcreate
+        type: Date
+      dateCompleted:
+        rpgName: dtcomplete
+        type: Date
+      dateDue:
+        rpgName: dtdue
+        type: Date
+      scheduledDate:
+        rpgName: dtsched
+        type: Date
+      estimatedCompletion:
+        rpgName: dtestcomp
+        type: Date
+      customer:
+        rpgName: customer
+        type: Character
+        length: 24      
+      customerKey:
+        rpgName: custkey
+        type: Integer
+        length: 10
+      requestId:
+        rpgName: requestid
+        type: Integer
+        length: 10      
+      inspectionId:
+        rpgName: inspectid
+        type: Integer
+        length: 10      
+      invoiceNumber:
+        rpgName: invnumb
+        type: Integer
+        length: 10      
+      workOrderActive:
+        rpgName: wrkordact
+        type: Boolean
+      partsCost:
+        rpgName: partscost
+        type: Packed
+        length: 11
+        precision: 2
+      laborCost:
+        rpgName: laborcost
+        type: Packed
+        length: 11
+        precision: 2      
+      otherCost:
+        rpgName: othercost
+        type: Packed
+        length: 11
+        precision: 2      
+      totalCosts:
+        rpgName: totalcosts
+        type: Packed
+        length: 11
+        precision: 2      
+      scheduleId:
+        rpgName: schedid
+        type: Character
+        length: 24
+      vendorId:
+        rpgName: vendorid
+        type: Character
+        length: 24
+      createBy:
+        rpgName: createby
+        type: Character
+        length: 50
+      customFields:
+        type: DataStruct
+        dsName: customFldsDs
+        dim: 50             
+  ReqGetWo:
+    recordType: request
+    subfields:
+      workOrder:
+        rpgName: workorder
+        type: Packed
+        length: 10

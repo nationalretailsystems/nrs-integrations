@@ -1,0 +1,79 @@
+      ************************************
+      * Module: mpgetwo
+      * Generated RPG data structures
+      * and prototypes
+      * Do not modify
+      ************************************
+
+      ************************************
+      * customFldsDs data structure
+      ************************************
+     DcustomFldsDs     DS                  Qualified
+     D                                     Template
+     Dkey                            10I 0
+     Dcustfldkey                     10I 0
+     Dfldname                        24A
+     Dvalue                          50A
+
+      ************************************
+      * ReqGetWo data structure
+      * Record length: 12
+      ************************************
+     DReqGetWoLen      C                   12
+     DReqGetWo         DS                  Qualified
+     D                                     Template
+     Dworkorder                      10P 0
+
+      ************************************
+      * Convert ReqGetWo to buffer
+      ************************************
+     DReqGetWoToBuf    PR
+     DDataStruct                           LikeDS(ReqGetWo)
+     D                                     Const
+     DBuffer                         12A
+
+      ************************************
+      * ResGetWo data structure
+      * Record length: 5359
+      ************************************
+     DResGetWoLen      C                   5359
+     DResGetWo         DS                  Qualified
+     D                                     Template
+     Dwkordkey                       10I 0
+     Dwkordnum                       10I 0
+     Dentname                        50A
+     Dassetid                        24A
+     Dwktypeid                       24A
+     Dpurpose                        24A
+     Dfailcode                       24A
+     Dptyid                          24A
+     Dassigned                       50A
+     Dbudgetid                       24A
+     Dstatusid                       24A
+     Ddtcreate                         D
+     Ddtcomplete                       D
+     Ddtdue                            D
+     Ddtsched                          D
+     Ddtestcomp                        D
+     Dcustomer                       24A
+     Dcustkey                        10I 0
+     Drequestid                      10I 0
+     Dinspectid                      10I 0
+     Dinvnumb                        10I 0
+     Dwrkordact                        N
+     Dpartscost                      11P 2
+     Dlaborcost                      11P 2
+     Dothercost                      11P 2
+     Dtotalcosts                     11P 2
+     Dschedid                        24A
+     Dvendorid                       24A
+     Dcreateby                       50A
+     DcustomFields                         LikeDS(customFldsDs)
+     D                                     Dim(50)
+
+      ************************************
+      * Convert buffer to ResGetWo
+      ************************************
+     DBufToResGetWo    PR
+     DBuffer                       5359A
+     DDataStruct                           LikeDS(ResGetWo)
