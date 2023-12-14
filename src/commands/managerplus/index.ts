@@ -10,7 +10,8 @@ import {
     getSvcItem,
     getEmploy,
     getAsset,
-    getWOChanges2
+    getWOChanges2,
+    getWO
 } from './controller';
 import * as managerplus from 'src/interfaces/mpgeteqip';
 import * as managerplus2 from 'src/interfaces/mpgeteq2';
@@ -23,6 +24,7 @@ import * as managerplusvndr from 'src/interfaces/mpvendor';
 import * as managerplussvcitm from 'src/interfaces/mpsvcitm';
 import * as managerplusempl from 'src/interfaces/mpemploy';
 import * as managerpluswc2 from 'src/interfaces/mpgetwc2';
+import * as managerpluswo from 'src/interfaces/mpgetwo';
 
 
 export default function registerManagerplus(router: ECCInternalRouter) {
@@ -37,4 +39,5 @@ export default function registerManagerplus(router: ECCInternalRouter) {
     router.use('getSvcItem', managerplussvcitm, getSvcItem);
     router.use('getEmploy', managerplusempl, getEmploy);
     router.use('getWOChanges2', managerpluswc2, getWOChanges2);
+    router.use('getWO', managerpluswo, getWO);
 }
