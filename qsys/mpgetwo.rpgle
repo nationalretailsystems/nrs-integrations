@@ -45,7 +45,7 @@
      PBufToResGetWo    B                   Export
 
      DBufToResGetWo    PI
-     DBuffer                       5359A
+     DBuffer                       5404A
      DDataStruct                           LikeDS(ResGetWo)
 
       * Initialize to begining of buffer
@@ -74,16 +74,16 @@
        BufPtr += 24;
        DataStruct.statusid = %subst(CharBuf:1:24);
        BufPtr += 24;
-       DataStruct.dtcreate = %date(%subst(CharBuf:1:10):*ISO);
-       BufPtr += 10;
-       DataStruct.dtcomplete = %date(%subst(CharBuf:1:10):*ISO);
-       BufPtr += 10;
-       DataStruct.dtdue = %date(%subst(CharBuf:1:10):*ISO);
-       BufPtr += 10;
-       DataStruct.dtsched = %date(%subst(CharBuf:1:10):*ISO);
-       BufPtr += 10;
-       DataStruct.dtestcomp = %date(%subst(CharBuf:1:10):*ISO);
-       BufPtr += 10;
+       DataStruct.dtcreate = %subst(CharBuf:1:19);
+       BufPtr += 19;
+       DataStruct.dtcomplete = %subst(CharBuf:1:19);
+       BufPtr += 19;
+       DataStruct.dtdue = %subst(CharBuf:1:19);
+       BufPtr += 19;
+       DataStruct.dtsched = %subst(CharBuf:1:19);
+       BufPtr += 19;
+       DataStruct.dtestcomp = %subst(CharBuf:1:19);
+       BufPtr += 19;
        DataStruct.customer = %subst(CharBuf:1:24);
        BufPtr += 24;
        DataStruct.custkey = %int(%subst(CharBuf:1:11));
