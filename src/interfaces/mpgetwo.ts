@@ -22,18 +22,22 @@ const { dataTypes } = eradaniConnect;
 export interface customFldsDs {
     /**
      * @size 10 digits
+     * @default `0`
      */
     key: number,
     /**
      * @size 10 digits
+     * @default `0`
      */
     customFieldKey: number,
     /**
      * @size 24 characters
+     * @default ``
      */
     fieldName: string,
     /**
      * @size 50 characters
+     * @default ``
      */
     value: string
 }
@@ -70,116 +74,150 @@ export function convertReqGetWoToObject(dataIn: string): ReqGetWo {
 export interface ResGetWo {
     /**
      * @size 10 digits
+     * @default `0`
      */
     workOrderKey: number,
     /**
      * @size 10 digits
+     * @default `0`
      */
     workOrderNumber: number,
     /**
      * @size 50 characters
+     * @default ``
      */
     entityName: string,
     /**
      * @size 24 characters
+     * @default ``
      */
     assetId: string,
     /**
      * @size 24 characters
+     * @default ``
      */
     workTypeId: string,
     /**
      * @size 24 characters
+     * @default ``
      */
     purpose: string,
     /**
      * @size 24 characters
+     * @default ``
      */
     failureCode: string,
     /**
      * @size 24 characters
+     * @default ``
      */
     priorityId: string,
     /**
      * @size 50 characters
+     * @default ``
      */
     assigned: string,
     /**
      * @size 24 characters
+     * @default ``
      */
     budgetId: string,
     /**
      * @size 24 characters
+     * @default ``
      */
     statusId: string,
     /**
+     * @size 19 characters
+     * @default ``
      */
-    dateCreated: Date,
+    dateCreated: string,
     /**
+     * @size 19 characters
+     * @default ``
      */
-    dateCompleted: Date,
+    dateCompleted: string,
     /**
+     * @size 19 characters
+     * @default ``
      */
-    dateDue: Date,
+    dateDue: string,
     /**
+     * @size 19 characters
+     * @default ``
      */
-    scheduledDate: Date,
+    scheduledDate: string,
     /**
+     * @size 19 characters
+     * @default ``
      */
-    estimatedCompletion: Date,
+    estimatedCompletion: string,
     /**
      * @size 24 characters
+     * @default ``
      */
     customer: string,
     /**
      * @size 10 digits
+     * @default `0`
      */
     customerKey: number,
     /**
      * @size 10 digits
+     * @default `0`
      */
     requestId: number,
     /**
      * @size 10 digits
+     * @default `0`
      */
     inspectionId: number,
     /**
      * @size 10 digits
+     * @default `0`
      */
     invoiceNumber: number,
     /**
+     * @default `true`
      */
     workOrderActive: boolean,
     /**
      * @size 11 digits
      * @precision 2 decimals
+     * @default `0`
      */
     partsCost: number,
     /**
      * @size 11 digits
      * @precision 2 decimals
+     * @default `0`
      */
     laborCost: number,
     /**
      * @size 11 digits
      * @precision 2 decimals
+     * @default `0`
      */
     otherCost: number,
     /**
      * @size 11 digits
      * @precision 2 decimals
+     * @default `0`
      */
     totalCosts: number,
     /**
      * @size 24 characters
+     * @default ``
      */
     scheduleId: string,
     /**
      * @size 24 characters
+     * @default ``
      */
     vendorId: string,
     /**
      * @size 50 characters
+     * @default ``
      */
     createBy: string,
     /**
@@ -193,40 +231,40 @@ export interface ResGetWo {
 export function convertObjectToResGetWo(dataIn: ResGetWo): string {
   let dataOut: string = "";
 
-  dataOut += dataIn?.workOrderKey?.toFixed()?.substring(0, 11)?.padEnd(11) ?? missingInput(`dataIn.workOrderKey`, "integer", dataIn?.workOrderKey);
-  dataOut += dataIn?.workOrderNumber?.toFixed()?.substring(0, 11)?.padEnd(11) ?? missingInput(`dataIn.workOrderNumber`, "integer", dataIn?.workOrderNumber);
-  dataOut += dataIn?.entityName?.substring(0, 50)?.padEnd(50) ?? missingInput(`dataIn.entityName`, "char", dataIn?.entityName);
-  dataOut += dataIn?.assetId?.substring(0, 24)?.padEnd(24) ?? missingInput(`dataIn.assetId`, "char", dataIn?.assetId);
-  dataOut += dataIn?.workTypeId?.substring(0, 24)?.padEnd(24) ?? missingInput(`dataIn.workTypeId`, "char", dataIn?.workTypeId);
-  dataOut += dataIn?.purpose?.substring(0, 24)?.padEnd(24) ?? missingInput(`dataIn.purpose`, "char", dataIn?.purpose);
-  dataOut += dataIn?.failureCode?.substring(0, 24)?.padEnd(24) ?? missingInput(`dataIn.failureCode`, "char", dataIn?.failureCode);
-  dataOut += dataIn?.priorityId?.substring(0, 24)?.padEnd(24) ?? missingInput(`dataIn.priorityId`, "char", dataIn?.priorityId);
-  dataOut += dataIn?.assigned?.substring(0, 50)?.padEnd(50) ?? missingInput(`dataIn.assigned`, "char", dataIn?.assigned);
-  dataOut += dataIn?.budgetId?.substring(0, 24)?.padEnd(24) ?? missingInput(`dataIn.budgetId`, "char", dataIn?.budgetId);
-  dataOut += dataIn?.statusId?.substring(0, 24)?.padEnd(24) ?? missingInput(`dataIn.statusId`, "char", dataIn?.statusId);
-  dataOut += (dataIn?.dateCreated !== undefined ? toIbmiDate(dataIn?.dateCreated) : missingInput(`dataIn.dateCreated`, "date", dataIn?.dateCreated));
-  dataOut += (dataIn?.dateCompleted !== undefined ? toIbmiDate(dataIn?.dateCompleted) : missingInput(`dataIn.dateCompleted`, "date", dataIn?.dateCompleted));
-  dataOut += (dataIn?.dateDue !== undefined ? toIbmiDate(dataIn?.dateDue) : missingInput(`dataIn.dateDue`, "date", dataIn?.dateDue));
-  dataOut += (dataIn?.scheduledDate !== undefined ? toIbmiDate(dataIn?.scheduledDate) : missingInput(`dataIn.scheduledDate`, "date", dataIn?.scheduledDate));
-  dataOut += (dataIn?.estimatedCompletion !== undefined ? toIbmiDate(dataIn?.estimatedCompletion) : missingInput(`dataIn.estimatedCompletion`, "date", dataIn?.estimatedCompletion));
-  dataOut += dataIn?.customer?.substring(0, 24)?.padEnd(24) ?? missingInput(`dataIn.customer`, "char", dataIn?.customer);
-  dataOut += dataIn?.customerKey?.toFixed()?.substring(0, 11)?.padEnd(11) ?? missingInput(`dataIn.customerKey`, "integer", dataIn?.customerKey);
-  dataOut += dataIn?.requestId?.toFixed()?.substring(0, 11)?.padEnd(11) ?? missingInput(`dataIn.requestId`, "integer", dataIn?.requestId);
-  dataOut += dataIn?.inspectionId?.toFixed()?.substring(0, 11)?.padEnd(11) ?? missingInput(`dataIn.inspectionId`, "integer", dataIn?.inspectionId);
-  dataOut += dataIn?.invoiceNumber?.toFixed()?.substring(0, 11)?.padEnd(11) ?? missingInput(`dataIn.invoiceNumber`, "integer", dataIn?.invoiceNumber);
-  dataOut += (dataIn?.workOrderActive !== undefined ? (dataIn?.workOrderActive ? "1" : "0") : missingInput(`dataIn.workOrderActive`, "bool", dataIn?.workOrderActive));
-  dataOut += dataIn?.partsCost?.toFixed(2)?.substring(0, 13)?.padEnd(13) ?? missingInput(`dataIn.partsCost`, "packed", dataIn?.partsCost);
-  dataOut += dataIn?.laborCost?.toFixed(2)?.substring(0, 13)?.padEnd(13) ?? missingInput(`dataIn.laborCost`, "packed", dataIn?.laborCost);
-  dataOut += dataIn?.otherCost?.toFixed(2)?.substring(0, 13)?.padEnd(13) ?? missingInput(`dataIn.otherCost`, "packed", dataIn?.otherCost);
-  dataOut += dataIn?.totalCosts?.toFixed(2)?.substring(0, 13)?.padEnd(13) ?? missingInput(`dataIn.totalCosts`, "packed", dataIn?.totalCosts);
-  dataOut += dataIn?.scheduleId?.substring(0, 24)?.padEnd(24) ?? missingInput(`dataIn.scheduleId`, "char", dataIn?.scheduleId);
-  dataOut += dataIn?.vendorId?.substring(0, 24)?.padEnd(24) ?? missingInput(`dataIn.vendorId`, "char", dataIn?.vendorId);
-  dataOut += dataIn?.createBy?.substring(0, 50)?.padEnd(50) ?? missingInput(`dataIn.createBy`, "char", dataIn?.createBy);
+  dataOut += dataIn?.workOrderKey?.toFixed()?.substring(0, 11)?.padEnd(11) ?? "0".substring(0, 11).padEnd(11);
+  dataOut += dataIn?.workOrderNumber?.toFixed()?.substring(0, 11)?.padEnd(11) ?? "0".substring(0, 11).padEnd(11);
+  dataOut += dataIn?.entityName?.substring(0, 50)?.padEnd(50) ?? "".substring(0, 50).padEnd(50);
+  dataOut += dataIn?.assetId?.substring(0, 24)?.padEnd(24) ?? "".substring(0, 24).padEnd(24);
+  dataOut += dataIn?.workTypeId?.substring(0, 24)?.padEnd(24) ?? "".substring(0, 24).padEnd(24);
+  dataOut += dataIn?.purpose?.substring(0, 24)?.padEnd(24) ?? "".substring(0, 24).padEnd(24);
+  dataOut += dataIn?.failureCode?.substring(0, 24)?.padEnd(24) ?? "".substring(0, 24).padEnd(24);
+  dataOut += dataIn?.priorityId?.substring(0, 24)?.padEnd(24) ?? "".substring(0, 24).padEnd(24);
+  dataOut += dataIn?.assigned?.substring(0, 50)?.padEnd(50) ?? "".substring(0, 50).padEnd(50);
+  dataOut += dataIn?.budgetId?.substring(0, 24)?.padEnd(24) ?? "".substring(0, 24).padEnd(24);
+  dataOut += dataIn?.statusId?.substring(0, 24)?.padEnd(24) ?? "".substring(0, 24).padEnd(24);
+  dataOut += dataIn?.dateCreated?.substring(0, 19)?.padEnd(19) ?? "".substring(0, 19).padEnd(19);
+  dataOut += dataIn?.dateCompleted?.substring(0, 19)?.padEnd(19) ?? "".substring(0, 19).padEnd(19);
+  dataOut += dataIn?.dateDue?.substring(0, 19)?.padEnd(19) ?? "".substring(0, 19).padEnd(19);
+  dataOut += dataIn?.scheduledDate?.substring(0, 19)?.padEnd(19) ?? "".substring(0, 19).padEnd(19);
+  dataOut += dataIn?.estimatedCompletion?.substring(0, 19)?.padEnd(19) ?? "".substring(0, 19).padEnd(19);
+  dataOut += dataIn?.customer?.substring(0, 24)?.padEnd(24) ?? "".substring(0, 24).padEnd(24);
+  dataOut += dataIn?.customerKey?.toFixed()?.substring(0, 11)?.padEnd(11) ?? "0".substring(0, 11).padEnd(11);
+  dataOut += dataIn?.requestId?.toFixed()?.substring(0, 11)?.padEnd(11) ?? "0".substring(0, 11).padEnd(11);
+  dataOut += dataIn?.inspectionId?.toFixed()?.substring(0, 11)?.padEnd(11) ?? "0".substring(0, 11).padEnd(11);
+  dataOut += dataIn?.invoiceNumber?.toFixed()?.substring(0, 11)?.padEnd(11) ?? "0".substring(0, 11).padEnd(11);
+  dataOut += (dataIn?.workOrderActive !== undefined ? (dataIn?.workOrderActive ? "1" : "0") : "1");
+  dataOut += dataIn?.partsCost?.toFixed(2)?.substring(0, 13)?.padEnd(13) ?? "0".substring(0, 13).padEnd(13);
+  dataOut += dataIn?.laborCost?.toFixed(2)?.substring(0, 13)?.padEnd(13) ?? "0".substring(0, 13).padEnd(13);
+  dataOut += dataIn?.otherCost?.toFixed(2)?.substring(0, 13)?.padEnd(13) ?? "0".substring(0, 13).padEnd(13);
+  dataOut += dataIn?.totalCosts?.toFixed(2)?.substring(0, 13)?.padEnd(13) ?? "0".substring(0, 13).padEnd(13);
+  dataOut += dataIn?.scheduleId?.substring(0, 24)?.padEnd(24) ?? "".substring(0, 24).padEnd(24);
+  dataOut += dataIn?.vendorId?.substring(0, 24)?.padEnd(24) ?? "".substring(0, 24).padEnd(24);
+  dataOut += dataIn?.createBy?.substring(0, 50)?.padEnd(50) ?? "".substring(0, 50).padEnd(50);
   for (let i: number = 0; i < 50; ++i) {
-  dataOut += dataIn?.customFields[i]?.key?.toFixed()?.substring(0, 11)?.padEnd(11) ?? missingInput(`dataIn.customFields[${i}].key`, "integer", dataIn?.customFields[i]?.key);
-  dataOut += dataIn?.customFields[i]?.customFieldKey?.toFixed()?.substring(0, 11)?.padEnd(11) ?? missingInput(`dataIn.customFields[${i}].customFieldKey`, "integer", dataIn?.customFields[i]?.customFieldKey);
-  dataOut += dataIn?.customFields[i]?.fieldName?.substring(0, 24)?.padEnd(24) ?? missingInput(`dataIn.customFields[${i}].fieldName`, "char", dataIn?.customFields[i]?.fieldName);
-  dataOut += dataIn?.customFields[i]?.value?.substring(0, 50)?.padEnd(50) ?? missingInput(`dataIn.customFields[${i}].value`, "char", dataIn?.customFields[i]?.value);
+  dataOut += dataIn?.customFields[i]?.key?.toFixed()?.substring(0, 11)?.padEnd(11) ?? "0".substring(0, 11).padEnd(11);
+  dataOut += dataIn?.customFields[i]?.customFieldKey?.toFixed()?.substring(0, 11)?.padEnd(11) ?? "0".substring(0, 11).padEnd(11);
+  dataOut += dataIn?.customFields[i]?.fieldName?.substring(0, 24)?.padEnd(24) ?? "".substring(0, 24).padEnd(24);
+  dataOut += dataIn?.customFields[i]?.value?.substring(0, 50)?.padEnd(50) ?? "".substring(0, 50).padEnd(50);
   }
 
   return dataOut;

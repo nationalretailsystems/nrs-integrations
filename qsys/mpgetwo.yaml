@@ -13,18 +13,22 @@ datastructures:
         rpgName: key
         type: Integer
         length: 10
+        default: 0
       customFieldKey:
         rpgName: custfldkey
         type: Integer
-        length: 10      
+        length: 10
+        default: 0      
       fieldName:
         rpgName: fldname
         type: Character
         length: 24
+        default: ""
       value:
         rpgName: value
         type: Character
         length: 50
+        default: ""
 formats:
   ResGetWo:
     recordType: response
@@ -33,120 +37,154 @@ formats:
         rpgName: wkordkey
         type: Integer
         length: 10
+        default: 0
       workOrderNumber:
         rpgName: wkordnum
         type: Integer
-        length: 10      
+        length: 10
+        default: 0      
       entityName:
         rpgName: entname
         type: Character
         length: 50
+        default: ""
       assetId:
         rpgName: assetid
         type: Character
-        length: 24      
+        length: 24
+        default: ""
       workTypeId:
         rpgName: wktypeid
         type: Character
-        length: 24      
+        length: 24
+        default: ""
       purpose:
         rpgName: purpose
         type: Character
-        length: 24      
+        length: 24
+        default: ""
       failureCode:
         rpgName: failcode
         type: Character
-        length: 24      
+        length: 24
+        default: ""
       priorityId:
         rpgName: ptyid
         type: Character
-        length: 24      
+        length: 24
+        default: ""
       assigned:
         rpgName: assigned
         type: Character
-        length: 50      
+        length: 50
+        default: ""
       budgetId:
         rpgName: budgetid
         type: Character
-        length: 24      
+        length: 24
+        default: ""
       statusId:
         rpgName: statusid
         type: Character
-        length: 24      
+        length: 24
+        default: ""
       dateCreated:
         rpgName: dtcreate
-        type: Date
+        type: Character
+        length: 19
+        default: ""
       dateCompleted:
         rpgName: dtcomplete
-        type: Date
+        type: Character
+        length: 19
+        default: ""
       dateDue:
         rpgName: dtdue
-        type: Date
+        type: Character
+        length: 19
+        default: ""
       scheduledDate:
         rpgName: dtsched
-        type: Date
+        type: Character
+        length: 19
+        default: ""
       estimatedCompletion:
         rpgName: dtestcomp
-        type: Date
+        type: Character
+        length: 19
+        default: ""
       customer:
         rpgName: customer
         type: Character
-        length: 24      
+        length: 24
+        default: ""
       customerKey:
         rpgName: custkey
         type: Integer
         length: 10
+        default: 0
       requestId:
         rpgName: requestid
         type: Integer
-        length: 10      
+        length: 10
+        default: 0
       inspectionId:
         rpgName: inspectid
         type: Integer
-        length: 10      
+        length: 10
+        default: 0
       invoiceNumber:
         rpgName: invnumb
         type: Integer
-        length: 10      
+        length: 10
+        default: 0
       workOrderActive:
         rpgName: wrkordact
         type: Boolean
+        default: true
       partsCost:
         rpgName: partscost
         type: Packed
         length: 11
         precision: 2
+        default: 0
       laborCost:
         rpgName: laborcost
         type: Packed
         length: 11
-        precision: 2      
+        precision: 2
+        default: 0
       otherCost:
         rpgName: othercost
         type: Packed
         length: 11
-        precision: 2      
+        precision: 2
+        default: 0
       totalCosts:
         rpgName: totalcosts
         type: Packed
         length: 11
-        precision: 2      
+        precision: 2
+        default: 0
       scheduleId:
         rpgName: schedid
         type: Character
         length: 24
+        default: ""
       vendorId:
         rpgName: vendorid
         type: Character
         length: 24
+        default: ""
       createBy:
         rpgName: createby
         type: Character
         length: 50
+        default: ""
       customFields:
         type: DataStruct
         dsName: customFldsDs
-        dim: 50             
+        dim: 50     
   ReqGetWo:
     recordType: request
     subfields:

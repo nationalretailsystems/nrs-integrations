@@ -34,9 +34,9 @@
 
       ************************************
       * ResGetWo data structure
-      * Record length: 5359
+      * Record length: 5404
       ************************************
-     DResGetWoLen      C                   5359
+     DResGetWoLen      C                   5404
      DResGetWo         DS                  Qualified
      D                                     Template
      Dwkordkey                       10I 0
@@ -50,11 +50,11 @@
      Dassigned                       50A
      Dbudgetid                       24A
      Dstatusid                       24A
-     Ddtcreate                         D
-     Ddtcomplete                       D
-     Ddtdue                            D
-     Ddtsched                          D
-     Ddtestcomp                        D
+     Ddtcreate                       19A
+     Ddtcomplete                     19A
+     Ddtdue                          19A
+     Ddtsched                        19A
+     Ddtestcomp                      19A
      Dcustomer                       24A
      Dcustkey                        10I 0
      Drequestid                      10I 0
@@ -75,5 +75,5 @@
       * Convert buffer to ResGetWo
       ************************************
      DBufToResGetWo    PR
-     DBuffer                       5359A
+     DBuffer                       5404A
      DDataStruct                           LikeDS(ResGetWo)
