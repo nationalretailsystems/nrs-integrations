@@ -98,7 +98,7 @@ export interface ResGetWo {
      */
     workTypeId: string,
     /**
-     * @size 24 characters
+     * @size 50 characters
      * @default ``
      */
     purpose: string,
@@ -236,7 +236,7 @@ export function convertObjectToResGetWo(dataIn: ResGetWo): string {
   dataOut += dataIn?.entityName?.substring(0, 50)?.padEnd(50) ?? "".substring(0, 50).padEnd(50);
   dataOut += dataIn?.assetId?.substring(0, 24)?.padEnd(24) ?? "".substring(0, 24).padEnd(24);
   dataOut += dataIn?.workTypeId?.substring(0, 24)?.padEnd(24) ?? "".substring(0, 24).padEnd(24);
-  dataOut += dataIn?.purpose?.substring(0, 24)?.padEnd(24) ?? "".substring(0, 24).padEnd(24);
+  dataOut += dataIn?.purpose?.substring(0, 50)?.padEnd(50) ?? "".substring(0, 50).padEnd(50);
   dataOut += dataIn?.failureCode?.substring(0, 24)?.padEnd(24) ?? "".substring(0, 24).padEnd(24);
   dataOut += dataIn?.priorityId?.substring(0, 24)?.padEnd(24) ?? "".substring(0, 24).padEnd(24);
   dataOut += dataIn?.assigned?.substring(0, 50)?.padEnd(50) ?? "".substring(0, 50).padEnd(50);

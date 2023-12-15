@@ -45,7 +45,7 @@
      PBufToResGetWo    B                   Export
 
      DBufToResGetWo    PI
-     DBuffer                       5404A
+     DBuffer                       5430A
      DDataStruct                           LikeDS(ResGetWo)
 
       * Initialize to begining of buffer
@@ -62,8 +62,8 @@
        BufPtr += 24;
        DataStruct.wktypeid = %subst(CharBuf:1:24);
        BufPtr += 24;
-       DataStruct.purpose = %subst(CharBuf:1:24);
-       BufPtr += 24;
+       DataStruct.purpose = %subst(CharBuf:1:50);
+       BufPtr += 50;
        DataStruct.failcode = %subst(CharBuf:1:24);
        BufPtr += 24;
        DataStruct.ptyid = %subst(CharBuf:1:24);

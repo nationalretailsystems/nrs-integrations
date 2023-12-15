@@ -61,7 +61,7 @@ formats:
       purpose:
         rpgName: purpose
         type: Character
-        length: 24
+        length: 50
         default: ""
       failureCode:
         rpgName: failcode
