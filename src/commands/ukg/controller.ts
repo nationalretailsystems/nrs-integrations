@@ -9,6 +9,7 @@ import * as converterukgh from 'src/interfaces/ukgputhr';
 import * as converterukgpers from 'src/interfaces/ukgpers';
 import * as converterukghos from 'src/interfaces/ukgputhos';
 import * as converterukgdelof from 'src/interfaces/ukgdelof';
+import * as converterukgdrvr from 'src/interfaces/ukgdrvr';
 import { getTokenUkg } from 'src/services/get-token';
 import { sanitizeValues } from 'src/services/safe-values';
 
@@ -448,6 +449,52 @@ export const delSignoff: ECCHandlerFunction = async function (reqkey, datax, ecc
     response = result.status;
     nextReqKey = await ecc.sendEccResult('ECC0000', response.toString(), nextReqKey);
     logger.error('Call puthos Success');
+    logger.error(nextReqKey);
+    return response;
+};
+export const postPunch: ECCHandlerFunction = async function (reqkey, datax, ecc) {
+    // Get parameters from incoming data buffer
+    const reqFields = converterukgdrvr.convertPunchReqDSToObject(datax);
+
+    logger.debug(`Received punchDrvr request`, { reqkey, datax });
+
+    // Call web service
+    let result;
+    let response;
+    let nextReqKey = reqkey;
+    const jsonData = JSON.stringify(reqFields);
+    try {
+        logger.error('Requesting token');
+        const token = await getTokenUkg();
+        result = await axiosInstance.post('/v1/timekeeping/timecard', reqFields,{
+            headers: {
+                Authorization: token,
+                appkey: ukg.prd.appkey,
+                'content-type': 'application/json',
+                accept: 'application/json'
+            },
+        });
+    } catch (err) {
+        if (err.response) {
+            // If the request was made and the server responded with a status code
+            // That falls out of the range of 2xx
+            // Note: These error formats are dependent on the web service
+            return ecc.sendEccResult('ECC1000', err.response.status + '-' + err.response.statusText, nextReqKey);
+        }
+
+        // Else the request was made but no response was received
+        // Note: This error format has nothing to do with the web service. This is
+        // Mainly TCP/IP errors.
+        return ecc.sendEccResult('ECC1000', err.message, nextReqKey);
+    }
+
+    // const responseData= result;
+    // Send the result info
+    // let responseData = sanitizeValues(result.data[0][1], safeValuesACH);
+    // let responseData = result.data[0][1];
+    // let responseData = sanitizeValues(result.data, safeValues);
+    nextReqKey = await ecc.sendEccResult('ECC0000', 'Success', nextReqKey);
+    logger.error('Call punchDrvr Success');
     logger.error(nextReqKey);
     return response;
 };

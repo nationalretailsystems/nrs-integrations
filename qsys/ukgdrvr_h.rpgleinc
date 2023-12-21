@@ -1,0 +1,71 @@
+      ************************************
+      * Module: ukgdrvr
+      * Generated RPG data structures
+      * and prototypes
+      * Do not modify
+      ************************************
+
+      ************************************
+      * employeeDS data structure
+      ************************************
+     DemployeeDS       DS                  Qualified
+     D                                     Template
+     Did                              6P 0
+
+      ************************************
+      * dateRangeDS data structure
+      ************************************
+     DdateRangeDS      DS                  Qualified
+     D                                     Template
+     DstartDate                      16A
+     DEndDate                        16A
+
+      ************************************
+      * whereDS data structure
+      ************************************
+     DwhereDS          DS                  Qualified
+     D                                     Template
+     Demployee                             LikeDS(employeeDS)
+     DdateRange                            LikeDS(dateRangeDS)
+
+      ************************************
+      * AddedDS data structure
+      ************************************
+     DAddedDS          DS                  Qualified
+     D                                     Template
+     Demployee                             LikeDS(employeeDS)
+     DpunchDtm                       19A
+
+      ************************************
+      * punchesDS data structure
+      ************************************
+     DpunchesDS        DS                  Qualified
+     D                                     Template
+     Dadded                                LikeDS(AddedDS)
+     D                                     Dim(1)
+
+      ************************************
+      * doDS data structure
+      ************************************
+     DdoDS             DS                  Qualified
+     D                                     Template
+     Dpunches                              LikeDS(punchesDS)
+     DonlyValidate                     N
+
+      ************************************
+      * PunchReqDS data structure
+      * Record length: 68
+      ************************************
+     DPunchReqDSLen    C                   68
+     DPunchReqDS       DS                  Qualified
+     D                                     Template
+     Dwhere                                LikeDS(whereDS)
+     Ddo                                   LikeDS(doDS)
+
+      ************************************
+      * Convert PunchReqDS to buffer
+      ************************************
+     DPunchReqDSToBuf  PR
+     DDataStruct                           LikeDS(PunchReqDS)
+     D                                     Const
+     DBuffer                         68A
