@@ -1,0 +1,60 @@
+---
+name: ukgdrvr
+rpgIncName: ukgdrvr_h
+codeblocks:
+  typescript:
+    - import eradaniConnect from "@eradani-inc/eradani-connect";
+    - const { dataTypes } = eradaniConnect;
+datastructures:
+  employeeDS:
+    subfields:
+      id:
+        type: Packed
+        length: 6
+  dateRangeDS:
+    subfields:
+      startDate:
+        type: Character
+        length: 16
+      EndDate:
+        type: Character
+        length: 16
+  whereDS:
+    subfields:
+      employee:
+        type: DataStruct
+        dsName: employeeDS
+      dateRange:
+        type: DataStruct
+        dsName: dateRangeDS
+  AddedDS:
+    subfields:
+      employee:
+        type: DataStruct
+        dsName: employeeDS
+      punchDtm:
+        type: Character
+        length: 19
+  punchesDS:
+    subfields:
+      added:
+        type: DataStruct
+        dsName: AddedDS
+        dim: 1
+  doDS:
+    subfields:
+      punches:
+        type: DataStruct
+        dsName: punchesDS
+      onlyValidate:
+        type: Boolean
+formats:
+  PunchReqDS:
+    recordType: request
+    subfields:
+      where:
+        type: DataStruct
+        dsName: whereDS
+      do:
+        type: DataStruct
+        dsName: doDS
