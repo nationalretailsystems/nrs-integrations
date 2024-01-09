@@ -49,7 +49,7 @@
      PBufToTotalsRes   B                   Export
 
      DBufToTotalsRes   PI
-     DBuffer                      16140A
+     DBuffer                      16220A
      DDataStruct                           LikeDS(TotalsRes)
 
       * Initialize to begining of buffer
@@ -118,8 +118,8 @@
        BufPtr += 35;
        DataStruct.totals(i).aggtotals(j).amount = %dec(%subst(CharBuf:1:12):10:5);
        BufPtr += 12;
-       DataStruct.totals(i).aggtotals(j).wages = %dec(%subst(CharBuf:1:7):5:2);
-       BufPtr += 7;
+       DataStruct.totals(i).aggtotals(j).wages = %dec(%subst(CharBuf:1:9):7:2);
+       BufPtr += 9;
        DataStruct.totals(i).aggtotals(j).jobTransfer = %subst(CharBuf:1:1);
        BufPtr += 1;
        DataStruct.totals(i).aggtotals(j).labcatxfer = %subst(CharBuf:1:1);

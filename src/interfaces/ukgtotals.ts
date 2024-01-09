@@ -240,7 +240,7 @@ export interface AggTotalsDS {
      */
     amount: number,
     /**
-     * @size 5 digits
+     * @size 7 digits
      * @precision 2 decimals
      * @default `0`
      */
@@ -371,7 +371,7 @@ export function convertObjectToTotalsRes(dataIn: TotalsRes): string {
   dataOut += dataIn?.totals[i]?.aggTotals[k]?.payCode?.qualifier?.substring(0, 35)?.padEnd(35) ?? "".substring(0, 35).padEnd(35);
   dataOut += dataIn?.totals[i]?.aggTotals[k]?.payCode?.name?.substring(0, 35)?.padEnd(35) ?? "".substring(0, 35).padEnd(35);
   dataOut += dataIn?.totals[i]?.aggTotals[k]?.amount?.toFixed(5)?.substring(0, 12)?.padEnd(12) ?? "0".substring(0, 12).padEnd(12);
-  dataOut += dataIn?.totals[i]?.aggTotals[k]?.wages?.toFixed(2)?.substring(0, 7)?.padEnd(7) ?? "0".substring(0, 7).padEnd(7);
+  dataOut += dataIn?.totals[i]?.aggTotals[k]?.wages?.toFixed(2)?.substring(0, 9)?.padEnd(9) ?? "0".substring(0, 9).padEnd(9);
   dataOut += (dataIn?.totals[i]?.aggTotals[k]?.jobTransfer !== undefined ? (dataIn?.totals[i]?.aggTotals[k]?.jobTransfer ? "1" : "0") : "0");
   dataOut += (dataIn?.totals[i]?.aggTotals[k]?.laborCategoryTransfer !== undefined ? (dataIn?.totals[i]?.aggTotals[k]?.laborCategoryTransfer ? "1" : "0") : "0");
   dataOut += dataIn?.totals[i]?.aggTotals[k]?.timeItemType?.timeItemType?.substring(0, 10)?.padEnd(10) ?? "None".substring(0, 10).padEnd(10);
