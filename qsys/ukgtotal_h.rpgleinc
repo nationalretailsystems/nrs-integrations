@@ -45,7 +45,7 @@
       ************************************
      DwagesCurrencyDS  DS                  Qualified
      D                                     Template
-     Damount                          5P 2
+     Damount                          7P 2
      DcurrencyCode                    3A
 
       ************************************
@@ -97,11 +97,13 @@
      DAggTotalsDS      DS                  Qualified
      D                                     Template
      DamountType                      4A
-     DwagesCurrency                        LikeDS(wagesCurrencyDS)
+     DwagesCurrenc...
+     Dy                                    LikeDS(wagesCurrencyDS)
      Demployee                             LikeDS(employeeDS)
      Dlocation                             LikeDS(locationDS)
      Djob                                  LikeDS(jobDS)
-     DlaborCategory                        LikeDS(laborCategoryDS)
+     DlaborCategor...
+     Dy                                    LikeDS(laborCategoryDS)
      DpayCode                              LikeDS(payCodeDS)
      Damount                         10P 5
      Dwages                           5P 2
@@ -141,9 +143,9 @@
 
       ************************************
       * TotalsRes data structure
-      * Record length: 16060
+      * Record length: 16140
       ************************************
-     DTotalsResLen     C                   16060
+     DTotalsResLen     C                   16140
      DTotalsRes        DS                  Qualified
      D                                     Template
      DstartDate                      19A
@@ -155,5 +157,5 @@
       * Convert buffer to TotalsRes
       ************************************
      DBufToTotalsRes   PR
-     DBuffer                      16060A
+     DBuffer                      16140A
      DDataStruct                           LikeDS(TotalsRes)
