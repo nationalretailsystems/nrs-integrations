@@ -106,7 +106,7 @@
      Dy                                    LikeDS(laborCategoryDS)
      DpayCode                              LikeDS(payCodeDS)
      Damount                         10P 5
-     Dwages                           5P 2
+     Dwages                           7P 2
      DjobTransfer                      N
      Dlabcatxfer                       N
      DtimeItemType                         LikeDS(timeItemTypeDS)
@@ -143,9 +143,9 @@
 
       ************************************
       * TotalsRes data structure
-      * Record length: 16140
+      * Record length: 16220
       ************************************
-     DTotalsResLen     C                   16140
+     DTotalsResLen     C                   16220
      DTotalsRes        DS                  Qualified
      D                                     Template
      DstartDate                      19A
@@ -157,5 +157,5 @@
       * Convert buffer to TotalsRes
       ************************************
      DBufToTotalsRes   PR
-     DBuffer                      16140A
+     DBuffer                      16220A
      DDataStruct                           LikeDS(TotalsRes)
