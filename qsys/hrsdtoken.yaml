@@ -1,0 +1,16 @@
+---
+name: hrsdtoken
+rpgIncName: hrsdtokn_h
+formats:
+  TokResults:
+    recordType: response
+    subfields:
+      access_token:
+        type: Character
+        length: 1000
+      token_type:
+        type: Character
+        length: 10
+      expires_in:
+        type: Packed
+        length: 6

@@ -1,5 +1,5 @@
 import config from 'config';
-const { paycargo, ukg, ts4300 } = config;
+const { paycargo, ukg, ts4300, hrsd } = config;
 import axios from 'axios';
 import createLogger from 'src/services/logger';
 const logger = createLogger('commands/ukgtoken');
@@ -80,16 +80,48 @@ export const getTokenTS = async (): Promise<string> => {
         // apiKey: paycargo_dev.apikey,
         // apiSecret: paycargo_dev.apisecret
         username: ts4300.username,
-        password: ts4300.password        
+        password: ts4300.password
     };
     logger.debug('Attempting to Get TS4300 New Token');
     try {
-    const response = await axiosInstanceTS.post('/v1/login', credentials);
-    _tokents = response.data.token;
-    _expirationts = Date.now() + 1000 * 60 * 60 * 8; // 1000ms * 60s * 60m * 8h = 8 hours
-    return _tokents;
-    } catch(err) {
+        const response = await axiosInstanceTS.post('/v1/login', credentials);
+        _tokents = response.data.token;
+        _expirationts = Date.now() + 1000 * 60 * 60 * 8; // 1000ms * 60s * 60m * 8h = 8 hours
+        return _tokents;
+    } catch (err) {
         logger.error(err);
         return err;
     }
+};
+
+const axiosInstanceHRSD = axios.create(hrsd.prd.axios);
+let _tokenhrsd: string;
+let _expirationhrsd: number;
+
+export const getTokenHRSD = async (): Promise<string> => {
+    logger.error('HRSD token request');
+    if (_tokenhrsd && _expirationhrsd > Date.now() + 300000) {
+        logger.error('nonexpired token');
+        return _tokenukg;
+    }
+
+    /* eslint-disable camelcase */
+    const credentials = new URLSearchParams({
+         client_id: hrsd.prd.client_id,
+        grant_type: 'client_credentials',
+        scope: 'client'
+    }).toString();
+    /* eslint-enable camelcase */
+    const encoded = Buffer.from(hrsd.prd.username + ':' + hrsd.prd.password).toString('base64');
+    const response = await axiosInstanceHRSD.post('/v2/client/tokens' + '?' + credentials, null, {
+        headers: {
+            'Content-Type': 'application/x-www-form-urlencoded',
+            Authorization: 'Basic ' + encoded
+        }
+    });
+    _tokenhrsd = response.data.access_token;
+    _expirationhrsd = Date.now() + response.data.expires_in * 1000; // 1000ms * 60s * 60m * 8h = 8 hours
+    // HRSD tokens expire in 1 hour (3600 seconds) returned in expires_in:
+    logger.error('returning token');
+    return _tokenhrsd;
 };

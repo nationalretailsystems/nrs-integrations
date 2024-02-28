@@ -1,0 +1,107 @@
+---
+name: hrsdgetemp
+datastructures:
+  regrefDS:
+    subfields:
+      employee_number:
+        type: Character
+        length: 6
+      active:
+        type: Boolean
+      departure_date:
+        type: Character
+      organization_id:
+        type: Character
+        length: 3
+      created_at:
+        type: Character
+        length: 32
+      updated_at:
+        type: Character
+        length: 32
+  custfldsDS:
+    subfields:
+      code:
+        type: Character
+        length: 13
+      value:
+        type: Character
+        length: 7
+      label:
+        type: Character
+formats:
+  EmpResult:
+    recordType: response
+    subfields:
+      id:
+        type: Character
+        length: 36
+      firstname:
+        type: Character
+        length: 9
+      middlename:
+        type: Character
+        length: 1
+      lastname:
+        type: Character
+        length: 6
+      maidenname:
+        type: Character
+      external_id:
+        type: Character
+        length: 12
+      language:
+        type: Character
+        length: 5
+      email:
+        type: Character
+        length: 23
+      birth_date:
+        type: Character
+        length: 10
+      address1:
+        type: Character
+      address2:
+        type: Character
+      address3:
+        type: Character
+      zip_code:
+        type: Character
+      city:
+        type: Character
+      country:
+        type: Character
+      state:
+        type: Character
+      mobile_phone_number:
+        type: Character
+      status:
+        type: Character
+        length: 6
+      terminated:
+        type: Boolean
+      starting_date:
+        type: Character
+        length: 10
+      created_at:
+        type: Character
+        length: 32
+      updated_at:
+        type: Character
+        length: 32
+      registration_references:
+        type: DataStruct
+        dsName: regrefDS
+        dim: 1
+      departure_date:
+        type: Character
+      custom_fields:
+        type: DataStruct
+        dsName: custfldsDS
+        dim: 50
+  EmpRequest:
+    recordType: request
+    subfields:
+      employee:
+        type: Character
+        length: 6        

@@ -1,0 +1,41 @@
+      ************************************
+      * Module: hrsdupld
+      * Generated RPG data structures
+      * and prototypes
+      * Do not modify
+      ************************************
+
+      ************************************
+      * uprequest data structure
+      * Record length: 200
+      ************************************
+     DuprequestLen     C                   200
+     Duprequest        DS                  Qualified
+     D                                     Template
+     Dfilename                      100A
+     Dlocation                      100A
+
+      ************************************
+      * Convert uprequest to buffer
+      ************************************
+     DuprequestToBuf   PR
+     DDataStruct                           LikeDS(uprequest)
+     D                                     Const
+     DBuffer                        200A
+
+      ************************************
+      * upresults data structure
+      * Record length: 150
+      ************************************
+     DupresultsLen     C                   150
+     Dupresults        DS                  Qualified
+     D                                     Template
+     Dfilename                       50A
+     Dfile_id                       100A
+
+      ************************************
+      * Convert buffer to upresults
+      ************************************
+     DBufToupresults   PR
+     DBuffer                        150A
+     DDataStruct                           LikeDS(upresults)

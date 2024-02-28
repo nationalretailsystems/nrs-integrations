@@ -1,0 +1,37 @@
+---
+name: hrsdupdoc
+rpgIncName: hrsdupdc_h
+datastructures:
+  fileDS:
+    subfields:
+      filename:
+        type: Character
+        length: 50
+      file_id:
+        type: Character
+        length: 100
+formats:
+  UpldRequest:
+    recordType: request
+    subfields:
+      employee_external_id:
+        rpgName: empextid
+        type: Character
+        length: 12
+      document_type_id:
+        rpgName: doctypeid
+        type: Character
+        length: 20
+      title:
+        type: Character
+        length: 50
+      date:
+        type: Character
+        length: 24
+      organization_ids:
+        type: Character
+        length: 3
+        dim: 1
+      uploaded_file:
+        type: DataStruct
+        dsName: fileDS
