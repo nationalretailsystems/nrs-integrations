@@ -14,11 +14,11 @@
      Dfile_id                       100A
 
       ************************************
-      * UpldRequest data structure
+      * UpldReq data structure
       * Record length: 259
       ************************************
-     DUpldRequestLen   C                   259
-     DUpldRequest      DS                  Qualified
+     DUpldReqLen       C                   259
+     DUpldReq          DS                  Qualified
      D                                     Template
      Dempextid                       12A
      Ddoctypeid                      20A
@@ -30,9 +30,9 @@
      De                                    LikeDS(fileDS)
 
       ************************************
-      * Convert UpldRequest to buffer
+      * Convert UpldReq to buffer
       ************************************
-     DUpldRequestToBuf  PR
-     DDataStruct                           LikeDS(UpldRequest)
+     DUpldReqToBuf     PR
+     DDataStruct                           LikeDS(UpldReq)
      D                                     Const
      DBuffer                        259A

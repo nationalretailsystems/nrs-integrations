@@ -19,12 +19,12 @@
      Dl                S             10U 0
 
       ************************************
-      * Convert UpldRequest to buffer
+      * Convert UpldReq to buffer
       ************************************
-     PUpldRequestToBuf  B                   Export
+     PUpldReqToBuf     B                   Export
 
-     DUpldRequestToBuf  PI
-     DDataStruct                           LikeDS(UpldRequest)
+     DUpldReqToBuf     PI
+     DDataStruct                           LikeDS(UpldReq)
      D                                     Const
      DBuffer                        259A
 
@@ -51,4 +51,4 @@
 
        return ;
 
-     PUpldRequestToBuf  E
+     PUpldReqToBuf     E
