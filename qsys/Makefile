@@ -75,7 +75,11 @@ GENMODS = icndbapi \
 		  ukgdelof \
 		  t4300mov \
 		  mpgetwo \
-		  ukgdrvr
+		  ukgdrvr \
+		  hrsdgetemp \
+		  hrsdtoken \
+		  hrsdupdoc \
+		  hrsdupld
 
 GENHDRS = icndbapi_h \
           lblapi_h \
@@ -123,7 +127,11 @@ GENHDRS = icndbapi_h \
 		  ukfdelof_h \
 		  t4300mov_h \
 		  mpgetwo_h \
-		  ukgdrvr_h
+		  ukgdrvr_h \
+		  hrsdgete_h \
+		  hrsdtokn_h \
+		  hrsdupdc_h \
+		  hrsdupld_h
 
 SRVPGMS = ecctmpgen
 
@@ -652,6 +660,29 @@ $(libdir)/qrpglesrc.file/ukgdrvr.mbr $(libdir)/qrpglesrc.file/ukgdrvr_h.mbr ../s
 	system "CPYFRMSTMF FROMSTMF('ukgdrvr.rpgle') TOMBR('$(libdir)/qrpglesrc.file/ukgdrvr.mbr') MBROPT(*REPLACE)"
 	system "CPYFRMSTMF FROMSTMF('ukgdrvr_h.rpgleinc') TOMBR('$(libdir)/qrpglesrc.file/ukgdrvr_h.mbr') MBROPT(*REPLACE)"
 
+$(libdir)/qrpglesrc.file/hrsdgetemp.mbr $(libdir)/qrpglesrc.file/hrsdgete_h.mbr ../src/interfaces/hrsdgetemp.ts: hrsdgetemp.yaml
+	#npx ec-generate -f $<
+	#cp hrsdgetemp.ts ../src/interfaces/hrsdgetemp.ts
+	system "CPYFRMSTMF FROMSTMF('hrsdgetemp.rpgle') TOMBR('$(libdir)/qrpglesrc.file/hrsdgetemp.mbr') MBROPT(*REPLACE)"
+	system "CPYFRMSTMF FROMSTMF('hrsdgete_h.rpgleinc') TOMBR('$(libdir)/qrpglesrc.file/hrsdgete_h.mbr') MBROPT(*REPLACE)"
+
+$(libdir)/qrpglesrc.file/hrsdtoken.mbr $(libdir)/qrpglesrc.file/hrsdtokn_h.mbr ../src/interfaces/hrsdtoken.ts: hrsdtoken.yaml
+	#npx ec-generate -f $<
+	#cp hrsdtoken.ts ../src/interfaces/hrsdtoken.ts
+	system "CPYFRMSTMF FROMSTMF('hrsdtoken.rpgle') TOMBR('$(libdir)/qrpglesrc.file/hrsdtoken.mbr') MBROPT(*REPLACE)"
+	system "CPYFRMSTMF FROMSTMF('hrsdtokn_h.rpgleinc') TOMBR('$(libdir)/qrpglesrc.file/hrsdtokn_h.mbr') MBROPT(*REPLACE)"
+
+$(libdir)/qrpglesrc.file/hrsdupld.mbr $(libdir)/qrpglesrc.file/hrsdupld_h.mbr ../src/interfaces/hrsdupld.ts: hrsdupld.yaml
+	#npx ec-generate -f $<
+	#cp hrsdupld.ts ../src/interfaces/hrsdupld.ts
+	system "CPYFRMSTMF FROMSTMF('hrsdupld.rpgle') TOMBR('$(libdir)/qrpglesrc.file/hrsdupld.mbr') MBROPT(*REPLACE)"
+	system "CPYFRMSTMF FROMSTMF('hrsdupld_h.rpgleinc') TOMBR('$(libdir)/qrpglesrc.file/hrsdupld_h.mbr') MBROPT(*REPLACE)"
+
+$(libdir)/qrpglesrc.file/hrsdupdoc.mbr $(libdir)/qrpglesrc.file/hrsdupdc_h.mbr ../src/interfaces/hrsdupdoc.ts: hrsdupdoc.yaml
+	#npx ec-generate -f $<
+	#cp hrsdupdoc.ts ../src/interfaces/hrsdupdoc.ts
+	system "CPYFRMSTMF FROMSTMF('hrsdupdoc.rpgle') TOMBR('$(libdir)/qrpglesrc.file/hrsdupdoc.mbr') MBROPT(*REPLACE)"
+	system "CPYFRMSTMF FROMSTMF('hrsdupdc_h.rpgleinc') TOMBR('$(libdir)/qrpglesrc.file/hrsdupdc_h.mbr') MBROPT(*REPLACE)"
 
 .PHONY: library
 library:

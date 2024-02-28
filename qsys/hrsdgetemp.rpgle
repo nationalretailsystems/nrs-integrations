@@ -6,7 +6,7 @@
       * Do not modify
       ************************************
 
-      /include hrsdgetemp
+      /include hrsdgete_h
 
       ************************************
       * Global variables

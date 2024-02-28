@@ -1,5 +1,6 @@
 ---
 name: hrsdgetemp
+rpgIncName: hrsdgete_h
 datastructures:
   regrefDS:
     subfields:
