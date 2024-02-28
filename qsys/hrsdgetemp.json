@@ -1,0 +1,289 @@
+[
+    {
+        "id": "480c5530-0c54-447a-90df-115e9596366d",
+        "firstname": "Alejandro",
+        "middlename": "V",
+        "lastname": "Jacobo",
+        "maidenname": "",
+        "external_id": "F1FNUC00O080",
+        "language": "en-us",
+        "email": "elmeromero186@yahoo.com",
+        "birth_date": "1981-09-28",
+        "address1": "",
+        "address2": "",
+        "address3": "",
+        "zip_code": "",
+        "city": "",
+        "country": "",
+        "state": "",
+        "mobile_phone_number": "",
+        "status": "active",
+        "terminated": false,
+        "starting_date": "2003-08-01",
+        "created_at": "2024-01-09T18:57:25.527795+00:00",
+        "updated_at": "2024-02-07T10:53:17.920557+00:00",
+        "registration_references": [
+            {
+                "employee_number": "000260",
+                "active": true,
+                "departure_date": null,
+                "organization_id": "PJ9",
+                "created_at": "2024-01-09T18:57:25.527795+00:00",
+                "updated_at": "2024-01-09T18:57:25.527795+00:00"
+            }
+        ],
+        "departure_date": null,
+        "custom_fields": [
+            {
+                "code": "customfield01",
+                "value": "DRDRVER",
+                "label": null
+            },
+            {
+                "code": "customfield02",
+                "value": "CADN",
+                "label": null
+            },
+            {
+                "code": "customfield03",
+                "value": "Keystone Freight Corp.",
+                "label": null
+            },
+            {
+                "code": "customfield04",
+                "value": "Transportation",
+                "label": null
+            },
+            {
+                "code": "customfield05",
+                "value": "Best Buy Dinuba Trucking",
+                "label": null
+            },
+            {
+                "code": "customfield06",
+                "value": "Trucking",
+                "label": null
+            },
+            {
+                "code": "customfield07",
+                "value": "PJ9WK",
+                "label": null
+            },
+            {
+                "code": "customfield08",
+                "value": "NONU",
+                "label": null
+            },
+            {
+                "code": "customfield09",
+                "value": "REG",
+                "label": null
+            },
+            {
+                "code": "customfield10",
+                "value": "Active",
+                "label": null
+            },
+            {
+                "code": "customfield11",
+                "value": "Full Time",
+                "label": null
+            },
+            {
+                "code": "customfield12",
+                "value": "Hourly",
+                "label": null
+            },
+            {
+                "code": "customfield13",
+                "value": "420",
+                "label": null
+            },
+            {
+                "code": "customfield14",
+                "value": "Z",
+                "label": null
+            },
+            {
+                "code": "customfield15",
+                "value": "101187",
+                "label": null
+            },
+            {
+                "code": "customfield16",
+                "value": "Talingo-Angelica",
+                "label": null
+            },
+            {
+                "code": "customfield17",
+                "value": "PJ9",
+                "label": null
+            },
+            {
+                "code": "customfield18",
+                "value": "2003-08-01",
+                "label": null
+            },
+            {
+                "code": "customfield19",
+                "value": "elmeromero186@yahoo.com",
+                "label": null
+            },
+            {
+                "code": "customfield20",
+                "value": "Non- Union",
+                "label": null
+            },
+            {
+                "code": "customfield21",
+                "value": "DRIVER",
+                "label": null
+            },
+            {
+                "code": "customfield22",
+                "value": "DINUBA CA",
+                "label": null
+            },
+            {
+                "code": "customfield23",
+                "value": "5",
+                "label": null
+            },
+            {
+                "code": "customfield24",
+                "value": "TRAN",
+                "label": null
+            },
+            {
+                "code": "customfield25",
+                "value": "958",
+                "label": null
+            },
+            {
+                "code": "customfield26",
+                "value": "TRUCK",
+                "label": null
+            },
+            {
+                "code": "customfield27",
+                "value": "Keystone FreightWkly",
+                "label": null
+            },
+            {
+                "code": "customfield28",
+                "value": "Regular",
+                "label": null
+            },
+            {
+                "code": "customfield29",
+                "value": "PJ9",
+                "label": null
+            },
+            {
+                "code": "customfield30",
+                "value": "101779",
+                "label": null
+            },
+            {
+                "code": "customfield31",
+                "value": "Garcia-Victor",
+                "label": null
+            },
+            {
+                "code": "customfield32",
+                "value": "011707",
+                "label": null
+            },
+            {
+                "code": "customfield33",
+                "value": "Gallin-Bradley",
+                "label": null
+            },
+            {
+                "code": "customfield34",
+                "value": "008852",
+                "label": null
+            },
+            {
+                "code": "customfield35",
+                "value": "Luffy-Michael",
+                "label": null
+            },
+            {
+                "code": "customfield36",
+                "value": "000176",
+                "label": null
+            },
+            {
+                "code": "customfield37",
+                "value": "Hoch-Jonathan",
+                "label": null
+            },
+            {
+                "code": "customfield38",
+                "value": "101187",
+                "label": null
+            },
+            {
+                "code": "customfield39",
+                "value": "",
+                "label": null
+            },
+            {
+                "code": "customfield40",
+                "value": "",
+                "label": null
+            },
+            {
+                "code": "customfield41",
+                "value": "",
+                "label": null
+            },
+            {
+                "code": "customfield42",
+                "value": "",
+                "label": null
+            },
+            {
+                "code": "customfield43",
+                "value": "",
+                "label": null
+            },
+            {
+                "code": "customfield44",
+                "value": "",
+                "label": null
+            },
+            {
+                "code": "customfield45",
+                "value": "",
+                "label": null
+            },
+            {
+                "code": "customfield46",
+                "value": "",
+                "label": null
+            },
+            {
+                "code": "customfield47",
+                "value": "",
+                "label": null
+            },
+            {
+                "code": "customfield48",
+                "value": "",
+                "label": null
+            },
+            {
+                "code": "customfield49",
+                "value": "",
+                "label": null
+            },
+            {
+                "code": "customfield50",
+                "value": "",
+                "label": null
+            }
+        ]
+    }
+]

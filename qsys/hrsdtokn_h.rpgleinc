@@ -1,0 +1,24 @@
+      ************************************
+      * Module: hrsdtoken
+      * Generated RPG data structures
+      * and prototypes
+      * Do not modify
+      ************************************
+
+      ************************************
+      * TokResults data structure
+      * Record length: 1018
+      ************************************
+     DTokResultsLen    C                   1018
+     DTokResults       DS                  Qualified
+     D                                     Template
+     Daccess_token                 1000A
+     Dtoken_type                     10A
+     Dexpires_in                      6P 0
+
+      ************************************
+      * Convert buffer to TokResults
+      ************************************
+     DBufToTokResults  PR
+     DBuffer                       1018A
+     DDataStruct                           LikeDS(TokResults)

@@ -1,0 +1,38 @@
+      ************************************
+      * Module: hrsdupdoc
+      * Generated RPG data structures
+      * and prototypes
+      * Do not modify
+      ************************************
+
+      ************************************
+      * fileDS data structure
+      ************************************
+     DfileDS           DS                  Qualified
+     D                                     Template
+     Dfilename                       50A
+     Dfile_id                       100A
+
+      ************************************
+      * UpldRequest data structure
+      * Record length: 259
+      ************************************
+     DUpldRequestLen   C                   259
+     DUpldRequest      DS                  Qualified
+     D                                     Template
+     Dempextid                       12A
+     Ddoctypeid                      20A
+     Dtitle                          50A
+     Ddate                           24A
+     Dorganization...
+     D_ids                            3A   Dim(1)
+     Duploaded_fil...
+     De                                    LikeDS(fileDS)
+
+      ************************************
+      * Convert UpldRequest to buffer
+      ************************************
+     DUpldRequestToBuf  PR
+     DDataStruct                           LikeDS(UpldRequest)
+     D                                     Const
+     DBuffer                        259A

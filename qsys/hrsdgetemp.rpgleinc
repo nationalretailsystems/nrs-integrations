@@ -1,0 +1,94 @@
+      ************************************
+      * Module: hrsdgetemp
+      * Generated RPG data structures
+      * and prototypes
+      * Do not modify
+      ************************************
+
+      ************************************
+      * regrefDS data structure
+      ************************************
+     DregrefDS         DS                  Qualified
+     D                                     Template
+     Demployee_num...
+     Dber                             6A
+     Dactive                           N
+     Ddeparture_da...
+     Dte                              0A
+     Dorganization...
+     D_id                             3A
+     Dcreated_at                     32A
+     Dupdated_at                     32A
+
+      ************************************
+      * custfldsDS data structure
+      ************************************
+     DcustfldsDS       DS                  Qualified
+     D                                     Template
+     Dcode                           13A
+     Dvalue                           7A
+     Dlabel                           0A
+
+      ************************************
+      * EmpRequest data structure
+      * Record length: 6
+      ************************************
+     DEmpRequestLen    C                   6
+     DEmpRequest       DS                  Qualified
+     D                                     Template
+     Demployee                        6A
+
+      ************************************
+      * Convert EmpRequest to buffer
+      ************************************
+     DEmpRequestToBuf  PR
+     DDataStruct                           LikeDS(EmpRequest)
+     D                                     Const
+     DBuffer                          6A
+
+      ************************************
+      * EmpResult data structure
+      * Record length: 1257
+      ************************************
+     DEmpResultLen     C                   1257
+     DEmpResult        DS                  Qualified
+     D                                     Template
+     Did                             36A
+     Dfirstname                       9A
+     Dmiddlename                      1A
+     Dlastname                        6A
+     Dmaidenname                      0A
+     Dexternal_id                    12A
+     Dlanguage                        5A
+     Demail                          23A
+     Dbirth_date                     10A
+     Daddress1                        0A
+     Daddress2                        0A
+     Daddress3                        0A
+     Dzip_code                        0A
+     Dcity                            0A
+     Dcountry                         0A
+     Dstate                           0A
+     Dmobile_phone...
+     D_number                         0A
+     Dstatus                          6A
+     Dterminated                       N
+     Dstarting_dat...
+     De                              10A
+     Dcreated_at                     32A
+     Dupdated_at                     32A
+     Dregistration...
+     D_references                          LikeDS(regrefDS)
+     D                                     Dim(1)
+     Ddeparture_da...
+     Dte                              0A
+     Dcustom_field...
+     Ds                                    LikeDS(custfldsDS)
+     D                                     Dim(50)
+
+      ************************************
+      * Convert buffer to EmpResult
+      ************************************
+     DBufToEmpResult   PR
+     DBuffer                       1257A
+     DDataStruct                           LikeDS(EmpResult)

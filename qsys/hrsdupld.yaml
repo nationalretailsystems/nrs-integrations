@@ -1,0 +1,22 @@
+---
+name: hrsdupld
+rpgIncName: hrsdupld_h
+formats:
+  upresults:
+    recordType: response
+    subfields:
+      filename:
+        type: Character
+        length: 50
+      file_id:
+        type: Character
+        length: 100
+  uprequest:
+    recordType: request
+    subfields:
+      filename:
+        type: Character
+        length: 100
+      location:
+        type: Character
+        length: 100
