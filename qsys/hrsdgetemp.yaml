@@ -7,29 +7,40 @@ datastructures:
       employee_number:
         type: Character
         length: 6
+        default: ""
       active:
         type: Boolean
+        default: true
       departure_date:
         type: Character
+        length: 10
+        default: ""
       organization_id:
         type: Character
         length: 3
+        default: ""
       created_at:
         type: Character
         length: 32
+        default: ""
       updated_at:
         type: Character
         length: 32
+        default: ""
   custfldsDS:
     subfields:
       code:
         type: Character
         length: 13
+        default: ""
       value:
         type: Character
         length: 7
+        default: ""
       label:
         type: Character
+        length: 10
+        default: ""
 formats:
   EmpResult:
     recordType: response
@@ -37,65 +48,97 @@ formats:
       id:
         type: Character
         length: 36
+        default: ""
       firstname:
         type: Character
-        length: 9
+        length: 20
+        default: ""
       middlename:
         type: Character
-        length: 1
+        length: 20
+        default: ""
       lastname:
         type: Character
-        length: 6
+        length: 20
+        default: ""
       maidenname:
         type: Character
+        length: 20
+        default: ""
       external_id:
         type: Character
         length: 12
+        default: ""
       language:
         type: Character
         length: 5
+        default: ""
       email:
         type: Character
         length: 23
+        default: ""
       birth_date:
         type: Character
         length: 10
+        default: ""
       address1:
         type: Character
+        length: 25
+        default: ""
       address2:
         type: Character
+        length: 25
+        default: ""
       address3:
         type: Character
+        length: 25
+        default: ""
       zip_code:
         type: Character
+        length: 10
+        default: ""
       city:
         type: Character
+        length: 25
+        default: ""
       country:
         type: Character
+        length: 2
+        default: ""
       state:
         type: Character
+        length: 2
+        default: ""
       mobile_phone_number:
         type: Character
+        length: 10
+        default: ""
       status:
         type: Character
         length: 6
       terminated:
         type: Boolean
+        default: true
       starting_date:
         type: Character
         length: 10
+        default: ""
       created_at:
         type: Character
         length: 32
+        default: ""
       updated_at:
         type: Character
         length: 32
+        default: ""
       registration_references:
         type: DataStruct
         dsName: regrefDS
         dim: 1
       departure_date:
         type: Character
+        length: 10
+        default: ""
       custom_fields:
         type: DataStruct
         dsName: custfldsDS
@@ -105,4 +148,4 @@ formats:
     subfields:
       employee:
         type: Character
-        length: 6        
+        length: 6

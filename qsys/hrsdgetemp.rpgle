@@ -45,7 +45,7 @@
      PBufToEmpResult   B                   Export
 
      DBufToEmpResult   PI
-     DBuffer                       1257A
+     DBuffer                       1965A
      DDataStruct                           LikeDS(EmpResult)
 
       * Initialize to begining of buffer
@@ -54,14 +54,14 @@
       * Read fields from buffer into DS
        DataStruct.id = %subst(CharBuf:1:36);
        BufPtr += 36;
-       DataStruct.firstname = %subst(CharBuf:1:9);
-       BufPtr += 9;
-       DataStruct.middlename = %subst(CharBuf:1:1);
-       BufPtr += 1;
-       DataStruct.lastname = %subst(CharBuf:1:6);
-       BufPtr += 6;
-       DataStruct.maidenname = %subst(CharBuf:1:0);
-       BufPtr += 0;
+       DataStruct.firstname = %subst(CharBuf:1:20);
+       BufPtr += 20;
+       DataStruct.middlename = %subst(CharBuf:1:20);
+       BufPtr += 20;
+       DataStruct.lastname = %subst(CharBuf:1:20);
+       BufPtr += 20;
+       DataStruct.maidenname = %subst(CharBuf:1:20);
+       BufPtr += 20;
        DataStruct.external_id = %subst(CharBuf:1:12);
        BufPtr += 12;
        DataStruct.language = %subst(CharBuf:1:5);
@@ -70,22 +70,22 @@
        BufPtr += 23;
        DataStruct.birth_date = %subst(CharBuf:1:10);
        BufPtr += 10;
-       DataStruct.address1 = %subst(CharBuf:1:0);
-       BufPtr += 0;
-       DataStruct.address2 = %subst(CharBuf:1:0);
-       BufPtr += 0;
-       DataStruct.address3 = %subst(CharBuf:1:0);
-       BufPtr += 0;
-       DataStruct.zip_code = %subst(CharBuf:1:0);
-       BufPtr += 0;
-       DataStruct.city = %subst(CharBuf:1:0);
-       BufPtr += 0;
-       DataStruct.country = %subst(CharBuf:1:0);
-       BufPtr += 0;
-       DataStruct.state = %subst(CharBuf:1:0);
-       BufPtr += 0;
-       DataStruct.mobile_phone_number = %subst(CharBuf:1:0);
-       BufPtr += 0;
+       DataStruct.address1 = %subst(CharBuf:1:25);
+       BufPtr += 25;
+       DataStruct.address2 = %subst(CharBuf:1:25);
+       BufPtr += 25;
+       DataStruct.address3 = %subst(CharBuf:1:25);
+       BufPtr += 25;
+       DataStruct.zip_code = %subst(CharBuf:1:10);
+       BufPtr += 10;
+       DataStruct.city = %subst(CharBuf:1:25);
+       BufPtr += 25;
+       DataStruct.country = %subst(CharBuf:1:2);
+       BufPtr += 2;
+       DataStruct.state = %subst(CharBuf:1:2);
+       BufPtr += 2;
+       DataStruct.mobile_phone_number = %subst(CharBuf:1:10);
+       BufPtr += 10;
        DataStruct.status = %subst(CharBuf:1:6);
        BufPtr += 6;
        DataStruct.terminated = %subst(CharBuf:1:1);
@@ -101,8 +101,8 @@
        BufPtr += 6;
        DataStruct.registration_references(i).active = %subst(CharBuf:1:1);
        BufPtr += 1;
-       DataStruct.registration_references(i).departure_date = %subst(CharBuf:1:0);
-       BufPtr += 0;
+       DataStruct.registration_references(i).departure_date = %subst(CharBuf:1:10);
+       BufPtr += 10;
        DataStruct.registration_references(i).organization_id = %subst(CharBuf:1:3);
        BufPtr += 3;
        DataStruct.registration_references(i).created_at = %subst(CharBuf:1:32);
@@ -110,15 +110,15 @@
        DataStruct.registration_references(i).updated_at = %subst(CharBuf:1:32);
        BufPtr += 32;
        endfor;
-       DataStruct.departure_date = %subst(CharBuf:1:0);
-       BufPtr += 0;
+       DataStruct.departure_date = %subst(CharBuf:1:10);
+       BufPtr += 10;
        for i = 1 to 50;
        DataStruct.custom_fields(i).code = %subst(CharBuf:1:13);
        BufPtr += 13;
        DataStruct.custom_fields(i).value = %subst(CharBuf:1:7);
        BufPtr += 7;
-       DataStruct.custom_fields(i).label = %subst(CharBuf:1:0);
-       BufPtr += 0;
+       DataStruct.custom_fields(i).label = %subst(CharBuf:1:10);
+       BufPtr += 10;
        endfor;
 
        return ;
