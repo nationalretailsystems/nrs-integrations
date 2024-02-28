@@ -14,7 +14,7 @@
      Dber                             6A
      Dactive                           N
      Ddeparture_da...
-     Dte                              0A
+     Dte                             10A
      Dorganization...
      D_id                             3A
      Dcreated_at                     32A
@@ -27,7 +27,7 @@
      D                                     Template
      Dcode                           13A
      Dvalue                           7A
-     Dlabel                           0A
+     Dlabel                          10A
 
       ************************************
       * EmpRequest data structure
@@ -48,29 +48,29 @@
 
       ************************************
       * EmpResult data structure
-      * Record length: 1257
+      * Record length: 1965
       ************************************
-     DEmpResultLen     C                   1257
+     DEmpResultLen     C                   1965
      DEmpResult        DS                  Qualified
      D                                     Template
      Did                             36A
-     Dfirstname                       9A
-     Dmiddlename                      1A
-     Dlastname                        6A
-     Dmaidenname                      0A
+     Dfirstname                      20A
+     Dmiddlename                     20A
+     Dlastname                       20A
+     Dmaidenname                     20A
      Dexternal_id                    12A
      Dlanguage                        5A
      Demail                          23A
      Dbirth_date                     10A
-     Daddress1                        0A
-     Daddress2                        0A
-     Daddress3                        0A
-     Dzip_code                        0A
-     Dcity                            0A
-     Dcountry                         0A
-     Dstate                           0A
+     Daddress1                       25A
+     Daddress2                       25A
+     Daddress3                       25A
+     Dzip_code                       10A
+     Dcity                           25A
+     Dcountry                         2A
+     Dstate                           2A
      Dmobile_phone...
-     D_number                         0A
+     D_number                        10A
      Dstatus                          6A
      Dterminated                       N
      Dstarting_dat...
@@ -81,7 +81,7 @@
      D_references                          LikeDS(regrefDS)
      D                                     Dim(1)
      Ddeparture_da...
-     Dte                              0A
+     Dte                             10A
      Dcustom_field...
      Ds                                    LikeDS(custfldsDS)
      D                                     Dim(50)
@@ -90,5 +90,5 @@
       * Convert buffer to EmpResult
       ************************************
      DBufToEmpResult   PR
-     DBuffer                       1257A
+     DBuffer                       1965A
      DDataStruct                           LikeDS(EmpResult)
