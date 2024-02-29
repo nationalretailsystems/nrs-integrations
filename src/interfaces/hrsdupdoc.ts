@@ -30,7 +30,7 @@ export interface fileDS {
 /**
  * Output interface
  */
-export interface UpldRequest {
+export interface UpldReq {
     /**
      * @size 12 characters
      */
@@ -57,9 +57,9 @@ export interface UpldRequest {
 }
 
 /**
- * Convert UpldRequest record to TypeScript object
+ * Convert UpldReq record to TypeScript object
  */
-export function convertUpldRequestToObject(dataIn: string): UpldRequest {
+export function convertUpldReqToObject(dataIn: string): UpldReq {
   const dataOut: any =   {
   
     };
