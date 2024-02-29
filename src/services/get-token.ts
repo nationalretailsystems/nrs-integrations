@@ -1,6 +1,7 @@
 import config from 'config';
 const { paycargo, ukg, ts4300, hrsd } = config;
 import axios from 'axios';
+import qs from 'qs';
 import createLogger from 'src/services/logger';
 const logger = createLogger('commands/ukgtoken');
 // FIXME: This is a temporary workaround to allow self-signed certificates
@@ -77,8 +78,6 @@ export const getTokenTS = async (): Promise<string> => {
     // }
 
     const credentials = {
-        // apiKey: paycargo_dev.apikey,
-        // apiSecret: paycargo_dev.apisecret
         username: ts4300.username,
         password: ts4300.password
     };
@@ -102,26 +101,31 @@ export const getTokenHRSD = async (): Promise<string> => {
     logger.error('HRSD token request');
     if (_tokenhrsd && _expirationhrsd > Date.now() + 300000) {
         logger.error('nonexpired token');
-        return _tokenukg;
+        return _tokenhrsd;
     }
-
-    /* eslint-disable camelcase */
-    const credentials = new URLSearchParams({
-         client_id: hrsd.prd.client_id,
-        grant_type: 'client_credentials',
-        scope: 'client'
-    }).toString();
-    /* eslint-enable camelcase */
+    let response;
+    let data = qs.stringify({
+        'client_id':'f7d9dd9f-71cb-4801-9e0b-e580e347ca1f',
+        'grant_type':'client_credentials',
+        'scope':'client'
+    });
     const encoded = Buffer.from(hrsd.prd.username + ':' + hrsd.prd.password).toString('base64');
-    const response = await axiosInstanceHRSD.post('/v2/client/tokens' + '?' + credentials, null, {
+    try {
+    response = await axiosInstanceHRSD.post('/v2/client/tokens', data,  {
+
         headers: {
             'Content-Type': 'application/x-www-form-urlencoded',
-            Authorization: 'Basic ' + encoded
+            Authorization: 'Basic ' + encoded,
+            accept: 'application/json',
+            Connection: 'keep-alive'
         }
     });
+} catch (err) {
+    logger.error(err);
+    return err;
+}
     _tokenhrsd = response.data.access_token;
     _expirationhrsd = Date.now() + response.data.expires_in * 1000; // 1000ms * 60s * 60m * 8h = 8 hours
-    // HRSD tokens expire in 1 hour (3600 seconds) returned in expires_in:
     logger.error('returning token');
     return _tokenhrsd;
 };

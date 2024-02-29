@@ -26,7 +26,7 @@
      DcustfldsDS       DS                  Qualified
      D                                     Template
      Dcode                           13A
-     Dvalue                           7A
+     Dvalue                          20A
      Dlabel                          10A
 
       ************************************
@@ -48,9 +48,9 @@
 
       ************************************
       * EmpResult data structure
-      * Record length: 1965
+      * Record length: 2615
       ************************************
-     DEmpResultLen     C                   1965
+     DEmpResultLen     C                   2615
      DEmpResult        DS                  Qualified
      D                                     Template
      Did                             36A
@@ -90,5 +90,5 @@
       * Convert buffer to EmpResult
       ************************************
      DBufToEmpResult   PR
-     DBuffer                       1965A
+     DBuffer                       2615A
      DDataStruct                           LikeDS(EmpResult)
