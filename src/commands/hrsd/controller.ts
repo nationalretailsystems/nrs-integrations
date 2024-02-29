@@ -10,8 +10,8 @@ import { parseCommandLine } from 'typescript';
 
 
 const logger = createLogger('commands/hrsd');
-const { ukg } = config;
-const axiosInstance = axios.create(ukg.prd.axios);
+const { hrsd } = config;
+const axiosInstance = axios.create(hrsd.prd.axios);
 
 
 /* eslint-enable */
@@ -28,11 +28,11 @@ export const getEmployee: ECCHandlerFunction = async function (reqkey, datax, ec
     try {
         logger.error('Requesting token');
         const token = await getTokenHRSD();
-        const parms = 'employee_numbers ' + reqFields.employee;
+        const parms = 'employee_numbers=' + reqFields.employee;
         result = await axiosInstance.get('/v2/client/employees' + '?' + parms, {
             headers: {
                 Authorization: 'Bearer ' + token,
-                Accept: 'application/json'
+                accept: 'application/json'
             }
         });
     } catch (err) {
@@ -49,7 +49,7 @@ export const getEmployee: ECCHandlerFunction = async function (reqkey, datax, ec
         return ecc.sendEccResult('ECC1000', err.message, nextReqKey);
     }
 
-    let responseData = result.data;
+    let responseData = result.data[0];
     nextReqKey = await ecc.sendEccResult('ECC0000', 'Success', nextReqKey);
     // logger.error('Call test1 failed');
     return ecc.sendObjectToCaller(responseData, converterhrsdgetemp.convertObjectToEmpResult, nextReqKey);
@@ -99,7 +99,7 @@ export const postUpload: ECCHandlerFunction = async function (reqkey, datax, ecc
 };
 export const postEmpDoc: ECCHandlerFunction = async function (reqkey, datax, ecc) {
     // Get parameters from incoming data buffer
-    const reqFields = converterhrsdupdoc.convertUpldRequestToObject(datax);
+    const reqFields = converterhrsdupdoc.convertUpldReqToObject(datax);
 
     logger.debug(`Received HRSD post EmpDoc request`, { reqkey, datax });
 

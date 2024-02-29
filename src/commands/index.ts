@@ -18,6 +18,8 @@ import registerUKG from './ukg';
 import registerHYSTER from './hyster';
 import registerUPS from './ups';
 import registerTS4300 from './ts4300';
+import registerHRSD from './hrsd';
+import { Route53RecoveryCluster } from 'aws-sdk';
 
 export default async function registerCommands(router: ECCRouter) {
     const jokes = new ECCRouter.Router();
@@ -94,7 +96,11 @@ export default async function registerCommands(router: ECCRouter) {
 
     const ts4300 = new ECCRouter.Router();
     registerTS4300(ts4300);
-    router.use('ts4300', ts4300);    
+    router.use('ts4300', ts4300);
+
+    const hrsd = new ECCRouter.Router();
+    registerHRSD(hrsd);
+    router.use('hrsd', hrsd);
 
     return router;
 }

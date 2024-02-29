@@ -19,25 +19,31 @@ const {
 export interface regrefDS {
     /**
      * @size 6 characters
+     * @default ``
      */
     employee_number: string,
     /**
+     * @default `true`
      */
     active: boolean,
     /**
-     * @size 0 characters
+     * @size 10 characters
+     * @default ``
      */
     departure_date: string,
     /**
      * @size 3 characters
+     * @default ``
      */
     organization_id: string,
     /**
      * @size 32 characters
+     * @default ``
      */
     created_at: string,
     /**
      * @size 32 characters
+     * @default ``
      */
     updated_at: string
 }
@@ -48,14 +54,17 @@ export interface regrefDS {
 export interface custfldsDS {
     /**
      * @size 13 characters
+     * @default ``
      */
     code: string,
     /**
-     * @size 7 characters
+     * @size 20 characters
+     * @default ``
      */
     value: string,
     /**
-     * @size 0 characters
+     * @size 10 characters
+     * @default ``
      */
     label: string
 }
@@ -91,70 +100,87 @@ export function convertEmpRequestToObject(dataIn: string): EmpRequest {
 export interface EmpResult {
     /**
      * @size 36 characters
+     * @default ``
      */
     id: string,
     /**
-     * @size 9 characters
+     * @size 20 characters
+     * @default ``
      */
     firstname: string,
     /**
-     * @size 1 characters
+     * @size 20 characters
+     * @default ``
      */
     middlename: string,
     /**
-     * @size 6 characters
+     * @size 20 characters
+     * @default ``
      */
     lastname: string,
     /**
-     * @size 0 characters
+     * @size 20 characters
+     * @default ``
      */
     maidenname: string,
     /**
      * @size 12 characters
+     * @default ``
      */
     external_id: string,
     /**
      * @size 5 characters
+     * @default ``
      */
     language: string,
     /**
      * @size 23 characters
+     * @default ``
      */
     email: string,
     /**
      * @size 10 characters
+     * @default ``
      */
     birth_date: string,
     /**
-     * @size 0 characters
+     * @size 25 characters
+     * @default ``
      */
     address1: string,
     /**
-     * @size 0 characters
+     * @size 25 characters
+     * @default ``
      */
     address2: string,
     /**
-     * @size 0 characters
+     * @size 25 characters
+     * @default ``
      */
     address3: string,
     /**
-     * @size 0 characters
+     * @size 10 characters
+     * @default ``
      */
     zip_code: string,
     /**
-     * @size 0 characters
+     * @size 25 characters
+     * @default ``
      */
     city: string,
     /**
-     * @size 0 characters
+     * @size 2 characters
+     * @default ``
      */
     country: string,
     /**
-     * @size 0 characters
+     * @size 2 characters
+     * @default ``
      */
     state: string,
     /**
-     * @size 0 characters
+     * @size 10 characters
+     * @default ``
      */
     mobile_phone_number: string,
     /**
@@ -162,25 +188,30 @@ export interface EmpResult {
      */
     status: string,
     /**
+     * @default `true`
      */
     terminated: boolean,
     /**
      * @size 10 characters
+     * @default ``
      */
     starting_date: string,
     /**
      * @size 32 characters
+     * @default ``
      */
     created_at: string,
     /**
      * @size 32 characters
+     * @default ``
      */
     updated_at: string,
     /**
      */
     registration_references: Array<regrefDS>,
     /**
-     * @size 0 characters
+     * @size 10 characters
+     * @default ``
      */
     departure_date: string,
     /**
@@ -194,41 +225,41 @@ export interface EmpResult {
 export function convertObjectToEmpResult(dataIn: EmpResult): string {
   let dataOut: string = "";
 
-  dataOut += dataIn?.id?.substring(0, 36)?.padEnd(36) ?? missingInput(`dataIn.id`, "char", dataIn?.id);
-  dataOut += dataIn?.firstname?.substring(0, 9)?.padEnd(9) ?? missingInput(`dataIn.firstname`, "char", dataIn?.firstname);
-  dataOut += dataIn?.middlename?.substring(0, 1)?.padEnd(1) ?? missingInput(`dataIn.middlename`, "char", dataIn?.middlename);
-  dataOut += dataIn?.lastname?.substring(0, 6)?.padEnd(6) ?? missingInput(`dataIn.lastname`, "char", dataIn?.lastname);
-  dataOut += dataIn?.maidenname?.substring(0, 0)?.padEnd(0) ?? missingInput(`dataIn.maidenname`, "char", dataIn?.maidenname);
-  dataOut += dataIn?.external_id?.substring(0, 12)?.padEnd(12) ?? missingInput(`dataIn.external_id`, "char", dataIn?.external_id);
-  dataOut += dataIn?.language?.substring(0, 5)?.padEnd(5) ?? missingInput(`dataIn.language`, "char", dataIn?.language);
-  dataOut += dataIn?.email?.substring(0, 23)?.padEnd(23) ?? missingInput(`dataIn.email`, "char", dataIn?.email);
-  dataOut += dataIn?.birth_date?.substring(0, 10)?.padEnd(10) ?? missingInput(`dataIn.birth_date`, "char", dataIn?.birth_date);
-  dataOut += dataIn?.address1?.substring(0, 0)?.padEnd(0) ?? missingInput(`dataIn.address1`, "char", dataIn?.address1);
-  dataOut += dataIn?.address2?.substring(0, 0)?.padEnd(0) ?? missingInput(`dataIn.address2`, "char", dataIn?.address2);
-  dataOut += dataIn?.address3?.substring(0, 0)?.padEnd(0) ?? missingInput(`dataIn.address3`, "char", dataIn?.address3);
-  dataOut += dataIn?.zip_code?.substring(0, 0)?.padEnd(0) ?? missingInput(`dataIn.zip_code`, "char", dataIn?.zip_code);
-  dataOut += dataIn?.city?.substring(0, 0)?.padEnd(0) ?? missingInput(`dataIn.city`, "char", dataIn?.city);
-  dataOut += dataIn?.country?.substring(0, 0)?.padEnd(0) ?? missingInput(`dataIn.country`, "char", dataIn?.country);
-  dataOut += dataIn?.state?.substring(0, 0)?.padEnd(0) ?? missingInput(`dataIn.state`, "char", dataIn?.state);
-  dataOut += dataIn?.mobile_phone_number?.substring(0, 0)?.padEnd(0) ?? missingInput(`dataIn.mobile_phone_number`, "char", dataIn?.mobile_phone_number);
+  dataOut += dataIn?.id?.substring(0, 36)?.padEnd(36) ?? "".substring(0, 36).padEnd(36);
+  dataOut += dataIn?.firstname?.substring(0, 20)?.padEnd(20) ?? "".substring(0, 20).padEnd(20);
+  dataOut += dataIn?.middlename?.substring(0, 20)?.padEnd(20) ?? "".substring(0, 20).padEnd(20);
+  dataOut += dataIn?.lastname?.substring(0, 20)?.padEnd(20) ?? "".substring(0, 20).padEnd(20);
+  dataOut += dataIn?.maidenname?.substring(0, 20)?.padEnd(20) ?? "".substring(0, 20).padEnd(20);
+  dataOut += dataIn?.external_id?.substring(0, 12)?.padEnd(12) ?? "".substring(0, 12).padEnd(12);
+  dataOut += dataIn?.language?.substring(0, 5)?.padEnd(5) ?? "".substring(0, 5).padEnd(5);
+  dataOut += dataIn?.email?.substring(0, 23)?.padEnd(23) ?? "".substring(0, 23).padEnd(23);
+  dataOut += dataIn?.birth_date?.substring(0, 10)?.padEnd(10) ?? "".substring(0, 10).padEnd(10);
+  dataOut += dataIn?.address1?.substring(0, 25)?.padEnd(25) ?? "".substring(0, 25).padEnd(25);
+  dataOut += dataIn?.address2?.substring(0, 25)?.padEnd(25) ?? "".substring(0, 25).padEnd(25);
+  dataOut += dataIn?.address3?.substring(0, 25)?.padEnd(25) ?? "".substring(0, 25).padEnd(25);
+  dataOut += dataIn?.zip_code?.substring(0, 10)?.padEnd(10) ?? "".substring(0, 10).padEnd(10);
+  dataOut += dataIn?.city?.substring(0, 25)?.padEnd(25) ?? "".substring(0, 25).padEnd(25);
+  dataOut += dataIn?.country?.substring(0, 2)?.padEnd(2) ?? "".substring(0, 2).padEnd(2);
+  dataOut += dataIn?.state?.substring(0, 2)?.padEnd(2) ?? "".substring(0, 2).padEnd(2);
+  dataOut += dataIn?.mobile_phone_number?.substring(0, 10)?.padEnd(10) ?? "".substring(0, 10).padEnd(10);
   dataOut += dataIn?.status?.substring(0, 6)?.padEnd(6) ?? missingInput(`dataIn.status`, "char", dataIn?.status);
-  dataOut += (dataIn?.terminated !== undefined ? (dataIn?.terminated ? "1" : "0") : missingInput(`dataIn.terminated`, "bool", dataIn?.terminated));
-  dataOut += dataIn?.starting_date?.substring(0, 10)?.padEnd(10) ?? missingInput(`dataIn.starting_date`, "char", dataIn?.starting_date);
-  dataOut += dataIn?.created_at?.substring(0, 32)?.padEnd(32) ?? missingInput(`dataIn.created_at`, "char", dataIn?.created_at);
-  dataOut += dataIn?.updated_at?.substring(0, 32)?.padEnd(32) ?? missingInput(`dataIn.updated_at`, "char", dataIn?.updated_at);
+  dataOut += (dataIn?.terminated !== undefined ? (dataIn?.terminated ? "1" : "0") : "1");
+  dataOut += dataIn?.starting_date?.substring(0, 10)?.padEnd(10) ?? "".substring(0, 10).padEnd(10);
+  dataOut += dataIn?.created_at?.substring(0, 32)?.padEnd(32) ?? "".substring(0, 32).padEnd(32);
+  dataOut += dataIn?.updated_at?.substring(0, 32)?.padEnd(32) ?? "".substring(0, 32).padEnd(32);
   for (let i: number = 0; i < 1; ++i) {
-  dataOut += dataIn?.registration_references[i]?.employee_number?.substring(0, 6)?.padEnd(6) ?? missingInput(`dataIn.registration_references[${i}].employee_number`, "char", dataIn?.registration_references[i]?.employee_number);
-  dataOut += (dataIn?.registration_references[i]?.active !== undefined ? (dataIn?.registration_references[i]?.active ? "1" : "0") : missingInput(`dataIn.registration_references[${i}].active`, "bool", dataIn?.registration_references[i]?.active));
-  dataOut += dataIn?.registration_references[i]?.departure_date?.substring(0, 0)?.padEnd(0) ?? missingInput(`dataIn.registration_references[${i}].departure_date`, "char", dataIn?.registration_references[i]?.departure_date);
-  dataOut += dataIn?.registration_references[i]?.organization_id?.substring(0, 3)?.padEnd(3) ?? missingInput(`dataIn.registration_references[${i}].organization_id`, "char", dataIn?.registration_references[i]?.organization_id);
-  dataOut += dataIn?.registration_references[i]?.created_at?.substring(0, 32)?.padEnd(32) ?? missingInput(`dataIn.registration_references[${i}].created_at`, "char", dataIn?.registration_references[i]?.created_at);
-  dataOut += dataIn?.registration_references[i]?.updated_at?.substring(0, 32)?.padEnd(32) ?? missingInput(`dataIn.registration_references[${i}].updated_at`, "char", dataIn?.registration_references[i]?.updated_at);
+  dataOut += dataIn?.registration_references[i]?.employee_number?.substring(0, 6)?.padEnd(6) ?? "".substring(0, 6).padEnd(6);
+  dataOut += (dataIn?.registration_references[i]?.active !== undefined ? (dataIn?.registration_references[i]?.active ? "1" : "0") : "1");
+  dataOut += dataIn?.registration_references[i]?.departure_date?.substring(0, 10)?.padEnd(10) ?? "".substring(0, 10).padEnd(10);
+  dataOut += dataIn?.registration_references[i]?.organization_id?.substring(0, 3)?.padEnd(3) ?? "".substring(0, 3).padEnd(3);
+  dataOut += dataIn?.registration_references[i]?.created_at?.substring(0, 32)?.padEnd(32) ?? "".substring(0, 32).padEnd(32);
+  dataOut += dataIn?.registration_references[i]?.updated_at?.substring(0, 32)?.padEnd(32) ?? "".substring(0, 32).padEnd(32);
   }
-  dataOut += dataIn?.departure_date?.substring(0, 0)?.padEnd(0) ?? missingInput(`dataIn.departure_date`, "char", dataIn?.departure_date);
+  dataOut += dataIn?.departure_date?.substring(0, 10)?.padEnd(10) ?? "".substring(0, 10).padEnd(10);
   for (let i: number = 0; i < 50; ++i) {
-  dataOut += dataIn?.custom_fields[i]?.code?.substring(0, 13)?.padEnd(13) ?? missingInput(`dataIn.custom_fields[${i}].code`, "char", dataIn?.custom_fields[i]?.code);
-  dataOut += dataIn?.custom_fields[i]?.value?.substring(0, 7)?.padEnd(7) ?? missingInput(`dataIn.custom_fields[${i}].value`, "char", dataIn?.custom_fields[i]?.value);
-  dataOut += dataIn?.custom_fields[i]?.label?.substring(0, 0)?.padEnd(0) ?? missingInput(`dataIn.custom_fields[${i}].label`, "char", dataIn?.custom_fields[i]?.label);
+  dataOut += dataIn?.custom_fields[i]?.code?.substring(0, 13)?.padEnd(13) ?? "".substring(0, 13).padEnd(13);
+  dataOut += dataIn?.custom_fields[i]?.value?.substring(0, 20)?.padEnd(20) ?? "".substring(0, 20).padEnd(20);
+  dataOut += dataIn?.custom_fields[i]?.label?.substring(0, 10)?.padEnd(10) ?? "".substring(0, 10).padEnd(10);
   }
 
   return dataOut;

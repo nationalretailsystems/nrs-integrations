@@ -45,7 +45,7 @@
      PBufToEmpResult   B                   Export
 
      DBufToEmpResult   PI
-     DBuffer                       1965A
+     DBuffer                       2615A
      DDataStruct                           LikeDS(EmpResult)
 
       * Initialize to begining of buffer
@@ -115,8 +115,8 @@
        for i = 1 to 50;
        DataStruct.custom_fields(i).code = %subst(CharBuf:1:13);
        BufPtr += 13;
-       DataStruct.custom_fields(i).value = %subst(CharBuf:1:7);
-       BufPtr += 7;
+       DataStruct.custom_fields(i).value = %subst(CharBuf:1:20);
+       BufPtr += 20;
        DataStruct.custom_fields(i).label = %subst(CharBuf:1:10);
        BufPtr += 10;
        endfor;
