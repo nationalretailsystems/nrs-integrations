@@ -80,8 +80,7 @@ export const postUpload: ECCHandlerFunction = async function (reqkey, datax, ecc
                 'Content-Type': 'multipart/form-data; boundary=' + reqFields.filename.substring(0,reqFields.filename.lastIndexOf('.')),
                 Accept: 'application/json',
                 maxBodyLength: Infinity,
-                Cookie: 'multidb_pin_writes=y',
-                'Content-Length': formData.getLengthSync()
+                Cookie: 'multidb_pin_writes=y'
             }
         });
     } catch (err) {
