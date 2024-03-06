@@ -9,6 +9,7 @@ import { getTokenHRSD } from 'src/services/get-token';
 import { parseCommandLine } from 'typescript';
 import fs from 'fs';
 import FormData from 'form-data';
+import { log } from 'console';
 
 const logger = createLogger('commands/hrsd');
 const { hrsd } = config;
@@ -72,7 +73,6 @@ export const postUpload: ECCHandlerFunction = async function (reqkey, datax, ecc
         const formData = new FormData();
         // formData.append("file",fs.createReadStream(reqFields.location + "/" + reqFields.filename));
         // for testing pdf files are in the /logs directory here
-        console.log(process.cwd());
         formData.append("file",fs.createReadStream(reqFields.location + "/" + reqFields.filename));
         const token = await getTokenHRSD();
         result = await axiosInstance.post('/v2/client/document', formData , {
