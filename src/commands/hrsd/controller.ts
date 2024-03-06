@@ -7,7 +7,8 @@ import * as converterhrsdupdoc from 'src/interfaces/hrsdupdoc';
 import * as converterhrsdupld from 'src/interfaces/hrsdupld';
 import { getTokenHRSD } from 'src/services/get-token';
 import { parseCommandLine } from 'typescript';
-
+import fs from 'fs';
+import FormData from 'form-data';
 
 const logger = createLogger('commands/hrsd');
 const { hrsd } = config;
@@ -67,15 +68,19 @@ export const postUpload: ECCHandlerFunction = async function (reqkey, datax, ecc
     let nextReqKey = reqkey;
     // const jsonData = reqFields;
     try {
-        logger.error('Requesting token');
+        logger.error('Requesting token')
         const formData = new FormData();
-        formData.append("image",reqFields.location + "/" + reqFields.filename);
+        // formData.append("file",fs.createReadStream(reqFields.location + "/" + reqFields.filename));
+        // for testing pdf files are in the /logs directory here
+        console.log(process.cwd());
+        formData.append("file",fs.createReadStream(reqFields.location + "/" + reqFields.filename));
         const token = await getTokenHRSD();
         result = await axiosInstance.post('/v2/client/document', formData , {
             headers: {
                 Authorization: 'Bearer ' + token,
                 'Content-Type': 'multipart/form-data; boundary=' + reqFields.filename.substring(0,reqFields.filename.lastIndexOf('.')),
-                Accept: 'application/json'
+                Accept: 'application/json',
+                Cookie: 'multidb_pin_writes=y'
             }
         });
     } catch (err) {
