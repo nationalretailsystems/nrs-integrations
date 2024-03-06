@@ -15,7 +15,6 @@ const logger = createLogger('commands/hrsd');
 const { hrsd } = config;
 const axiosInstance = axios.create(hrsd.prd.axios);
 
-
 /* eslint-enable */
 export const getEmployee: ECCHandlerFunction = async function (reqkey, datax, ecc) {
     // Get parameters from incoming data buffer
@@ -70,9 +69,9 @@ export const postUpload: ECCHandlerFunction = async function (reqkey, datax, ecc
     // const jsonData = reqFields;
     try {
         logger.error('Requesting token')
+        
         const formData = new FormData();
-        // formData.append("file",fs.createReadStream(reqFields.location + "/" + reqFields.filename));
-        // for testing pdf files are in the /logs directory here
+
         formData.append("file",fs.createReadStream(reqFields.location + "/" + reqFields.filename));
         const token = await getTokenHRSD();
         result = await axiosInstance.post('/v2/client/document', formData , {
@@ -80,6 +79,7 @@ export const postUpload: ECCHandlerFunction = async function (reqkey, datax, ecc
                 Authorization: 'Bearer ' + token,
                 'Content-Type': 'multipart/form-data; boundary=' + reqFields.filename.substring(0,reqFields.filename.lastIndexOf('.')),
                 Accept: 'application/json',
+                maxBodyLength: Infinity,
                 Cookie: 'multidb_pin_writes=y'
             }
         });
