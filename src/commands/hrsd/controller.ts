@@ -71,8 +71,11 @@ export const postUpload: ECCHandlerFunction = async function (reqkey, datax, ecc
         logger.error('Requesting token')
         
         const formData = new FormData();
-
-        formData.append("file",fs.createReadStream(reqFields.location + "/" + reqFields.filename));
+        if (config.filefolderstring === 'ext-files') {
+            formData.append("file",fs.createReadStream('ext-files' + "/" + reqFields.filename));
+        } else {
+            formData.append("file",fs.createReadStream(reqFields.location + "/" + reqFields.filename));
+        }
         const token = await getTokenHRSD();
         result = await axiosInstance.post('/v2/client/document', formData , {
             headers: {
