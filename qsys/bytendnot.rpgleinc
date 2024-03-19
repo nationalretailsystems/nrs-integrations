@@ -1,0 +1,175 @@
+      ************************************
+      * Module: bytendnot
+      * Generated RPG data structures
+      * and prototypes
+      * Do not modify
+      ************************************
+
+      ************************************
+      * apiHeaderDS data structure
+      ************************************
+     DapiHeaderDS      DS                  Qualified
+     D                                     Template
+     Dcompcode                       12A
+     Dcontcompcd                     12A
+     Dcontcompnm                     12A
+     Dcustcode                       13A   Dim(1)
+     Dmessagid                       25A
+     Dprovdercd                      17A   Dim(1)
+     Dtimestamp                      20A
+     Dprovcustcd                     25A
+
+      ************************************
+      * geographicalCoordinatesDS data structure
+      ************************************
+     DgeoCoordDS       DS                  Qualified
+     D                                     Template
+     Dlatitude                        6P 4
+     Dlongitude                       7P 4
+
+      ************************************
+      * addressDS data structure
+      ************************************
+     DaddressDS        DS                  Qualified
+     D                                     Template
+     Dcity                           14A
+     Dcountry                         3A
+     Dfulladdr                       49A
+     Dgeocoord                             LikeDS(geoCoordDS)
+     Dpostcode                        5A
+     Dstate                           2A
+     Daddress1                       17A
+
+      ************************************
+      * billToPartyDS data structure
+      ************************************
+     DbillToPartyDS    DS                  Qualified
+     D                                     Template
+     Daddress                              LikeDS(addressDS)
+
+      ************************************
+      * EquipmentDS data structure
+      ************************************
+     DEquipmentDS      DS                  Qualified
+     D                                     Template
+     Dequipid                         4A
+     Dequiptyp                        6A
+     Dheight                          1P 0
+     Dlength                          1P 0
+     Dwidth                           1P 0
+
+      ************************************
+      * freightRequirementsDS data structure
+      ************************************
+     DfrtReqDS         DS                  Qualified
+     D                                     Template
+     Dhazmat                           N
+     Dpterms                          7A
+
+      ************************************
+      * loadDetailsDS data structure
+      ************************************
+     DloadDetailsDS    DS                  Qualified
+     D                                     Template
+     Dcomm                            9A
+     Dcommdesc                       21A
+     Dloaddesc                       11A
+
+      ************************************
+      * loadTotalsDS data structure
+      ************************************
+     DloadTotalsDS     DS                  Qualified
+     D                                     Template
+     Ddeclval                         1P 0
+     Ddistance                        5P 1
+     Dlinlength                       2P 0
+     Dordval                          1P 0
+     Dpallets                         1P 0
+     Dpcs                             4P 0
+     Dvolume                          4P 0
+     Dweight                          5P 0
+
+      ************************************
+      * CommodityDS data structure
+      ************************************
+     DCommodityDS      DS                  Qualified
+     D                                     Template
+     Dcomm                            9A
+     Dcommdesc                       21A
+     Dhazmat                           N
+     Dpallets                         1P 0
+     Dpcs                             4P 0
+     Dshipid                          7A
+     Dshipname                        9A
+     Dvolume                          4P 0
+     Dweight                          5P 0
+
+      ************************************
+      * stopsDS data structure
+      ************************************
+     DstopsDS          DS                  Qualified
+     D                                     Template
+     Dacttype                         6A
+     Daddress                              LikeDS(addressDS)
+     Dapptreq                          N
+     Dearlyarv                       20A
+     Dearlarvutc                     20A
+     Dlatearv                        20A
+     Dlatearvutc                     20A
+     Dlivehand                         N
+     Dlocatid                         7A
+     Dlocatenam                      13A
+     Dpickship                             LikeDS(CommodityDS)
+     D                                     Dim(1)
+     Dstopseq                         1P 0
+
+      ************************************
+      * tenderContactDS data structure
+      ************************************
+     DtenderContactDS  DS                  Qualified
+     D                                     Template
+     Dconttype                       21A
+     Demail                          21A
+     Dfname                          11A
+     Dfullname                       11A
+     Dlname                          11A
+     Dphone1                         12A
+     Dprimlang                        7A
+
+      ************************************
+      * unitsOfMeasureDS data structure
+      ************************************
+     DuomDS            DS                  Qualified
+     D                                     Template
+     Ddistuom                         5A
+     Dlenuom                          4A
+     Dtempuom                        10A
+     Dvoluom                          9A
+     Dwgtuom                          6A
+
+      ************************************
+      * Program prototype
+      ************************************
+     DBYTENDNOT        PR
+     DapiHeader                            LikeDS(apiHeaderDS)
+     DbillToParty                          LikeDS(billToPartyDS)
+     DcarrierSCAC                     4A
+     DdeliveryTime                   20A
+     DdeliveryTimeUtc                20A
+     Dequipdtls                            LikeDS(EquipmentDS)
+     D                                     Dim(1)
+     Dfrtreq                               LikeDS(frtReqDS)
+     DloadDetails                          LikeDS(loadDetailsDS)
+     DloadID                          7A
+     DloadTotals                           LikeDS(loadTotalsDS)
+     DnotificationType                 7A
+     DpickupTime                     20A
+     DpickupTimeUtc                  20A
+     DquoteID                         7A
+     DrespondByTime                  20A
+     DserviceType                     2A
+     Dstops                                LikeDS(stopsDS)
+     D                                     Dim(2)
+     DteamDriver                       N
+     DtenderContact                        LikeDS(tenderContactDS)
+     DunitsOfMeasure                       LikeDS(uomDS)

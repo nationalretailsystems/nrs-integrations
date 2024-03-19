@@ -1,0 +1,157 @@
+{
+    "apiHeader": {
+        "companyCode": "Company Name",
+        "contractedCompanyCode": "Company Code",
+        "contractedCompanyName": "Company Name",
+        "customerCode": ["Customer Code"],
+        "messageID": "231115_131503_121_6300426",
+        "providerCode": ["Your providerCode"],
+        "timestamp": "2023-11-15T19:15:03Z",
+        "providerCustomerCode": "Your providerCustomerCode"
+    },
+    "billToParty": {
+        "address": {
+            "city": "GOODLETTSVILLE",
+            "countryCode": "USA",
+            "fullAddress": "100 MISSION RIDGE, GOODLETTSVILLE, TN, USA, 37115",
+            "geographicalCoordinates": {
+                "latitude": 36.3283,
+                "longitude": -86.7281
+            },
+            "postalCode": "37115",
+            "state": "TN",
+            "streetAddressOne": "100 MISSION RIDGE"
+        }
+    },
+    "carrierSCAC": "SCAC",
+    "deliveryTime": "2023-11-21T13:44:48Z",
+    "deliveryTimeUtc": "2023-11-21T19:44:48Z",
+    "equipmentDetails": [
+        {
+            "equipmentID": "53FT",
+            "equipmentType": "DryVan",
+            "height": 0.0,
+            "length": 0.0,
+            "width": 0.0
+        }
+    ],
+    "freightRequirements": {
+        "hazardousMaterials": false,
+        "paymentTerms": "Prepaid"
+    },
+    "loadDetails": {
+        "commodity": "Commodity",
+        "commodityDescription": "Commodity Description",
+        "loadDescription": "Description"
+    },
+    "loadID": "6300426",
+    "loadTotals": {
+        "declaredValue": 6.0,
+        "distance": 1322.1,
+        "linearLength": 26.0,
+        "orderValue": 0.0,
+        "pallets": 0.0,
+        "pieces": 2310.0,
+        "volume": 1269.0,
+        "weight": 18051.0
+    },
+    "notificationType": "Request",
+    "pickupTime": "2023-11-20T08:00:00Z",
+    "pickupTimeUtc": "2023-11-20T13:00:00Z",
+    "quoteID": "8174208",
+    "respondByTime": "2023-11-15T16:13:00Z",
+    "serviceType": "TL",
+    "stops": [
+        {
+            "activityType": "Pickup",
+            "address": {
+                "city": "NORTH COLLINS",
+                "countryCode": "USA",
+                "fullAddress": "10285 EAGLE DRIVE, NORTH COLLINS, NY, USA, 14111",
+                "geographicalCoordinates": {
+                    "latitude": 42.5944,
+                    "longitude": -78.94
+                },
+                "postalCode": "14111",
+                "state": "NY",
+                "streetAddressOne": "10285 EAGLE DRIVE"
+            },
+            "appointmentRequired": false,
+            "earliestArrival": "2023-11-20T00:00:00Z",
+            "earliestArrivalUtc": "2023-11-20T05:00:00Z",
+            "latestArrival": "2023-11-23T23:58:00Z",
+            "latestArrivalUtc": "2023-11-24T04:58:00Z",
+            "liveHandling": true,
+            "locationID": "V537764",
+            "locationName": "GURUNANDA LLC",
+            "pickShipments": [
+                {
+                    "commodity": "Commodity",
+                    "commodityDescription": "Commodity Description",
+                    "hazardousMaterials": false,
+                    "pallets": 0.0,
+                    "pieces": 2310.0,
+                    "shipmentID": "Ship ID",
+                    "shipmentName": "Ship Name",
+                    "volume": 1269.0,
+                    "weight": 18051.0
+                }
+            ],
+            "stopSequence": 1
+        },
+        {
+            "activityType": "Dropoff",
+            "address": {
+                "city": "ARDMORE",
+                "countryCode": "USA",
+                "fullAddress": "ARDMORE IND. AIRPARK,401 GENERAL DR., ARDMORE, OK, USA, 73401",
+                "geographicalCoordinates": {
+                    "latitude": 34.2957,
+                    "longitude": -97.0382
+                },
+                "postalCode": "73401",
+                "state": "OK",
+                "streetAddressOne": "ARDMORE IND. AIRPARK,401 GENERAL DR."
+            },
+            "appointmentRequired": false,
+            "dropShipments": [
+                {
+                    "commodity": "Commodity",
+                    "commodityDescription": "Commodity Description",
+                    "hazardousMaterials": false,
+                    "pallets": 0.0,
+                    "pieces": 2310.0,
+                    "shipmentID": "Ship ID",
+                    "shipmentName": "Ship Name",
+                    "volume": 1269.0,
+                    "weight": 18051.0
+                }
+            ],
+            "earliestArrival": "2023-11-20T00:01:00Z",
+            "earliestArrivalUtc": "2023-11-20T06:01:00Z",
+            "latestArrival": "2023-11-23T23:59:00Z",
+            "latestArrivalUtc": "2023-11-24T05:59:00Z",
+            "liveHandling": true,
+            "locationID": "D6300",
+            "locationName": "Ardmore Distribution Center",
+            "stopSequence": 2
+        }
+    ],
+    "teamDriver": false,
+    "tenderContact": {
+        "contactType": "Sender Tender Contact",
+        "email": "random.user@gmail.com",
+        "firstName": "Random User",
+        "fullName": "Random User",
+        "lastName": "Random User",
+        "phone1": "123 456 7890",
+        "primaryLanguage": "English"
+    },
+    "unitsOfMeasure": {
+        "distanceUOM": "Miles",
+        "lengthUOM": "Feet",
+        "temperatureUOM": "Fahrenheit",
+        "volumeUOM": "CubicFeet",
+        "weightUOM": "Pounds"
+    }
+}

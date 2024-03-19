@@ -105,25 +105,24 @@ export const getTokenHRSD = async (): Promise<string> => {
     }
     let response;
     let data = qs.stringify({
-        'client_id':'f7d9dd9f-71cb-4801-9e0b-e580e347ca1f',
-        'grant_type':'client_credentials',
-        'scope':'client'
+        client_id: 'f7d9dd9f-71cb-4801-9e0b-e580e347ca1f',
+        grant_type: 'client_credentials',
+        scope: 'client'
     });
     const encoded = Buffer.from(hrsd.prd.username + ':' + hrsd.prd.password).toString('base64');
     try {
-    response = await axiosInstanceHRSD.post('/v2/client/tokens', data,  {
-
-        headers: {
-            'Content-Type': 'application/x-www-form-urlencoded',
-            Authorization: 'Basic ' + encoded,
-            accept: 'application/json',
-            Connection: 'keep-alive'
-        }
-    });
-} catch (err) {
-    logger.error(err);
-    return err;
-}
+        response = await axiosInstanceHRSD.post('/v2/client/tokens', data, {
+            headers: {
+                'Content-Type': 'application/x-www-form-urlencoded',
+                Authorization: 'Basic ' + encoded,
+                accept: 'application/json',
+                Connection: 'keep-alive'
+            }
+        });
+    } catch (err) {
+        logger.error(err);
+        return err;
+    }
     _tokenhrsd = response.data.access_token;
     _expirationhrsd = Date.now() + response.data.expires_in * 1000; // 1000ms * 60s * 60m * 8h = 8 hours
     logger.error('returning token');
