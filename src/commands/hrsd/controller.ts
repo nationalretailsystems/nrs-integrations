@@ -8,7 +8,7 @@ import * as converterhrsdupld from 'src/interfaces/hrsdupld';
 import { getTokenHRSD } from 'src/services/get-token';
 import { parseCommandLine } from 'typescript';
 import fs from 'fs';
-import FormData from 'form-data';
+import * as FormData from 'form-data';
 import { log } from 'console';
 
 const logger = createLogger('commands/hrsd');
@@ -68,19 +68,21 @@ export const postUpload: ECCHandlerFunction = async function (reqkey, datax, ecc
     let nextReqKey = reqkey;
     // const jsonData = reqFields;
     try {
-        logger.error('Requesting token')
-        
-        const formData = new FormData();
+        logger.error('Requesting token');
+
+        const formData = new FormData.default();
         if (config.filefolderstring === 'ext-files') {
-            formData.append("file",fs.createReadStream('ext-files' + "/" + reqFields.filename));
+            formData.append('file', fs.createReadStream('ext-files' + '/' + reqFields.filename));
         } else {
-            formData.append("file",fs.createReadStream(reqFields.location + "/" + reqFields.filename));
+            formData.append('file', fs.createReadStream(reqFields.location + '/' + reqFields.filename));
         }
         const token = await getTokenHRSD();
-        result = await axiosInstance.post('/v2/client/document', formData , {
+        result = await axiosInstance.post('/v2/client/document', formData, {
             headers: {
                 Authorization: 'Bearer ' + token,
-                'Content-Type': 'multipart/form-data; boundary=' + reqFields.filename.substring(0,reqFields.filename.lastIndexOf('.')),
+                'Content-Type':
+                    'multipart/form-data; boundary=' +
+                    reqFields.filename.substring(0, reqFields.filename.lastIndexOf('.')),
                 Accept: 'application/json',
                 maxBodyLength: Infinity,
                 Cookie: 'multidb_pin_writes=y'
@@ -118,7 +120,7 @@ export const postEmpDoc: ECCHandlerFunction = async function (reqkey, datax, ecc
     try {
         logger.error('Requesting token');
         const token = await getTokenHRSD();
-        result = await axiosInstance.post('/v2/client/employee_documents', reqFields , {
+        result = await axiosInstance.post('/v2/client/employee_documents', reqFields, {
             headers: {
                 Authorization: 'Bearer ' + token,
                 'Content-Type': 'application/json',
@@ -140,6 +142,7 @@ export const postEmpDoc: ECCHandlerFunction = async function (reqkey, datax, ecc
     }
     let responseData = result.data;
     nextReqKey = await ecc.sendEccResult('ECC0000', 'Success', nextReqKey);
-    return ecc.sendEccResult('ECC0000', result.data, nextReqKey);
+    // X return ecc.sendEccResult('ECC0000', result.data, nextReqKey);
+    return nextReqKey;
     logger.info(nextReqKey);
 };

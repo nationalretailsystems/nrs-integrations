@@ -1,0 +1,458 @@
+---
+name: bytendnot
+codeblocks:
+  typescript:
+    - ""
+    - // Manually entered import
+    - import configService from "../../config";
+    - const config = configService.get();
+datastructures:
+  apiHeaderDS:
+    subfields:
+      companyCode:
+        rpgName: compcode
+        type: Character
+        length: 12
+        default: ""
+      contractedCompanyCode:
+        rpgName: contcompcd
+        type: Character
+        length: 12
+        default: ""
+      contractedCompanyName:
+        rpgName: contcompnm
+        type: Character
+        length: 12
+        default: ""
+      customerCode:
+        rpgName: custcode
+        type: Character
+        length: 13
+        default: ""
+        dim: 1
+      messageID:
+        rpgName: messagid
+        type: Character
+        length: 25
+        default: ""
+      providerCode:
+        rpgName: provdercd
+        type: Character
+        length: 17
+        default: ""
+        dim: 1
+      timestamp:
+        rpgName: timestamp
+        type: Character
+        length: 20
+        default: ""
+      providerCustomerCode:
+        rpgName: provcustcd
+        type: Character
+        length: 25
+        default: ""
+  geographicalCoordinatesDS:
+    rpgName: geoCoordDS
+    subfields:
+      latitude:
+        rpgName: latitude
+        type: Packed
+        length: 6
+        precision: 4
+        default: 0
+      longitude:
+        rpgName: longitude
+        type: Packed
+        length: 7
+        precision: 4
+        default: 0
+  addressDS:
+    subfields:
+      city:
+        rpgName: city
+        type: Character
+        length: 14
+        default: ""
+      countryCode:
+        rpgName: country
+        type: Character
+        length: 3
+        default: ""
+      fullAddress:
+        rpgName: fulladdr
+        type: Character
+        length: 49
+        default: ""
+      geographicalCoordinates:
+        rpgName: geocoord
+        type: DataStruct
+        dsName: geographicalCoordinatesDS
+      postalCode:
+        rpgName: postcode
+        type: Character
+        length: 5
+        default: ""
+      state:
+        rpgName: state
+        type: Character
+        length: 2
+        default: ""
+      streetAddressOne:
+        rpgName: address1
+        type: Character
+        length: 17
+        default: ""
+  billToPartyDS:
+    subfields:
+      address:
+        type: DataStruct
+        dsName: addressDS
+  EquipmentDS:
+    subfields:
+      equipmentID:
+        rpgName: equipid
+        type: Character
+        length: 4
+        default: ""
+      equipmentType:
+        rpgName: equiptyp
+        type: Character
+        length: 6
+        default: ""
+      height:
+        rpgName: height
+        type: Packed
+        length: 1
+        default: 0
+      length:
+        rpgName: length
+        type: Packed
+        length: 1
+        default: 0
+      width:
+        rpgName: width
+        type: Packed
+        length: 1
+        default: 0
+  freightRequirementsDS:
+    rpgName: frtReqDS
+    subfields:
+      hazardousMaterials:
+        rpgName: hazmat
+        type: Boolean
+        default: true
+      paymentTerms:
+        rpgName: pterms
+        type: Character
+        length: 7
+        default: ""
+  loadDetailsDS:
+    subfields:
+      commodity:
+        rpgName: comm
+        type: Character
+        length: 9
+        default: ""
+      commodityDescription:
+        rpgName: commdesc
+        type: Character
+        length: 21
+        default: ""
+      loadDescription:
+        rpgName: loaddesc
+        type: Character
+        length: 11
+        default: ""
+  loadTotalsDS:
+    subfields:
+      declaredValue:
+        rpgName: declval
+        type: Packed
+        length: 1
+        default: 0
+      distance:
+        rpgName: distance
+        type: Packed
+        length: 5
+        precision: 1
+        default: 0
+      linearLength:
+        rpgName: linlength
+        type: Packed
+        length: 2
+        default: 0
+      orderValue:
+        rpgName: ordval
+        type: Packed
+        length: 1
+        default: 0
+      pallets:
+        rpgName: pallets
+        type: Packed
+        length: 1
+        default: 0
+      pieces:
+        rpgName: pcs
+        type: Packed
+        length: 4
+        default: 0
+      volume:
+        rpgName: volume
+        type: Packed
+        length: 4
+        default: 0
+      weight:
+        rpgName: weight
+        type: Packed
+        length: 5
+        default: 0
+  CommodityDS:
+    subfields:
+      commodity:
+        rpgName: comm
+        type: Character
+        length: 9
+        default: ""
+      commodityDescription:
+        rpgName: commdesc
+        type: Character
+        length: 21
+        default: ""
+      hazardousMaterials:
+        rpgName: hazmat
+        type: Boolean
+        default: true
+      pallets:
+        rpgName: pallets
+        type: Packed
+        length: 1
+        default: 0
+      pieces:
+        rpgName: pcs
+        type: Packed
+        length: 4
+        default: 0
+      shipmentID:
+        rpgName: shipid
+        type: Character
+        length: 7
+        default: ""
+      shipmentName:
+        rpgName: shipname
+        type: Character
+        length: 9
+        default: ""
+      volume:
+        rpgName: volume
+        type: Packed
+        length: 4
+        default: 0
+      weight:
+        rpgName: weight
+        type: Packed
+        length: 5
+        default: 0
+  stopsDS:
+    subfields:
+      activityType:
+        rpgName: acttype
+        type: Character
+        length: 6
+        default: ""
+      address:
+        rpgName: address
+        type: DataStruct
+        dsName: addressDS
+      appointmentRequired:
+        rpgName: apptreq
+        type: Boolean
+        default: true
+      earliestArrival:
+        rpgName: earlyarv
+        type: Character
+        length: 20
+        default: ""
+      earliestArrivalUtc:
+        rpgName: earlarvutc
+        type: Character
+        length: 20
+        default: ""
+      latestArrival:
+        rpgName: latearv
+        type: Character
+        length: 20
+        default: ""
+      latestArrivalUtc:
+        rpgName: latearvutc
+        type: Character
+        length: 20
+      liveHandling:
+        rpgName: livehand
+        type: Boolean
+        default: true
+      locationID:
+        rpgName: locatid
+        type: Character
+        length: 7
+        default: ""
+      locationName:
+        rpgName: locatenam
+        type: Character
+        length: 13
+        default: ""
+      pickShipments:
+        rpgName: pickship
+        type: DataStruct
+        dsName: CommodityDS
+        dim: 1
+      stopSequence:
+        rpgName: stopseq
+        type: Packed
+        length: 1
+        default: 0
+  tenderContactDS:
+    subfields:
+      contactType:
+        rpgName: conttype
+        type: Character
+        length: 21
+        default: ""
+      email:
+        rpgName: email
+        type: Character
+        length: 21
+        default: ""
+      firstName:
+        rpgName: fname
+        type: Character
+        length: 11
+        default: ""
+      fullName:
+        rpgName: fullname
+        type: Character
+        length: 11
+        default: ""
+      lastName:
+        rpgName: lname
+        type: Character
+        length: 11
+        default: ""
+      phone1:
+        rpgName: phone1
+        type: Character
+        length: 12
+        default: ""
+      primaryLanguage:
+        rpgName: primlang
+        type: Character
+        length: 7
+        default: ""
+  unitsOfMeasureDS:
+    rpgName: uomDS
+    subfields:
+      distanceUOM:
+        rpgName: distuom
+        type: Character
+        length: 5
+        default: ""
+      lengthUOM:
+        rpgName: lenuom
+        type: Character
+        length: 4
+        default: ""
+      temperatureUOM:
+        rpgName: tempuom
+        type: Character
+        length: 10
+        default: ""
+      volumeUOM:
+        rpgName: voluom
+        type: Character
+        length: 9
+        default: ""
+      weightUOM:
+        rpgName: wgtuom
+        type: Character
+        length: 6
+        default: ""
+pgmmodels:
+  BYTENDNOT:
+    library: \config.eradaniConnect.native.pgmlib
+    mode: ile
+    procedures:
+      MainProc:
+        params:
+          apiHeader:
+            type: DataStruct
+            dsName: apiHeaderDS
+          billToParty:
+            type: DataStruct
+            dsName: billToPartyDS
+          carrierSCAC:
+            type: Character
+            length: 4
+            default: ""
+          deliveryTime:
+            type: Character
+            length: 20
+            default: ""
+          deliveryTimeUtc:
+            type: Character
+            length: 20
+            default: ""
+          equipmentDetails:
+            rpgName: equipdtls
+            type: DataStruct
+            dsName: EquipmentDS
+            dim: 1
+          freightRequirements:
+            rpgName: frtreq
+            type: DataStruct
+            dsName: freightRequirementsDS
+          loadDetails:
+            type: DataStruct
+            dsName: loadDetailsDS
+          loadID:
+            type: Character
+            length: 7
+            default: ""
+          loadTotals:
+            type: DataStruct
+            dsName: loadTotalsDS
+          notificationType:
+            type: Character
+            length: 7
+            default: ""
+          pickupTime:
+            type: Character
+            length: 20
+            default: ""
+          pickupTimeUtc:
+            type: Character
+            length: 20
+            default: ""
+          quoteID:
+            type: Character
+            length: 7
+            default: ""
+          respondByTime:
+            type: Character
+            length: 20
+            default: ""
+          serviceType:
+            type: Character
+            length: 2
+            default: ""
+          stops:
+            type: DataStruct
+            dsName: stopsDS
+            dim: 2
+          teamDriver:
+            type: Boolean
+            default: true
+          tenderContact:
+            type: DataStruct
+            dsName: tenderContactDS
+          unitsOfMeasure:
+            type: DataStruct
+            dsName: unitsOfMeasureDS
