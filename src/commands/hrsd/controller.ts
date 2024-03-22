@@ -66,11 +66,12 @@ export const postUpload: ECCHandlerFunction = async function (reqkey, datax, ecc
     // Call web service
     let result;
     let nextReqKey = reqkey;
+    const formData = new FormData.default();
     // const jsonData = reqFields;
     try {
         logger.error('Requesting token');
 
-        const formData = new FormData.default();
+        // cont formData was here
         if (config.filefolderstring === 'ext-files') {
             formData.append('file', fs.createReadStream('ext-files' + '/' + reqFields.filename));
         } else {
@@ -93,6 +94,9 @@ export const postUpload: ECCHandlerFunction = async function (reqkey, datax, ecc
             // If the request was made and the server responded with a status code
             // That falls out of the range of 2xx
             // Note: These error formats are dependent on the web service
+            logger.debug('***FORMDATA NOT DEFINED(formData)***-' + formData);
+            logger.debug('***FORMDATA NOT DEFINED(result)***-' + result);
+            logger.debug('***FORMDATA NOT DEFINED(err)***-' + err);
             return ecc.sendEccResult('ECC1000', err.response.status + '-' + err.response.statusText, nextReqKey);
         }
 
