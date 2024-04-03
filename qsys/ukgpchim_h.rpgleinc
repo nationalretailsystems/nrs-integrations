@@ -32,13 +32,13 @@
 
       ************************************
       * PunchReqDS data structure
-      * Record length: 78
+      * Record length: 156
       ************************************
-     DPunchReqDSLen    C                   78
+     DPunchReqDSLen    C                   156
      DPunchReqDS       DS                  Qualified
      D                                     Template
      Dpunches                              LikeDS(punchesDS)
-     D                                     Dim(1)
+     D                                     Dim(2)
 
       ************************************
       * Convert PunchReqDS to buffer
@@ -46,4 +46,4 @@
      DPunchReqDSToBuf  PR
      DDataStruct                           LikeDS(PunchReqDS)
      D                                     Const
-     DBuffer                         78A
+     DBuffer                        156A

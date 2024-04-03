@@ -45,4 +45,4 @@ formats:
       punches:
         type: DataStruct
         dsName: punchesDS
-        dim: 1
+        dim: 2

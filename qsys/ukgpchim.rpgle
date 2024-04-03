@@ -26,13 +26,13 @@
      DPunchReqDSToBuf  PI
      DDataStruct                           LikeDS(PunchReqDS)
      D                                     Const
-     DBuffer                         78A
+     DBuffer                        156A
 
       * Initialize to beginning of buffer
        BufPtr = %addr(Buffer);
 
       * Write fields from DS to buffer
-       for i = 1 to 1;
+       for i = 1 to 2;
        %subst(CharBuf:1:8) = %char(DataStruct.punches(i).employee.id);
        BufPtr += 8;
        %subst(CharBuf:1:12) = %char(DataStruct.punches(i).punchgeoloc.latitude);
