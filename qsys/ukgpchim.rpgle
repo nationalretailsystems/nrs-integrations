@@ -19,12 +19,12 @@
      Dl                S             10U 0
 
       ************************************
-      * Convert PunchReq2DS to buffer
+      * Convert PunchReq2 to buffer
       ************************************
-     PPunchReq2DSToBuf  B                   Export
+     PPunchReq2ToBuf   B                   Export
 
-     DPunchReq2DSToBuf  PI
-     DDataStruct                           LikeDS(PunchReq2DS)
+     DPunchReq2ToBuf   PI
+     DDataStruct                           LikeDS(PunchReq2)
      D                                     Const
      DBuffer                        156A
 
@@ -47,4 +47,4 @@
 
        return ;
 
-     PPunchReq2DSToBuf  E
+     PPunchReq2ToBuf   E
