@@ -1,5 +1,5 @@
 import { ECCInternalRouter } from '@eradani-inc/ecc-router/ecc-router';
-import { getTotals, getPunches, getSummary, putHours, getPers, putHos, delSignoff, postPunch } from './controller';
+import { getTotals, getPunches, getSummary, putHours, getPers, putHos, delSignoff, postPunch, postPunchImport } from './controller';
 import * as getsummary from 'src/interfaces/ukgdlysumm';
 import * as getpunches from 'src/interfaces/ukgpunches';
 import * as gettotals from 'src/interfaces/ukgtotals';
@@ -8,6 +8,8 @@ import * as getpers from 'src/interfaces/ukgpers';
 import * as puthos from 'src/interfaces/ukgputhos';
 import * as delsignoff from 'src/interfaces/ukgdelof';
 import * as postpunch from 'src/interfaces/ukgdrvr';
+import * as postpunchimport from 'src/interfaces/ukgpchim';
+import { Route53RecoveryReadiness } from 'aws-sdk';
 
 export default function registerUKG(router: ECCInternalRouter) {
     router.use('getpunches', getpunches, getPunches);
@@ -18,4 +20,5 @@ export default function registerUKG(router: ECCInternalRouter) {
     router.use('puthos', puthos, putHos);
     router.use('delsignoff',delsignoff,delSignoff);
     router.use('postpunch',postpunch,postPunch);
+    router.use('postpunchimport',postpunchimport,postPunchImport);
 }

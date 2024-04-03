@@ -1,0 +1,46 @@
+---
+name: ukgpchim
+rpgIncName: ukgpchim_h
+datastructures:
+  employeeDS:
+    subfields:
+      id:
+        type: Packed
+        length: 6
+        default: 0
+  punchGeoLocationDS:
+    subfields:
+      latitude:
+        type: Packed
+        length: 10
+        precision: 6
+        default: 0.0
+      longitude:
+        type: Packed
+        length: 10
+        precision: 6
+        default: 0.0
+  punchesDS:
+    subfields:
+      employee:
+        type: DataStruct
+        dsName: employeeDS
+      punchGeoLocation:
+        type: DataStruct
+        dsName: punchGeoLocationDS
+      enteredOnDtm:
+        type: Character
+        length: 23
+        default: ''
+      punchDtm:
+        type: Character
+        length: 23
+        default: ''
+formats:
+  PunchReqDS:
+    recordType: request
+    subfields:
+      punches:
+        type: DataStruct
+        dsName: punchesDS
+        dim: 1
