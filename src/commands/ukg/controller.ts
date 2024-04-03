@@ -544,7 +544,7 @@ export const postPunchImport: ECCHandlerFunction = async function (reqkey, datax
     // let responseData = result.data[0][1];
     // let responseData = sanitizeValues(result.data, safeValues);
     nextReqKey = await ecc.sendEccResult('ECC0000', 'Success', nextReqKey);
-    logger.error('Call punch import Success');
+    logger.error('Call punch import Successed');
     logger.error(nextReqKey);
     return response;
 };
