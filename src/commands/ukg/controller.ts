@@ -503,7 +503,7 @@ export const postPunch: ECCHandlerFunction = async function (reqkey, datax, ecc)
 };
 export const postPunchImport: ECCHandlerFunction = async function (reqkey, datax, ecc) {
     // Get parameters from incoming data buffer
-    const reqFields = converterukgpchim.convertPunchReqDSToObject(datax);
+    const reqFields = converterukgpchim.convertPunchReq2ToObject(datax);
 
     logger.debug(`Received punches import request`, { reqkey, datax });
 

@@ -68,16 +68,16 @@ export interface punchesDS {
 /**
  * Output interface
  */
-export interface PunchReqDS {
+export interface PunchReq2 {
     /**
      */
     punches: Array<punchesDS>
 }
 
 /**
- * Convert PunchReqDS record to TypeScript object
+ * Convert PunchReq2 record to TypeScript object
  */
-export function convertPunchReqDSToObject(dataIn: string): PunchReqDS {
+export function convertPunchReq2ToObject(dataIn: string): PunchReq2 {
   const dataOut: any =   {
   
     };
@@ -86,7 +86,7 @@ export function convertPunchReqDSToObject(dataIn: string): PunchReqDS {
   dataOut.punches = [
     
   ];
-  for (let i: number = 0; i < 1; ++i) {
+  for (let i: number = 0; i < 2; ++i) {
   dataOut.punches[i] =   {
   
     };
