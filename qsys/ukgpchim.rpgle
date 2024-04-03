@@ -35,9 +35,9 @@
        for i = 1 to 1;
        %subst(CharBuf:1:8) = %char(DataStruct.punches(i).employee.id);
        BufPtr += 8;
-       %subst(CharBuf:1:12) = %char(DataStruct.punches(i).punchGeoLocation.latitude);
+       %subst(CharBuf:1:12) = %char(DataStruct.punches(i).punchgeoloc.latitude);
        BufPtr += 12;
-       %subst(CharBuf:1:12) = %char(DataStruct.punches(i).punchGeoLocation.longitude);
+       %subst(CharBuf:1:12) = %char(DataStruct.punches(i).punchgeoloc.longitude);
        BufPtr += 12;
        %subst(CharBuf:1:23) = DataStruct.punches(i).enteredOnDtm;
        BufPtr += 23;

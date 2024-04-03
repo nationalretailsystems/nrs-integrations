@@ -9,6 +9,7 @@ datastructures:
         length: 6
         default: 0
   punchGeoLocationDS:
+    rpgName: punchgeolocds
     subfields:
       latitude:
         type: Packed
@@ -26,6 +27,7 @@ datastructures:
         type: DataStruct
         dsName: employeeDS
       punchGeoLocation:
+        rpgName: punchgeoloc
         type: DataStruct
         dsName: punchGeoLocationDS
       enteredOnDtm:
