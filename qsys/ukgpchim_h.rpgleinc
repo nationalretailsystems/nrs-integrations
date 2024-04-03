@@ -15,7 +15,7 @@
       ************************************
       * punchGeoLocationDS data structure
       ************************************
-     DpunchGeoLocationDS  DS                  Qualified
+     Dpunchgeolocds    DS                  Qualified
      D                                     Template
      Dlatitude                       10P 6
      Dlongitude                      10P 6
@@ -26,8 +26,7 @@
      DpunchesDS        DS                  Qualified
      D                                     Template
      Demployee                             LikeDS(employeeDS)
-     DpunchGeoLoca...
-     Dtion                                 LikeDS(punchGeoLocationDS)
+     Dpunchgeoloc                          LikeDS(punchgeolocds)
      DenteredOnDtm                   23A
      DpunchDtm                       23A
 
