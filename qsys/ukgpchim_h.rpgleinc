@@ -31,19 +31,19 @@
      DpunchDtm                       23A
 
       ************************************
-      * PunchReqDS data structure
+      * PunchReq2DS data structure
       * Record length: 156
       ************************************
-     DPunchReqDSLen    C                   156
-     DPunchReqDS       DS                  Qualified
+     DPunchReq2DSLen   C                   156
+     DPunchReq2DS      DS                  Qualified
      D                                     Template
      Dpunches                              LikeDS(punchesDS)
      D                                     Dim(2)
 
       ************************************
-      * Convert PunchReqDS to buffer
+      * Convert PunchReq2DS to buffer
       ************************************
-     DPunchReqDSToBuf  PR
-     DDataStruct                           LikeDS(PunchReqDS)
+     DPunchReq2DSToBuf  PR
+     DDataStruct                           LikeDS(PunchReq2DS)
      D                                     Const
      DBuffer                        156A
