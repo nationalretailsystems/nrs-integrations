@@ -1,0 +1,50 @@
+      ************************************
+      * Module: ukgpchim
+      * Generated RPG data structures
+      * and prototypes
+      * Do not modify
+      ************************************
+
+      ************************************
+      * employeeDS data structure
+      ************************************
+     DemployeeDS       DS                  Qualified
+     D                                     Template
+     Did                              6P 0
+
+      ************************************
+      * punchGeoLocationDS data structure
+      ************************************
+     DpunchGeoLocationDS  DS                  Qualified
+     D                                     Template
+     Dlatitude                       10P 6
+     Dlongitude                      10P 6
+
+      ************************************
+      * punchesDS data structure
+      ************************************
+     DpunchesDS        DS                  Qualified
+     D                                     Template
+     Demployee                             LikeDS(employeeDS)
+     DpunchGeoLoca...
+     Dtion                                 LikeDS(punchGeoLocationDS)
+     DenteredOnDtm                   23A
+     DpunchDtm                       23A
+
+      ************************************
+      * PunchReqDS data structure
+      * Record length: 78
+      ************************************
+     DPunchReqDSLen    C                   78
+     DPunchReqDS       DS                  Qualified
+     D                                     Template
+     Dpunches                              LikeDS(punchesDS)
+     D                                     Dim(1)
+
+      ************************************
+      * Convert PunchReqDS to buffer
+      ************************************
+     DPunchReqDSToBuf  PR
+     DDataStruct                           LikeDS(PunchReqDS)
+     D                                     Const
+     DBuffer                         78A

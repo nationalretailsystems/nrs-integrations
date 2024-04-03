@@ -1,0 +1,18 @@
+{
+
+  "punches": [
+    
+    {
+        
+      "employee": {
+        "id": 111630
+      },
+      "punchGeoLocation": {
+        "latitude": 133.857640,
+        "longitude": -117.229485
+      },
+     "enteredOnDtm": "2024-04-01T09:03:50.000",
+    "punchDtm": "2024-04-03T08:00:00.000"
+    }
+  ]
+}
