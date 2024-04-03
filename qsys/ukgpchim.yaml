@@ -39,7 +39,7 @@ datastructures:
         length: 23
         default: ''
 formats:
-  PunchReqDS:
+  PunchReq2DS:
     recordType: request
     subfields:
       punches:
