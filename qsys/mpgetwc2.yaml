@@ -57,3 +57,7 @@ formats:
         rpgName: assetid
         type: Character
         length: 24
+      purpose:
+        rpgName: purpose
+        type: Character
+        length: 80

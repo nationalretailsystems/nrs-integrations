@@ -26,7 +26,11 @@ export interface ReqWo2Chg {
     /**
      * @size 24 characters
      */
-    assetId: string
+    assetId: string,
+    /**
+     * @size 80 characters
+     */
+    purpose: string
 }
 
 /**
@@ -42,6 +46,8 @@ export function convertReqWo2ChgToObject(dataIn: string): ReqWo2Chg {
   pos += 10;
   dataOut.assetId = dataIn.substring(pos, pos + 24).trimEnd();
   pos += 24;
+  dataOut.purpose = dataIn.substring(pos, pos + 80).trimEnd();
+  pos += 80;
 
   return dataOut;
 }
@@ -103,7 +109,7 @@ export function convertObjectToResWo2Chg(dataIn: ResWo2Chg): string {
   dataOut += dataIn?.budgetId?.substring(0, 24)?.padEnd(24) ?? "".substring(0, 24).padEnd(24);
   dataOut += dataIn?.statusId?.substring(0, 24)?.padEnd(24) ?? "".substring(0, 24).padEnd(24);
   dataOut += (dataIn?.dateCreated !== undefined ? toIbmiTimestamp(dataIn?.dateCreated, 26) : "".substring(0, 26).padEnd(26));
-  dataOut += (dataIn?.dateCompleted !== null ? toIbmiTimestamp(dataIn?.dateCompleted, 26) : "0001-01-01-00.00.00.000".substring(0, 26).padEnd(26));
+  dataOut += (dataIn?.dateCompleted !== undefined ? toIbmiTimestamp(dataIn?.dateCompleted, 26) : "0001-01-01-00.00.00.000".substring(0, 26).padEnd(26));
 
   return dataOut;
 }
