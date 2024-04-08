@@ -15,12 +15,12 @@ datastructures:
         type: Packed
         length: 10
         precision: 6
-        default: 0.0
+        default: 0.00
       longitude:
         type: Packed
         length: 10
         precision: 6
-        default: 0.0
+        default: 0.00
   punchesDS:
     subfields:
       employee:

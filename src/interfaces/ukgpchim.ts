@@ -32,13 +32,13 @@ export interface punchGeoLocationDS {
     /**
      * @size 10 digits
      * @precision 6 decimals
-     * @default `0.0`
+     * @default `0.00`
      */
     latitude: number,
     /**
      * @size 10 digits
      * @precision 6 decimals
-     * @default `0.0`
+     * @default `0.00`
      */
     longitude: number
 }
