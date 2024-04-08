@@ -7,13 +7,14 @@
 
       ************************************
       * ReqWo2Chg data structure
-      * Record length: 34
+      * Record length: 114
       ************************************
-     DReqWo2ChgLen     C                   34
+     DReqWo2ChgLen     C                   114
      DReqWo2Chg        DS                  Qualified
      D                                     Template
      Dsince                            D
      Dassetid                        24A
+     Dpurpose                        80A
 
       ************************************
       * Convert ReqWo2Chg to buffer
@@ -21,7 +22,7 @@
      DReqWo2ChgToBuf   PR
      DDataStruct                           LikeDS(ReqWo2Chg)
      D                                     Const
-     DBuffer                         34A
+     DBuffer                        114A
 
       ************************************
       * ResWo2Chg data structure

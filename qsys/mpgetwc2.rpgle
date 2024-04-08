@@ -26,7 +26,7 @@
      DReqWo2ChgToBuf   PI
      DDataStruct                           LikeDS(ReqWo2Chg)
      D                                     Const
-     DBuffer                         34A
+     DBuffer                        114A
 
       * Initialize to beginning of buffer
        BufPtr = %addr(Buffer);
@@ -36,6 +36,8 @@
        BufPtr += 10;
        %subst(CharBuf:1:24) = DataStruct.assetid;
        BufPtr += 24;
+       %subst(CharBuf:1:80) = DataStruct.purpose;
+       BufPtr += 80;
 
        return ;
 

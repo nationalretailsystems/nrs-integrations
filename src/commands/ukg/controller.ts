@@ -521,7 +521,7 @@ export const postPunchImport: ECCHandlerFunction = async function (reqkey, datax
                 appkey: ukg.prd.appkey,
                 'content-type': 'application/json',
                 accept: 'application/json',
-                'device-id': 'PlatSci'
+                'device-id': 'PlatformScience'
             },
         });
     } catch (err) {
@@ -544,7 +544,6 @@ export const postPunchImport: ECCHandlerFunction = async function (reqkey, datax
     // let responseData = result.data[0][1];
     // let responseData = sanitizeValues(result.data, safeValues);
     nextReqKey = await ecc.sendEccResult('ECC0000', 'Success', nextReqKey);
-    logger.error('Call punch import Successed');
-    logger.error(nextReqKey);
+    logger.error('Call punch import Succeeded-' + nextReqKey);
     return response;
 };
