@@ -42,7 +42,7 @@ formats:
       dateCreated:
         rpgName: dtcreate
         type: Timestamp
-        default: ""
+        default: 0001-01-01-00.00.00.000
       dateCompleted:
         rpgName: dtcomplete
         type: Timestamp
