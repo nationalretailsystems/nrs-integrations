@@ -4,30 +4,29 @@ codeblocks:
   typescript:
     - ""
     - // Manually entered import
-    - import configService from "../../config";
-    - const config = configService.get();
+    - import config from 'config';
 datastructures:
   apiHeaderDS:
     subfields:
       companyCode:
         rpgName: compcode
         type: Character
-        length: 12
+        length: 15
         default: ""
       contractedCompanyCode:
         rpgName: contcompcd
         type: Character
-        length: 12
+        length: 15
         default: ""
       contractedCompanyName:
         rpgName: contcompnm
         type: Character
-        length: 12
+        length: 50
         default: ""
       customerCode:
         rpgName: custcode
         type: Character
-        length: 13
+        length: 15
         default: ""
         dim: 1
       messageID:
@@ -38,7 +37,7 @@ datastructures:
       providerCode:
         rpgName: provdercd
         type: Character
-        length: 17
+        length: 20
         default: ""
         dim: 1
       timestamp:
@@ -57,21 +56,21 @@ datastructures:
       latitude:
         rpgName: latitude
         type: Packed
-        length: 6
-        precision: 4
+        length: 9
+        precision: 6
         default: 0
       longitude:
         rpgName: longitude
         type: Packed
-        length: 7
-        precision: 4
+        length: 9
+        precision: 6
         default: 0
   addressDS:
     subfields:
       city:
         rpgName: city
         type: Character
-        length: 14
+        length: 20
         default: ""
       countryCode:
         rpgName: country
@@ -81,7 +80,7 @@ datastructures:
       fullAddress:
         rpgName: fulladdr
         type: Character
-        length: 49
+        length: 100
         default: ""
       geographicalCoordinates:
         rpgName: geocoord
@@ -90,17 +89,17 @@ datastructures:
       postalCode:
         rpgName: postcode
         type: Character
-        length: 5
+        length: 9
         default: ""
       state:
         rpgName: state
         type: Character
-        length: 2
+        length: 3
         default: ""
       streetAddressOne:
         rpgName: address1
         type: Character
-        length: 17
+        length: 50
         default: ""
   billToPartyDS:
     subfields:
@@ -117,22 +116,22 @@ datastructures:
       equipmentType:
         rpgName: equiptyp
         type: Character
-        length: 6
+        length: 15
         default: ""
       height:
         rpgName: height
         type: Packed
-        length: 1
+        length: 3
         default: 0
       length:
         rpgName: length
         type: Packed
-        length: 1
+        length: 3
         default: 0
       width:
         rpgName: width
         type: Packed
-        length: 1
+        length: 3
         default: 0
   freightRequirementsDS:
     rpgName: frtReqDS
@@ -140,7 +139,7 @@ datastructures:
       hazardousMaterials:
         rpgName: hazmat
         type: Boolean
-        default: true
+        default: false
       paymentTerms:
         rpgName: pterms
         type: Character
@@ -151,25 +150,25 @@ datastructures:
       commodity:
         rpgName: comm
         type: Character
-        length: 9
+        length: 15
         default: ""
       commodityDescription:
         rpgName: commdesc
         type: Character
-        length: 21
+        length: 50
         default: ""
       loadDescription:
         rpgName: loaddesc
         type: Character
-        length: 11
+        length: 15
         default: ""
   loadTotalsDS:
     subfields:
       declaredValue:
         rpgName: declval
         type: Packed
-        length: 1
-        default: 0
+        length: 11
+        default: 2
       distance:
         rpgName: distance
         type: Packed
@@ -184,12 +183,12 @@ datastructures:
       orderValue:
         rpgName: ordval
         type: Packed
-        length: 1
-        default: 0
+        length: 11
+        default: 2
       pallets:
         rpgName: pallets
         type: Packed
-        length: 1
+        length: 2
         default: 0
       pieces:
         rpgName: pcs
@@ -211,21 +210,21 @@ datastructures:
       commodity:
         rpgName: comm
         type: Character
-        length: 9
+        length: 15
         default: ""
       commodityDescription:
         rpgName: commdesc
         type: Character
-        length: 21
+        length: 50
         default: ""
       hazardousMaterials:
         rpgName: hazmat
         type: Boolean
-        default: true
+        default: false
       pallets:
         rpgName: pallets
         type: Packed
-        length: 1
+        length: 2
         default: 0
       pieces:
         rpgName: pcs
@@ -235,12 +234,12 @@ datastructures:
       shipmentID:
         rpgName: shipid
         type: Character
-        length: 7
+        length: 10
         default: ""
       shipmentName:
         rpgName: shipname
         type: Character
-        length: 9
+        length: 15
         default: ""
       volume:
         rpgName: volume
@@ -257,7 +256,7 @@ datastructures:
       activityType:
         rpgName: acttype
         type: Character
-        length: 6
+        length: 15
         default: ""
       address:
         rpgName: address
@@ -266,7 +265,7 @@ datastructures:
       appointmentRequired:
         rpgName: apptreq
         type: Boolean
-        default: true
+        default: false
       earliestArrival:
         rpgName: earlyarv
         type: Character
@@ -298,10 +297,15 @@ datastructures:
       locationName:
         rpgName: locatenam
         type: Character
-        length: 13
+        length: 50
         default: ""
       pickShipments:
-        rpgName: pickship
+        rpgName: commodity
+        type: DataStruct
+        dsName: CommodityDS
+        dim: 1
+      dropShipments:
+        rpgName: commodity
         type: DataStruct
         dsName: CommodityDS
         dim: 1
@@ -315,37 +319,37 @@ datastructures:
       contactType:
         rpgName: conttype
         type: Character
-        length: 21
+        length: 25
         default: ""
       email:
         rpgName: email
         type: Character
-        length: 21
+        length: 50
         default: ""
       firstName:
         rpgName: fname
         type: Character
-        length: 11
+        length: 25
         default: ""
       fullName:
         rpgName: fullname
         type: Character
-        length: 11
+        length: 50
         default: ""
       lastName:
         rpgName: lname
         type: Character
-        length: 11
+        length: 25
         default: ""
       phone1:
         rpgName: phone1
         type: Character
-        length: 12
+        length: 15
         default: ""
       primaryLanguage:
         rpgName: primlang
         type: Character
-        length: 7
+        length: 10
         default: ""
   unitsOfMeasureDS:
     rpgName: uomDS
@@ -353,12 +357,12 @@ datastructures:
       distanceUOM:
         rpgName: distuom
         type: Character
-        length: 5
+        length: 10
         default: ""
       lengthUOM:
         rpgName: lenuom
         type: Character
-        length: 4
+        length: 10
         default: ""
       temperatureUOM:
         rpgName: tempuom
@@ -368,16 +372,16 @@ datastructures:
       volumeUOM:
         rpgName: voluom
         type: Character
-        length: 9
+        length: 10
         default: ""
       weightUOM:
         rpgName: wgtuom
         type: Character
-        length: 6
+        length: 10
         default: ""
 pgmmodels:
   BYTENDNOT:
-    library: \config.eradaniConnect.native.pgmlib
+    library: \config.blueyonder.pgmlib
     mode: ile
     procedures:
       MainProc:
@@ -420,6 +424,7 @@ pgmmodels:
             type: DataStruct
             dsName: loadTotalsDS
           notificationType:
+            rpgName: notiftype
             type: Character
             length: 7
             default: ""

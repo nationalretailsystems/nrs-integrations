@@ -10,12 +10,12 @@
       ************************************
      DapiHeaderDS      DS                  Qualified
      D                                     Template
-     Dcompcode                       12A
-     Dcontcompcd                     12A
-     Dcontcompnm                     12A
-     Dcustcode                       13A   Dim(1)
+     Dcompcode                       15A
+     Dcontcompcd                     15A
+     Dcontcompnm                     50A
+     Dcustcode                       15A   Dim(1)
      Dmessagid                       25A
-     Dprovdercd                      17A   Dim(1)
+     Dprovdercd                      20A   Dim(1)
      Dtimestamp                      20A
      Dprovcustcd                     25A
 
@@ -24,21 +24,21 @@
       ************************************
      DgeoCoordDS       DS                  Qualified
      D                                     Template
-     Dlatitude                        6P 4
-     Dlongitude                       7P 4
+     Dlatitude                        9P 6
+     Dlongitude                       9P 6
 
       ************************************
       * addressDS data structure
       ************************************
      DaddressDS        DS                  Qualified
      D                                     Template
-     Dcity                           14A
+     Dcity                           20A
      Dcountry                         3A
-     Dfulladdr                       49A
+     Dfulladdr                      100A
      Dgeocoord                             LikeDS(geoCoordDS)
-     Dpostcode                        5A
-     Dstate                           2A
-     Daddress1                       17A
+     Dpostcode                        9A
+     Dstate                           3A
+     Daddress1                       50A
 
       ************************************
       * billToPartyDS data structure
@@ -53,10 +53,10 @@
      DEquipmentDS      DS                  Qualified
      D                                     Template
      Dequipid                         4A
-     Dequiptyp                        6A
-     Dheight                          1P 0
-     Dlength                          1P 0
-     Dwidth                           1P 0
+     Dequiptyp                       15A
+     Dheight                          3P 0
+     Dlength                          3P 0
+     Dwidth                           3P 0
 
       ************************************
       * freightRequirementsDS data structure
@@ -71,20 +71,20 @@
       ************************************
      DloadDetailsDS    DS                  Qualified
      D                                     Template
-     Dcomm                            9A
-     Dcommdesc                       21A
-     Dloaddesc                       11A
+     Dcomm                           15A
+     Dcommdesc                       50A
+     Dloaddesc                       15A
 
       ************************************
       * loadTotalsDS data structure
       ************************************
      DloadTotalsDS     DS                  Qualified
      D                                     Template
-     Ddeclval                         1P 0
+     Ddeclval                        11P 0
      Ddistance                        5P 1
      Dlinlength                       2P 0
-     Dordval                          1P 0
-     Dpallets                         1P 0
+     Dordval                         11P 0
+     Dpallets                         2P 0
      Dpcs                             4P 0
      Dvolume                          4P 0
      Dweight                          5P 0
@@ -94,13 +94,13 @@
       ************************************
      DCommodityDS      DS                  Qualified
      D                                     Template
-     Dcomm                            9A
-     Dcommdesc                       21A
+     Dcomm                           15A
+     Dcommdesc                       50A
      Dhazmat                           N
-     Dpallets                         1P 0
+     Dpallets                         2P 0
      Dpcs                             4P 0
-     Dshipid                          7A
-     Dshipname                        9A
+     Dshipid                         10A
+     Dshipname                       15A
      Dvolume                          4P 0
      Dweight                          5P 0
 
@@ -109,7 +109,7 @@
       ************************************
      DstopsDS          DS                  Qualified
      D                                     Template
-     Dacttype                         6A
+     Dacttype                        15A
      Daddress                              LikeDS(addressDS)
      Dapptreq                          N
      Dearlyarv                       20A
@@ -118,8 +118,10 @@
      Dlatearvutc                     20A
      Dlivehand                         N
      Dlocatid                         7A
-     Dlocatenam                      13A
-     Dpickship                             LikeDS(CommodityDS)
+     Dlocatenam                      50A
+     Dcommodity                            LikeDS(CommodityDS)
+     D                                     Dim(1)
+     Dcommodity                            LikeDS(CommodityDS)
      D                                     Dim(1)
      Dstopseq                         1P 0
 
@@ -128,24 +130,24 @@
       ************************************
      DtenderContactDS  DS                  Qualified
      D                                     Template
-     Dconttype                       21A
-     Demail                          21A
-     Dfname                          11A
-     Dfullname                       11A
-     Dlname                          11A
-     Dphone1                         12A
-     Dprimlang                        7A
+     Dconttype                       25A
+     Demail                          50A
+     Dfname                          25A
+     Dfullname                       50A
+     Dlname                          25A
+     Dphone1                         15A
+     Dprimlang                       10A
 
       ************************************
       * unitsOfMeasureDS data structure
       ************************************
      DuomDS            DS                  Qualified
      D                                     Template
-     Ddistuom                         5A
-     Dlenuom                          4A
+     Ddistuom                        10A
+     Dlenuom                         10A
      Dtempuom                        10A
-     Dvoluom                          9A
-     Dwgtuom                          6A
+     Dvoluom                         10A
+     Dwgtuom                         10A
 
       ************************************
       * Program prototype
@@ -162,7 +164,7 @@
      DloadDetails                          LikeDS(loadDetailsDS)
      DloadID                          7A
      DloadTotals                           LikeDS(loadTotalsDS)
-     DnotificationType                 7A
+     Dnotiftype                       7A
      DpickupTime                     20A
      DpickupTimeUtc                  20A
      DquoteID                         7A

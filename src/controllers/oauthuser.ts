@@ -24,6 +24,10 @@ export function generateJWT(userData: JWTUserData) {
 
     return jwt.sign(user).then((token: string) => {
         /* eslint-disable-next-line camelcase */
-        return { access_token: token };
+        return { 
+            "access_token": token,
+            // X expiration: 3600,
+            "token_type": "bearer"
+         };
     });
 }

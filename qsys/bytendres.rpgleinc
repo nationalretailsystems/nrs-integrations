@@ -1,0 +1,37 @@
+      ************************************
+      * Module: bytendres
+      * Generated RPG data structures
+      * and prototypes
+      * Do not modify
+      ************************************
+
+      ************************************
+      * apiHeaderDS data structure
+      ************************************
+     DapiHeaderDS      DS                  Qualified
+     D                                     Template
+     Dcustcode                       13A
+     Dprovcustcd                     25A
+     Dprovdercd                      17A   Dim(1)
+     Dmessagid                       25A
+     Dcompcode                       12A
+     Dcontcompcd                     12A
+     Dtimestamp                      20A
+     Dprovstring                     19A
+
+      ************************************
+      * TenderRes data structure
+      * Record length: 155
+      ************************************
+     DTenderResLen     C                   155
+     DTenderRes        DS                  Qualified
+     D                                     Template
+     Drespstat                       12A
+     DapiHeader                            LikeDS(apiHeaderDS)
+
+      ************************************
+      * Convert buffer to TenderRes
+      ************************************
+     DBufToTenderRes   PR
+     DBuffer                        155A
+     DDataStruct                           LikeDS(TenderRes)

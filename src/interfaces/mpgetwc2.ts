@@ -108,8 +108,8 @@ export function convertObjectToResWo2Chg(dataIn: ResWo2Chg): string {
   dataOut += dataIn?.purpose?.substring(0, 50)?.padEnd(50) ?? "".substring(0, 50).padEnd(50);
   dataOut += dataIn?.budgetId?.substring(0, 24)?.padEnd(24) ?? "".substring(0, 24).padEnd(24);
   dataOut += dataIn?.statusId?.substring(0, 24)?.padEnd(24) ?? "".substring(0, 24).padEnd(24);
-  dataOut += (dataIn?.dateCreated !== undefined ? toIbmiTimestamp(dataIn?.dateCreated, 26) : "0001-01-01-00.00.00.000".substring(0, 26).padEnd(26));
-  dataOut += (dataIn?.dateCompleted !== undefined ? toIbmiTimestamp(dataIn?.dateCompleted, 26) : "0001-01-01-00.00.00.000".substring(0, 26).padEnd(26));
+  dataOut += (dataIn?.dateCreated !== ( undefined || null) ? toIbmiTimestamp(dataIn?.dateCreated, 26) : "0001-01-01-00.00.00.000".substring(0, 26).padEnd(26));
+  dataOut += (dataIn?.dateCompleted !== ( undefined || null) ? toIbmiTimestamp(dataIn?.dateCompleted, 26) : "0001-01-01-00.00.00.000".substring(0, 26).padEnd(26));
 
   return dataOut;
 }

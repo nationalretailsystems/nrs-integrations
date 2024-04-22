@@ -4,6 +4,7 @@ import mountSQL from './sql';
 import mountFourKites from './fourkites';
 import mountPinc from './pinc';
 import mountBlueyonder from './blueyonder';
+import mountOauth from './oauth';
 
 export default function mountAPI(router: Router) {
     // You can set auth requirements on a whole API section by putting `router.use(requireAuth);` here instead of on individual route definitions
@@ -27,4 +28,8 @@ export default function mountAPI(router: Router) {
     const blueyonder = Router();
     mountBlueyonder(blueyonder);
     router.use('/blueyonder', blueyonder);
+
+    const oauth = Router();
+    mountOauth(oauth);
+    router.use('/oauth', oauth);
 }

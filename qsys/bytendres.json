@@ -1,0 +1,14 @@
+
+             {
+                "responseStatus" :  "Acknowledged",
+                "apiHeader": {
+                                "customerCode" : ["CustomerCode"],
+                                "providerCustomerCode" : "Your ProviderCustomerCode",
+                                "providerCode" : ["Your ProviderCode"],
+                                "messageID" : "231115_131503_121_6300426",
+                                "companyCode" : "Company Code",
+                                "contractedCompanyCode" : "Company Code",
+                                "timestamp" : "2023-11-15T19:15:03Z",
+                                "providersString" : "Your providerString"
+                }
+            }

@@ -1,0 +1,57 @@
+---
+name: bytendres
+datastructures:
+  apiHeaderDS:
+    subfields:
+      customerCode:
+        rpgName: custcode
+        type: Character
+        length: 13
+        default: ""
+      providerCustomerCode:
+        rpgName: provcustcd
+        type: Character
+        length: 25
+        default: ""
+      providerCode:
+        rpgName: provdercd
+        type: Character
+        length: 17
+        default: ""
+        dim: 1
+      messageID:
+        rpgName: messagid
+        type: Character
+        length: 25
+        default: ""
+      companyCode:
+        rpgName: compcode
+        type: Character
+        length: 12
+        default: ""
+      contractedCompanyCode:
+        rpgName: contcompcd
+        type: Character
+        length: 12
+        default: ""
+      timestamp:
+        rpgName: timestamp
+        type: Character
+        length: 20
+        default: ""
+      providersString:
+        rpgName: provstring
+        type: Character
+        length: 19
+        default: ""
+formats:
+  TenderRes:
+    recordType: response
+    subfields:
+      responseStatus:
+        rpgName: respstat
+        type: Character
+        length: 12
+      apiHeader:
+        type: DataStruct
+        dsName: apiHeaderDS
