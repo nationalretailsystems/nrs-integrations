@@ -8,8 +8,7 @@ const { dataTypes } = eradaniConnect;
 
 
 // Manually entered import
-import configService from "../../config";
-const config = configService.get();
+import config from 'config';
 
 /**
  * Data structure
@@ -17,22 +16,22 @@ const config = configService.get();
   let apiHeaderDSFields: any = [
       {
       name: "companyCode",
-      type: new dataTypes.Char(12),
+      type: new dataTypes.Char(15),
       defaultValue: ""
     },
       {
       name: "contractedCompanyCode",
-      type: new dataTypes.Char(12),
+      type: new dataTypes.Char(15),
       defaultValue: ""
     },
       {
       name: "contractedCompanyName",
-      type: new dataTypes.Char(12),
+      type: new dataTypes.Char(50),
       defaultValue: ""
     },
       {
       name: "customerCode",
-      type: new dataTypes.Char(13),
+      type: new dataTypes.Char(15),
       defaultValue: "",
       dim: 1
     },
@@ -43,7 +42,7 @@ const config = configService.get();
     },
       {
       name: "providerCode",
-      type: new dataTypes.Char(17),
+      type: new dataTypes.Char(20),
       defaultValue: "",
       dim: 1
     },
@@ -64,22 +63,22 @@ const config = configService.get();
  */
 export interface apiHeaderDSInput {
     /**
-     * @size 12 characters
+     * @size 15 characters
      * @default ``
      */
     companyCode?: string,
     /**
-     * @size 12 characters
+     * @size 15 characters
      * @default ``
      */
     contractedCompanyCode?: string,
     /**
-     * @size 12 characters
+     * @size 50 characters
      * @default ``
      */
     contractedCompanyName?: string,
     /**
-     * @size 13 characters
+     * @size 15 characters
      * @default ``
      */
     customerCode?: Array<string>,
@@ -89,7 +88,7 @@ export interface apiHeaderDSInput {
      */
     messageID?: string,
     /**
-     * @size 17 characters
+     * @size 20 characters
      * @default ``
      */
     providerCode?: Array<string>,
@@ -110,22 +109,22 @@ export interface apiHeaderDSInput {
  */
 export interface apiHeaderDS {
     /**
-     * @size 12 characters
+     * @size 15 characters
      * @default ``
      */
     companyCode: string,
     /**
-     * @size 12 characters
+     * @size 15 characters
      * @default ``
      */
     contractedCompanyCode: string,
     /**
-     * @size 12 characters
+     * @size 50 characters
      * @default ``
      */
     contractedCompanyName: string,
     /**
-     * @size 13 characters
+     * @size 15 characters
      * @default ``
      */
     customerCode: Array<string>,
@@ -135,7 +134,7 @@ export interface apiHeaderDS {
      */
     messageID: string,
     /**
-     * @size 17 characters
+     * @size 20 characters
      * @default ``
      */
     providerCode: Array<string>,
@@ -157,12 +156,12 @@ export interface apiHeaderDS {
   let geographicalCoordinatesDSFields: any = [
       {
       name: "latitude",
-      type: new dataTypes.PackedDecimal(6, 4),
+      type: new dataTypes.PackedDecimal(9, 6),
       defaultValue: 0.0
     },
       {
       name: "longitude",
-      type: new dataTypes.PackedDecimal(7, 4),
+      type: new dataTypes.PackedDecimal(9, 6),
       defaultValue: 0.0
     }
   ];
@@ -172,14 +171,14 @@ export interface apiHeaderDS {
  */
 export interface geographicalCoordinatesDSInput {
     /**
-     * @size 6 digits
-     * @precision 4 decimals
+     * @size 9 digits
+     * @precision 6 decimals
      * @default `0`
      */
     latitude?: number | string,
     /**
-     * @size 7 digits
-     * @precision 4 decimals
+     * @size 9 digits
+     * @precision 6 decimals
      * @default `0`
      */
     longitude?: number | string
@@ -190,14 +189,14 @@ export interface geographicalCoordinatesDSInput {
  */
 export interface geographicalCoordinatesDS {
     /**
-     * @size 6 digits
-     * @precision 4 decimals
+     * @size 9 digits
+     * @precision 6 decimals
      * @default `0`
      */
     latitude: number,
     /**
-     * @size 7 digits
-     * @precision 4 decimals
+     * @size 9 digits
+     * @precision 6 decimals
      * @default `0`
      */
     longitude: number
@@ -209,7 +208,7 @@ export interface geographicalCoordinatesDS {
   let addressDSFields: any = [
       {
       name: "city",
-      type: new dataTypes.Char(14),
+      type: new dataTypes.Char(20),
       defaultValue: ""
     },
       {
@@ -219,7 +218,7 @@ export interface geographicalCoordinatesDS {
     },
       {
       name: "fullAddress",
-      type: new dataTypes.Char(49),
+      type: new dataTypes.Char(100),
       defaultValue: ""
     },
       {
@@ -228,17 +227,17 @@ export interface geographicalCoordinatesDS {
     },
       {
       name: "postalCode",
-      type: new dataTypes.Char(5),
+      type: new dataTypes.Char(9),
       defaultValue: ""
     },
       {
       name: "state",
-      type: new dataTypes.Char(2),
+      type: new dataTypes.Char(3),
       defaultValue: ""
     },
       {
       name: "streetAddressOne",
-      type: new dataTypes.Char(17),
+      type: new dataTypes.Char(50),
       defaultValue: ""
     }
   ];
@@ -248,7 +247,7 @@ export interface geographicalCoordinatesDS {
  */
 export interface addressDSInput {
     /**
-     * @size 14 characters
+     * @size 20 characters
      * @default ``
      */
     city?: string,
@@ -258,7 +257,7 @@ export interface addressDSInput {
      */
     countryCode?: string,
     /**
-     * @size 49 characters
+     * @size 100 characters
      * @default ``
      */
     fullAddress?: string,
@@ -266,17 +265,17 @@ export interface addressDSInput {
      */
     geographicalCoordinates: geographicalCoordinatesDSInput,
     /**
-     * @size 5 characters
+     * @size 9 characters
      * @default ``
      */
     postalCode?: string,
     /**
-     * @size 2 characters
+     * @size 3 characters
      * @default ``
      */
     state?: string,
     /**
-     * @size 17 characters
+     * @size 50 characters
      * @default ``
      */
     streetAddressOne?: string
@@ -287,7 +286,7 @@ export interface addressDSInput {
  */
 export interface addressDS {
     /**
-     * @size 14 characters
+     * @size 20 characters
      * @default ``
      */
     city: string,
@@ -297,7 +296,7 @@ export interface addressDS {
      */
     countryCode: string,
     /**
-     * @size 49 characters
+     * @size 100 characters
      * @default ``
      */
     fullAddress: string,
@@ -305,17 +304,17 @@ export interface addressDS {
      */
     geographicalCoordinates: geographicalCoordinatesDS,
     /**
-     * @size 5 characters
+     * @size 9 characters
      * @default ``
      */
     postalCode: string,
     /**
-     * @size 2 characters
+     * @size 3 characters
      * @default ``
      */
     state: string,
     /**
-     * @size 17 characters
+     * @size 50 characters
      * @default ``
      */
     streetAddressOne: string
@@ -360,22 +359,22 @@ export interface billToPartyDS {
     },
       {
       name: "equipmentType",
-      type: new dataTypes.Char(6),
+      type: new dataTypes.Char(15),
       defaultValue: ""
     },
       {
       name: "height",
-      type: new dataTypes.PackedDecimal(1, 0),
+      type: new dataTypes.PackedDecimal(3, 0),
       defaultValue: 0.0
     },
       {
       name: "length",
-      type: new dataTypes.PackedDecimal(1, 0),
+      type: new dataTypes.PackedDecimal(3, 0),
       defaultValue: 0.0
     },
       {
       name: "width",
-      type: new dataTypes.PackedDecimal(1, 0),
+      type: new dataTypes.PackedDecimal(3, 0),
       defaultValue: 0.0
     }
   ];
@@ -390,24 +389,24 @@ export interface EquipmentDSInput {
      */
     equipmentID?: string,
     /**
-     * @size 6 characters
+     * @size 15 characters
      * @default ``
      */
     equipmentType?: string,
     /**
-     * @size 1 digits
+     * @size 3 digits
      * @precision 0 decimals
      * @default `0`
      */
     height?: number | string,
     /**
-     * @size 1 digits
+     * @size 3 digits
      * @precision 0 decimals
      * @default `0`
      */
     length?: number | string,
     /**
-     * @size 1 digits
+     * @size 3 digits
      * @precision 0 decimals
      * @default `0`
      */
@@ -424,24 +423,24 @@ export interface EquipmentDS {
      */
     equipmentID: string,
     /**
-     * @size 6 characters
+     * @size 15 characters
      * @default ``
      */
     equipmentType: string,
     /**
-     * @size 1 digits
+     * @size 3 digits
      * @precision 0 decimals
      * @default `0`
      */
     height: number,
     /**
-     * @size 1 digits
+     * @size 3 digits
      * @precision 0 decimals
      * @default `0`
      */
     length: number,
     /**
-     * @size 1 digits
+     * @size 3 digits
      * @precision 0 decimals
      * @default `0`
      */
@@ -455,7 +454,7 @@ export interface EquipmentDS {
       {
       name: "hazardousMaterials",
       type: new dataTypes.Bool(),
-      defaultValue: true
+      defaultValue: false
     },
       {
       name: "paymentTerms",
@@ -469,7 +468,7 @@ export interface EquipmentDS {
  */
 export interface freightRequirementsDSInput {
     /**
-     * @default `true`
+     * @default `false`
      */
     hazardousMaterials?: boolean,
     /**
@@ -484,7 +483,7 @@ export interface freightRequirementsDSInput {
  */
 export interface freightRequirementsDS {
     /**
-     * @default `true`
+     * @default `false`
      */
     hazardousMaterials: boolean,
     /**
@@ -500,17 +499,17 @@ export interface freightRequirementsDS {
   let loadDetailsDSFields: any = [
       {
       name: "commodity",
-      type: new dataTypes.Char(9),
+      type: new dataTypes.Char(15),
       defaultValue: ""
     },
       {
       name: "commodityDescription",
-      type: new dataTypes.Char(21),
+      type: new dataTypes.Char(50),
       defaultValue: ""
     },
       {
       name: "loadDescription",
-      type: new dataTypes.Char(11),
+      type: new dataTypes.Char(15),
       defaultValue: ""
     }
   ];
@@ -520,17 +519,17 @@ export interface freightRequirementsDS {
  */
 export interface loadDetailsDSInput {
     /**
-     * @size 9 characters
+     * @size 15 characters
      * @default ``
      */
     commodity?: string,
     /**
-     * @size 21 characters
+     * @size 50 characters
      * @default ``
      */
     commodityDescription?: string,
     /**
-     * @size 11 characters
+     * @size 15 characters
      * @default ``
      */
     loadDescription?: string
@@ -541,17 +540,17 @@ export interface loadDetailsDSInput {
  */
 export interface loadDetailsDS {
     /**
-     * @size 9 characters
+     * @size 15 characters
      * @default ``
      */
     commodity: string,
     /**
-     * @size 21 characters
+     * @size 50 characters
      * @default ``
      */
     commodityDescription: string,
     /**
-     * @size 11 characters
+     * @size 15 characters
      * @default ``
      */
     loadDescription: string
@@ -563,8 +562,8 @@ export interface loadDetailsDS {
   let loadTotalsDSFields: any = [
       {
       name: "declaredValue",
-      type: new dataTypes.PackedDecimal(1, 0),
-      defaultValue: 0.0
+      type: new dataTypes.PackedDecimal(11, 0),
+      defaultValue: 2.0
     },
       {
       name: "distance",
@@ -578,12 +577,12 @@ export interface loadDetailsDS {
     },
       {
       name: "orderValue",
-      type: new dataTypes.PackedDecimal(1, 0),
-      defaultValue: 0.0
+      type: new dataTypes.PackedDecimal(11, 0),
+      defaultValue: 2.0
     },
       {
       name: "pallets",
-      type: new dataTypes.PackedDecimal(1, 0),
+      type: new dataTypes.PackedDecimal(2, 0),
       defaultValue: 0.0
     },
       {
@@ -608,9 +607,9 @@ export interface loadDetailsDS {
  */
 export interface loadTotalsDSInput {
     /**
-     * @size 1 digits
+     * @size 11 digits
      * @precision 0 decimals
-     * @default `0`
+     * @default `2`
      */
     declaredValue?: number | string,
     /**
@@ -626,13 +625,13 @@ export interface loadTotalsDSInput {
      */
     linearLength?: number | string,
     /**
-     * @size 1 digits
+     * @size 11 digits
      * @precision 0 decimals
-     * @default `0`
+     * @default `2`
      */
     orderValue?: number | string,
     /**
-     * @size 1 digits
+     * @size 2 digits
      * @precision 0 decimals
      * @default `0`
      */
@@ -662,9 +661,9 @@ export interface loadTotalsDSInput {
  */
 export interface loadTotalsDS {
     /**
-     * @size 1 digits
+     * @size 11 digits
      * @precision 0 decimals
-     * @default `0`
+     * @default `2`
      */
     declaredValue: number,
     /**
@@ -680,13 +679,13 @@ export interface loadTotalsDS {
      */
     linearLength: number,
     /**
-     * @size 1 digits
+     * @size 11 digits
      * @precision 0 decimals
-     * @default `0`
+     * @default `2`
      */
     orderValue: number,
     /**
-     * @size 1 digits
+     * @size 2 digits
      * @precision 0 decimals
      * @default `0`
      */
@@ -717,22 +716,22 @@ export interface loadTotalsDS {
   let CommodityDSFields: any = [
       {
       name: "commodity",
-      type: new dataTypes.Char(9),
+      type: new dataTypes.Char(15),
       defaultValue: ""
     },
       {
       name: "commodityDescription",
-      type: new dataTypes.Char(21),
+      type: new dataTypes.Char(50),
       defaultValue: ""
     },
       {
       name: "hazardousMaterials",
       type: new dataTypes.Bool(),
-      defaultValue: true
+      defaultValue: false
     },
       {
       name: "pallets",
-      type: new dataTypes.PackedDecimal(1, 0),
+      type: new dataTypes.PackedDecimal(2, 0),
       defaultValue: 0.0
     },
       {
@@ -742,12 +741,12 @@ export interface loadTotalsDS {
     },
       {
       name: "shipmentID",
-      type: new dataTypes.Char(7),
+      type: new dataTypes.Char(10),
       defaultValue: ""
     },
       {
       name: "shipmentName",
-      type: new dataTypes.Char(9),
+      type: new dataTypes.Char(15),
       defaultValue: ""
     },
       {
@@ -767,21 +766,21 @@ export interface loadTotalsDS {
  */
 export interface CommodityDSInput {
     /**
-     * @size 9 characters
+     * @size 15 characters
      * @default ``
      */
     commodity?: string,
     /**
-     * @size 21 characters
+     * @size 50 characters
      * @default ``
      */
     commodityDescription?: string,
     /**
-     * @default `true`
+     * @default `false`
      */
     hazardousMaterials?: boolean,
     /**
-     * @size 1 digits
+     * @size 2 digits
      * @precision 0 decimals
      * @default `0`
      */
@@ -793,12 +792,12 @@ export interface CommodityDSInput {
      */
     pieces?: number | string,
     /**
-     * @size 7 characters
+     * @size 10 characters
      * @default ``
      */
     shipmentID?: string,
     /**
-     * @size 9 characters
+     * @size 15 characters
      * @default ``
      */
     shipmentName?: string,
@@ -821,21 +820,21 @@ export interface CommodityDSInput {
  */
 export interface CommodityDS {
     /**
-     * @size 9 characters
+     * @size 15 characters
      * @default ``
      */
     commodity: string,
     /**
-     * @size 21 characters
+     * @size 50 characters
      * @default ``
      */
     commodityDescription: string,
     /**
-     * @default `true`
+     * @default `false`
      */
     hazardousMaterials: boolean,
     /**
-     * @size 1 digits
+     * @size 2 digits
      * @precision 0 decimals
      * @default `0`
      */
@@ -847,12 +846,12 @@ export interface CommodityDS {
      */
     pieces: number,
     /**
-     * @size 7 characters
+     * @size 10 characters
      * @default ``
      */
     shipmentID: string,
     /**
-     * @size 9 characters
+     * @size 15 characters
      * @default ``
      */
     shipmentName: string,
@@ -876,7 +875,7 @@ export interface CommodityDS {
   let stopsDSFields: any = [
       {
       name: "activityType",
-      type: new dataTypes.Char(6),
+      type: new dataTypes.Char(15),
       defaultValue: ""
     },
       {
@@ -886,7 +885,7 @@ export interface CommodityDS {
       {
       name: "appointmentRequired",
       type: new dataTypes.Bool(),
-      defaultValue: true
+      defaultValue: false
     },
       {
       name: "earliestArrival",
@@ -919,11 +918,16 @@ export interface CommodityDS {
     },
       {
       name: "locationName",
-      type: new dataTypes.Char(13),
+      type: new dataTypes.Char(50),
       defaultValue: ""
     },
       {
       name: "pickShipments",
+      type: new dataTypes.DataStructure(CommodityDSFields),
+      dim: 1
+    },
+      {
+      name: "dropShipments",
       type: new dataTypes.DataStructure(CommodityDSFields),
       dim: 1
     },
@@ -939,7 +943,7 @@ export interface CommodityDS {
  */
 export interface stopsDSInput {
     /**
-     * @size 6 characters
+     * @size 15 characters
      * @default ``
      */
     activityType?: string,
@@ -947,7 +951,7 @@ export interface stopsDSInput {
      */
     address: addressDSInput,
     /**
-     * @default `true`
+     * @default `false`
      */
     appointmentRequired?: boolean,
     /**
@@ -979,13 +983,16 @@ export interface stopsDSInput {
      */
     locationID?: string,
     /**
-     * @size 13 characters
+     * @size 50 characters
      * @default ``
      */
     locationName?: string,
     /**
      */
     pickShipments: Array<CommodityDSInput>,
+    /**
+     */
+    dropShipments: Array<CommodityDSInput>,
     /**
      * @size 1 digits
      * @precision 0 decimals
@@ -999,7 +1006,7 @@ export interface stopsDSInput {
  */
 export interface stopsDS {
     /**
-     * @size 6 characters
+     * @size 15 characters
      * @default ``
      */
     activityType: string,
@@ -1007,7 +1014,7 @@ export interface stopsDS {
      */
     address: addressDS,
     /**
-     * @default `true`
+     * @default `false`
      */
     appointmentRequired: boolean,
     /**
@@ -1039,13 +1046,16 @@ export interface stopsDS {
      */
     locationID: string,
     /**
-     * @size 13 characters
+     * @size 50 characters
      * @default ``
      */
     locationName: string,
     /**
      */
     pickShipments: Array<CommodityDS>,
+    /**
+     */
+    dropShipments: Array<CommodityDS>,
     /**
      * @size 1 digits
      * @precision 0 decimals
@@ -1060,37 +1070,37 @@ export interface stopsDS {
   let tenderContactDSFields: any = [
       {
       name: "contactType",
-      type: new dataTypes.Char(21),
+      type: new dataTypes.Char(25),
       defaultValue: ""
     },
       {
       name: "email",
-      type: new dataTypes.Char(21),
+      type: new dataTypes.Char(50),
       defaultValue: ""
     },
       {
       name: "firstName",
-      type: new dataTypes.Char(11),
+      type: new dataTypes.Char(25),
       defaultValue: ""
     },
       {
       name: "fullName",
-      type: new dataTypes.Char(11),
+      type: new dataTypes.Char(50),
       defaultValue: ""
     },
       {
       name: "lastName",
-      type: new dataTypes.Char(11),
+      type: new dataTypes.Char(25),
       defaultValue: ""
     },
       {
       name: "phone1",
-      type: new dataTypes.Char(12),
+      type: new dataTypes.Char(15),
       defaultValue: ""
     },
       {
       name: "primaryLanguage",
-      type: new dataTypes.Char(7),
+      type: new dataTypes.Char(10),
       defaultValue: ""
     }
   ];
@@ -1100,37 +1110,37 @@ export interface stopsDS {
  */
 export interface tenderContactDSInput {
     /**
-     * @size 21 characters
+     * @size 25 characters
      * @default ``
      */
     contactType?: string,
     /**
-     * @size 21 characters
+     * @size 50 characters
      * @default ``
      */
     email?: string,
     /**
-     * @size 11 characters
+     * @size 25 characters
      * @default ``
      */
     firstName?: string,
     /**
-     * @size 11 characters
+     * @size 50 characters
      * @default ``
      */
     fullName?: string,
     /**
-     * @size 11 characters
+     * @size 25 characters
      * @default ``
      */
     lastName?: string,
     /**
-     * @size 12 characters
+     * @size 15 characters
      * @default ``
      */
     phone1?: string,
     /**
-     * @size 7 characters
+     * @size 10 characters
      * @default ``
      */
     primaryLanguage?: string
@@ -1141,37 +1151,37 @@ export interface tenderContactDSInput {
  */
 export interface tenderContactDS {
     /**
-     * @size 21 characters
+     * @size 25 characters
      * @default ``
      */
     contactType: string,
     /**
-     * @size 21 characters
+     * @size 50 characters
      * @default ``
      */
     email: string,
     /**
-     * @size 11 characters
+     * @size 25 characters
      * @default ``
      */
     firstName: string,
     /**
-     * @size 11 characters
+     * @size 50 characters
      * @default ``
      */
     fullName: string,
     /**
-     * @size 11 characters
+     * @size 25 characters
      * @default ``
      */
     lastName: string,
     /**
-     * @size 12 characters
+     * @size 15 characters
      * @default ``
      */
     phone1: string,
     /**
-     * @size 7 characters
+     * @size 10 characters
      * @default ``
      */
     primaryLanguage: string
@@ -1183,12 +1193,12 @@ export interface tenderContactDS {
   let unitsOfMeasureDSFields: any = [
       {
       name: "distanceUOM",
-      type: new dataTypes.Char(5),
+      type: new dataTypes.Char(10),
       defaultValue: ""
     },
       {
       name: "lengthUOM",
-      type: new dataTypes.Char(4),
+      type: new dataTypes.Char(10),
       defaultValue: ""
     },
       {
@@ -1198,12 +1208,12 @@ export interface tenderContactDS {
     },
       {
       name: "volumeUOM",
-      type: new dataTypes.Char(9),
+      type: new dataTypes.Char(10),
       defaultValue: ""
     },
       {
       name: "weightUOM",
-      type: new dataTypes.Char(6),
+      type: new dataTypes.Char(10),
       defaultValue: ""
     }
   ];
@@ -1213,12 +1223,12 @@ export interface tenderContactDS {
  */
 export interface unitsOfMeasureDSInput {
     /**
-     * @size 5 characters
+     * @size 10 characters
      * @default ``
      */
     distanceUOM?: string,
     /**
-     * @size 4 characters
+     * @size 10 characters
      * @default ``
      */
     lengthUOM?: string,
@@ -1228,12 +1238,12 @@ export interface unitsOfMeasureDSInput {
      */
     temperatureUOM?: string,
     /**
-     * @size 9 characters
+     * @size 10 characters
      * @default ``
      */
     volumeUOM?: string,
     /**
-     * @size 6 characters
+     * @size 10 characters
      * @default ``
      */
     weightUOM?: string
@@ -1244,12 +1254,12 @@ export interface unitsOfMeasureDSInput {
  */
 export interface unitsOfMeasureDS {
     /**
-     * @size 5 characters
+     * @size 10 characters
      * @default ``
      */
     distanceUOM: string,
     /**
-     * @size 4 characters
+     * @size 10 characters
      * @default ``
      */
     lengthUOM: string,
@@ -1259,12 +1269,12 @@ export interface unitsOfMeasureDS {
      */
     temperatureUOM: string,
     /**
-     * @size 9 characters
+     * @size 10 characters
      * @default ``
      */
     volumeUOM: string,
     /**
-     * @size 6 characters
+     * @size 10 characters
      * @default ``
      */
     weightUOM: string
@@ -1274,7 +1284,7 @@ export interface unitsOfMeasureDS {
  * Program model
  */
 export const BYTENDNOTModel =   new eradaniConnect.run.Pgm("BYTENDNOT",   {
-      lib: config.eradaniConnect.native.pgmlib,
+      lib: config.blueyonder.pgmlib,
       mode: "ile",
       params: [
       {

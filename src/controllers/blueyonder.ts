@@ -5,8 +5,9 @@ import APIError from 'src/APIError';
 
 const logger = createLogger('controllers/blueyonder');
 
-export async function loadTender(load: BYTENDNOTInput): Promise<BYTENDNOTOutput> {
+export async function loadTender(load: BYTENDNOTInput) {
     logger.debug('Calling BYTENDNOT program');
 
     return transport.execute(BYTENDNOTModel, load) as Promise<BYTENDNOTOutput>;
 }
+
