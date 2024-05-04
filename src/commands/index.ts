@@ -19,6 +19,7 @@ import registerHYSTER from './hyster';
 import registerUPS from './ups';
 import registerTS4300 from './ts4300';
 import registerHRSD from './hrsd';
+import registerPlatsci from './platsci';
 import { Route53RecoveryCluster } from 'aws-sdk';
 
 export default async function registerCommands(router: ECCRouter) {
@@ -101,6 +102,10 @@ export default async function registerCommands(router: ECCRouter) {
     const hrsd = new ECCRouter.Router();
     registerHRSD(hrsd);
     router.use('hrsd', hrsd);
+
+    const platsci = new ECCRouter.Router();
+    registerPlatsci(platsci);
+    router.use('platsci', platsci);
 
     return router;
 }
