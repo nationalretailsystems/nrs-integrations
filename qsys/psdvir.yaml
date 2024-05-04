@@ -1,0 +1,22 @@
+---
+name: psdvir
+rpgIncName: psdvir_h
+formats:
+  DVIRReq:
+    recordType: request
+    subfields:
+      dvirreport:
+        rpgName: dvirrpt
+        type: Character
+        length: 16
+      filename:
+        rpgName: filename
+        type: Character
+        length: 100
+  DVIRRes:
+    recordType: response
+    subfields: 
+      return:
+        rpgName: return
+        type: Character
+        length: 3

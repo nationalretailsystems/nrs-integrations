@@ -80,7 +80,8 @@ GENMODS = icndbapi \
 		  hrsdtoken \
 		  hrsdupdoc \
 		  hrsdupld \
-		  ukgpchim
+		  ukgpchim \
+		  psdvir
 
 GENHDRS = icndbapi_h \
           lblapi_h \
@@ -133,7 +134,8 @@ GENHDRS = icndbapi_h \
 		  hrsdtokn_h \
 		  hrsdupdc_h \
 		  hrsdupld_h \
-		  ukgpchim_h
+		  ukgpchim_h \
+		  psdvir_h
 
 SRVPGMS = ecctmpgen
 
@@ -691,6 +693,12 @@ $(libdir)/qrpglesrc.file/ukgpchim.mbr $(libdir)/qrpglesrc.file/ukgpchim_h.mbr ..
 	cp ukgpchim.ts ../src/interfaces/ukgpchim.ts
 	system "CPYFRMSTMF FROMSTMF('ukgpchim.rpgle') TOMBR('$(libdir)/qrpglesrc.file/ukgpchim.mbr') MBROPT(*REPLACE)"
 	system "CPYFRMSTMF FROMSTMF('ukgpchim_h.rpgleinc') TOMBR('$(libdir)/qrpglesrc.file/ukgpchim_h.mbr') MBROPT(*REPLACE)"	
+
+$(libdir)/qrpglesrc.file/psdvir.mbr $(libdir)/qrpglesrc.file/psdvir_h.mbr ../src/interfaces/psdvir.ts: ukgpchim.yaml
+	npx ec-generate -f $<
+	cp psdvir.ts ../src/interfaces/psdvir.ts
+	system "CPYFRMSTMF FROMSTMF('psdvir.rpgle') TOMBR('$(libdir)/qrpglesrc.file/psdvir.mbr') MBROPT(*REPLACE)"
+	system "CPYFRMSTMF FROMSTMF('psdvir_h.rpgleinc') TOMBR('$(libdir)/qrpglesrc.file/psdvir_h.mbr') MBROPT(*REPLACE)"	
 
 .PHONY: library
 library:

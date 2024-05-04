@@ -1,0 +1,40 @@
+      ************************************
+      * Module: psdvir
+      * Generated RPG data structures
+      * and prototypes
+      * Do not modify
+      ************************************
+
+      ************************************
+      * DVIRReq data structure
+      * Record length: 116
+      ************************************
+     DDVIRReqLen       C                   116
+     DDVIRReq          DS                  Qualified
+     D                                     Template
+     Ddvirrpt                        16A
+     Dfilename                      100A
+
+      ************************************
+      * Convert DVIRReq to buffer
+      ************************************
+     DDVIRReqToBuf     PR
+     DDataStruct                           LikeDS(DVIRReq)
+     D                                     Const
+     DBuffer                        116A
+
+      ************************************
+      * DVIRRes data structure
+      * Record length: 3
+      ************************************
+     DDVIRResLen       C                   3
+     DDVIRRes          DS                  Qualified
+     D                                     Template
+     Dreturn                          3A
+
+      ************************************
+      * Convert buffer to DVIRRes
+      ************************************
+     DBufToDVIRRes     PR
+     DBuffer                          3A
+     DDataStruct                           LikeDS(DVIRRes)
