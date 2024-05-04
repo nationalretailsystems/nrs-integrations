@@ -694,7 +694,7 @@ $(libdir)/qrpglesrc.file/ukgpchim.mbr $(libdir)/qrpglesrc.file/ukgpchim_h.mbr ..
 	system "CPYFRMSTMF FROMSTMF('ukgpchim.rpgle') TOMBR('$(libdir)/qrpglesrc.file/ukgpchim.mbr') MBROPT(*REPLACE)"
 	system "CPYFRMSTMF FROMSTMF('ukgpchim_h.rpgleinc') TOMBR('$(libdir)/qrpglesrc.file/ukgpchim_h.mbr') MBROPT(*REPLACE)"	
 
-$(libdir)/qrpglesrc.file/psdvir.mbr $(libdir)/qrpglesrc.file/psdvir_h.mbr ../src/interfaces/psdvir.ts: ukgpchim.yaml
+$(libdir)/qrpglesrc.file/psdvir.mbr $(libdir)/qrpglesrc.file/psdvir_h.mbr ../src/interfaces/psdvir.ts: psdvir.yaml
 	npx ec-generate -f $<
 	cp psdvir.ts ../src/interfaces/psdvir.ts
 	system "CPYFRMSTMF FROMSTMF('psdvir.rpgle') TOMBR('$(libdir)/qrpglesrc.file/psdvir.mbr') MBROPT(*REPLACE)"
