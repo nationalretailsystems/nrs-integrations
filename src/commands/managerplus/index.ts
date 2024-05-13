@@ -26,7 +26,6 @@ import * as managerplusempl from 'src/interfaces/mpemploy';
 import * as managerpluswc2 from 'src/interfaces/mpgetwc2';
 import * as managerpluswo from 'src/interfaces/mpgetwo';
 
-
 export default function registerManagerplus(router: ECCInternalRouter) {
     router.use('getAssetChanges', managerplus, getAssetChanges);
     router.use('getAssetAll', managerplus2, getAssetAll);

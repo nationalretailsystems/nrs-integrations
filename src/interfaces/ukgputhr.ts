@@ -3,15 +3,8 @@
 // Module: ukgputhr
 // Generated source -- do not modify
 
-import { ibmiConversions, missingInput } from "@eradani-inc/ec-client";
-const {
-  fromIbmiDate,
-  fromIbmiTime,
-  fromIbmiTimestamp,
-  toIbmiDate,
-  toIbmiTime,
-  toIbmiTimestamp
-} = ibmiConversions;
+import { ibmiConversions, missingInput } from '@eradani-inc/ec-client';
+const { fromIbmiDate, fromIbmiTime, fromIbmiTimestamp, toIbmiDate, toIbmiTime, toIbmiTimestamp } = ibmiConversions;
 
 /**
  * Output interface
@@ -22,7 +15,7 @@ export interface employee1DS {
      * @precision 0 decimals
      * @default `0`
      */
-    id: number
+    id: number;
 }
 
 /**
@@ -33,12 +26,12 @@ export interface dateRangeDS {
      * @size 23 characters
      * @default ``
      */
-    startDate: string,
+    startDate: string;
     /**
      * @size 23 characters
      * @default ``
      */
-    endDate: string
+    endDate: string;
 }
 
 /**
@@ -47,10 +40,10 @@ export interface dateRangeDS {
 export interface whereDS {
     /**
      */
-    employee: employee1DS,
+    employee: employee1DS;
     /**
      */
-    dateRange: dateRangeDS
+    dateRange: dateRangeDS;
 }
 
 /**
@@ -62,7 +55,7 @@ export interface employee2DS {
      * @precision 0 decimals
      * @default `0`
      */
-    id: number
+    id: number;
 }
 
 /**
@@ -71,24 +64,24 @@ export interface employee2DS {
 export interface addedDS {
     /**
      */
-    employee: employee2DS,
+    employee: employee2DS;
     /**
      * @size 5 digits
      * @precision 2 decimals
      * @default `0`
      */
-    durationInHours: number,
+    durationInHours: number;
     /**
      * @size 23 characters
      * @default ``
      */
-    startDateTime: string,
+    startDateTime: string;
     /**
      * @size 5 digits
      * @precision 0 decimals
      * @default `0`
      */
-    id: number
+    id: number;
 }
 
 /**
@@ -97,7 +90,7 @@ export interface addedDS {
 export interface hoursWorkedDS {
     /**
      */
-    added: addedDS
+    added: addedDS;
 }
 
 /**
@@ -106,11 +99,11 @@ export interface hoursWorkedDS {
 export interface doDS {
     /**
      */
-    hoursWorked: hoursWorkedDS,
+    hoursWorked: hoursWorkedDS;
     /**
      * @default `false`
      */
-    onlyValidate: boolean
+    onlyValidate: boolean;
 }
 
 /**
@@ -119,60 +112,44 @@ export interface doDS {
 export interface FormatName {
     /**
      */
-    where: whereDS,
+    where: whereDS;
     /**
      */
-    do: doDS
+    do: doDS;
 }
 
 /**
  * Convert FormatName record to TypeScript object
  */
 export function convertFormatNameToObject(dataIn: string): FormatName {
-  const dataOut: any =   {
-  
-    };
-  let pos: number = 0;
+    const dataOut: any = {};
+    let pos: number = 0;
 
-  dataOut.where =   {
-  
-    };
-  dataOut.where.employee =   {
-  
-    };
-  dataOut.where.employee.id = Number(dataIn.substring(pos, pos + 7).trimEnd());
-  pos += 7;
-  dataOut.where.dateRange =   {
-  
-    };
-  dataOut.where.dateRange.startDate = dataIn.substring(pos, pos + 23).trimEnd();
-  pos += 23;
-  dataOut.where.dateRange.endDate = dataIn.substring(pos, pos + 23).trimEnd();
-  pos += 23;
-  dataOut.do =   {
-  
-    };
-  dataOut.do.hoursWorked =   {
-  
-    };
-  dataOut.do.hoursWorked.added =   {
-  
-    };
-  dataOut.do.hoursWorked.added.employee =   {
-  
-    };
-  dataOut.do.hoursWorked.added.employee.id = Number(dataIn.substring(pos, pos + 7).trimEnd());
-  pos += 7;
-  dataOut.do.hoursWorked.added.durationInHours = Number(dataIn.substring(pos, pos + 7).trimEnd());
-  pos += 7;
-  dataOut.do.hoursWorked.added.startDateTime = dataIn.substring(pos, pos + 23).trimEnd();
-  pos += 23;
-  dataOut.do.hoursWorked.added.id = Number(dataIn.substring(pos, pos + 7).trimEnd());
-  pos += 7;
-  dataOut.do.onlyValidate = dataIn.substring(pos, pos + 1).trimEnd() === "1";
-  pos += 1;
+    dataOut.where = {};
+    dataOut.where.employee = {};
+    dataOut.where.employee.id = Number(dataIn.substring(pos, pos + 7).trimEnd());
+    pos += 7;
+    dataOut.where.dateRange = {};
+    dataOut.where.dateRange.startDate = dataIn.substring(pos, pos + 23).trimEnd();
+    pos += 23;
+    dataOut.where.dateRange.endDate = dataIn.substring(pos, pos + 23).trimEnd();
+    pos += 23;
+    dataOut.do = {};
+    dataOut.do.hoursWorked = {};
+    dataOut.do.hoursWorked.added = {};
+    dataOut.do.hoursWorked.added.employee = {};
+    dataOut.do.hoursWorked.added.employee.id = Number(dataIn.substring(pos, pos + 7).trimEnd());
+    pos += 7;
+    dataOut.do.hoursWorked.added.durationInHours = Number(dataIn.substring(pos, pos + 7).trimEnd());
+    pos += 7;
+    dataOut.do.hoursWorked.added.startDateTime = dataIn.substring(pos, pos + 23).trimEnd();
+    pos += 23;
+    dataOut.do.hoursWorked.added.id = Number(dataIn.substring(pos, pos + 7).trimEnd());
+    pos += 7;
+    dataOut.do.onlyValidate = dataIn.substring(pos, pos + 1).trimEnd() === '1';
+    pos += 1;
 
-  return dataOut;
+    return dataOut;
 }
 
 /* eslint-enable */

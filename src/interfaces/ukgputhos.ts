@@ -3,15 +3,8 @@
 // Module: ukgputhos
 // Generated source -- do not modify
 
-import { ibmiConversions, missingInput } from "@eradani-inc/ec-client";
-const {
-  fromIbmiDate,
-  fromIbmiTime,
-  fromIbmiTimestamp,
-  toIbmiDate,
-  toIbmiTime,
-  toIbmiTimestamp
-} = ibmiConversions;
+import { ibmiConversions, missingInput } from '@eradani-inc/ec-client';
+const { fromIbmiDate, fromIbmiTime, fromIbmiTimestamp, toIbmiDate, toIbmiTime, toIbmiTimestamp } = ibmiConversions;
 
 /**
  * Output interface
@@ -21,7 +14,7 @@ export interface employeeDS {
      * @size 6 digits
      * @precision 0 decimals
      */
-    id: number
+    id: number;
 }
 
 /**
@@ -32,7 +25,7 @@ export interface paycodeDS {
      * @size 10 digits
      * @precision 0 decimals
      */
-    id: number
+    id: number;
 }
 
 /**
@@ -41,23 +34,23 @@ export interface paycodeDS {
 export interface AddedDS {
     /**
      */
-    employee: employeeDS,
+    employee: employeeDS;
     /**
      */
-    paycode: paycodeDS,
+    paycode: paycodeDS;
     /**
      * @size 4 characters
      */
-    amountType: string,
+    amountType: string;
     /**
      * @size 10 characters
      */
-    applyDate: string,
+    applyDate: string;
     /**
      * @size 5 digits
      * @precision 2 decimals
      */
-    durationInHours: number
+    durationInHours: number;
 }
 
 /**
@@ -66,7 +59,7 @@ export interface AddedDS {
 export interface payCodeEditsDS {
     /**
      */
-    added: AddedDS
+    added: AddedDS;
 }
 
 /**
@@ -75,7 +68,7 @@ export interface payCodeEditsDS {
 export interface doDS {
     /**
      */
-    payCodeEdits: payCodeEditsDS
+    payCodeEdits: payCodeEditsDS;
 }
 
 /**
@@ -85,11 +78,11 @@ export interface dateRangeDS {
     /**
      * @size 23 characters
      */
-    endDate: string,
+    endDate: string;
     /**
      * @size 23 characters
      */
-    startDate: string
+    startDate: string;
 }
 
 /**
@@ -98,10 +91,10 @@ export interface dateRangeDS {
 export interface whereDS {
     /**
      */
-    dateRange: dateRangeDS,
+    dateRange: dateRangeDS;
     /**
      */
-    employee: employeeDS
+    employee: employeeDS;
 }
 
 /**
@@ -110,63 +103,45 @@ export interface whereDS {
 export interface puthosReq {
     /**
      */
-    do: doDS,
+    do: doDS;
     /**
      */
-    where: whereDS
+    where: whereDS;
 }
 
 /**
  * Convert puthosReq record to TypeScript object
  */
 export function convertputhosReqToObject(dataIn: string): puthosReq {
-  const dataOut: any =   {
-  
-    };
-  let pos: number = 0;
+    const dataOut: any = {};
+    let pos: number = 0;
 
-  dataOut.do =   {
-  
-    };
-  dataOut.do.payCodeEdits =   {
-  
-    };
-  dataOut.do.payCodeEdits.added =   {
-  
-    };
-  dataOut.do.payCodeEdits.added.employee =   {
-  
-    };
-  dataOut.do.payCodeEdits.added.employee.id = Number(dataIn.substring(pos, pos + 8).trimEnd());
-  pos += 8;
-  dataOut.do.payCodeEdits.added.paycode =   {
-  
-    };
-  dataOut.do.payCodeEdits.added.paycode.id = Number(dataIn.substring(pos, pos + 12).trimEnd());
-  pos += 12;
-  dataOut.do.payCodeEdits.added.amountType = dataIn.substring(pos, pos + 4).trimEnd();
-  pos += 4;
-  dataOut.do.payCodeEdits.added.applyDate = dataIn.substring(pos, pos + 10).trimEnd();
-  pos += 10;
-  dataOut.do.payCodeEdits.added.durationInHours = Number(dataIn.substring(pos, pos + 7).trimEnd());
-  pos += 7;
-  dataOut.where =   {
-  
-    };
-  dataOut.where.dateRange =   {
-  
-    };
-  dataOut.where.dateRange.endDate = dataIn.substring(pos, pos + 23).trimEnd();
-  pos += 23;
-  dataOut.where.dateRange.startDate = dataIn.substring(pos, pos + 23).trimEnd();
-  pos += 23;
-  dataOut.where.employee =   {
-  
-    };
-  dataOut.where.employee.id = Number(dataIn.substring(pos, pos + 8).trimEnd());
-  pos += 8;
+    dataOut.do = {};
+    dataOut.do.payCodeEdits = {};
+    dataOut.do.payCodeEdits.added = {};
+    dataOut.do.payCodeEdits.added.employee = {};
+    dataOut.do.payCodeEdits.added.employee.id = Number(dataIn.substring(pos, pos + 8).trimEnd());
+    pos += 8;
+    dataOut.do.payCodeEdits.added.paycode = {};
+    dataOut.do.payCodeEdits.added.paycode.id = Number(dataIn.substring(pos, pos + 12).trimEnd());
+    pos += 12;
+    dataOut.do.payCodeEdits.added.amountType = dataIn.substring(pos, pos + 4).trimEnd();
+    pos += 4;
+    dataOut.do.payCodeEdits.added.applyDate = dataIn.substring(pos, pos + 10).trimEnd();
+    pos += 10;
+    dataOut.do.payCodeEdits.added.durationInHours = Number(dataIn.substring(pos, pos + 7).trimEnd());
+    pos += 7;
+    dataOut.where = {};
+    dataOut.where.dateRange = {};
+    dataOut.where.dateRange.endDate = dataIn.substring(pos, pos + 23).trimEnd();
+    pos += 23;
+    dataOut.where.dateRange.startDate = dataIn.substring(pos, pos + 23).trimEnd();
+    pos += 23;
+    dataOut.where.employee = {};
+    dataOut.where.employee.id = Number(dataIn.substring(pos, pos + 8).trimEnd());
+    pos += 8;
 
-  return dataOut;
+    return dataOut;
 }
 
 /* eslint-enable */

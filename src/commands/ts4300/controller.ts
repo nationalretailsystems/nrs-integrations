@@ -56,11 +56,11 @@ export const postCartMove: ECCHandlerFunction = async (reqkey, data, ecc) => {
 
     try {
         const token = await getTokenTS();
-        result = await axiosInstance.post('/rest/library/movemedia', reqFields,{
+        result = await axiosInstance.post('/rest/library/movemedia', reqFields, {
             headers: {
                 Authorization: token,
                 'Content-Type': 'application/json'
-            },
+            }
         });
     } catch (err) {
         if (err.response) {

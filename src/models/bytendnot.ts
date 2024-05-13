@@ -3,9 +3,8 @@
 // Module: bytendnot
 // Generated source -- do not modify
 
-import eradaniConnect from "@eradani-inc/eradani-connect";
+import eradaniConnect from '@eradani-inc/eradani-connect';
 const { dataTypes } = eradaniConnect;
-
 
 // Manually entered import
 import config from 'config';
@@ -13,50 +12,50 @@ import config from 'config';
 /**
  * Data structure
  */
-  let apiHeaderDSFields: any = [
-      {
-      name: "companyCode",
-      type: new dataTypes.Char(15),
-      defaultValue: ""
+let apiHeaderDSFields: any = [
+    {
+        name: 'companyCode',
+        type: new dataTypes.Char(15),
+        defaultValue: ''
     },
-      {
-      name: "contractedCompanyCode",
-      type: new dataTypes.Char(15),
-      defaultValue: ""
+    {
+        name: 'contractedCompanyCode',
+        type: new dataTypes.Char(15),
+        defaultValue: ''
     },
-      {
-      name: "contractedCompanyName",
-      type: new dataTypes.Char(50),
-      defaultValue: ""
+    {
+        name: 'contractedCompanyName',
+        type: new dataTypes.Char(50),
+        defaultValue: ''
     },
-      {
-      name: "customerCode",
-      type: new dataTypes.Char(15),
-      defaultValue: "",
-      dim: 1
+    {
+        name: 'customerCode',
+        type: new dataTypes.Char(15),
+        defaultValue: '',
+        dim: 1
     },
-      {
-      name: "messageID",
-      type: new dataTypes.Char(25),
-      defaultValue: ""
+    {
+        name: 'messageID',
+        type: new dataTypes.Char(25),
+        defaultValue: ''
     },
-      {
-      name: "providerCode",
-      type: new dataTypes.Char(20),
-      defaultValue: "",
-      dim: 1
+    {
+        name: 'providerCode',
+        type: new dataTypes.Char(20),
+        defaultValue: '',
+        dim: 1
     },
-      {
-      name: "timestamp",
-      type: new dataTypes.Char(20),
-      defaultValue: ""
+    {
+        name: 'timestamp',
+        type: new dataTypes.Char(20),
+        defaultValue: ''
     },
-      {
-      name: "providerCustomerCode",
-      type: new dataTypes.Char(25),
-      defaultValue: ""
+    {
+        name: 'providerCustomerCode',
+        type: new dataTypes.Char(25),
+        defaultValue: ''
     }
-  ];
+];
 
 /**
  * Input interface
@@ -66,42 +65,42 @@ export interface apiHeaderDSInput {
      * @size 15 characters
      * @default ``
      */
-    companyCode?: string,
+    companyCode?: string;
     /**
      * @size 15 characters
      * @default ``
      */
-    contractedCompanyCode?: string,
+    contractedCompanyCode?: string;
     /**
      * @size 50 characters
      * @default ``
      */
-    contractedCompanyName?: string,
+    contractedCompanyName?: string;
     /**
      * @size 15 characters
      * @default ``
      */
-    customerCode?: Array<string>,
+    customerCode?: Array<string>;
     /**
      * @size 25 characters
      * @default ``
      */
-    messageID?: string,
+    messageID?: string;
     /**
      * @size 20 characters
      * @default ``
      */
-    providerCode?: Array<string>,
+    providerCode?: Array<string>;
     /**
      * @size 20 characters
      * @default ``
      */
-    timestamp?: string,
+    timestamp?: string;
     /**
      * @size 25 characters
      * @default ``
      */
-    providerCustomerCode?: string
+    providerCustomerCode?: string;
 }
 
 /**
@@ -112,59 +111,59 @@ export interface apiHeaderDS {
      * @size 15 characters
      * @default ``
      */
-    companyCode: string,
+    companyCode: string;
     /**
      * @size 15 characters
      * @default ``
      */
-    contractedCompanyCode: string,
+    contractedCompanyCode: string;
     /**
      * @size 50 characters
      * @default ``
      */
-    contractedCompanyName: string,
+    contractedCompanyName: string;
     /**
      * @size 15 characters
      * @default ``
      */
-    customerCode: Array<string>,
+    customerCode: Array<string>;
     /**
      * @size 25 characters
      * @default ``
      */
-    messageID: string,
+    messageID: string;
     /**
      * @size 20 characters
      * @default ``
      */
-    providerCode: Array<string>,
+    providerCode: Array<string>;
     /**
      * @size 20 characters
      * @default ``
      */
-    timestamp: string,
+    timestamp: string;
     /**
      * @size 25 characters
      * @default ``
      */
-    providerCustomerCode: string
+    providerCustomerCode: string;
 }
 
 /**
  * Data structure
  */
-  let geographicalCoordinatesDSFields: any = [
-      {
-      name: "latitude",
-      type: new dataTypes.PackedDecimal(9, 6),
-      defaultValue: 0.0
+let geographicalCoordinatesDSFields: any = [
+    {
+        name: 'latitude',
+        type: new dataTypes.PackedDecimal(9, 6),
+        defaultValue: 0.0
     },
-      {
-      name: "longitude",
-      type: new dataTypes.PackedDecimal(9, 6),
-      defaultValue: 0.0
+    {
+        name: 'longitude',
+        type: new dataTypes.PackedDecimal(9, 6),
+        defaultValue: 0.0
     }
-  ];
+];
 
 /**
  * Input interface
@@ -175,13 +174,13 @@ export interface geographicalCoordinatesDSInput {
      * @precision 6 decimals
      * @default `0`
      */
-    latitude?: number | string,
+    latitude?: number | string;
     /**
      * @size 9 digits
      * @precision 6 decimals
      * @default `0`
      */
-    longitude?: number | string
+    longitude?: number | string;
 }
 
 /**
@@ -193,54 +192,54 @@ export interface geographicalCoordinatesDS {
      * @precision 6 decimals
      * @default `0`
      */
-    latitude: number,
+    latitude: number;
     /**
      * @size 9 digits
      * @precision 6 decimals
      * @default `0`
      */
-    longitude: number
+    longitude: number;
 }
 
 /**
  * Data structure
  */
-  let addressDSFields: any = [
-      {
-      name: "city",
-      type: new dataTypes.Char(20),
-      defaultValue: ""
+let addressDSFields: any = [
+    {
+        name: 'city',
+        type: new dataTypes.Char(20),
+        defaultValue: ''
     },
-      {
-      name: "countryCode",
-      type: new dataTypes.Char(3),
-      defaultValue: ""
+    {
+        name: 'countryCode',
+        type: new dataTypes.Char(3),
+        defaultValue: ''
     },
-      {
-      name: "fullAddress",
-      type: new dataTypes.Char(100),
-      defaultValue: ""
+    {
+        name: 'fullAddress',
+        type: new dataTypes.Char(100),
+        defaultValue: ''
     },
-      {
-      name: "geographicalCoordinates",
-      type: new dataTypes.DataStructure(geographicalCoordinatesDSFields)
+    {
+        name: 'geographicalCoordinates',
+        type: new dataTypes.DataStructure(geographicalCoordinatesDSFields)
     },
-      {
-      name: "postalCode",
-      type: new dataTypes.Char(9),
-      defaultValue: ""
+    {
+        name: 'postalCode',
+        type: new dataTypes.Char(9),
+        defaultValue: ''
     },
-      {
-      name: "state",
-      type: new dataTypes.Char(3),
-      defaultValue: ""
+    {
+        name: 'state',
+        type: new dataTypes.Char(3),
+        defaultValue: ''
     },
-      {
-      name: "streetAddressOne",
-      type: new dataTypes.Char(50),
-      defaultValue: ""
+    {
+        name: 'streetAddressOne',
+        type: new dataTypes.Char(50),
+        defaultValue: ''
     }
-  ];
+];
 
 /**
  * Input interface
@@ -250,35 +249,35 @@ export interface addressDSInput {
      * @size 20 characters
      * @default ``
      */
-    city?: string,
+    city?: string;
     /**
      * @size 3 characters
      * @default ``
      */
-    countryCode?: string,
+    countryCode?: string;
     /**
      * @size 100 characters
      * @default ``
      */
-    fullAddress?: string,
+    fullAddress?: string;
     /**
      */
-    geographicalCoordinates: geographicalCoordinatesDSInput,
+    geographicalCoordinates: geographicalCoordinatesDSInput;
     /**
      * @size 9 characters
      * @default ``
      */
-    postalCode?: string,
+    postalCode?: string;
     /**
      * @size 3 characters
      * @default ``
      */
-    state?: string,
+    state?: string;
     /**
      * @size 50 characters
      * @default ``
      */
-    streetAddressOne?: string
+    streetAddressOne?: string;
 }
 
 /**
@@ -289,46 +288,46 @@ export interface addressDS {
      * @size 20 characters
      * @default ``
      */
-    city: string,
+    city: string;
     /**
      * @size 3 characters
      * @default ``
      */
-    countryCode: string,
+    countryCode: string;
     /**
      * @size 100 characters
      * @default ``
      */
-    fullAddress: string,
+    fullAddress: string;
     /**
      */
-    geographicalCoordinates: geographicalCoordinatesDS,
+    geographicalCoordinates: geographicalCoordinatesDS;
     /**
      * @size 9 characters
      * @default ``
      */
-    postalCode: string,
+    postalCode: string;
     /**
      * @size 3 characters
      * @default ``
      */
-    state: string,
+    state: string;
     /**
      * @size 50 characters
      * @default ``
      */
-    streetAddressOne: string
+    streetAddressOne: string;
 }
 
 /**
  * Data structure
  */
-  let billToPartyDSFields: any = [
-      {
-      name: "address",
-      type: new dataTypes.DataStructure(addressDSFields)
+let billToPartyDSFields: any = [
+    {
+        name: 'address',
+        type: new dataTypes.DataStructure(addressDSFields)
     }
-  ];
+];
 
 /**
  * Input interface
@@ -336,7 +335,7 @@ export interface addressDS {
 export interface billToPartyDSInput {
     /**
      */
-    address: addressDSInput
+    address: addressDSInput;
 }
 
 /**
@@ -345,39 +344,39 @@ export interface billToPartyDSInput {
 export interface billToPartyDS {
     /**
      */
-    address: addressDS
+    address: addressDS;
 }
 
 /**
  * Data structure
  */
-  let EquipmentDSFields: any = [
-      {
-      name: "equipmentID",
-      type: new dataTypes.Char(4),
-      defaultValue: ""
+let EquipmentDSFields: any = [
+    {
+        name: 'equipmentID',
+        type: new dataTypes.Char(4),
+        defaultValue: ''
     },
-      {
-      name: "equipmentType",
-      type: new dataTypes.Char(15),
-      defaultValue: ""
+    {
+        name: 'equipmentType',
+        type: new dataTypes.Char(15),
+        defaultValue: ''
     },
-      {
-      name: "height",
-      type: new dataTypes.PackedDecimal(3, 0),
-      defaultValue: 0.0
+    {
+        name: 'height',
+        type: new dataTypes.PackedDecimal(3, 0),
+        defaultValue: 0.0
     },
-      {
-      name: "length",
-      type: new dataTypes.PackedDecimal(3, 0),
-      defaultValue: 0.0
+    {
+        name: 'length',
+        type: new dataTypes.PackedDecimal(3, 0),
+        defaultValue: 0.0
     },
-      {
-      name: "width",
-      type: new dataTypes.PackedDecimal(3, 0),
-      defaultValue: 0.0
+    {
+        name: 'width',
+        type: new dataTypes.PackedDecimal(3, 0),
+        defaultValue: 0.0
     }
-  ];
+];
 
 /**
  * Input interface
@@ -387,30 +386,30 @@ export interface EquipmentDSInput {
      * @size 4 characters
      * @default ``
      */
-    equipmentID?: string,
+    equipmentID?: string;
     /**
      * @size 15 characters
      * @default ``
      */
-    equipmentType?: string,
+    equipmentType?: string;
     /**
      * @size 3 digits
      * @precision 0 decimals
      * @default `0`
      */
-    height?: number | string,
+    height?: number | string;
     /**
      * @size 3 digits
      * @precision 0 decimals
      * @default `0`
      */
-    length?: number | string,
+    length?: number | string;
     /**
      * @size 3 digits
      * @precision 0 decimals
      * @default `0`
      */
-    width?: number | string
+    width?: number | string;
 }
 
 /**
@@ -421,47 +420,47 @@ export interface EquipmentDS {
      * @size 4 characters
      * @default ``
      */
-    equipmentID: string,
+    equipmentID: string;
     /**
      * @size 15 characters
      * @default ``
      */
-    equipmentType: string,
+    equipmentType: string;
     /**
      * @size 3 digits
      * @precision 0 decimals
      * @default `0`
      */
-    height: number,
+    height: number;
     /**
      * @size 3 digits
      * @precision 0 decimals
      * @default `0`
      */
-    length: number,
+    length: number;
     /**
      * @size 3 digits
      * @precision 0 decimals
      * @default `0`
      */
-    width: number
+    width: number;
 }
 
 /**
  * Data structure
  */
-  let freightRequirementsDSFields: any = [
-      {
-      name: "hazardousMaterials",
-      type: new dataTypes.Bool(),
-      defaultValue: false
+let freightRequirementsDSFields: any = [
+    {
+        name: 'hazardousMaterials',
+        type: new dataTypes.Bool(),
+        defaultValue: false
     },
-      {
-      name: "paymentTerms",
-      type: new dataTypes.Char(7),
-      defaultValue: ""
+    {
+        name: 'paymentTerms',
+        type: new dataTypes.Char(7),
+        defaultValue: ''
     }
-  ];
+];
 
 /**
  * Input interface
@@ -470,12 +469,12 @@ export interface freightRequirementsDSInput {
     /**
      * @default `false`
      */
-    hazardousMaterials?: boolean,
+    hazardousMaterials?: boolean;
     /**
      * @size 7 characters
      * @default ``
      */
-    paymentTerms?: string
+    paymentTerms?: string;
 }
 
 /**
@@ -485,34 +484,34 @@ export interface freightRequirementsDS {
     /**
      * @default `false`
      */
-    hazardousMaterials: boolean,
+    hazardousMaterials: boolean;
     /**
      * @size 7 characters
      * @default ``
      */
-    paymentTerms: string
+    paymentTerms: string;
 }
 
 /**
  * Data structure
  */
-  let loadDetailsDSFields: any = [
-      {
-      name: "commodity",
-      type: new dataTypes.Char(15),
-      defaultValue: ""
+let loadDetailsDSFields: any = [
+    {
+        name: 'commodity',
+        type: new dataTypes.Char(15),
+        defaultValue: ''
     },
-      {
-      name: "commodityDescription",
-      type: new dataTypes.Char(50),
-      defaultValue: ""
+    {
+        name: 'commodityDescription',
+        type: new dataTypes.Char(50),
+        defaultValue: ''
     },
-      {
-      name: "loadDescription",
-      type: new dataTypes.Char(15),
-      defaultValue: ""
+    {
+        name: 'loadDescription',
+        type: new dataTypes.Char(15),
+        defaultValue: ''
     }
-  ];
+];
 
 /**
  * Input interface
@@ -522,17 +521,17 @@ export interface loadDetailsDSInput {
      * @size 15 characters
      * @default ``
      */
-    commodity?: string,
+    commodity?: string;
     /**
      * @size 50 characters
      * @default ``
      */
-    commodityDescription?: string,
+    commodityDescription?: string;
     /**
      * @size 15 characters
      * @default ``
      */
-    loadDescription?: string
+    loadDescription?: string;
 }
 
 /**
@@ -543,64 +542,64 @@ export interface loadDetailsDS {
      * @size 15 characters
      * @default ``
      */
-    commodity: string,
+    commodity: string;
     /**
      * @size 50 characters
      * @default ``
      */
-    commodityDescription: string,
+    commodityDescription: string;
     /**
      * @size 15 characters
      * @default ``
      */
-    loadDescription: string
+    loadDescription: string;
 }
 
 /**
  * Data structure
  */
-  let loadTotalsDSFields: any = [
-      {
-      name: "declaredValue",
-      type: new dataTypes.PackedDecimal(11, 0),
-      defaultValue: 2.0
+let loadTotalsDSFields: any = [
+    {
+        name: 'declaredValue',
+        type: new dataTypes.PackedDecimal(11, 0),
+        defaultValue: 2.0
     },
-      {
-      name: "distance",
-      type: new dataTypes.PackedDecimal(5, 1),
-      defaultValue: 0.0
+    {
+        name: 'distance',
+        type: new dataTypes.PackedDecimal(5, 1),
+        defaultValue: 0.0
     },
-      {
-      name: "linearLength",
-      type: new dataTypes.PackedDecimal(2, 0),
-      defaultValue: 0.0
+    {
+        name: 'linearLength',
+        type: new dataTypes.PackedDecimal(2, 0),
+        defaultValue: 0.0
     },
-      {
-      name: "orderValue",
-      type: new dataTypes.PackedDecimal(11, 0),
-      defaultValue: 2.0
+    {
+        name: 'orderValue',
+        type: new dataTypes.PackedDecimal(11, 0),
+        defaultValue: 2.0
     },
-      {
-      name: "pallets",
-      type: new dataTypes.PackedDecimal(2, 0),
-      defaultValue: 0.0
+    {
+        name: 'pallets',
+        type: new dataTypes.PackedDecimal(2, 0),
+        defaultValue: 0.0
     },
-      {
-      name: "pieces",
-      type: new dataTypes.PackedDecimal(4, 0),
-      defaultValue: 0.0
+    {
+        name: 'pieces',
+        type: new dataTypes.PackedDecimal(4, 0),
+        defaultValue: 0.0
     },
-      {
-      name: "volume",
-      type: new dataTypes.PackedDecimal(4, 0),
-      defaultValue: 0.0
+    {
+        name: 'volume',
+        type: new dataTypes.PackedDecimal(4, 0),
+        defaultValue: 0.0
     },
-      {
-      name: "weight",
-      type: new dataTypes.PackedDecimal(5, 0),
-      defaultValue: 0.0
+    {
+        name: 'weight',
+        type: new dataTypes.PackedDecimal(5, 0),
+        defaultValue: 0.0
     }
-  ];
+];
 
 /**
  * Input interface
@@ -611,49 +610,49 @@ export interface loadTotalsDSInput {
      * @precision 0 decimals
      * @default `2`
      */
-    declaredValue?: number | string,
+    declaredValue?: number | string;
     /**
      * @size 5 digits
      * @precision 1 decimals
      * @default `0`
      */
-    distance?: number | string,
+    distance?: number | string;
     /**
      * @size 2 digits
      * @precision 0 decimals
      * @default `0`
      */
-    linearLength?: number | string,
+    linearLength?: number | string;
     /**
      * @size 11 digits
      * @precision 0 decimals
      * @default `2`
      */
-    orderValue?: number | string,
+    orderValue?: number | string;
     /**
      * @size 2 digits
      * @precision 0 decimals
      * @default `0`
      */
-    pallets?: number | string,
+    pallets?: number | string;
     /**
      * @size 4 digits
      * @precision 0 decimals
      * @default `0`
      */
-    pieces?: number | string,
+    pieces?: number | string;
     /**
      * @size 4 digits
      * @precision 0 decimals
      * @default `0`
      */
-    volume?: number | string,
+    volume?: number | string;
     /**
      * @size 5 digits
      * @precision 0 decimals
      * @default `0`
      */
-    weight?: number | string
+    weight?: number | string;
 }
 
 /**
@@ -665,101 +664,101 @@ export interface loadTotalsDS {
      * @precision 0 decimals
      * @default `2`
      */
-    declaredValue: number,
+    declaredValue: number;
     /**
      * @size 5 digits
      * @precision 1 decimals
      * @default `0`
      */
-    distance: number,
+    distance: number;
     /**
      * @size 2 digits
      * @precision 0 decimals
      * @default `0`
      */
-    linearLength: number,
+    linearLength: number;
     /**
      * @size 11 digits
      * @precision 0 decimals
      * @default `2`
      */
-    orderValue: number,
+    orderValue: number;
     /**
      * @size 2 digits
      * @precision 0 decimals
      * @default `0`
      */
-    pallets: number,
+    pallets: number;
     /**
      * @size 4 digits
      * @precision 0 decimals
      * @default `0`
      */
-    pieces: number,
+    pieces: number;
     /**
      * @size 4 digits
      * @precision 0 decimals
      * @default `0`
      */
-    volume: number,
+    volume: number;
     /**
      * @size 5 digits
      * @precision 0 decimals
      * @default `0`
      */
-    weight: number
+    weight: number;
 }
 
 /**
  * Data structure
  */
-  let CommodityDSFields: any = [
-      {
-      name: "commodity",
-      type: new dataTypes.Char(15),
-      defaultValue: ""
+let CommodityDSFields: any = [
+    {
+        name: 'commodity',
+        type: new dataTypes.Char(15),
+        defaultValue: ''
     },
-      {
-      name: "commodityDescription",
-      type: new dataTypes.Char(50),
-      defaultValue: ""
+    {
+        name: 'commodityDescription',
+        type: new dataTypes.Char(50),
+        defaultValue: ''
     },
-      {
-      name: "hazardousMaterials",
-      type: new dataTypes.Bool(),
-      defaultValue: false
+    {
+        name: 'hazardousMaterials',
+        type: new dataTypes.Bool(),
+        defaultValue: false
     },
-      {
-      name: "pallets",
-      type: new dataTypes.PackedDecimal(2, 0),
-      defaultValue: 0.0
+    {
+        name: 'pallets',
+        type: new dataTypes.PackedDecimal(2, 0),
+        defaultValue: 0.0
     },
-      {
-      name: "pieces",
-      type: new dataTypes.PackedDecimal(4, 0),
-      defaultValue: 0.0
+    {
+        name: 'pieces',
+        type: new dataTypes.PackedDecimal(4, 0),
+        defaultValue: 0.0
     },
-      {
-      name: "shipmentID",
-      type: new dataTypes.Char(10),
-      defaultValue: ""
+    {
+        name: 'shipmentID',
+        type: new dataTypes.Char(10),
+        defaultValue: ''
     },
-      {
-      name: "shipmentName",
-      type: new dataTypes.Char(15),
-      defaultValue: ""
+    {
+        name: 'shipmentName',
+        type: new dataTypes.Char(15),
+        defaultValue: ''
     },
-      {
-      name: "volume",
-      type: new dataTypes.PackedDecimal(4, 0),
-      defaultValue: 0.0
+    {
+        name: 'volume',
+        type: new dataTypes.PackedDecimal(4, 0),
+        defaultValue: 0.0
     },
-      {
-      name: "weight",
-      type: new dataTypes.PackedDecimal(5, 0),
-      defaultValue: 0.0
+    {
+        name: 'weight',
+        type: new dataTypes.PackedDecimal(5, 0),
+        defaultValue: 0.0
     }
-  ];
+];
 
 /**
  * Input interface
@@ -769,50 +768,50 @@ export interface CommodityDSInput {
      * @size 15 characters
      * @default ``
      */
-    commodity?: string,
+    commodity?: string;
     /**
      * @size 50 characters
      * @default ``
      */
-    commodityDescription?: string,
+    commodityDescription?: string;
     /**
      * @default `false`
      */
-    hazardousMaterials?: boolean,
+    hazardousMaterials?: boolean;
     /**
      * @size 2 digits
      * @precision 0 decimals
      * @default `0`
      */
-    pallets?: number | string,
+    pallets?: number | string;
     /**
      * @size 4 digits
      * @precision 0 decimals
      * @default `0`
      */
-    pieces?: number | string,
+    pieces?: number | string;
     /**
      * @size 10 characters
      * @default ``
      */
-    shipmentID?: string,
+    shipmentID?: string;
     /**
      * @size 15 characters
      * @default ``
      */
-    shipmentName?: string,
+    shipmentName?: string;
     /**
      * @size 4 digits
      * @precision 0 decimals
      * @default `0`
      */
-    volume?: number | string,
+    volume?: number | string;
     /**
      * @size 5 digits
      * @precision 0 decimals
      * @default `0`
      */
-    weight?: number | string
+    weight?: number | string;
 }
 
 /**
@@ -823,120 +822,120 @@ export interface CommodityDS {
      * @size 15 characters
      * @default ``
      */
-    commodity: string,
+    commodity: string;
     /**
      * @size 50 characters
      * @default ``
      */
-    commodityDescription: string,
+    commodityDescription: string;
     /**
      * @default `false`
      */
-    hazardousMaterials: boolean,
+    hazardousMaterials: boolean;
     /**
      * @size 2 digits
      * @precision 0 decimals
      * @default `0`
      */
-    pallets: number,
+    pallets: number;
     /**
      * @size 4 digits
      * @precision 0 decimals
      * @default `0`
      */
-    pieces: number,
+    pieces: number;
     /**
      * @size 10 characters
      * @default ``
      */
-    shipmentID: string,
+    shipmentID: string;
     /**
      * @size 15 characters
      * @default ``
      */
-    shipmentName: string,
+    shipmentName: string;
     /**
      * @size 4 digits
      * @precision 0 decimals
      * @default `0`
      */
-    volume: number,
+    volume: number;
     /**
      * @size 5 digits
      * @precision 0 decimals
      * @default `0`
      */
-    weight: number
+    weight: number;
 }
 
 /**
  * Data structure
  */
-  let stopsDSFields: any = [
-      {
-      name: "activityType",
-      type: new dataTypes.Char(15),
-      defaultValue: ""
+let stopsDSFields: any = [
+    {
+        name: 'activityType',
+        type: new dataTypes.Char(15),
+        defaultValue: ''
     },
-      {
-      name: "address",
-      type: new dataTypes.DataStructure(addressDSFields)
+    {
+        name: 'address',
+        type: new dataTypes.DataStructure(addressDSFields)
     },
-      {
-      name: "appointmentRequired",
-      type: new dataTypes.Bool(),
-      defaultValue: false
+    {
+        name: 'appointmentRequired',
+        type: new dataTypes.Bool(),
+        defaultValue: false
     },
-      {
-      name: "earliestArrival",
-      type: new dataTypes.Char(20),
-      defaultValue: ""
+    {
+        name: 'earliestArrival',
+        type: new dataTypes.Char(20),
+        defaultValue: ''
     },
-      {
-      name: "earliestArrivalUtc",
-      type: new dataTypes.Char(20),
-      defaultValue: ""
+    {
+        name: 'earliestArrivalUtc',
+        type: new dataTypes.Char(20),
+        defaultValue: ''
     },
-      {
-      name: "latestArrival",
-      type: new dataTypes.Char(20),
-      defaultValue: ""
+    {
+        name: 'latestArrival',
+        type: new dataTypes.Char(20),
+        defaultValue: ''
     },
-      {
-      name: "latestArrivalUtc",
-      type: new dataTypes.Char(20)
+    {
+        name: 'latestArrivalUtc',
+        type: new dataTypes.Char(20)
     },
-      {
-      name: "liveHandling",
-      type: new dataTypes.Bool(),
-      defaultValue: true
+    {
+        name: 'liveHandling',
+        type: new dataTypes.Bool(),
+        defaultValue: true
     },
-      {
-      name: "locationID",
-      type: new dataTypes.Char(7),
-      defaultValue: ""
+    {
+        name: 'locationID',
+        type: new dataTypes.Char(7),
+        defaultValue: ''
     },
-      {
-      name: "locationName",
-      type: new dataTypes.Char(50),
-      defaultValue: ""
+    {
+        name: 'locationName',
+        type: new dataTypes.Char(50),
+        defaultValue: ''
     },
-      {
-      name: "pickShipments",
-      type: new dataTypes.DataStructure(CommodityDSFields),
-      dim: 1
+    {
+        name: 'pickShipments',
+        type: new dataTypes.DataStructure(CommodityDSFields),
+        dim: 1
     },
-      {
-      name: "dropShipments",
-      type: new dataTypes.DataStructure(CommodityDSFields),
-      dim: 1
+    {
+        name: 'dropShipments',
+        type: new dataTypes.DataStructure(CommodityDSFields),
+        dim: 1
     },
-      {
-      name: "stopSequence",
-      type: new dataTypes.PackedDecimal(1, 0),
-      defaultValue: 0.0
+    {
+        name: 'stopSequence',
+        type: new dataTypes.PackedDecimal(1, 0),
+        defaultValue: 0.0
     }
-  ];
+];
 
 /**
  * Input interface
@@ -946,59 +945,59 @@ export interface stopsDSInput {
      * @size 15 characters
      * @default ``
      */
-    activityType?: string,
+    activityType?: string;
     /**
      */
-    address: addressDSInput,
+    address: addressDSInput;
     /**
      * @default `false`
      */
-    appointmentRequired?: boolean,
+    appointmentRequired?: boolean;
     /**
      * @size 20 characters
      * @default ``
      */
-    earliestArrival?: string,
+    earliestArrival?: string;
     /**
      * @size 20 characters
      * @default ``
      */
-    earliestArrivalUtc?: string,
+    earliestArrivalUtc?: string;
     /**
      * @size 20 characters
      * @default ``
      */
-    latestArrival?: string,
+    latestArrival?: string;
     /**
      * @size 20 characters
      */
-    latestArrivalUtc: string,
+    latestArrivalUtc: string;
     /**
      * @default `true`
      */
-    liveHandling?: boolean,
+    liveHandling?: boolean;
     /**
      * @size 7 characters
      * @default ``
      */
-    locationID?: string,
+    locationID?: string;
     /**
      * @size 50 characters
      * @default ``
      */
-    locationName?: string,
+    locationName?: string;
     /**
      */
-    pickShipments: Array<CommodityDSInput>,
+    pickShipments: Array<CommodityDSInput>;
     /**
      */
-    dropShipments: Array<CommodityDSInput>,
+    dropShipments: Array<CommodityDSInput>;
     /**
      * @size 1 digits
      * @precision 0 decimals
      * @default `0`
      */
-    stopSequence?: number | string
+    stopSequence?: number | string;
 }
 
 /**
@@ -1009,101 +1008,101 @@ export interface stopsDS {
      * @size 15 characters
      * @default ``
      */
-    activityType: string,
+    activityType: string;
     /**
      */
-    address: addressDS,
+    address: addressDS;
     /**
      * @default `false`
      */
-    appointmentRequired: boolean,
+    appointmentRequired: boolean;
     /**
      * @size 20 characters
      * @default ``
      */
-    earliestArrival: string,
+    earliestArrival: string;
     /**
      * @size 20 characters
      * @default ``
      */
-    earliestArrivalUtc: string,
+    earliestArrivalUtc: string;
     /**
      * @size 20 characters
      * @default ``
      */
-    latestArrival: string,
+    latestArrival: string;
     /**
      * @size 20 characters
      */
-    latestArrivalUtc: string,
+    latestArrivalUtc: string;
     /**
      * @default `true`
      */
-    liveHandling: boolean,
+    liveHandling: boolean;
     /**
      * @size 7 characters
      * @default ``
      */
-    locationID: string,
+    locationID: string;
     /**
      * @size 50 characters
      * @default ``
      */
-    locationName: string,
+    locationName: string;
     /**
      */
-    pickShipments: Array<CommodityDS>,
+    pickShipments: Array<CommodityDS>;
     /**
      */
-    dropShipments: Array<CommodityDS>,
+    dropShipments: Array<CommodityDS>;
     /**
      * @size 1 digits
      * @precision 0 decimals
      * @default `0`
      */
-    stopSequence: number
+    stopSequence: number;
 }
 
 /**
  * Data structure
  */
-  let tenderContactDSFields: any = [
-      {
-      name: "contactType",
-      type: new dataTypes.Char(25),
-      defaultValue: ""
+let tenderContactDSFields: any = [
+    {
+        name: 'contactType',
+        type: new dataTypes.Char(25),
+        defaultValue: ''
     },
-      {
-      name: "email",
-      type: new dataTypes.Char(50),
-      defaultValue: ""
+    {
+        name: 'email',
+        type: new dataTypes.Char(50),
+        defaultValue: ''
     },
-      {
-      name: "firstName",
-      type: new dataTypes.Char(25),
-      defaultValue: ""
+    {
+        name: 'firstName',
+        type: new dataTypes.Char(25),
+        defaultValue: ''
     },
-      {
-      name: "fullName",
-      type: new dataTypes.Char(50),
-      defaultValue: ""
+    {
+        name: 'fullName',
+        type: new dataTypes.Char(50),
+        defaultValue: ''
     },
-      {
-      name: "lastName",
-      type: new dataTypes.Char(25),
-      defaultValue: ""
+    {
+        name: 'lastName',
+        type: new dataTypes.Char(25),
+        defaultValue: ''
     },
-      {
-      name: "phone1",
-      type: new dataTypes.Char(15),
-      defaultValue: ""
+    {
+        name: 'phone1',
+        type: new dataTypes.Char(15),
+        defaultValue: ''
     },
-      {
-      name: "primaryLanguage",
-      type: new dataTypes.Char(10),
-      defaultValue: ""
+    {
+        name: 'primaryLanguage',
+        type: new dataTypes.Char(10),
+        defaultValue: ''
     }
-  ];
+];
 
 /**
  * Input interface
@@ -1113,37 +1112,37 @@ export interface tenderContactDSInput {
      * @size 25 characters
      * @default ``
      */
-    contactType?: string,
+    contactType?: string;
     /**
      * @size 50 characters
      * @default ``
      */
-    email?: string,
+    email?: string;
     /**
      * @size 25 characters
      * @default ``
      */
-    firstName?: string,
+    firstName?: string;
     /**
      * @size 50 characters
      * @default ``
      */
-    fullName?: string,
+    fullName?: string;
     /**
      * @size 25 characters
      * @default ``
      */
-    lastName?: string,
+    lastName?: string;
     /**
      * @size 15 characters
      * @default ``
      */
-    phone1?: string,
+    phone1?: string;
     /**
      * @size 10 characters
      * @default ``
      */
-    primaryLanguage?: string
+    primaryLanguage?: string;
 }
 
 /**
@@ -1154,69 +1153,69 @@ export interface tenderContactDS {
      * @size 25 characters
      * @default ``
      */
-    contactType: string,
+    contactType: string;
     /**
      * @size 50 characters
      * @default ``
      */
-    email: string,
+    email: string;
     /**
      * @size 25 characters
      * @default ``
      */
-    firstName: string,
+    firstName: string;
     /**
      * @size 50 characters
      * @default ``
      */
-    fullName: string,
+    fullName: string;
     /**
      * @size 25 characters
      * @default ``
      */
-    lastName: string,
+    lastName: string;
     /**
      * @size 15 characters
      * @default ``
      */
-    phone1: string,
+    phone1: string;
     /**
      * @size 10 characters
      * @default ``
      */
-    primaryLanguage: string
+    primaryLanguage: string;
 }
 
 /**
  * Data structure
  */
-  let unitsOfMeasureDSFields: any = [
-      {
-      name: "distanceUOM",
-      type: new dataTypes.Char(10),
-      defaultValue: ""
+let unitsOfMeasureDSFields: any = [
+    {
+        name: 'distanceUOM',
+        type: new dataTypes.Char(10),
+        defaultValue: ''
     },
-      {
-      name: "lengthUOM",
-      type: new dataTypes.Char(10),
-      defaultValue: ""
+    {
+        name: 'lengthUOM',
+        type: new dataTypes.Char(10),
+        defaultValue: ''
     },
-      {
-      name: "temperatureUOM",
-      type: new dataTypes.Char(10),
-      defaultValue: ""
+    {
+        name: 'temperatureUOM',
+        type: new dataTypes.Char(10),
+        defaultValue: ''
     },
-      {
-      name: "volumeUOM",
-      type: new dataTypes.Char(10),
-      defaultValue: ""
+    {
+        name: 'volumeUOM',
+        type: new dataTypes.Char(10),
+        defaultValue: ''
     },
-      {
-      name: "weightUOM",
-      type: new dataTypes.Char(10),
-      defaultValue: ""
+    {
+        name: 'weightUOM',
+        type: new dataTypes.Char(10),
+        defaultValue: ''
     }
-  ];
+];
 
 /**
  * Input interface
@@ -1226,27 +1225,27 @@ export interface unitsOfMeasureDSInput {
      * @size 10 characters
      * @default ``
      */
-    distanceUOM?: string,
+    distanceUOM?: string;
     /**
      * @size 10 characters
      * @default ``
      */
-    lengthUOM?: string,
+    lengthUOM?: string;
     /**
      * @size 10 characters
      * @default ``
      */
-    temperatureUOM?: string,
+    temperatureUOM?: string;
     /**
      * @size 10 characters
      * @default ``
      */
-    volumeUOM?: string,
+    volumeUOM?: string;
     /**
      * @size 10 characters
      * @default ``
      */
-    weightUOM?: string
+    weightUOM?: string;
 }
 
 /**
@@ -1257,131 +1256,131 @@ export interface unitsOfMeasureDS {
      * @size 10 characters
      * @default ``
      */
-    distanceUOM: string,
+    distanceUOM: string;
     /**
      * @size 10 characters
      * @default ``
      */
-    lengthUOM: string,
+    lengthUOM: string;
     /**
      * @size 10 characters
      * @default ``
      */
-    temperatureUOM: string,
+    temperatureUOM: string;
     /**
      * @size 10 characters
      * @default ``
      */
-    volumeUOM: string,
+    volumeUOM: string;
     /**
      * @size 10 characters
      * @default ``
      */
-    weightUOM: string
+    weightUOM: string;
 }
 
 /**
  * Program model
  */
-export const BYTENDNOTModel =   new eradaniConnect.run.Pgm("BYTENDNOT",   {
-      lib: config.blueyonder.pgmlib,
-      mode: "ile",
-      params: [
-      {
-      name: "apiHeader",
-      type: new dataTypes.DataStructure(apiHeaderDSFields)
-    },
-      {
-      name: "billToParty",
-      type: new dataTypes.DataStructure(billToPartyDSFields)
-    },
-      {
-      name: "carrierSCAC",
-      type: new dataTypes.Char(4),
-      defaultValue: ""
-    },
-      {
-      name: "deliveryTime",
-      type: new dataTypes.Char(20),
-      defaultValue: ""
-    },
-      {
-      name: "deliveryTimeUtc",
-      type: new dataTypes.Char(20),
-      defaultValue: ""
-    },
-      {
-      name: "equipmentDetails",
-      type: new dataTypes.DataStructure(EquipmentDSFields),
-      dim: 1
-    },
-      {
-      name: "freightRequirements",
-      type: new dataTypes.DataStructure(freightRequirementsDSFields)
-    },
-      {
-      name: "loadDetails",
-      type: new dataTypes.DataStructure(loadDetailsDSFields)
-    },
-      {
-      name: "loadID",
-      type: new dataTypes.Char(7),
-      defaultValue: ""
-    },
-      {
-      name: "loadTotals",
-      type: new dataTypes.DataStructure(loadTotalsDSFields)
-    },
-      {
-      name: "notificationType",
-      type: new dataTypes.Char(7),
-      defaultValue: ""
-    },
-      {
-      name: "pickupTime",
-      type: new dataTypes.Char(20),
-      defaultValue: ""
-    },
-      {
-      name: "pickupTimeUtc",
-      type: new dataTypes.Char(20),
-      defaultValue: ""
-    },
-      {
-      name: "quoteID",
-      type: new dataTypes.Char(7),
-      defaultValue: ""
-    },
-      {
-      name: "respondByTime",
-      type: new dataTypes.Char(20),
-      defaultValue: ""
-    },
-      {
-      name: "serviceType",
-      type: new dataTypes.Char(2),
-      defaultValue: ""
-    },
-      {
-      name: "stops",
-      type: new dataTypes.DataStructure(stopsDSFields),
-      dim: 2
-    },
-      {
-      name: "teamDriver",
-      type: new dataTypes.Bool(),
-      defaultValue: true
-    },
-      {
-      name: "tenderContact",
-      type: new dataTypes.DataStructure(tenderContactDSFields)
-    },
-      {
-      name: "unitsOfMeasure",
-      type: new dataTypes.DataStructure(unitsOfMeasureDSFields)
-    }
-  ]
-    });
+export const BYTENDNOTModel = new eradaniConnect.run.Pgm('BYTENDNOT', {
+    lib: config.blueyonder.pgmlib,
+    mode: 'ile',
+    params: [
+        {
+            name: 'apiHeader',
+            type: new dataTypes.DataStructure(apiHeaderDSFields)
+        },
+        {
+            name: 'billToParty',
+            type: new dataTypes.DataStructure(billToPartyDSFields)
+        },
+        {
+            name: 'carrierSCAC',
+            type: new dataTypes.Char(4),
+            defaultValue: ''
+        },
+        {
+            name: 'deliveryTime',
+            type: new dataTypes.Char(20),
+            defaultValue: ''
+        },
+        {
+            name: 'deliveryTimeUtc',
+            type: new dataTypes.Char(20),
+            defaultValue: ''
+        },
+        {
+            name: 'equipmentDetails',
+            type: new dataTypes.DataStructure(EquipmentDSFields),
+            dim: 1
+        },
+        {
+            name: 'freightRequirements',
+            type: new dataTypes.DataStructure(freightRequirementsDSFields)
+        },
+        {
+            name: 'loadDetails',
+            type: new dataTypes.DataStructure(loadDetailsDSFields)
+        },
+        {
+            name: 'loadID',
+            type: new dataTypes.Char(7),
+            defaultValue: ''
+        },
+        {
+            name: 'loadTotals',
+            type: new dataTypes.DataStructure(loadTotalsDSFields)
+        },
+        {
+            name: 'notificationType',
+            type: new dataTypes.Char(7),
+            defaultValue: ''
+        },
+        {
+            name: 'pickupTime',
+            type: new dataTypes.Char(20),
+            defaultValue: ''
+        },
+        {
+            name: 'pickupTimeUtc',
+            type: new dataTypes.Char(20),
+            defaultValue: ''
+        },
+        {
+            name: 'quoteID',
+            type: new dataTypes.Char(7),
+            defaultValue: ''
+        },
+        {
+            name: 'respondByTime',
+            type: new dataTypes.Char(20),
+            defaultValue: ''
+        },
+        {
+            name: 'serviceType',
+            type: new dataTypes.Char(2),
+            defaultValue: ''
+        },
+        {
+            name: 'stops',
+            type: new dataTypes.DataStructure(stopsDSFields),
+            dim: 2
+        },
+        {
+            name: 'teamDriver',
+            type: new dataTypes.Bool(),
+            defaultValue: true
+        },
+        {
+            name: 'tenderContact',
+            type: new dataTypes.DataStructure(tenderContactDSFields)
+        },
+        {
+            name: 'unitsOfMeasure',
+            type: new dataTypes.DataStructure(unitsOfMeasureDSFields)
+        }
+    ]
+});
 
 /**
  * Input interface
@@ -1389,85 +1388,85 @@ export const BYTENDNOTModel =   new eradaniConnect.run.Pgm("BYTENDNOT",   {
 export interface BYTENDNOTInput {
     /**
      */
-    apiHeader: apiHeaderDSInput,
+    apiHeader: apiHeaderDSInput;
     /**
      */
-    billToParty: billToPartyDSInput,
+    billToParty: billToPartyDSInput;
     /**
      * @size 4 characters
      * @default ``
      */
-    carrierSCAC?: string,
+    carrierSCAC?: string;
     /**
      * @size 20 characters
      * @default ``
      */
-    deliveryTime?: string,
+    deliveryTime?: string;
     /**
      * @size 20 characters
      * @default ``
      */
-    deliveryTimeUtc?: string,
+    deliveryTimeUtc?: string;
     /**
      */
-    equipmentDetails: Array<EquipmentDSInput>,
+    equipmentDetails: Array<EquipmentDSInput>;
     /**
      */
-    freightRequirements: freightRequirementsDSInput,
+    freightRequirements: freightRequirementsDSInput;
     /**
      */
-    loadDetails: loadDetailsDSInput,
+    loadDetails: loadDetailsDSInput;
     /**
      * @size 7 characters
      * @default ``
      */
-    loadID?: string,
+    loadID?: string;
     /**
      */
-    loadTotals: loadTotalsDSInput,
-    /**
-     * @size 7 characters
-     * @default ``
-     */
-    notificationType?: string,
-    /**
-     * @size 20 characters
-     * @default ``
-     */
-    pickupTime?: string,
-    /**
-     * @size 20 characters
-     * @default ``
-     */
-    pickupTimeUtc?: string,
+    loadTotals: loadTotalsDSInput;
     /**
      * @size 7 characters
      * @default ``
      */
-    quoteID?: string,
+    notificationType?: string;
     /**
      * @size 20 characters
      * @default ``
      */
-    respondByTime?: string,
+    pickupTime?: string;
+    /**
+     * @size 20 characters
+     * @default ``
+     */
+    pickupTimeUtc?: string;
+    /**
+     * @size 7 characters
+     * @default ``
+     */
+    quoteID?: string;
+    /**
+     * @size 20 characters
+     * @default ``
+     */
+    respondByTime?: string;
     /**
      * @size 2 characters
      * @default ``
      */
-    serviceType?: string,
+    serviceType?: string;
     /**
      */
-    stops: Array<stopsDSInput>,
+    stops: Array<stopsDSInput>;
     /**
      * @default `true`
      */
-    teamDriver?: boolean,
+    teamDriver?: boolean;
     /**
      */
-    tenderContact: tenderContactDSInput,
+    tenderContact: tenderContactDSInput;
     /**
      */
-    unitsOfMeasure: unitsOfMeasureDSInput
+    unitsOfMeasure: unitsOfMeasureDSInput;
 }
 
 /**
@@ -1476,85 +1475,85 @@ export interface BYTENDNOTInput {
 export interface BYTENDNOTOutput {
     /**
      */
-    apiHeader: apiHeaderDS,
+    apiHeader: apiHeaderDS;
     /**
      */
-    billToParty: billToPartyDS,
+    billToParty: billToPartyDS;
     /**
      * @size 4 characters
      * @default ``
      */
-    carrierSCAC: string,
+    carrierSCAC: string;
     /**
      * @size 20 characters
      * @default ``
      */
-    deliveryTime: string,
+    deliveryTime: string;
     /**
      * @size 20 characters
      * @default ``
      */
-    deliveryTimeUtc: string,
+    deliveryTimeUtc: string;
     /**
      */
-    equipmentDetails: Array<EquipmentDS>,
+    equipmentDetails: Array<EquipmentDS>;
     /**
      */
-    freightRequirements: freightRequirementsDS,
+    freightRequirements: freightRequirementsDS;
     /**
      */
-    loadDetails: loadDetailsDS,
+    loadDetails: loadDetailsDS;
     /**
      * @size 7 characters
      * @default ``
      */
-    loadID: string,
+    loadID: string;
     /**
      */
-    loadTotals: loadTotalsDS,
-    /**
-     * @size 7 characters
-     * @default ``
-     */
-    notificationType: string,
-    /**
-     * @size 20 characters
-     * @default ``
-     */
-    pickupTime: string,
-    /**
-     * @size 20 characters
-     * @default ``
-     */
-    pickupTimeUtc: string,
+    loadTotals: loadTotalsDS;
     /**
      * @size 7 characters
      * @default ``
      */
-    quoteID: string,
+    notificationType: string;
     /**
      * @size 20 characters
      * @default ``
      */
-    respondByTime: string,
+    pickupTime: string;
+    /**
+     * @size 20 characters
+     * @default ``
+     */
+    pickupTimeUtc: string;
+    /**
+     * @size 7 characters
+     * @default ``
+     */
+    quoteID: string;
+    /**
+     * @size 20 characters
+     * @default ``
+     */
+    respondByTime: string;
     /**
      * @size 2 characters
      * @default ``
      */
-    serviceType: string,
+    serviceType: string;
     /**
      */
-    stops: Array<stopsDS>,
+    stops: Array<stopsDS>;
     /**
      * @default `true`
      */
-    teamDriver: boolean,
+    teamDriver: boolean;
     /**
      */
-    tenderContact: tenderContactDS,
+    tenderContact: tenderContactDS;
     /**
      */
-    unitsOfMeasure: unitsOfMeasureDS
+    unitsOfMeasure: unitsOfMeasureDS;
 }
 
 /* eslint-enable */

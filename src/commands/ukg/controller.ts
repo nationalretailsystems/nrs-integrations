@@ -268,13 +268,13 @@ export const putHours: ECCHandlerFunction = async function (reqkey, datax, ecc) 
     try {
         logger.error('Requesting token');
         const token = await getTokenUkg();
-        result = await axiosInstance.post('/v1/timekeeping/timecard', reqFields,{
+        result = await axiosInstance.post('/v1/timekeeping/timecard', reqFields, {
             headers: {
                 Authorization: token,
                 appkey: ukg.prd.appkey,
                 'content-type': 'application/json',
                 accept: 'application/json'
-            },
+            }
         });
     } catch (err) {
         if (err.response) {
@@ -365,13 +365,13 @@ export const putHos: ECCHandlerFunction = async function (reqkey, datax, ecc) {
     try {
         logger.error('Requesting token');
         const token = await getTokenUkg();
-        result = await axiosInstance.post('/v1/timekeeping/timecard', reqFields,{
+        result = await axiosInstance.post('/v1/timekeeping/timecard', reqFields, {
             headers: {
                 Authorization: token,
                 appkey: ukg.prd.appkey,
                 'content-type': 'application/json',
                 accept: 'application/json'
-            },
+            }
         });
     } catch (err) {
         if (err.response) {
@@ -407,15 +407,15 @@ export const delSignoff: ECCHandlerFunction = async function (reqkey, datax, ecc
     let result;
     let response;
     let nextReqKey = reqkey;
-    let startdate = reqFields.start_date.toISOString().substring(0,10);
-    let enddate = reqFields.end_date.toISOString().substring(0,10); 
+    let startdate = reqFields.start_date.toISOString().substring(0, 10);
+    let enddate = reqFields.end_date.toISOString().substring(0, 10);
     // const jsonData = JSON.stringify(reqFields.id);
     try {
         logger.error('Requesting token');
         const token = await getTokenUkg();
         result = await axiosInstance.delete('/v1/timekeeping/timecard_signoffs', {
             /* eslint-disable */
-            params:{
+            params: {
                 start_date: startdate,
                 end_date: enddate
             },
@@ -469,13 +469,13 @@ export const postPunch: ECCHandlerFunction = async function (reqkey, datax, ecc)
     try {
         logger.error('Requesting token');
         const token = await getTokenUkg();
-        result = await axiosInstance.post('/v1/timekeeping/timecard', reqFields,{
+        result = await axiosInstance.post('/v1/timekeeping/timecard', reqFields, {
             headers: {
                 Authorization: token,
                 appkey: ukg.prd.appkey,
                 'content-type': 'application/json',
                 accept: 'application/json'
-            },
+            }
         });
     } catch (err) {
         if (err.response) {
@@ -515,14 +515,14 @@ export const postPunchImport: ECCHandlerFunction = async function (reqkey, datax
     try {
         logger.error('Requesting token');
         const token = await getTokenUkg();
-        result = await axiosInstance.post('/v1/timekeeping/punches/import', reqFields,{
+        result = await axiosInstance.post('/v1/timekeeping/punches/import', reqFields, {
             headers: {
                 Authorization: token,
                 appkey: ukg.prd.appkey,
                 'content-type': 'application/json',
                 accept: 'application/json',
                 'device-id': 'PlatformScience'
-            },
+            }
         });
     } catch (err) {
         if (err.response) {

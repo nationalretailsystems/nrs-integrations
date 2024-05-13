@@ -97,13 +97,11 @@
      DAggTotalsDS      DS                  Qualified
      D                                     Template
      DamountType                      4A
-     DwagesCurrenc...
-     Dy                                    LikeDS(wagesCurrencyDS)
+     DwagesCurrency                        LikeDS(wagesCurrencyDS)
      Demployee                             LikeDS(employeeDS)
      Dlocation                             LikeDS(locationDS)
      Djob                                  LikeDS(jobDS)
-     DlaborCategor...
-     Dy                                    LikeDS(laborCategoryDS)
+     DlaborCategory                        LikeDS(laborCategoryDS)
      DpayCode                              LikeDS(payCodeDS)
      Damount                         10P 5
      Dwages                           7P 2

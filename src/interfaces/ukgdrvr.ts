@@ -3,17 +3,10 @@
 // Module: ukgdrvr
 // Generated source -- do not modify
 
-import { ibmiConversions, missingInput } from "@eradani-inc/ec-client";
-const {
-  fromIbmiDate,
-  fromIbmiTime,
-  fromIbmiTimestamp,
-  toIbmiDate,
-  toIbmiTime,
-  toIbmiTimestamp
-} = ibmiConversions;
+import { ibmiConversions, missingInput } from '@eradani-inc/ec-client';
+const { fromIbmiDate, fromIbmiTime, fromIbmiTimestamp, toIbmiDate, toIbmiTime, toIbmiTimestamp } = ibmiConversions;
 
-import eradaniConnect from "@eradani-inc/eradani-connect";
+import eradaniConnect from '@eradani-inc/eradani-connect';
 const { dataTypes } = eradaniConnect;
 
 /**
@@ -24,7 +17,7 @@ export interface employeeDS {
      * @size 6 digits
      * @precision 0 decimals
      */
-    id: number
+    id: number;
 }
 
 /**
@@ -34,11 +27,11 @@ export interface dateRangeDS {
     /**
      * @size 16 characters
      */
-    startDate: string,
+    startDate: string;
     /**
      * @size 16 characters
      */
-    EndDate: string
+    EndDate: string;
 }
 
 /**
@@ -47,10 +40,10 @@ export interface dateRangeDS {
 export interface whereDS {
     /**
      */
-    employee: employeeDS,
+    employee: employeeDS;
     /**
      */
-    dateRange: dateRangeDS
+    dateRange: dateRangeDS;
 }
 
 /**
@@ -59,11 +52,11 @@ export interface whereDS {
 export interface AddedDS {
     /**
      */
-    employee: employeeDS,
+    employee: employeeDS;
     /**
      * @size 19 characters
      */
-    punchDtm: string
+    punchDtm: string;
 }
 
 /**
@@ -72,7 +65,7 @@ export interface AddedDS {
 export interface punchesDS {
     /**
      */
-    added: Array<AddedDS>
+    added: Array<AddedDS>;
 }
 
 /**
@@ -81,10 +74,10 @@ export interface punchesDS {
 export interface doDS {
     /**
      */
-    punches: punchesDS,
+    punches: punchesDS;
     /**
      */
-    onlyValidate: boolean
+    onlyValidate: boolean;
 }
 
 /**
@@ -93,61 +86,43 @@ export interface doDS {
 export interface PunchReqDS {
     /**
      */
-    where: whereDS,
+    where: whereDS;
     /**
      */
-    do: doDS
+    do: doDS;
 }
 
 /**
  * Convert PunchReqDS record to TypeScript object
  */
 export function convertPunchReqDSToObject(dataIn: string): PunchReqDS {
-  const dataOut: any =   {
-  
-    };
-  let pos: number = 0;
+    const dataOut: any = {};
+    let pos: number = 0;
 
-  dataOut.where =   {
-  
-    };
-  dataOut.where.employee =   {
-  
-    };
-  dataOut.where.employee.id = Number(dataIn.substring(pos, pos + 8).trimEnd());
-  pos += 8;
-  dataOut.where.dateRange =   {
-  
-    };
-  dataOut.where.dateRange.startDate = dataIn.substring(pos, pos + 16).trimEnd();
-  pos += 16;
-  dataOut.where.dateRange.EndDate = dataIn.substring(pos, pos + 16).trimEnd();
-  pos += 16;
-  dataOut.do =   {
-  
-    };
-  dataOut.do.punches =   {
-  
-    };
-  dataOut.do.punches.added = [
-    
-  ];
-  for (let i: number = 0; i < 1; ++i) {
-  dataOut.do.punches.added[i] =   {
-  
-    };
-  dataOut.do.punches.added[i].employee =   {
-  
-    };
-  dataOut.do.punches.added[i].employee.id = Number(dataIn.substring(pos, pos + 8).trimEnd());
-  pos += 8;
-  dataOut.do.punches.added[i].punchDtm = dataIn.substring(pos, pos + 19).trimEnd();
-  pos += 19;
-  }
-  dataOut.do.onlyValidate = dataIn.substring(pos, pos + 1).trimEnd() === "1";
-  pos += 1;
+    dataOut.where = {};
+    dataOut.where.employee = {};
+    dataOut.where.employee.id = Number(dataIn.substring(pos, pos + 8).trimEnd());
+    pos += 8;
+    dataOut.where.dateRange = {};
+    dataOut.where.dateRange.startDate = dataIn.substring(pos, pos + 16).trimEnd();
+    pos += 16;
+    dataOut.where.dateRange.EndDate = dataIn.substring(pos, pos + 16).trimEnd();
+    pos += 16;
+    dataOut.do = {};
+    dataOut.do.punches = {};
+    dataOut.do.punches.added = [];
+    for (let i: number = 0; i < 1; ++i) {
+        dataOut.do.punches.added[i] = {};
+        dataOut.do.punches.added[i].employee = {};
+        dataOut.do.punches.added[i].employee.id = Number(dataIn.substring(pos, pos + 8).trimEnd());
+        pos += 8;
+        dataOut.do.punches.added[i].punchDtm = dataIn.substring(pos, pos + 19).trimEnd();
+        pos += 19;
+    }
+    dataOut.do.onlyValidate = dataIn.substring(pos, pos + 1).trimEnd() === '1';
+    pos += 1;
 
-  return dataOut;
+    return dataOut;
 }
 
 /* eslint-enable */

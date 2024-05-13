@@ -13,9 +13,8 @@ export const insertHysterRecord = new ec.run.Sql(
             { name: 'EndMainServiceMeter', type: new ec.dataTypes.Char(15) },
             { name: 'UpdateFlag', type: new ec.dataTypes.Char(1) },
             { name: 'UpdateStamp', type: new ec.dataTypes.Timestamp() },
-            { name: 'StatusCode', type: new ec.dataTypes.Char(10)},
-            { name: 'Msg', type: new ec.dataTypes.Char(80)}
+            { name: 'StatusCode', type: new ec.dataTypes.Char(10) },
+            { name: 'Msg', type: new ec.dataTypes.Char(80) }
         ]
     }
 );
-

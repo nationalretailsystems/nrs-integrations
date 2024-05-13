@@ -8,8 +8,10 @@ import mountBlueYonder from 'src/routes/api/blueyonder';
 
 export function login(username: string, password: string) {
     return new Promise((resolve, reject) => {
-        if ((username === credentials.username && password === credentials.password) ||
-        (username === blueyonder.username && password === blueyonder.password)) {
+        if (
+            (username === credentials.username && password === credentials.password) ||
+            (username === blueyonder.username && password === blueyonder.password)
+        ) {
             resolve(generateJWT({ username }));
         } else {
             reject(new APIError(400, 'Username / Password Combination Not Found'));

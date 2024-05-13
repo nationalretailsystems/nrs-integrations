@@ -6,7 +6,7 @@ import bulk from '@eradani-inc/ec-bulk';
 import _ from 'lodash';
 import { XMLParser, XMLBuilder, XMLValidator } from 'fast-xml-parser';
 import * as converter from 'src/interfaces/hygetchg';
-import  { insertHysterRecord } from 'src/models/hyster';
+import { insertHysterRecord } from 'src/models/hyster';
 import transport from 'src/services/connection';
 import { DateTime } from 'luxon';
 
@@ -36,10 +36,12 @@ export const getLatestSessions: ECCHandlerFunction = async (reqkey, data, ecc) =
         config.hyster.password +
         '</password>' +
         '<startDateEq>' +
-        reqFields.reqDate + ' 00:00:00' +
+        reqFields.reqDate +
+        ' 00:00:00' +
         '</startDateEq>' +
         '<endDateEq>' +
-        reqFields.reqDate + ' 23:59:59' +
+        reqFields.reqDate +
+        ' 23:59:59' +
         '</endDateEq>' +
         '<cultureCode>en-US</cultureCode>' +
         '</GetLatestSessions>' +
@@ -47,13 +49,13 @@ export const getLatestSessions: ECCHandlerFunction = async (reqkey, data, ecc) =
         '</Envelope>';
     const headers = {
         'Content-Type': 'text/xml',
-        'SOAPAction': '"http://www.nmhg.com/INTPWebService/GetLatestSessions"'
-    }
+        SOAPAction: '"http://www.nmhg.com/INTPWebService/GetLatestSessions"'
+    };
 
     try {
         result = await axiosInstance.post('/NTPWebService.svc', dataParm, {
             headers: headers
-            });
+        });
     } catch (err) {
         if (err.response) {
             // If the request was made and the server responded with a status code
@@ -69,30 +71,30 @@ export const getLatestSessions: ECCHandlerFunction = async (reqkey, data, ecc) =
     }
 
     // try {
-        let jObj = parser.parse(result.data);
-        let sessionEvents =
-            jObj['s:Envelope']['s:Body']['GetLatestSessionsResponse']['GetLatestSessionsResult']['a:SessionEvent'];
-     for (let i: number = 0; i < sessionEvents.length; ++i) {
-        const record = { 
-            SessionID: sessionEvents[i]["a:SessionID"].toString(),
-            EquipmentAssetID: sessionEvents[i]["a:EquipmentAssetID"],
-            StartDateTimeEq: sessionEvents[i]["a:StartDateTimeEq"],
-            EndDateTimeEq: sessionEvents[i]["a:EndDateTimeEq"],
-            StartMainServiceMeter: sessionEvents[i]["a:StartMainServiceMeter"].toString(),
-            EndMainServiceMeter: sessionEvents[i]["a:EndMainServiceMeter"].toString(),
-            UpdateFlag: " ", 
+    let jObj = parser.parse(result.data);
+    let sessionEvents =
+        jObj['s:Envelope']['s:Body']['GetLatestSessionsResponse']['GetLatestSessionsResult']['a:SessionEvent'];
+    for (let i: number = 0; i < sessionEvents.length; ++i) {
+        const record = {
+            SessionID: sessionEvents[i]['a:SessionID'].toString(),
+            EquipmentAssetID: sessionEvents[i]['a:EquipmentAssetID'],
+            StartDateTimeEq: sessionEvents[i]['a:StartDateTimeEq'],
+            EndDateTimeEq: sessionEvents[i]['a:EndDateTimeEq'],
+            StartMainServiceMeter: sessionEvents[i]['a:StartMainServiceMeter'].toString(),
+            EndMainServiceMeter: sessionEvents[i]['a:EndMainServiceMeter'].toString(),
+            UpdateFlag: ' ',
             UpdateStamp: DateTime.now().toFormat("yyyy-MM-dd'-'HH.mm.ss.SSS'000000'"),
-            StatusCode: " ",
-            Msg: " "
+            StatusCode: ' ',
+            Msg: ' '
         };
         transport
-        .execute(insertHysterRecord,record)
-        .catch((err) => logger.error('Failed to Insert Hyster log Record', { record, err }));
-     }
-        logger.debug('ECC0000', 'Success', nextReqKey);
-        nextReqKey = await ecc.sendEccResult('ECC0000', 'Success', nextReqKey);
-        logger.debug('Sent data to RPG');
-        return nextReqKey;
+            .execute(insertHysterRecord, record)
+            .catch((err) => logger.error('Failed to Insert Hyster log Record', { record, err }));
+    }
+    logger.debug('ECC0000', 'Success', nextReqKey);
+    nextReqKey = await ecc.sendEccResult('ECC0000', 'Success', nextReqKey);
+    logger.debug('Sent data to RPG');
+    return nextReqKey;
     // } catch (err {
     //     logger.error('Call failed', err);
     //     return ecc.sendEccResult('ECC9300', err.message, nextReqKey);

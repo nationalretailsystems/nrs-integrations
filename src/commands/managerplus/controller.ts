@@ -525,13 +525,13 @@ export const getAsset: ECCHandlerFunction = async (reqkey, data, ecc) => {
     // Call web service
     let result;
     let nextReqKey = reqkey;
-    
+
     try {
-        result = await axiosInstance.get('/Assets' , {
-        params: {
-            '$filter': 'assetId eq ' + "'" + reqFields.assetid + "'",
-            '$select': 'assetKey'
-        },
+        result = await axiosInstance.get('/Assets', {
+            params: {
+                $filter: 'assetId eq ' + "'" + reqFields.assetid + "'",
+                $select: 'assetKey'
+            },
             headers: {
                 accept: 'application/json',
                 Authorization: managerplus.apikey
@@ -575,10 +575,20 @@ export const getWOChanges2: ECCHandlerFunction = async (reqkey, data, ecc) => {
 
     try {
         result = await axiosInstance.get('/WorkOrders', {
-        // result = await axiosInstance.get('/WorkOrders/Modified', {    
+            // result = await axiosInstance.get('/WorkOrders/Modified', {
             params: {
                 // since: reqDate,
-                '$filter': 'purpose eq ' + "'" + reqFields.purpose + "'" + ' and assetId eq ' + "'" + reqFields.assetId + "'" + " and statusId eq 'OPEN' and dateCreated gt " + compDate,
+                $filter:
+                    'purpose eq ' +
+                    "'" +
+                    reqFields.purpose +
+                    "'" +
+                    ' and assetId eq ' +
+                    "'" +
+                    reqFields.assetId +
+                    "'" +
+                    " and statusId eq 'OPEN' and dateCreated gt " +
+                    compDate,
                 $select: 'workOrderKey,workOrderNumber,assetId,purpose,budgetId, statusId, dateCreated, dateCompleted'
             },
             headers: {
@@ -626,7 +636,7 @@ export const getWO: ECCHandlerFunction = async (reqkey, data, ecc) => {
 
     try {
         result = await axiosInstance.get('/WorkOrders/' + reqFields.workOrder, {
-        // result = await axiosInstance.get('/WorkOrders/Modified', {    
+            // result = await axiosInstance.get('/WorkOrders/Modified', {
             headers: {
                 accept: 'application/json',
                 Authorization: managerplus.apikey
@@ -653,8 +663,12 @@ export const getWO: ECCHandlerFunction = async (reqkey, data, ecc) => {
         let responseData = result.data;
         logger.debug('ECC0000', 'Success', nextReqKey);
         nextReqKey = await ecc.sendEccResult('ECC0000', 'Success', nextReqKey);
-        return nextReqKey = await ecc.sendObjectToCaller(responseData, converterwo.convertObjectToResGetWo, nextReqKey);
-      } catch (err) {
+        return (nextReqKey = await ecc.sendObjectToCaller(
+            responseData,
+            converterwo.convertObjectToResGetWo,
+            nextReqKey
+        ));
+    } catch (err) {
         logger.error('Call failed', err);
         return ecc.sendEccResult('ECC9300', err.message, nextReqKey);
     }

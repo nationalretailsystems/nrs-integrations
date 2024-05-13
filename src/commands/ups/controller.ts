@@ -8,7 +8,6 @@ const logger = createLogger('commands/ups');
 const { ups } = config;
 const axiosInstance = axios.create(ups.axios);
 
-    
 /* eslint-enable */
 
 export const validateAddress: ECCHandlerFunction = async function (reqkey, datax, ecc) {
@@ -27,15 +26,15 @@ export const validateAddress: ECCHandlerFunction = async function (reqkey, datax
         AccessLicenseNumber: ups.accesslicensenumber,
         'Content-Type': 'application/json',
         Accept: 'application/json'
-    }
+    };
     const jsonData = JSON.stringify(reqFields);
     try {
         result = await axiosInstance.post('/addressvalidation/v1/3', jsonData, {
-             headers: headers,
-             params: {
-                 regionalrequestindicator: false,
-                 maximumcadidatelistsize: 5
-             }
+            headers: headers,
+            params: {
+                regionalrequestindicator: false,
+                maximumcadidatelistsize: 5
+            }
         });
     } catch (err) {
         if (err.response) {
@@ -63,7 +62,7 @@ export const validateAddress: ECCHandlerFunction = async function (reqkey, datax
 
         // Return the updated Candidate so it will be used in place of the original Candidate in the main array when we're done
         // return candidate;
-     });
+    });
 
     let responseData = result.data;
     nextReqKey = await ecc.sendEccResult('ECC0000', 'Success', nextReqKey);

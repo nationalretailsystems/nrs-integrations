@@ -18,9 +18,7 @@ export const getDVIRPdf: ECCHandlerFunction = async (reqkey, data, ecc) => {
     let result;
     let nextReqKey = reqkey;
     try {
-        result = await axiosInstance.get('/' + reqFields.dvirreport, {
-
-        });
+        result = await axiosInstance.get('/' + reqFields.dvirreport, {});
     } catch (err) {
         if (err.response) {
             // If the request was made and the server responded with a status code
