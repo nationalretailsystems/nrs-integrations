@@ -38,8 +38,8 @@
     "dependencies": {
         "@duosecurity/duo_api": "^1.2.2",
         "@eradani-inc/ec-bulk": "^1.3.0",
-        "@eradani-inc/ec-client": "^3.9.0",
-        "@eradani-inc/ecc-router": "^0.9.0",
+        "@eradani-inc/ec-client": "3.6",
+        "@eradani-inc/ecc-router": "^0.6.9",
         "@eradani-inc/eradani-connect": "^2.9.5",
         "@eradani-inc/gui-generator": "^0.12.9",
         "@eradani-inc/gui-generator-outbound": "^0.8.5",
