@@ -48,12 +48,12 @@
      D TstPncLL        PR                  ExtPgm('TSTPNCLL')
      D  In_Mode                      10A
      D  In_WaitTm                     5P 0
-     D  In_ReqKey                     6A
+     D  In_ReqKey                    10A
       *
      D TstPncLL        PI
      D  In_Mode                      10A
      D  In_WaitTm                     5P 0
-     D  In_ReqKey                     6A
+     D  In_ReqKey                    10A
 
       *
      D Write_Msg1      PR
