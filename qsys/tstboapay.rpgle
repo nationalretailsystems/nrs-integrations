@@ -60,13 +60,13 @@ dcl-c Cmd const('boa.payment');
 dcl-pr TstBoaPay extpgm('TSTBOAPAY');
  *n char(10); // In_Mode
  *n packed(5); // In_WaitTm
- *n char(6); // In_ReqKey
+ *n char(10); // In_ReqKey
 end-pr;
 //*
 dcl-pi TstBoaPay;
  In_Mode char(10);
  In_WaitTm packed(5);
- In_ReqKey char(6);
+ In_ReqKey char(10);
 end-pi;
 
 //*
