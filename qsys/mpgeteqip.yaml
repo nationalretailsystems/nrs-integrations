@@ -51,6 +51,11 @@ formats:
       sincedate:
         rpgName: sincedate
         type: Date
+      skiprecs:
+        rpgName: skiprecs
+        type: Integer
+        length: 5
+        precision: 0
   AssetChgDS:
     recordType: response
     subfields:

@@ -19,13 +19,14 @@
 
       ************************************
       * RqAssetChg data structure
-      * Record length: 266
+      * Record length: 272
       ************************************
-     DRqAssetChgLen    C                   266
+     DRqAssetChgLen    C                   272
      DRqAssetChg       DS                  Qualified
      D                                     Template
      Dfilename                      256A
      Dsincedate                        D
+     Dskiprecs                        5I 0
 
       ************************************
       * Convert RqAssetChg to buffer
@@ -33,7 +34,7 @@
      DRqAssetChgToBuf  PR
      DDataStruct                           LikeDS(RqAssetChg)
      D                                     Const
-     DBuffer                        266A
+     DBuffer                        272A
 
       ************************************
       * AssetChgDS data structure
