@@ -1,4 +1,4 @@
-     H Nomain EXPROPTS(*ALWBLANKNUM)  
+     H Nomain EXPROPTS(*ALWBLANKNUM)
 
       ************************************
       * Module: mpgeteqip
@@ -26,7 +26,7 @@
      DRqAssetChgToBuf  PI
      DDataStruct                           LikeDS(RqAssetChg)
      D                                     Const
-     DBuffer                        266A
+     DBuffer                        272A
 
       * Initialize to beginning of buffer
        BufPtr = %addr(Buffer);
@@ -36,6 +36,8 @@
        BufPtr += 256;
        %subst(CharBuf:1:10) = %char(DataStruct.sincedate:*ISO);
        BufPtr += 10;
+       %subst(CharBuf:1:6) = %char(DataStruct.skiprecs);
+       BufPtr += 6;
 
        return ;
 

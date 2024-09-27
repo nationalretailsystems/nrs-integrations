@@ -6,7 +6,7 @@
 
 # Variables
 #
-LIB?=ECNCTAPP
+LIB?=ECIPRD39
 
 
 MODS = dspjk \

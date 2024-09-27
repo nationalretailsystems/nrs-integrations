@@ -82,7 +82,8 @@ export const getAssetChanges: ECCHandlerFunction = async (reqkey, data, ecc) => 
     try {
         result = await axiosInstance.get('/Assets/Modified', {
             params: {
-                since: reqDate
+                since: reqDate,
+                $skip: reqFields.skiprecs
             },
             headers: {
                 accept: 'application/json',
