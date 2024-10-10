@@ -14,7 +14,7 @@
      Dwonum                          10I 0
      Dwokey2                         10I 0
      Dcontactid                      20A
-     Dnotekey                        30A
+     Dmoddate                        30A
      Dnote                          100A
      Dpvtnote                         5A
      Dsvckey                         10A

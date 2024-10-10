@@ -704,7 +704,7 @@ $(libdir)/qrpglesrc.file/psdvir.mbr $(libdir)/qrpglesrc.file/psdvir_h.mbr ../src
 	system "CPYFRMSTMF FROMSTMF('psdvir.rpgle') TOMBR('$(libdir)/qrpglesrc.file/psdvir.mbr') MBROPT(*REPLACE)"
 	system "CPYFRMSTMF FROMSTMF('psdvir_h.rpgleinc') TOMBR('$(libdir)/qrpglesrc.file/psdvir_h.mbr') MBROPT(*REPLACE)"	
 
-$(libdir)/qrpglesrc.file/mpwonote.mbr $(libdir)/qrpglesrc.file/mpwonote_h.mbr ../src/interfaces/mpwonote.ts: psdvir.yaml
+$(libdir)/qrpglesrc.file/mpwonote.mbr $(libdir)/qrpglesrc.file/mpwonote_h.mbr ../src/interfaces/mpwonote.ts: mpwonote.yaml
 	npx ec-generate -f $<
 	cp mpwonote.ts ../src/interfaces/mpwonote.ts
 	system "CPYFRMSTMF FROMSTMF('mpwonote.rpgle') TOMBR('$(libdir)/qrpglesrc.file/mpwonote.mbr') MBROPT(*REPLACE)"

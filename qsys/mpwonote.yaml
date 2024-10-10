@@ -26,7 +26,7 @@ datastructures:
         type: Character
         length: 20      
       modifiedDate:
-        rpgName: notekey
+        rpgName: moddate
         type: Character
         length: 30      
       note:
