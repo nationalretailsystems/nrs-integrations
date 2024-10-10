@@ -1,0 +1,55 @@
+      ************************************
+      * Module: mpwonote
+      * Generated RPG data structures
+      * and prototypes
+      * Do not modify
+      ************************************
+
+      ************************************
+      * NotArrDS data structure
+      ************************************
+     DNotArrDS         DS                  Qualified
+     D                                     Template
+     Dnotekey                        10I 0
+     Dwonum                          10I 0
+     Dwokey2                         10I 0
+     Dcontactid                      20A
+     Dnotekey                        30A
+     Dnote                          100A
+     Dpvtnote                         5A
+     Dsvckey                         10A
+     Dsvccode                        10A
+
+      ************************************
+      * ReqNotes data structure
+      * Record length: 11
+      ************************************
+     DReqNotesLen      C                   11
+     DReqNotes         DS                  Qualified
+     D                                     Template
+     Dwokey                          10I 0
+
+      ************************************
+      * Convert ReqNotes to buffer
+      ************************************
+     DReqNotesToBuf    PR
+     DDataStruct                           LikeDS(ReqNotes)
+     D                                     Const
+     DBuffer                         11A
+
+      ************************************
+      * ResNotes data structure
+      * Record length: 2080
+      ************************************
+     DResNotesLen      C                   2080
+     DResNotes         DS                  Qualified
+     D                                     Template
+     Dnotesdata                            LikeDS(NotArrDS)
+     D                                     Dim(10)
+
+      ************************************
+      * Convert buffer to ResNotes
+      ************************************
+     DBufToResNotes    PR
+     DBuffer                       2080A
+     DDataStruct                           LikeDS(ResNotes)
