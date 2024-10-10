@@ -61,7 +61,7 @@
        BufPtr += 11;
        DataStruct.notesdata(i).contactid = %subst(CharBuf:1:20);
        BufPtr += 20;
-       DataStruct.notesdata(i).notekey = %subst(CharBuf:1:30);
+       DataStruct.notesdata(i).moddate = %subst(CharBuf:1:30);
        BufPtr += 30;
        DataStruct.notesdata(i).note = %subst(CharBuf:1:100);
        BufPtr += 100;
