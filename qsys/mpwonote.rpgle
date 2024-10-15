@@ -45,7 +45,7 @@
      PBufToResNotes    B                   Export
 
      DBufToResNotes    PI
-     DBuffer                       2080A
+     DBuffer                       2040A
      DDataStruct                           LikeDS(ResNotes)
 
       * Initialize to begining of buffer
@@ -65,8 +65,8 @@
        BufPtr += 30;
        DataStruct.notesdata(i).note = %subst(CharBuf:1:100);
        BufPtr += 100;
-       DataStruct.notesdata(i).pvtnote = %subst(CharBuf:1:5);
-       BufPtr += 5;
+       DataStruct.notesdata(i).pvtnote = %subst(CharBuf:1:1);
+       BufPtr += 1;
        DataStruct.notesdata(i).svckey = %subst(CharBuf:1:10);
        BufPtr += 10;
        DataStruct.notesdata(i).svccode = %subst(CharBuf:1:10);
