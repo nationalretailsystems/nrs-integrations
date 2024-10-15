@@ -18,6 +18,7 @@ import * as converternotes from 'src/interfaces/mpwonote';
 import { promises as fs } from 'fs';
 
 import { sanitizeValues } from 'src/services/safe-values';
+import { resourceLimits } from 'worker_threads';
 
 const logger = createLogger('commands/managerplus');
 const { managerplus } = config;
@@ -67,6 +68,22 @@ const safeValues: any = {
             customFieldKey: 0,
             fieldName: '',
             value: ''
+        }
+    }
+};
+const safeValues2: any = {
+
+    notesdata: {
+        '*10': {
+            noteKey: 0,
+            workOrderNumber: 0,
+            workOrderKey: 0,
+            contactID: '',
+            modifiedData: '',
+            note: '',
+            isPrivateNote: '',
+            serviceKey: '',
+            serviceCode: ''
         }
     }
 };
@@ -529,7 +546,7 @@ export const getWoNotes: ECCHandlerFunction = async (reqkey, data, ecc) => {
     let nextReqKey = reqkey;
 
     try {
-        result = await axiosInstance.get('/ServiceItems', {
+        result = await axiosInstance.get('/WorkOrders/WorkOrderNotes', {
             params: {
                 $filter: 'workOrderKey eq ' + reqFields.wokey
             },
@@ -553,8 +570,9 @@ export const getWoNotes: ECCHandlerFunction = async (reqkey, data, ecc) => {
     }
 
     // Send the result info
-    try {
-        let responseData = result.data;
+        try {
+        let responseData = { notesdata: result.data };
+        sanitizeValues(responseData, safeValues2);
         logger.debug('ECC0000', 'Success', nextReqKey);
         nextReqKey = await ecc.sendEccResult('ECC0000', 'Success', nextReqKey);
         nextReqKey = await ecc.sendObjectToCaller(responseData, converternotes.convertObjectToResNotes, nextReqKey);
