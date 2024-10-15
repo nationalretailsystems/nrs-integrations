@@ -16,7 +16,7 @@
      Dcontactid                      20A
      Dmoddate                        30A
      Dnote                          100A
-     Dpvtnote                         5A
+     Dpvtnote                          N
      Dsvckey                         10A
      Dsvccode                        10A
 
@@ -39,9 +39,9 @@
 
       ************************************
       * ResNotes data structure
-      * Record length: 2080
+      * Record length: 2040
       ************************************
-     DResNotesLen      C                   2080
+     DResNotesLen      C                   2040
      DResNotes         DS                  Qualified
      D                                     Template
      Dnotesdata                            LikeDS(NotArrDS)
@@ -51,5 +51,5 @@
       * Convert buffer to ResNotes
       ************************************
      DBufToResNotes    PR
-     DBuffer                       2080A
+     DBuffer                       2040A
      DDataStruct                           LikeDS(ResNotes)

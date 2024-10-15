@@ -13,38 +13,47 @@ datastructures:
         rpgName: notekey
         type: Integer
         length: 10
+        default: 0
       workOrderNumber:
         rpgName: wonum
         type: Integer
         length: 10
+        default: 0
       workOrderKey:
         rpgName: wokey2
         type: Integer
-        length: 10      
+        length: 10   
+        default: 0   
       contactID:
         rpgName: contactid
         type: Character
-        length: 20      
+        length: 20
+        default: " "
       modifiedDate:
         rpgName: moddate
         type: Character
-        length: 30      
+        length: 30
+        default: " "
       note:
         rpgName: note
         type: Character
-        length: 100 
+        length: 100
+        default: " "
       isPrivateNote:
         rpgName: pvtnote
-        type: Character
-        length: 5 
+        type: Boolean
+        length: 1
+        default: false
       serviceKey:
         rpgName: svckey
         type: Character
-        length: 10      
+        length: 10
+        default: " "
       serviceCode:
         rpgName: svccode
         type: Character
-        length: 10    
+        length: 10
+        default: " "
 formats:
   ReqNotes:
     recordType: request
