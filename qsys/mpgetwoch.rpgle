@@ -1,4 +1,4 @@
-     H Nomain  EXPROPTS(*ALWBLANKNUM) 
+     H Nomain
 
       ************************************
       * Module: mpgetwoch
@@ -17,6 +17,27 @@
      Dj                S             10U 0
      Dk                S             10U 0
      Dl                S             10U 0
+
+      ************************************
+      * Convert ReqWoChg to buffer
+      ************************************
+     PReqWoChgToBuf    B                   Export
+
+     DReqWoChgToBuf    PI
+     DDataStruct                           LikeDS(ReqWoChg)
+     D                                     Const
+     DBuffer                         10A
+
+      * Initialize to beginning of buffer
+       BufPtr = %addr(Buffer);
+
+      * Write fields from DS to buffer
+       %subst(CharBuf:1:10) = %char(DataStruct.since:*ISO);
+       BufPtr += 10;
+
+       return ;
+
+     PReqWoChgToBuf    E
 
       ************************************
       * Convert buffer to ResWoChg
@@ -99,24 +120,3 @@
        return ;
 
      PBufToResWoChg    E
-
-      ************************************
-      * Convert ReqWoChg to buffer
-      ************************************
-     PReqWoChgToBuf    B                   Export
-
-     DReqWoChgToBuf    PI
-     DDataStruct                           LikeDS(ReqWoChg)
-     D                                     Const
-     DBuffer                         10A
-
-      * Initialize to beginning of buffer
-       BufPtr = %addr(Buffer);
-
-      * Write fields from DS to buffer
-       %subst(CharBuf:1:10) = %char(DataStruct.since:*ISO);
-       BufPtr += 10;
-
-       return ;
-
-     PReqWoChgToBuf    E
