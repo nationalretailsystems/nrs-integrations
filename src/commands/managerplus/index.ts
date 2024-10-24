@@ -12,7 +12,8 @@ import {
     getAsset,
     getWOChanges2,
     getWO,
-    getWoNotes
+    getWoNotes,
+    getDowntime
 } from './controller';
 import * as managerplus from 'src/interfaces/mpgeteqip';
 import * as managerplus2 from 'src/interfaces/mpgeteq2';
@@ -27,6 +28,7 @@ import * as managerplusempl from 'src/interfaces/mpemploy';
 import * as managerpluswc2 from 'src/interfaces/mpgetwc2';
 import * as managerpluswo from 'src/interfaces/mpgetwo';
 import * as managerplusnotes from 'src/interfaces/mpwonote';
+import * as managerplusdown from 'src/interfaces/mpgetdown';
 
 
 export default function registerManagerplus(router: ECCInternalRouter) {
@@ -43,4 +45,5 @@ export default function registerManagerplus(router: ECCInternalRouter) {
     router.use('getWOChanges2', managerpluswc2, getWOChanges2);
     router.use('getWO', managerpluswo, getWO);
     router.use('getWoNotes', managerplusnotes, getWoNotes);
+    router.use('getDowntime', managerplusdown, getDowntime);
 }

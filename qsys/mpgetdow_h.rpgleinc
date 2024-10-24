@@ -1,0 +1,57 @@
+      ************************************
+      * Module: mpgetdown
+      * Generated RPG data structures
+      * and prototypes
+      * Do not modify
+      ************************************
+
+      ************************************
+      * downitemsDS data structure
+      ************************************
+     DdownitemsDS      DS                  Qualified
+     D                                     Template
+     Dcontact                        50A
+     Dcontactkey                     10I 0
+     Ddtlogkey                       10I 0
+     Ddtitemkey                      10I 0
+
+      ************************************
+      * ReqDown data structure
+      * Record length: 6
+      ************************************
+     DReqDownLen       C                   6
+     DReqDown          DS                  Qualified
+     D                                     Template
+     Dskiprecs                        5I 0
+
+      ************************************
+      * Convert ReqDown to buffer
+      ************************************
+     DReqDownToBuf     PR
+     DDataStruct                           LikeDS(ReqDown)
+     D                                     Const
+     DBuffer                          6A
+
+      ************************************
+      * ResDown data structure
+      * Record length: 607
+      ************************************
+     DResDownLen       C                   607
+     DResDown          DS                  Qualified
+     D                                     Template
+     Ddtlogkey2                      10I 0
+     Dassetkey                       10I 0
+     Ddtorigin                       10I 0
+     Dnote                          100A
+     Dtimedown                       24A
+     Dtimeup                         24A
+     Dtotaldt                        10I 0
+     Ddtitems                              LikeDS(downitemsDS)
+     D                                     Dim(5)
+
+      ************************************
+      * Convert buffer to ResDown
+      ************************************
+     DBufToResDown     PR
+     DBuffer                        607A
+     DDataStruct                           LikeDS(ResDown)
