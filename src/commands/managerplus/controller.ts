@@ -776,17 +776,12 @@ export const getDowntime: ECCHandlerFunction = async (reqkey, data, ecc) => {
     // Send the result info
 
     try {
-        let responseData = result.data.map((record: any) => sanitizeValues(record, safeValues));
-
-        try {
-            await fs.writeFile('/eradani/tests/wochanges2.json', JSON.stringify(responseData), 'utf-8');
-        } catch (err) {
-            return ecc.sendEccResult('ECC9200', err.message, nextReqKey);
-        }
+        // X let responseData = result.data.map((record: any) => sanitizeValues(record, safeValues));
+        let responseData = result.data;
 
         logger.debug('ECC0000', 'Success', nextReqKey);
         nextReqKey = await ecc.sendEccResult('ECC0000', 'Success', nextReqKey);
-        nextReqKey = await ecc.sendObjectsToCaller(responseData, converterwoch.convertObjectToResWoChg, nextReqKey);
+        nextReqKey = await ecc.sendObjectsToCaller(responseData, converterdown.convertObjectToResDown, nextReqKey);
         logger.debug('Sent data to RPG');
         return nextReqKey;
     } catch (err) {
