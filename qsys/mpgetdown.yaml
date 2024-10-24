@@ -1,0 +1,83 @@
+---
+name: mpgetdown
+rpgIncName: mpgetdow_h
+codeblocks:
+  typescript:
+    - import eradaniConnect from "@eradani-inc/eradani-connect";
+    - const { dataTypes } = eradaniConnect;
+datastructures:
+  downitemsDS:
+    qualified: true
+    subfields:
+      contactName:
+        rpgName: contact
+        type: Character
+        length: 50
+        default: ""
+      contactKey:
+        rpgName: contactkey
+        type: Integer
+        length: 10
+        default: 0
+      downTimeLogKey:
+        rpgName: dtlogkey
+        type: Integer
+        length: 10
+        default: 0
+      downTimeItemKey:
+        rpgName: dtitemkey
+        type: Integer
+        length: 10
+        default: 0
+formats:
+  ResDown:
+    recordType: response
+    subfields:
+      downTimeLogKey:
+        rpgName: dtlogkey2
+        type: Integer
+        length: 10
+        default: 0
+      assetKey:
+        rpgName: assetkey
+        type: Integer
+        length: 10
+        default: 0      
+      downTimeOrigin:
+        rpgName: dtorigin
+        type: Integer
+        length: 10
+        default: 0
+      note:
+        rpgName: note
+        type: Character
+        length: 100
+        default: ""
+      timeDown:
+        rpgName: timedown
+        type: Character
+        length: 24 
+        default: ""
+      timeUp:
+        rpgName: timeup
+        type: Character
+        length: 24     
+        default: ""
+      totalDownTime:
+        rpgName: totaldt
+        type: Integer
+        length: 10
+        default: 0
+      downTimeItems:
+        rpgName: dtitems
+        type: DataStruct
+        dsName: downitemsDS
+        dim: 5      
+  ReqDown:
+    recordType: request
+    subfields:
+      skiprecs:
+        rpgName: skiprecs
+        type: Integer
+        length: 5
+        precision: 0        
