@@ -722,13 +722,13 @@ $(libdir)/qrpglesrc.file/mpgetdown.mbr $(libdir)/qrpglesrc.file/mpgetdow_h.mbr .
 	system "CPYFRMSTMF FROMSTMF('mpgetdown.rpgle') TOMBR('$(libdir)/qrpglesrc.file/mpgetdown.mbr') MBROPT(*REPLACE)"
 	system "CPYFRMSTMF FROMSTMF('mpgetdow_h.rpgleinc') TOMBR('$(libdir)/qrpglesrc.file/mpgetdow_h.mbr') MBROPT(*REPLACE)"	
 
-$(libdir)/qrpglesrc.file/ddgetct.mbr $(libdir)/qrpglesrc.file/ddgetct_h.mbr ../src/interfaces/ddgetct.ts: mpwonote.yaml
+$(libdir)/qrpglesrc.file/ddgetct.mbr $(libdir)/qrpglesrc.file/ddgetct_h.mbr ../src/interfaces/ddgetct.ts: ddgetct.yaml
 	npx ec-generate -f $<
 	cp ddgetct.ts ../src/interfaces/ddgetct.ts
 	system "CPYFRMSTMF FROMSTMF('ddgetct.rpgle') TOMBR('$(libdir)/qrpglesrc.file/ddgetct.mbr') MBROPT(*REPLACE)"
 	system "CPYFRMSTMF FROMSTMF('ddgetct_h.rpgleinc') TOMBR('$(libdir)/qrpglesrc.file/ddgetct_h.mbr') MBROPT(*REPLACE)"	
 
-$(libdir)/qrpglesrc.file/ddputct.mbr $(libdir)/qrpglesrc.file/ddputct_h.mbr ../src/interfaces/ddputct.ts: mpwonote.yaml
+$(libdir)/qrpglesrc.file/ddputct.mbr $(libdir)/qrpglesrc.file/ddputct_h.mbr ../src/interfaces/ddputct.ts: ddputct.yaml
 	npx ec-generate -f $<
 	cp ddputct.ts ../src/interfaces/ddputct.ts
 	system "CPYFRMSTMF FROMSTMF('ddputct.rpgle') TOMBR('$(libdir)/qrpglesrc.file/ddputct.mbr') MBROPT(*REPLACE)"
