@@ -6,7 +6,7 @@
       * Do not modify
       ************************************
 
-      /include ddgetct
+      /include ddgetct_h
 
       ************************************
       * Global variables
