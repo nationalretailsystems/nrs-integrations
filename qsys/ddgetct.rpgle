@@ -19,13 +19,13 @@
      Dl                S             10U 0
 
       ************************************
-      * Convert buffer to FormatName
+      * Convert buffer to ResDDGet
       ************************************
-     PBufToFormatName  B                   Export
+     PBufToResDDGet    B                   Export
 
-     DBufToFormatName  PI
+     DBufToResDDGet    PI
      DBuffer                       1347A
-     DDataStruct                           LikeDS(FormatName)
+     DDataStruct                           LikeDS(ResDDGet)
 
       * Initialize to begining of buffer
        BufPtr = %addr(Buffer);
@@ -374,4 +374,4 @@
 
        return ;
 
-     PBufToFormatName  E
+     PBufToResDDGet    E
