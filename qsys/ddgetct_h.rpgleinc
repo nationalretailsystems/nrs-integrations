@@ -191,9 +191,9 @@
      Dcount                           1P 0
 
       ************************************
-      * line_import_statusDS data structure
+      * line_imp_statDS data structure
       ************************************
-     Dline_import_statusDS  DS                  Qualified
+     Dline_imp_statDS  DS                  Qualified
      D                                     Template
      Did                              1P 0
      Dcontnumb                        6A
@@ -295,7 +295,7 @@
      Dlateappt                             LikeDS(latest_apptDS)
      Dothapptcnt                           LikeDS(OtherApptCtsDS)
      D                                     Dim(1)
-     Dlinimpstat                           LikeDS(line_import_statusDS)
+     Dlinimpstat                           LikeDS(line_imp_statDS)
      Dibgatetrn                            LikeDS(in_gate_tranDS)
      Dobgatetrn                            LikeDS(out_gate_tranDS)
      Dcyclestt                        7A
@@ -320,11 +320,11 @@
      Dmatchvess                            LikeDS(matched_vessDS)
 
       ************************************
-      * FormatName data structure
+      * ResDDGet data structure
       * Record length: 1347
       ************************************
-     DFormatNameLen    C                   1347
-     DFormatName       DS                  Qualified
+     DResDDGetLen      C                   1347
+     DResDDGet         DS                  Qualified
      D                                     Template
      Dunwatched_co...
      Dntainers                        6A   Dim(1)
@@ -332,8 +332,8 @@
      D                                     Dim(1)
 
       ************************************
-      * Convert buffer to FormatName
+      * Convert buffer to ResDDGet
       ************************************
-     DBufToFormatName  PR
+     DBufToResDDGet    PR
      DBuffer                       1347A
-     DDataStruct                           LikeDS(FormatName)
+     DDataStruct                           LikeDS(ResDDGet)

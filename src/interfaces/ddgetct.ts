@@ -499,7 +499,7 @@ export interface OtherApptCtsDS {
 /**
  * Output interface
  */
-export interface line_import_statusDS {
+export interface line_imp_statDS {
     /**
      * @size 1 digits
      * @precision 0 decimals
@@ -759,7 +759,7 @@ export interface ContainersDS {
     other_appointment_counts: Array<OtherApptCtsDS>,
     /**
      */
-    line_import_status: line_import_statusDS,
+    line_import_status: line_imp_statDS,
     /**
      */
     inbound_gate_transaction: in_gate_tranDS,
@@ -842,7 +842,7 @@ export interface ContainersDS {
 /**
  * Input interface
  */
-export interface FormatName {
+export interface ResDDGet {
     /**
      * @size 6 characters
      */
@@ -853,9 +853,9 @@ export interface FormatName {
 }
 
 /**
- * Convert JavaScript object to FormatName record
+ * Convert JavaScript object to ResDDGet record
  */
-export function convertObjectToFormatName(dataIn: FormatName): string {
+export function convertObjectToResDDGet(dataIn: ResDDGet): string {
   let dataOut: string = "";
 
   for (let i: number = 0; i < 1; ++i) {
