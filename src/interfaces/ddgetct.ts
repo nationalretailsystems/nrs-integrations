@@ -58,7 +58,7 @@ export interface pier_passDS {
 /**
  * Output interface
  */
-export interface clean_truck_feeDS {
+export interface clean_trk_feeDS {
     /**
      * @size 7 characters
      */
@@ -231,7 +231,7 @@ export interface import_statusDS {
 /**
  * Output interface
  */
-export interface ImportStatusesDS {
+export interface ImportStatsDS {
     /**
      * @size 7 characters
      */
@@ -382,7 +382,7 @@ export interface requested_byDS {
 /**
  * Output interface
  */
-export interface rescheduled_byDS {
+export interface resched_byDS {
     /**
      * @size 1 digits
      * @precision 0 decimals
@@ -401,7 +401,7 @@ export interface rescheduled_byDS {
 /**
  * Output interface
  */
-export interface latest_appointmentDS {
+export interface latest_apptDS {
     /**
      * @size 1 digits
      * @precision 0 decimals
@@ -463,7 +463,7 @@ export interface latest_appointmentDS {
     requested_by: requested_byDS,
     /**
      */
-    rescheduled_by: rescheduled_byDS,
+    rescheduled_by: resched_byDS,
     /**
      * @size 20 characters
      */
@@ -484,7 +484,7 @@ export interface latest_appointmentDS {
 /**
  * Output interface
  */
-export interface OtherApptCountsDS {
+export interface OtherApptCtsDS {
     /**
      * @size 16 characters
      */
@@ -546,7 +546,7 @@ export interface line_import_statusDS {
 /**
  * Output interface
  */
-export interface inbound_gate_transactionDS {
+export interface in_gate_tranDS {
     /**
      * @size 7 characters
      */
@@ -597,7 +597,7 @@ export interface inbound_gate_transactionDS {
 /**
  * Output interface
  */
-export interface outbound_gate_transactionDS {
+export interface out_gate_tranDS {
     /**
      * @size 7 characters
      */
@@ -648,7 +648,7 @@ export interface outbound_gate_transactionDS {
 /**
  * Output interface
  */
-export interface next_available_appointmentDS {
+export interface next_apptDS {
     /**
      * @size 20 characters
      */
@@ -703,7 +703,7 @@ export interface AssignedUsersDS {
 /**
  * Output interface
  */
-export interface matched_vesselDS {
+export interface matched_vessDS {
     /**
      * @size 6 characters
      */
@@ -744,35 +744,35 @@ export interface ContainersDS {
     pier_pass: pier_passDS,
     /**
      */
-    clean_truck_fee: clean_truck_feeDS,
+    clean_truck_fee: clean_trk_feeDS,
     /**
      */
     import_status: import_statusDS,
     /**
      */
-    import_statuses: Array<ImportStatusesDS>,
+    import_statuses: Array<ImportStatsDS>,
     /**
      */
-    latest_appointment: latest_appointmentDS,
+    latest_appointment: latest_apptDS,
     /**
      */
-    other_appointment_counts: Array<OtherApptCountsDS>,
+    other_appointment_counts: Array<OtherApptCtsDS>,
     /**
      */
     line_import_status: line_import_statusDS,
     /**
      */
-    inbound_gate_transaction: inbound_gate_transactionDS,
+    inbound_gate_transaction: in_gate_tranDS,
     /**
      */
-    outbound_gate_transaction: outbound_gate_transactionDS,
+    outbound_gate_transaction: out_gate_tranDS,
     /**
      * @size 7 characters
      */
     cycle_state: string,
     /**
      */
-    next_available_appointment: next_available_appointmentDS,
+    next_available_appointment: next_apptDS,
     /**
      * @size 6 characters
      */
@@ -836,7 +836,7 @@ export interface ContainersDS {
     vessel: string,
     /**
      */
-    matched_vessel: matched_vesselDS
+    matched_vessel: matched_vessDS
 }
 
 /**

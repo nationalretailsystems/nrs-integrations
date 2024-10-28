@@ -30,7 +30,7 @@ datastructures:
       observed:
         type: Character
         length: 20
-  clean_truck_feeDS:
+  clean_trk_feeDS:
     subfields:
       terminals:
         type: Character
@@ -168,7 +168,7 @@ datastructures:
         rpgName: lstchk
         type: Character
         length: 20
-  ImportStatusesDS:
+  ImportStatsDS:
     subfields:
       terminal:
         type: Character
@@ -295,7 +295,7 @@ datastructures:
       last_name:
         type: Character
         length: 6
-  rescheduled_byDS:
+  resched_byDS:
     subfields:
       id:
         type: Packed
@@ -306,7 +306,7 @@ datastructures:
       last_name:
         type: Character
         length: 6
-  latest_appointmentDS:
+  latest_apptDS:
     subfields:
       id:
         type: Packed
@@ -364,7 +364,7 @@ datastructures:
       rescheduled_by:
         rpgName: reschby
         type: DataStruct
-        dsName: rescheduled_byDS
+        dsName: resched_byDS
       observed:
         type: Character
         length: 20
@@ -379,7 +379,7 @@ datastructures:
       extra_data:
         type: DataStruct
         dsName: extra_dataDS
-  OtherApptCountsDS:
+  OtherApptCtsDS:
     subfields:
       status:
         type: Character
@@ -425,7 +425,7 @@ datastructures:
         rpgName: pconttype
         type: Character
         length: 5
-  inbound_gate_transactionDS:
+  in_gate_tranDS:
     subfields:
       terminal:
         type: Character
@@ -467,7 +467,7 @@ datastructures:
       observed:
         type: Character
         length: 20
-  outbound_gate_transactionDS:
+  out_gate_tranDS:
     subfields:
       terminal:
         type: Character
@@ -509,7 +509,7 @@ datastructures:
       observed:
         type: Character
         length: 20
-  next_available_appointmentDS:
+  next_apptDS:
     subfields:
       window_start:
         rpgName: windstrt
@@ -543,7 +543,7 @@ datastructures:
       last_name:
         type: Character
         length: 6
-  matched_vesselDS:
+  matched_vessDS:
     subfields:
       name:
         type: Character
@@ -577,7 +577,7 @@ datastructures:
       clean_truck_fee:
         rpgName: cltrkfee
         type: DataStruct
-        dsName: clean_truck_feeDS
+        dsName: clean_trk_feeDS
       import_status:
         rpgName: impstat
         type: DataStruct
@@ -585,16 +585,16 @@ datastructures:
       import_statuses:
         rpgName: impstats
         type: DataStruct
-        dsName: ImportStatusesDS
+        dsName: ImportStatsDS
         dim: 1
       latest_appointment:
         rpgName: lateappt
         type: DataStruct
-        dsName: latest_appointmentDS
+        dsName: latest_apptDS
       other_appointment_counts:
         rpgName: othapptcnt
         type: DataStruct
-        dsName: OtherApptCountsDS
+        dsName: OtherApptCtsDS
         dim: 1
       line_import_status:
         rpgName: linimpstat
@@ -603,11 +603,11 @@ datastructures:
       inbound_gate_transaction:
         rpgName: ibgatetrn
         type: DataStruct
-        dsName: inbound_gate_transactionDS
+        dsName: in_gate_tranDS
       outbound_gate_transaction:
         rpgName: obgatetrn
         type: DataStruct
-        dsName: outbound_gate_transactionDS
+        dsName: out_gate_tranDS
       cycle_state:
         rpgName: cyclestt
         type: Character
@@ -615,7 +615,7 @@ datastructures:
       next_available_appointment:
         rpgName: nextappt
         type: DataStruct
-        dsName: next_available_appointmentDS
+        dsName: next_apptDS
       master_bl:
         type: Character
         length: 6
@@ -681,7 +681,7 @@ datastructures:
       matched_vessel:
         rpgName: matchvess
         type: DataStruct
-        dsName: matched_vesselDS
+        dsName: matched_vessDS
 formats:
   FormatName:
     recordType: response
