@@ -1,5 +1,6 @@
 ---
 name: ddgetct
+rpgIncName: ddgetct_h
 datastructures:
   customerDS:
     subfields:
