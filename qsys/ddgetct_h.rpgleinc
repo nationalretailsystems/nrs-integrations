@@ -26,9 +26,9 @@
      Dobserved                       20A
 
       ************************************
-      * clean_truck_feeDS data structure
+      * clean_trk_feeDS data structure
       ************************************
-     Dclean_truck_feeDS  DS                  Qualified
+     Dclean_trk_feeDS  DS                  Qualified
      D                                     Template
      Dterminals                       7A   Dim(1)
      Dcontnumb                        6A
@@ -94,9 +94,9 @@
      Dlstchk                         20A
 
       ************************************
-      * ImportStatusesDS data structure
+      * ImportStatsDS data structure
       ************************************
-     DImportStatusesDS  DS                  Qualified
+     DImportStatsDS    DS                  Qualified
      D                                     Template
      Dterminal                        7A
      Dcontnumb                        6A
@@ -147,18 +147,18 @@
      Dlast_name                       6A
 
       ************************************
-      * rescheduled_byDS data structure
+      * resched_byDS data structure
       ************************************
-     Drescheduled_byDS  DS                  Qualified
+     Dresched_byDS     DS                  Qualified
      D                                     Template
      Did                              1P 0
      Dfirst_name                      6A
      Dlast_name                       6A
 
       ************************************
-      * latest_appointmentDS data structure
+      * latest_apptDS data structure
       ************************************
-     Dlatest_appointmentDS  DS                  Qualified
+     Dlatest_apptDS    DS                  Qualified
      D                                     Template
      Did                              1P 0
      Dcontnumb                        6A
@@ -176,16 +176,16 @@
      Dtruck_id                        1P 0
      Dtermblok                        6A
      Dreqby                                LikeDS(requested_byDS)
-     Dreschby                              LikeDS(rescheduled_byDS)
+     Dreschby                              LikeDS(resched_byDS)
      Dobserved                       20A
      Dlstobs                         20A
      Dcrtterm                        20A
      Dextra_data                           LikeDS(extra_dataDS)
 
       ************************************
-      * OtherApptCountsDS data structure
+      * OtherApptCtsDS data structure
       ************************************
-     DOtherApptCountsDS  DS                  Qualified
+     DOtherApptCtsDS   DS                  Qualified
      D                                     Template
      Dstatus                         16A
      Dcount                           1P 0
@@ -207,9 +207,9 @@
      Dpconttype                       5A
 
       ************************************
-      * inbound_gate_transactionDS data structure
+      * in_gate_tranDS data structure
       ************************************
-     Dinbound_gate_transactionDS  DS                  Qualified
+     Din_gate_tranDS   DS                  Qualified
      D                                     Template
      Dterminal                        7A
      Dcontnumb                        6A
@@ -225,9 +225,9 @@
      Dobserved                       20A
 
       ************************************
-      * outbound_gate_transactionDS data structure
+      * out_gate_tranDS data structure
       ************************************
-     Doutbound_gate_transactionDS  DS                  Qualified
+     Dout_gate_tranDS  DS                  Qualified
      D                                     Template
      Dterminal                        7A
      Dcontnumb                        6A
@@ -243,9 +243,9 @@
      Dobserved                       20A
 
       ************************************
-      * next_available_appointmentDS data structure
+      * next_apptDS data structure
       ************************************
-     Dnext_available_appointmentDS  DS                  Qualified
+     Dnext_apptDS      DS                  Qualified
      D                                     Template
      Dwindstrt                       20A
      Dobserved                       20A
@@ -270,9 +270,9 @@
      Dlast_name                       6A
 
       ************************************
-      * matched_vesselDS data structure
+      * matched_vessDS data structure
       ************************************
-     Dmatched_vesselDS  DS                  Qualified
+     Dmatched_vessDS   DS                  Qualified
      D                                     Template
      Dname                            6A
      Did                              1P 0
@@ -288,18 +288,18 @@
      Dconttype                        5A
      Dcustomer                             LikeDS(customerDS)
      Dpier_pass                            LikeDS(pier_passDS)
-     Dcltrkfee                             LikeDS(clean_truck_feeDS)
+     Dcltrkfee                             LikeDS(clean_trk_feeDS)
      Dimpstat                              LikeDS(import_statusDS)
-     Dimpstats                             LikeDS(ImportStatusesDS)
+     Dimpstats                             LikeDS(ImportStatsDS)
      D                                     Dim(1)
-     Dlateappt                             LikeDS(latest_appointmentDS)
-     Dothapptcnt                           LikeDS(OtherApptCountsDS)
+     Dlateappt                             LikeDS(latest_apptDS)
+     Dothapptcnt                           LikeDS(OtherApptCtsDS)
      D                                     Dim(1)
      Dlinimpstat                           LikeDS(line_import_statusDS)
-     Dibgatetrn                            LikeDS(inbound_gate_transactionDS)
-     Dobgatetrn                            LikeDS(outbound_gate_transactionDS)
+     Dibgatetrn                            LikeDS(in_gate_tranDS)
+     Dobgatetrn                            LikeDS(out_gate_tranDS)
      Dcyclestt                        7A
-     Dnextappt                             LikeDS(next_available_appointmentDS)
+     Dnextappt                             LikeDS(next_apptDS)
      Dmaster_bl                       6A
      Dtmsref                          6A
      Dadduser                              LikeDS(added_by_userDS)
@@ -317,7 +317,7 @@
      Dlastfree                       10A
      Dtags                            6A   Dim(1)
      Dvessel                          6A
-     Dmatchvess                            LikeDS(matched_vesselDS)
+     Dmatchvess                            LikeDS(matched_vessDS)
 
       ************************************
       * FormatName data structure
