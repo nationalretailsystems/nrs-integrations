@@ -26,7 +26,7 @@
      DReqWatchToBuf    PI
      DDataStruct                           LikeDS(ReqWatch)
      D                                     Const
-     DBuffer                      24411A
+     DBuffer                      24511A
 
       * Initialize to beginning of buffer
        BufPtr = %addr(Buffer);
@@ -37,8 +37,8 @@
        for i = 1 to 100;
        %subst(CharBuf:1:11) = DataStruct.containds(i).contnumb;
        BufPtr += 11;
-       %subst(CharBuf:1:8) = %char(DataStruct.containds(i).custid);
-       BufPtr += 8;
+       %subst(CharBuf:1:9) = %char(DataStruct.containds(i).custid);
+       BufPtr += 9;
        %subst(CharBuf:1:25) = DataStruct.containds(i).masterbl;
        BufPtr += 25;
        for k = 1 to 10;
@@ -57,7 +57,7 @@
      PBufToResWatch    B                   Export
 
      DBufToResWatch    PI
-     DBuffer                      26400A
+     DBuffer                      26500A
      DDataStruct                           LikeDS(ResWatch)
 
       * Initialize to begining of buffer
@@ -67,8 +67,8 @@
        for i = 1 to 100;
        DataStruct.contnumb(i).contnumb = %subst(CharBuf:1:11);
        BufPtr += 11;
-       DataStruct.contnumb(i).custid = %int(%subst(CharBuf:1:8));
-       BufPtr += 8;
+       DataStruct.contnumb(i).custid = %dec(%subst(CharBuf:1:9):7:0);
+       BufPtr += 9;
        DataStruct.contnumb(i).masterbl = %subst(CharBuf:1:25);
        BufPtr += 25;
        for j = 1 to 10;

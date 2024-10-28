@@ -49,6 +49,7 @@ export interface containerDS {
     container_number: string,
     /**
      * @size 7 digits
+     * @precision 0 decimals
      * @default `0`
      */
     customer_id: number,
@@ -96,8 +97,8 @@ export function convertReqWatchToObject(dataIn: string): ReqWatch {
     };
   dataOut.containers[i].container_number = dataIn.substring(pos, pos + 11).trimEnd();
   pos += 11;
-  dataOut.containers[i].customer_id = Number(dataIn.substring(pos, pos + 8).trimEnd());
-  pos += 8;
+  dataOut.containers[i].customer_id = Number(dataIn.substring(pos, pos + 9).trimEnd());
+  pos += 9;
   dataOut.containers[i].master_bl = dataIn.substring(pos, pos + 25).trimEnd();
   pos += 25;
   dataOut.containers[i].tags = [
@@ -135,7 +136,7 @@ export function convertObjectToResWatch(dataIn: ResWatch): string {
 
   for (let i: number = 0; i < 100; ++i) {
   dataOut += dataIn?.container_numbers[i]?.container_number?.substring(0, 11)?.padEnd(11) ?? "".substring(0, 11).padEnd(11);
-  dataOut += dataIn?.container_numbers[i]?.customer_id?.toFixed()?.substring(0, 8)?.padEnd(8) ?? "0".substring(0, 8).padEnd(8);
+  dataOut += dataIn?.container_numbers[i]?.customer_id?.toFixed(0)?.substring(0, 9)?.padEnd(9) ?? "0".substring(0, 9).padEnd(9);
   dataOut += dataIn?.container_numbers[i]?.master_bl?.substring(0, 25)?.padEnd(25) ?? "".substring(0, 25).padEnd(25);
   for (let k: number = 0; k < 10; ++k) {
   dataOut += dataIn?.container_numbers[i]?.tags[k]?.tags?.substring(0, 20)?.padEnd(20) ?? "".substring(0, 20).padEnd(20);
