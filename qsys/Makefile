@@ -83,7 +83,9 @@ GENMODS = icndbapi \
 		  ukgpchim \
 		  psdvir \
 		  mpwonote \
-		  mpgetdown
+		  mpgetdown \
+		  ddgetct \
+		  ddputct
 
 
 GENHDRS = icndbapi_h \
@@ -140,7 +142,9 @@ GENHDRS = icndbapi_h \
 		  ukgpchim_h \
 		  psdvir_h \
 		  mpwonote_h \
-		  mpgetdow_h
+		  mpgetdow_h \
+		  ddgetc_h \
+		  ddputct_h
 
 
 SRVPGMS = ecctmpgen
@@ -717,6 +721,18 @@ $(libdir)/qrpglesrc.file/mpgetdown.mbr $(libdir)/qrpglesrc.file/mpgetdow_h.mbr .
 	cp mpgetdown.ts ../src/interfaces/mpgetdown.ts
 	system "CPYFRMSTMF FROMSTMF('mpgetdown.rpgle') TOMBR('$(libdir)/qrpglesrc.file/mpgetdown.mbr') MBROPT(*REPLACE)"
 	system "CPYFRMSTMF FROMSTMF('mpgetdow_h.rpgleinc') TOMBR('$(libdir)/qrpglesrc.file/mpgetdow_h.mbr') MBROPT(*REPLACE)"	
+
+$(libdir)/qrpglesrc.file/ddgetct.mbr $(libdir)/qrpglesrc.file/ddgetct_h.mbr ../src/interfaces/ddgetct.ts: mpwonote.yaml
+	npx ec-generate -f $<
+	cp ddgetct.ts ../src/interfaces/ddgetct.ts
+	system "CPYFRMSTMF FROMSTMF('ddgetct.rpgle') TOMBR('$(libdir)/qrpglesrc.file/ddgetct.mbr') MBROPT(*REPLACE)"
+	system "CPYFRMSTMF FROMSTMF('ddgetct_h.rpgleinc') TOMBR('$(libdir)/qrpglesrc.file/ddgetct_h.mbr') MBROPT(*REPLACE)"	
+
+$(libdir)/qrpglesrc.file/ddputct.mbr $(libdir)/qrpglesrc.file/ddputct_h.mbr ../src/interfaces/ddputct.ts: mpwonote.yaml
+	npx ec-generate -f $<
+	cp ddputct.ts ../src/interfaces/ddputct.ts
+	system "CPYFRMSTMF FROMSTMF('ddputct.rpgle') TOMBR('$(libdir)/qrpglesrc.file/ddputct.mbr') MBROPT(*REPLACE)"
+	system "CPYFRMSTMF FROMSTMF('ddputct_h.rpgleinc') TOMBR('$(libdir)/qrpglesrc.file/ddputct_h.mbr') MBROPT(*REPLACE)"	
 
 .PHONY: library
 library:
