@@ -19,10 +19,8 @@
      Dpier_passDS      DS                  Qualified
      D                                     Template
      Dterminals                       7A   Dim(1)
-     Dcontainer_nu...
-     Dmber                            6A
-     Dclaimed_by_o...
-     Dther_company                     N
+     Dcontnumb                        6A
+     Dclmothcpy                        N
      Dfee_paid                         N
      Dhas_hold                         N
      Dobserved                       20A
@@ -33,10 +31,8 @@
      Dclean_truck_feeDS  DS                  Qualified
      D                                     Template
      Dterminals                       7A   Dim(1)
-     Dcontainer_nu...
-     Dmber                            6A
-     Dclaimed_by_o...
-     Dther_company                     N
+     Dcontnumb                        6A
+     Dclmothcpy                        N
      Dfee_paid                         N
      Dhas_hold                         N
      Dobserved                       20A
@@ -67,52 +63,35 @@
      Dimport_statusDS  DS                  Qualified
      D                                     Template
      Dterminal                        7A
-     Dcontainer_nu...
-     Dmber                            6A
-     Dlast_free_da...
-     Dte                             10A
-     Dmaster_bill_...
-     Dof_lading                       6A
-     Dshipping_lin...
-     De                               3A
-     Dcontainer_ty...
-     Dpe                             16A
+     Dcontnumb                        6A
+     Dlastfree                       10A
+     Dmasterbl                        6A
+     Dshipline                        3A
+     Dconttype                       16A
      Dvessel                          6A
      Dlocation                        7A
-     Dparsed_locat...
-     Dion                             9A
-     Dterminal_blo...
-     Dck                             10A
-     Dterminal_blo...
-     Dck_availability_key                 3A
+     Dplocat                          9A
+     Dtermblok                       10A
+     Dtrmblkak                        3A
      Dholds                          14A   Dim(2)
-     Ddemurrage_fe...
-     Des                              1P 0
-     Dready_for_ap...
-     Dpointment                        N
-     Davailable_fo...
-     Dr_pickup                         N
+     Ddemurfee                        1P 0
+     Dapptrdy                          N
+     Dpickrdy                          N
      Dwheeled                          N
-     Dclosed_area                      N
-     Dout_gated_ti...
-     Dme                             20A
-     Ddischarged_t...
-     Dime                            20A
+     Dclosarea                         N
+     Doutgttm                        20A
+     Ddischtm                        20A
      Draw_data                             LikeDS(raw_dataDS)
      Dextra_data                           LikeDS(extra_dataDS)
      Dobserved                       20A
-     Dparsed_shipp...
-     Ding_line                        4A
-     Dparsed_conta...
-     Diner_type                       5A
-     Dparsed_holds                         LikeDS(ParsedHoldsDS)
+     Dpshipline                       4A
+     Dpconttype                       5A
+     Dprsdholds                            LikeDS(ParsedHoldsDS)
      D                                     Dim(1)
      Did                              1P 0
      Dcycle_id                        1P 0
-     Dlast_observe...
-     Dd                              20A
-     Dlast_initiat...
-     Ded_check                       20A
+     Dlstobs                         20A
+     Dlstchk                         20A
 
       ************************************
       * ImportStatusesDS data structure
@@ -120,62 +99,43 @@
      DImportStatusesDS  DS                  Qualified
      D                                     Template
      Dterminal                        7A
-     Dcontainer_nu...
-     Dmber                            6A
-     Dlast_free_da...
-     Dte                             10A
-     Dmaster_bill_...
-     Dof_lading                       6A
-     Dshipping_lin...
-     De                               3A
-     Dcontainer_ty...
-     Dpe                             16A
+     Dcontnumb                        6A
+     Dlastfree                       10A
+     Dmasterbl                        6A
+     Dshipline                        3A
+     Dconttype                       16A
      Dvessel                          6A
      Dlocation                        7A
-     Dparsed_locat...
-     Dion                             9A
-     Dterminal_blo...
-     Dck                             10A
-     Dterminal_blo...
-     Dck_availability_key                 3A
+     Dplocat                          9A
+     Dtermblok                       10A
+     Dtrmblkak                        3A
      Dholds                          14A   Dim(2)
-     Ddemurrage_fe...
-     Des                              1P 0
-     Dready_for_ap...
-     Dpointment                        N
-     Davailable_fo...
-     Dr_pickup                         N
+     Ddemurfee                        1P 0
+     Dapptrdy                          N
+     Dpickrdy                          N
      Dwheeled                          N
-     Dclosed_area                      N
-     Dout_gated_ti...
-     Dme                             20A
-     Ddischarged_t...
-     Dime                            20A
+     Dclosarea                         N
+     Doutgttm                        20A
+     Ddischtm                        20A
      Draw_data                             LikeDS(raw_dataDS)
      Dextra_data                           LikeDS(extra_dataDS)
      Dobserved                       20A
-     Dparsed_shipp...
-     Ding_line                        4A
-     Dparsed_conta...
-     Diner_type                       5A
-     Dparsed_holds                         LikeDS(ParsedHoldsDS)
+     Dpshipline                       4A
+     Dpconttype                       5A
+     Dprsdholds                            LikeDS(ParsedHoldsDS)
      D                                     Dim(1)
      Did                              1P 0
      Dcycle_id                        1P 0
-     Dlast_observe...
-     Dd                              20A
-     Dlast_initiat...
-     Ded_check                       20A
+     Dlstobs                         20A
+     Dlstchk                         20A
 
       ************************************
       * LinkedApptsDS data structure
       ************************************
      DLinkedApptsDS    DS                  Qualified
      D                                     Template
-     Dterminal_ref...
-     Derence                          6A
-     Dcontainer_nu...
-     Dmber                            6A
+     Dtermref                         6A
+     Dcontnumb                        6A
 
       ************************************
       * requested_byDS data structure
@@ -201,34 +161,25 @@
      Dlatest_appointmentDS  DS                  Qualified
      D                                     Template
      Did                              1P 0
-     Dcontainer_nu...
-     Dmber                            6A
+     Dcontnumb                        6A
      Dloaded                           N
      Dstatus                         16A
      Ddirection                       7A
-     Dwindow_start                   20A
+     Dwindstrt                       20A
      Dwindow_end                     20A
-     Dlinked_appoi...
-     Dntments                              LikeDS(LinkedApptsDS)
+     Dlinkappts                            LikeDS(LinkedApptsDS)
      D                                     Dim(1)
      Dterminal                        7A
-     Dterminal_ref...
-     Derence                          6A
-     Ddisplay_term...
-     Dinal_reference                  6A
-     Dtruck_licens...
-     De_plate_number                  6A
+     Dtermref                         6A
+     Ddsptrmref                       6A
+     Dtrklicplt                       6A
      Dtruck_id                        1P 0
-     Dterminal_blo...
-     Dck                              6A
-     Drequested_by                         LikeDS(requested_byDS)
-     Drescheduled_...
-     Dby                                   LikeDS(rescheduled_byDS)
+     Dtermblok                        6A
+     Dreqby                                LikeDS(requested_byDS)
+     Dreschby                              LikeDS(rescheduled_byDS)
      Dobserved                       20A
-     Dlast_observe...
-     Dd                              20A
-     Dcreated_at_t...
-     Derminal                        20A
+     Dlstobs                         20A
+     Dcrtterm                        20A
      Dextra_data                           LikeDS(extra_dataDS)
 
       ************************************
@@ -245,21 +196,15 @@
      Dline_import_statusDS  DS                  Qualified
      D                                     Template
      Did                              1P 0
-     Dcontainer_nu...
-     Dmber                            6A
+     Dcontnumb                        6A
      Dstatus                          6A
-     Dparsed_statu...
-     Ds                               9A
+     Dpstatus                         9A
      Dterminal                        7A
-     Dlast_free_da...
-     Dte                             10A
+     Dlastfree                       10A
      Dobserved                       20A
-     Dlast_observe...
-     Dd                              20A
-     Dparsed_shipp...
-     Ding_line                        4A
-     Dparsed_conta...
-     Diner_type                       5A
+     Dlstobs                         20A
+     Dpshipline                       4A
+     Dpconttype                       5A
 
       ************************************
       * inbound_gate_transactionDS data structure
@@ -267,19 +212,14 @@
      Dinbound_gate_transactionDS  DS                  Qualified
      D                                     Template
      Dterminal                        7A
-     Dcontainer_nu...
-     Dmber                            6A
-     Dchassis_numb...
-     Der                              6A
+     Dcontnumb                        6A
+     Dchasnum                         6A
      Dtime                           20A
      Dloaded                           N
      Ddirection                       7A
-     Ddrivers_lice...
-     Dnse_number                      6A
-     Dtruck_rfid_n...
-     Dumber                           6A
-     Dtruck_licens...
-     De_plate_number                  6A
+     Ddlicnum                         6A
+     Dtrefnum                         6A
+     Dtrklicplt                       6A
      Dextra_data                           LikeDS(extra_dataDS)
      Draw_data                             LikeDS(raw_dataDS)
      Dobserved                       20A
@@ -290,19 +230,14 @@
      Doutbound_gate_transactionDS  DS                  Qualified
      D                                     Template
      Dterminal                        7A
-     Dcontainer_nu...
-     Dmber                            6A
-     Dchassis_numb...
-     Der                              6A
+     Dcontnumb                        6A
+     Dchasnum                         6A
      Dtime                           20A
      Dloaded                           N
      Ddirection                       7A
-     Ddrivers_lice...
-     Dnse_number                      6A
-     Dtruck_rfid_n...
-     Dumber                           6A
-     Dtruck_licens...
-     De_plate_number                  6A
+     Ddlicnum                         6A
+     Dtrefnum                         6A
+     Dtrklicplt                       6A
      Dextra_data                           LikeDS(extra_dataDS)
      Draw_data                             LikeDS(raw_dataDS)
      Dobserved                       20A
@@ -312,10 +247,9 @@
       ************************************
      Dnext_available_appointmentDS  DS                  Qualified
      D                                     Template
-     Dwindow_start                   20A
+     Dwindstrt                       20A
      Dobserved                       20A
-     Dhas_availabi...
-     Dlity                             N
+     Dhasavail                         N
 
       ************************************
       * added_by_userDS data structure
@@ -349,65 +283,41 @@
       ************************************
      DContainersDS     DS                  Qualified
      D                                     Template
-     Dcontainer_nu...
-     Dmber                            6A
-     Dshipping_lin...
-     De                               4A
-     Dcontainer_ty...
-     Dpe                              5A
+     Dcontnumb                        6A
+     Dshipline                        4A
+     Dconttype                        5A
      Dcustomer                             LikeDS(customerDS)
      Dpier_pass                            LikeDS(pier_passDS)
-     Dclean_truck_...
-     Dfee                                  LikeDS(clean_truck_feeDS)
-     Dimport_statu...
-     Ds                                    LikeDS(import_statusDS)
-     Dimport_statu...
-     Dses                                  LikeDS(ImportStatusesDS)
+     Dcltrkfee                             LikeDS(clean_truck_feeDS)
+     Dimpstat                              LikeDS(import_statusDS)
+     Dimpstats                             LikeDS(ImportStatusesDS)
      D                                     Dim(1)
-     Dlatest_appoi...
-     Dntment                               LikeDS(latest_appointmentDS)
-     Dother_appoin...
-     Dtment_counts                         LikeDS(OtherApptCountsDS)
+     Dlateappt                             LikeDS(latest_appointmentDS)
+     Dothapptcnt                           LikeDS(OtherApptCountsDS)
      D                                     Dim(1)
-     Dline_import_...
-     Dstatus                               LikeDS(line_import_statusDS)
-     Dinbound_gate...
-     D_transaction                         LikeDS(inbound_gate_transactionDS)
-     Doutbound_gat...
-     De_transaction                        LikeDS(outbound_gate_transactionDS)
-     Dcycle_state                     7A
-     Dnext_availab...
-     Dle_appointment                       LikeDS(next_available_appointmentDS)
+     Dlinimpstat                           LikeDS(line_import_statusDS)
+     Dibgatetrn                            LikeDS(inbound_gate_transactionDS)
+     Dobgatetrn                            LikeDS(outbound_gate_transactionDS)
+     Dcyclestt                        7A
+     Dnextappt                             LikeDS(next_available_appointmentDS)
      Dmaster_bl                       6A
-     Dtms_referenc...
-     De                               6A
-     Dadded_by_use...
-     Dr                                    LikeDS(added_by_userDS)
-     Dassigned_use...
-     Drs                                   LikeDS(AssignedUsersDS)
+     Dtmsref                          6A
+     Dadduser                              LikeDS(added_by_userDS)
+     Dassuser                              LikeDS(AssignedUsersDS)
      D                                     Dim(1)
-     Dauto_book_on                     N
-     Dauto_book_re...
-     Dquest_status                    9A
-     Dlast_related...
-     D_terminal                       7A
-     Dwatched_time                   20A
-     Ddischarged_t...
-     Dime                            20A
-     Dimport_appoi...
-     Dntment_time                    20A
-     Dimport_out_g...
-     Dated_time                      20A
-     Dempty_appoin...
-     Dtment_time                     20A
-     Dempty_in_gat...
-     Ded_time                        20A
-     Dlast_free_da...
-     Dte                             10A
+     Dautobook                         N
+     Dautobookst                      9A
+     Dlstreltrm                       7A
+     Dwatchtm                        20A
+     Ddischtm                        20A
+     Dimpappttm                      20A
+     Dimpoutgtm                      20A
+     Dmtappttm                       20A
+     Dmtigtime                       20A
+     Dlastfree                       10A
      Dtags                            6A   Dim(1)
      Dvessel                          6A
-     Dmatched_vess...
-     Del                                   LikeDS(matched_vesselDS)
+     Dmatchvess                            LikeDS(matched_vesselDS)
 
       ************************************
       * FormatName data structure
