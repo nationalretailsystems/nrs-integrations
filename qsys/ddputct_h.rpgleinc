@@ -25,16 +25,16 @@
      DcontainerDS      DS                  Qualified
      D                                     Template
      Dcontnumb                       11A
-     Dcustid                          7I 0
+     Dcustid                          7P 0
      Dmasterbl                       25A
      Dtags                                 LikeDS(tagsDS)
      D                                     Dim(10)
 
       ************************************
       * ReqWatch data structure
-      * Record length: 24411
+      * Record length: 24511
       ************************************
-     DReqWatchLen      C                   24411
+     DReqWatchLen      C                   24511
      DReqWatch         DS                  Qualified
      D                                     Template
      Duserid                         10I 0
@@ -47,13 +47,13 @@
      DReqWatchToBuf    PR
      DDataStruct                           LikeDS(ReqWatch)
      D                                     Const
-     DBuffer                      24411A
+     DBuffer                      24511A
 
       ************************************
       * ResWatch data structure
-      * Record length: 26400
+      * Record length: 26500
       ************************************
-     DResWatchLen      C                   26400
+     DResWatchLen      C                   26500
      DResWatch         DS                  Qualified
      D                                     Template
      Dcontnumb                             LikeDS(containerDS)
@@ -65,5 +65,5 @@
       * Convert buffer to ResWatch
       ************************************
      DBufToResWatch    PR
-     DBuffer                      26400A
+     DBuffer                      26500A
      DDataStruct                           LikeDS(ResWatch)
