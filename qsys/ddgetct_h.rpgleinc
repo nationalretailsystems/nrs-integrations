@@ -1,0 +1,429 @@
+      ************************************
+      * Module: ddgetct
+      * Generated RPG data structures
+      * and prototypes
+      * Do not modify
+      ************************************
+
+      ************************************
+      * customerDS data structure
+      ************************************
+     DcustomerDS       DS                  Qualified
+     D                                     Template
+     Dname                            6A
+     Did                              1P 0
+
+      ************************************
+      * pier_passDS data structure
+      ************************************
+     Dpier_passDS      DS                  Qualified
+     D                                     Template
+     Dterminals                       7A   Dim(1)
+     Dcontainer_nu...
+     Dmber                            6A
+     Dclaimed_by_o...
+     Dther_company                     N
+     Dfee_paid                         N
+     Dhas_hold                         N
+     Dobserved                       20A
+
+      ************************************
+      * clean_truck_feeDS data structure
+      ************************************
+     Dclean_truck_feeDS  DS                  Qualified
+     D                                     Template
+     Dterminals                       7A   Dim(1)
+     Dcontainer_nu...
+     Dmber                            6A
+     Dclaimed_by_o...
+     Dther_company                     N
+     Dfee_paid                         N
+     Dhas_hold                         N
+     Dobserved                       20A
+
+      ************************************
+      * raw_dataDS data structure
+      ************************************
+     Draw_dataDS       DS                  Qualified
+     D                                     Template
+
+      ************************************
+      * extra_dataDS data structure
+      ************************************
+     Dextra_dataDS     DS                  Qualified
+     D                                     Template
+
+      ************************************
+      * ParsedHoldsDS data structure
+      ************************************
+     DParsedHoldsDS    DS                  Qualified
+     D                                     Template
+     Dtype                            9A
+     Draw_type                        6A
+
+      ************************************
+      * import_statusDS data structure
+      ************************************
+     Dimport_statusDS  DS                  Qualified
+     D                                     Template
+     Dterminal                        7A
+     Dcontainer_nu...
+     Dmber                            6A
+     Dlast_free_da...
+     Dte                             10A
+     Dmaster_bill_...
+     Dof_lading                       6A
+     Dshipping_lin...
+     De                               3A
+     Dcontainer_ty...
+     Dpe                             16A
+     Dvessel                          6A
+     Dlocation                        7A
+     Dparsed_locat...
+     Dion                             9A
+     Dterminal_blo...
+     Dck                             10A
+     Dterminal_blo...
+     Dck_availability_key                 3A
+     Dholds                          14A   Dim(2)
+     Ddemurrage_fe...
+     Des                              1P 0
+     Dready_for_ap...
+     Dpointment                        N
+     Davailable_fo...
+     Dr_pickup                         N
+     Dwheeled                          N
+     Dclosed_area                      N
+     Dout_gated_ti...
+     Dme                             20A
+     Ddischarged_t...
+     Dime                            20A
+     Draw_data                             LikeDS(raw_dataDS)
+     Dextra_data                           LikeDS(extra_dataDS)
+     Dobserved                       20A
+     Dparsed_shipp...
+     Ding_line                        4A
+     Dparsed_conta...
+     Diner_type                       5A
+     Dparsed_holds                         LikeDS(ParsedHoldsDS)
+     D                                     Dim(1)
+     Did                              1P 0
+     Dcycle_id                        1P 0
+     Dlast_observe...
+     Dd                              20A
+     Dlast_initiat...
+     Ded_check                       20A
+
+      ************************************
+      * ImportStatusesDS data structure
+      ************************************
+     DImportStatusesDS  DS                  Qualified
+     D                                     Template
+     Dterminal                        7A
+     Dcontainer_nu...
+     Dmber                            6A
+     Dlast_free_da...
+     Dte                             10A
+     Dmaster_bill_...
+     Dof_lading                       6A
+     Dshipping_lin...
+     De                               3A
+     Dcontainer_ty...
+     Dpe                             16A
+     Dvessel                          6A
+     Dlocation                        7A
+     Dparsed_locat...
+     Dion                             9A
+     Dterminal_blo...
+     Dck                             10A
+     Dterminal_blo...
+     Dck_availability_key                 3A
+     Dholds                          14A   Dim(2)
+     Ddemurrage_fe...
+     Des                              1P 0
+     Dready_for_ap...
+     Dpointment                        N
+     Davailable_fo...
+     Dr_pickup                         N
+     Dwheeled                          N
+     Dclosed_area                      N
+     Dout_gated_ti...
+     Dme                             20A
+     Ddischarged_t...
+     Dime                            20A
+     Draw_data                             LikeDS(raw_dataDS)
+     Dextra_data                           LikeDS(extra_dataDS)
+     Dobserved                       20A
+     Dparsed_shipp...
+     Ding_line                        4A
+     Dparsed_conta...
+     Diner_type                       5A
+     Dparsed_holds                         LikeDS(ParsedHoldsDS)
+     D                                     Dim(1)
+     Did                              1P 0
+     Dcycle_id                        1P 0
+     Dlast_observe...
+     Dd                              20A
+     Dlast_initiat...
+     Ded_check                       20A
+
+      ************************************
+      * LinkedApptsDS data structure
+      ************************************
+     DLinkedApptsDS    DS                  Qualified
+     D                                     Template
+     Dterminal_ref...
+     Derence                          6A
+     Dcontainer_nu...
+     Dmber                            6A
+
+      ************************************
+      * requested_byDS data structure
+      ************************************
+     Drequested_byDS   DS                  Qualified
+     D                                     Template
+     Did                              1P 0
+     Dfirst_name                      6A
+     Dlast_name                       6A
+
+      ************************************
+      * rescheduled_byDS data structure
+      ************************************
+     Drescheduled_byDS  DS                  Qualified
+     D                                     Template
+     Did                              1P 0
+     Dfirst_name                      6A
+     Dlast_name                       6A
+
+      ************************************
+      * latest_appointmentDS data structure
+      ************************************
+     Dlatest_appointmentDS  DS                  Qualified
+     D                                     Template
+     Did                              1P 0
+     Dcontainer_nu...
+     Dmber                            6A
+     Dloaded                           N
+     Dstatus                         16A
+     Ddirection                       7A
+     Dwindow_start                   20A
+     Dwindow_end                     20A
+     Dlinked_appoi...
+     Dntments                              LikeDS(LinkedApptsDS)
+     D                                     Dim(1)
+     Dterminal                        7A
+     Dterminal_ref...
+     Derence                          6A
+     Ddisplay_term...
+     Dinal_reference                  6A
+     Dtruck_licens...
+     De_plate_number                  6A
+     Dtruck_id                        1P 0
+     Dterminal_blo...
+     Dck                              6A
+     Drequested_by                         LikeDS(requested_byDS)
+     Drescheduled_...
+     Dby                                   LikeDS(rescheduled_byDS)
+     Dobserved                       20A
+     Dlast_observe...
+     Dd                              20A
+     Dcreated_at_t...
+     Derminal                        20A
+     Dextra_data                           LikeDS(extra_dataDS)
+
+      ************************************
+      * OtherApptCountsDS data structure
+      ************************************
+     DOtherApptCountsDS  DS                  Qualified
+     D                                     Template
+     Dstatus                         16A
+     Dcount                           1P 0
+
+      ************************************
+      * line_import_statusDS data structure
+      ************************************
+     Dline_import_statusDS  DS                  Qualified
+     D                                     Template
+     Did                              1P 0
+     Dcontainer_nu...
+     Dmber                            6A
+     Dstatus                          6A
+     Dparsed_statu...
+     Ds                               9A
+     Dterminal                        7A
+     Dlast_free_da...
+     Dte                             10A
+     Dobserved                       20A
+     Dlast_observe...
+     Dd                              20A
+     Dparsed_shipp...
+     Ding_line                        4A
+     Dparsed_conta...
+     Diner_type                       5A
+
+      ************************************
+      * inbound_gate_transactionDS data structure
+      ************************************
+     Dinbound_gate_transactionDS  DS                  Qualified
+     D                                     Template
+     Dterminal                        7A
+     Dcontainer_nu...
+     Dmber                            6A
+     Dchassis_numb...
+     Der                              6A
+     Dtime                           20A
+     Dloaded                           N
+     Ddirection                       7A
+     Ddrivers_lice...
+     Dnse_number                      6A
+     Dtruck_rfid_n...
+     Dumber                           6A
+     Dtruck_licens...
+     De_plate_number                  6A
+     Dextra_data                           LikeDS(extra_dataDS)
+     Draw_data                             LikeDS(raw_dataDS)
+     Dobserved                       20A
+
+      ************************************
+      * outbound_gate_transactionDS data structure
+      ************************************
+     Doutbound_gate_transactionDS  DS                  Qualified
+     D                                     Template
+     Dterminal                        7A
+     Dcontainer_nu...
+     Dmber                            6A
+     Dchassis_numb...
+     Der                              6A
+     Dtime                           20A
+     Dloaded                           N
+     Ddirection                       7A
+     Ddrivers_lice...
+     Dnse_number                      6A
+     Dtruck_rfid_n...
+     Dumber                           6A
+     Dtruck_licens...
+     De_plate_number                  6A
+     Dextra_data                           LikeDS(extra_dataDS)
+     Draw_data                             LikeDS(raw_dataDS)
+     Dobserved                       20A
+
+      ************************************
+      * next_available_appointmentDS data structure
+      ************************************
+     Dnext_available_appointmentDS  DS                  Qualified
+     D                                     Template
+     Dwindow_start                   20A
+     Dobserved                       20A
+     Dhas_availabi...
+     Dlity                             N
+
+      ************************************
+      * added_by_userDS data structure
+      ************************************
+     Dadded_by_userDS  DS                  Qualified
+     D                                     Template
+     Did                              1P 0
+     Dfirst_name                      6A
+     Dlast_name                       6A
+
+      ************************************
+      * AssignedUsersDS data structure
+      ************************************
+     DAssignedUsersDS  DS                  Qualified
+     D                                     Template
+     Did                              1P 0
+     Dfirst_name                      6A
+     Dlast_name                       6A
+
+      ************************************
+      * matched_vesselDS data structure
+      ************************************
+     Dmatched_vesselDS  DS                  Qualified
+     D                                     Template
+     Dname                            6A
+     Did                              1P 0
+     Dimo_number                      1P 0
+
+      ************************************
+      * ContainersDS data structure
+      ************************************
+     DContainersDS     DS                  Qualified
+     D                                     Template
+     Dcontainer_nu...
+     Dmber                            6A
+     Dshipping_lin...
+     De                               4A
+     Dcontainer_ty...
+     Dpe                              5A
+     Dcustomer                             LikeDS(customerDS)
+     Dpier_pass                            LikeDS(pier_passDS)
+     Dclean_truck_...
+     Dfee                                  LikeDS(clean_truck_feeDS)
+     Dimport_statu...
+     Ds                                    LikeDS(import_statusDS)
+     Dimport_statu...
+     Dses                                  LikeDS(ImportStatusesDS)
+     D                                     Dim(1)
+     Dlatest_appoi...
+     Dntment                               LikeDS(latest_appointmentDS)
+     Dother_appoin...
+     Dtment_counts                         LikeDS(OtherApptCountsDS)
+     D                                     Dim(1)
+     Dline_import_...
+     Dstatus                               LikeDS(line_import_statusDS)
+     Dinbound_gate...
+     D_transaction                         LikeDS(inbound_gate_transactionDS)
+     Doutbound_gat...
+     De_transaction                        LikeDS(outbound_gate_transactionDS)
+     Dcycle_state                     7A
+     Dnext_availab...
+     Dle_appointment                       LikeDS(next_available_appointmentDS)
+     Dmaster_bl                       6A
+     Dtms_referenc...
+     De                               6A
+     Dadded_by_use...
+     Dr                                    LikeDS(added_by_userDS)
+     Dassigned_use...
+     Drs                                   LikeDS(AssignedUsersDS)
+     D                                     Dim(1)
+     Dauto_book_on                     N
+     Dauto_book_re...
+     Dquest_status                    9A
+     Dlast_related...
+     D_terminal                       7A
+     Dwatched_time                   20A
+     Ddischarged_t...
+     Dime                            20A
+     Dimport_appoi...
+     Dntment_time                    20A
+     Dimport_out_g...
+     Dated_time                      20A
+     Dempty_appoin...
+     Dtment_time                     20A
+     Dempty_in_gat...
+     Ded_time                        20A
+     Dlast_free_da...
+     Dte                             10A
+     Dtags                            6A   Dim(1)
+     Dvessel                          6A
+     Dmatched_vess...
+     Del                                   LikeDS(matched_vesselDS)
+
+      ************************************
+      * FormatName data structure
+      * Record length: 1347
+      ************************************
+     DFormatNameLen    C                   1347
+     DFormatName       DS                  Qualified
+     D                                     Template
+     Dunwatched_co...
+     Dntainers                        6A   Dim(1)
+     Dcontainers                           LikeDS(ContainersDS)
+     D                                     Dim(1)
+
+      ************************************
+      * Convert buffer to FormatName
+      ************************************
+     DBufToFormatName  PR
+     DBuffer                       1347A
+     DDataStruct                           LikeDS(FormatName)
