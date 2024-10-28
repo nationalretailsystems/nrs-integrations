@@ -1,0 +1,69 @@
+      ************************************
+      * Module: ddputct
+      * Generated RPG data structures
+      * and prototypes
+      * Do not modify
+      ************************************
+
+      ************************************
+      * tagsDS data structure
+      ************************************
+     DtagsDS           DS                  Qualified
+     D                                     Template
+     Dtag                            20A
+
+      ************************************
+      * errorsDS data structure
+      ************************************
+     DerrorsDS         DS                  Qualified
+     D                                     Template
+     Derror                          20A
+
+      ************************************
+      * containerDS data structure
+      ************************************
+     DcontainerDS      DS                  Qualified
+     D                                     Template
+     Dcontnumb                       11A
+     Dcustid                          7I 0
+     Dmasterbl                       25A
+     Dtags                                 LikeDS(tagsDS)
+     D                                     Dim(10)
+
+      ************************************
+      * ReqWatch data structure
+      * Record length: 24411
+      ************************************
+     DReqWatchLen      C                   24411
+     DReqWatch         DS                  Qualified
+     D                                     Template
+     Duserid                         10I 0
+     Dcontainds                            LikeDS(containerDS)
+     D                                     Dim(100)
+
+      ************************************
+      * Convert ReqWatch to buffer
+      ************************************
+     DReqWatchToBuf    PR
+     DDataStruct                           LikeDS(ReqWatch)
+     D                                     Const
+     DBuffer                      24411A
+
+      ************************************
+      * ResWatch data structure
+      * Record length: 26400
+      ************************************
+     DResWatchLen      C                   26400
+     DResWatch         DS                  Qualified
+     D                                     Template
+     Dcontnumb                             LikeDS(containerDS)
+     D                                     Dim(100)
+     Derrors                               LikeDS(errorsDS)
+     D                                     Dim(100)
+
+      ************************************
+      * Convert buffer to ResWatch
+      ************************************
+     DBufToResWatch    PR
+     DBuffer                      26400A
+     DDataStruct                           LikeDS(ResWatch)

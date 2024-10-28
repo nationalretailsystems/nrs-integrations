@@ -1,0 +1,595 @@
+---
+name: ddgetct
+datastructures:
+  customerDS:
+    subfields:
+      name:
+        type: Character
+        length: 6
+      id:
+        type: Packed
+        length: 1
+  pier_passDS:
+    subfields:
+      terminals:
+        type: Character
+        length: 7
+        dim: 1
+      container_number:
+        type: Character
+        length: 6
+      claimed_by_other_company:
+        type: Boolean
+      fee_paid:
+        type: Boolean
+      has_hold:
+        type: Boolean
+      observed:
+        type: Character
+        length: 20
+  clean_truck_feeDS:
+    subfields:
+      terminals:
+        type: Character
+        length: 7
+        dim: 1
+      container_number:
+        type: Character
+        length: 6
+      claimed_by_other_company:
+        type: Boolean
+      fee_paid:
+        type: Boolean
+      has_hold:
+        type: Boolean
+      observed:
+        type: Character
+        length: 20
+  raw_dataDS:
+    subfields:
+  extra_dataDS:
+    subfields:
+  ParsedHoldsDS:
+    subfields:
+      type:
+        type: Character
+        length: 9
+      raw_type:
+        type: Character
+        length: 6
+  import_statusDS:
+    subfields:
+      terminal:
+        type: Character
+        length: 7
+      container_number:
+        type: Character
+        length: 6
+      last_free_date:
+        type: Character
+        length: 10
+      master_bill_of_lading:
+        type: Character
+        length: 6
+      shipping_line:
+        type: Character
+        length: 3
+      container_type:
+        type: Character
+        length: 16
+      vessel:
+        type: Character
+        length: 6
+      location:
+        type: Character
+        length: 7
+      parsed_location:
+        type: Character
+        length: 9
+      terminal_block:
+        type: Character
+        length: 10
+      terminal_block_availability_key:
+        type: Character
+        length: 3
+      holds:
+        type: Character
+        length: 14
+        dim: 2
+      demurrage_fees:
+        type: Packed
+        length: 1
+      ready_for_appointment:
+        type: Boolean
+      available_for_pickup:
+        type: Boolean
+      wheeled:
+        type: Boolean
+      closed_area:
+        type: Boolean
+      out_gated_time:
+        type: Character
+        length: 20
+      discharged_time:
+        type: Character
+        length: 20
+      raw_data:
+        type: DataStruct
+        dsName: raw_dataDS
+      extra_data:
+        type: DataStruct
+        dsName: extra_dataDS
+      observed:
+        type: Character
+        length: 20
+      parsed_shipping_line:
+        type: Character
+        length: 4
+      parsed_container_type:
+        type: Character
+        length: 5
+      parsed_holds:
+        type: DataStruct
+        dsName: ParsedHoldsDS
+        dim: 1
+      id:
+        type: Packed
+        length: 1
+      cycle_id:
+        type: Packed
+        length: 1
+      last_observed:
+        type: Character
+        length: 20
+      last_initiated_check:
+        type: Character
+        length: 20
+  ImportStatusesDS:
+    subfields:
+      terminal:
+        type: Character
+        length: 7
+      container_number:
+        type: Character
+        length: 6
+      last_free_date:
+        type: Character
+        length: 10
+      master_bill_of_lading:
+        type: Character
+        length: 6
+      shipping_line:
+        type: Character
+        length: 3
+      container_type:
+        type: Character
+        length: 16
+      vessel:
+        type: Character
+        length: 6
+      location:
+        type: Character
+        length: 7
+      parsed_location:
+        type: Character
+        length: 9
+      terminal_block:
+        type: Character
+        length: 10
+      terminal_block_availability_key:
+        type: Character
+        length: 3
+      holds:
+        type: Character
+        length: 14
+        dim: 2
+      demurrage_fees:
+        type: Packed
+        length: 1
+      ready_for_appointment:
+        type: Boolean
+      available_for_pickup:
+        type: Boolean
+      wheeled:
+        type: Boolean
+      closed_area:
+        type: Boolean
+      out_gated_time:
+        type: Character
+        length: 20
+      discharged_time:
+        type: Character
+        length: 20
+      raw_data:
+        type: DataStruct
+        dsName: raw_dataDS
+      extra_data:
+        type: DataStruct
+        dsName: extra_dataDS
+      observed:
+        type: Character
+        length: 20
+      parsed_shipping_line:
+        type: Character
+        length: 4
+      parsed_container_type:
+        type: Character
+        length: 5
+      parsed_holds:
+        type: DataStruct
+        dsName: ParsedHoldsDS
+        dim: 1
+      id:
+        type: Packed
+        length: 1
+      cycle_id:
+        type: Packed
+        length: 1
+      last_observed:
+        type: Character
+        length: 20
+      last_initiated_check:
+        type: Character
+        length: 20
+  LinkedApptsDS:
+    subfields:
+      terminal_reference:
+        type: Character
+        length: 6
+      container_number:
+        type: Character
+        length: 6
+  requested_byDS:
+    subfields:
+      id:
+        type: Packed
+        length: 1
+      first_name:
+        type: Character
+        length: 6
+      last_name:
+        type: Character
+        length: 6
+  rescheduled_byDS:
+    subfields:
+      id:
+        type: Packed
+        length: 1
+      first_name:
+        type: Character
+        length: 6
+      last_name:
+        type: Character
+        length: 6
+  latest_appointmentDS:
+    subfields:
+      id:
+        type: Packed
+        length: 1
+      container_number:
+        type: Character
+        length: 6
+      loaded:
+        type: Boolean
+      status:
+        type: Character
+        length: 16
+      direction:
+        type: Character
+        length: 7
+      window_start:
+        type: Character
+        length: 20
+      window_end:
+        type: Character
+        length: 20
+      linked_appointments:
+        type: DataStruct
+        dsName: LinkedApptsDS
+        dim: 1
+      terminal:
+        type: Character
+        length: 7
+      terminal_reference:
+        type: Character
+        length: 6
+      display_terminal_reference:
+        type: Character
+        length: 6
+      truck_license_plate_number:
+        type: Character
+        length: 6
+      truck_id:
+        type: Packed
+        length: 1
+      terminal_block:
+        type: Character
+        length: 6
+      requested_by:
+        type: DataStruct
+        dsName: requested_byDS
+      rescheduled_by:
+        type: DataStruct
+        dsName: rescheduled_byDS
+      observed:
+        type: Character
+        length: 20
+      last_observed:
+        type: Character
+        length: 20
+      created_at_terminal:
+        type: Character
+        length: 20
+      extra_data:
+        type: DataStruct
+        dsName: extra_dataDS
+  OtherApptCountsDS:
+    subfields:
+      status:
+        type: Character
+        length: 16
+      count:
+        type: Packed
+        length: 1
+  line_import_statusDS:
+    subfields:
+      id:
+        type: Packed
+        length: 1
+      container_number:
+        type: Character
+        length: 6
+      status:
+        type: Character
+        length: 6
+      parsed_status:
+        type: Character
+        length: 9
+      terminal:
+        type: Character
+        length: 7
+      last_free_date:
+        type: Character
+        length: 10
+      observed:
+        type: Character
+        length: 20
+      last_observed:
+        type: Character
+        length: 20
+      parsed_shipping_line:
+        type: Character
+        length: 4
+      parsed_container_type:
+        type: Character
+        length: 5
+  inbound_gate_transactionDS:
+    subfields:
+      terminal:
+        type: Character
+        length: 7
+      container_number:
+        type: Character
+        length: 6
+      chassis_number:
+        type: Character
+        length: 6
+      time:
+        type: Character
+        length: 20
+      loaded:
+        type: Boolean
+      direction:
+        type: Character
+        length: 7
+      drivers_license_number:
+        type: Character
+        length: 6
+      truck_rfid_number:
+        type: Character
+        length: 6
+      truck_license_plate_number:
+        type: Character
+        length: 6
+      extra_data:
+        type: DataStruct
+        dsName: extra_dataDS
+      raw_data:
+        type: DataStruct
+        dsName: raw_dataDS
+      observed:
+        type: Character
+        length: 20
+  outbound_gate_transactionDS:
+    subfields:
+      terminal:
+        type: Character
+        length: 7
+      container_number:
+        type: Character
+        length: 6
+      chassis_number:
+        type: Character
+        length: 6
+      time:
+        type: Character
+        length: 20
+      loaded:
+        type: Boolean
+      direction:
+        type: Character
+        length: 7
+      drivers_license_number:
+        type: Character
+        length: 6
+      truck_rfid_number:
+        type: Character
+        length: 6
+      truck_license_plate_number:
+        type: Character
+        length: 6
+      extra_data:
+        type: DataStruct
+        dsName: extra_dataDS
+      raw_data:
+        type: DataStruct
+        dsName: raw_dataDS
+      observed:
+        type: Character
+        length: 20
+  next_available_appointmentDS:
+    subfields:
+      window_start:
+        type: Character
+        length: 20
+      observed:
+        type: Character
+        length: 20
+      has_availability:
+        type: Boolean
+  added_by_userDS:
+    subfields:
+      id:
+        type: Packed
+        length: 1
+      first_name:
+        type: Character
+        length: 6
+      last_name:
+        type: Character
+        length: 6
+  AssignedUsersDS:
+    subfields:
+      id:
+        type: Packed
+        length: 1
+      first_name:
+        type: Character
+        length: 6
+      last_name:
+        type: Character
+        length: 6
+  matched_vesselDS:
+    subfields:
+      name:
+        type: Character
+        length: 6
+      id:
+        type: Packed
+        length: 1
+      imo_number:
+        type: Packed
+        length: 1
+  ContainersDS:
+    subfields:
+      container_number:
+        type: Character
+        length: 6
+      shipping_line:
+        type: Character
+        length: 4
+      container_type:
+        type: Character
+        length: 5
+      customer:
+        type: DataStruct
+        dsName: customerDS
+      pier_pass:
+        type: DataStruct
+        dsName: pier_passDS
+      clean_truck_fee:
+        type: DataStruct
+        dsName: clean_truck_feeDS
+      import_status:
+        type: DataStruct
+        dsName: import_statusDS
+      import_statuses:
+        type: DataStruct
+        dsName: ImportStatusesDS
+        dim: 1
+      latest_appointment:
+        type: DataStruct
+        dsName: latest_appointmentDS
+      other_appointment_counts:
+        type: DataStruct
+        dsName: OtherApptCountsDS
+        dim: 1
+      line_import_status:
+        type: DataStruct
+        dsName: line_import_statusDS
+      inbound_gate_transaction:
+        type: DataStruct
+        dsName: inbound_gate_transactionDS
+      outbound_gate_transaction:
+        type: DataStruct
+        dsName: outbound_gate_transactionDS
+      cycle_state:
+        type: Character
+        length: 7
+      next_available_appointment:
+        type: DataStruct
+        dsName: next_available_appointmentDS
+      master_bl:
+        type: Character
+        length: 6
+      tms_reference:
+        type: Character
+        length: 6
+      added_by_user:
+        type: DataStruct
+        dsName: added_by_userDS
+      assigned_users:
+        type: DataStruct
+        dsName: AssignedUsersDS
+        dim: 1
+      auto_book_on:
+        type: Boolean
+      auto_book_request_status:
+        type: Character
+        length: 9
+      last_related_terminal:
+        type: Character
+        length: 7
+      watched_time:
+        type: Character
+        length: 20
+      discharged_time:
+        type: Character
+        length: 20
+      import_appointment_time:
+        type: Character
+        length: 20
+      import_out_gated_time:
+        type: Character
+        length: 20
+      empty_appointment_time:
+        type: Character
+        length: 20
+      empty_in_gated_time:
+        type: Character
+        length: 20
+      last_free_date:
+        type: Character
+        length: 10
+      tags:
+        type: Character
+        length: 6
+        dim: 1
+      vessel:
+        type: Character
+        length: 6
+      matched_vessel:
+        type: DataStruct
+        dsName: matched_vesselDS
+formats:
+  FormatName:
+    recordType: response
+    subfields:
+      unwatched_containers:
+        type: Character
+        length: 6
+        dim: 1
+      containers:
+        type: DataStruct
+        dsName: ContainersDS
+        dim: 1
