@@ -387,7 +387,7 @@ datastructures:
       count:
         type: Packed
         length: 1
-  line_import_statusDS:
+  line_imp_statDS:
     subfields:
       id:
         type: Packed
@@ -599,7 +599,7 @@ datastructures:
       line_import_status:
         rpgName: linimpstat
         type: DataStruct
-        dsName: line_import_statusDS
+        dsName: line_imp_statDS
       inbound_gate_transaction:
         rpgName: ibgatetrn
         type: DataStruct
