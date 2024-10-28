@@ -1,0 +1,74 @@
+---
+name: ddputct
+rpgIncName: ddputct_h
+codeblocks:
+  typescript:
+    - import eradaniConnect from "@eradani-inc/eradani-connect";
+    - const { dataTypes } = eradaniConnect;
+datastructures:
+  tagsDS:
+    qualified: true
+    subfields:
+      tags:
+        rpgName: tag
+        type: Character
+        length: 20
+        default: ""
+  errorsDS:
+    qualified: true
+    subfields:
+      error:
+        rpgName: error
+        type: Character
+        length: 20
+        default: ""
+  containerDS:
+    qualified: true
+    subfields:
+      container_number:
+        rpgName: contnumb
+        type: Character
+        length: 11
+        default: ""
+      customer_id:
+        rpgName: custid
+        type: Integer
+        length: 7
+        default: 0
+      master_bl:
+        rpgName: masterbl
+        type: Character
+        length: 25
+        default: ""
+      tags:
+        rpgName: tags
+        type: DataStruct
+        dsName: tagsDS
+        dim: 10
+formats:
+  ReqWatch:
+    recordType: request
+    subfields:
+      assign_to_user_id:
+        rpgName: userid
+        type: Integer
+        length: 10
+        default: 0
+      containers:
+        rpgName: containds        
+        type: DataStruct
+        dsName: containerDS
+        dim: 100
+  ResWatch:
+    recordType: response
+    subfields:
+      container_numbers:
+        rpgName: contnumb
+        type: DataStruct
+        dsName: containerDS
+        dim: 100
+      errors:
+        rpgName: errors
+        type: DataStruct
+        dsName: errorsDS
+        dim: 100
