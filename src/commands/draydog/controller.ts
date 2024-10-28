@@ -122,8 +122,7 @@ export const getDrayDogCT: ECCHandlerFunction = async (reqkey, data, ecc) => {
         let responseData = result.data;
         logger.debug('ECC0000', 'Success', nextReqKey);
         nextReqKey = await ecc.sendEccResult('ECC0000', 'Success', nextReqKey);
-        nextReqKey = await ecc.sendObjectsToCaller(responseData, ddgetctcvt.convertObjectToFormatName, nextReqKey);
-        logger.debug('Sent data to RPG');
+        nextReqKey = await ecc.sendObjectsToCaller(responseData, ddgetctcvt.convertObjectToResDDGet, nextReqKey);        logger.debug('Sent data to RPG');
         return nextReqKey;
     } catch (err) {
         logger.error('Call failed', err);

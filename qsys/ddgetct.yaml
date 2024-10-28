@@ -683,7 +683,7 @@ datastructures:
         type: DataStruct
         dsName: matched_vessDS
 formats:
-  FormatName:
+  ResDDGet:
     recordType: response
     subfields:
       unwatched_containers:
