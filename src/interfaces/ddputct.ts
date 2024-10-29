@@ -50,7 +50,7 @@ export interface containerDS {
     /**
      * @size 7 digits
      * @precision 0 decimals
-     * @default `0`
+     * @default `null`
      */
     customer_id: number,
     /**
@@ -136,7 +136,7 @@ export function convertObjectToResWatch(dataIn: ResWatch): string {
 
   for (let i: number = 0; i < 100; ++i) {
   dataOut += dataIn?.container_numbers[i]?.container_number?.substring(0, 11)?.padEnd(11) ?? "".substring(0, 11).padEnd(11);
-  dataOut += dataIn?.container_numbers[i]?.customer_id?.toFixed(0)?.substring(0, 9)?.padEnd(9) ?? "0".substring(0, 9).padEnd(9);
+  dataOut += dataIn?.container_numbers[i]?.customer_id?.toFixed(0)?.substring(0, 9)?.padEnd(9) ?? "null".substring(0, 9).padEnd(9);
   dataOut += dataIn?.container_numbers[i]?.master_bl?.substring(0, 25)?.padEnd(25) ?? "".substring(0, 25).padEnd(25);
   for (let k: number = 0; k < 10; ++k) {
   dataOut += dataIn?.container_numbers[i]?.tags[k]?.tags?.substring(0, 20)?.padEnd(20) ?? "".substring(0, 20).padEnd(20);
