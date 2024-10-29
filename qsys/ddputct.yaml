@@ -22,6 +22,14 @@ datastructures:
         type: Character
         length: 20
         default: ""
+  container2DS:
+    qualified: true
+    subfields:
+      container_number:
+        rpgName: contnumb
+        type: Character
+        length: 11
+        default: ""
   containerDS:
     qualified: true
     subfields:
@@ -62,10 +70,14 @@ formats:
   ResWatch:
     recordType: response
     subfields:
+      assign_to_user_id:
+        rpgName: userid
+        type: Character
+        length: 100
       container_numbers:
         rpgName: contnumb
         type: DataStruct
-        dsName: containerDS
+        dsName: container2DS
         dim: 100
       errors:
         rpgName: errors
