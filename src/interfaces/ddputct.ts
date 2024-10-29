@@ -41,6 +41,17 @@ export interface errorsDS {
 /**
  * Output interface
  */
+export interface container2DS {
+    /**
+     * @size 11 characters
+     * @default ``
+     */
+    container_number: string
+}
+
+/**
+ * Output interface
+ */
 export interface containerDS {
     /**
      * @size 11 characters
@@ -121,8 +132,12 @@ export function convertReqWatchToObject(dataIn: string): ReqWatch {
  */
 export interface ResWatch {
     /**
+     * @size 100 characters
      */
-    container_numbers: Array<containerDS>,
+    assign_to_user_id: string,
+    /**
+     */
+    container_numbers: Array<container2DS>,
     /**
      */
     errors: Array<errorsDS>
@@ -134,13 +149,9 @@ export interface ResWatch {
 export function convertObjectToResWatch(dataIn: ResWatch): string {
   let dataOut: string = "";
 
+  dataOut += dataIn?.assign_to_user_id?.substring(0, 100)?.padEnd(100) ?? missingInput(`dataIn.assign_to_user_id`, "char", dataIn?.assign_to_user_id);
   for (let i: number = 0; i < 100; ++i) {
   dataOut += dataIn?.container_numbers[i]?.container_number?.substring(0, 11)?.padEnd(11) ?? "".substring(0, 11).padEnd(11);
-  dataOut += dataIn?.container_numbers[i]?.customer_id?.toFixed(0)?.substring(0, 9)?.padEnd(9) ?? "null".substring(0, 9).padEnd(9);
-  dataOut += dataIn?.container_numbers[i]?.master_bl?.substring(0, 25)?.padEnd(25) ?? "".substring(0, 25).padEnd(25);
-  for (let k: number = 0; k < 10; ++k) {
-  dataOut += dataIn?.container_numbers[i]?.tags[k]?.tags?.substring(0, 20)?.padEnd(20) ?? "".substring(0, 20).padEnd(20);
-  }
   }
   for (let i: number = 0; i < 100; ++i) {
   dataOut += dataIn?.errors[i]?.error?.substring(0, 20)?.padEnd(20) ?? "".substring(0, 20).padEnd(20);

@@ -20,6 +20,13 @@
      Derror                          20A
 
       ************************************
+      * container2DS data structure
+      ************************************
+     Dcontainer2DS     DS                  Qualified
+     D                                     Template
+     Dcontnumb                       11A
+
+      ************************************
       * containerDS data structure
       ************************************
      DcontainerDS      DS                  Qualified
@@ -51,12 +58,13 @@
 
       ************************************
       * ResWatch data structure
-      * Record length: 26500
+      * Record length: 3200
       ************************************
-     DResWatchLen      C                   26500
+     DResWatchLen      C                   3200
      DResWatch         DS                  Qualified
      D                                     Template
-     Dcontnumb                             LikeDS(containerDS)
+     Duserid                        100A
+     Dcontnumb                             LikeDS(container2DS)
      D                                     Dim(100)
      Derrors                               LikeDS(errorsDS)
      D                                     Dim(100)
@@ -65,5 +73,5 @@
       * Convert buffer to ResWatch
       ************************************
      DBufToResWatch    PR
-     DBuffer                      26500A
+     DBuffer                       3200A
      DDataStruct                           LikeDS(ResWatch)

@@ -40,6 +40,9 @@ export const putDrayDogCT: ECCHandlerFunction = async (reqkey, data, ecc) => {
 
     try {
         result = await axiosInstance.get('/Assets/Modified', {
+            params: {
+                'assign_to_user_id': 1730 + '&assign_to_user_id=1726'
+            },
             headers: {
                 accept: 'application/json',
                 Authorization: draydog.apikey
