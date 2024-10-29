@@ -34,7 +34,7 @@ datastructures:
         rpgName: custid
         type: Packed
         length: 7
-        default: 0
+        default: null
       master_bl:
         rpgName: masterbl
         type: Character
