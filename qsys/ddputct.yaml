@@ -52,6 +52,7 @@ datastructures:
         rpgName: tags
         type: Character
         length: 20
+        default: null
         dim: 10
 formats:
   ReqWatch:

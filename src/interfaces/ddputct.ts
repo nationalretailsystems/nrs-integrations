@@ -71,6 +71,7 @@ export interface containerDS {
     master_bl: string,
     /**
      * @size 20 characters
+     * @default `null`
      */
     tags: Array<string>
 }
