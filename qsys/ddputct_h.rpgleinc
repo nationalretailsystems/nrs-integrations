@@ -34,13 +34,13 @@
      Dcontnumb                       11A
      Dcustid                          7P 0
      Dmasterbl                       25A
-     Dtags                            0A   Dim(10)
+     Dtags                           20A   Dim(10)
 
       ************************************
       * ReqWatch data structure
-      * Record length: 4511
+      * Record length: 24511
       ************************************
-     DReqWatchLen      C                   4511
+     DReqWatchLen      C                   24511
      DReqWatch         DS                  Qualified
      D                                     Template
      Duserid                         10I 0
@@ -53,7 +53,7 @@
      DReqWatchToBuf    PR
      DDataStruct                           LikeDS(ReqWatch)
      D                                     Const
-     DBuffer                       4511A
+     DBuffer                      24511A
 
       ************************************
       * ResWatch data structure
