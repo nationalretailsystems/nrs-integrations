@@ -20,6 +20,7 @@ import registerUPS from './ups';
 import registerTS4300 from './ts4300';
 import registerHRSD from './hrsd';
 import registerPlatsci from './platsci';
+import registerDrayDog from './draydog';
 import { Route53RecoveryCluster } from 'aws-sdk';
 
 export default async function registerCommands(router: ECCRouter) {
@@ -107,5 +108,8 @@ export default async function registerCommands(router: ECCRouter) {
     registerPlatsci(platsci);
     router.use('platsci', platsci);
 
+    const draydog = new ECCRouter.Router();
+    registerDrayDog(draydog);
+    router.use('draydog', draydog);
     return router;
 }
