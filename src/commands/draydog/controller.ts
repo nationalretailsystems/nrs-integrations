@@ -8,6 +8,8 @@ import { promises as fs } from 'fs';
 
 import { sanitizeValues } from 'src/services/safe-values';
 import { resourceLimits } from 'worker_threads';
+import { getTokenDD } from 'src/services/get-token';
+import { convertObjectToAssetChgDS } from 'src/interfaces/mpgeteqip';
 
 const logger = createLogger('commands/draydog');
 const { draydog } = config;
@@ -37,16 +39,20 @@ export const putDrayDogCT: ECCHandlerFunction = async (reqkey, data, ecc) => {
         // Call web service
     let result;
     let nextReqKey = reqkey;
-
+    let containers = reqFields.containers;
+            // X const token = await getTokenDD();
     try {
-        result = await axiosInstance.get('/Assets/Modified', {
+        result = await axiosInstance.post('/containers/watch',  {
+            headers: {
+                Authorization: draydog.apikey,
+                Accept: 'application/json',                
+                'Content-Type': 'application/json'
+            },
             params: {
                 'assign_to_user_id': 1730 + '&assign_to_user_id=1726'
             },
-            headers: {
-                accept: 'application/json',
-                Authorization: draydog.apikey
-            }
+            data: containers
+
         });
     } catch (err) {
         if (err.response) {

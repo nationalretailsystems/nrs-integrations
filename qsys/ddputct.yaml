@@ -13,7 +13,7 @@ datastructures:
         rpgName: tag
         type: Character
         length: 20
-        default: ""
+        default: null
   errorsDS:
     qualified: true
     subfields:
@@ -21,7 +21,7 @@ datastructures:
         rpgName: error
         type: Character
         length: 20
-        default: ""
+        default: null
   container2DS:
     qualified: true
     subfields:
@@ -29,7 +29,7 @@ datastructures:
         rpgName: contnumb
         type: Character
         length: 11
-        default: ""
+        default: null
   containerDS:
     qualified: true
     subfields:
@@ -50,8 +50,7 @@ datastructures:
         default: ""
       tags:
         rpgName: tags
-        type: DataStruct
-        dsName: tagsDS
+        type: Character
         dim: 10
 formats:
   ReqWatch:
