@@ -26,7 +26,7 @@
      DReqWatchToBuf    PI
      DDataStruct                           LikeDS(ReqWatch)
      D                                     Const
-     DBuffer                       4511A
+     DBuffer                      24511A
 
       * Initialize to beginning of buffer
        BufPtr = %addr(Buffer);
@@ -42,8 +42,8 @@
        %subst(CharBuf:1:25) = DataStruct.containds(i).masterbl;
        BufPtr += 25;
        for k = 1 to 10;
-       %subst(CharBuf:1:0) = DataStruct.containds(i).tags(k);
-       BufPtr += 0;
+       %subst(CharBuf:1:20) = DataStruct.containds(i).tags(k);
+       BufPtr += 20;
        endfor;
        endfor;
 
