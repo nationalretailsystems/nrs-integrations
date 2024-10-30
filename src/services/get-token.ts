@@ -1,5 +1,5 @@
 import config from 'config';
-const { paycargo, ukg, ts4300, hrsd } = config;
+const { paycargo, ukg, ts4300, hrsd, draydog } = config;
 import axios from 'axios';
 import qs from 'qs';
 import createLogger from 'src/services/logger';
@@ -87,6 +87,27 @@ export const getTokenTS = async (): Promise<string> => {
         _tokents = response.data.token;
         _expirationts = Date.now() + 1000 * 60 * 60 * 8; // 1000ms * 60s * 60m * 8h = 8 hours
         return _tokents;
+    } catch (err) {
+        logger.error(err);
+        return err;
+    }
+};
+const axiosInstanceDD = axios.create(draydog.axios);
+let _tokendd: string;
+let _expirationdd: number;
+
+export const getTokenDD = async (): Promise<string> => {
+
+    const credentials = {
+        email: draydog.username,
+        password: draydog.password
+    };
+    logger.debug('Attempting to Get DrayDog New Token');
+    try {
+        const response = await axiosInstanceDD.post('/users/token', credentials);
+        _tokendd = response.data.access_token;
+        _expirationdd = Date.now() + 1000 * 60 * 60 * 8; // 1000ms * 60s * 60m * 8h = 8 hours
+        return _tokendd;
     } catch (err) {
         logger.error(err);
         return err;

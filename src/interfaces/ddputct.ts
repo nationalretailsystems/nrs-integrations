@@ -22,7 +22,7 @@ const { dataTypes } = eradaniConnect;
 export interface tagsDS {
     /**
      * @size 20 characters
-     * @default ``
+     * @default `null`
      */
     tags: string
 }
@@ -33,7 +33,7 @@ export interface tagsDS {
 export interface errorsDS {
     /**
      * @size 20 characters
-     * @default ``
+     * @default `null`
      */
     error: string
 }
@@ -44,7 +44,7 @@ export interface errorsDS {
 export interface container2DS {
     /**
      * @size 11 characters
-     * @default ``
+     * @default `null`
      */
     container_number: string
 }
@@ -70,8 +70,9 @@ export interface containerDS {
      */
     master_bl: string,
     /**
+     * @size 0 characters
      */
-    tags: Array<tagsDS>
+    tags: Array<string>
 }
 
 /**
@@ -116,11 +117,8 @@ export function convertReqWatchToObject(dataIn: string): ReqWatch {
     
   ];
   for (let j: number = 0; j < 10; ++j) {
-  dataOut.containers[i].tags[j] =   {
-  
-    };
-  dataOut.containers[i].tags[j].tags = dataIn.substring(pos, pos + 20).trimEnd();
-  pos += 20;
+  dataOut.containers[i].tags[j] = dataIn.substring(pos, pos + 0).trimEnd();
+  pos += 0;
   }
   }
 
@@ -151,10 +149,10 @@ export function convertObjectToResWatch(dataIn: ResWatch): string {
 
   dataOut += dataIn?.assign_to_user_id?.substring(0, 100)?.padEnd(100) ?? missingInput(`dataIn.assign_to_user_id`, "char", dataIn?.assign_to_user_id);
   for (let i: number = 0; i < 100; ++i) {
-  dataOut += dataIn?.container_numbers[i]?.container_number?.substring(0, 11)?.padEnd(11) ?? "".substring(0, 11).padEnd(11);
+  dataOut += dataIn?.container_numbers[i]?.container_number?.substring(0, 11)?.padEnd(11) ?? "null".substring(0, 11).padEnd(11);
   }
   for (let i: number = 0; i < 100; ++i) {
-  dataOut += dataIn?.errors[i]?.error?.substring(0, 20)?.padEnd(20) ?? "".substring(0, 20).padEnd(20);
+  dataOut += dataIn?.errors[i]?.error?.substring(0, 20)?.padEnd(20) ?? "null".substring(0, 20).padEnd(20);
   }
 
   return dataOut;
