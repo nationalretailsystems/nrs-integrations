@@ -70,7 +70,7 @@ export interface containerDS {
      */
     master_bl: string,
     /**
-     * @size 0 characters
+     * @size 20 characters
      */
     tags: Array<string>
 }
@@ -117,8 +117,8 @@ export function convertReqWatchToObject(dataIn: string): ReqWatch {
     
   ];
   for (let j: number = 0; j < 10; ++j) {
-  dataOut.containers[i].tags[j] = dataIn.substring(pos, pos + 0).trimEnd();
-  pos += 0;
+  dataOut.containers[i].tags[j] = dataIn.substring(pos, pos + 20).trimEnd();
+  pos += 20;
   }
   }
 
