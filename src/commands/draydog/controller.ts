@@ -16,7 +16,6 @@ const { draydog } = config;
 const axiosInstance = axios.create(draydog.axios);
 
 const safeValues2: any = {
-
     notesdata: {
         '*10': {
             noteKey: 0,
@@ -36,23 +35,21 @@ export const putDrayDogCT: ECCHandlerFunction = async (reqkey, data, ecc) => {
     logger.debug(`Received getAssetChanges request`, { reqkey, data });
     // Get parameters from incoming data buffer
     const reqFields = ddputctcvt.convertReqWatchToObject(data);
-        // Call web service
+    // Call web service
     let result;
     let nextReqKey = reqkey;
-    let containers = reqFields.containers;
-            // X const token = await getTokenDD();
+    let containers = JSON.stringify(reqFields.containers);
+    // X const token = await getTokenDD();
     try {
-        result = await axiosInstance.post('/containers/watch',  {
+        result = await axiosInstance.post('/containers/watch', containers, {
             headers: {
-                Authorization: draydog.apikey,
-                Accept: 'application/json',                
+                'Authorization': draydog.apikey,                
+                Accept: 'application/json',
                 'Content-Type': 'application/json'
             },
             params: {
                 'assign_to_user_id': 1730 + '&assign_to_user_id=1726'
-            },
-            data: containers
-
+            }
         });
     } catch (err) {
         if (err.response) {
@@ -131,7 +128,8 @@ export const getDrayDogCT: ECCHandlerFunction = async (reqkey, data, ecc) => {
         let responseData = result.data;
         logger.debug('ECC0000', 'Success', nextReqKey);
         nextReqKey = await ecc.sendEccResult('ECC0000', 'Success', nextReqKey);
-        nextReqKey = await ecc.sendObjectsToCaller(responseData, ddgetctcvt.convertObjectToResDDGet, nextReqKey);        logger.debug('Sent data to RPG');
+        nextReqKey = await ecc.sendObjectsToCaller(responseData, ddgetctcvt.convertObjectToResDDGet, nextReqKey);
+        logger.debug('Sent data to RPG');
         return nextReqKey;
     } catch (err) {
         logger.error('Call failed', err);

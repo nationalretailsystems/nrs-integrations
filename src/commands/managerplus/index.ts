@@ -30,7 +30,6 @@ import * as managerpluswo from 'src/interfaces/mpgetwo';
 import * as managerplusnotes from 'src/interfaces/mpwonote';
 import * as managerplusdown from 'src/interfaces/mpgetdown';
 
-
 export default function registerManagerplus(router: ECCInternalRouter) {
     router.use('getAssetChanges', managerplus, getAssetChanges);
     router.use('getAssetAll', managerplus2, getAssetAll);

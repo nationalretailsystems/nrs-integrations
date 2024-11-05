@@ -73,7 +73,6 @@ const safeValues: any = {
     }
 };
 const safeValues2: any = {
-
     notesdata: {
         '*10': {
             noteKey: 0,
@@ -571,7 +570,7 @@ export const getWoNotes: ECCHandlerFunction = async (reqkey, data, ecc) => {
     }
 
     // Send the result info
-        try {
+    try {
         let responseData = { notesdata: result.data };
         sanitizeValues(responseData, safeValues2);
         logger.debug('ECC0000', 'Success', nextReqKey);
@@ -743,7 +742,7 @@ export const getDowntime: ECCHandlerFunction = async (reqkey, data, ecc) => {
     logger.debug(`Received getDowntime request`, { reqkey, data });
     // Get parameters from incoming data buffer
     const reqFields = converterdown.convertReqDownToObject(data);
-        // Call web service
+    // Call web service
     let result;
     let nextReqKey = reqkey;
 
