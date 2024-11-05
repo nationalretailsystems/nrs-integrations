@@ -300,6 +300,7 @@ export const putHours: ECCHandlerFunction = async function (reqkey, datax, ecc) 
     // logger.error('Call test1 failed');
     logger.error(nextReqKey);
 };
+
 export const getPers: ECCHandlerFunction = async function (reqkey, datax, ecc) {
     // Get parameters from incoming data buffer
     const reqFields = converterukgpers.convertpersonReqToObject(datax);
