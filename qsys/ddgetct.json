@@ -1,236 +1,222 @@
 {
-  "unwatched_containers": [
-    "string"
-  ],
-  "containers": [
-    {
-      "container_number": "string",
-      "shipping_line": "ANLC",
-      "container_type": "45 HC",
-      "customer": {
-        "name": "string",
-        "id": 0
-      },
-      "pier_pass": {
-        "terminals": [
-          "st_alam"
-        ],
-        "container_number": "string",
-        "claimed_by_other_company": true,
-        "fee_paid": true,
-        "has_hold": true,
-        "observed": "2019-08-24T14:15:22Z"
-      },
-      "clean_truck_fee": {
-        "terminals": [
-          "st_alam"
-        ],
-        "container_number": "string",
-        "claimed_by_other_company": true,
-        "fee_paid": true,
-        "has_hold": true,
-        "observed": "2019-08-24T14:15:22Z"
-      },
-      "import_status": {
-        "terminal": "st_alam",
-        "container_number": "string",
-        "last_free_date": "2019-08-24",
-        "master_bill_of_lading": "string",
-        "shipping_line": "MSC",
-        "container_type": "Standard 40' 9'6",
-        "vessel": "string",
-        "location": "On Ship",
-        "parsed_location": "on_vessel",
-        "terminal_block": "GG9-916-F3",
-        "terminal_block_availability_key": "GG9",
-        "holds": [
-          "Congestion Fee",
-          "Customs"
-        ],
-        "demurrage_fees": 0,
-        "ready_for_appointment": true,
-        "available_for_pickup": true,
-        "wheeled": true,
-        "closed_area": true,
-        "out_gated_time": "2019-08-24T14:15:22Z",
-        "discharged_time": "2019-08-24T14:15:22Z",
-        "raw_data": {},
-        "extra_data": {},
-        "observed": "2019-08-24T14:15:22Z",
-        "parsed_shipping_line": "ANLC",
-        "parsed_container_type": "45 HC",
-        "parsed_holds": [
-          {
-            "type": "Line Hold",
-            "raw_type": "string"
-          }
-        ],
-        "id": 0,
-        "cycle_id": 0,
-        "last_observed": "2019-08-24T14:15:22Z",
-        "last_initiated_check": "2019-08-24T14:15:22Z"
-      },
-      "import_statuses": [
+    "unwatched_containers": ["string"],
+    "containers": [
         {
-          "terminal": "st_alam",
-          "container_number": "string",
-          "last_free_date": "2019-08-24",
-          "master_bill_of_lading": "string",
-          "shipping_line": "MSC",
-          "container_type": "Standard 40' 9'6",
-          "vessel": "string",
-          "location": "On Ship",
-          "parsed_location": "on_vessel",
-          "terminal_block": "GG9-916-F3",
-          "terminal_block_availability_key": "GG9",
-          "holds": [
-            "Congestion Fee",
-            "Customs"
-          ],
-          "demurrage_fees": 0,
-          "ready_for_appointment": true,
-          "available_for_pickup": true,
-          "wheeled": true,
-          "closed_area": true,
-          "out_gated_time": "2019-08-24T14:15:22Z",
-          "discharged_time": "2019-08-24T14:15:22Z",
-          "raw_data": {},
-          "extra_data": {},
-          "observed": "2019-08-24T14:15:22Z",
-          "parsed_shipping_line": "ANLC",
-          "parsed_container_type": "45 HC",
-          "parsed_holds": [
-            {
-              "type": "Line Hold",
-              "raw_type": "string"
+            "container_number": "string",
+            "shipping_line": "ANLC",
+            "container_type": "45 HC",
+            "customer": {
+                "name": "string",
+                "id": 0
+            },
+            "pier_pass": {
+                "terminals": ["st_alam"],
+                "container_number": "string",
+                "claimed_by_other_company": true,
+                "fee_paid": true,
+                "has_hold": true,
+                "observed": "2019-08-24T14:15:22Z"
+            },
+            "clean_truck_fee": {
+                "terminals": ["st_alam"],
+                "container_number": "string",
+                "claimed_by_other_company": true,
+                "fee_paid": true,
+                "has_hold": true,
+                "observed": "2019-08-24T14:15:22Z"
+            },
+            "import_status": {
+                "terminal": "st_alam",
+                "container_number": "string",
+                "last_free_date": "2019-08-24",
+                "master_bill_of_lading": "string",
+                "shipping_line": "MSC",
+                "container_type": "Standard 40' 9'6",
+                "vessel": "string",
+                "location": "On Ship",
+                "parsed_location": "on_vessel",
+                "terminal_block": "GG9-916-F3",
+                "terminal_block_availability_key": "GG9",
+                "holds": ["Congestion Fee", "Customs"],
+                "demurrage_fees": 0,
+                "ready_for_appointment": true,
+                "available_for_pickup": true,
+                "wheeled": true,
+                "closed_area": true,
+                "out_gated_time": "2019-08-24T14:15:22Z",
+                "discharged_time": "2019-08-24T14:15:22Z",
+                "raw_data": {},
+                "extra_data": {},
+                "observed": "2019-08-24T14:15:22Z",
+                "parsed_shipping_line": "ANLC",
+                "parsed_container_type": "45 HC",
+                "parsed_holds": [
+                    {
+                        "type": "Line Hold",
+                        "raw_type": "string"
+                    }
+                ],
+                "id": 0,
+                "cycle_id": 0,
+                "last_observed": "2019-08-24T14:15:22Z",
+                "last_initiated_check": "2019-08-24T14:15:22Z"
+            },
+            "import_statuses": [
+                {
+                    "terminal": "st_alam",
+                    "container_number": "string",
+                    "last_free_date": "2019-08-24",
+                    "master_bill_of_lading": "string",
+                    "shipping_line": "MSC",
+                    "container_type": "Standard 40' 9'6",
+                    "vessel": "string",
+                    "location": "On Ship",
+                    "parsed_location": "on_vessel",
+                    "terminal_block": "GG9-916-F3",
+                    "terminal_block_availability_key": "GG9",
+                    "holds": ["Congestion Fee", "Customs"],
+                    "demurrage_fees": 0,
+                    "ready_for_appointment": true,
+                    "available_for_pickup": true,
+                    "wheeled": true,
+                    "closed_area": true,
+                    "out_gated_time": "2019-08-24T14:15:22Z",
+                    "discharged_time": "2019-08-24T14:15:22Z",
+                    "raw_data": {},
+                    "extra_data": {},
+                    "observed": "2019-08-24T14:15:22Z",
+                    "parsed_shipping_line": "ANLC",
+                    "parsed_container_type": "45 HC",
+                    "parsed_holds": [
+                        {
+                            "type": "Line Hold",
+                            "raw_type": "string"
+                        }
+                    ],
+                    "id": 0,
+                    "cycle_id": 0,
+                    "last_observed": "2019-08-24T14:15:22Z",
+                    "last_initiated_check": "2019-08-24T14:15:22Z"
+                }
+            ],
+            "latest_appointment": {
+                "id": 0,
+                "container_number": "string",
+                "loaded": true,
+                "status": "scheduling_error",
+                "direction": "inbound",
+                "window_start": "2019-08-24T14:15:22Z",
+                "window_end": "2019-08-24T14:15:22Z",
+                "linked_appointments": [
+                    {
+                        "terminal_reference": "string",
+                        "container_number": "string"
+                    }
+                ],
+                "terminal": "st_alam",
+                "terminal_reference": "string",
+                "display_terminal_reference": "string",
+                "truck_license_plate_number": "string",
+                "truck_id": 0,
+                "terminal_block": "string",
+                "requested_by": {
+                    "id": 0,
+                    "first_name": "string",
+                    "last_name": "string"
+                },
+                "rescheduled_by": {
+                    "id": 0,
+                    "first_name": "string",
+                    "last_name": "string"
+                },
+                "observed": "2019-08-24T14:15:22Z",
+                "last_observed": "2019-08-24T14:15:22Z",
+                "created_at_terminal": "2019-08-24T14:15:22Z",
+                "extra_data": {}
+            },
+            "other_appointment_counts": [
+                {
+                    "status": "scheduling_error",
+                    "count": 0
+                }
+            ],
+            "line_import_status": {
+                "id": 0,
+                "container_number": "string",
+                "status": "string",
+                "parsed_status": "on_vessel",
+                "terminal": "st_alam",
+                "last_free_date": "2019-08-24",
+                "observed": "2019-08-24T14:15:22Z",
+                "last_observed": "2019-08-24T14:15:22Z",
+                "parsed_shipping_line": "ANLC",
+                "parsed_container_type": "45 HC"
+            },
+            "inbound_gate_transaction": {
+                "terminal": "st_alam",
+                "container_number": "string",
+                "chassis_number": "string",
+                "time": "2019-08-24T14:15:22Z",
+                "loaded": true,
+                "direction": "inbound",
+                "drivers_license_number": "string",
+                "truck_rfid_number": "string",
+                "truck_license_plate_number": "string",
+                "extra_data": {},
+                "raw_data": {},
+                "observed": "2019-08-24T14:15:22Z"
+            },
+            "outbound_gate_transaction": {
+                "terminal": "st_alam",
+                "container_number": "string",
+                "chassis_number": "string",
+                "time": "2019-08-24T14:15:22Z",
+                "loaded": true,
+                "direction": "inbound",
+                "drivers_license_number": "string",
+                "truck_rfid_number": "string",
+                "truck_license_plate_number": "string",
+                "extra_data": {},
+                "raw_data": {},
+                "observed": "2019-08-24T14:15:22Z"
+            },
+            "cycle_state": "unknown",
+            "next_available_appointment": {
+                "window_start": "2019-08-24T14:15:22Z",
+                "observed": "2019-08-24T14:15:22Z",
+                "has_availability": true
+            },
+            "master_bl": "string",
+            "tms_reference": "string",
+            "added_by_user": {
+                "id": 0,
+                "first_name": "string",
+                "last_name": "string"
+            },
+            "assigned_users": [
+                {
+                    "id": 0,
+                    "first_name": "string",
+                    "last_name": "string"
+                }
+            ],
+            "auto_book_on": true,
+            "auto_book_request_status": "requested",
+            "last_related_terminal": "st_alam",
+            "watched_time": "2019-08-24T14:15:22Z",
+            "discharged_time": "2019-08-24T14:15:22Z",
+            "import_appointment_time": "2019-08-24T14:15:22Z",
+            "import_out_gated_time": "2019-08-24T14:15:22Z",
+            "empty_appointment_time": "2019-08-24T14:15:22Z",
+            "empty_in_gated_time": "2019-08-24T14:15:22Z",
+            "last_free_date": "2019-08-24",
+            "tags": ["string"],
+            "vessel": "string",
+            "matched_vessel": {
+                "name": "string",
+                "id": 0,
+                "imo_number": 0
             }
-          ],
-          "id": 0,
-          "cycle_id": 0,
-          "last_observed": "2019-08-24T14:15:22Z",
-          "last_initiated_check": "2019-08-24T14:15:22Z"
         }
-      ],
-      "latest_appointment": {
-        "id": 0,
-        "container_number": "string",
-        "loaded": true,
-        "status": "scheduling_error",
-        "direction": "inbound",
-        "window_start": "2019-08-24T14:15:22Z",
-        "window_end": "2019-08-24T14:15:22Z",
-        "linked_appointments": [
-          {
-            "terminal_reference": "string",
-            "container_number": "string"
-          }
-        ],
-        "terminal": "st_alam",
-        "terminal_reference": "string",
-        "display_terminal_reference": "string",
-        "truck_license_plate_number": "string",
-        "truck_id": 0,
-        "terminal_block": "string",
-        "requested_by": {
-          "id": 0,
-          "first_name": "string",
-          "last_name": "string"
-        },
-        "rescheduled_by": {
-          "id": 0,
-          "first_name": "string",
-          "last_name": "string"
-        },
-        "observed": "2019-08-24T14:15:22Z",
-        "last_observed": "2019-08-24T14:15:22Z",
-        "created_at_terminal": "2019-08-24T14:15:22Z",
-        "extra_data": {}
-      },
-      "other_appointment_counts": [
-        {
-          "status": "scheduling_error",
-          "count": 0
-        }
-      ],
-      "line_import_status": {
-        "id": 0,
-        "container_number": "string",
-        "status": "string",
-        "parsed_status": "on_vessel",
-        "terminal": "st_alam",
-        "last_free_date": "2019-08-24",
-        "observed": "2019-08-24T14:15:22Z",
-        "last_observed": "2019-08-24T14:15:22Z",
-        "parsed_shipping_line": "ANLC",
-        "parsed_container_type": "45 HC"
-      },
-      "inbound_gate_transaction": {
-        "terminal": "st_alam",
-        "container_number": "string",
-        "chassis_number": "string",
-        "time": "2019-08-24T14:15:22Z",
-        "loaded": true,
-        "direction": "inbound",
-        "drivers_license_number": "string",
-        "truck_rfid_number": "string",
-        "truck_license_plate_number": "string",
-        "extra_data": {},
-        "raw_data": {},
-        "observed": "2019-08-24T14:15:22Z"
-      },
-      "outbound_gate_transaction": {
-        "terminal": "st_alam",
-        "container_number": "string",
-        "chassis_number": "string",
-        "time": "2019-08-24T14:15:22Z",
-        "loaded": true,
-        "direction": "inbound",
-        "drivers_license_number": "string",
-        "truck_rfid_number": "string",
-        "truck_license_plate_number": "string",
-        "extra_data": {},
-        "raw_data": {},
-        "observed": "2019-08-24T14:15:22Z"
-      },
-      "cycle_state": "unknown",
-      "next_available_appointment": {
-        "window_start": "2019-08-24T14:15:22Z",
-        "observed": "2019-08-24T14:15:22Z",
-        "has_availability": true
-      },
-      "master_bl": "string",
-      "tms_reference": "string",
-      "added_by_user": {
-        "id": 0,
-        "first_name": "string",
-        "last_name": "string"
-      },
-      "assigned_users": [
-        {
-          "id": 0,
-          "first_name": "string",
-          "last_name": "string"
-        }
-      ],
-      "auto_book_on": true,
-      "auto_book_request_status": "requested",
-      "last_related_terminal": "st_alam",
-      "watched_time": "2019-08-24T14:15:22Z",
-      "discharged_time": "2019-08-24T14:15:22Z",
-      "import_appointment_time": "2019-08-24T14:15:22Z",
-      "import_out_gated_time": "2019-08-24T14:15:22Z",
-      "empty_appointment_time": "2019-08-24T14:15:22Z",
-      "empty_in_gated_time": "2019-08-24T14:15:22Z",
-      "last_free_date": "2019-08-24",
-      "tags": [
-        "string"
-      ],
-      "vessel": "string",
-      "matched_vessel": {
-        "name": "string",
-        "id": 0,
-        "imo_number": 0
-      }
-    }
-  ]
+    ]
 }

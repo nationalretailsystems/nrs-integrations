@@ -97,7 +97,6 @@ let _tokendd: string;
 let _expirationdd: number;
 
 export const getTokenDD = async (): Promise<string> => {
-
     const credentials = {
         email: draydog.username,
         password: draydog.password
