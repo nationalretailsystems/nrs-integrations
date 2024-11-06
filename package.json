@@ -27,7 +27,8 @@
         "clean": "npx shx rm -rf dist",
         "install-npm": "cd dist && (npx shx ln -s ../node_modules node_modules || echo \"NPM Module Link Skipped\") && cd ..",
         "link-keys": "(ls /QOpenSys/opt && npx shx ln -s /QOpenSys/opt/eradani/.npmrc .npmrc) || npx shx echo \"Product Key Link Skipped. Consult terminal output for details.\"",
-        "copy": "(npx shx ln -s ../logs dist/logs || npx shx echo \"Logs Directory Creation Skipped\") && npx shx cp -r tests qsys LICENSE README.md package.json package-lock.json dist && npx shx cp -r src/interfaces dist/src"
+        "copy": "(npx shx ln -s ../logs dist/logs || npx shx echo \"Logs Directory Creation Skipped\") && npx shx cp -r tests qsys LICENSE README.md package.json package-lock.json dist && npx shx cp -r src/interfaces dist/src",
+        "tunnel": "ssh -L 8471:localhost:8471 zalman@services-us-virginia-m-1.skytap.com -p 9923"
     },
     "repository": {
         "type": "git",
@@ -43,7 +44,7 @@
         "@eradani-inc/eradani-connect": "^2.9.7",
         "@eradani-inc/gui-generator": "^0.13.0",
         "@eradani-inc/gui-generator-outbound": "^0.11.0",
-        "@types/bcrypt": "^5.0.0",
+        "@types/bluebird": "^3.5.42",
         "@types/cors": "^2.8.12",
         "@types/es6-promisify": "^6.0.1",
         "@types/express": "^4.17.13",
@@ -63,7 +64,7 @@
         "api": "^5.0.8",
         "aws-sdk": "^2.989.0",
         "axios": "^0.27.2",
-        "bcrypt": "^5.0.1",
+        "bcryptjs": "^2.4.3",
         "body-parser": "^1.20.0",
         "config": "=3.3.7",
         "cors": "^2.8.5",
@@ -94,6 +95,7 @@
     },
     "devDependencies": {
         "@eradani-inc/ec-generate": "^3.6.2",
+        "@types/bcryptjs": "^2.4.6",
         "@types/chai": "^4.3.1",
         "@types/config": "0.0.41",
         "@types/lodash": "^4.14.182",

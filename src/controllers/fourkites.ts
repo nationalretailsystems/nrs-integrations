@@ -9,7 +9,7 @@ import { FKASSETASSModel, FKASSETASSInput, FKASSETASSOutput } from 'src/models/f
 import { FKSTPARRIVModel, FKSTPARRIVInput, FKSTPARRIVOutput } from 'src/models/fkstparriv';
 import { FKSTPDEPARModel, FKSTPDEPARInput, FKSTPDEPAROutput } from 'src/models/fkstpdepar';
 import transport from 'src/services/connection';
-import APIError from 'src/APIError';
+import APIError from 'src/api-error';
 
 const logger = createLogger('controllers/fourkites');
 
