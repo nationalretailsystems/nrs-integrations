@@ -19,6 +19,27 @@
      Dl                S             10U 0
 
       ************************************
+      * Convert ReqDDGet to buffer
+      ************************************
+     PReqDDGetToBuf    B                   Export
+
+     DReqDDGetToBuf    PI
+     DDataStruct                           LikeDS(ReqDDGet)
+     D                                     Const
+     DBuffer                         11A
+
+      * Initialize to beginning of buffer
+       BufPtr = %addr(Buffer);
+
+      * Write fields from DS to buffer
+       %subst(CharBuf:1:11) = DataStruct.container;
+       BufPtr += 11;
+
+       return ;
+
+     PReqDDGetToBuf    E
+
+      ************************************
       * Convert buffer to ResDDGet
       ************************************
      PBufToResDDGet    B                   Export

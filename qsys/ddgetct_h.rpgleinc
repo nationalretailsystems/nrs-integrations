@@ -320,6 +320,23 @@
      Dmatchvess                            LikeDS(matched_vessDS)
 
       ************************************
+      * ReqDDGet data structure
+      * Record length: 11
+      ************************************
+     DReqDDGetLen      C                   11
+     DReqDDGet         DS                  Qualified
+     D                                     Template
+     Dcontainer                      11A
+
+      ************************************
+      * Convert ReqDDGet to buffer
+      ************************************
+     DReqDDGetToBuf    PR
+     DDataStruct                           LikeDS(ReqDDGet)
+     D                                     Const
+     DBuffer                         11A
+
+      ************************************
       * ResDDGet data structure
       * Record length: 1347
       ************************************

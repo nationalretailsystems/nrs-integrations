@@ -32,7 +32,7 @@ const safeValues2: any = {
 };
 
 export const putDrayDogCT: ECCHandlerFunction = async (reqkey, data, ecc) => {
-    logger.debug(`Received getAssetChanges request`, { reqkey, data });
+    logger.debug(`Received Dray Dog container watch request`, { reqkey, data });
     // Get parameters from incoming data buffer
     const reqFields = ddputctcvt.convertReqWatchToObject(data);
     // Call web service
@@ -41,17 +41,18 @@ export const putDrayDogCT: ECCHandlerFunction = async (reqkey, data, ecc) => {
     let containers = JSON.stringify(reqFields.containers);
     // X const token = await getTokenDD();
     try {
-        result = await axiosInstance.post('/containers/watch', containers, {
+        result = await axiosInstance.post('/containers/watch/', containers, {
             headers: {
-                Authorization: draydog.apikey,
+                Authorization: draydog.apikey,                
                 Accept: 'application/json',
                 'Content-Type': 'application/json'
             },
             params: {
-                assign_to_user_id: 1730 + '&assign_to_user_id=1726'
+               'assign_to_user_id': 1730 + '&assign_to_user_id=1726'
             }
         });
     } catch (err) {
+        logger.debug('DD Err ' + err.request._header);
         if (err.response) {
             // If the request was made and the server responded with a status code
             // That falls out of the range of 2xx
@@ -87,21 +88,25 @@ export const putDrayDogCT: ECCHandlerFunction = async (reqkey, data, ecc) => {
     }
 };
 export const getDrayDogCT: ECCHandlerFunction = async (reqkey, data, ecc) => {
-    logger.debug(`Received getAssetAll request`, { reqkey, data });
+    logger.debug(`Received draydog get contaner request`, { reqkey, data });
     // Get parameters from incoming data buffer
     // No reqfields on this api
-    // X const reqFields = ddgetctcvt.convertObjectToFormatName(data);
+    const reqFields = ddgetctcvt.convertReqDDGetToObject(data);
     // Call web service
     let result;
     let nextReqKey = reqkey;
 
     try {
-        result = await axiosInstance.get('/Assets', {
+        result = await axiosInstance.get('/containers/', {
             headers: {
                 accept: 'application/json',
                 Authorization: draydog.apikey
-            }
-        });
+            },
+            params: {
+                'page_size': '100',
+                'container_cycle_state': 'import_appt_booking',
+                'container_numbers': reqFields.container
+        }});
     } catch (err) {
         if (err.response) {
             // If the request was made and the server responded with a status code
