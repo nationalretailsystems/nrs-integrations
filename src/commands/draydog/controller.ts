@@ -106,7 +106,8 @@ export const getDrayDogCT: ECCHandlerFunction = async (reqkey, data, ecc) => {
                 'page_size': '100',
                 'container_cycle_state': 'import_appt_booking',
                 'container_numbers': reqFields.container
-        }});
+            }
+        });
     } catch (err) {
         if (err.response) {
             // If the request was made and the server responded with a status code
