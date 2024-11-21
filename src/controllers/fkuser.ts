@@ -2,7 +2,7 @@ import * as jwt from 'src/services/jwt';
 import config from 'config';
 const credentials = config.credentials;
 const blueyonder = config.blueyonder.credentials;
-import APIError from 'src/APIError';
+import APIError from 'src/api-error';
 import { JWTUserData } from 'src/types';
 import mountBlueYonder from 'src/routes/api/blueyonder';
 

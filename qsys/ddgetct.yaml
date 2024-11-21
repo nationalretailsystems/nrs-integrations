@@ -694,3 +694,9 @@ formats:
         type: DataStruct
         dsName: ContainersDS
         dim: 1
+  ReqDDGet:
+    recordType: request
+    subfields:
+      container:
+        type: Character
+        length: 11
