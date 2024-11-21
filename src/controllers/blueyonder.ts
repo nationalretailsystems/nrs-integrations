@@ -1,7 +1,7 @@
 import createLogger from 'src/services/logger';
 import { BYTENDNOTModel, BYTENDNOTInput, BYTENDNOTOutput } from 'src/models/bytendnot';
 import transport from 'src/services/connection';
-import APIError from 'src/APIError';
+import APIError from 'src/api-error';
 
 const logger = createLogger('controllers/blueyonder');
 

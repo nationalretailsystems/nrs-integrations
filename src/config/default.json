@@ -169,7 +169,12 @@
     "debug": true,
 
     "jwt": {
-        "expiresIn": ""
+        "dataLib": "ECIDEV",
+        "metadata": {
+            "audience": "api://default",
+            "issuer": "https://auth.example.com",
+            "expiresIn": "12h"
+        }
     },
 
     "credentials": {
@@ -246,6 +251,18 @@
             "username": "",
             "password": ""
         }
+    },
+
+    "metrics": {
+        "enabled": true,
+        "inbound": true,
+        "outbound": true
+    },
+
+    "metrics": {
+        "enabled": true,
+        "inbound": true,
+        "outbound": true
     },
 
     "eradaniConnect": {
