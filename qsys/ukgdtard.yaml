@@ -1,0 +1,263 @@
+---
+name: ukgdtard
+rpgIncName: ukgdtard_h
+datastructures:
+  hyperfindDS:
+    subfields:
+      id:
+        type: Packed
+        length: 4
+  dateRangeDS:
+    subfields:
+      endDate:
+        rpgName: enddate
+        type: Character
+        length: 10
+      startDate:
+        rpgName: startdate
+        type: Character
+        length: 10
+  employeeSetDS:
+    subfields:
+      hyperfind:
+        type: DataStruct
+        dsName: hyperfindDS
+      dateRange:
+        type: DataStruct
+        dsName: dateRangeDS
+  fromDS:
+    subfields:
+      view:
+        rpgName: view
+        type: Packed
+        length: 1
+      employeeSet:
+        type: DataStruct
+        dsName: employeeSetDS
+  SelectDS:
+    subfields:
+      key:
+        rpgName: key
+        type: Character
+        length: 20
+      alias:
+        rpgName: alias
+        type: Character
+        length: 21
+      label:
+        rpgName: label
+        type: Character
+        length: 11
+      width:
+        rpgName: width
+        type: Packed
+        length: 3
+      selected:
+        rpgName: selected
+        type: Boolean
+      dataValueType:
+        rpgName: dtavaltype
+        type: Character
+        length: 6
+  WhereDS:
+    subfields:
+      key:
+        rpgName: key
+        type: Character
+        length: 31
+      alias:
+        rpgName:  alias
+        type: Character
+        length: 21
+      operator:
+        rpgName: operator
+        type: Character
+        length: 11
+      values:
+        type: Hole
+        comment: Unable to process this item
+        dim: 1
+      rawValues:
+        type: Hole
+        comment: Unable to process this item
+        dim: 1
+  SortByDS:
+    subfields:
+      key:
+        rpgName: key
+        type: Character
+        length: 20
+      alias:
+        rpgName: alias
+        type: Character
+        length: 21
+      sortDirection:
+        rpgName: sortdir
+        type: Character
+        length: 3
+  metadataDS:
+    subfields:
+      numNodes:
+        rpgName: numnodes
+        type: Character
+        length: 3
+      metadataKey:
+        rpgName: metdtakey
+        type: Character
+        length: 36
+      cacheKey:
+        rpgName: cachekey
+        type: Character
+        length: 36
+      currencyCode:
+        rpgName: currcode
+        type: Character
+        length: 4
+      totalNodes:
+        rpgName: ttlnodes
+        type: Character
+        length: 3
+      totalElements:
+        rpgName: ttlelem
+        type: Character
+        length: 3
+  DataKeyDS:
+    subfields:
+      ROOT:
+        rpgName: root
+        type: Character
+        length: 2
+  ChildKeyDS:
+    subfields:
+      TKTIMECARD_TRANSACTION:
+        rpgName: tkttrans
+        type: Character
+        length: 22
+      TKPAYPERIOD:
+        rpgName: tkpayper
+        type: Character
+        length: 5
+      PEOPLE:
+        rpgName: people
+        type: Character
+        length: 5
+  EMPDS:
+    subfields:
+      id:
+        rpgName: id
+        type: Character
+        length: 5
+  DAYDS:
+    subfields:
+      id:
+        rpgName: id
+        type: Character
+        length: 10
+      qualifier:
+        rpgName: qualifier
+        type: Character
+        length: 10
+  coreEntityKeyDS:
+    subfields:
+      EMP:
+        rpgName: emp
+        type: DataStruct
+        dsName: EMPDS
+      DAY:
+        rpgName: day
+        type: DataStruct
+        dsName: DAYDS
+  AttributesDS:
+    subfields:
+      key:
+        rpgName: key
+        type: Character
+        length: 37
+      alias:
+        rpgName: alias
+        type: Character
+        length: 21
+      rawValue:
+        rpgName: rawvalue
+        type: Character
+        length: 19
+      value:
+        rpgName: value
+        type: Character
+        length: 18
+  ChildrenDS:
+    subfields:
+      key:
+        rpgName: key
+        type: DataStruct
+        dsName: ChildKeyDS
+      coreEntityKey:
+        rpgName: coreentkey
+        type: DataStruct
+        dsName: coreEntityKeyDS
+      attributes:
+        rpgName: attribs
+        type: DataStruct
+        dsName: AttributesDS
+        dim: 19
+      rootEntity:
+        rpgName: rootent
+        type: Character
+        length: 22
+  dataDS:
+    subfields:
+      key:
+        rpgName: key
+        type: DataStruct
+        dsName: DataKeyDS
+      coreEntityKey:
+        rpgName: coreentkey
+        type: DataStruct
+        dsName: coreEntityKeyDS
+      children:
+        rpgName: children   
+        type: DataStruct
+        dsName: ChildrenDS
+        dim: 144
+      rootEntity:
+        rpgName: rootent
+        type: Character
+        length: 4
+formats:
+  DataReq:
+    recordType: request
+    subfields:
+      from:
+        rpgName: from
+        type: DataStruct
+        dsName: fromDS
+      select:
+        rpgName: select
+        type: DataStruct
+        dsName: SelectDS
+        dim: 20
+      where:
+        rpgName: where
+        type: DataStruct
+        dsName: WhereDS
+        dim: 1
+      sortBy:
+        rpgName: sortby
+        type: DataStruct
+        dsName: SortByDS
+        dim: 3
+      count:
+        rpgName: count
+        type: Packed
+        length: 3
+  DataRes:
+    recordType: result
+    subfields:
+      metadata:
+        rpgName: metadata
+        type: DataStruct
+        dsName: metadataDS
+      data:
+        rpgName: data
+        type: DataStruct
+        dsName: dataDS

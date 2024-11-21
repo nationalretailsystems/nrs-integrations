@@ -1,0 +1,193 @@
+      ************************************
+      * Module: ukgdtard
+      * Generated RPG data structures
+      * and prototypes
+      * Do not modify
+      ************************************
+
+      ************************************
+      * hyperfindDS data structure
+      ************************************
+     DhyperfindDS      DS                  Qualified
+     D                                     Template
+     Did                              4P 0
+
+      ************************************
+      * dateRangeDS data structure
+      ************************************
+     DdateRangeDS      DS                  Qualified
+     D                                     Template
+     Denddate                        10A
+     Dstartdate                      10A
+
+      ************************************
+      * employeeSetDS data structure
+      ************************************
+     DemployeeSetDS    DS                  Qualified
+     D                                     Template
+     Dhyperfind                            LikeDS(hyperfindDS)
+     DdateRange                            LikeDS(dateRangeDS)
+
+      ************************************
+      * fromDS data structure
+      ************************************
+     DfromDS           DS                  Qualified
+     D                                     Template
+     Dview                            1P 0
+     DemployeeSet                          LikeDS(employeeSetDS)
+
+      ************************************
+      * SelectDS data structure
+      ************************************
+     DSelectDS         DS                  Qualified
+     D                                     Template
+     Dkey                            20A
+     Dalias                          21A
+     Dlabel                          11A
+     Dwidth                           3P 0
+     Dselected                         N
+     Ddtavaltype                      6A
+
+      ************************************
+      * WhereDS data structure
+      ************************************
+     DWhereDS          DS                  Qualified
+     D                                     Template
+     Dkey                            31A
+     Dalias                          21A
+     Doperator                       11A
+     Dvalues                          0A   Dim(1)                               Unable to process this item
+     DrawValues                       0A   Dim(1)                               Unable to process this item
+
+      ************************************
+      * SortByDS data structure
+      ************************************
+     DSortByDS         DS                  Qualified
+     D                                     Template
+     Dkey                            20A
+     Dalias                          21A
+     Dsortdir                         3A
+
+      ************************************
+      * metadataDS data structure
+      ************************************
+     DmetadataDS       DS                  Qualified
+     D                                     Template
+     Dnumnodes                        3A
+     Dmetdtakey                      36A
+     Dcachekey                       36A
+     Dcurrcode                        4A
+     Dttlnodes                        3A
+     Dttlelem                         3A
+
+      ************************************
+      * DataKeyDS data structure
+      ************************************
+     DDataKeyDS        DS                  Qualified
+     D                                     Template
+     Droot                            2A
+
+      ************************************
+      * ChildKeyDS data structure
+      ************************************
+     DChildKeyDS       DS                  Qualified
+     D                                     Template
+     Dtkttrans                       22A
+     Dtkpayper                        5A
+     Dpeople                          5A
+
+      ************************************
+      * EMPDS data structure
+      ************************************
+     DEMPDS            DS                  Qualified
+     D                                     Template
+     Did                              5A
+
+      ************************************
+      * DAYDS data structure
+      ************************************
+     DDAYDS            DS                  Qualified
+     D                                     Template
+     Did                             10A
+     Dqualifier                      10A
+
+      ************************************
+      * coreEntityKeyDS data structure
+      ************************************
+     DcoreEntityKeyDS  DS                  Qualified
+     D                                     Template
+     Demp                                  LikeDS(EMPDS)
+     Dday                                  LikeDS(DAYDS)
+
+      ************************************
+      * AttributesDS data structure
+      ************************************
+     DAttributesDS     DS                  Qualified
+     D                                     Template
+     Dkey                            37A
+     Dalias                          21A
+     Drawvalue                       19A
+     Dvalue                          18A
+
+      ************************************
+      * ChildrenDS data structure
+      ************************************
+     DChildrenDS       DS                  Qualified
+     D                                     Template
+     Dkey                                  LikeDS(ChildKeyDS)
+     Dcoreentkey                           LikeDS(coreEntityKeyDS)
+     Dattribs                              LikeDS(AttributesDS)
+     D                                     Dim(19)
+     Drootent                        22A
+
+      ************************************
+      * dataDS data structure
+      ************************************
+     DdataDS           DS                  Qualified
+     D                                     Template
+     Dkey                                  LikeDS(DataKeyDS)
+     Dcoreentkey                           LikeDS(coreEntityKeyDS)
+     Dchildren                             LikeDS(ChildrenDS)
+     D                                     Dim(144)
+     Drootent                         4A
+
+      ************************************
+      * DataReq data structure
+      * Record length: 1509
+      ************************************
+     DDataReqLen       C                   1509
+     DDataReq          DS                  Qualified
+     D                                     Template
+     Dfrom                                 LikeDS(fromDS)
+     Dselect                               LikeDS(SelectDS)
+     D                                     Dim(20)
+     Dwhere                                LikeDS(WhereDS)
+     D                                     Dim(1)
+     Dsortby                               LikeDS(SortByDS)
+     D                                     Dim(3)
+     Dcount                           3P 0
+
+      ************************************
+      * Convert DataReq to buffer
+      ************************************
+     DDataReqToBuf     PR
+     DDataStruct                           LikeDS(DataReq)
+     D                                     Const
+     DBuffer                       1509A
+
+      ************************************
+      * DataRes data structure
+      * Record length: 271412
+      ************************************
+     DDataResLen       C                   271412
+     DDataRes          DS                  Qualified
+     D                                     Template
+     Dmetadata                             LikeDS(metadataDS)
+     Ddata                                 LikeDS(dataDS)
+
+      ************************************
+      * Convert buffer to DataRes
+      ************************************
+     DBufToDataRes     PR
+     DBuffer                     271412A
+     DDataStruct                           LikeDS(DataRes)

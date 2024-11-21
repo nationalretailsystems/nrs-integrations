@@ -1,0 +1,217 @@
+{ 
+        "from": {
+            "view": 0,
+            "employeeSet": {
+                "hyperfind": {
+                    "id": 2158
+                },
+
+                        "dateRange": {
+                            "endDate": "2024-11-18",
+                            "startDate": "2024-11-18"
+                            }
+                
+            }
+        },
+           "select": [{
+                    "key": "PEOPLE_PERSON_NUMBER",
+                    "alias": "alias_511591201758228",
+                    "label": "Employee ID",
+                    "width": 100,
+                    "selected": true,
+                    "dataValueType": "STRING"
+                },
+                {
+                    "key": "EMP_COMMON_FULL_NAME",
+                    "alias": "alias_501591208632650",
+                    "label": "Employee Full Name",
+                    "width": 100,
+                    "selected": true,
+                    "dataValueType": "STRING"
+                },
+                {
+                    "key": "TIMECARD_TRANS_APPLY_DATE",
+                    "alias": "alias_551591201844888",
+                    "label": "Apply Date",
+                    "width": 100,
+                    "selected": true,
+                    "dataValueType": "DATE"
+                },
+                {
+                    "key": "TIMECARD_TRANS_START_TIME",
+                    "alias": "alias_571591201851951",
+                    "label": "Start Time",
+                    "width": 100,
+                    "selected": true,
+                    "dataValueType": "TIME"
+                },
+                {
+                    "key": "TIMECARD_TRANS_START_TIME_ROUNDED",
+                    "alias": "alias_181699642788274",
+                    "label": "Start Time (Rounded)",
+                    "width": 100,
+                    "selected": true,
+                    "dataValueType": "TIME"
+                },
+                {
+                    "key": "TIMECARD_TRANS_START_DATETIME_ROUNDED",
+                    "alias": "alias_121699642748832",
+                    "label": "Start Date Time (Rounded)",
+                    "width": 100,
+                    "selected": true,
+                    "dataValueType": "DATETIME"
+                },
+                {
+                    "key": "TIMECARD_TRANS_END_TIME",
+                    "alias": "alias_611591201865173",
+                    "label": "End Time",
+                    "width": 100,
+                    "selected": true,
+                    "dataValueType": "TIME"
+                },
+                {
+                    "key": "TIMECARD_TRANS_END_TIME_ROUNDED",
+                    "alias": "alias_161699642780592",
+                    "label": "End Time (Rounded)",
+                    "width": 100,
+                    "selected": true,
+                    "dataValueType": "TIME"
+                },
+                {
+                    "key": "TIMECARD_TRANS_END_DATETIME_ROUNDED",
+                    "alias": "alias_141699642769700",
+                    "label": "End Date Time (Rounded)",
+                    "width": 100,
+                    "selected": true,
+                    "dataValueType": "DATETIME"
+                },
+                {
+                    "key": "TIMECARD_TRANS_TRANSACTION_TYPE",
+                    "alias": "alias_531591201834329",
+                    "properties": [
+                        {
+                            "key": "0",
+                            "value": "Worked Shift Segment"
+                        }
+                    ],
+                    "label": "Transaction Type",
+                    "width": 100,
+                    "selected": false,
+                    "dataValueType": "ENUM"
+                },
+                {
+                    "key": "PEOPLE_UDM_DEVICE_GROUP",
+                    "alias": "alias_161699645650092",
+                    "label": "UDM Device Group Name",
+                    "width": 100,
+                    "selected": true,
+                    "dataValueType": "STRING"
+                },
+                {
+                    "key": "PEOPLE_PERSON_ID",
+                    "alias": "alias_181699645692100",
+                    "label": "Person System ID",
+                    "width": 100,
+                    "selected": true,
+                    "dataValueType": "STRING"
+                },
+                {
+                    "key": "TK_CURR_PAYPERIOD_ENDDATE",
+                    "alias": "alias_191705680694980",
+                    "label": "Current Pay Period End Date",
+                    "width": 100,
+                    "selected": true,
+                    "dataValueType": "DATE"
+                },
+                {
+                    "key": "PEOPLE_MANAGER_ACCESS_ORG_GROUP",
+                    "alias": "alias_1491725384933966",
+                    "label": "Organization Group Set",
+                    "width": 100,
+                    "selected": true,
+                    "dataValueType": "STRING"
+                },
+                {
+                    "key": "PEOPLE_PRIMARY_LOCATION_DESCRIPTION",
+                    "alias": "alias_1901725385255342",
+                    "properties": [
+                        {
+                            "key": "0",
+                            "value": "Master Company"
+                        }
+                    ],
+                    "label": "Primary Location Description",
+                    "width": 100,
+                    "selected": true,
+                    "dataValueType": "STRING"
+                },
+                {
+                    "key": "PEOPLE_CASCADE_PROFILE",
+                    "alias": "alias_2741725386175117",
+                    "label": "Cascade Profile",
+                    "width": 100,
+                    "selected": true,
+                    "dataValueType": "STRING"
+                },
+                {
+                    "key": "PEOPLE_HOME_LABOR_CATEGORY_ENTRY_NAME",
+                    "alias": "alias_3381725386687950",
+                    "properties": [
+                        {
+                            "key": "1",
+                            "value": "Location"
+                        }
+                    ],
+                    "label": "Home Labor Category Entry Name",
+                    "width": 100,
+                    "selected": true,
+                    "dataValueType": "STRING"
+                },
+                {
+                    "key": "IN_PUNCH_IS_UNVERIFIED",
+                    "alias": "alias_191725892613926",
+                    "label": "In Punch Is Unverified",
+                    "width": 100,
+                    "selected": true,
+                    "dataValueType": "BOOLEAN"
+                },
+                {
+                    "key": "OUT_PUNCH_IS_UNVERIFIED",
+                    "alias": "alias_211725892639607",
+                    "label": "Out Punch Is Unverified",
+                    "width": 100,
+                    "selected": true,
+                    "dataValueType": "BOOLEAN"
+                }
+            ],
+            "where": [
+                {
+                    "key": "TIMECARD_TRANS_TRANSACTION_TYPE",
+                    "alias": "alias_531591201834329",
+                    "operator": "IS_NOT_NULL",
+                    "values": [],
+                    "rawValues": []
+                }
+            ],
+            "sortBy": [
+                {
+                    "key": "PEOPLE_PERSON_NUMBER",
+                    "alias": "alias_511591201758228",
+                    "sortDirection": "ASC"
+                },
+                {
+                    "key": "TIMECARD_TRANS_APPLY_DATE",
+                    "alias": "alias_551591201844888",
+                    "sortDirection": "ASC"
+                },
+                {
+                    "key": "TIMECARD_TRANS_START_TIME",
+                    "alias": "alias_571591201851951",
+                    "sortDirection": "ASC"
+                }
+            ],       
+                
+      
+        "count": 500
+
+    }

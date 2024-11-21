@@ -8,7 +8,8 @@ import {
     putHos,
     delSignoff,
     postPunch,
-    postPunchImport
+    postPunchImport,
+    getData
 } from './controller';
 import * as getsummary from 'src/interfaces/ukgdlysumm';
 import * as getpunches from 'src/interfaces/ukgpunches';
@@ -19,6 +20,7 @@ import * as puthos from 'src/interfaces/ukgputhos';
 import * as delsignoff from 'src/interfaces/ukgdelof';
 import * as postpunch from 'src/interfaces/ukgdrvr';
 import * as postpunchimport from 'src/interfaces/ukgpchim';
+import * as getdata from 'src/interfaces/ukgdtard';
 import { Route53RecoveryReadiness } from 'aws-sdk';
 
 export default function registerUKG(router: ECCInternalRouter) {
@@ -31,4 +33,5 @@ export default function registerUKG(router: ECCInternalRouter) {
     router.use('delsignoff', delsignoff, delSignoff);
     router.use('postpunch', postpunch, postPunch);
     router.use('postpunchimport', postpunchimport, postPunchImport);
+    router.use('getdata', getdata, getData);
 }

@@ -1,0 +1,120 @@
+---
+name: ukgdtard_res
+datastructures:
+  metadataDS:
+    subfields:
+      numNodes:
+        type: Character
+        length: 3
+      metadataKey:
+        type: Character
+        length: 36
+      cacheKey:
+        type: Character
+        length: 36
+      currencyCode:
+        type: Character
+        length: 4
+      totalNodes:
+        type: Character
+        length: 3
+      totalElements:
+        type: Character
+        length: 3
+  DataKeyDS:
+    subfields:
+      ROOT:
+        type: Character
+        length: 2
+  ChildKeyDS:
+    subfields:
+      TKTIMECARD_TRANSACTION:
+        type: Character
+        length: 22
+      TKPAYPERIOD:
+        type: Character
+        length: 5
+      PEOPLE:
+        type: Character
+        length: 5
+  EMPDS:
+    subfields:
+      id:
+        type: Character
+        length: 5
+  DAYDS:
+    subfields:
+      id:
+        type: Character
+        length: 10
+      qualifier:
+        type: Character
+        length: 10
+  coreEntityKeyDS:
+    subfields:
+      EMP:
+        type: DataStruct
+        dsName: EMPDS
+      DAY:
+        type: DataStruct
+        dsName: DAYDS
+  AttreibutesDS:
+    subfields:
+      key:
+        type: Character
+        length: 37
+      alias:
+        type: Character
+        length: 21
+      rawValue:
+        type: Character
+        length: 19
+      value:
+        type: Character
+        length: 18
+  ChildrenDS:
+    subfields:
+      key:
+        type: DataStruct
+        dsName: ChildKeyDS
+      coreEntityKey:
+        type: DataStruct
+        dsName: coreEntityKeyDS
+      attributes:
+        type: DataStruct
+        dsName: AttributesDS
+        dim: 19
+      rootEntity:
+        type: Character
+        length: 22
+      customProperties:
+        type: DataStruct
+        dsName: customPropertiesDS
+  dataDS:
+    subfields:
+      key:
+        type: DataStruct
+        dsName: DataKeyDS
+      coreEntityKey:
+        type: DataStruct
+        dsName: coreEntityKeyDS
+      children:
+        type: DataStruct
+        dsName: ChildrenDS
+        dim: 144
+      rootEntity:
+        type: Character
+        length: 4
+      customProperties:
+        type: DataStruct
+        dsName: customPropertiesDS
+formats:
+  DataRes:
+    recordType: result
+    subfields:
+      metadata:
+        type: DataStruct
+        dsName: metadataDS
+      data:
+        type: DataStruct
+        dsName: dataDS

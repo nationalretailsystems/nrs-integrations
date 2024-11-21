@@ -43,12 +43,12 @@ export const putDrayDogCT: ECCHandlerFunction = async (reqkey, data, ecc) => {
     try {
         result = await axiosInstance.post('/containers/watch/', containers, {
             headers: {
-                Authorization: draydog.apikey,                
+                Authorization: draydog.apikey,
                 Accept: 'application/json',
                 'Content-Type': 'application/json'
             },
             params: {
-               'assign_to_user_id': 1730 + '&assign_to_user_id=1726'
+                'assign_to_user_id': 1730 + '&assign_to_user_id=1726'
             }
         });
     } catch (err) {
@@ -104,7 +104,7 @@ export const getDrayDogCT: ECCHandlerFunction = async (reqkey, data, ecc) => {
             },
             params: {
                 'page_size': '100',
-                'container_cycle_state': 'import_appt_booking',
+                'container_cycle_state': 'import_appt_booking'
             }
         });
     } catch (err) {
