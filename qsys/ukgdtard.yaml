@@ -73,14 +73,6 @@ datastructures:
         rpgName: operator
         type: Character
         length: 11
-      values:
-        type: Hole
-        comment: Unable to process this item
-        dim: 1
-      rawValues:
-        type: Hole
-        comment: Unable to process this item
-        dim: 1
   SortByDS:
     subfields:
       key:

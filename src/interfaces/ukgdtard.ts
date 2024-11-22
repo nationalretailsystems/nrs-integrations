@@ -109,15 +109,7 @@ export interface WhereDS {
     /**
      * @size 11 characters
      */
-    operator: string,
-    /**
-     * @description Unable to process this item
-     */
-    values: Array<string>,
-    /**
-     * @description Unable to process this item
-     */
-    rawValues: Array<string>
+    operator: string
 }
 
 /**
@@ -377,20 +369,6 @@ export function convertDataReqToObject(dataIn: string): DataReq {
   pos += 21;
   dataOut.where[i].operator = dataIn.substring(pos, pos + 11).trimEnd();
   pos += 11;
-  dataOut.where[i].values = [
-    
-  ];
-  for (let j: number = 0; j < 1; ++j) {
-  dataOut.where[i].values[j] = dataIn.substring(pos, pos + 0).trimEnd();
-  pos += 0;
-  }
-  dataOut.where[i].rawValues = [
-    
-  ];
-  for (let j: number = 0; j < 1; ++j) {
-  dataOut.where[i].rawValues[j] = dataIn.substring(pos, pos + 0).trimEnd();
-  pos += 0;
-  }
   }
   dataOut.sortBy = [
     

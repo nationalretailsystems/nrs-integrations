@@ -56,8 +56,6 @@
      Dkey                            31A
      Dalias                          21A
      Doperator                       11A
-     Dvalues                          0A   Dim(1)                               Unable to process this item
-     DrawValues                       0A   Dim(1)                               Unable to process this item
 
       ************************************
       * SortByDS data structure
