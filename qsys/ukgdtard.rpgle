@@ -1,4 +1,4 @@
-     H Nomain EXPROPTS(*ALWBLANKNUM)
+     H Nomain
 
       ************************************
       * Module: ukgdtard
@@ -61,14 +61,6 @@
        BufPtr += 21;
        %subst(CharBuf:1:11) = DataStruct.where(i).operator;
        BufPtr += 11;
-       for k = 1 to 1;
-       %subst(CharBuf:1:0) = DataStruct.where(i).values(k);
-       BufPtr += 0;
-       endfor;
-       for k = 1 to 1;
-       %subst(CharBuf:1:0) = DataStruct.where(i).rawValues(k);
-       BufPtr += 0;
-       endfor;
        endfor;
        for i = 1 to 3;
        %subst(CharBuf:1:20) = DataStruct.sortby(i).key;
