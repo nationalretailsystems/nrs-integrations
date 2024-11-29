@@ -9,7 +9,6 @@ import { promises as fs } from 'fs';
 import { sanitizeValues } from 'src/services/safe-values';
 import { resourceLimits } from 'worker_threads';
 import { getTokenDD } from 'src/services/get-token';
-import { convertObjectToAssetChgDS } from 'src/interfaces/mpgeteqip';
 
 const logger = createLogger('commands/draydog');
 const { draydog } = config;
