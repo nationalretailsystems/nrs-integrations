@@ -26,7 +26,7 @@
      DDataReqToBuf     PI
      DDataStruct                           LikeDS(DataReq)
      D                                     Const
-     DBuffer                       1574A
+     DBuffer                        909A
 
       * Initialize to beginning of buffer
        BufPtr = %addr(Buffer);
@@ -40,7 +40,7 @@
        BufPtr += 10;
        %subst(CharBuf:1:10) = DataStruct.from.employeeSet.dateRange.startdate;
        BufPtr += 10;
-       for i = 1 to 20;
+       for i = 1 to 10;
        %subst(CharBuf:1:20) = DataStruct.select(i).key;
        BufPtr += 20;
        %subst(CharBuf:1:21) = DataStruct.select(i).alias;
@@ -72,6 +72,8 @@
        endfor;
        %subst(CharBuf:1:5) = %char(DataStruct.count);
        BufPtr += 5;
+       %subst(CharBuf:1:5) = %char(DataStruct.index);
+       BufPtr += 5;
 
        return ;
 
@@ -83,7 +85,7 @@
      PBufToDataRes     B                   Export
 
      DBufToDataRes     PI
-     DBuffer                     271412A
+     DBuffer                      51566A
      DDataStruct                           LikeDS(DataRes)
 
       * Initialize to begining of buffer
@@ -110,7 +112,7 @@
        BufPtr += 10;
        DataStruct.data.coreentkey.day.qualifier = %subst(CharBuf:1:10);
        BufPtr += 10;
-       for i = 1 to 144;
+       for i = 1 to 50;
        DataStruct.data.children(i).key.tkttrans = %subst(CharBuf:1:22);
        BufPtr += 22;
        DataStruct.data.children(i).key.tkpayper = %subst(CharBuf:1:5);
@@ -123,7 +125,7 @@
        BufPtr += 10;
        DataStruct.data.children(i).coreentkey.day.qualifier = %subst(CharBuf:1:10);
        BufPtr += 10;
-       for j = 1 to 19;
+       for j = 1 to 10;
        DataStruct.data.children(i).attribs(j).key = %subst(CharBuf:1:37);
        BufPtr += 37;
        DataStruct.data.children(i).attribs(j).alias = %subst(CharBuf:1:21);
