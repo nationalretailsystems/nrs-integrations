@@ -142,7 +142,7 @@
      Dkey                                  LikeDS(ChildKeyDS)
      Dcoreentkey                           LikeDS(coreEntityKeyDS)
      Dattribs                              LikeDS(AttributesDS)
-     D                                     Dim(19)
+     D                                     Dim(10)
      Drootent                        22A
 
       ************************************
@@ -153,24 +153,25 @@
      Dkey                                  LikeDS(DataKeyDS)
      Dcoreentkey                           LikeDS(coreEntityKeyDS)
      Dchildren                             LikeDS(ChildrenDS)
-     D                                     Dim(144)
+     D                                     Dim(50)
      Drootent                         4A
 
       ************************************
       * DataReq data structure
-      * Record length: 1574
+      * Record length: 909
       ************************************
-     DDataReqLen       C                   1574
+     DDataReqLen       C                   909
      DDataReq          DS                  Qualified
      D                                     Template
      Dfrom                                 LikeDS(fromDS)
      Dselect                               LikeDS(SelectDS)
-     D                                     Dim(20)
+     D                                     Dim(10)
      Dwhere                                LikeDS(WhereDS)
      D                                     Dim(1)
      Dsortby                               LikeDS(SortByDS)
      D                                     Dim(3)
      Dcount                           3P 0
+     Dindex                           3P 0
 
       ************************************
       * Convert DataReq to buffer
@@ -178,13 +179,13 @@
      DDataReqToBuf     PR
      DDataStruct                           LikeDS(DataReq)
      D                                     Const
-     DBuffer                       1574A
+     DBuffer                        909A
 
       ************************************
       * DataRes data structure
-      * Record length: 271412
+      * Record length: 51566
       ************************************
-     DDataResLen       C                   271412
+     DDataResLen       C                   51566
      DDataRes          DS                  Qualified
      D                                     Template
      Dmetadata                             LikeDS(metadataDS)
@@ -194,5 +195,5 @@
       * Convert buffer to DataRes
       ************************************
      DBufToDataRes     PR
-     DBuffer                     271412A
+     DBuffer                      51566A
      DDataStruct                           LikeDS(DataRes)

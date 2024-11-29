@@ -309,7 +309,12 @@ export interface DataReq {
      * @size 3 digits
      * @precision 0 decimals
      */
-    count: number
+    count: number,
+    /**
+     * @size 3 digits
+     * @precision 0 decimals
+     */
+    index: number
 }
 
 /**
@@ -344,7 +349,7 @@ export function convertDataReqToObject(dataIn: string): DataReq {
   dataOut.select = [
     
   ];
-  for (let i: number = 0; i < 20; ++i) {
+  for (let i: number = 0; i < 10; ++i) {
   dataOut.select[i] =   {
   
     };
@@ -397,6 +402,8 @@ export function convertDataReqToObject(dataIn: string): DataReq {
   }
   dataOut.count = Number(dataIn.substring(pos, pos + 5).trimEnd());
   pos += 5;
+  dataOut.index = Number(dataIn.substring(pos, pos + 5).trimEnd());
+  pos += 5;
 
   return dataOut;
 }
@@ -429,14 +436,14 @@ export function convertObjectToDataRes(dataIn: DataRes): string {
   dataOut += dataIn?.data?.coreEntityKey?.EMP?.id?.substring(0, 5)?.padEnd(5) ?? missingInput(`dataIn.data.coreEntityKey.EMP.id`, "char", dataIn?.data?.coreEntityKey?.EMP?.id);
   dataOut += dataIn?.data?.coreEntityKey?.DAY?.id?.substring(0, 10)?.padEnd(10) ?? missingInput(`dataIn.data.coreEntityKey.DAY.id`, "char", dataIn?.data?.coreEntityKey?.DAY?.id);
   dataOut += dataIn?.data?.coreEntityKey?.DAY?.qualifier?.substring(0, 10)?.padEnd(10) ?? missingInput(`dataIn.data.coreEntityKey.DAY.qualifier`, "char", dataIn?.data?.coreEntityKey?.DAY?.qualifier);
-  for (let j: number = 0; j < 144; ++j) {
+  for (let j: number = 0; j < 50; ++j) {
   dataOut += dataIn?.data?.children[j]?.key?.TKTIMECARD_TRANSACTION?.substring(0, 22)?.padEnd(22) ?? missingInput(`dataIn.data.children[${j}].key.TKTIMECARD_TRANSACTION`, "char", dataIn?.data?.children[j]?.key?.TKTIMECARD_TRANSACTION);
   dataOut += dataIn?.data?.children[j]?.key?.TKPAYPERIOD?.substring(0, 5)?.padEnd(5) ?? missingInput(`dataIn.data.children[${j}].key.TKPAYPERIOD`, "char", dataIn?.data?.children[j]?.key?.TKPAYPERIOD);
   dataOut += dataIn?.data?.children[j]?.key?.PEOPLE?.substring(0, 5)?.padEnd(5) ?? missingInput(`dataIn.data.children[${j}].key.PEOPLE`, "char", dataIn?.data?.children[j]?.key?.PEOPLE);
   dataOut += dataIn?.data?.children[j]?.coreEntityKey?.EMP?.id?.substring(0, 5)?.padEnd(5) ?? missingInput(`dataIn.data.children[${j}].coreEntityKey.EMP.id`, "char", dataIn?.data?.children[j]?.coreEntityKey?.EMP?.id);
   dataOut += dataIn?.data?.children[j]?.coreEntityKey?.DAY?.id?.substring(0, 10)?.padEnd(10) ?? missingInput(`dataIn.data.children[${j}].coreEntityKey.DAY.id`, "char", dataIn?.data?.children[j]?.coreEntityKey?.DAY?.id);
   dataOut += dataIn?.data?.children[j]?.coreEntityKey?.DAY?.qualifier?.substring(0, 10)?.padEnd(10) ?? missingInput(`dataIn.data.children[${j}].coreEntityKey.DAY.qualifier`, "char", dataIn?.data?.children[j]?.coreEntityKey?.DAY?.qualifier);
-  for (let l: number = 0; l < 19; ++l) {
+  for (let l: number = 0; l < 10; ++l) {
   dataOut += dataIn?.data?.children[j]?.attributes[l]?.key?.substring(0, 37)?.padEnd(37) ?? missingInput(`dataIn.data.children[${j}].attributes[${l}].key`, "char", dataIn?.data?.children[j]?.attributes[l]?.key);
   dataOut += dataIn?.data?.children[j]?.attributes[l]?.alias?.substring(0, 21)?.padEnd(21) ?? missingInput(`dataIn.data.children[${j}].attributes[${l}].alias`, "char", dataIn?.data?.children[j]?.attributes[l]?.alias);
   dataOut += dataIn?.data?.children[j]?.attributes[l]?.rawValue?.substring(0, 19)?.padEnd(19) ?? missingInput(`dataIn.data.children[${j}].attributes[${l}].rawValue`, "char", dataIn?.data?.children[j]?.attributes[l]?.rawValue);
