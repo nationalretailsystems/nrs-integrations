@@ -34,6 +34,16 @@ datastructures:
       employeeSet:
         type: DataStruct
         dsName: employeeSetDS
+  PropDS:
+    subfields:
+      key:
+        rpgName: key
+        type: Character
+        length: 1
+      value:
+        rpgName: value
+        type: Character
+        length: 25
   SelectDS:
     subfields:
       key:
@@ -44,21 +54,11 @@ datastructures:
         rpgName: alias
         type: Character
         length: 21
-      label:
-        rpgName: label
-        type: Character
-        length: 11
-      width:
-        rpgName: width
-        type: Packed
-        length: 3
-      selected:
-        rpgName: selected
-        type: Boolean
-      dataValueType:
-        rpgName: dtavaltype
-        type: Character
-        length: 6
+      properties:
+        rpgName: properties
+        type: DataStruct
+        dsName: PropDS
+        dim: 1
   WhereDS:
     subfields:
       key:
@@ -73,6 +73,10 @@ datastructures:
         rpgName: operator
         type: Character
         length: 11
+      values:
+        rpgName: values
+        type: Character
+        length: 5
   SortByDS:
     subfields:
       key:
