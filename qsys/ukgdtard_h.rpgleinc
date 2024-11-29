@@ -37,16 +37,22 @@
      DemployeeSet                          LikeDS(employeeSetDS)
 
       ************************************
+      * PropDS data structure
+      ************************************
+     DPropDS           DS                  Qualified
+     D                                     Template
+     Dkey                             1A
+     Dvalue                          25A
+
+      ************************************
       * SelectDS data structure
       ************************************
      DSelectDS         DS                  Qualified
      D                                     Template
      Dkey                            20A
      Dalias                          21A
-     Dlabel                          11A
-     Dwidth                           3P 0
-     Dselected                         N
-     Ddtavaltype                      6A
+     Dproperties                           LikeDS(PropDS)
+     D                                     Dim(1)
 
       ************************************
       * WhereDS data structure
@@ -56,6 +62,7 @@
      Dkey                            31A
      Dalias                          21A
      Doperator                       11A
+     Dvalues                          5A
 
       ************************************
       * SortByDS data structure
@@ -151,9 +158,9 @@
 
       ************************************
       * DataReq data structure
-      * Record length: 1509
+      * Record length: 1574
       ************************************
-     DDataReqLen       C                   1509
+     DDataReqLen       C                   1574
      DDataReq          DS                  Qualified
      D                                     Template
      Dfrom                                 LikeDS(fromDS)
@@ -171,7 +178,7 @@
      DDataReqToBuf     PR
      DDataStruct                           LikeDS(DataReq)
      D                                     Const
-     DBuffer                       1509A
+     DBuffer                       1574A
 
       ************************************
       * DataRes data structure

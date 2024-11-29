@@ -67,6 +67,20 @@ export interface fromDS {
 /**
  * Output interface
  */
+export interface PropDS {
+    /**
+     * @size 1 characters
+     */
+    key: string,
+    /**
+     * @size 25 characters
+     */
+    value: string
+}
+
+/**
+ * Output interface
+ */
 export interface SelectDS {
     /**
      * @size 20 characters
@@ -77,21 +91,8 @@ export interface SelectDS {
      */
     alias: string,
     /**
-     * @size 11 characters
      */
-    label: string,
-    /**
-     * @size 3 digits
-     * @precision 0 decimals
-     */
-    width: number,
-    /**
-     */
-    selected: boolean,
-    /**
-     * @size 6 characters
-     */
-    dataValueType: string
+    properties: Array<PropDS>
 }
 
 /**
@@ -109,7 +110,11 @@ export interface WhereDS {
     /**
      * @size 11 characters
      */
-    operator: string
+    operator: string,
+    /**
+     * @size 5 characters
+     */
+    values: string
 }
 
 /**
@@ -347,14 +352,18 @@ export function convertDataReqToObject(dataIn: string): DataReq {
   pos += 20;
   dataOut.select[i].alias = dataIn.substring(pos, pos + 21).trimEnd();
   pos += 21;
-  dataOut.select[i].label = dataIn.substring(pos, pos + 11).trimEnd();
-  pos += 11;
-  dataOut.select[i].width = Number(dataIn.substring(pos, pos + 5).trimEnd());
-  pos += 5;
-  dataOut.select[i].selected = dataIn.substring(pos, pos + 1).trimEnd() === "1";
+  dataOut.select[i].properties = [
+    
+  ];
+  for (let j: number = 0; j < 1; ++j) {
+  dataOut.select[i].properties[j] =   {
+  
+    };
+  dataOut.select[i].properties[j].key = dataIn.substring(pos, pos + 1).trimEnd();
   pos += 1;
-  dataOut.select[i].dataValueType = dataIn.substring(pos, pos + 6).trimEnd();
-  pos += 6;
+  dataOut.select[i].properties[j].value = dataIn.substring(pos, pos + 25).trimEnd();
+  pos += 25;
+  }
   }
   dataOut.where = [
     
@@ -369,6 +378,8 @@ export function convertDataReqToObject(dataIn: string): DataReq {
   pos += 21;
   dataOut.where[i].operator = dataIn.substring(pos, pos + 11).trimEnd();
   pos += 11;
+  dataOut.where[i].values = dataIn.substring(pos, pos + 5).trimEnd();
+  pos += 5;
   }
   dataOut.sortBy = [
     
