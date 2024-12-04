@@ -49,7 +49,7 @@ datastructures:
       key:
         rpgName: key
         type: Character
-        length: 20
+        length: 40 
       alias:
         rpgName: alias
         type: Character
