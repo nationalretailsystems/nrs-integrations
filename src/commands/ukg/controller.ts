@@ -607,6 +607,6 @@ export const getData: ECCHandlerFunction = async function (reqkey, datax, ecc) {
     let responseData = result.data;
     nextReqKey = await ecc.sendEccResult('ECC0000', 'Success', nextReqKey);
     // logger.error('Call test1 failed');
-    return ecc.sendObjectToCaller(responseData, converterukgp.convertObjectToPunchRes, nextReqKey);
+    return ecc.sendObjectToCaller(responseData, converterdata.convertObjectToDataRes, nextReqKey);
     logger.error(nextReqKey);
 };

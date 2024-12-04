@@ -7,6 +7,7 @@ datastructures:
       id:
         type: Packed
         length: 4
+        default: 0
   dateRangeDS:
     subfields:
       endDate:
@@ -17,6 +18,7 @@ datastructures:
         rpgName: startdate
         type: Character
         length: 10
+        default: ''
   employeeSetDS:
     subfields:
       hyperfind:
@@ -31,6 +33,7 @@ datastructures:
         rpgName: view
         type: Packed
         length: 1
+        default: 0
       employeeSet:
         type: DataStruct
         dsName: employeeSetDS
@@ -40,20 +43,24 @@ datastructures:
         rpgName: key
         type: Character
         length: 1
+        default: ''
       value:
         rpgName: value
         type: Character
         length: 25
+        default: ''
   SelectDS:
     subfields:
       key:
         rpgName: key
         type: Character
-        length: 40 
+        length: 40
+        default: ''
       alias:
         rpgName: alias
         type: Character
         length: 21
+        default: ''
       properties:
         rpgName: properties
         type: DataStruct
@@ -65,94 +72,114 @@ datastructures:
         rpgName: key
         type: Character
         length: 40
+        default: ''
       alias:
         rpgName:  alias
         type: Character
         length: 21
+        default: ''
       operator:
         rpgName: operator
         type: Character
         length: 11
+        default: ''
       values:
         rpgName: values
         type: Character
         length: 5
+        default: ''
   SortByDS:
     subfields:
       key:
         rpgName: key
         type: Character
         length: 40
+        default: ''
       alias:
         rpgName: alias
         type: Character
         length: 21
+        default: ''
       sortDirection:
         rpgName: sortdir
         type: Character
         length: 3
+        default: ''
   metadataDS:
     subfields:
       numNodes:
         rpgName: numnodes
         type: Character
         length: 3
+        default: ''
       metadataKey:
         rpgName: metdtakey
         type: Character
         length: 36
+        default: ''
       cacheKey:
         rpgName: cachekey
         type: Character
         length: 36
+        default: ''
       currencyCode:
         rpgName: currcode
         type: Character
         length: 4
+        default: ''
       totalNodes:
         rpgName: ttlnodes
         type: Character
         length: 3
+        default: ''
       totalElements:
         rpgName: ttlelem
         type: Character
         length: 3
+        default: ''
   DataKeyDS:
     subfields:
       ROOT:
         rpgName: root
         type: Character
         length: 2
+        default: ''
   ChildKeyDS:
     subfields:
       TKTIMECARD_TRANSACTION:
         rpgName: tkttrans
         type: Character
         length: 22
+        default: ''
       TKPAYPERIOD:
         rpgName: tkpayper
         type: Character
         length: 5
+        default: ''
       PEOPLE:
         rpgName: people
         type: Character
         length: 5
+        default: ''
   EMPDS:
     subfields:
       id:
         rpgName: id
         type: Character
-        length: 5
+        length: 6
+        default: ''
   DAYDS:
     subfields:
       id:
         rpgName: id
         type: Character
         length: 10
+        default: ''
       qualifier:
         rpgName: qualifier
         type: Character
         length: 10
+        default: ''
   coreEntityKeyDS:
     subfields:
       EMP:
@@ -169,18 +196,22 @@ datastructures:
         rpgName: key
         type: Character
         length: 37
+        default: ''
       alias:
         rpgName: alias
         type: Character
         length: 21
+        default: ''
       rawValue:
         rpgName: rawvalue
         type: Character
         length: 19
+        default: ''
       value:
         rpgName: value
         type: Character
         length: 18
+        default: ''
   ChildrenDS:
     subfields:
       key:
@@ -200,6 +231,7 @@ datastructures:
         rpgName: rootent
         type: Character
         length: 22
+        default: ''
   dataDS:
     subfields:
       key:
@@ -219,6 +251,7 @@ datastructures:
         rpgName: rootent
         type: Character
         length: 4
+        default: ''
 formats:
   DataReq:
     recordType: request
