@@ -738,7 +738,7 @@ $(libdir)/qrpglesrc.file/ddputct.mbr $(libdir)/qrpglesrc.file/ddputct_h.mbr ../s
 
 $(libdir)/qrpglesrc.file/ukgdtard.mbr $(libdir)/qrpglesrc.file/ukgdtard_h.mbr ../src/interfaces/ukgdtard.ts: ukgdtard.yaml
 	npx ec-generate -f $<
-	cp ddputct.ts ../src/interfaces/ukgdtard.ts
+	cp ukgdtard.ts ../src/interfaces/ukgdtard.ts
 	system "CPYFRMSTMF FROMSTMF('ukgdtard.rpgle') TOMBR('$(libdir)/qrpglesrc.file/ukgdtard.mbr') MBROPT(*REPLACE)"
 	system "CPYFRMSTMF FROMSTMF('ukgdtard_h.rpgleinc') TOMBR('$(libdir)/qrpglesrc.file/ukgdtard_h.mbr') MBROPT(*REPLACE)"	
 
