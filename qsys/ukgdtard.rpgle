@@ -26,7 +26,7 @@
      DDataReqToBuf     PI
      DDataStruct                           LikeDS(DataReq)
      D                                     Const
-     DBuffer                       1109A
+     DBuffer                       1178A
 
       * Initialize to beginning of buffer
        BufPtr = %addr(Buffer);
@@ -53,8 +53,8 @@
        endfor;
        endfor;
        for i = 1 to 1;
-       %subst(CharBuf:1:31) = DataStruct.where(i).key;
-       BufPtr += 31;
+       %subst(CharBuf:1:40) = DataStruct.where(i).key;
+       BufPtr += 40;
        %subst(CharBuf:1:21) = DataStruct.where(i).alias;
        BufPtr += 21;
        %subst(CharBuf:1:11) = DataStruct.where(i).operator;
@@ -63,8 +63,8 @@
        BufPtr += 5;
        endfor;
        for i = 1 to 3;
-       %subst(CharBuf:1:20) = DataStruct.sortby(i).key;
-       BufPtr += 20;
+       %subst(CharBuf:1:40) = DataStruct.sortby(i).key;
+       BufPtr += 40;
        %subst(CharBuf:1:21) = DataStruct.sortby(i).alias;
        BufPtr += 21;
        %subst(CharBuf:1:3) = DataStruct.sortby(i).sortdir;

@@ -100,7 +100,7 @@ export interface SelectDS {
  */
 export interface WhereDS {
     /**
-     * @size 31 characters
+     * @size 40 characters
      */
     key: string,
     /**
@@ -122,7 +122,7 @@ export interface WhereDS {
  */
 export interface SortByDS {
     /**
-     * @size 20 characters
+     * @size 40 characters
      */
     key: string,
     /**
@@ -377,8 +377,8 @@ export function convertDataReqToObject(dataIn: string): DataReq {
   dataOut.where[i] =   {
   
     };
-  dataOut.where[i].key = dataIn.substring(pos, pos + 31).trimEnd();
-  pos += 31;
+  dataOut.where[i].key = dataIn.substring(pos, pos + 40).trimEnd();
+  pos += 40;
   dataOut.where[i].alias = dataIn.substring(pos, pos + 21).trimEnd();
   pos += 21;
   dataOut.where[i].operator = dataIn.substring(pos, pos + 11).trimEnd();
@@ -393,8 +393,8 @@ export function convertDataReqToObject(dataIn: string): DataReq {
   dataOut.sortBy[i] =   {
   
     };
-  dataOut.sortBy[i].key = dataIn.substring(pos, pos + 20).trimEnd();
-  pos += 20;
+  dataOut.sortBy[i].key = dataIn.substring(pos, pos + 40).trimEnd();
+  pos += 40;
   dataOut.sortBy[i].alias = dataIn.substring(pos, pos + 21).trimEnd();
   pos += 21;
   dataOut.sortBy[i].sortDirection = dataIn.substring(pos, pos + 3).trimEnd();
