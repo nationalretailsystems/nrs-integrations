@@ -85,7 +85,7 @@
      PBufToDataRes     B                   Export
 
      DBufToDataRes     PI
-     DBuffer                      51617A
+     DBuffer                      25867A
      DDataStruct                           LikeDS(DataRes)
 
       * Initialize to begining of buffer
@@ -112,7 +112,7 @@
        BufPtr += 10;
        DataStruct.data.coreentkey.day.qualifier = %subst(CharBuf:1:10);
        BufPtr += 10;
-       for i = 1 to 50;
+       for i = 1 to 25;
        DataStruct.data.children(i).key.tkttrans = %subst(CharBuf:1:22);
        BufPtr += 22;
        DataStruct.data.children(i).key.tkpayper = %subst(CharBuf:1:5);
