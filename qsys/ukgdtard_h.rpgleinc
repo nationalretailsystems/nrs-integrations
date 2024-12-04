@@ -106,7 +106,7 @@
       ************************************
      DEMPDS            DS                  Qualified
      D                                     Template
-     Did                              5A
+     Did                              6A
 
       ************************************
       * DAYDS data structure
@@ -183,9 +183,9 @@
 
       ************************************
       * DataRes data structure
-      * Record length: 51566
+      * Record length: 51617
       ************************************
-     DDataResLen       C                   51566
+     DDataResLen       C                   51617
      DDataRes          DS                  Qualified
      D                                     Template
      Dmetadata                             LikeDS(metadataDS)
@@ -195,5 +195,5 @@
       * Convert buffer to DataRes
       ************************************
      DBufToDataRes     PR
-     DBuffer                      51566A
+     DBuffer                      51617A
      DDataStruct                           LikeDS(DataRes)
