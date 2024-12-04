@@ -85,7 +85,7 @@
      PBufToDataRes     B                   Export
 
      DBufToDataRes     PI
-     DBuffer                      51566A
+     DBuffer                      51617A
      DDataStruct                           LikeDS(DataRes)
 
       * Initialize to begining of buffer
@@ -106,8 +106,8 @@
        BufPtr += 3;
        DataStruct.data.key.root = %subst(CharBuf:1:2);
        BufPtr += 2;
-       DataStruct.data.coreentkey.emp.id = %subst(CharBuf:1:5);
-       BufPtr += 5;
+       DataStruct.data.coreentkey.emp.id = %subst(CharBuf:1:6);
+       BufPtr += 6;
        DataStruct.data.coreentkey.day.id = %subst(CharBuf:1:10);
        BufPtr += 10;
        DataStruct.data.coreentkey.day.qualifier = %subst(CharBuf:1:10);
@@ -119,8 +119,8 @@
        BufPtr += 5;
        DataStruct.data.children(i).key.people = %subst(CharBuf:1:5);
        BufPtr += 5;
-       DataStruct.data.children(i).coreentkey.emp.id = %subst(CharBuf:1:5);
-       BufPtr += 5;
+       DataStruct.data.children(i).coreentkey.emp.id = %subst(CharBuf:1:6);
+       BufPtr += 6;
        DataStruct.data.children(i).coreentkey.day.id = %subst(CharBuf:1:10);
        BufPtr += 10;
        DataStruct.data.children(i).coreentkey.day.qualifier = %subst(CharBuf:1:10);
