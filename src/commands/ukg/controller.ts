@@ -16,6 +16,7 @@ import { getTokenUkg } from 'src/services/get-token';
 import { sanitizeValues } from 'src/services/safe-values';
 import { ImportExport } from 'aws-sdk';
 import { idText } from 'typescript';
+import _ from 'lodash';
 
 const logger = createLogger('commands/ukg');
 const { ukg } = config;
@@ -552,17 +553,32 @@ export const postPunchImport: ECCHandlerFunction = async function (reqkey, datax
 export const getData: ECCHandlerFunction = async function (reqkey, datax, ecc) {
     // Get parameters from incoming data buffer
     const reqFields = converterdata.convertDataReqToObject(datax);
-
+     
     logger.debug(`Received getHours request`, { reqkey, datax });
 
     // Call web service
     let result;
+    let response;
     let nextReqKey = reqkey;
-    // const jsonData = reqFields;
+    let myObj: any;
+    let selection: any;
+     for (myObj in reqFields) {
+        if (myObj === 'select') {
+      //  for (selection in myObj) {
+            for (let i = 0; i < reqFields.select.length; i++) {
+            if (reqFields.select[i].properties[0]?.key === '') {
+                delete (reqFields.select[i] as any).properties;
+                }
+             //   break;
+            }
+        // }
+     }
+    }
+    const jsonData = JSON.stringify(reqFields);
     try {
         logger.error('Requesting token');
         const token = await getTokenUkg();
-        result = await axiosInstance.get('/v1/commons/data/multi_read', {
+        result = await axiosInstance.post('/v1/commons/data/multi_read', reqFields, {
             headers: {
                 Authorization: token,
                 appkey: ukg.prd.appkey,

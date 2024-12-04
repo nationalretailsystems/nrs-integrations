@@ -26,7 +26,7 @@
      DDataReqToBuf     PI
      DDataStruct                           LikeDS(DataReq)
      D                                     Const
-     DBuffer                        909A
+     DBuffer                       1109A
 
       * Initialize to beginning of buffer
        BufPtr = %addr(Buffer);
@@ -41,8 +41,8 @@
        %subst(CharBuf:1:10) = DataStruct.from.employeeSet.dateRange.startdate;
        BufPtr += 10;
        for i = 1 to 10;
-       %subst(CharBuf:1:20) = DataStruct.select(i).key;
-       BufPtr += 20;
+       %subst(CharBuf:1:40) = DataStruct.select(i).key;
+       BufPtr += 40;
        %subst(CharBuf:1:21) = DataStruct.select(i).alias;
        BufPtr += 21;
        for k = 1 to 1;

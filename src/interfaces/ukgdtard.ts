@@ -83,7 +83,7 @@ export interface PropDS {
  */
 export interface SelectDS {
     /**
-     * @size 20 characters
+     * @size 40 characters
      */
     key: string,
     /**
@@ -353,8 +353,8 @@ export function convertDataReqToObject(dataIn: string): DataReq {
   dataOut.select[i] =   {
   
     };
-  dataOut.select[i].key = dataIn.substring(pos, pos + 20).trimEnd();
-  pos += 20;
+  dataOut.select[i].key = dataIn.substring(pos, pos + 40).trimEnd();
+  pos += 40;
   dataOut.select[i].alias = dataIn.substring(pos, pos + 21).trimEnd();
   pos += 21;
   dataOut.select[i].properties = [

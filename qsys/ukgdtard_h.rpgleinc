@@ -49,7 +49,7 @@
       ************************************
      DSelectDS         DS                  Qualified
      D                                     Template
-     Dkey                            20A
+     Dkey                            40A
      Dalias                          21A
      Dproperties                           LikeDS(PropDS)
      D                                     Dim(1)
@@ -158,9 +158,9 @@
 
       ************************************
       * DataReq data structure
-      * Record length: 909
+      * Record length: 1109
       ************************************
-     DDataReqLen       C                   909
+     DDataReqLen       C                   1109
      DDataReq          DS                  Qualified
      D                                     Template
      Dfrom                                 LikeDS(fromDS)
@@ -179,7 +179,7 @@
      DDataReqToBuf     PR
      DDataStruct                           LikeDS(DataReq)
      D                                     Const
-     DBuffer                        909A
+     DBuffer                       1109A
 
       ************************************
       * DataRes data structure
