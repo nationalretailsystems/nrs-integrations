@@ -246,7 +246,7 @@ datastructures:
         rpgName: children   
         type: DataStruct
         dsName: ChildrenDS
-        dim: 50
+        dim: 25
       rootEntity:
         rpgName: rootent
         type: Character

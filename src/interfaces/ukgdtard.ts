@@ -469,7 +469,7 @@ export function convertObjectToDataRes(dataIn: DataRes): string {
   dataOut += dataIn?.data?.coreEntityKey?.EMP?.id?.substring(0, 6)?.padEnd(6) ?? "''".substring(0, 6).padEnd(6);
   dataOut += dataIn?.data?.coreEntityKey?.DAY?.id?.substring(0, 10)?.padEnd(10) ?? "''".substring(0, 10).padEnd(10);
   dataOut += dataIn?.data?.coreEntityKey?.DAY?.qualifier?.substring(0, 10)?.padEnd(10) ?? "''".substring(0, 10).padEnd(10);
-  for (let j: number = 0; j < 50; ++j) {
+  for (let j: number = 0; j < 25; ++j) {
   dataOut += dataIn?.data?.children[j]?.key?.TKTIMECARD_TRANSACTION?.substring(0, 22)?.padEnd(22) ?? "''".substring(0, 22).padEnd(22);
   dataOut += dataIn?.data?.children[j]?.key?.TKPAYPERIOD?.substring(0, 5)?.padEnd(5) ?? "''".substring(0, 5).padEnd(5);
   dataOut += dataIn?.data?.children[j]?.key?.PEOPLE?.substring(0, 5)?.padEnd(5) ?? "''".substring(0, 5).padEnd(5);

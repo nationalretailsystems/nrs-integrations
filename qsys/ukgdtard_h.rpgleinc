@@ -153,7 +153,7 @@
      Dkey                                  LikeDS(DataKeyDS)
      Dcoreentkey                           LikeDS(coreEntityKeyDS)
      Dchildren                             LikeDS(ChildrenDS)
-     D                                     Dim(50)
+     D                                     Dim(25)
      Drootent                         4A
 
       ************************************
@@ -183,9 +183,9 @@
 
       ************************************
       * DataRes data structure
-      * Record length: 51617
+      * Record length: 25867
       ************************************
-     DDataResLen       C                   51617
+     DDataResLen       C                   25867
      DDataRes          DS                  Qualified
      D                                     Template
      Dmetadata                             LikeDS(metadataDS)
@@ -195,5 +195,5 @@
       * Convert buffer to DataRes
       ************************************
      DBufToDataRes     PR
-     DBuffer                      51617A
+     DBuffer                      25867A
      DDataStruct                           LikeDS(DataRes)
