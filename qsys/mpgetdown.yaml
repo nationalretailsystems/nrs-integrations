@@ -29,9 +29,8 @@ datastructures:
         type: Integer
         length: 10
         default: 0
-formats:
-  ResDown:
-    recordType: response
+  downTimeDS:
+    qualified: true
     subfields:
       downTimeLogKey:
         rpgName: dtlogkey2
@@ -73,6 +72,15 @@ formats:
         type: DataStruct
         dsName: downitemsDS
         dim: 5      
+formats:
+  ResDown:
+    recordType: response
+    subfields:
+      downTime:
+        rpgName: downtime
+        type: DataStruct
+        dsName: downTimeDS
+        dim: 100
   ReqDown:
     recordType: request
     subfields:
