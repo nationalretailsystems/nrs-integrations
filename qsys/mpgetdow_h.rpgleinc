@@ -16,6 +16,21 @@
      Ddtitemkey                      10I 0
 
       ************************************
+      * downTimeDS data structure
+      ************************************
+     DdownTimeDS       DS                  Qualified
+     D                                     Template
+     Ddtlogkey2                      10I 0
+     Dassetkey                       10I 0
+     Ddtorigin                       10I 0
+     Dnote                          100A
+     Dtimedown                       24A
+     Dtimeup                         24A
+     Dtotaldt                        10I 0
+     Ddtitems                              LikeDS(downitemsDS)
+     D                                     Dim(5)
+
+      ************************************
       * ReqDown data structure
       * Record length: 6
       ************************************
@@ -34,24 +49,17 @@
 
       ************************************
       * ResDown data structure
-      * Record length: 607
+      * Record length: 60700
       ************************************
-     DResDownLen       C                   607
+     DResDownLen       C                   60700
      DResDown          DS                  Qualified
      D                                     Template
-     Ddtlogkey2                      10I 0
-     Dassetkey                       10I 0
-     Ddtorigin                       10I 0
-     Dnote                          100A
-     Dtimedown                       24A
-     Dtimeup                         24A
-     Dtotaldt                        10I 0
-     Ddtitems                              LikeDS(downitemsDS)
-     D                                     Dim(5)
+     Ddowntime                             LikeDS(downTimeDS)
+     D                                     Dim(100)
 
       ************************************
       * Convert buffer to ResDown
       ************************************
      DBufToResDown     PR
-     DBuffer                        607A
+     DBuffer                      60700A
      DDataStruct                           LikeDS(ResDown)

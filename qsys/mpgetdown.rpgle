@@ -45,36 +45,38 @@
      PBufToResDown     B                   Export
 
      DBufToResDown     PI
-     DBuffer                        607A
+     DBuffer                      60700A
      DDataStruct                           LikeDS(ResDown)
 
       * Initialize to begining of buffer
        BufPtr = %addr(Buffer);
 
       * Read fields from buffer into DS
-       DataStruct.dtlogkey2 = %int(%subst(CharBuf:1:11));
+       for i = 1 to 100;
+       DataStruct.downtime(i).dtlogkey2 = %int(%subst(CharBuf:1:11));
        BufPtr += 11;
-       DataStruct.assetkey = %int(%subst(CharBuf:1:11));
+       DataStruct.downtime(i).assetkey = %int(%subst(CharBuf:1:11));
        BufPtr += 11;
-       DataStruct.dtorigin = %int(%subst(CharBuf:1:11));
+       DataStruct.downtime(i).dtorigin = %int(%subst(CharBuf:1:11));
        BufPtr += 11;
-       DataStruct.note = %subst(CharBuf:1:100);
+       DataStruct.downtime(i).note = %subst(CharBuf:1:100);
        BufPtr += 100;
-       DataStruct.timedown = %subst(CharBuf:1:24);
+       DataStruct.downtime(i).timedown = %subst(CharBuf:1:24);
        BufPtr += 24;
-       DataStruct.timeup = %subst(CharBuf:1:24);
+       DataStruct.downtime(i).timeup = %subst(CharBuf:1:24);
        BufPtr += 24;
-       DataStruct.totaldt = %int(%subst(CharBuf:1:11));
+       DataStruct.downtime(i).totaldt = %int(%subst(CharBuf:1:11));
        BufPtr += 11;
-       for i = 1 to 5;
-       DataStruct.dtitems(i).contact = %subst(CharBuf:1:50);
+       for j = 1 to 5;
+       DataStruct.downtime(i).dtitems(j).contact = %subst(CharBuf:1:50);
        BufPtr += 50;
-       DataStruct.dtitems(i).contactkey = %int(%subst(CharBuf:1:11));
+       DataStruct.downtime(i).dtitems(j).contactkey = %int(%subst(CharBuf:1:11));
        BufPtr += 11;
-       DataStruct.dtitems(i).dtlogkey = %int(%subst(CharBuf:1:11));
+       DataStruct.downtime(i).dtitems(j).dtlogkey = %int(%subst(CharBuf:1:11));
        BufPtr += 11;
-       DataStruct.dtitems(i).dtitemkey = %int(%subst(CharBuf:1:11));
+       DataStruct.downtime(i).dtitems(j).dtitemkey = %int(%subst(CharBuf:1:11));
        BufPtr += 11;
+       endfor;
        endfor;
 
        return ;

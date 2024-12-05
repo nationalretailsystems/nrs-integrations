@@ -750,8 +750,9 @@ export const getDowntime: ECCHandlerFunction = async (reqkey, data, ecc) => {
         result = await axiosInstance.get('/Assets/DownTimeEvents', {
             params: {
                 $skip: reqFields.skiprecs,
-                downTimeDate: '2024-01-01',
-                $filter: 'timeUp eq null'
+                downAssetsOnly: true
+            //    downTimeDate: '2024-01-01',
+            //    $filter: 'timeUp eq null'
             },
             headers: {
                 accept: 'application/json',
