@@ -778,7 +778,8 @@ export const getDowntime: ECCHandlerFunction = async (reqkey, data, ecc) => {
     try {
         // X let responseData = result.data.map((record: any) => sanitizeValues(record, safeValues));
         let responseData = result.data;
-
+        responseData = { downTime: result.data };
+        // sanitizeValues(responseData, safeValues2);
         logger.debug('ECC0000', 'Success', nextReqKey);
         nextReqKey = await ecc.sendEccResult('ECC0000', 'Success', nextReqKey);
         nextReqKey = await ecc.sendObjectsToCaller(responseData, converterdown.convertObjectToResDown, nextReqKey);

@@ -49,17 +49,17 @@
 
       ************************************
       * ResDown data structure
-      * Record length: 60700
+      * Record length: 30350
       ************************************
-     DResDownLen       C                   60700
+     DResDownLen       C                   30350
      DResDown          DS                  Qualified
      D                                     Template
      Ddowntime                             LikeDS(downTimeDS)
-     D                                     Dim(100)
+     D                                     Dim(50)
 
       ************************************
       * Convert buffer to ResDown
       ************************************
      DBufToResDown     PR
-     DBuffer                      60700A
+     DBuffer                      30350A
      DDataStruct                           LikeDS(ResDown)

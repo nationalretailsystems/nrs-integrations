@@ -1,4 +1,4 @@
-     H Nomain EXPROPTS(*ALWBLANKNUM)
+     H Nomain
 
       ************************************
       * Module: ukgpunches
