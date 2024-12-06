@@ -45,14 +45,14 @@
      PBufToResDown     B                   Export
 
      DBufToResDown     PI
-     DBuffer                      60700A
+     DBuffer                      30350A
      DDataStruct                           LikeDS(ResDown)
 
       * Initialize to begining of buffer
        BufPtr = %addr(Buffer);
 
       * Read fields from buffer into DS
-       for i = 1 to 100;
+       for i = 1 to 50;
        DataStruct.downtime(i).dtlogkey2 = %int(%subst(CharBuf:1:11));
        BufPtr += 11;
        DataStruct.downtime(i).assetkey = %int(%subst(CharBuf:1:11));
