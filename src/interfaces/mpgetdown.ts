@@ -126,7 +126,7 @@ export interface ResDown {
 export function convertObjectToResDown(dataIn: ResDown): string {
   let dataOut: string = "";
 
-  for (let i: number = 0; i < 100; ++i) {
+  for (let i: number = 0; i < 50; ++i) {
   dataOut += dataIn?.downTime[i]?.downTimeLogKey?.toFixed()?.substring(0, 11)?.padEnd(11) ?? "0".substring(0, 11).padEnd(11);
   dataOut += dataIn?.downTime[i]?.assetKey?.toFixed()?.substring(0, 11)?.padEnd(11) ?? "0".substring(0, 11).padEnd(11);
   dataOut += dataIn?.downTime[i]?.downTimeOrigin?.toFixed()?.substring(0, 11)?.padEnd(11) ?? "0".substring(0, 11).padEnd(11);

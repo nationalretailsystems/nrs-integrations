@@ -10,7 +10,8 @@
       ************************************
      DcommentsNotesDS  DS                  Qualified
      D                                     Template
-     DcommentsNotes                   5A
+     DcommentsNote...
+     Ds                               5A
 
       ************************************
       * employeeDS data structure
@@ -57,7 +58,8 @@
      D                                     Template
      Did                              5I 0
      Dqualifier                      15A
-     DtypeOverrideId                  5I 0
+     DtypeOverride...
+     DId                              5I 0
      Ddescription                    15A
      Dname                           15A
 
@@ -123,15 +125,18 @@
      DExceptionDS      DS                  Qualified
      D                                     Template
      Demployee                             LikeDS(employeeDS)
-     DstartDateTime                  19A
+     DstartDateTim...
+     De                              19A
      DendDateTime                    19A
      DapplyDate                      10A
      Did                             10I 0
      DendTimeZone                          LikeDS(endTimeZoneDS)
-     DexceptionType                        LikeDS(exceptionTypeDS)
+     DexceptionTyp...
+     De                                    LikeDS(exceptionTypeDS)
      DorgJob                               LikeDS(orgJobDS)
      Doverlimithrs                    5P 2
-     DstartTimeZone                        LikeDS(startTimeZoneDS)
+     DstartTimeZon...
+     De                                    LikeDS(startTimeZoneDS)
      Dviolationhrs                    5P 2
      DworkRule                             LikeDS(workRuleDS)
      DpunchEvent                           LikeDS(punchEventDS)
@@ -140,7 +145,8 @@
      Dmissingtmsts                         LikeDS(missTimeStsDS)
      Dtransfer                         N
      DeventDate                      10A
-     DstartException                   N
+     DstartExcepti...
+     Don                               N
      DendException                     N
      Dreviewed                         N
 
@@ -152,7 +158,8 @@
      Did                             10I 0
      Demployee                             LikeDS(employeeDS)
      DpunchDtm                       19A
-     DroundedPunchDtm                19A
+     DroundedPunch...
+     DDtm                            19A
      DtimeZone                             LikeDS(timeZoneDS)
      DenteredOnDtm                   19A
      DhasComments                      N

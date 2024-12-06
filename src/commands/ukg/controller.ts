@@ -220,7 +220,7 @@ export const getTotals: ECCHandlerFunction = async function (reqkey, datax, ecc)
                 select: 'TOTALS'
             },
             /* eslint-enable */
-
+            // comment
             headers: {
                 Authorization: token,
                 appkey: ukg.prd.appkey,
