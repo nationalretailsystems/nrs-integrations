@@ -1,0 +1,1034 @@
+{
+    "drivers": [
+       "VANDI"
+    ],
+    "id": 2860184342400400,
+    "external_id": "7368401",
+    "external_id_alias": "7368401",
+    "preplan_external_id": null,
+    "status": "active",
+    "sequence": "0",
+    "shipment_details": {
+       "hazmat": false,
+       "high_value": false,
+       "temperature_controlled": false,
+       "total_distance": {
+          "value": "0",
+          "unit_of_measure": "mi"
+       },
+       "line_of_business": "flat",
+       "master_bill_of_lading": null,
+       "shipping_documents": [
+          {
+             "type": "bill of lading",
+             "value": "1002027062"
+          },
+          {
+             "type": "weight",
+             "value": "18836"
+          },
+          {
+             "type": "pieces",
+             "value": "5240"
+          },
+          {
+             "type": "PickUp trailer",
+             "value": "166085"
+          }
+       ],
+       "truck_profile": null
+    },
+    "received_at": "2025-01-23T09:34:07+00:00",
+    "reviewed_at": "2025-01-23T12:21:53+00:00",
+    "created_at": "2025-01-23T09:33:54+00:00",
+    "updated_at": "2025-01-23T16:52:19+00:00",
+    "modified_at": null,
+    "remarks": [
+       {
+          "label": "Shipper",
+          "value": "BEST BUY 471, MOUNT VERNON,NY",
+          "order": 1
+       },
+       {
+          "label": "Consignee",
+          "value": "BEST BUY 781, NICHOLS,NY",
+          "order": 2
+       },
+       {
+          "label": "Current Trailer",
+          "value": "166085",
+          "order": 3
+       }
+    ],
+    "prompts": {
+       "eta": false,
+       "fuel": false,
+       "eta_change_available": false,
+       "update_fuel_available": false
+    },
+    "skip_reasons": [],
+    "bypass_reasons": [],
+    "reorder_reasons": [],
+    "meta": [
+       {
+          "asset": {
+             "external_id": "255997",
+             "type": "power_unit",
+             "vin": "3AKBHLDVXKSLG6695"
+          },
+          "fuel_level": 63.2,
+          "location": {
+             "latitude": 40.9023848,
+             "longitude": -73.81920460000002
+          },
+          "odometer": 518864.08,
+          "timestamp": "2025-01-23T12:21:53+00:00"
+       },
+       {
+          "asset": {
+             "external_id": "255997",
+             "type": "power_unit",
+             "vin": "3AKBHLDVXKSLG6695"
+          },
+          "fuel_level": 63.2,
+          "location": {
+             "latitude": 40.9023828,
+             "longitude": -73.8192061
+          },
+          "odometer": 518864.08,
+          "timestamp": "2025-01-23T12:22:02+00:00"
+       },
+       {
+          "asset": {
+             "external_id": "255997",
+             "type": "power_unit",
+             "vin": "3AKBHLDVXKSLG6695"
+          },
+          "fuel_level": 62.4,
+          "location": {
+             "latitude": 40.902374,
+             "longitude": -73.8192078
+          },
+          "odometer": 518864.08,
+          "timestamp": "2025-01-23T12:52:10+00:00"
+       },
+       {
+          "asset": {
+             "external_id": "255997",
+             "type": "power_unit",
+             "vin": "3AKBHLDVXKSLG6695"
+          },
+          "fuel_level": 59.2,
+          "location": {
+             "latitude": 40.9807896,
+             "longitude": -73.8278806
+          },
+          "odometer": 518877.23,
+          "timestamp": "2025-01-23T13:54:20+00:00"
+       },
+       {
+          "asset": {
+             "external_id": "255997",
+             "type": "power_unit",
+             "vin": "3AKBHLDVXKSLG6695"
+          },
+          "fuel_level": 60.8,
+          "location": {
+             "latitude": 40.9809725,
+             "longitude": -73.8276861
+          },
+          "odometer": 518877.25,
+          "timestamp": "2025-01-23T13:56:15+00:00"
+       },
+       {
+          "asset": {
+             "external_id": "255997",
+             "type": "power_unit",
+             "vin": "3AKBHLDVXKSLG6695"
+          },
+          "fuel_level": 61.6,
+          "location": {
+             "latitude": 40.9809125,
+             "longitude": -73.8276696
+          },
+          "odometer": 518877.25,
+          "timestamp": "2025-01-23T14:44:34+00:00"
+       },
+       {
+          "asset": {
+             "external_id": "255997",
+             "type": "power_unit",
+             "vin": "3AKBHLDVXKSLG6695"
+          },
+          "fuel_level": 53.2,
+          "location": {
+             "latitude": 41.31056,
+             "longitude": -73.8709428
+          },
+          "odometer": 518920.31,
+          "timestamp": "2025-01-23T16:09:15+00:00"
+       },
+       {
+          "asset": {
+             "external_id": "255997",
+             "type": "power_unit",
+             "vin": "3AKBHLDVXKSLG6695"
+          },
+          "fuel_level": 54,
+          "location": {
+             "latitude": 41.3105553,
+             "longitude": -73.8710003
+          },
+          "odometer": 518920.32,
+          "timestamp": "2025-01-23T16:10:03+00:00"
+       },
+       {
+          "asset": {
+             "external_id": "255997",
+             "type": "power_unit",
+             "vin": "3AKBHLDVXKSLG6695"
+          },
+          "fuel_level": 56,
+          "location": {
+             "latitude": 41.3105811,
+             "longitude": -73.8710366
+          },
+          "odometer": 518920.32,
+          "timestamp": "2025-01-23T16:52:19+00:00"
+       }
+    ],
+    "locations": [
+       {
+          "id": 2860184342700088,
+          "external_id": "7368401-BB471-1",
+          "email": null,
+          "type": "job",
+          "name": "BEST BUY 471",
+          "address": "555 E SANFORD BLVD",
+          "city": "MOUNT VERNON",
+          "state": "NY",
+          "country_code": "US",
+          "postal_code": "10550",
+          "postal_splc": null,
+          "latitude": 40.901699,
+          "longitude": -73.819474,
+          "time_zone": "US/Eastern",
+          "open_hours": null,
+          "external_data": null,
+          "is_inventory_location": false,
+          "created_at": "2025-01-23T09:33:54+00:00",
+          "updated_at": "2025-01-23T09:33:54+00:00"
+       },
+       {
+          "id": 2860184342800499,
+          "external_id": "7368401-BB374-2",
+          "email": null,
+          "type": "job",
+          "name": "BEST BUY 374",
+          "address": "2478 CENTRAL PARK AV",
+          "city": "YONKERS",
+          "state": "NY",
+          "country_code": "US",
+          "postal_code": "10710",
+          "postal_splc": null,
+          "latitude": 40.981351,
+          "longitude": -73.829167,
+          "time_zone": "US/Eastern",
+          "open_hours": null,
+          "external_data": null,
+          "is_inventory_location": false,
+          "created_at": "2025-01-23T09:33:54+00:00",
+          "updated_at": "2025-01-23T09:33:54+00:00"
+       },
+       {
+          "id": 2860184342900884,
+          "external_id": "7368401-BB1029-3",
+          "email": null,
+          "type": "job",
+          "name": "BEST BUY 1029",
+          "address": "3105 E MAIN STREET",
+          "city": "MOHEGAN LAKE",
+          "state": "NY",
+          "country_code": "US",
+          "postal_code": "10547",
+          "postal_splc": null,
+          "latitude": 41.310725,
+          "longitude": -73.871256,
+          "time_zone": "US/Eastern",
+          "open_hours": null,
+          "external_data": null,
+          "is_inventory_location": false,
+          "created_at": "2025-01-23T09:33:54+00:00",
+          "updated_at": "2025-01-23T09:33:54+00:00"
+       },
+       {
+          "id": 2860184343100253,
+          "external_id": "7368401-BB781-4",
+          "email": null,
+          "type": "job",
+          "name": "BEST BUY 781",
+          "address": "455 STANTON HILL ROAD",
+          "city": "NICHOLS",
+          "state": "NY",
+          "country_code": "US",
+          "postal_code": "13812",
+          "postal_splc": null,
+          "latitude": 42.063636,
+          "longitude": -76.32076,
+          "time_zone": "US/Eastern",
+          "open_hours": null,
+          "external_data": null,
+          "is_inventory_location": false,
+          "created_at": "2025-01-23T09:33:54+00:00",
+          "updated_at": "2025-01-23T09:33:54+00:00"
+       }
+    ],
+    "customers": [],
+    "commodities": [],
+    "external_data": [
+       {
+          "label": "Trailers",
+          "value": null,
+          "order": 1,
+          "isLabel": true
+       },
+       {
+          "label": "Current Trailer",
+          "value": "166085",
+          "order": 2,
+          "isLabel": false
+       },
+       {
+          "label": "Shipping Documents",
+          "value": null,
+          "order": 3,
+          "isLabel": true
+       },
+       {
+          "label": "Bill Of Lading",
+          "value": "1002027062",
+          "order": 4,
+          "isLabel": false
+       }
+    ],
+    "steps": [
+       {
+          "id": 2860184343200746,
+          "external_id": "7368401-BB471-1-1",
+          "name": "BEST BUY 471",
+          "is_disabled": false,
+          "is_skippable": false,
+          "is_skipped": false,
+          "skip_reason": null,
+          "is_bypassable": false,
+          "is_bypassed": false,
+          "bypass_reason": null,
+          "is_reorderable": false,
+          "reorder_reason": null,
+          "completed": true,
+          "completed_at": "2025-01-23T12:52:10+00:00",
+          "type": "DROP",
+          "order": 1,
+          "location_external_id": "7368401-BB471-1",
+          "route_leg_external_id": null,
+          "customer_external_id": null,
+          "appointment": {
+             "start_time": "2025-01-24T00:00:00+00:00",
+             "ready_time": null,
+             "late_time": null,
+             "end_time": null
+          },
+          "eta": null,
+          "created_at": "2025-01-23T09:33:54+00:00",
+          "updated_at": "2025-01-23T12:52:10+00:00",
+          "external_data": [],
+          "remarks": [],
+          "tasks": [
+             {
+                "id": 2860184343300984,
+                "external_id": "7368401-1",
+                "name": "008 Arrival at Stop",
+                "order": 1,
+                "type": "008 Arrival at Stop",
+                "completed": true,
+                "completed_at": "2025-01-23T12:14:21+00:00",
+                "completed_by": "VANDI",
+                "completion_type": "geofence_triggered",
+                "created_at": "2025-01-23T09:33:54+00:00",
+                "updated_at": "2025-01-23T12:14:25+00:00",
+                "external_data": {
+                   "is_prompt_repeats": false,
+                   "is_allow_repeats": false,
+                   "is_required": true,
+                   "geofence": {
+                      "circle": {
+                         "center": {
+                            "latitude": 40.901699,
+                            "longitude": -73.819474
+                         },
+                         "radius": 250
+                      },
+                      "delay": 300,
+                      "auto_complete": true,
+                      "trigger_by": "ENTRY",
+                      "message": "YOU HAVE ARRIVED!"
+                   }
+                },
+                "remarks": [],
+                "fields": {
+                   "Order#": "7368401",
+                   "Tyepe": "P",
+                   "PCS": "5240",
+                   "WGT": "18836",
+                   "TRIP": "2826724",
+                   "Comment": null,
+                   "DSP": "0",
+                   "Unit": "255997",
+                   "hiddenLatitude": "40.9023715",
+                   "hiddenLongitude": "-73.8189943",
+                   "locname": "7368401-BB471-1",
+                   "address": "555 E SANFORD BLVD",
+                   "city": "MOUNT VERNON",
+                   "state": "NY",
+                   "zipcode": "10550",
+                   "stopkey": "22312750",
+                   "stopseq": "15",
+                   "user_id": 2503577094600412
+                }
+             },
+             {
+                "id": 2860184343400490,
+                "external_id": "7368401-2",
+                "name": "009 Start to Load or Unload",
+                "order": 2,
+                "type": "009 Start to Load or Unload",
+                "completed": true,
+                "completed_at": "2025-01-23T12:22:00+00:00",
+                "completed_by": "VANDI",
+                "completion_type": "driver",
+                "created_at": "2025-01-23T09:33:54+00:00",
+                "updated_at": "2025-01-23T12:22:02+00:00",
+                "external_data": {
+                   "is_prompt_repeats": false,
+                   "is_allow_repeats": false,
+                   "is_required": true
+                },
+                "remarks": [],
+                "fields": {
+                   "DropTrailer": "Yes",
+                   "NewTrailerID": null,
+                   "Customer": "BEST BUY 471",
+                   "Order#": "7368401",
+                   "Tyepe": "D",
+                   "PCS": "5240",
+                   "WGT": "18836",
+                   "TRIP": "2826724",
+                   "Comment": null,
+                   "DSP": "0",
+                   "Unit": "255997",
+                   "hiddenLatitude": "40.9023828",
+                   "hiddenLongitude": "-73.8192061",
+                   "locname": "7368401-BB471-1",
+                   "stopkey": "22312750",
+                   "stopseq": "15",
+                   "reference": "1002027062",
+                   "user_id": 2503577094600412
+                }
+             },
+             {
+                "id": 2860184343400981,
+                "external_id": "7368401-3",
+                "name": "010 Depart Stop",
+                "order": 3,
+                "type": "010 Depart Stop",
+                "completed": true,
+                "completed_at": "2025-01-23T12:52:08+00:00",
+                "completed_by": "VANDI",
+                "completion_type": "driver",
+                "created_at": "2025-01-23T09:33:54+00:00",
+                "updated_at": "2025-01-23T12:52:10+00:00",
+                "external_data": {
+                   "is_prompt_repeats": false,
+                   "is_allow_repeats": false,
+                   "is_required": true,
+                   "geofence": {
+                      "circle": {
+                         "center": {
+                            "latitude": 40.901699,
+                            "longitude": -73.819474
+                         },
+                         "radius": 250
+                      },
+                      "delay": 300,
+                      "auto_complete": false,
+                      "trigger_by": "EXIT",
+                      "message": "YOU LEFT THE LOCATION!"
+                   }
+                },
+                "remarks": [],
+                "fields": {
+                   "Order#": "7368401",
+                   "Tyepe": "D",
+                   "New Trailer 1": {
+                      "TRL1": "166085"
+                   },
+                   "Trailer 1 Again": {
+                      "TRL1_2": "166085"
+                   },
+                   "TRL1Confirm": false,
+                   "Trailer2_confirm": "No",
+                   "Problem": false,
+                   "Comment": null,
+                   "TRIP": "2826724",
+                   "stopkey": "22312750",
+                   "DISP#": "0",
+                   "Unit": "255997",
+                   "hiddenLatitude": "40.902374",
+                   "hiddenLongitude": "-73.8192078",
+                   "locname": "7368401-BB471-1",
+                   "stopseq": "15",
+                   "stoptype": "DROP",
+                   "user_id": 2503577094600412
+                }
+             }
+          ],
+          "commodities": []
+       },
+       {
+          "id": 2860184343500524,
+          "external_id": "7368401-BB374-2-2",
+          "name": "BEST BUY 374",
+          "is_disabled": false,
+          "is_skippable": false,
+          "is_skipped": false,
+          "skip_reason": null,
+          "is_bypassable": false,
+          "is_bypassed": false,
+          "bypass_reason": null,
+          "is_reorderable": false,
+          "reorder_reason": null,
+          "completed": true,
+          "completed_at": "2025-01-23T14:44:34+00:00",
+          "type": "DROP",
+          "order": 2,
+          "location_external_id": "7368401-BB374-2",
+          "route_leg_external_id": null,
+          "customer_external_id": null,
+          "appointment": {
+             "start_time": "2025-01-24T00:00:00+00:00",
+             "ready_time": null,
+             "late_time": null,
+             "end_time": null
+          },
+          "eta": null,
+          "created_at": "2025-01-23T09:33:54+00:00",
+          "updated_at": "2025-01-23T14:44:34+00:00",
+          "external_data": [],
+          "remarks": [],
+          "tasks": [
+             {
+                "id": 2860184343600408,
+                "external_id": "7368401-1",
+                "name": "008 Arrival at Stop",
+                "order": 1,
+                "type": "008 Arrival at Stop",
+                "completed": true,
+                "completed_at": "2025-01-23T13:54:15+00:00",
+                "completed_by": "VANDI",
+                "completion_type": "geofence_triggered",
+                "created_at": "2025-01-23T09:33:54+00:00",
+                "updated_at": "2025-01-23T13:54:20+00:00",
+                "external_data": {
+                   "is_prompt_repeats": false,
+                   "is_allow_repeats": false,
+                   "is_required": true,
+                   "geofence": {
+                      "circle": {
+                         "center": {
+                            "latitude": 40.981351,
+                            "longitude": -73.829167
+                         },
+                         "radius": 250
+                      },
+                      "delay": 300,
+                      "auto_complete": true,
+                      "trigger_by": "ENTRY",
+                      "message": "YOU HAVE ARRIVED!"
+                   }
+                },
+                "remarks": [],
+                "fields": {
+                   "Order#": "7368401",
+                   "Tyepe": "P",
+                   "PCS": "5240",
+                   "WGT": "18836",
+                   "TRIP": "2826724",
+                   "Comment": null,
+                   "DSP": "0",
+                   "Unit": "255997",
+                   "hiddenLatitude": "40.9807876",
+                   "hiddenLongitude": "-73.8278821",
+                   "locname": "7368401-BB374-2",
+                   "address": "2478 CENTRAL PARK AV",
+                   "city": "YONKERS",
+                   "state": "NY",
+                   "zipcode": "10710",
+                   "stopkey": "22312751",
+                   "stopseq": "20",
+                   "user_id": 2503577094600412
+                }
+             },
+             {
+                "id": 2860184343600874,
+                "external_id": "7368401-2",
+                "name": "009 Start to Load or Unload",
+                "order": 2,
+                "type": "009 Start to Load or Unload",
+                "completed": true,
+                "completed_at": "2025-01-23T13:56:13+00:00",
+                "completed_by": "VANDI",
+                "completion_type": "driver",
+                "created_at": "2025-01-23T09:33:54+00:00",
+                "updated_at": "2025-01-23T13:56:15+00:00",
+                "external_data": {
+                   "is_prompt_repeats": false,
+                   "is_allow_repeats": false,
+                   "is_required": true
+                },
+                "remarks": [],
+                "fields": {
+                   "DropTrailer": "Yes",
+                   "NewTrailerID": null,
+                   "Customer": "BEST BUY 374",
+                   "Order#": "7368401",
+                   "Tyepe": "D",
+                   "PCS": "5240",
+                   "WGT": "18836",
+                   "TRIP": "2826724",
+                   "Comment": null,
+                   "DSP": "0",
+                   "Unit": "255997",
+                   "hiddenLatitude": "40.9809725",
+                   "hiddenLongitude": "-73.8276861",
+                   "locname": "7368401-BB374-2",
+                   "stopkey": "22312751",
+                   "stopseq": "20",
+                   "reference": "1002027062",
+                   "user_id": 2503577094600412
+                }
+             },
+             {
+                "id": 2860184343700381,
+                "external_id": "7368401-3",
+                "name": "010 Depart Stop",
+                "order": 3,
+                "type": "010 Depart Stop",
+                "completed": true,
+                "completed_at": "2025-01-23T14:44:33+00:00",
+                "completed_by": "VANDI",
+                "completion_type": "driver",
+                "created_at": "2025-01-23T09:33:54+00:00",
+                "updated_at": "2025-01-23T14:44:34+00:00",
+                "external_data": {
+                   "is_prompt_repeats": false,
+                   "is_allow_repeats": false,
+                   "is_required": true,
+                   "geofence": {
+                      "circle": {
+                         "center": {
+                            "latitude": 40.981351,
+                            "longitude": -73.829167
+                         },
+                         "radius": 250
+                      },
+                      "delay": 300,
+                      "auto_complete": false,
+                      "trigger_by": "EXIT",
+                      "message": "YOU LEFT THE LOCATION!"
+                   }
+                },
+                "remarks": [],
+                "fields": {
+                   "Order#": "7368401",
+                   "Tyepe": "D",
+                   "New Trailer 1": {
+                      "TRL1": "166085"
+                   },
+                   "Trailer 1 Again": {
+                      "TRL1_2": "166085"
+                   },
+                   "TRL1Confirm": false,
+                   "Trailer2_confirm": "No",
+                   "Problem": false,
+                   "Comment": null,
+                   "TRIP": "2826724",
+                   "stopkey": "22312751",
+                   "DISP#": "0",
+                   "Unit": "255997",
+                   "hiddenLatitude": "40.980912",
+                   "hiddenLongitude": "-73.827671",
+                   "locname": "7368401-BB374-2",
+                   "stopseq": "20",
+                   "stoptype": "DROP",
+                   "user_id": 2503577094600412
+                }
+             }
+          ],
+          "commodities": []
+       },
+       {
+          "id": 2860184343700937,
+          "external_id": "7368401-BB1029-3-3",
+          "name": "BEST BUY 1029",
+          "is_disabled": false,
+          "is_skippable": false,
+          "is_skipped": false,
+          "skip_reason": null,
+          "is_bypassable": false,
+          "is_bypassed": false,
+          "bypass_reason": null,
+          "is_reorderable": false,
+          "reorder_reason": null,
+          "completed": true,
+          "completed_at": "2025-01-23T16:52:19+00:00",
+          "type": "DROP",
+          "order": 3,
+          "location_external_id": "7368401-BB1029-3",
+          "route_leg_external_id": null,
+          "customer_external_id": null,
+          "appointment": {
+             "start_time": "2025-01-24T00:00:00+00:00",
+             "ready_time": null,
+             "late_time": null,
+             "end_time": null
+          },
+          "eta": null,
+          "created_at": "2025-01-23T09:33:54+00:00",
+          "updated_at": "2025-01-23T16:52:19+00:00",
+          "external_data": [],
+          "remarks": [],
+          "tasks": [
+             {
+                "id": 2860184343800828,
+                "external_id": "7368401-1",
+                "name": "008 Arrival at Stop",
+                "order": 1,
+                "type": "008 Arrival at Stop",
+                "completed": true,
+                "completed_at": "2025-01-23T16:09:12+00:00",
+                "completed_by": "VANDI",
+                "completion_type": "geofence_triggered",
+                "created_at": "2025-01-23T09:33:54+00:00",
+                "updated_at": "2025-01-23T16:09:15+00:00",
+                "external_data": {
+                   "is_prompt_repeats": false,
+                   "is_allow_repeats": false,
+                   "is_required": true,
+                   "geofence": {
+                      "circle": {
+                         "center": {
+                            "latitude": 41.310725,
+                            "longitude": -73.871256
+                         },
+                         "radius": 250
+                      },
+                      "delay": 300,
+                      "auto_complete": true,
+                      "trigger_by": "ENTRY",
+                      "message": "YOU HAVE ARRIVED!"
+                   }
+                },
+                "remarks": [],
+                "fields": {
+                   "Order#": "7368401",
+                   "Tyepe": "P",
+                   "PCS": "5240",
+                   "WGT": "18836",
+                   "TRIP": "2826724",
+                   "Comment": null,
+                   "DSP": "0",
+                   "Unit": "255997",
+                   "hiddenLatitude": "41.31056",
+                   "hiddenLongitude": "-73.8709428",
+                   "locname": "7368401-BB1029-3",
+                   "address": "3105 E MAIN STREET",
+                   "city": "MOHEGAN LAKE",
+                   "state": "NY",
+                   "zipcode": "10547",
+                   "stopkey": "22312752",
+                   "stopseq": "25",
+                   "user_id": 2503577094600412
+                }
+             },
+             {
+                "id": 2860184343900315,
+                "external_id": "7368401-2",
+                "name": "009 Start to Load or Unload",
+                "order": 2,
+                "type": "009 Start to Load or Unload",
+                "completed": true,
+                "completed_at": "2025-01-23T16:10:03+00:00",
+                "completed_by": "VANDI",
+                "completion_type": "driver",
+                "created_at": "2025-01-23T09:33:54+00:00",
+                "updated_at": "2025-01-23T16:10:03+00:00",
+                "external_data": {
+                   "is_prompt_repeats": false,
+                   "is_allow_repeats": false,
+                   "is_required": true
+                },
+                "remarks": [],
+                "fields": {
+                   "DropTrailer": "Yes",
+                   "NewTrailerID": null,
+                   "Customer": "BEST BUY 1029",
+                   "Order#": "7368401",
+                   "Tyepe": "D",
+                   "PCS": "5240",
+                   "WGT": "18836",
+                   "TRIP": "2826724",
+                   "Comment": null,
+                   "DSP": "0",
+                   "Unit": "255997",
+                   "hiddenLatitude": "41.3105546",
+                   "hiddenLongitude": "-73.8709995",
+                   "locname": "7368401-BB1029-3",
+                   "stopkey": "22312752",
+                   "stopseq": "25",
+                   "reference": "1002027062",
+                   "user_id": 2503577094600412
+                }
+             },
+             {
+                "id": 2860184343900819,
+                "external_id": "7368401-3",
+                "name": "010 Depart Stop",
+                "order": 3,
+                "type": "010 Depart Stop",
+                "completed": true,
+                "completed_at": "2025-01-23T16:52:18+00:00",
+                "completed_by": "VANDI",
+                "completion_type": "driver",
+                "created_at": "2025-01-23T09:33:54+00:00",
+                "updated_at": "2025-01-23T16:52:19+00:00",
+                "external_data": {
+                   "is_prompt_repeats": false,
+                   "is_allow_repeats": false,
+                   "is_required": true,
+                   "geofence": {
+                      "circle": {
+                         "center": {
+                            "latitude": 41.310725,
+                            "longitude": -73.871256
+                         },
+                         "radius": 250
+                      },
+                      "delay": 300,
+                      "auto_complete": false,
+                      "trigger_by": "EXIT",
+                      "message": "YOU LEFT THE LOCATION!"
+                   }
+                },
+                "remarks": [],
+                "fields": {
+                   "Order#": "7368401",
+                   "Tyepe": "D",
+                   "New Trailer 1": {
+                      "TRL1": "166085"
+                   },
+                   "Trailer 1 Again": {
+                      "TRL1_2": "166085"
+                   },
+                   "TRL1Confirm": false,
+                   "Trailer2_confirm": "No",
+                   "Problem": false,
+                   "Comment": null,
+                   "TRIP": "2826724",
+                   "stopkey": "22312752",
+                   "DISP#": "0",
+                   "Unit": "255997",
+                   "hiddenLatitude": "41.3105811",
+                   "hiddenLongitude": "-73.8710366",
+                   "locname": "7368401-BB1029-3",
+                   "stopseq": "25",
+                   "stoptype": "DROP",
+                   "user_id": 2503577094600412
+                }
+             }
+          ],
+          "commodities": []
+       },
+       {
+          "id": 2860184344000352,
+          "external_id": "7368401-BB781-4-4",
+          "name": "BEST BUY 781",
+          "is_disabled": false,
+          "is_skippable": false,
+          "is_skipped": false,
+          "skip_reason": null,
+          "is_bypassable": false,
+          "is_bypassed": false,
+          "bypass_reason": null,
+          "is_reorderable": false,
+          "reorder_reason": null,
+          "completed": false,
+          "completed_at": null,
+          "type": "DROP",
+          "order": 4,
+          "location_external_id": "7368401-BB781-4",
+          "route_leg_external_id": null,
+          "customer_external_id": null,
+          "appointment": {
+             "start_time": null,
+             "ready_time": null,
+             "late_time": null,
+             "end_time": null
+          },
+          "eta": null,
+          "created_at": "2025-01-23T09:33:54+00:00",
+          "updated_at": "2025-01-23T09:33:54+00:00",
+          "external_data": [],
+          "remarks": [],
+          "tasks": [
+             {
+                "id": 2860184344100215,
+                "external_id": "7368401-1",
+                "name": "008 Arrival at Stop",
+                "order": 1,
+                "type": "008 Arrival at Stop",
+                "completed": false,
+                "completed_at": null,
+                "completed_by": "",
+                "completion_type": null,
+                "created_at": "2025-01-23T09:33:54+00:00",
+                "updated_at": "2025-01-23T09:33:54+00:00",
+                "external_data": {
+                   "is_prompt_repeats": false,
+                   "is_allow_repeats": false,
+                   "is_required": true,
+                   "geofence": {
+                      "circle": {
+                         "center": {
+                            "latitude": 42.063636,
+                            "longitude": -76.32076
+                         },
+                         "radius": 100
+                      },
+                      "delay": 300,
+                      "auto_complete": true,
+                      "trigger_by": "ENTRY",
+                      "message": "YOU HAVE ARRIVED!"
+                   }
+                },
+                "remarks": [],
+                "fields": {
+                   "Order#": "7368401",
+                   "Unit": "255997",
+                   "DSP": "0",
+                   "PCS": "5240",
+                   "WGT": "18836",
+                   "TRIP": "2826724",
+                   "Tyepe": "P",
+                   "locname": "7368401-BB781-4",
+                   "address": "455 STANTON HILL ROAD",
+                   "city": "NICHOLS",
+                   "state": "NY",
+                   "zipcode": "13812",
+                   "stopkey": "22312753",
+                   "stopseq": "90"
+                }
+             },
+             {
+                "id": 2860184344100676,
+                "external_id": "7368401-2",
+                "name": "009 Start to Load or Unload",
+                "order": 2,
+                "type": "009 Start to Load or Unload",
+                "completed": false,
+                "completed_at": null,
+                "completed_by": "",
+                "completion_type": null,
+                "created_at": "2025-01-23T09:33:54+00:00",
+                "updated_at": "2025-01-23T09:33:54+00:00",
+                "external_data": {
+                   "is_prompt_repeats": false,
+                   "is_allow_repeats": false,
+                   "is_required": true
+                },
+                "remarks": [],
+                "fields": {
+                   "Customer": "BEST BUY 781",
+                   "Order#": "7368401",
+                   "DSP": "0",
+                   "PCS": "5240",
+                   "WGT": "18836",
+                   "TRIP": "2826724",
+                   "Tyepe": "D",
+                   "Unit": "255997",
+                   "locname": "7368401-BB781-4",
+                   "stopkey": "22312753",
+                   "stopseq": "90",
+                   "reference": "1002027062"
+                }
+             },
+             {
+                "id": 2860184344200156,
+                "external_id": "7368401-3",
+                "name": "010 Depart Stop",
+                "order": 3,
+                "type": "010 Depart Stop",
+                "completed": false,
+                "completed_at": null,
+                "completed_by": "",
+                "completion_type": null,
+                "created_at": "2025-01-23T09:33:54+00:00",
+                "updated_at": "2025-01-23T09:33:54+00:00",
+                "external_data": {
+                   "is_prompt_repeats": false,
+                   "is_allow_repeats": false,
+                   "is_required": true,
+                   "geofence": {
+                      "circle": {
+                         "center": {
+                            "latitude": 42.063636,
+                            "longitude": -76.32076
+                         },
+                         "radius": 150
+                      },
+                      "delay": 300,
+                      "auto_complete": false,
+                      "trigger_by": "EXIT",
+                      "message": "YOU HAVE DEPARTED!"
+                   }
+                },
+                "remarks": [],
+                "fields": {
+                   "Order#": "7368401",
+                   "Tyepe": "D",
+                   "TRL1": "166085",
+                   "SCI1": null,
+                   "TRL1_2": "166085",
+                   "SCI1_2": null,
+                   "TRL2": null,
+                   "SCI2": null,
+                   "TRL2_2": null,
+                   "SCI2_2": null,
+                   "TRIP": "2826724",
+                   "Skey": null,
+                   "DISP#": "0",
+                   "Unit": "255997",
+                   "locname": "7368401-BB781-4",
+                   "stopkey": "22312753",
+                   "stopseq": "90",
+                   "reference": "1002027062"
+                }
+             }
+          ],
+          "commodities": []
+       }
+    ],
+    "route_legs": [],
+    "is_declinable": false,
+    "driver_alerts": [],
+    "alerts": []
+ }
