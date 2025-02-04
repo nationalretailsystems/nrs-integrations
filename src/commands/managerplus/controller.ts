@@ -782,7 +782,9 @@ export const getDowntime: ECCHandlerFunction = async (reqkey, data, ecc) => {
         // sanitizeValues(responseData, safeValues2);
         logger.debug('ECC0000', 'Success', nextReqKey);
         nextReqKey = await ecc.sendEccResult('ECC0000', 'Success', nextReqKey);
+        logger.debug('first send  complete' + nextReqKey);
         nextReqKey = await ecc.sendObjectsToCaller(responseData, converterdown.convertObjectToResDown, nextReqKey);
+        logger.debug('second send complete ' + nextReqKey);
         logger.debug('Sent data to RPG');
         return nextReqKey;
     } catch (err) {

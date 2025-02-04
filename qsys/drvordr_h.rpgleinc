@@ -6,9 +6,9 @@
       ************************************
 
       ************************************
-      * total_distanceDS data structure
+      * TotalDistDS data structure
       ************************************
-     Dtotal_distanceDS  DS                  Qualified
+     DTotalDistDS      DS                  Qualified
      D                                     Template
      Dvalue                           1A
      Dunit_of_meas...
@@ -23,16 +23,16 @@
      Dvalue                          10A
 
       ************************************
-      * shipment_detailsDS data structure
+      * shipdetailsDS data structure
       ************************************
-     Dshipment_detailsDS  DS                  Qualified
+     DshipdetailsDS    DS                  Qualified
      D                                     Template
      Dhazmat                           N
      Dhigh_value                       N
      Dtemperature_...
      Dcontrolled                       N
      Dtotal_distan...
-     Dce                                   LikeDS(total_distanceDS)
+     Dce                                   LikeDS(TotalDistDS)
      Dline_of_busi...
      Dness                            4A
      Dmaster_bill_...
@@ -265,11 +265,28 @@
      D                                     Dim(3)
 
       ************************************
-      * FormatName data structure
+      * OrderReq data structure
+      * Record length: 7
+      ************************************
+     DOrderReqLen      C                   7
+     DOrderReq         DS                  Qualified
+     D                                     Template
+     Dorder                           7A
+
+      ************************************
+      * Convert OrderReq to buffer
+      ************************************
+     DOrderReqToBuf    PR
+     DDataStruct                           LikeDS(OrderReq)
+     D                                     Const
+     DBuffer                          7A
+
+      ************************************
+      * OrderRes data structure
       * Record length: 7107
       ************************************
-     DFormatNameLen    C                   7107
-     DFormatName       DS                  Qualified
+     DOrderResLen      C                   7107
+     DOrderRes         DS                  Qualified
      D                                     Template
      Ddrivers                         5A   Dim(1)
      Did                             16P 0
@@ -281,7 +298,7 @@
      Dstatus                          6A
      Dsequence                        1A
      Dshipment_det...
-     Dails                                 LikeDS(shipment_detailsDS)
+     Dails                                 LikeDS(shipdetailsDS)
      Dreceived_at                    25A
      Dreviewed_at                    25A
      Dcreated_at                     25A
@@ -303,9 +320,8 @@
      De                                N
 
       ************************************
-      * Convert FormatName to buffer
+      * Convert buffer to OrderRes
       ************************************
-     DFormatNameToBuf  PR
-     DDataStruct                           LikeDS(FormatName)
-     D                                     Const
+     DBufToOrderRes    PR
      DBuffer                       7107A
+     DDataStruct                           LikeDS(OrderRes)
