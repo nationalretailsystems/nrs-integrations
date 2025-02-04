@@ -19,7 +19,7 @@ const { dataTypes } = eradaniConnect;
 /**
  * Output interface
  */
-export interface total_distanceDS {
+export interface TotalDistDS {
     /**
      * @size 1 characters
      */
@@ -47,7 +47,7 @@ export interface ShippingDocsDS {
 /**
  * Output interface
  */
-export interface shipment_detailsDS {
+export interface shipdetailsDS {
     /**
      */
     hazmat: boolean,
@@ -59,7 +59,7 @@ export interface shipment_detailsDS {
     temperature_controlled: boolean,
     /**
      */
-    total_distance: total_distanceDS,
+    total_distance: TotalDistDS,
     /**
      * @size 4 characters
      */
@@ -609,7 +609,32 @@ export interface StepsDS {
 /**
  * Output interface
  */
-export interface FormatName {
+export interface OrderReq {
+    /**
+     * @size 7 characters
+     */
+    order: string
+}
+
+/**
+ * Convert OrderReq record to TypeScript object
+ */
+export function convertOrderReqToObject(dataIn: string): OrderReq {
+  const dataOut: any =   {
+  
+    };
+  let pos: number = 0;
+
+  dataOut.order = dataIn.substring(pos, pos + 7).trimEnd();
+  pos += 7;
+
+  return dataOut;
+}
+
+/**
+ * Input interface
+ */
+export interface OrderRes {
     /**
      * @size 5 characters
      */
@@ -641,7 +666,7 @@ export interface FormatName {
     sequence: string,
     /**
      */
-    shipment_details: shipment_detailsDS,
+    shipment_details: shipdetailsDS,
     /**
      * @size 25 characters
      */
@@ -686,318 +711,134 @@ export interface FormatName {
 }
 
 /**
- * Convert FormatName record to TypeScript object
+ * Convert JavaScript object to OrderRes record
  */
-export function convertFormatNameToObject(dataIn: string): FormatName {
-  const dataOut: any =   {
-  
-    };
-  let pos: number = 0;
+export function convertObjectToOrderRes(dataIn: OrderRes): string {
+  let dataOut: string = "";
 
-  dataOut.drivers = [
-    
-  ];
   for (let i: number = 0; i < 1; ++i) {
-  dataOut.drivers[i] = dataIn.substring(pos, pos + 5).trimEnd();
-  pos += 5;
+  dataOut += dataIn?.drivers[i]?.substring(0, 5)?.padEnd(5) ?? missingInput(`dataIn.drivers[${i}]`, "char", dataIn?.drivers[i]);
   }
-  dataOut.id = Number(dataIn.substring(pos, pos + 18).trimEnd());
-  pos += 18;
-  dataOut.external_id = dataIn.substring(pos, pos + 7).trimEnd();
-  pos += 7;
-  dataOut.external_id_alias = dataIn.substring(pos, pos + 7).trimEnd();
-  pos += 7;
-  dataOut.preplan_external_id = dataIn.substring(pos, pos + 10).trimEnd();
-  pos += 10;
-  dataOut.status = dataIn.substring(pos, pos + 6).trimEnd();
-  pos += 6;
-  dataOut.sequence = dataIn.substring(pos, pos + 1).trimEnd();
-  pos += 1;
-  dataOut.shipment_details =   {
-  
-    };
-  dataOut.shipment_details.hazmat = dataIn.substring(pos, pos + 1).trimEnd() === "1";
-  pos += 1;
-  dataOut.shipment_details.high_value = dataIn.substring(pos, pos + 1).trimEnd() === "1";
-  pos += 1;
-  dataOut.shipment_details.temperature_controlled = dataIn.substring(pos, pos + 1).trimEnd() === "1";
-  pos += 1;
-  dataOut.shipment_details.total_distance =   {
-  
-    };
-  dataOut.shipment_details.total_distance.value = dataIn.substring(pos, pos + 1).trimEnd();
-  pos += 1;
-  dataOut.shipment_details.total_distance.unit_of_measure = dataIn.substring(pos, pos + 2).trimEnd();
-  pos += 2;
-  dataOut.shipment_details.line_of_business = dataIn.substring(pos, pos + 4).trimEnd();
-  pos += 4;
-  dataOut.shipment_details.master_bill_of_lading = dataIn.substring(pos, pos + 20).trimEnd();
-  pos += 20;
-  dataOut.shipment_details.shipping_documents = [
-    
-  ];
-  for (let i: number = 0; i < 4; ++i) {
-  dataOut.shipment_details.shipping_documents[i] =   {
-  
-    };
+  dataOut += dataIn?.id?.toFixed(0)?.substring(0, 18)?.padEnd(18) ?? missingInput(`dataIn.id`, "packed", dataIn?.id);
+  dataOut += dataIn?.external_id?.substring(0, 7)?.padEnd(7) ?? missingInput(`dataIn.external_id`, "char", dataIn?.external_id);
+  dataOut += dataIn?.external_id_alias?.substring(0, 7)?.padEnd(7) ?? missingInput(`dataIn.external_id_alias`, "char", dataIn?.external_id_alias);
+  dataOut += dataIn?.preplan_external_id?.substring(0, 10)?.padEnd(10) ?? missingInput(`dataIn.preplan_external_id`, "char", dataIn?.preplan_external_id);
+  dataOut += dataIn?.status?.substring(0, 6)?.padEnd(6) ?? missingInput(`dataIn.status`, "char", dataIn?.status);
+  dataOut += dataIn?.sequence?.substring(0, 1)?.padEnd(1) ?? missingInput(`dataIn.sequence`, "char", dataIn?.sequence);
+  dataOut += (dataIn?.shipment_details?.hazmat !== undefined ? (dataIn?.shipment_details?.hazmat ? "1" : "0") : missingInput(`dataIn.shipment_details.hazmat`, "bool", dataIn?.shipment_details?.hazmat));
+  dataOut += (dataIn?.shipment_details?.high_value !== undefined ? (dataIn?.shipment_details?.high_value ? "1" : "0") : missingInput(`dataIn.shipment_details.high_value`, "bool", dataIn?.shipment_details?.high_value));
+  dataOut += (dataIn?.shipment_details?.temperature_controlled !== undefined ? (dataIn?.shipment_details?.temperature_controlled ? "1" : "0") : missingInput(`dataIn.shipment_details.temperature_controlled`, "bool", dataIn?.shipment_details?.temperature_controlled));
+  dataOut += dataIn?.shipment_details?.total_distance?.value?.substring(0, 1)?.padEnd(1) ?? missingInput(`dataIn.shipment_details.total_distance.value`, "char", dataIn?.shipment_details?.total_distance?.value);
+  dataOut += dataIn?.shipment_details?.total_distance?.unit_of_measure?.substring(0, 2)?.padEnd(2) ?? missingInput(`dataIn.shipment_details.total_distance.unit_of_measure`, "char", dataIn?.shipment_details?.total_distance?.unit_of_measure);
+  dataOut += dataIn?.shipment_details?.line_of_business?.substring(0, 4)?.padEnd(4) ?? missingInput(`dataIn.shipment_details.line_of_business`, "char", dataIn?.shipment_details?.line_of_business);
+  dataOut += dataIn?.shipment_details?.master_bill_of_lading?.substring(0, 20)?.padEnd(20) ?? missingInput(`dataIn.shipment_details.master_bill_of_lading`, "char", dataIn?.shipment_details?.master_bill_of_lading);
+  for (let j: number = 0; j < 4; ++j) {
+
   }
-  dataOut.shipment_details.truck_profile = dataIn.substring(pos, pos + 5).trimEnd();
-  pos += 5;
-  dataOut.received_at = dataIn.substring(pos, pos + 25).trimEnd();
-  pos += 25;
-  dataOut.reviewed_at = dataIn.substring(pos, pos + 25).trimEnd();
-  pos += 25;
-  dataOut.created_at = dataIn.substring(pos, pos + 25).trimEnd();
-  pos += 25;
-  dataOut.updated_at = dataIn.substring(pos, pos + 25).trimEnd();
-  pos += 25;
-  dataOut.modified_at = dataIn.substring(pos, pos + 25).trimEnd();
-  pos += 25;
-  dataOut.remarks = [
-    
-  ];
+  dataOut += dataIn?.shipment_details?.truck_profile?.substring(0, 5)?.padEnd(5) ?? missingInput(`dataIn.shipment_details.truck_profile`, "char", dataIn?.shipment_details?.truck_profile);
+  dataOut += dataIn?.received_at?.substring(0, 25)?.padEnd(25) ?? missingInput(`dataIn.received_at`, "char", dataIn?.received_at);
+  dataOut += dataIn?.reviewed_at?.substring(0, 25)?.padEnd(25) ?? missingInput(`dataIn.reviewed_at`, "char", dataIn?.reviewed_at);
+  dataOut += dataIn?.created_at?.substring(0, 25)?.padEnd(25) ?? missingInput(`dataIn.created_at`, "char", dataIn?.created_at);
+  dataOut += dataIn?.updated_at?.substring(0, 25)?.padEnd(25) ?? missingInput(`dataIn.updated_at`, "char", dataIn?.updated_at);
+  dataOut += dataIn?.modified_at?.substring(0, 25)?.padEnd(25) ?? missingInput(`dataIn.modified_at`, "char", dataIn?.modified_at);
   for (let i: number = 0; i < 3; ++i) {
-  dataOut.remarks[i] =   {
-  
-    };
-  dataOut.remarks[i].label = dataIn.substring(pos, pos + 7).trimEnd();
-  pos += 7;
-  dataOut.remarks[i].value = dataIn.substring(pos, pos + 29).trimEnd();
-  pos += 29;
-  dataOut.remarks[i].order = Number(dataIn.substring(pos, pos + 3).trimEnd());
-  pos += 3;
+  dataOut += dataIn?.remarks[i]?.label?.substring(0, 7)?.padEnd(7) ?? missingInput(`dataIn.remarks[${i}].label`, "char", dataIn?.remarks[i]?.label);
+  dataOut += dataIn?.remarks[i]?.value?.substring(0, 29)?.padEnd(29) ?? missingInput(`dataIn.remarks[${i}].value`, "char", dataIn?.remarks[i]?.value);
+  dataOut += dataIn?.remarks[i]?.order?.toFixed(0)?.substring(0, 3)?.padEnd(3) ?? missingInput(`dataIn.remarks[${i}].order`, "packed", dataIn?.remarks[i]?.order);
   }
-  dataOut.prompts =   {
-  
-    };
-  dataOut.prompts.eta = dataIn.substring(pos, pos + 1).trimEnd() === "1";
-  pos += 1;
-  dataOut.prompts.fuel = dataIn.substring(pos, pos + 1).trimEnd() === "1";
-  pos += 1;
-  dataOut.prompts.eta_change_available = dataIn.substring(pos, pos + 1).trimEnd() === "1";
-  pos += 1;
-  dataOut.prompts.update_fuel_available = dataIn.substring(pos, pos + 1).trimEnd() === "1";
-  pos += 1;
-  dataOut.meta = [
-    
-  ];
+  dataOut += (dataIn?.prompts?.eta !== undefined ? (dataIn?.prompts?.eta ? "1" : "0") : missingInput(`dataIn.prompts.eta`, "bool", dataIn?.prompts?.eta));
+  dataOut += (dataIn?.prompts?.fuel !== undefined ? (dataIn?.prompts?.fuel ? "1" : "0") : missingInput(`dataIn.prompts.fuel`, "bool", dataIn?.prompts?.fuel));
+  dataOut += (dataIn?.prompts?.eta_change_available !== undefined ? (dataIn?.prompts?.eta_change_available ? "1" : "0") : missingInput(`dataIn.prompts.eta_change_available`, "bool", dataIn?.prompts?.eta_change_available));
+  dataOut += (dataIn?.prompts?.update_fuel_available !== undefined ? (dataIn?.prompts?.update_fuel_available ? "1" : "0") : missingInput(`dataIn.prompts.update_fuel_available`, "bool", dataIn?.prompts?.update_fuel_available));
   for (let i: number = 0; i < 9; ++i) {
-  dataOut.meta[i] =   {
-  
-    };
-  dataOut.meta[i].asset =   {
-  
-    };
-  dataOut.meta[i].asset.external_id = dataIn.substring(pos, pos + 6).trimEnd();
-  pos += 6;
-  dataOut.meta[i].asset.type = dataIn.substring(pos, pos + 10).trimEnd();
-  pos += 10;
-  dataOut.meta[i].asset.vin = dataIn.substring(pos, pos + 17).trimEnd();
-  pos += 17;
-  dataOut.meta[i].fuel_level = Number(dataIn.substring(pos, pos + 5).trimEnd());
-  pos += 5;
-  dataOut.meta[i].location =   {
-  
-    };
-  dataOut.meta[i].location.latitude = Number(dataIn.substring(pos, pos + 11).trimEnd());
-  pos += 11;
-  dataOut.meta[i].location.longitude = Number(dataIn.substring(pos, pos + 19).trimEnd());
-  pos += 19;
-  dataOut.meta[i].odometer = Number(dataIn.substring(pos, pos + 10).trimEnd());
-  pos += 10;
-  dataOut.meta[i].timestamp = dataIn.substring(pos, pos + 25).trimEnd();
-  pos += 25;
+  dataOut += dataIn?.meta[i]?.asset?.external_id?.substring(0, 6)?.padEnd(6) ?? missingInput(`dataIn.meta[${i}].asset.external_id`, "char", dataIn?.meta[i]?.asset?.external_id);
+  dataOut += dataIn?.meta[i]?.asset?.type?.substring(0, 10)?.padEnd(10) ?? missingInput(`dataIn.meta[${i}].asset.type`, "char", dataIn?.meta[i]?.asset?.type);
+  dataOut += dataIn?.meta[i]?.asset?.vin?.substring(0, 17)?.padEnd(17) ?? missingInput(`dataIn.meta[${i}].asset.vin`, "char", dataIn?.meta[i]?.asset?.vin);
+  dataOut += dataIn?.meta[i]?.fuel_level?.toFixed(1)?.substring(0, 5)?.padEnd(5) ?? missingInput(`dataIn.meta[${i}].fuel_level`, "packed", dataIn?.meta[i]?.fuel_level);
+  dataOut += dataIn?.meta[i]?.location?.latitude?.toFixed(7)?.substring(0, 11)?.padEnd(11) ?? missingInput(`dataIn.meta[${i}].location.latitude`, "packed", dataIn?.meta[i]?.location?.latitude);
+  dataOut += dataIn?.meta[i]?.location?.longitude?.toFixed(14)?.substring(0, 19)?.padEnd(19) ?? missingInput(`dataIn.meta[${i}].location.longitude`, "packed", dataIn?.meta[i]?.location?.longitude);
+  dataOut += dataIn?.meta[i]?.odometer?.toFixed(2)?.substring(0, 10)?.padEnd(10) ?? missingInput(`dataIn.meta[${i}].odometer`, "packed", dataIn?.meta[i]?.odometer);
+  dataOut += dataIn?.meta[i]?.timestamp?.substring(0, 25)?.padEnd(25) ?? missingInput(`dataIn.meta[${i}].timestamp`, "char", dataIn?.meta[i]?.timestamp);
   }
-  dataOut.locations = [
-    
-  ];
   for (let i: number = 0; i < 4; ++i) {
-  dataOut.locations[i] =   {
-  
-    };
+
   }
-  dataOut.external_data = [
-    
-  ];
   for (let i: number = 0; i < 4; ++i) {
-  dataOut.external_data[i] =   {
-  
-    };
-  dataOut.external_data[i].label = dataIn.substring(pos, pos + 8).trimEnd();
-  pos += 8;
-  dataOut.external_data[i].value = dataIn.substring(pos, pos + 5).trimEnd();
-  pos += 5;
-  dataOut.external_data[i].order = Number(dataIn.substring(pos, pos + 3).trimEnd());
-  pos += 3;
-  dataOut.external_data[i].isLabel = dataIn.substring(pos, pos + 1).trimEnd() === "1";
-  pos += 1;
+  dataOut += dataIn?.external_data[i]?.label?.substring(0, 8)?.padEnd(8) ?? missingInput(`dataIn.external_data[${i}].label`, "char", dataIn?.external_data[i]?.label);
+  dataOut += dataIn?.external_data[i]?.value?.substring(0, 5)?.padEnd(5) ?? missingInput(`dataIn.external_data[${i}].value`, "char", dataIn?.external_data[i]?.value);
+  dataOut += dataIn?.external_data[i]?.order?.toFixed(0)?.substring(0, 3)?.padEnd(3) ?? missingInput(`dataIn.external_data[${i}].order`, "packed", dataIn?.external_data[i]?.order);
+  dataOut += (dataIn?.external_data[i]?.isLabel !== undefined ? (dataIn?.external_data[i]?.isLabel ? "1" : "0") : missingInput(`dataIn.external_data[${i}].isLabel`, "bool", dataIn?.external_data[i]?.isLabel));
   }
-  dataOut.steps = [
-    
-  ];
   for (let i: number = 0; i < 4; ++i) {
-  dataOut.steps[i] =   {
-  
-    };
-  dataOut.steps[i].id = Number(dataIn.substring(pos, pos + 18).trimEnd());
-  pos += 18;
-  dataOut.steps[i].external_id = dataIn.substring(pos, pos + 17).trimEnd();
-  pos += 17;
-  dataOut.steps[i].name = dataIn.substring(pos, pos + 12).trimEnd();
-  pos += 12;
-  dataOut.steps[i].is_disabled = dataIn.substring(pos, pos + 1).trimEnd() === "1";
-  pos += 1;
-  dataOut.steps[i].is_skippable = dataIn.substring(pos, pos + 1).trimEnd() === "1";
-  pos += 1;
-  dataOut.steps[i].is_skipped = dataIn.substring(pos, pos + 1).trimEnd() === "1";
-  pos += 1;
-  dataOut.steps[i].skip_reason = dataIn.substring(pos, pos + 5).trimEnd();
-  pos += 5;
-  dataOut.steps[i].is_bypassable = dataIn.substring(pos, pos + 1).trimEnd() === "1";
-  pos += 1;
-  dataOut.steps[i].is_bypassed = dataIn.substring(pos, pos + 1).trimEnd() === "1";
-  pos += 1;
-  dataOut.steps[i].bypass_reason = dataIn.substring(pos, pos + 5).trimEnd();
-  pos += 5;
-  dataOut.steps[i].is_reorderable = dataIn.substring(pos, pos + 1).trimEnd() === "1";
-  pos += 1;
-  dataOut.steps[i].reorder_reason = dataIn.substring(pos, pos + 5).trimEnd();
-  pos += 5;
-  dataOut.steps[i].completed = dataIn.substring(pos, pos + 1).trimEnd() === "1";
-  pos += 1;
-  dataOut.steps[i].completed_at = dataIn.substring(pos, pos + 25).trimEnd();
-  pos += 25;
-  dataOut.steps[i].type = dataIn.substring(pos, pos + 4).trimEnd();
-  pos += 4;
-  dataOut.steps[i].order = Number(dataIn.substring(pos, pos + 3).trimEnd());
-  pos += 3;
-  dataOut.steps[i].location_external_id = dataIn.substring(pos, pos + 15).trimEnd();
-  pos += 15;
-  dataOut.steps[i].route_leg_external_id = dataIn.substring(pos, pos + 5).trimEnd();
-  pos += 5;
-  dataOut.steps[i].customer_external_id = dataIn.substring(pos, pos + 5).trimEnd();
-  pos += 5;
-  dataOut.steps[i].appointment =   {
-  
-    };
-  dataOut.steps[i].appointment.start_time = dataIn.substring(pos, pos + 25).trimEnd();
-  pos += 25;
-  dataOut.steps[i].appointment.ready_time = dataIn.substring(pos, pos + 25).trimEnd();
-  pos += 25;
-  dataOut.steps[i].appointment.late_time = dataIn.substring(pos, pos + 25).trimEnd();
-  pos += 25;
-  dataOut.steps[i].appointment.end_time = dataIn.substring(pos, pos + 25).trimEnd();
-  pos += 25;
-  dataOut.steps[i].eta = dataIn.substring(pos, pos + 25).trimEnd();
-  pos += 25;
-  dataOut.steps[i].created_at = dataIn.substring(pos, pos + 25).trimEnd();
-  pos += 25;
-  dataOut.steps[i].updated_at = dataIn.substring(pos, pos + 25).trimEnd();
-  pos += 25;
-  dataOut.steps[i].tasks = [
-    
-  ];
-  for (let j: number = 0; j < 3; ++j) {
-  dataOut.steps[i].tasks[j] =   {
-  
-    };
-  dataOut.steps[i].tasks[j].id = Number(dataIn.substring(pos, pos + 18).trimEnd());
-  pos += 18;
-  dataOut.steps[i].tasks[j].external_id = dataIn.substring(pos, pos + 9).trimEnd();
-  pos += 9;
-  dataOut.steps[i].tasks[j].name = dataIn.substring(pos, pos + 19).trimEnd();
-  pos += 19;
-  dataOut.steps[i].tasks[j].order = Number(dataIn.substring(pos, pos + 3).trimEnd());
-  pos += 3;
-  dataOut.steps[i].tasks[j].type = dataIn.substring(pos, pos + 19).trimEnd();
-  pos += 19;
-  dataOut.steps[i].tasks[j].completed = dataIn.substring(pos, pos + 1).trimEnd() === "1";
-  pos += 1;
-  dataOut.steps[i].tasks[j].completed_at = dataIn.substring(pos, pos + 25).trimEnd();
-  pos += 25;
-  dataOut.steps[i].tasks[j].completed_by = dataIn.substring(pos, pos + 5).trimEnd();
-  pos += 5;
-  dataOut.steps[i].tasks[j].completion_type = dataIn.substring(pos, pos + 18).trimEnd();
-  pos += 18;
-  dataOut.steps[i].tasks[j].created_at = dataIn.substring(pos, pos + 25).trimEnd();
-  pos += 25;
-  dataOut.steps[i].tasks[j].updated_at = dataIn.substring(pos, pos + 25).trimEnd();
-  pos += 25;
-  dataOut.steps[i].tasks[j].external_data =   {
-  
-    };
-  dataOut.steps[i].tasks[j].external_data.is_prompt_repeats = dataIn.substring(pos, pos + 1).trimEnd() === "1";
-  pos += 1;
-  dataOut.steps[i].tasks[j].external_data.is_allow_repeats = dataIn.substring(pos, pos + 1).trimEnd() === "1";
-  pos += 1;
-  dataOut.steps[i].tasks[j].external_data.is_required = dataIn.substring(pos, pos + 1).trimEnd() === "1";
-  pos += 1;
-  dataOut.steps[i].tasks[j].external_data.geofence =   {
-  
-    };
-  dataOut.steps[i].tasks[j].external_data.geofence.circle =   {
-  
-    };
-  dataOut.steps[i].tasks[j].external_data.geofence.circle.center =   {
-  
-    };
-  dataOut.steps[i].tasks[j].external_data.geofence.circle.center.latitude = Number(dataIn.substring(pos, pos + 10).trimEnd());
-  pos += 10;
-  dataOut.steps[i].tasks[j].external_data.geofence.circle.center.longitude = Number(dataIn.substring(pos, pos + 11).trimEnd());
-  pos += 11;
-  dataOut.steps[i].tasks[j].external_data.geofence.circle.radius = Number(dataIn.substring(pos, pos + 5).trimEnd());
-  pos += 5;
-  dataOut.steps[i].tasks[j].external_data.geofence.delay = Number(dataIn.substring(pos, pos + 5).trimEnd());
-  pos += 5;
-  dataOut.steps[i].tasks[j].external_data.geofence.auto_complete = dataIn.substring(pos, pos + 1).trimEnd() === "1";
-  pos += 1;
-  dataOut.steps[i].tasks[j].external_data.geofence.trigger_by = dataIn.substring(pos, pos + 5).trimEnd();
-  pos += 5;
-  dataOut.steps[i].tasks[j].external_data.geofence.message = dataIn.substring(pos, pos + 17).trimEnd();
-  pos += 17;
-  dataOut.steps[i].tasks[j].fields =   {
-  
-    };
-  dataOut.steps[i].tasks[j].fields.Order# = dataIn.substring(pos, pos + 7).trimEnd();
-  pos += 7;
-  dataOut.steps[i].tasks[j].fields.Tyepe = dataIn.substring(pos, pos + 1).trimEnd();
-  pos += 1;
-  dataOut.steps[i].tasks[j].fields.PCS = dataIn.substring(pos, pos + 4).trimEnd();
-  pos += 4;
-  dataOut.steps[i].tasks[j].fields.WGT = dataIn.substring(pos, pos + 5).trimEnd();
-  pos += 5;
-  dataOut.steps[i].tasks[j].fields.TRIP = dataIn.substring(pos, pos + 7).trimEnd();
-  pos += 7;
-  dataOut.steps[i].tasks[j].fields.Comment = dataIn.substring(pos, pos + 25).trimEnd();
-  pos += 25;
-  dataOut.steps[i].tasks[j].fields.DSP = dataIn.substring(pos, pos + 1).trimEnd();
-  pos += 1;
-  dataOut.steps[i].tasks[j].fields.Unit = dataIn.substring(pos, pos + 6).trimEnd();
-  pos += 6;
-  dataOut.steps[i].tasks[j].fields.hiddenLatitude = dataIn.substring(pos, pos + 10).trimEnd();
-  pos += 10;
-  dataOut.steps[i].tasks[j].fields.hiddenLongitude = dataIn.substring(pos, pos + 11).trimEnd();
-  pos += 11;
-  dataOut.steps[i].tasks[j].fields.locname = dataIn.substring(pos, pos + 15).trimEnd();
-  pos += 15;
-  dataOut.steps[i].tasks[j].fields.address = dataIn.substring(pos, pos + 18).trimEnd();
-  pos += 18;
-  dataOut.steps[i].tasks[j].fields.city = dataIn.substring(pos, pos + 12).trimEnd();
-  pos += 12;
-  dataOut.steps[i].tasks[j].fields.state = dataIn.substring(pos, pos + 2).trimEnd();
-  pos += 2;
-  dataOut.steps[i].tasks[j].fields.zipcode = dataIn.substring(pos, pos + 5).trimEnd();
-  pos += 5;
-  dataOut.steps[i].tasks[j].fields.stopkey = dataIn.substring(pos, pos + 8).trimEnd();
-  pos += 8;
-  dataOut.steps[i].tasks[j].fields.stopseq = dataIn.substring(pos, pos + 2).trimEnd();
-  pos += 2;
-  dataOut.steps[i].tasks[j].fields.user_id = Number(dataIn.substring(pos, pos + 18).trimEnd());
-  pos += 18;
+  dataOut += dataIn?.steps[i]?.id?.toFixed(0)?.substring(0, 18)?.padEnd(18) ?? missingInput(`dataIn.steps[${i}].id`, "packed", dataIn?.steps[i]?.id);
+  dataOut += dataIn?.steps[i]?.external_id?.substring(0, 17)?.padEnd(17) ?? missingInput(`dataIn.steps[${i}].external_id`, "char", dataIn?.steps[i]?.external_id);
+  dataOut += dataIn?.steps[i]?.name?.substring(0, 12)?.padEnd(12) ?? missingInput(`dataIn.steps[${i}].name`, "char", dataIn?.steps[i]?.name);
+  dataOut += (dataIn?.steps[i]?.is_disabled !== undefined ? (dataIn?.steps[i]?.is_disabled ? "1" : "0") : missingInput(`dataIn.steps[${i}].is_disabled`, "bool", dataIn?.steps[i]?.is_disabled));
+  dataOut += (dataIn?.steps[i]?.is_skippable !== undefined ? (dataIn?.steps[i]?.is_skippable ? "1" : "0") : missingInput(`dataIn.steps[${i}].is_skippable`, "bool", dataIn?.steps[i]?.is_skippable));
+  dataOut += (dataIn?.steps[i]?.is_skipped !== undefined ? (dataIn?.steps[i]?.is_skipped ? "1" : "0") : missingInput(`dataIn.steps[${i}].is_skipped`, "bool", dataIn?.steps[i]?.is_skipped));
+  dataOut += dataIn?.steps[i]?.skip_reason?.substring(0, 5)?.padEnd(5) ?? missingInput(`dataIn.steps[${i}].skip_reason`, "char", dataIn?.steps[i]?.skip_reason);
+  dataOut += (dataIn?.steps[i]?.is_bypassable !== undefined ? (dataIn?.steps[i]?.is_bypassable ? "1" : "0") : missingInput(`dataIn.steps[${i}].is_bypassable`, "bool", dataIn?.steps[i]?.is_bypassable));
+  dataOut += (dataIn?.steps[i]?.is_bypassed !== undefined ? (dataIn?.steps[i]?.is_bypassed ? "1" : "0") : missingInput(`dataIn.steps[${i}].is_bypassed`, "bool", dataIn?.steps[i]?.is_bypassed));
+  dataOut += dataIn?.steps[i]?.bypass_reason?.substring(0, 5)?.padEnd(5) ?? missingInput(`dataIn.steps[${i}].bypass_reason`, "char", dataIn?.steps[i]?.bypass_reason);
+  dataOut += (dataIn?.steps[i]?.is_reorderable !== undefined ? (dataIn?.steps[i]?.is_reorderable ? "1" : "0") : missingInput(`dataIn.steps[${i}].is_reorderable`, "bool", dataIn?.steps[i]?.is_reorderable));
+  dataOut += dataIn?.steps[i]?.reorder_reason?.substring(0, 5)?.padEnd(5) ?? missingInput(`dataIn.steps[${i}].reorder_reason`, "char", dataIn?.steps[i]?.reorder_reason);
+  dataOut += (dataIn?.steps[i]?.completed !== undefined ? (dataIn?.steps[i]?.completed ? "1" : "0") : missingInput(`dataIn.steps[${i}].completed`, "bool", dataIn?.steps[i]?.completed));
+  dataOut += dataIn?.steps[i]?.completed_at?.substring(0, 25)?.padEnd(25) ?? missingInput(`dataIn.steps[${i}].completed_at`, "char", dataIn?.steps[i]?.completed_at);
+  dataOut += dataIn?.steps[i]?.type?.substring(0, 4)?.padEnd(4) ?? missingInput(`dataIn.steps[${i}].type`, "char", dataIn?.steps[i]?.type);
+  dataOut += dataIn?.steps[i]?.order?.toFixed(0)?.substring(0, 3)?.padEnd(3) ?? missingInput(`dataIn.steps[${i}].order`, "packed", dataIn?.steps[i]?.order);
+  dataOut += dataIn?.steps[i]?.location_external_id?.substring(0, 15)?.padEnd(15) ?? missingInput(`dataIn.steps[${i}].location_external_id`, "char", dataIn?.steps[i]?.location_external_id);
+  dataOut += dataIn?.steps[i]?.route_leg_external_id?.substring(0, 5)?.padEnd(5) ?? missingInput(`dataIn.steps[${i}].route_leg_external_id`, "char", dataIn?.steps[i]?.route_leg_external_id);
+  dataOut += dataIn?.steps[i]?.customer_external_id?.substring(0, 5)?.padEnd(5) ?? missingInput(`dataIn.steps[${i}].customer_external_id`, "char", dataIn?.steps[i]?.customer_external_id);
+  dataOut += dataIn?.steps[i]?.appointment?.start_time?.substring(0, 25)?.padEnd(25) ?? missingInput(`dataIn.steps[${i}].appointment.start_time`, "char", dataIn?.steps[i]?.appointment?.start_time);
+  dataOut += dataIn?.steps[i]?.appointment?.ready_time?.substring(0, 25)?.padEnd(25) ?? missingInput(`dataIn.steps[${i}].appointment.ready_time`, "char", dataIn?.steps[i]?.appointment?.ready_time);
+  dataOut += dataIn?.steps[i]?.appointment?.late_time?.substring(0, 25)?.padEnd(25) ?? missingInput(`dataIn.steps[${i}].appointment.late_time`, "char", dataIn?.steps[i]?.appointment?.late_time);
+  dataOut += dataIn?.steps[i]?.appointment?.end_time?.substring(0, 25)?.padEnd(25) ?? missingInput(`dataIn.steps[${i}].appointment.end_time`, "char", dataIn?.steps[i]?.appointment?.end_time);
+  dataOut += dataIn?.steps[i]?.eta?.substring(0, 25)?.padEnd(25) ?? missingInput(`dataIn.steps[${i}].eta`, "char", dataIn?.steps[i]?.eta);
+  dataOut += dataIn?.steps[i]?.created_at?.substring(0, 25)?.padEnd(25) ?? missingInput(`dataIn.steps[${i}].created_at`, "char", dataIn?.steps[i]?.created_at);
+  dataOut += dataIn?.steps[i]?.updated_at?.substring(0, 25)?.padEnd(25) ?? missingInput(`dataIn.steps[${i}].updated_at`, "char", dataIn?.steps[i]?.updated_at);
+  for (let k: number = 0; k < 3; ++k) {
+  dataOut += dataIn?.steps[i]?.tasks[k]?.id?.toFixed(0)?.substring(0, 18)?.padEnd(18) ?? missingInput(`dataIn.steps[${i}].tasks[${k}].id`, "packed", dataIn?.steps[i]?.tasks[k]?.id);
+  dataOut += dataIn?.steps[i]?.tasks[k]?.external_id?.substring(0, 9)?.padEnd(9) ?? missingInput(`dataIn.steps[${i}].tasks[${k}].external_id`, "char", dataIn?.steps[i]?.tasks[k]?.external_id);
+  dataOut += dataIn?.steps[i]?.tasks[k]?.name?.substring(0, 19)?.padEnd(19) ?? missingInput(`dataIn.steps[${i}].tasks[${k}].name`, "char", dataIn?.steps[i]?.tasks[k]?.name);
+  dataOut += dataIn?.steps[i]?.tasks[k]?.order?.toFixed(0)?.substring(0, 3)?.padEnd(3) ?? missingInput(`dataIn.steps[${i}].tasks[${k}].order`, "packed", dataIn?.steps[i]?.tasks[k]?.order);
+  dataOut += dataIn?.steps[i]?.tasks[k]?.type?.substring(0, 19)?.padEnd(19) ?? missingInput(`dataIn.steps[${i}].tasks[${k}].type`, "char", dataIn?.steps[i]?.tasks[k]?.type);
+  dataOut += (dataIn?.steps[i]?.tasks[k]?.completed !== undefined ? (dataIn?.steps[i]?.tasks[k]?.completed ? "1" : "0") : missingInput(`dataIn.steps[${i}].tasks[${k}].completed`, "bool", dataIn?.steps[i]?.tasks[k]?.completed));
+  dataOut += dataIn?.steps[i]?.tasks[k]?.completed_at?.substring(0, 25)?.padEnd(25) ?? missingInput(`dataIn.steps[${i}].tasks[${k}].completed_at`, "char", dataIn?.steps[i]?.tasks[k]?.completed_at);
+  dataOut += dataIn?.steps[i]?.tasks[k]?.completed_by?.substring(0, 5)?.padEnd(5) ?? missingInput(`dataIn.steps[${i}].tasks[${k}].completed_by`, "char", dataIn?.steps[i]?.tasks[k]?.completed_by);
+  dataOut += dataIn?.steps[i]?.tasks[k]?.completion_type?.substring(0, 18)?.padEnd(18) ?? missingInput(`dataIn.steps[${i}].tasks[${k}].completion_type`, "char", dataIn?.steps[i]?.tasks[k]?.completion_type);
+  dataOut += dataIn?.steps[i]?.tasks[k]?.created_at?.substring(0, 25)?.padEnd(25) ?? missingInput(`dataIn.steps[${i}].tasks[${k}].created_at`, "char", dataIn?.steps[i]?.tasks[k]?.created_at);
+  dataOut += dataIn?.steps[i]?.tasks[k]?.updated_at?.substring(0, 25)?.padEnd(25) ?? missingInput(`dataIn.steps[${i}].tasks[${k}].updated_at`, "char", dataIn?.steps[i]?.tasks[k]?.updated_at);
+  dataOut += (dataIn?.steps[i]?.tasks[k]?.external_data?.is_prompt_repeats !== undefined ? (dataIn?.steps[i]?.tasks[k]?.external_data?.is_prompt_repeats ? "1" : "0") : missingInput(`dataIn.steps[${i}].tasks[${k}].external_data.is_prompt_repeats`, "bool", dataIn?.steps[i]?.tasks[k]?.external_data?.is_prompt_repeats));
+  dataOut += (dataIn?.steps[i]?.tasks[k]?.external_data?.is_allow_repeats !== undefined ? (dataIn?.steps[i]?.tasks[k]?.external_data?.is_allow_repeats ? "1" : "0") : missingInput(`dataIn.steps[${i}].tasks[${k}].external_data.is_allow_repeats`, "bool", dataIn?.steps[i]?.tasks[k]?.external_data?.is_allow_repeats));
+  dataOut += (dataIn?.steps[i]?.tasks[k]?.external_data?.is_required !== undefined ? (dataIn?.steps[i]?.tasks[k]?.external_data?.is_required ? "1" : "0") : missingInput(`dataIn.steps[${i}].tasks[${k}].external_data.is_required`, "bool", dataIn?.steps[i]?.tasks[k]?.external_data?.is_required));
+  dataOut += dataIn?.steps[i]?.tasks[k]?.external_data?.geofence?.circle?.center?.latitude?.toFixed(6)?.substring(0, 10)?.padEnd(10) ?? missingInput(`dataIn.steps[${i}].tasks[${k}].external_data.geofence.circle.center.latitude`, "packed", dataIn?.steps[i]?.tasks[k]?.external_data?.geofence?.circle?.center?.latitude);
+  dataOut += dataIn?.steps[i]?.tasks[k]?.external_data?.geofence?.circle?.center?.longitude?.toFixed(6)?.substring(0, 11)?.padEnd(11) ?? missingInput(`dataIn.steps[${i}].tasks[${k}].external_data.geofence.circle.center.longitude`, "packed", dataIn?.steps[i]?.tasks[k]?.external_data?.geofence?.circle?.center?.longitude);
+  dataOut += dataIn?.steps[i]?.tasks[k]?.external_data?.geofence?.circle?.radius?.toFixed(0)?.substring(0, 5)?.padEnd(5) ?? missingInput(`dataIn.steps[${i}].tasks[${k}].external_data.geofence.circle.radius`, "packed", dataIn?.steps[i]?.tasks[k]?.external_data?.geofence?.circle?.radius);
+  dataOut += dataIn?.steps[i]?.tasks[k]?.external_data?.geofence?.delay?.toFixed(0)?.substring(0, 5)?.padEnd(5) ?? missingInput(`dataIn.steps[${i}].tasks[${k}].external_data.geofence.delay`, "packed", dataIn?.steps[i]?.tasks[k]?.external_data?.geofence?.delay);
+  dataOut += (dataIn?.steps[i]?.tasks[k]?.external_data?.geofence?.auto_complete !== undefined ? (dataIn?.steps[i]?.tasks[k]?.external_data?.geofence?.auto_complete ? "1" : "0") : missingInput(`dataIn.steps[${i}].tasks[${k}].external_data.geofence.auto_complete`, "bool", dataIn?.steps[i]?.tasks[k]?.external_data?.geofence?.auto_complete));
+  dataOut += dataIn?.steps[i]?.tasks[k]?.external_data?.geofence?.trigger_by?.substring(0, 5)?.padEnd(5) ?? missingInput(`dataIn.steps[${i}].tasks[${k}].external_data.geofence.trigger_by`, "char", dataIn?.steps[i]?.tasks[k]?.external_data?.geofence?.trigger_by);
+  dataOut += dataIn?.steps[i]?.tasks[k]?.external_data?.geofence?.message?.substring(0, 17)?.padEnd(17) ?? missingInput(`dataIn.steps[${i}].tasks[${k}].external_data.geofence.message`, "char", dataIn?.steps[i]?.tasks[k]?.external_data?.geofence?.message);
+  dataOut += dataIn?.steps[i]?.tasks[k]?.fields?.Order#?.substring(0, 7)?.padEnd(7) ?? missingInput(`dataIn.steps[${i}].tasks[${k}].fields.Order#`, "char", dataIn?.steps[i]?.tasks[k]?.fields?.Order#);
+  dataOut += dataIn?.steps[i]?.tasks[k]?.fields?.Tyepe?.substring(0, 1)?.padEnd(1) ?? missingInput(`dataIn.steps[${i}].tasks[${k}].fields.Tyepe`, "char", dataIn?.steps[i]?.tasks[k]?.fields?.Tyepe);
+  dataOut += dataIn?.steps[i]?.tasks[k]?.fields?.PCS?.substring(0, 4)?.padEnd(4) ?? missingInput(`dataIn.steps[${i}].tasks[${k}].fields.PCS`, "char", dataIn?.steps[i]?.tasks[k]?.fields?.PCS);
+  dataOut += dataIn?.steps[i]?.tasks[k]?.fields?.WGT?.substring(0, 5)?.padEnd(5) ?? missingInput(`dataIn.steps[${i}].tasks[${k}].fields.WGT`, "char", dataIn?.steps[i]?.tasks[k]?.fields?.WGT);
+  dataOut += dataIn?.steps[i]?.tasks[k]?.fields?.TRIP?.substring(0, 7)?.padEnd(7) ?? missingInput(`dataIn.steps[${i}].tasks[${k}].fields.TRIP`, "char", dataIn?.steps[i]?.tasks[k]?.fields?.TRIP);
+  dataOut += dataIn?.steps[i]?.tasks[k]?.fields?.Comment?.substring(0, 25)?.padEnd(25) ?? missingInput(`dataIn.steps[${i}].tasks[${k}].fields.Comment`, "char", dataIn?.steps[i]?.tasks[k]?.fields?.Comment);
+  dataOut += dataIn?.steps[i]?.tasks[k]?.fields?.DSP?.substring(0, 1)?.padEnd(1) ?? missingInput(`dataIn.steps[${i}].tasks[${k}].fields.DSP`, "char", dataIn?.steps[i]?.tasks[k]?.fields?.DSP);
+  dataOut += dataIn?.steps[i]?.tasks[k]?.fields?.Unit?.substring(0, 6)?.padEnd(6) ?? missingInput(`dataIn.steps[${i}].tasks[${k}].fields.Unit`, "char", dataIn?.steps[i]?.tasks[k]?.fields?.Unit);
+  dataOut += dataIn?.steps[i]?.tasks[k]?.fields?.hiddenLatitude?.substring(0, 10)?.padEnd(10) ?? missingInput(`dataIn.steps[${i}].tasks[${k}].fields.hiddenLatitude`, "char", dataIn?.steps[i]?.tasks[k]?.fields?.hiddenLatitude);
+  dataOut += dataIn?.steps[i]?.tasks[k]?.fields?.hiddenLongitude?.substring(0, 11)?.padEnd(11) ?? missingInput(`dataIn.steps[${i}].tasks[${k}].fields.hiddenLongitude`, "char", dataIn?.steps[i]?.tasks[k]?.fields?.hiddenLongitude);
+  dataOut += dataIn?.steps[i]?.tasks[k]?.fields?.locname?.substring(0, 15)?.padEnd(15) ?? missingInput(`dataIn.steps[${i}].tasks[${k}].fields.locname`, "char", dataIn?.steps[i]?.tasks[k]?.fields?.locname);
+  dataOut += dataIn?.steps[i]?.tasks[k]?.fields?.address?.substring(0, 18)?.padEnd(18) ?? missingInput(`dataIn.steps[${i}].tasks[${k}].fields.address`, "char", dataIn?.steps[i]?.tasks[k]?.fields?.address);
+  dataOut += dataIn?.steps[i]?.tasks[k]?.fields?.city?.substring(0, 12)?.padEnd(12) ?? missingInput(`dataIn.steps[${i}].tasks[${k}].fields.city`, "char", dataIn?.steps[i]?.tasks[k]?.fields?.city);
+  dataOut += dataIn?.steps[i]?.tasks[k]?.fields?.state?.substring(0, 2)?.padEnd(2) ?? missingInput(`dataIn.steps[${i}].tasks[${k}].fields.state`, "char", dataIn?.steps[i]?.tasks[k]?.fields?.state);
+  dataOut += dataIn?.steps[i]?.tasks[k]?.fields?.zipcode?.substring(0, 5)?.padEnd(5) ?? missingInput(`dataIn.steps[${i}].tasks[${k}].fields.zipcode`, "char", dataIn?.steps[i]?.tasks[k]?.fields?.zipcode);
+  dataOut += dataIn?.steps[i]?.tasks[k]?.fields?.stopkey?.substring(0, 8)?.padEnd(8) ?? missingInput(`dataIn.steps[${i}].tasks[${k}].fields.stopkey`, "char", dataIn?.steps[i]?.tasks[k]?.fields?.stopkey);
+  dataOut += dataIn?.steps[i]?.tasks[k]?.fields?.stopseq?.substring(0, 2)?.padEnd(2) ?? missingInput(`dataIn.steps[${i}].tasks[${k}].fields.stopseq`, "char", dataIn?.steps[i]?.tasks[k]?.fields?.stopseq);
+  dataOut += dataIn?.steps[i]?.tasks[k]?.fields?.user_id?.toFixed(0)?.substring(0, 18)?.padEnd(18) ?? missingInput(`dataIn.steps[${i}].tasks[${k}].fields.user_id`, "packed", dataIn?.steps[i]?.tasks[k]?.fields?.user_id);
   }
   }
-  dataOut.is_declinable = dataIn.substring(pos, pos + 1).trimEnd() === "1";
-  pos += 1;
+  dataOut += (dataIn?.is_declinable !== undefined ? (dataIn?.is_declinable ? "1" : "0") : missingInput(`dataIn.is_declinable`, "bool", dataIn?.is_declinable));
 
   return dataOut;
 }

@@ -6,7 +6,7 @@ codeblocks:
     - import eradaniConnect from "@eradani-inc/eradani-connect";
     - const { dataTypes } = eradaniConnect;
 datastructures:
-  TotalDistDS:
+  total_distanceDS:
     subfields:
       value:
         type: Character
@@ -22,7 +22,7 @@ datastructures:
       value:
         type: Character
         length: 10
-  shipdetailsDS:
+  shipment_detailsDS:
     subfields:
       hazmat:
         type: Boolean
@@ -32,20 +32,18 @@ datastructures:
         type: Boolean
       total_distance:
         type: DataStruct
-        dsName: TotalDistDS
+        dsName: total_distanceDS
       line_of_business:
         type: Character
         length: 4
       master_bill_of_lading:
         type: Character
-        length: 20
       shipping_documents:
         type: DataStruct
         dsName: SHippingDocsDS
         dim: 4
       truck_profile:
         type: Character
-        length: 5
   RemarksDS:
     subfields:
       label:
@@ -117,7 +115,6 @@ datastructures:
         length: 15
       email:
         type: Character
-        length: 50
       type:
         type: Character
         length: 3
@@ -141,7 +138,6 @@ datastructures:
         length: 5
       postal_splc:
         type: Character
-        length: 5
       latitude:
         type: Packed
         length: 8
@@ -155,10 +151,8 @@ datastructures:
         length: 10
       open_hours:
         type: Character
-        length: 5
       external_data:
         type: Character
-        length: 5
       is_inventory_location:
         type: Boolean
       created_at:
@@ -174,7 +168,6 @@ datastructures:
         length: 8
       value:
         type: Character
-        length: 5
       order:
         type: Packed
         length: 1
@@ -187,13 +180,10 @@ datastructures:
         length: 25
       ready_time:
         type: Character
-        length: 25
       late_time:
         type: Character
-        length: 25
       end_time:
         type: Character
-        length: 25
   centerDS:
     subfields:
       latitude:
@@ -258,7 +248,6 @@ datastructures:
         length: 7
       Comment:
         type: Character
-        length: 25
       DSP:
         type: Character
         length: 1
@@ -332,6 +321,10 @@ datastructures:
       external_data:
         type: DataStruct
         dsName: external_dataDS
+      remarks:
+        type: Hole
+        comment: Unable to process this item
+        dim: 1
       fields:
         type: DataStruct
         dsName: fieldsDS
@@ -354,19 +347,16 @@ datastructures:
         type: Boolean
       skip_reason:
         type: Character
-        length: 5
       is_bypassable:
         type: Boolean
       is_bypassed:
         type: Boolean
       bypass_reason:
         type: Character
-        length: 5
       is_reorderable:
         type: Boolean
       reorder_reason:
         type: Character
-        length: 5
       completed:
         type: Boolean
       completed_at:
@@ -383,35 +373,38 @@ datastructures:
         length: 15
       route_leg_external_id:
         type: Character
-        length: 5
       customer_external_id:
         type: Character
-        length: 5
       appointment:
         type: DataStruct
         dsName: appointmentDS
       eta:
         type: Character
-        length: 25
       created_at:
         type: Character
         length: 25
       updated_at:
         type: Character
         length: 25
+      external_data:
+        type: Hole
+        comment: Unable to process this item
+        dim: 1
+      remarks:
+        type: Hole
+        comment: Unable to process this item
+        dim: 1
       tasks:
         type: DataStruct
         dsName: TasksDS
         dim: 3
+      commodities:
+        type: Hole
+        comment: Unable to process this item
+        dim: 1
 formats:
-  OrderReq:
+  FormatName:
     recordType: request
-    subfields:
-      order:
-        type: Character
-        length: 7
-  OrderRes:
-    recordType: response
     subfields:
       drivers:
         type: Character
@@ -428,7 +421,6 @@ formats:
         length: 7
       preplan_external_id:
         type: Character
-        length: 10
       status:
         type: Character
         length: 6
@@ -437,7 +429,7 @@ formats:
         length: 1
       shipment_details:
         type: DataStruct
-        dsName: shipdetailsDS
+        dsName: shipment_detailsDS
       received_at:
         type: Character
         length: 25
@@ -452,7 +444,6 @@ formats:
         length: 25
       modified_at:
         type: Character
-        length: 25
       remarks:
         type: DataStruct
         dsName: RemarksDS
@@ -460,6 +451,18 @@ formats:
       prompts:
         type: DataStruct
         dsName: promptsDS
+      skip_reasons:
+        type: Hole
+        comment: Unable to process this item
+        dim: 1
+      bypass_reasons:
+        type: Hole
+        comment: Unable to process this item
+        dim: 1
+      reorder_reasons:
+        type: Hole
+        comment: Unable to process this item
+        dim: 1
       meta:
         type: DataStruct
         dsName: MetaDS
@@ -468,6 +471,14 @@ formats:
         type: DataStruct
         dsName: LocationDS
         dim: 4
+      customers:
+        type: Hole
+        comment: Unable to process this item
+        dim: 1
+      commodities:
+        type: Hole
+        comment: Unable to process this item
+        dim: 1
       external_data:
         type: DataStruct
         dsName: ExternalDS
@@ -476,5 +487,17 @@ formats:
         type: DataStruct
         dsName: StepsDS
         dim: 4
+      route_legs:
+        type: Hole
+        comment: Unable to process this item
+        dim: 1
       is_declinable:
         type: Boolean
+      driver_alerts:
+        type: Hole
+        comment: Unable to process this item
+        dim: 1
+      alerts:
+        type: Hole
+        comment: Unable to process this item
+        dim: 1
