@@ -86,8 +86,8 @@ GENMODS = icndbapi \
 		  mpgetdown \
 		  ddgetct \
 		  ddputct \
-		  ukgdtard
-
+		  ukgdtard \
+		  drvordr
 
 GENHDRS = icndbapi_h \
           lblapi_h \
@@ -146,7 +146,8 @@ GENHDRS = icndbapi_h \
 		  mpgetdow_h \
 		  ddgetc_h \
 		  ddputct_h \
-		  ukgdtard_h
+		  ukgdtard_h \
+		  drvordr_h
 
 
 SRVPGMS = ecctmpgen
@@ -742,6 +743,11 @@ $(libdir)/qrpglesrc.file/ukgdtard.mbr $(libdir)/qrpglesrc.file/ukgdtard_h.mbr ..
 	system "CPYFRMSTMF FROMSTMF('ukgdtard.rpgle') TOMBR('$(libdir)/qrpglesrc.file/ukgdtard.mbr') MBROPT(*REPLACE)"
 	system "CPYFRMSTMF FROMSTMF('ukgdtard_h.rpgleinc') TOMBR('$(libdir)/qrpglesrc.file/ukgdtard_h.mbr') MBROPT(*REPLACE)"	
 
+$(libdir)/qrpglesrc.file/drvordr.mbr $(libdir)/qrpglesrc.file/drvordr_h.mbr ../src/interfaces/drvordr.ts: drvordr.yaml
+	npx ec-generate -f $<
+	cp drvordr.ts ../src/interfaces/drvordr.ts
+	system "CPYFRMSTMF FROMSTMF('drvordr.rpgle') TOMBR('$(libdir)/qrpglesrc.file/drvordr.mbr') MBROPT(*REPLACE)"
+	system "CPYFRMSTMF FROMSTMF('drvordr_h.rpgleinc') TOMBR('$(libdir)/qrpglesrc.file/drvordr_h.mbr') MBROPT(*REPLACE)"	
 
 .PHONY: library
 library:
