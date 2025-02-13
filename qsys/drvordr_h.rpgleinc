@@ -38,7 +38,7 @@
      Dmaster_bill_...
      Dof_lading                      20A
      Dshipping_doc...
-     Duments                               LikeDS(SHippingDocsDS)
+     Duments                               LikeDS(ShippingDocsDS)
      D                                     Dim(4)
      Dtruck_profil...
      De                               5A
@@ -184,7 +184,7 @@
       ************************************
      DfieldsDS         DS                  Qualified
      D                                     Template
-     DOrder#                          7A
+     DOrderNo                         7A
      DTyepe                           1A
      DPCS                             4A
      DWGT                             5A
@@ -283,9 +283,9 @@
 
       ************************************
       * OrderRes data structure
-      * Record length: 7107
+      * Record length: 7323
       ************************************
-     DOrderResLen      C                   7107
+     DOrderResLen      C                   7323
      DOrderRes         DS                  Qualified
      D                                     Template
      Ddrivers                         5A   Dim(1)
@@ -309,7 +309,7 @@
      Dprompts                              LikeDS(promptsDS)
      Dmeta                                 LikeDS(MetaDS)
      D                                     Dim(9)
-     Dlocations                            LikeDS(LocationDS)
+     Dlocations                            LikeDS(locationDS)
      D                                     Dim(4)
      Dexternal_dat...
      Da                                    LikeDS(ExternalDS)
@@ -323,5 +323,5 @@
       * Convert buffer to OrderRes
       ************************************
      DBufToOrderRes    PR
-     DBuffer                       7107A
+     DBuffer                       7323A
      DDataStruct                           LikeDS(OrderRes)

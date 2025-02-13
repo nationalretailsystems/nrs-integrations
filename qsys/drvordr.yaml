@@ -41,7 +41,7 @@ datastructures:
         length: 20
       shipping_documents:
         type: DataStruct
-        dsName: SHippingDocsDS
+        dsName: ShippingDocsDS
         dim: 4
       truck_profile:
         type: Character
@@ -241,7 +241,7 @@ datastructures:
         dsName: geofenceDS
   fieldsDS:
     subfields:
-      Order#:
+      OrderNo:
         type: Character
         length: 7
       Tyepe:
@@ -466,7 +466,7 @@ formats:
         dim: 9
       locations:
         type: DataStruct
-        dsName: LocationDS
+        dsName: locationDS
         dim: 4
       external_data:
         type: DataStruct
