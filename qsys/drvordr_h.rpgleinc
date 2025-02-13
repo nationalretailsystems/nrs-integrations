@@ -184,7 +184,7 @@
       ************************************
      DfieldsDS         DS                  Qualified
      D                                     Template
-     DOrderNo                         7A
+     DOrderNum                        7A
      DTyepe                           1A
      DPCS                             4A
      DWGT                             5A

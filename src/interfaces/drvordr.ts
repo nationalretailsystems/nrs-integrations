@@ -382,7 +382,7 @@ export interface fieldsDS {
     /**
      * @size 7 characters
      */
-    OrderNo: string,
+    OrderNum: string,
     /**
      * @size 1 characters
      */
@@ -820,7 +820,7 @@ export function convertObjectToOrderRes(dataIn: OrderRes): string {
   dataOut += (dataIn?.steps[i]?.tasks[k]?.external_data?.geofence?.auto_complete !== undefined ? (dataIn?.steps[i]?.tasks[k]?.external_data?.geofence?.auto_complete ? "1" : "0") : missingInput(`dataIn.steps[${i}].tasks[${k}].external_data.geofence.auto_complete`, "bool", dataIn?.steps[i]?.tasks[k]?.external_data?.geofence?.auto_complete));
   dataOut += dataIn?.steps[i]?.tasks[k]?.external_data?.geofence?.trigger_by?.substring(0, 5)?.padEnd(5) ?? missingInput(`dataIn.steps[${i}].tasks[${k}].external_data.geofence.trigger_by`, "char", dataIn?.steps[i]?.tasks[k]?.external_data?.geofence?.trigger_by);
   dataOut += dataIn?.steps[i]?.tasks[k]?.external_data?.geofence?.message?.substring(0, 17)?.padEnd(17) ?? missingInput(`dataIn.steps[${i}].tasks[${k}].external_data.geofence.message`, "char", dataIn?.steps[i]?.tasks[k]?.external_data?.geofence?.message);
-  dataOut += dataIn?.steps[i]?.tasks[k]?.fields?.OrderNo?.substring(0, 7)?.padEnd(7) ?? missingInput(`dataIn.steps[${i}].tasks[${k}].fields.OrderNo`, "char", dataIn?.steps[i]?.tasks[k]?.fields?.OrderNo);
+  dataOut += dataIn?.steps[i]?.tasks[k]?.fields?.OrderNum?.substring(0, 7)?.padEnd(7) ?? missingInput(`dataIn.steps[${i}].tasks[${k}].fields.OrderNum`, "char", dataIn?.steps[i]?.tasks[k]?.fields?.OrderNum);
   dataOut += dataIn?.steps[i]?.tasks[k]?.fields?.Tyepe?.substring(0, 1)?.padEnd(1) ?? missingInput(`dataIn.steps[${i}].tasks[${k}].fields.Tyepe`, "char", dataIn?.steps[i]?.tasks[k]?.fields?.Tyepe);
   dataOut += dataIn?.steps[i]?.tasks[k]?.fields?.PCS?.substring(0, 4)?.padEnd(4) ?? missingInput(`dataIn.steps[${i}].tasks[${k}].fields.PCS`, "char", dataIn?.steps[i]?.tasks[k]?.fields?.PCS);
   dataOut += dataIn?.steps[i]?.tasks[k]?.fields?.WGT?.substring(0, 5)?.padEnd(5) ?? missingInput(`dataIn.steps[${i}].tasks[${k}].fields.WGT`, "char", dataIn?.steps[i]?.tasks[k]?.fields?.WGT);

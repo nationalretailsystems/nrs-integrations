@@ -246,7 +246,7 @@
        BufPtr += 5;
        DataStruct.steps(i).tasks(j).external_data.geofence.message = %subst(CharBuf:1:17);
        BufPtr += 17;
-       DataStruct.steps(i).tasks(j).fields.OrderNo = %subst(CharBuf:1:7);
+       DataStruct.steps(i).tasks(j).fields.OrderNum = %subst(CharBuf:1:7);
        BufPtr += 7;
        DataStruct.steps(i).tasks(j).fields.Tyepe = %subst(CharBuf:1:1);
        BufPtr += 1;
