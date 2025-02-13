@@ -70,7 +70,7 @@ export interface shipdetailsDS {
     master_bill_of_lading: string,
     /**
      */
-    shipping_documents: Array<SHippingDocsDS>,
+    shipping_documents: Array<ShippingDocsDS>,
     /**
      * @size 5 characters
      */
@@ -382,7 +382,7 @@ export interface fieldsDS {
     /**
      * @size 7 characters
      */
-    Order#: string,
+    OrderNo: string,
     /**
      * @size 1 characters
      */
@@ -698,7 +698,7 @@ export interface OrderRes {
     meta: Array<MetaDS>,
     /**
      */
-    locations: Array<LocationDS>,
+    locations: Array<locationDS>,
     /**
      */
     external_data: Array<ExternalDS>,
@@ -733,7 +733,8 @@ export function convertObjectToOrderRes(dataIn: OrderRes): string {
   dataOut += dataIn?.shipment_details?.line_of_business?.substring(0, 4)?.padEnd(4) ?? missingInput(`dataIn.shipment_details.line_of_business`, "char", dataIn?.shipment_details?.line_of_business);
   dataOut += dataIn?.shipment_details?.master_bill_of_lading?.substring(0, 20)?.padEnd(20) ?? missingInput(`dataIn.shipment_details.master_bill_of_lading`, "char", dataIn?.shipment_details?.master_bill_of_lading);
   for (let j: number = 0; j < 4; ++j) {
-
+  dataOut += dataIn?.shipment_details?.shipping_documents[j]?.type?.substring(0, 14)?.padEnd(14) ?? missingInput(`dataIn.shipment_details.shipping_documents[${j}].type`, "char", dataIn?.shipment_details?.shipping_documents[j]?.type);
+  dataOut += dataIn?.shipment_details?.shipping_documents[j]?.value?.substring(0, 10)?.padEnd(10) ?? missingInput(`dataIn.shipment_details.shipping_documents[${j}].value`, "char", dataIn?.shipment_details?.shipping_documents[j]?.value);
   }
   dataOut += dataIn?.shipment_details?.truck_profile?.substring(0, 5)?.padEnd(5) ?? missingInput(`dataIn.shipment_details.truck_profile`, "char", dataIn?.shipment_details?.truck_profile);
   dataOut += dataIn?.received_at?.substring(0, 25)?.padEnd(25) ?? missingInput(`dataIn.received_at`, "char", dataIn?.received_at);
@@ -761,7 +762,8 @@ export function convertObjectToOrderRes(dataIn: OrderRes): string {
   dataOut += dataIn?.meta[i]?.timestamp?.substring(0, 25)?.padEnd(25) ?? missingInput(`dataIn.meta[${i}].timestamp`, "char", dataIn?.meta[i]?.timestamp);
   }
   for (let i: number = 0; i < 4; ++i) {
-
+  dataOut += dataIn?.locations[i]?.latitude?.toFixed(7)?.substring(0, 11)?.padEnd(11) ?? missingInput(`dataIn.locations[${i}].latitude`, "packed", dataIn?.locations[i]?.latitude);
+  dataOut += dataIn?.locations[i]?.longitude?.toFixed(14)?.substring(0, 19)?.padEnd(19) ?? missingInput(`dataIn.locations[${i}].longitude`, "packed", dataIn?.locations[i]?.longitude);
   }
   for (let i: number = 0; i < 4; ++i) {
   dataOut += dataIn?.external_data[i]?.label?.substring(0, 8)?.padEnd(8) ?? missingInput(`dataIn.external_data[${i}].label`, "char", dataIn?.external_data[i]?.label);
@@ -818,7 +820,7 @@ export function convertObjectToOrderRes(dataIn: OrderRes): string {
   dataOut += (dataIn?.steps[i]?.tasks[k]?.external_data?.geofence?.auto_complete !== undefined ? (dataIn?.steps[i]?.tasks[k]?.external_data?.geofence?.auto_complete ? "1" : "0") : missingInput(`dataIn.steps[${i}].tasks[${k}].external_data.geofence.auto_complete`, "bool", dataIn?.steps[i]?.tasks[k]?.external_data?.geofence?.auto_complete));
   dataOut += dataIn?.steps[i]?.tasks[k]?.external_data?.geofence?.trigger_by?.substring(0, 5)?.padEnd(5) ?? missingInput(`dataIn.steps[${i}].tasks[${k}].external_data.geofence.trigger_by`, "char", dataIn?.steps[i]?.tasks[k]?.external_data?.geofence?.trigger_by);
   dataOut += dataIn?.steps[i]?.tasks[k]?.external_data?.geofence?.message?.substring(0, 17)?.padEnd(17) ?? missingInput(`dataIn.steps[${i}].tasks[${k}].external_data.geofence.message`, "char", dataIn?.steps[i]?.tasks[k]?.external_data?.geofence?.message);
-  dataOut += dataIn?.steps[i]?.tasks[k]?.fields?.Order#?.substring(0, 7)?.padEnd(7) ?? missingInput(`dataIn.steps[${i}].tasks[${k}].fields.Order#`, "char", dataIn?.steps[i]?.tasks[k]?.fields?.Order#);
+  dataOut += dataIn?.steps[i]?.tasks[k]?.fields?.OrderNo?.substring(0, 7)?.padEnd(7) ?? missingInput(`dataIn.steps[${i}].tasks[${k}].fields.OrderNo`, "char", dataIn?.steps[i]?.tasks[k]?.fields?.OrderNo);
   dataOut += dataIn?.steps[i]?.tasks[k]?.fields?.Tyepe?.substring(0, 1)?.padEnd(1) ?? missingInput(`dataIn.steps[${i}].tasks[${k}].fields.Tyepe`, "char", dataIn?.steps[i]?.tasks[k]?.fields?.Tyepe);
   dataOut += dataIn?.steps[i]?.tasks[k]?.fields?.PCS?.substring(0, 4)?.padEnd(4) ?? missingInput(`dataIn.steps[${i}].tasks[${k}].fields.PCS`, "char", dataIn?.steps[i]?.tasks[k]?.fields?.PCS);
   dataOut += dataIn?.steps[i]?.tasks[k]?.fields?.WGT?.substring(0, 5)?.padEnd(5) ?? missingInput(`dataIn.steps[${i}].tasks[${k}].fields.WGT`, "char", dataIn?.steps[i]?.tasks[k]?.fields?.WGT);
