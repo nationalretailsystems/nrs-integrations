@@ -45,7 +45,7 @@
      PBufToOrderRes    B                   Export
 
      DBufToOrderRes    PI
-     DBuffer                       7107A
+     DBuffer                       7323A
      DDataStruct                           LikeDS(OrderRes)
 
       * Initialize to begining of buffer
@@ -83,7 +83,10 @@
        DataStruct.shipment_details.master_bill_of_lading = %subst(CharBuf:1:20);
        BufPtr += 20;
        for i = 1 to 4;
-
+       DataStruct.shipment_details.shipping_documents(i).type = %subst(CharBuf:1:14);
+       BufPtr += 14;
+       DataStruct.shipment_details.shipping_documents(i).value = %subst(CharBuf:1:10);
+       BufPtr += 10;
        endfor;
        DataStruct.shipment_details.truck_profile = %subst(CharBuf:1:5);
        BufPtr += 5;
@@ -132,7 +135,10 @@
        BufPtr += 25;
        endfor;
        for i = 1 to 4;
-
+       DataStruct.locations(i).latitude = %dec(%subst(CharBuf:1:11):9:7);
+       BufPtr += 11;
+       DataStruct.locations(i).longitude = %dec(%subst(CharBuf:1:19):17:14);
+       BufPtr += 19;
        endfor;
        for i = 1 to 4;
        DataStruct.external_data(i).label = %subst(CharBuf:1:8);
@@ -240,7 +246,7 @@
        BufPtr += 5;
        DataStruct.steps(i).tasks(j).external_data.geofence.message = %subst(CharBuf:1:17);
        BufPtr += 17;
-       DataStruct.steps(i).tasks(j).fields.Order# = %subst(CharBuf:1:7);
+       DataStruct.steps(i).tasks(j).fields.OrderNo = %subst(CharBuf:1:7);
        BufPtr += 7;
        DataStruct.steps(i).tasks(j).fields.Tyepe = %subst(CharBuf:1:1);
        BufPtr += 1;
