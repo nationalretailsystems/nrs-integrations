@@ -241,7 +241,7 @@ datastructures:
         dsName: geofenceDS
   fieldsDS:
     subfields:
-      OrderNo:
+      OrderNum:
         type: Character
         length: 7
       Tyepe:
