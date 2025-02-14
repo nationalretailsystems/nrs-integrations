@@ -26,7 +26,7 @@
      DOrderReqToBuf    PI
      DDataStruct                           LikeDS(OrderReq)
      D                                     Const
-     DBuffer                          7A
+     DBuffer                         13A
 
       * Initialize to beginning of buffer
        BufPtr = %addr(Buffer);
@@ -34,6 +34,8 @@
       * Write fields from DS to buffer
        %subst(CharBuf:1:7) = DataStruct.order;
        BufPtr += 7;
+       %subst(CharBuf:1:6) = DataStruct.drivers;
+       BufPtr += 6;
 
        return ;
 
@@ -226,25 +228,37 @@
        BufPtr += 25;
        DataStruct.steps(i).tasks(j).updated_at = %subst(CharBuf:1:25);
        BufPtr += 25;
-       DataStruct.steps(i).tasks(j).external_data.is_prompt_repeats = %subst(CharBuf:1:1);
+       DataStruct.steps(i).tasks(j).external_data.is_prompt_repeats = 
+        %subst(CharBuf:1:1);
        BufPtr += 1;
-       DataStruct.steps(i).tasks(j).external_data.is_allow_repeats = %subst(CharBuf:1:1);
+       DataStruct.steps(i).tasks(j).external_data.is_allow_repeats = 
+        %subst(CharBuf:1:1);
        BufPtr += 1;
-       DataStruct.steps(i).tasks(j).external_data.is_required = %subst(CharBuf:1:1);
+       DataStruct.steps(i).tasks(j).external_data.is_required = 
+        %subst(CharBuf:1:1);
        BufPtr += 1;
-       DataStruct.steps(i).tasks(j).external_data.geofence.circle.center.latitude = %dec(%subst(CharBuf:1:10):8:6);
+       DataStruct.steps(i).tasks(j).external_data.geofence.circle.center.
+        latitude = 
+        %dec(%subst(CharBuf:1:10):8:6);
        BufPtr += 10;
-       DataStruct.steps(i).tasks(j).external_data.geofence.circle.center.longitude = %dec(%subst(CharBuf:1:11):9:6);
+       DataStruct.steps(i).tasks(j).external_data.geofence.circle.center.
+        longitude = 
+        %dec(%subst(CharBuf:1:11):9:6);
        BufPtr += 11;
-       DataStruct.steps(i).tasks(j).external_data.geofence.circle.radius = %dec(%subst(CharBuf:1:5):3:0);
+       DataStruct.steps(i).tasks(j).external_data.geofence.circle.radius = 
+        %dec(%subst(CharBuf:1:5):3:0);
        BufPtr += 5;
-       DataStruct.steps(i).tasks(j).external_data.geofence.delay = %dec(%subst(CharBuf:1:5):3:0);
+       DataStruct.steps(i).tasks(j).external_data.geofence.delay = 
+        %dec(%subst(CharBuf:1:5):3:0);
        BufPtr += 5;
-       DataStruct.steps(i).tasks(j).external_data.geofence.auto_complete = %subst(CharBuf:1:1);
+       DataStruct.steps(i).tasks(j).external_data.geofence.auto_complete = 
+        %subst(CharBuf:1:1);
        BufPtr += 1;
-       DataStruct.steps(i).tasks(j).external_data.geofence.trigger_by = %subst(CharBuf:1:5);
+       DataStruct.steps(i).tasks(j).external_data.geofence.trigger_by = 
+        %subst(CharBuf:1:5);
        BufPtr += 5;
-       DataStruct.steps(i).tasks(j).external_data.geofence.message = %subst(CharBuf:1:17);
+       DataStruct.steps(i).tasks(j).external_data.geofence.message = 
+        %subst(CharBuf:1:17);
        BufPtr += 17;
        DataStruct.steps(i).tasks(j).fields.OrderNum = %subst(CharBuf:1:7);
        BufPtr += 7;
@@ -262,9 +276,11 @@
        BufPtr += 1;
        DataStruct.steps(i).tasks(j).fields.Unit = %subst(CharBuf:1:6);
        BufPtr += 6;
-       DataStruct.steps(i).tasks(j).fields.hiddenLatitude = %subst(CharBuf:1:10);
+       DataStruct.steps(i).tasks(j).fields.hiddenLatitude = 
+        %subst(CharBuf:1:10);
        BufPtr += 10;
-       DataStruct.steps(i).tasks(j).fields.hiddenLongitude = %subst(CharBuf:1:11);
+       DataStruct.steps(i).tasks(j).fields.hiddenLongitude = 
+        %subst(CharBuf:1:11);
        BufPtr += 11;
        DataStruct.steps(i).tasks(j).fields.locname = %subst(CharBuf:1:15);
        BufPtr += 15;
@@ -280,7 +296,8 @@
        BufPtr += 8;
        DataStruct.steps(i).tasks(j).fields.stopseq = %subst(CharBuf:1:2);
        BufPtr += 2;
-       DataStruct.steps(i).tasks(j).fields.user_id = %dec(%subst(CharBuf:1:18):16:0);
+       DataStruct.steps(i).tasks(j).fields.user_id = 
+        %dec(%subst(CharBuf:1:18):16:0);
        BufPtr += 18;
        endfor;
        endfor;

@@ -410,6 +410,9 @@ formats:
       order:
         type: Character
         length: 7
+      drivers:
+        type: Character
+        length: 6
   OrderRes:
     recordType: response
     subfields:

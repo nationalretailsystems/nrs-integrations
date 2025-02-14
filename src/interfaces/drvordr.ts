@@ -613,7 +613,11 @@ export interface OrderReq {
     /**
      * @size 7 characters
      */
-    order: string
+    order: string,
+    /**
+     * @size 6 characters
+     */
+    drivers: string
 }
 
 /**
@@ -627,6 +631,8 @@ export function convertOrderReqToObject(dataIn: string): OrderReq {
 
   dataOut.order = dataIn.substring(pos, pos + 7).trimEnd();
   pos += 7;
+  dataOut.drivers = dataIn.substring(pos, pos + 6).trimEnd();
+  pos += 6;
 
   return dataOut;
 }
