@@ -266,12 +266,13 @@
 
       ************************************
       * OrderReq data structure
-      * Record length: 7
+      * Record length: 13
       ************************************
-     DOrderReqLen      C                   7
+     DOrderReqLen      C                   13
      DOrderReq         DS                  Qualified
      D                                     Template
      Dorder                           7A
+     Ddrivers                         6A
 
       ************************************
       * Convert OrderReq to buffer
@@ -279,7 +280,7 @@
      DOrderReqToBuf    PR
      DDataStruct                           LikeDS(OrderReq)
      D                                     Const
-     DBuffer                          7A
+     DBuffer                         13A
 
       ************************************
       * OrderRes data structure
