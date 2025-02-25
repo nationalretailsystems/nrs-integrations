@@ -1,0 +1,484 @@
+---
+name: drvordr2
+rpgIncName: drvordr2_h
+datastructures:
+  TotalDistDS:
+    subfields:
+      value:
+        type: Character
+        length: 1
+      unit_of_measure:
+        type: Character
+        length: 2
+  ShippingDocsDS:
+    subfields:
+      type:
+        type: Character
+        length: 14
+      value:
+        type: Character
+        length: 10
+  shipdetailsDS:
+    subfields:
+      hazmat:
+        type: Boolean
+      high_value:
+        type: Boolean
+      temperature_controlled:
+        type: Boolean
+      total_distance:
+        type: DataStruct
+        dsName: TotalDistDS
+      line_of_business:
+        type: Character
+        length: 4
+      master_bill_of_lading:
+        type: Character
+        length: 20
+      shipping_documents:
+        type: DataStruct
+        dsName: ShippingDocsDS
+        dim: 4
+      truck_profile:
+        type: Character
+        length: 5
+  RemarksDS:
+    subfields:
+      label:
+        type: Character
+        length: 7
+      value:
+        type: Character
+        length: 29
+      order:
+        type: Packed
+        length: 1
+  promptsDS:
+    subfields:
+      eta:
+        type: Boolean
+      fuel:
+        type: Boolean
+      eta_change_available:
+        type: Boolean
+      update_fuel_available:
+        type: Boolean
+  assetDS:
+    subfields:
+      external_id:
+        type: Character
+        length: 6
+      type:
+        type: Character
+        length: 10
+      vin:
+        type: Character
+        length: 17
+  locationDS:
+    subfields:
+      latitude:
+        type: Packed
+        length: 9
+        precision: 7
+      longitude:
+        type: Packed
+        length: 17
+        precision: 14
+  MetaDS:
+    subfields:
+      asset:
+        type: DataStruct
+        dsName: assetDS
+      fuel_level:
+        type: Packed
+        length: 3
+        precision: 1
+      location:
+        type: DataStruct
+        dsName: locationDS
+      odometer:
+        type: Packed
+        length: 8
+        precision: 2
+      timestamp:
+        type: Character
+        length: 25
+  LocationsDS:
+    subfields:
+      id:
+        type: Packed
+        length: 16
+      external_id:
+        type: Character
+        length: 15
+      email:
+        type: Character
+        length: 50
+      type:
+        type: Character
+        length: 3
+      name:
+        type: Character
+        length: 12
+      address:
+        type: Character
+        length: 18
+      city:
+        type: Character
+        length: 12
+      state:
+        type: Character
+        length: 2
+      country_code:
+        type: Character
+        length: 2
+      postal_code:
+        type: Character
+        length: 5
+      postal_splc:
+        type: Character
+        length: 5
+      latitude:
+        type: Packed
+        length: 8
+        precision: 6
+      longitude:
+        type: Packed
+        length: 9
+        precision: 6
+      time_zone:
+        type: Character
+        length: 10
+      open_hours:
+        type: Character
+        length: 5
+      external_data:
+        type: Character
+        length: 5
+      is_inventory_location:
+        type: Boolean
+      created_at:
+        type: Character
+        length: 25
+      updated_at:
+        type: Character
+        length: 25
+  ExternalDS:
+    subfields:
+      label:
+        type: Character
+        length: 8
+      value:
+        type: Character
+        length: 5
+      order:
+        type: Packed
+        length: 1
+      isLabel:
+        type: Boolean
+  appointmentDS:
+    subfields:
+      start_time:
+        type: Character
+        length: 25
+      ready_time:
+        type: Character
+        length: 25
+      late_time:
+        type: Character
+        length: 25
+      end_time:
+        type: Character
+        length: 25
+  centerDS:
+    subfields:
+      latitude:
+        type: Packed
+        length: 8
+        precision: 6
+      longitude:
+        type: Packed
+        length: 9
+        precision: 6
+  circleDS:
+    subfields:
+      center:
+        type: DataStruct
+        dsName: centerDS
+      radius:
+        type: Packed
+        length: 3
+  geofenceDS:
+    subfields:
+      circle:
+        type: DataStruct
+        dsName: circleDS
+      delay:
+        type: Packed
+        length: 3
+      auto_complete:
+        type: Boolean
+      trigger_by:
+        type: Character
+        length: 5
+      message:
+        type: Character
+        length: 17
+  external_dataDS:
+    subfields:
+      is_prompt_repeats:
+        type: Boolean
+      is_allow_repeats:
+        type: Boolean
+      is_required:
+        type: Boolean
+      geofence:
+        type: DataStruct
+        dsName: geofenceDS
+  fieldsDS:
+    subfields:
+      OrderNum:
+        type: Character
+        length: 7
+      Tyepe:
+        type: Character
+        length: 1
+      PCS:
+        type: Character
+        length: 4
+      WGT:
+        type: Character
+        length: 5
+      TRIP:
+        type: Character
+        length: 7
+      Comment:
+        type: Character
+        length: 25
+      DSP:
+        type: Character
+        length: 1
+      Unit:
+        type: Character
+        length: 6
+      hiddenLatitude:
+        type: Character
+        length: 10
+      hiddenLongitude:
+        type: Character
+        length: 11
+      locname:
+        type: Character
+        length: 15
+      address:
+        type: Character
+        length: 18
+      city:
+        type: Character
+        length: 12
+      state:
+        type: Character
+        length: 2
+      zipcode:
+        type: Character
+        length: 5
+      stopkey:
+        type: Character
+        length: 8
+      stopseq:
+        type: Character
+        length: 2
+      user_id:
+        type: Packed
+        length: 16
+  TasksDS:
+    subfields:
+      id:
+        type: Packed
+        length: 16
+      external_id:
+        type: Character
+        length: 9
+      name:
+        type: Character
+        length: 19
+      order:
+        type: Packed
+        length: 1
+      type:
+        type: Character
+        length: 19
+      completed:
+        type: Boolean
+      completed_at:
+        type: Character
+        length: 25
+      completed_by:
+        type: Character
+        length: 5
+      completion_type:
+        type: Character
+        length: 18
+      created_at:
+        type: Character
+        length: 25
+      updated_at:
+        type: Character
+        length: 25
+      external_data:
+        type: DataStruct
+        dsName: external_dataDS
+      fields:
+        type: DataStruct
+        dsName: fieldsDS
+  StepsDS:
+    subfields:
+      id:
+        type: Packed
+        length: 16
+      external_id:
+        type: Character
+        length: 17
+      name:
+        type: Character
+        length: 12
+      is_disabled:
+        type: Boolean
+      is_skippable:
+        type: Boolean
+      is_skipped:
+        type: Boolean
+      skip_reason:
+        type: Character
+        length: 5
+      is_bypassable:
+        type: Boolean
+      is_bypassed:
+        type: Boolean
+      bypass_reason:
+        type: Character
+        length: 5
+      is_reorderable:
+        type: Boolean
+      reorder_reason:
+        type: Character
+        length: 5
+      completed:
+        type: Boolean
+      completed_at:
+        type: Character
+        length: 25
+      type:
+        type: Character
+        length: 4
+      order:
+        type: Packed
+        length: 1
+      location_external_id:
+        type: Character
+        length: 15
+      route_leg_external_id:
+        type: Character
+        length: 5
+      customer_external_id:
+        type: Character
+        length: 5
+      appointment:
+        type: DataStruct
+        dsName: appointmentDS
+      eta:
+        type: Character
+        length: 25
+      created_at:
+        type: Character
+        length: 25
+      updated_at:
+        type: Character
+        length: 25
+      tasks:
+        type: DataStruct
+        dsName: TasksDS
+        dim: 3
+  OrderResDS:
+    subfields:
+      drivers:
+        type: Character
+        length: 5
+        dim: 1
+      id:
+        type: Packed
+        length: 16
+      external_id:
+        type: Character
+        length: 7
+      external_id_alias:
+        type: Character
+        length: 7
+      preplan_external_id:
+        type: Character
+        length: 10
+      status:
+        type: Character
+        length: 6
+      sequence:
+        type: Character
+        length: 1
+      shipment_details:
+        type: DataStruct
+        dsName: shipdetailsDS
+      received_at:
+        type: Character
+        length: 25
+      reviewed_at:
+        type: Character
+        length: 25
+      created_at:
+        type: Character
+        length: 25
+      updated_at:
+        type: Character
+        length: 25
+      modified_at:
+        type: Character
+        length: 25
+      remarks:
+        type: DataStruct
+        dsName: RemarksDS
+        dim: 3
+      prompts:
+        type: DataStruct
+        dsName: promptsDS
+      meta:
+        type: DataStruct
+        dsName: MetaDS
+        dim: 9
+      locations:
+        type: DataStruct
+        dsName: locationDS
+        dim: 4
+      external_data:
+        type: DataStruct
+        dsName: ExternalDS
+        dim: 4
+      steps:
+        type: DataStruct
+        dsName: StepsDS
+        dim: 4
+      is_declinable:
+        type: Boolean
+formats:
+  OrdRes:
+    recordType: response
+    subfields:
+      order:
+        type: DataStruct
+        dsName: OrderResDS
+  OrdReq:
+    recordType: request
+    subfields:
+      orderin:
+        type: Character
+        length: 7
+      driverin:
+        type: Character
+        length: 6
