@@ -1,10 +1,10 @@
 ---
 name: drvordr
-rpgIncName: drvordr_h
 codeblocks:
   typescript:
-    - import eradaniConnect from "@eradani-inc/eradani-connect";
-    - const { dataTypes } = eradaniConnect;
+    - ''
+    - // Manually entered import
+    - import config from 'config'
 datastructures:
   TotalDistDS:
     subfields:
@@ -403,18 +403,7 @@ datastructures:
         type: DataStruct
         dsName: TasksDS
         dim: 3
-formats:
-  OrderReq:
-    recordType: request
-    subfields:
-      order:
-        type: Character
-        length: 7
-      drivers:
-        type: Character
-        length: 6
-  OrderRes:
-    recordType: response
+  OrderResDS:
     subfields:
       drivers:
         type: Character
@@ -481,3 +470,19 @@ formats:
         dim: 4
       is_declinable:
         type: Boolean
+pgmmodels:
+  DVGETORDR:
+    library: \config.eradaniConnect.native.PSLib
+    mode: ile
+    procedures:
+      MainProc:
+        params:
+          order:
+            type: Character
+            length: 7
+          drivers:
+            type: Character
+            length: 6
+          OrderRes:
+            type: DataStruct
+            dsName: OrderResDS
