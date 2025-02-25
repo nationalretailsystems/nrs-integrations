@@ -749,6 +749,12 @@ $(libdir)/qrpglesrc.file/drvordr.mbr $(libdir)/qrpglesrc.file/drvordr_h.mbr ../s
 	system "CPYFRMSTMF FROMSTMF('drvordr.rpgle') TOMBR('$(libdir)/qrpglesrc.file/drvordr.mbr') MBROPT(*REPLACE)"
 	system "CPYFRMSTMF FROMSTMF('drvordr_h.rpgleinc') TOMBR('$(libdir)/qrpglesrc.file/drvordr_h.mbr') MBROPT(*REPLACE)"	
 
+$(libdir)/qrpglesrc.file/hygetchg.mbr $(libdir)/qrpglesrc.file/hygetchg_h.mbr ../src/interfaces/hygetchg.ts: hygetchg.yaml
+	npx ec-generate -f $<
+	cp hygetchg.ts ../src/interfaces/hygetchg.ts
+	system "CPYFRMSTMF FROMSTMF('hygetchg.rpgle') TOMBR('$(libdir)/qrpglesrc.file/hygetchg.mbr') MBROPT(*REPLACE)"
+	system "CPYFRMSTMF FROMSTMF('hygetchg_rpgleinc') TOMBR('$(libdir)/qrpglesrc.file/hygetchg_h.mbr') MBROPT(*REPLACE)"	
+
 .PHONY: library
 library:
 	-system "CRTLIB $(LIB)"
