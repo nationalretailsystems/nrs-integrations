@@ -1,0 +1,67 @@
+---
+name: lytxass1
+formats:
+  AssignReq:
+    recordType: request
+    subfields:
+        vehicleId:
+          type: Character
+          length: 36
+        driverId:
+          type: Character
+          length: 36
+  AssignRes:
+    recordType: response
+    subfields:
+      id:
+        type: Character
+        length: 36
+      name:
+        type: Character
+        length: 6
+      type:
+        type: Packed
+        length: 2
+      status:
+        type: Packed
+        length: 1
+      licensePlateNumber:
+        rpgName: licplate
+        type: Character
+        length: 10
+      countrySubdivision:
+        rpgName: countsub
+        type: Character
+        length: 10
+      lastConnected:
+        rpgName: lastconn
+        type: Character
+        length: 20
+      driverId:
+        type: Character
+        length: 36
+      groupId:
+        type: Character
+        length: 36
+      vin:
+        type: Character
+        length: 30
+      seatbeltType:
+        rpgName: seatbelt
+        type: Packed
+        length: 1
+      make:
+        type: Character
+        length: 20
+      model:
+        type: Character
+        length: 20
+      year:
+        type: Packed
+        length: 4
+      deviceId:
+        type: Character
+        length: 36
+      hibernationDelay:
+        type: Character
+        length: 13
