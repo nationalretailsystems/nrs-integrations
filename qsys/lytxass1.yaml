@@ -1,5 +1,10 @@
 ---
 name: lytxass1
+rpgIncName: lytxass_h
+codeblocks:
+  typescript:
+    - import eradaniConnect from "@eradani-inc/eradani-connect";
+    - const { dataTypes } = eradaniConnect;
 formats:
   AssignReq:
     recordType: request

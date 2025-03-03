@@ -13,6 +13,9 @@ const {
   toIbmiTimestamp
 } = ibmiConversions;
 
+import eradaniConnect from "@eradani-inc/eradani-connect";
+const { dataTypes } = eradaniConnect;
+
 /**
  * Output interface
  */
