@@ -1,6 +1,6 @@
 ---
 name: lytxass1
-rpgIncName: lytxass_h
+rpgIncName: lytxass1_h
 codeblocks:
   typescript:
     - import eradaniConnect from "@eradani-inc/eradani-connect";

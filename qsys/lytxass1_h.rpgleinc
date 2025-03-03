@@ -1,0 +1,56 @@
+      ************************************
+      * Module: lytxass1
+      * Generated RPG data structures
+      * and prototypes
+      * Do not modify
+      ************************************
+
+      ************************************
+      * AssignReq data structure
+      * Record length: 72
+      ************************************
+     DAssignReqLen     C                   72
+     DAssignReq        DS                  Qualified
+     D                                     Template
+     DvehicleId                      36A
+     DdriverId                       36A
+
+      ************************************
+      * Convert AssignReq to buffer
+      ************************************
+     DAssignReqToBuf   PR
+     DDataStruct                           LikeDS(AssignReq)
+     D                                     Const
+     DBuffer                         72A
+
+      ************************************
+      * AssignRes data structure
+      * Record length: 289
+      ************************************
+     DAssignResLen     C                   289
+     DAssignRes        DS                  Qualified
+     D                                     Template
+     Did                             36A
+     Dname                            6A
+     Dtype                            2P 0
+     Dstatus                          1P 0
+     Dlicplate                       10A
+     Dcountsub                       10A
+     Dlastconn                       20A
+     DdriverId                       36A
+     DgroupId                        36A
+     Dvin                            30A
+     Dseatbelt                        1P 0
+     Dmake                           20A
+     Dmodel                          20A
+     Dyear                            4P 0
+     DdeviceId                       36A
+     DhibernationD...
+     Delay                           13A
+
+      ************************************
+      * Convert buffer to AssignRes
+      ************************************
+     DBufToAssignRes   PR
+     DBuffer                        289A
+     DDataStruct                           LikeDS(AssignRes)
