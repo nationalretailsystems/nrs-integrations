@@ -1,0 +1,76 @@
+---
+name: lytxveh1
+datastructures:
+  VehiclesDS:
+    subfields:
+      id:
+        type: Character
+        length: 36
+      name:
+        type: Character
+        length: 6
+      type:
+        type: Packed
+        length: 2
+      status:
+        type: Packed
+        length: 1
+      licensePlateNumber:
+        rpgName: licplate
+        type: Character
+        length: 10
+        default: ""
+      countrySubdivision:
+        type: Character
+        length: 10
+        default: ""
+      lastConnected:
+        type: Character
+        length: 28
+        default: ""
+      driverId:
+        type: Character
+        length: 36
+        default: ""
+      groupId:
+        type: Character
+        length: 36
+      vin:
+        type: Character
+        length: 25
+        default: ""
+      seatbeltType:
+        type: Packed
+        length: 1
+      make:
+        type: Character
+        length: 20
+        default: ""
+      model:
+        type: Character
+        length: 20
+        default: ""
+      year:
+        type: Character
+        length: 4
+        default: ""
+      deviceId:
+        type: Character
+        length: 36
+formats:
+  VehRes:
+    recordType: result
+    subfields:
+      vehicles:
+        type: DataStruct
+        dsName: VehiclesDS
+        dim: 1
+      totalResults:
+        type: Packed
+        length: 4
+  VehReq:
+    recordType: request
+    subfields:
+      vehicle:
+        type: Character
+        length: 10
