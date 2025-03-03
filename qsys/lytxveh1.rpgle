@@ -45,7 +45,7 @@
      PBufToVehRes      B                   Export
 
      DBufToVehRes      PI
-     DBuffer                        283A
+     DBuffer                        285A
      DDataStruct                           LikeDS(VehRes)
 
       * Initialize to begining of buffer
@@ -79,8 +79,8 @@
        BufPtr += 20;
        DataStruct.vehicles(i).model = %subst(CharBuf:1:20);
        BufPtr += 20;
-       DataStruct.vehicles(i).year = %subst(CharBuf:1:4);
-       BufPtr += 4;
+       DataStruct.vehicles(i).year = %dec(%subst(CharBuf:1:6):4:0);
+       BufPtr += 6;
        DataStruct.vehicles(i).deviceId = %subst(CharBuf:1:36);
        BufPtr += 36;
        endfor;
