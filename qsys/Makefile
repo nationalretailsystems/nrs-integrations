@@ -768,7 +768,7 @@ $(libdir)/qrpglesrc.file/lytxass1.mbr $(libdir)/qrpglesrc.file/lytxass1_h.mbr ..
 $(libdir)/qrpglesrc.file/lytxveh1.mbr $(libdir)/qrpglesrc.file/lytxveh1_h.mbr ../src/interfaces/lytxveh1.ts: lytxveh1.yaml
 	npx ec-generate -f $<
 	cp lytxveh1.ts ../src/interfaces/lytxveh1.ts
-	system "CPYFRMSTMF FROMSTMF('lytxbeh1.rpgle') TOMBR('$(libdir)/qrpglesrc.file/lytxveh1.mbr') MBROPT(*REPLACE)"
+	system "CPYFRMSTMF FROMSTMF('lytxveh1.rpgle') TOMBR('$(libdir)/qrpglesrc.file/lytxveh1.mbr') MBROPT(*REPLACE)"
 	system "CPYFRMSTMF FROMSTMF('lytxveh1_h.rpgleinc') TOMBR('$(libdir)/qrpglesrc.file/lytxveh1_h.mbr') MBROPT(*REPLACE)"		
 
 .PHONY: library
