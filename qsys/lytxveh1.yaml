@@ -1,5 +1,10 @@
 ---
 name: lytxveh1
+rpgIncName: lytxveh1_h
+codeblocks:
+  typescript:
+    - import eradaniConnect from "@eradani-inc/eradani-connect";
+    - const { dataTypes } = eradaniConnect;
 datastructures:
   VehiclesDS:
     subfields:
