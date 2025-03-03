@@ -1,0 +1,19 @@
+{"data": {
+  "id": "1c00ffff-59ae-47c9-73ac-5d43e7800000",
+  "name": "227008",
+  "type": 36,
+  "status": 2,
+  "licensePlateNumber": null,
+  "countrySubdivision": null,
+  "lastConnected": "2025-03-03T13:42:00Z",
+  "driverId": "0000ffff-0000-3b00-25d3-4fa5892e0000",
+  "groupId": "1c00ffff-f993-93b2-bb0c-4663f0800000",
+  "vin": "5V4H4LF29NH238860",
+  "seatbeltType": 1,
+  "make": "AUTOCAR",
+  "model": "Xspotter Off-Hwy",
+  "year": 2022,
+  "deviceId": "00000000-0000-0000-0000-000000000000",
+  "hibernationDelay": "EighteenHours"
+}
+}

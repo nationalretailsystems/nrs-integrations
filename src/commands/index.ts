@@ -21,6 +21,7 @@ import registerTS4300 from './ts4300';
 import registerHRSD from './hrsd';
 import registerPlatsci from './platsci';
 import registerDrayDog from './draydog';
+import registerLytx from './lytx';
 import { Route53RecoveryCluster } from 'aws-sdk';
 
 export default async function registerCommands(router: ECCRouter) {
@@ -111,5 +112,10 @@ export default async function registerCommands(router: ECCRouter) {
     const draydog = new ECCRouter.Router();
     registerDrayDog(draydog);
     router.use('draydog', draydog);
+
+    const lytx = new ECCRouter.Router();
+    registerLytx(lytx);
+    router.use('lytx', lytx);
+    
     return router;
 }
