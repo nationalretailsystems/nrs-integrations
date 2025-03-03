@@ -83,10 +83,11 @@ export interface VehiclesDS {
      */
     model: string,
     /**
-     * @size 4 characters
-     * @default ``
+     * @size 4 digits
+     * @precision 0 decimals
+     * @default `0`
      */
-    year: string,
+    year: number,
     /**
      * @size 36 characters
      */
@@ -152,7 +153,7 @@ export function convertObjectToVehRes(dataIn: VehRes): string {
   dataOut += dataIn?.vehicles[i]?.seatbeltType?.toFixed(0)?.substring(0, 3)?.padEnd(3) ?? missingInput(`dataIn.vehicles[${i}].seatbeltType`, "packed", dataIn?.vehicles[i]?.seatbeltType);
   dataOut += dataIn?.vehicles[i]?.make?.substring(0, 20)?.padEnd(20) ?? "".substring(0, 20).padEnd(20);
   dataOut += dataIn?.vehicles[i]?.model?.substring(0, 20)?.padEnd(20) ?? "".substring(0, 20).padEnd(20);
-  dataOut += dataIn?.vehicles[i]?.year?.substring(0, 4)?.padEnd(4) ?? "".substring(0, 4).padEnd(4);
+  dataOut += dataIn?.vehicles[i]?.year?.toFixed(0)?.substring(0, 6)?.padEnd(6) ?? "0".substring(0, 6).padEnd(6);
   dataOut += dataIn?.vehicles[i]?.deviceId?.substring(0, 36)?.padEnd(36) ?? missingInput(`dataIn.vehicles[${i}].deviceId`, "char", dataIn?.vehicles[i]?.deviceId);
   }
   dataOut += dataIn?.totalResults?.toFixed(0)?.substring(0, 6)?.padEnd(6) ?? missingInput(`dataIn.totalResults`, "packed", dataIn?.totalResults);

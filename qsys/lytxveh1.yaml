@@ -56,9 +56,9 @@ datastructures:
         length: 20
         default: ""
       year:
-        type: Character
+        type: Packed
         length: 4
-        default: ""
+        default: 0
       deviceId:
         type: Character
         length: 36

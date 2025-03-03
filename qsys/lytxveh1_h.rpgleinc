@@ -25,7 +25,7 @@
      DseatbeltType                    1P 0
      Dmake                           20A
      Dmodel                          20A
-     Dyear                            4A
+     Dyear                            4P 0
      DdeviceId                       36A
 
       ************************************
@@ -47,9 +47,9 @@
 
       ************************************
       * VehRes data structure
-      * Record length: 283
+      * Record length: 285
       ************************************
-     DVehResLen        C                   283
+     DVehResLen        C                   285
      DVehRes           DS                  Qualified
      D                                     Template
      Dvehicles                             LikeDS(VehiclesDS)
@@ -60,5 +60,5 @@
       * Convert buffer to VehRes
       ************************************
      DBufToVehRes      PR
-     DBuffer                        283A
+     DBuffer                        285A
      DDataStruct                           LikeDS(VehRes)
