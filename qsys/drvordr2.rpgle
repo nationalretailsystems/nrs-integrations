@@ -47,7 +47,7 @@
      PBufToOrdRes      B                   Export
 
      DBufToOrdRes      PI
-     DBuffer                       7323A
+     DBuffer                       8139A
      DDataStruct                           LikeDS(OrdRes)
 
       * Initialize to begining of buffer
@@ -137,10 +137,44 @@
        BufPtr += 25;
        endfor;
        for i = 1 to 4;
-       DataStruct.order.locations(i).latitude = %dec(%subst(CharBuf:1:11):9:7);
+       DataStruct.order.locations(i).id = %dec(%subst(CharBuf:1:18):16:0);
+       BufPtr += 18;
+       DataStruct.order.locations(i).external_id = %subst(CharBuf:1:15);
+       BufPtr += 15;
+       DataStruct.order.locations(i).email = %subst(CharBuf:1:50);
+       BufPtr += 50;
+       DataStruct.order.locations(i).type = %subst(CharBuf:1:3);
+       BufPtr += 3;
+       DataStruct.order.locations(i).name = %subst(CharBuf:1:12);
+       BufPtr += 12;
+       DataStruct.order.locations(i).address = %subst(CharBuf:1:18);
+       BufPtr += 18;
+       DataStruct.order.locations(i).city = %subst(CharBuf:1:12);
+       BufPtr += 12;
+       DataStruct.order.locations(i).state = %subst(CharBuf:1:2);
+       BufPtr += 2;
+       DataStruct.order.locations(i).country_code = %subst(CharBuf:1:2);
+       BufPtr += 2;
+       DataStruct.order.locations(i).postal_code = %subst(CharBuf:1:5);
+       BufPtr += 5;
+       DataStruct.order.locations(i).postal_splc = %subst(CharBuf:1:5);
+       BufPtr += 5;
+       DataStruct.order.locations(i).latitude = %dec(%subst(CharBuf:1:10):8:6);
+       BufPtr += 10;
+       DataStruct.order.locations(i).longitude = %dec(%subst(CharBuf:1:11):9:6);
        BufPtr += 11;
-       DataStruct.order.locations(i).longitude = %dec(%subst(CharBuf:1:19):17:14);
-       BufPtr += 19;
+       DataStruct.order.locations(i).time_zone = %subst(CharBuf:1:10);
+       BufPtr += 10;
+       DataStruct.order.locations(i).open_hours = %subst(CharBuf:1:5);
+       BufPtr += 5;
+       DataStruct.order.locations(i).external_data = %subst(CharBuf:1:5);
+       BufPtr += 5;
+       DataStruct.order.locations(i).is_inventory_location = %subst(CharBuf:1:1);
+       BufPtr += 1;
+       DataStruct.order.locations(i).created_at = %subst(CharBuf:1:25);
+       BufPtr += 25;
+       DataStruct.order.locations(i).updated_at = %subst(CharBuf:1:25);
+       BufPtr += 25;
        endfor;
        for i = 1 to 4;
        DataStruct.order.external_data(i).label = %subst(CharBuf:1:8);

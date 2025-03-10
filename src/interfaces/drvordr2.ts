@@ -670,7 +670,7 @@ export interface OrderResDS {
     meta: Array<MetaDS>,
     /**
      */
-    locations: Array<locationDS>,
+    locations: Array<LocationsDS>,
     /**
      */
     external_data: Array<ExternalDS>,
@@ -774,8 +774,25 @@ export function convertObjectToOrdRes(dataIn: OrdRes): string {
   dataOut += dataIn?.order?.meta[j]?.timestamp?.substring(0, 25)?.padEnd(25) ?? missingInput(`dataIn.order.meta[${j}].timestamp`, "char", dataIn?.order?.meta[j]?.timestamp);
   }
   for (let j: number = 0; j < 4; ++j) {
-  dataOut += dataIn?.order?.locations[j]?.latitude?.toFixed(7)?.substring(0, 11)?.padEnd(11) ?? missingInput(`dataIn.order.locations[${j}].latitude`, "packed", dataIn?.order?.locations[j]?.latitude);
-  dataOut += dataIn?.order?.locations[j]?.longitude?.toFixed(14)?.substring(0, 19)?.padEnd(19) ?? missingInput(`dataIn.order.locations[${j}].longitude`, "packed", dataIn?.order?.locations[j]?.longitude);
+  dataOut += dataIn?.order?.locations[j]?.id?.toFixed(0)?.substring(0, 18)?.padEnd(18) ?? missingInput(`dataIn.order.locations[${j}].id`, "packed", dataIn?.order?.locations[j]?.id);
+  dataOut += dataIn?.order?.locations[j]?.external_id?.substring(0, 15)?.padEnd(15) ?? missingInput(`dataIn.order.locations[${j}].external_id`, "char", dataIn?.order?.locations[j]?.external_id);
+  dataOut += dataIn?.order?.locations[j]?.email?.substring(0, 50)?.padEnd(50) ?? missingInput(`dataIn.order.locations[${j}].email`, "char", dataIn?.order?.locations[j]?.email);
+  dataOut += dataIn?.order?.locations[j]?.type?.substring(0, 3)?.padEnd(3) ?? missingInput(`dataIn.order.locations[${j}].type`, "char", dataIn?.order?.locations[j]?.type);
+  dataOut += dataIn?.order?.locations[j]?.name?.substring(0, 12)?.padEnd(12) ?? missingInput(`dataIn.order.locations[${j}].name`, "char", dataIn?.order?.locations[j]?.name);
+  dataOut += dataIn?.order?.locations[j]?.address?.substring(0, 18)?.padEnd(18) ?? missingInput(`dataIn.order.locations[${j}].address`, "char", dataIn?.order?.locations[j]?.address);
+  dataOut += dataIn?.order?.locations[j]?.city?.substring(0, 12)?.padEnd(12) ?? missingInput(`dataIn.order.locations[${j}].city`, "char", dataIn?.order?.locations[j]?.city);
+  dataOut += dataIn?.order?.locations[j]?.state?.substring(0, 2)?.padEnd(2) ?? missingInput(`dataIn.order.locations[${j}].state`, "char", dataIn?.order?.locations[j]?.state);
+  dataOut += dataIn?.order?.locations[j]?.country_code?.substring(0, 2)?.padEnd(2) ?? missingInput(`dataIn.order.locations[${j}].country_code`, "char", dataIn?.order?.locations[j]?.country_code);
+  dataOut += dataIn?.order?.locations[j]?.postal_code?.substring(0, 5)?.padEnd(5) ?? missingInput(`dataIn.order.locations[${j}].postal_code`, "char", dataIn?.order?.locations[j]?.postal_code);
+  dataOut += dataIn?.order?.locations[j]?.postal_splc?.substring(0, 5)?.padEnd(5) ?? missingInput(`dataIn.order.locations[${j}].postal_splc`, "char", dataIn?.order?.locations[j]?.postal_splc);
+  dataOut += dataIn?.order?.locations[j]?.latitude?.toFixed(6)?.substring(0, 10)?.padEnd(10) ?? missingInput(`dataIn.order.locations[${j}].latitude`, "packed", dataIn?.order?.locations[j]?.latitude);
+  dataOut += dataIn?.order?.locations[j]?.longitude?.toFixed(6)?.substring(0, 11)?.padEnd(11) ?? missingInput(`dataIn.order.locations[${j}].longitude`, "packed", dataIn?.order?.locations[j]?.longitude);
+  dataOut += dataIn?.order?.locations[j]?.time_zone?.substring(0, 10)?.padEnd(10) ?? missingInput(`dataIn.order.locations[${j}].time_zone`, "char", dataIn?.order?.locations[j]?.time_zone);
+  dataOut += dataIn?.order?.locations[j]?.open_hours?.substring(0, 5)?.padEnd(5) ?? missingInput(`dataIn.order.locations[${j}].open_hours`, "char", dataIn?.order?.locations[j]?.open_hours);
+  dataOut += dataIn?.order?.locations[j]?.external_data?.substring(0, 5)?.padEnd(5) ?? missingInput(`dataIn.order.locations[${j}].external_data`, "char", dataIn?.order?.locations[j]?.external_data);
+  dataOut += (dataIn?.order?.locations[j]?.is_inventory_location !== undefined ? (dataIn?.order?.locations[j]?.is_inventory_location ? "1" : "0") : missingInput(`dataIn.order.locations[${j}].is_inventory_location`, "bool", dataIn?.order?.locations[j]?.is_inventory_location));
+  dataOut += dataIn?.order?.locations[j]?.created_at?.substring(0, 25)?.padEnd(25) ?? missingInput(`dataIn.order.locations[${j}].created_at`, "char", dataIn?.order?.locations[j]?.created_at);
+  dataOut += dataIn?.order?.locations[j]?.updated_at?.substring(0, 25)?.padEnd(25) ?? missingInput(`dataIn.order.locations[${j}].updated_at`, "char", dataIn?.order?.locations[j]?.updated_at);
   }
   for (let j: number = 0; j < 4; ++j) {
   dataOut += dataIn?.order?.external_data[j]?.label?.substring(0, 8)?.padEnd(8) ?? missingInput(`dataIn.order.external_data[${j}].label`, "char", dataIn?.order?.external_data[j]?.label);
