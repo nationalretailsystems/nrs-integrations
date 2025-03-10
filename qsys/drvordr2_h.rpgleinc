@@ -290,7 +290,7 @@
      Dprompts                              LikeDS(promptsDS)
      Dmeta                                 LikeDS(MetaDS)
      D                                     Dim(9)
-     Dlocations                            LikeDS(locationDS)
+     Dlocations                            LikeDS(LocationsDS)
      D                                     Dim(4)
      Dexternal_dat...
      Da                                    LikeDS(ExternalDS)
@@ -320,9 +320,9 @@
 
       ************************************
       * OrdRes data structure
-      * Record length: 7323
+      * Record length: 8139
       ************************************
-     DOrdResLen        C                   7323
+     DOrdResLen        C                   8139
      DOrdRes           DS                  Qualified
      D                                     Template
      Dorder                                LikeDS(OrderResDS)
@@ -331,5 +331,5 @@
       * Convert buffer to OrdRes
       ************************************
      DBufToOrdRes      PR
-     DBuffer                       7323A
+     DBuffer                       8139A
      DDataStruct                           LikeDS(OrdRes)
