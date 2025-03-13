@@ -290,13 +290,13 @@
      Dprompts                              LikeDS(promptsDS)
      Dmeta                                 LikeDS(MetaDS)
      D                                     Dim(9)
-     Dlocations                            LikeDS(locationDS)
-     D                                     Dim(4)
+     Dlocations                            LikeDS(LocationDS)
+     D                                     Dim(20)
      Dexternal_dat...
      Da                                    LikeDS(ExternalDS)
      D                                     Dim(4)
      Dsteps                                LikeDS(StepsDS)
-     D                                     Dim(4)
+     D                                     Dim(20)
      Dis_declinabl...
      De                                N
 
