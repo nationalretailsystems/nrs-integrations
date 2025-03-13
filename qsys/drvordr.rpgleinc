@@ -290,7 +290,7 @@
      Dprompts                              LikeDS(promptsDS)
      Dmeta                                 LikeDS(MetaDS)
      D                                     Dim(9)
-     Dlocations                            LikeDS(LocationDS)
+     Dlocations                            LikeDS(LocationsDS)
      D                                     Dim(20)
      Dexternal_dat...
      Da                                    LikeDS(ExternalDS)
