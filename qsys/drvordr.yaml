@@ -458,7 +458,7 @@ datastructures:
         dim: 9
       locations:
         type: DataStruct
-        dsName: LocationDS
+        dsName: LocationsDS
         dim: 20
       external_data:
         type: DataStruct
