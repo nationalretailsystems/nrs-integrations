@@ -6,6 +6,7 @@ import mountPinc from './pinc';
 import mountBlueyonder from './blueyonder';
 import mountOauth from './oauth';
 import mountPs from "./ps";
+import mountPlatsci from "./platsci";
 
 export default function mountAPI(router: Router) {
     // You can set auth requirements on a whole API section by putting `router.use(requireAuth);` here instead of on individual route definitions
@@ -37,6 +38,11 @@ export default function mountAPI(router: Router) {
     const ps = Router({ mergeParams: true });
     mountPs(ps);
     router.use('/ps', ps);
+
+                const platsci = Router({ mergeParams: true });
+                mountPlatsci(platsci);
+                router.use('/platsci', platsci);
+            
             
             
             

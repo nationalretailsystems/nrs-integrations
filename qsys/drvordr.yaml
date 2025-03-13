@@ -458,8 +458,8 @@ datastructures:
         dim: 9
       locations:
         type: DataStruct
-        dsName: locationDS
-        dim: 4
+        dsName: LocationDS
+        dim: 20
       external_data:
         type: DataStruct
         dsName: ExternalDS
@@ -467,7 +467,7 @@ datastructures:
       steps:
         type: DataStruct
         dsName: StepsDS
-        dim: 4
+        dim: 20
       is_declinable:
         type: Boolean
 pgmmodels:
