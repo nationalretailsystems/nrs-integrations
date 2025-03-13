@@ -1869,8 +1869,8 @@ export interface StepsDS {
     },
       {
       name: "locations",
-      type: new dataTypes.DataStructure(locationDSFields),
-      dim: 4
+      type: new dataTypes.DataStructure(LocationDSFields),
+      dim: 20
     },
       {
       name: "external_data",
@@ -1880,7 +1880,7 @@ export interface StepsDS {
       {
       name: "steps",
       type: new dataTypes.DataStructure(StepsDSFields),
-      dim: 4
+      dim: 20
     },
       {
       name: "is_declinable",
@@ -1955,7 +1955,7 @@ export interface OrderResDSInput {
     meta: Array<MetaDSInput>,
     /**
      */
-    locations: Array<locationDSInput>,
+    locations: Array<LocationDSInput>,
     /**
      */
     external_data: Array<ExternalDSInput>,
@@ -2034,7 +2034,7 @@ export interface OrderResDS {
     meta: Array<MetaDS>,
     /**
      */
-    locations: Array<locationDS>,
+    locations: Array<LocationDS>,
     /**
      */
     external_data: Array<ExternalDS>,
