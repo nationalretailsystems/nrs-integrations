@@ -1,0 +1,64 @@
+      ************************************
+      * Module: lytxdrv
+      * Generated RPG data structures
+      * and prototypes
+      * Do not modify
+      ************************************
+
+      ************************************
+      * VehiclesDS data structure
+      ************************************
+     DVehiclesDS       DS                  Qualified
+     D                                     Template
+     Did                             36A
+     Dname                            6A
+     Dtype                            2P 0
+     Dstatus                          1P 0
+     Dlicplate                       10A
+     DcountrySubdi...
+     Dvision                         10A
+     DlastConnecte...
+     Dd                              28A
+     DdriverId                       36A
+     DgroupId                        36A
+     Dvin                            25A
+     DseatbeltType                    1P 0
+     Dmake                           20A
+     Dmodel                          20A
+     Dyear                            4P 0
+     DdeviceId                       36A
+
+      ************************************
+      * DrvReq data structure
+      * Record length: 10
+      ************************************
+     DDrvReqLen        C                   10
+     DDrvReq           DS                  Qualified
+     D                                     Template
+     Ddriver                         10A
+
+      ************************************
+      * Convert DrvReq to buffer
+      ************************************
+     DDrvReqToBuf      PR
+     DDataStruct                           LikeDS(DrvReq)
+     D                                     Const
+     DBuffer                         10A
+
+      ************************************
+      * DrvRes data structure
+      * Record length: 285
+      ************************************
+     DDrvResLen        C                   285
+     DDrvRes           DS                  Qualified
+     D                                     Template
+     Dvehicles                             LikeDS(VehiclesDS)
+     D                                     Dim(1)
+     DtotalResults                    4P 0
+
+      ************************************
+      * Convert buffer to DrvRes
+      ************************************
+     DBufToDrvRes      PR
+     DBuffer                        285A
+     DDataStruct                           LikeDS(DrvRes)

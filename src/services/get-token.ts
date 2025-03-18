@@ -1,5 +1,5 @@
 import config from 'config';
-const { paycargo, ukg, ts4300, hrsd, draydog } = config;
+const { paycargo, ukg, ts4300, hrsd, draydog, drivecam } = config;
 import axios from 'axios';
 import qs from 'qs';
 import createLogger from 'src/services/logger';
@@ -145,6 +145,49 @@ export const getTokenHRSD = async (): Promise<string> => {
     }
     _tokenhrsd = response.data.access_token;
     _expirationhrsd = Date.now() + response.data.expires_in * 1000; // 1000ms * 60s * 60m * 8h = 8 hours
+    logger.error('returning token');
+    return _tokenhrsd;
+};
+const axiosInstanceDC = axios.create(drivecam.axios);
+let _sessioniddc: string;
+let _expirationiddc: number
+
+export const getTokenDC = async (): Promise<string> => {
+    logger.error('DriveCam SessionId request');
+    // SHould be 30 minutes 1800000 milliseconds
+    if (_sessioniddc && _expirationiddc > Date.now() + 1000000) {
+        logger.error('nonexpired token');
+        return _sessioniddc;
+    }
+    let response;
+    let dataParm = 
+        '<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:tem="http://tempuri.org/" xmlns:mes="http://drivecam.com/Services/MessagesAPI">' +
+        '<soapenv:Header/>' +
+        '<soapenv:Body>' +
+        '>tem:Login>' +
+         '<tem:request>' +
+         '<mes:Password>' +
+         drivecam.passowrd +
+        '</mes:Password>' +
+        '<mes:Username>' +
+        drivecam.username +
+        '</mes:Username>' +
+         '</tem:request>' +
+        '</tem:Login>' +
+        '</soapenv:Body>' +
+        '</soapenv:Envelope>'
+    try {
+        response = await axiosInstanceDC.post('/HSServicesAPI/AuthenticationService/V1/AuthenticationService.svc', dataParm, {
+            headers: {
+                'Content-Type': 'text/xml',
+                'SoapAction': "http://tempuri.org/IAuthenticationService/Login"            }
+        });
+    } catch (err) {
+        logger.error(err);
+        return err;
+    }
+    _sessioniddc = response.data.access_token;
+    _expirationiddc = Date.now() + 1000000; // 1000ms * 60s * 60m * 8h = 8 hours
     logger.error('returning token');
     return _tokenhrsd;
 };

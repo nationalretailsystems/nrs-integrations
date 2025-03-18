@@ -1,0 +1,38 @@
+{
+    "vehicles": [
+    {
+      "id": "1c00ffff-59ae-47c9-4afe-5d43e7800000",
+      "name": "138152",
+      "type": 36,
+      "status": 2,
+      "licensePlateNumber": null,
+      "countrySubdivision": null,
+      "lastConnected": "2023-11-03T08:34:59.3707333Z",
+      "driverId": "00000000-0000-0000-0000-000000000000",
+      "groupId": "1c00ffff-f993-93b2-8d6a-4663f0800000",
+      "vin": null,
+      "seatbeltType": 1,
+      "make": null,
+      "model": null,
+      "year": null,
+      "deviceId": "00000000-0000-0000-0000-000000000000"
+    },
+    {
+      "id": "1c00ffff-59ae-47c9-4b00-5d43e7800000",
+      "name": "155667",
+      "type": 36,
+      "status": 2,
+      "licensePlateNumber": null,
+      "countrySubdivision": null,
+      "lastConnected": "2023-11-03T07:21:54.8650148Z",
+      "driverId": "00000000-0000-0000-0000-000000000000",
+      "groupId": "1c00ffff-f993-93b2-8d6a-4663f0800000",
+      "vin": null,
+      "seatbeltType": 1,
+      "make": null,
+      "model": null,
+      "year": null,
+      "deviceId": "00000000-0000-0000-0000-000000000000"
+    }
+]
+}
