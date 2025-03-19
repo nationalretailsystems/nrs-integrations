@@ -3,11 +3,14 @@ const { paycargo, ukg, ts4300, hrsd, draydog, drivecam } = config;
 import axios from 'axios';
 import qs from 'qs';
 import createLogger from 'src/services/logger';
+import { XMLParser, XMLBuilder, XMLValidator } from 'fast-xml-parser';
+import { result } from 'lodash';
 const logger = createLogger('commands/ukgtoken');
 // FIXME: This is a temporary workaround to allow self-signed certificates
 process.env['NODE_TLS_REJECT_UNAUTHORIZED'] = '0';
 // const axiosInstance = axios.create(paycargo_dev.axios);
 const axiosInstance = axios.create(paycargo.axios);
+
 
 let _token: string;
 let _expiration: number;
@@ -148,9 +151,11 @@ export const getTokenHRSD = async (): Promise<string> => {
     logger.error('returning token');
     return _tokenhrsd;
 };
-const axiosInstanceDC = axios.create(drivecam.axios);
+const axiosInstanceDC = 
+axios.create(drivecam.axios);
 let _sessioniddc: string;
 let _expirationiddc: number
+const parser = new XMLParser();
 
 export const getTokenDC = async (): Promise<string> => {
     logger.error('DriveCam SessionId request');
@@ -164,10 +169,10 @@ export const getTokenDC = async (): Promise<string> => {
         '<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:tem="http://tempuri.org/" xmlns:mes="http://drivecam.com/Services/MessagesAPI">' +
         '<soapenv:Header/>' +
         '<soapenv:Body>' +
-        '>tem:Login>' +
-         '<tem:request>' +
-         '<mes:Password>' +
-         drivecam.passowrd +
+        '<tem:Login>' +
+        '<tem:request>' +
+        '<mes:Password>' +
+        drivecam.password +
         '</mes:Password>' +
         '<mes:Username>' +
         drivecam.username +
@@ -179,15 +184,18 @@ export const getTokenDC = async (): Promise<string> => {
     try {
         response = await axiosInstanceDC.post('/HSServicesAPI/AuthenticationService/V1/AuthenticationService.svc', dataParm, {
             headers: {
-                'Content-Type': 'text/xml',
-                'SoapAction': "http://tempuri.org/IAuthenticationService/Login"            }
+                'Content-Type': 'text/xml; charset=utf-8',
+                'SoapAction': 'http://tempuri.org/IAuthenticationService/Login'
+            }
         });
     } catch (err) {
         logger.error(err);
         return err;
     }
-    _sessioniddc = response.data.access_token;
+    let jObj = parser.parse(response.data);
+    _sessioniddc =
+        jObj['s:Envelope']['s:Body']['LoginResponse']['LoginResult']['a:SessionId'];
     _expirationiddc = Date.now() + 1000000; // 1000ms * 60s * 60m * 8h = 8 hours
-    logger.error('returning token');
-    return _tokenhrsd;
+    logger.error('returning token ' + _sessioniddc);
+    return _sessioniddc;
 };
