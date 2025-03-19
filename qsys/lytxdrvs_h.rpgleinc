@@ -1,0 +1,39 @@
+      ************************************
+      * Module: lytxdrvs
+      * Generated RPG data structures
+      * and prototypes
+      * Do not modify
+      ************************************
+
+      ************************************
+      * DrvsReq data structure
+      * Record length: 6
+      ************************************
+     DDrvsReqLen       C                   6
+     DDrvsReq          DS                  Qualified
+     D                                     Template
+     Ddrivername                      6A
+
+      ************************************
+      * Convert DrvsReq to buffer
+      ************************************
+     DDrvsReqToBuf     PR
+     DDataStruct                           LikeDS(DrvsReq)
+     D                                     Const
+     DBuffer                          6A
+
+      ************************************
+      * DrvsRes data structure
+      * Record length: 30
+      ************************************
+     DDrvsResLen       C                   30
+     DDrvsRes          DS                  Qualified
+     D                                     Template
+     Ddriverid                       30A
+
+      ************************************
+      * Convert buffer to DrvsRes
+      ************************************
+     DBufToDrvsRes     PR
+     DBuffer                         30A
+     DDataStruct                           LikeDS(DrvsRes)

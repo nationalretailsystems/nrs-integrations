@@ -1,0 +1,20 @@
+---
+name: lytxdrvs
+rpgIncName: lytxdrvs_h
+codeblocks:
+  typescript:
+    - import eradaniConnect from "@eradani-inc/eradani-connect";
+    - const { dataTypes } = eradaniConnect;
+formats:
+  DrvsReq:
+    recordType: request
+    subfields:
+      drivername:
+        type: Character
+        length: 6
+  DrvsRes:
+    recordType: result
+    subfields:
+      driverid:
+        type: Character
+        length: 30
