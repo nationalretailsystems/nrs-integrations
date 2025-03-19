@@ -89,7 +89,8 @@ GENMODS = icndbapi \
 		  ukgdtard \
 		  drvordr2 \
 		  lytxass1 \
-		  lytxveh1
+		  lytxveh1 \
+		  lytxdrvs
 
 GENHDRS = icndbapi_h \
           lblapi_h \
@@ -151,7 +152,8 @@ GENHDRS = icndbapi_h \
 		  ukgdtard_h \
 		  drvordr2_h \
 		  lytxass1_h \
-		  lytxveh1_h
+		  lytxveh1_h \
+		  lytxdrvs_h
 
 
 SRVPGMS = ecctmpgen
@@ -770,6 +772,12 @@ $(libdir)/qrpglesrc.file/lytxveh1.mbr $(libdir)/qrpglesrc.file/lytxveh1_h.mbr ..
 	cp lytxveh1.ts ../src/interfaces/lytxveh1.ts
 	system "CPYFRMSTMF FROMSTMF('lytxveh1.rpgle') TOMBR('$(libdir)/qrpglesrc.file/lytxveh1.mbr') MBROPT(*REPLACE)"
 	system "CPYFRMSTMF FROMSTMF('lytxveh1_h.rpgleinc') TOMBR('$(libdir)/qrpglesrc.file/lytxveh1_h.mbr') MBROPT(*REPLACE)"		
+
+$(libdir)/qrpglesrc.file/lytxdrvs.mbr $(libdir)/qrpglesrc.file/lytxdrvs_h.mbr ../src/interfaces/lytxdrvs.ts: lytxdrvs.yaml
+	npx ec-generate -f $<
+	cp lytxdrvs.ts ../src/interfaces/lytxdrvs.ts
+	system "CPYFRMSTMF FROMSTMF('lytxdrvs.rpgle') TOMBR('$(libdir)/qrpglesrc.file/lytxdrvs.mbr') MBROPT(*REPLACE)"
+	system "CPYFRMSTMF FROMSTMF('lytxdrvs_h.rpgleinc') TOMBR('$(libdir)/qrpglesrc.file/lytxdrvs_h.mbr') MBROPT(*REPLACE)"		
 
 .PHONY: library
 library:
