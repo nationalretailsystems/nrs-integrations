@@ -5,6 +5,7 @@ import createLogger from 'src/services/logger';
 import * as converter from 'src/interfaces/lytxveh1';
 import * as converter2 from 'src/interfaces/lytxass1';
 import * as converterdrv from 'src/interfaces/lytxdrv';
+import * as convertdrv2 from 'src/interfaces/lytxdrvs';
 import { getTokenDC } from 'src/services/get-token';
 import { promises as fs } from 'fs';
 import { dataTypes } from '@eradani-inc/eradani-connect';
@@ -112,24 +113,22 @@ export const getDrivers: ECCHandlerFunction = async (reqkey, data, ecc) => {
         logger.error('Requesting drivecam token');
         const token = await getTokenDC();
         let dataParm =
-        '<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:tem="http://tempuri.org/" xmlns:mes="http://drivecam.com/Services/MessagesAPI">' +
-        '<soapenv:Header/>' +
-        '<soapenv:Body>' +
-        '<tem:GetUsers>' +
-        '<tem:request>' +
-        '<mes:SessionId>' +
-        token +
-        '</mes:SessionId>' +
-        '<mes:GroupId>2a4f38e3-0f48-e511-8857-02215e5eed57</mes:GroupId>' +
-        '<mes:IncludeSubGroups>true</mes:IncludeSubGroups>' +
-        '</tem:request>' +
-        '/tem:GetUsers>' +
-        '<soapenv:Body>' +
-        '<soapenv:Envelope';
-        result = await axiosInstance2.get('/HSServicesAPI/UserService/V1/UserService.svc', {
+        '<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:tem="http://tempuri.org/" xmlns:mes="http://drivecam.com/Services/MessagesAPI"> ' +
+        '<soapenv:Header/> ' +
+        '<soapenv:Body> ' +
+        '<tem:GetUsers> ' +
+        '<tem:request> ' +
+        '<mes:SessionId>' + token + '</mes:SessionId> ' +
+        '<mes:GroupId>2a4f38e3-0f48-e511-8857-02215e5eed57</mes:GroupId> ' +
+        '<mes:IncludeSubGroups>true</mes:IncludeSubGroups> ' +
+        '</tem:request> ' +
+        '</tem:GetUsers>' +
+        '</soapenv:Body> ' +
+        '</soapenv:Envelope>';
+        result = await axiosInstance2.post('/HSServicesAPI/UserService/V1/UserService.svc', dataParm , {
             headers: {
-                'SoapAction': '"http://tempuri.org/IUserService/GetUsers"',
-                'Accept': 'text/xml'
+                'Content-Type': 'text/xml; charset=utf-8',
+                'SoapAction': 'http://tempuri.org/IUserService/GetUsers'
             }
     });
     } catch (err) {
@@ -146,18 +145,24 @@ export const getDrivers: ECCHandlerFunction = async (reqkey, data, ecc) => {
         return ecc.sendEccResult('ECC9100', err.message, nextReqKey);
     }
     // Send the result info
+    let responseData;
+    let userid;
+    let username;
     let jObj = parser.parse(result.data);
     let userSummaries = 
-        jObj['s:Envelope']['s:Body']['GetUserResponse']['GetUserResult']['a:Users'];
+        jObj['s:Envelope']['s:Body']['GetUsersResponse']['GetUsersResult']['a:Users']['a:UserSummary'];
     for (let i: number = 0; i < userSummaries.length; ++i) {
-        const record = {
-            EmployeeNum: userSummaries[i]['a:EmployeeNum'],
-            UserID: userSummaries[i]['a:UserId'],
+        userid = userSummaries[i]['a:UserId'];
+        username = userSummaries[i]['a:EmployeeNum'];
+        if (username === reqFields.driver) {
+            logger.error(username + '-' + userid);
         }
     }
 
+    // let responseData = result.data;
     logger.debug('ECC0000', 'Success', nextReqKey);
     nextReqKey = await ecc.sendEccResult('ECC0000', 'Success', nextReqKey);
-    return ecc.sendObjectToCaller(userSummaries, converterdrv.convertObjectToDrvRes, nextReqKey);
+    let resultData = {driverid: userid};
+    return ecc.sendObjectToCaller(resultData, convertdrv2.convertObjectToDrvsRes, nextReqKey);
     logger.debug('Sent data to RPG');
 };
