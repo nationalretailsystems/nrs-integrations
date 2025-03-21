@@ -24,16 +24,16 @@
 
       ************************************
       * DrvsRes data structure
-      * Record length: 30
+      * Record length: 36
       ************************************
-     DDrvsResLen       C                   30
+     DDrvsResLen       C                   36
      DDrvsRes          DS                  Qualified
      D                                     Template
-     Ddriverid                       30A
+     Ddriverid                       36A
 
       ************************************
       * Convert buffer to DrvsRes
       ************************************
      DBufToDrvsRes     PR
-     DBuffer                         30A
+     DBuffer                         36A
      DDataStruct                           LikeDS(DrvsRes)

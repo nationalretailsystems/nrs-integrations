@@ -46,7 +46,7 @@ export function convertDrvsReqToObject(dataIn: string): DrvsReq {
  */
 export interface DrvsRes {
     /**
-     * @size 30 characters
+     * @size 36 characters
      */
     driverid: string
 }
@@ -57,7 +57,7 @@ export interface DrvsRes {
 export function convertObjectToDrvsRes(dataIn: DrvsRes): string {
   let dataOut: string = "";
 
-  dataOut += dataIn?.driverid?.substring(0, 30)?.padEnd(30) ?? missingInput(`dataIn.driverid`, "char", dataIn?.driverid);
+  dataOut += dataIn?.driverid?.substring(0, 36)?.padEnd(36) ?? missingInput(`dataIn.driverid`, "char", dataIn?.driverid);
 
   return dataOut;
 }

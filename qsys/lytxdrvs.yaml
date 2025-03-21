@@ -17,4 +17,4 @@ formats:
     subfields:
       driverid:
         type: Character
-        length: 30
+        length: 36
