@@ -45,15 +45,15 @@
      PBufToDrvsRes     B                   Export
 
      DBufToDrvsRes     PI
-     DBuffer                         30A
+     DBuffer                         36A
      DDataStruct                           LikeDS(DrvsRes)
 
       * Initialize to begining of buffer
        BufPtr = %addr(Buffer);
 
       * Read fields from buffer into DS
-       DataStruct.driverid = %subst(CharBuf:1:30);
-       BufPtr += 30;
+       DataStruct.driverid = %subst(CharBuf:1:36);
+       BufPtr += 36;
 
        return ;
 

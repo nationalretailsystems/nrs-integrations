@@ -66,7 +66,7 @@ export const assignVehicle: ECCHandlerFunction = async (reqkey, data, ecc) => {
     let result;
     let nextReqKey = reqkey;
     try {
-        result = await axiosInstance.patch('/vehicles/all', {
+        result = await axiosInstance.patch('/vehicles', {
             headers: {
                 'x-apikey': lytx.xapikey,
                 'Accept': 'application/json'
@@ -146,16 +146,18 @@ export const getDrivers: ECCHandlerFunction = async (reqkey, data, ecc) => {
     }
     // Send the result info
     let responseData;
-    let userid;
+    let userid = 'Not Found';
+    let useridtest;
     let username;
     let jObj = parser.parse(result.data);
     let userSummaries = 
         jObj['s:Envelope']['s:Body']['GetUsersResponse']['GetUsersResult']['a:Users']['a:UserSummary'];
     for (let i: number = 0; i < userSummaries.length; ++i) {
-        userid = userSummaries[i]['a:UserId'];
+        useridtest = userSummaries[i]['a:UserId'];
         username = userSummaries[i]['a:EmployeeNum'];
         if (username === reqFields.driver) {
-            logger.error(username + '-' + userid);
+            logger.error(username + '-' + useridtest);
+            userid = useridtest;
         }
     }
 
