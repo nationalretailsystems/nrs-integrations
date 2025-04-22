@@ -26,7 +26,7 @@
      DDataReqToBuf     PI
      DDataStruct                           LikeDS(DataReq)
      D                                     Const
-     DBuffer                       1178A
+     DBuffer                       1255A
 
       * Initialize to beginning of buffer
        BufPtr = %addr(Buffer);
@@ -52,7 +52,7 @@
        BufPtr += 25;
        endfor;
        endfor;
-       for i = 1 to 1;
+       for i = 1 to 2;
        %subst(CharBuf:1:40) = DataStruct.where(i).key;
        BufPtr += 40;
        %subst(CharBuf:1:21) = DataStruct.where(i).alias;

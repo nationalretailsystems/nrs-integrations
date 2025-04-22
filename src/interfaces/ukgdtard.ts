@@ -406,7 +406,7 @@ export function convertDataReqToObject(dataIn: string): DataReq {
   dataOut.where = [
     
   ];
-  for (let i: number = 0; i < 1; ++i) {
+  for (let i: number = 0; i < 2; ++i) {
   dataOut.where[i] =   {
   
     };

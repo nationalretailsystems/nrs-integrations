@@ -269,7 +269,7 @@ formats:
         rpgName: where
         type: DataStruct
         dsName: WhereDS
-        dim: 1
+        dim: 2
       sortBy:
         rpgName: sortby
         type: DataStruct
