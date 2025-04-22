@@ -81,12 +81,12 @@ datastructures:
       operator:
         rpgName: operator
         type: Character
-        length: 11
+        length: 15
         default: ''
       values:
         rpgName: values
         type: Character
-        length: 5
+        length: 15
         default: ''
   SortByDS:
     subfields:

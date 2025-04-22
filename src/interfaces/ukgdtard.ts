@@ -117,12 +117,12 @@ export interface WhereDS {
      */
     alias: string,
     /**
-     * @size 11 characters
+     * @size 15 characters
      * @default `''`
      */
     operator: string,
     /**
-     * @size 5 characters
+     * @size 15 characters
      * @default `''`
      */
     values: string
@@ -414,10 +414,10 @@ export function convertDataReqToObject(dataIn: string): DataReq {
   pos += 40;
   dataOut.where[i].alias = dataIn.substring(pos, pos + 21).trimEnd();
   pos += 21;
-  dataOut.where[i].operator = dataIn.substring(pos, pos + 11).trimEnd();
-  pos += 11;
-  dataOut.where[i].values = dataIn.substring(pos, pos + 5).trimEnd();
-  pos += 5;
+  dataOut.where[i].operator = dataIn.substring(pos, pos + 15).trimEnd();
+  pos += 15;
+  dataOut.where[i].values = dataIn.substring(pos, pos + 15).trimEnd();
+  pos += 15;
   }
   dataOut.sortBy = [
     
