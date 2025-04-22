@@ -158,16 +158,16 @@
 
       ************************************
       * DataReq data structure
-      * Record length: 1178
+      * Record length: 1255
       ************************************
-     DDataReqLen       C                   1178
+     DDataReqLen       C                   1255
      DDataReq          DS                  Qualified
      D                                     Template
      Dfrom                                 LikeDS(fromDS)
      Dselect                               LikeDS(SelectDS)
      D                                     Dim(10)
      Dwhere                                LikeDS(WhereDS)
-     D                                     Dim(1)
+     D                                     Dim(2)
      Dsortby                               LikeDS(SortByDS)
      D                                     Dim(3)
      Dcount                           3P 0
@@ -179,7 +179,7 @@
      DDataReqToBuf     PR
      DDataStruct                           LikeDS(DataReq)
      D                                     Const
-     DBuffer                       1178A
+     DBuffer                       1255A
 
       ************************************
       * DataRes data structure
