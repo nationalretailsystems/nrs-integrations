@@ -61,8 +61,8 @@
      D                                     Template
      Dkey                            40A
      Dalias                          21A
-     Doperator                       11A
-     Dvalues                          5A
+     Doperator                       15A
+     Dvalues                         15A
 
       ************************************
       * SortByDS data structure
@@ -158,9 +158,9 @@
 
       ************************************
       * DataReq data structure
-      * Record length: 1255
+      * Record length: 1283
       ************************************
-     DDataReqLen       C                   1255
+     DDataReqLen       C                   1283
      DDataReq          DS                  Qualified
      D                                     Template
      Dfrom                                 LikeDS(fromDS)
@@ -179,7 +179,7 @@
      DDataReqToBuf     PR
      DDataStruct                           LikeDS(DataReq)
      D                                     Const
-     DBuffer                       1255A
+     DBuffer                       1283A
 
       ************************************
       * DataRes data structure
