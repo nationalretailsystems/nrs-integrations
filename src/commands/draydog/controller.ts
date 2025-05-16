@@ -47,7 +47,7 @@ export const putDrayDogCT: ECCHandlerFunction = async (reqkey, data, ecc) => {
                 'Content-Type': 'application/json'
             },
             params: {
-                'assign_to_user_id': 1730 + '&assign_to_user_id=1726'
+                assign_to_user_id: 1730 + '&assign_to_user_id=1726'
             }
         });
     } catch (err) {
@@ -99,11 +99,12 @@ export const getDrayDogCT: ECCHandlerFunction = async (reqkey, data, ecc) => {
         result = await axiosInstance.get('/containers/', {
             headers: {
                 accept: 'application/json',
-                Authorization: draydog.apikey
+                // Authorization: draydog.apikey
+                Authorization: 'Bearer WzE4MTgsMTY0LDUsIm5TRno0ZiJd.e-Spq1VINsYk-0qGO7WDwEhc-ZA'
             },
             params: {
-                'page_size': '100',
-                'container_cycle_state': 'import_appt_booking'
+                page_size: '100',
+                container_cycle_state: 'import_appt_booking'
             }
         });
     } catch (err) {
@@ -156,9 +157,9 @@ export const getDrayDog1CT: ECCHandlerFunction = async (reqkey, data, ecc) => {
                 Authorization: draydog.apikey
             },
             params: {
-                'page_size': '100',
-                'container_cycle_state': 'import_appt_booking',
-                'container_numbers': reqFields.container
+                page_size: '100',
+                container_cycle_state: 'import_appt_booking',
+                container_numbers: reqFields.container
             }
         });
     } catch (err) {
@@ -174,12 +175,6 @@ export const getDrayDog1CT: ECCHandlerFunction = async (reqkey, data, ecc) => {
         // Mainly TCP/IP errors.
         return ecc.sendEccResult('ECC9100', err.message, nextReqKey);
     }
-
-    // try {
-    //     await fs.writeFile(reqFields.filename, JSON.stringify(result.data), 'utf-8');
-    // } catch (err) {
-    //     return ecc.sendEccResult('ECC9200', err.message, nextReqKey);
-    // }
 
     // Send the result info
     try {
