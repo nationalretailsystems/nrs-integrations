@@ -45,7 +45,7 @@
      PBufToResDDGet    B                   Export
 
      DBufToResDDGet    PI
-     DBuffer                       1361A
+     DBuffer                       1424A
      DDataStruct                           LikeDS(ResDDGet)
 
       * Initialize to begining of buffer
@@ -208,10 +208,10 @@
        DataStruct.containers(i).impstats(j).prsdholds(k).raw_type = %subst(CharBuf:1:6);
        BufPtr += 6;
        endfor;
-       DataStruct.containers(i).impstats(j).id = %dec(%subst(CharBuf:1:3):1:0);
-       BufPtr += 3;
-       DataStruct.containers(i).impstats(j).cycle_id = %dec(%subst(CharBuf:1:3):1:0);
-       BufPtr += 3;
+       DataStruct.containers(i).impstats(j).id = %dec(%subst(CharBuf:1:10):8:0);
+       BufPtr += 10;
+       DataStruct.containers(i).impstats(j).cycle_id = %dec(%subst(CharBuf:1:10):8:0);
+       BufPtr += 10;
        DataStruct.containers(i).impstats(j).lstobs = %subst(CharBuf:1:20);
        BufPtr += 20;
        DataStruct.containers(i).impstats(j).lstchk = %subst(CharBuf:1:20);
@@ -249,14 +249,14 @@
        BufPtr += 3;
        DataStruct.containers(i).lateappt.termblok = %subst(CharBuf:1:6);
        BufPtr += 6;
-       DataStruct.containers(i).lateappt.reqby.id = %dec(%subst(CharBuf:1:3):1:0);
-       BufPtr += 3;
+       DataStruct.containers(i).lateappt.reqby.id = %dec(%subst(CharBuf:1:10):8:0);
+       BufPtr += 10;
        DataStruct.containers(i).lateappt.reqby.first_name = %subst(CharBuf:1:6);
        BufPtr += 6;
        DataStruct.containers(i).lateappt.reqby.last_name = %subst(CharBuf:1:6);
        BufPtr += 6;
-       DataStruct.containers(i).lateappt.reschby.id = %dec(%subst(CharBuf:1:3):1:0);
-       BufPtr += 3;
+       DataStruct.containers(i).lateappt.reschby.id = %dec(%subst(CharBuf:1:10):8:0);
+       BufPtr += 10;
        DataStruct.containers(i).lateappt.reschby.first_name = %subst(CharBuf:1:6);
        BufPtr += 6;
        DataStruct.containers(i).lateappt.reschby.last_name = %subst(CharBuf:1:6);
@@ -273,8 +273,8 @@
        DataStruct.containers(i).othapptcnt(j).count = %dec(%subst(CharBuf:1:3):1:0);
        BufPtr += 3;
        endfor;
-       DataStruct.containers(i).linimpstat.id = %dec(%subst(CharBuf:1:3):1:0);
-       BufPtr += 3;
+       DataStruct.containers(i).linimpstat.id = %dec(%subst(CharBuf:1:10):8:0);
+       BufPtr += 10;
        DataStruct.containers(i).linimpstat.contnumb = %subst(CharBuf:1:6);
        BufPtr += 6;
        DataStruct.containers(i).linimpstat.status = %subst(CharBuf:1:6);
@@ -345,15 +345,15 @@
        BufPtr += 6;
        DataStruct.containers(i).tmsref = %subst(CharBuf:1:6);
        BufPtr += 6;
-       DataStruct.containers(i).adduser.id = %dec(%subst(CharBuf:1:3):1:0);
-       BufPtr += 3;
+       DataStruct.containers(i).adduser.id = %dec(%subst(CharBuf:1:10):8:0);
+       BufPtr += 10;
        DataStruct.containers(i).adduser.first_name = %subst(CharBuf:1:6);
        BufPtr += 6;
        DataStruct.containers(i).adduser.last_name = %subst(CharBuf:1:6);
        BufPtr += 6;
        for j = 1 to 1;
-       DataStruct.containers(i).assuser(j).id = %dec(%subst(CharBuf:1:3):1:0);
-       BufPtr += 3;
+       DataStruct.containers(i).assuser(j).id = %dec(%subst(CharBuf:1:10):8:0);
+       BufPtr += 10;
        DataStruct.containers(i).assuser(j).first_name = %subst(CharBuf:1:6);
        BufPtr += 6;
        DataStruct.containers(i).assuser(j).last_name = %subst(CharBuf:1:6);
@@ -387,10 +387,10 @@
        BufPtr += 6;
        DataStruct.containers(i).matchvess.name = %subst(CharBuf:1:6);
        BufPtr += 6;
-       DataStruct.containers(i).matchvess.id = %dec(%subst(CharBuf:1:3):1:0);
-       BufPtr += 3;
-       DataStruct.containers(i).matchvess.imo_number = %dec(%subst(CharBuf:1:3):1:0);
-       BufPtr += 3;
+       DataStruct.containers(i).matchvess.id = %dec(%subst(CharBuf:1:10):8:0);
+       BufPtr += 10;
+       DataStruct.containers(i).matchvess.imo_number = %dec(%subst(CharBuf:1:10):8:0);
+       BufPtr += 10;
        endfor;
 
        return ;
