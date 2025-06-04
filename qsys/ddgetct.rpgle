@@ -45,7 +45,7 @@
      PBufToResDDGet    B                   Export
 
      DBufToResDDGet    PI
-     DBuffer                       1424A
+     DBuffer                       1438A
      DDataStruct                           LikeDS(ResDDGet)
 
       * Initialize to begining of buffer
@@ -65,8 +65,8 @@
        BufPtr += 5;
        DataStruct.containers(i).customer.name = %subst(CharBuf:1:6);
        BufPtr += 6;
-       DataStruct.containers(i).customer.id = %dec(%subst(CharBuf:1:3):1:0);
-       BufPtr += 3;
+       DataStruct.containers(i).customer.id = %dec(%subst(CharBuf:1:10):8:0);
+       BufPtr += 10;
        for j = 1 to 1;
        DataStruct.containers(i).pier_pass.terminals(j) = %subst(CharBuf:1:7);
        BufPtr += 7;
@@ -217,8 +217,8 @@
        DataStruct.containers(i).impstats(j).lstchk = %subst(CharBuf:1:20);
        BufPtr += 20;
        endfor;
-       DataStruct.containers(i).lateappt.id = %dec(%subst(CharBuf:1:3):1:0);
-       BufPtr += 3;
+       DataStruct.containers(i).lateappt.id = %dec(%subst(CharBuf:1:10):8:0);
+       BufPtr += 10;
        DataStruct.containers(i).lateappt.contnumb = %subst(CharBuf:1:6);
        BufPtr += 6;
        DataStruct.containers(i).lateappt.loaded = %subst(CharBuf:1:1);
