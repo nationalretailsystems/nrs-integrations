@@ -140,7 +140,8 @@ datastructures:
       demurrage_fees:
         rpgName: demurfee
         type: Packed
-        length: 1
+        length: 5
+        precision: 2
         default: 0
       ready_for_appointment:
         rpgName: apptrdy
@@ -198,8 +199,9 @@ datastructures:
         precision: 0
         default: 0
       cycle_id:
-        type: Character
-        length: 5
+        type: Packed
+        length: 7
+        precision: 0
         default: 0
       last_observed:
         rpgName: lstobs
@@ -330,8 +332,9 @@ datastructures:
         length: 7
         default: 0
       cycle_id:
-        type: Character
-        length: 8
+        type: Packed
+        length: 7
+        precision: 0
         default: 0
       last_observed:
         rpgName: lstobs

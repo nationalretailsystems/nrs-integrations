@@ -74,7 +74,7 @@
      Dtermblok                       10A
      Dtrmblkak                        3A
      Dholds                          14A   Dim(2)
-     Ddemurfee                        1P 0
+     Ddemurfee                        5P 2
      Dapptrdy                          N
      Dpickrdy                          N
      Dwheeled                          N
@@ -89,7 +89,7 @@
      Dprsdholds                            LikeDS(ParsedHoldsDS)
      D                                     Dim(1)
      Did                              8P 0
-     Dcycle_id                        5A
+     Dcycle_id                        7P 0
      Dlstobs                         26A
      Dlstchk                         26A
 
@@ -125,7 +125,7 @@
      Dprsdholds                            LikeDS(ParsedHoldsDS)
      D                                     Dim(1)
      Did                              7P 0
-     Dcycle_id                        8A
+     Dcycle_id                        7P 0
      Dlstobs                         26A
      Dlstchk                         26A
 
@@ -338,9 +338,9 @@
 
       ************************************
       * ResDDGet data structure
-      * Record length: 1814
+      * Record length: 1823
       ************************************
-     DResDDGetLen      C                   1814
+     DResDDGetLen      C                   1823
      DResDDGet         DS                  Qualified
      D                                     Template
      Dunwatched_co...
@@ -352,5 +352,5 @@
       * Convert buffer to ResDDGet
       ************************************
      DBufToResDDGet    PR
-     DBuffer                       1814A
+     DBuffer                       1823A
      DDataStruct                           LikeDS(ResDDGet)
