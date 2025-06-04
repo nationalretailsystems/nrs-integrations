@@ -147,9 +147,9 @@
        DataStruct.containers(i).impstat.prsdholds(j).raw_type = %subst(CharBuf:1:6);
        BufPtr += 6;
        endfor;
-       DataStruct.containers(i).impstat.id = %subst(CharBuf:1:10);
+       DataStruct.containers(i).impstat.id = %dec(%subst(CharBuf:1:10):8:0);
        BufPtr += 10;
-       DataStruct.containers(i).impstat.cycle_id = %subst(CharBuf:1:10);
+       DataStruct.containers(i).impstat.cycle_id = %dec(%subst(CharBuf:1:10):8:0);
        BufPtr += 10;
        DataStruct.containers(i).impstat.lstobs = %subst(CharBuf:1:20);
        BufPtr += 20;

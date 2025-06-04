@@ -88,8 +88,8 @@
      Dpconttype                       5A
      Dprsdholds                            LikeDS(ParsedHoldsDS)
      D                                     Dim(1)
-     Did                             10A
-     Dcycle_id                       10A
+     Did                              8P 0
+     Dcycle_id                        8P 0
      Dlstobs                         20A
      Dlstchk                         20A
 
