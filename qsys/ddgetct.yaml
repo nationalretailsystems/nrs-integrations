@@ -194,11 +194,11 @@ datastructures:
         dim: 1
       id:
         type: Character
-        length: 1
+        length: 10
         default: ""
       cycle_id:
         type: Character
-        length: 1
+        length: 10
         default: ""
       last_observed:
         rpgName: lstobs
