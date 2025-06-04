@@ -45,7 +45,7 @@
      PBufToResDDGet    B                   Export
 
      DBufToResDDGet    PI
-     DBuffer                       1347A
+     DBuffer                       1343A
      DDataStruct                           LikeDS(ResDDGet)
 
       * Initialize to begining of buffer
@@ -147,10 +147,10 @@
        DataStruct.containers(i).impstat.prsdholds(j).raw_type = %subst(CharBuf:1:6);
        BufPtr += 6;
        endfor;
-       DataStruct.containers(i).impstat.id = %dec(%subst(CharBuf:1:3):1:0);
-       BufPtr += 3;
-       DataStruct.containers(i).impstat.cycle_id = %dec(%subst(CharBuf:1:3):1:0);
-       BufPtr += 3;
+       DataStruct.containers(i).impstat.id = %subst(CharBuf:1:1);
+       BufPtr += 1;
+       DataStruct.containers(i).impstat.cycle_id = %subst(CharBuf:1:1);
+       BufPtr += 1;
        DataStruct.containers(i).impstat.lstobs = %subst(CharBuf:1:20);
        BufPtr += 20;
        DataStruct.containers(i).impstat.lstchk = %subst(CharBuf:1:20);

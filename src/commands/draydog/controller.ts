@@ -129,17 +129,16 @@ export const getDrayDogCT: ECCHandlerFunction = async (reqkey, data, ecc) => {
 
     // Send the result info
     try {
-        // let responseData = sanitizeValues(result.data, safeValues);
         let responseData = result.data;
         logger.debug('ECC0000', 'Success', nextReqKey);
         nextReqKey = await ecc.sendEccResult('ECC0000', 'Success', nextReqKey);
-        nextReqKey = await ecc.sendObjectsToCaller(responseData, ddgetctcvt.convertObjectToResDDGet, nextReqKey);
-        logger.debug('Sent data to RPG');
+        nextReqKey = await ecc.sendObjectToCaller(responseData, ddgetctcvt.convertObjectToResDDGet, nextReqKey);
+        logger.debug('Sending data to RPG');
         return nextReqKey;
-    } catch (err) {
-        logger.error('Call failed', err);
-        return ecc.sendEccResult('ECC9300', err.message, nextReqKey);
-    }
+     } catch (err) {
+         logger.error('Call failed', err);
+         return ecc.sendEccResult('ECC9300', err.message, nextReqKey);
+     }
 };
 export const getDrayDog1CT: ECCHandlerFunction = async (reqkey, data, ecc) => {
     logger.debug(`Received draydog get contaner request`, { reqkey, data });
