@@ -10,7 +10,7 @@ datastructures:
         default: ""
       id:
         type: Packed
-        length: 8
+        length: 3
         default: 0
   pier_passDS:
     subfields:

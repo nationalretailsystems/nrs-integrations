@@ -11,7 +11,7 @@
      DcustomerDS       DS                  Qualified
      D                                     Template
      Dname                            6A
-     Did                              8P 0
+     Did                              3P 0
 
       ************************************
       * pier_passDS data structure
@@ -338,9 +338,9 @@
 
       ************************************
       * ResDDGet data structure
-      * Record length: 1438
+      * Record length: 1433
       ************************************
-     DResDDGetLen      C                   1438
+     DResDDGetLen      C                   1433
      DResDDGet         DS                  Qualified
      D                                     Template
      Dunwatched_co...
@@ -352,5 +352,5 @@
       * Convert buffer to ResDDGet
       ************************************
      DBufToResDDGet    PR
-     DBuffer                       1438A
+     DBuffer                       1433A
      DDataStruct                           LikeDS(ResDDGet)
