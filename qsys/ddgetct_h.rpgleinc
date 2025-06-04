@@ -88,8 +88,8 @@
      Dpconttype                       5A
      Dprsdholds                            LikeDS(ParsedHoldsDS)
      D                                     Dim(1)
-     Did                              1P 0
-     Dcycle_id                        1P 0
+     Did                              1A
+     Dcycle_id                        1A
      Dlstobs                         20A
      Dlstchk                         20A
 
@@ -338,9 +338,9 @@
 
       ************************************
       * ResDDGet data structure
-      * Record length: 1347
+      * Record length: 1343
       ************************************
-     DResDDGetLen      C                   1347
+     DResDDGetLen      C                   1343
      DResDDGet         DS                  Qualified
      D                                     Template
      Dunwatched_co...
@@ -352,5 +352,5 @@
       * Convert buffer to ResDDGet
       ************************************
      DBufToResDDGet    PR
-     DBuffer                       1347A
+     DBuffer                       1343A
      DDataStruct                           LikeDS(ResDDGet)
