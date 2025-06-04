@@ -11,7 +11,7 @@
      DcustomerDS       DS                  Qualified
      D                                     Template
      Dname                            6A
-     Did                              3P 0
+     Did                              7P 0
 
       ************************************
       * pier_passDS data structure
@@ -124,8 +124,8 @@
      Dpconttype                       5A
      Dprsdholds                            LikeDS(ParsedHoldsDS)
      D                                     Dim(1)
-     Did                              8P 0
-     Dcycle_id                        5A
+     Did                              7P 0
+     Dcycle_id                        8A
      Dlstobs                         26A
      Dlstchk                         26A
 
@@ -134,7 +134,7 @@
       ************************************
      DLinkedApptsDS    DS                  Qualified
      D                                     Template
-     Dtermref                         6A
+     Dtermref                         8A
      Dcontnumb                       11A
 
       ************************************
@@ -170,7 +170,7 @@
      Dlinkappts                            LikeDS(LinkedApptsDS)
      D                                     Dim(1)
      Dterminal                        7A
-     Dtermref                         6A
+     Dtermref                         8A
      Ddsptrmref                      15A
      Dtrklicplt                      10A
      Dtruck_id                        8P 0
@@ -338,9 +338,9 @@
 
       ************************************
       * ResDDGet data structure
-      * Record length: 1804
+      * Record length: 1814
       ************************************
-     DResDDGetLen      C                   1804
+     DResDDGetLen      C                   1814
      DResDDGet         DS                  Qualified
      D                                     Template
      Dunwatched_co...
@@ -352,5 +352,5 @@
       * Convert buffer to ResDDGet
       ************************************
      DBufToResDDGet    PR
-     DBuffer                       1804A
+     DBuffer                       1814A
      DDataStruct                           LikeDS(ResDDGet)

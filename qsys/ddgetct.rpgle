@@ -45,7 +45,7 @@
      PBufToResDDGet    B                   Export
 
      DBufToResDDGet    PI
-     DBuffer                       1804A
+     DBuffer                       1814A
      DDataStruct                           LikeDS(ResDDGet)
 
       * Initialize to begining of buffer
@@ -65,8 +65,8 @@
        BufPtr += 5;
        DataStruct.containers(i).customer.name = %subst(CharBuf:1:6);
        BufPtr += 6;
-       DataStruct.containers(i).customer.id = %dec(%subst(CharBuf:1:5):3:0);
-       BufPtr += 5;
+       DataStruct.containers(i).customer.id = %dec(%subst(CharBuf:1:9):7:0);
+       BufPtr += 9;
        for j = 1 to 1;
        DataStruct.containers(i).pier_pass.terminals(j) = %subst(CharBuf:1:7);
        BufPtr += 7;
@@ -208,10 +208,10 @@
        DataStruct.containers(i).impstats(j).prsdholds(k).raw_type = %subst(CharBuf:1:6);
        BufPtr += 6;
        endfor;
-       DataStruct.containers(i).impstats(j).id = %dec(%subst(CharBuf:1:10):8:0);
-       BufPtr += 10;
-       DataStruct.containers(i).impstats(j).cycle_id = %subst(CharBuf:1:5);
-       BufPtr += 5;
+       DataStruct.containers(i).impstats(j).id = %dec(%subst(CharBuf:1:9):7:0);
+       BufPtr += 9;
+       DataStruct.containers(i).impstats(j).cycle_id = %subst(CharBuf:1:8);
+       BufPtr += 8;
        DataStruct.containers(i).impstats(j).lstobs = %subst(CharBuf:1:26);
        BufPtr += 26;
        DataStruct.containers(i).impstats(j).lstchk = %subst(CharBuf:1:26);
@@ -232,15 +232,15 @@
        DataStruct.containers(i).lateappt.window_end = %subst(CharBuf:1:26);
        BufPtr += 26;
        for j = 1 to 1;
-       DataStruct.containers(i).lateappt.linkappts(j).termref = %subst(CharBuf:1:6);
-       BufPtr += 6;
+       DataStruct.containers(i).lateappt.linkappts(j).termref = %subst(CharBuf:1:8);
+       BufPtr += 8;
        DataStruct.containers(i).lateappt.linkappts(j).contnumb = %subst(CharBuf:1:11);
        BufPtr += 11;
        endfor;
        DataStruct.containers(i).lateappt.terminal = %subst(CharBuf:1:7);
        BufPtr += 7;
-       DataStruct.containers(i).lateappt.termref = %subst(CharBuf:1:6);
-       BufPtr += 6;
+       DataStruct.containers(i).lateappt.termref = %subst(CharBuf:1:8);
+       BufPtr += 8;
        DataStruct.containers(i).lateappt.dsptrmref = %subst(CharBuf:1:15);
        BufPtr += 15;
        DataStruct.containers(i).lateappt.trklicplt = %subst(CharBuf:1:10);
