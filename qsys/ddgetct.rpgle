@@ -45,7 +45,7 @@
      PBufToResDDGet    B                   Export
 
      DBufToResDDGet    PI
-     DBuffer                       1736A
+     DBuffer                       1814A
      DDataStruct                           LikeDS(ResDDGet)
 
       * Initialize to begining of buffer
@@ -133,8 +133,8 @@
        BufPtr += 1;
        DataStruct.containers(i).impstat.outgttm = %subst(CharBuf:1:20);
        BufPtr += 20;
-       DataStruct.containers(i).impstat.dischtm = %subst(CharBuf:1:20);
-       BufPtr += 20;
+       DataStruct.containers(i).impstat.dischtm = %subst(CharBuf:1:26);
+       BufPtr += 26;
        DataStruct.containers(i).impstat.observed = %subst(CharBuf:1:26);
        BufPtr += 26;
        DataStruct.containers(i).impstat.pshipline = %subst(CharBuf:1:4);
@@ -194,8 +194,8 @@
        BufPtr += 1;
        DataStruct.containers(i).impstats(j).outgttm = %subst(CharBuf:1:20);
        BufPtr += 20;
-       DataStruct.containers(i).impstats(j).dischtm = %subst(CharBuf:1:20);
-       BufPtr += 20;
+       DataStruct.containers(i).impstats(j).dischtm = %subst(CharBuf:1:26);
+       BufPtr += 26;
        DataStruct.containers(i).impstats(j).observed = %subst(CharBuf:1:26);
        BufPtr += 26;
        DataStruct.containers(i).impstats(j).pshipline = %subst(CharBuf:1:4);
@@ -212,10 +212,10 @@
        BufPtr += 10;
        DataStruct.containers(i).impstats(j).cycle_id = %dec(%subst(CharBuf:1:10):8:0);
        BufPtr += 10;
-       DataStruct.containers(i).impstats(j).lstobs = %subst(CharBuf:1:20);
-       BufPtr += 20;
-       DataStruct.containers(i).impstats(j).lstchk = %subst(CharBuf:1:20);
-       BufPtr += 20;
+       DataStruct.containers(i).impstats(j).lstobs = %subst(CharBuf:1:26);
+       BufPtr += 26;
+       DataStruct.containers(i).impstats(j).lstchk = %subst(CharBuf:1:26);
+       BufPtr += 26;
        endfor;
        DataStruct.containers(i).lateappt.id = %dec(%subst(CharBuf:1:10):8:0);
        BufPtr += 10;
@@ -251,16 +251,16 @@
        BufPtr += 6;
        DataStruct.containers(i).lateappt.reqby.id = %dec(%subst(CharBuf:1:10):8:0);
        BufPtr += 10;
-       DataStruct.containers(i).lateappt.reqby.first_name = %subst(CharBuf:1:6);
-       BufPtr += 6;
-       DataStruct.containers(i).lateappt.reqby.last_name = %subst(CharBuf:1:6);
-       BufPtr += 6;
+       DataStruct.containers(i).lateappt.reqby.first_name = %subst(CharBuf:1:15);
+       BufPtr += 15;
+       DataStruct.containers(i).lateappt.reqby.last_name = %subst(CharBuf:1:15);
+       BufPtr += 15;
        DataStruct.containers(i).lateappt.reschby.id = %dec(%subst(CharBuf:1:10):8:0);
        BufPtr += 10;
-       DataStruct.containers(i).lateappt.reschby.first_name = %subst(CharBuf:1:6);
-       BufPtr += 6;
-       DataStruct.containers(i).lateappt.reschby.last_name = %subst(CharBuf:1:6);
-       BufPtr += 6;
+       DataStruct.containers(i).lateappt.reschby.first_name = %subst(CharBuf:1:15);
+       BufPtr += 15;
+       DataStruct.containers(i).lateappt.reschby.last_name = %subst(CharBuf:1:15);
+       BufPtr += 15;
        DataStruct.containers(i).lateappt.observed = %subst(CharBuf:1:26);
        BufPtr += 26;
        DataStruct.containers(i).lateappt.lstobs = %subst(CharBuf:1:26);
@@ -354,10 +354,10 @@
        for j = 1 to 1;
        DataStruct.containers(i).assuser(j).id = %dec(%subst(CharBuf:1:10):8:0);
        BufPtr += 10;
-       DataStruct.containers(i).assuser(j).first_name = %subst(CharBuf:1:6);
-       BufPtr += 6;
-       DataStruct.containers(i).assuser(j).last_name = %subst(CharBuf:1:6);
-       BufPtr += 6;
+       DataStruct.containers(i).assuser(j).first_name = %subst(CharBuf:1:15);
+       BufPtr += 15;
+       DataStruct.containers(i).assuser(j).last_name = %subst(CharBuf:1:15);
+       BufPtr += 15;
        endfor;
        DataStruct.containers(i).autobook = %subst(CharBuf:1:1);
        BufPtr += 1;
