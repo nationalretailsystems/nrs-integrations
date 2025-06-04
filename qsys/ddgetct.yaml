@@ -328,11 +328,11 @@ datastructures:
         dim: 1
       id:
         type: Packed
-        length: 1
+        length: 8
         default: 0
       cycle_id:
         type: Packed
-        length: 1
+        length: 8
         default: 0
       last_observed:
         rpgName: lstobs
@@ -360,7 +360,7 @@ datastructures:
     subfields:
       id:
         type: Packed
-        length: 1
+        length: 8
         default: 0
       first_name:
         type: Character
@@ -374,7 +374,7 @@ datastructures:
     subfields:
       id:
         type: Packed
-        length: 1
+        length: 8
         default: 0
       first_name:
         type: Character
@@ -487,7 +487,7 @@ datastructures:
     subfields:
       id:
         type: Packed
-        length: 1
+        length: 8
         default: 0
       container_number:
         rpgName: contnumb
@@ -654,7 +654,7 @@ datastructures:
     subfields:
       id:
         type: Packed
-        length: 1
+        length: 8
         default: 0
       first_name:
         type: Character
@@ -668,7 +668,7 @@ datastructures:
     subfields:
       id:
         type: Packed
-        length: 1
+        length: 8
         default: 0
       first_name:
         type: Character
@@ -686,11 +686,11 @@ datastructures:
         default: ""
       id:
         type: Packed
-        length: 1
+        length: 8
         default: 0
       imo_number:
         type: Packed
-        length: 1
+        length: 8
         default: 0
   ContainersDS:
     subfields:

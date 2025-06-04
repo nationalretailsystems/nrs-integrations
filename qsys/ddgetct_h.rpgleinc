@@ -124,8 +124,8 @@
      Dpconttype                       5A
      Dprsdholds                            LikeDS(ParsedHoldsDS)
      D                                     Dim(1)
-     Did                              1P 0
-     Dcycle_id                        1P 0
+     Did                              8P 0
+     Dcycle_id                        8P 0
      Dlstobs                         20A
      Dlstchk                         20A
 
@@ -142,7 +142,7 @@
       ************************************
      Drequested_byDS   DS                  Qualified
      D                                     Template
-     Did                              1P 0
+     Did                              8P 0
      Dfirst_name                      6A
      Dlast_name                       6A
 
@@ -151,7 +151,7 @@
       ************************************
      Dresched_byDS     DS                  Qualified
      D                                     Template
-     Did                              1P 0
+     Did                              8P 0
      Dfirst_name                      6A
      Dlast_name                       6A
 
@@ -195,7 +195,7 @@
       ************************************
      Dline_imp_statDS  DS                  Qualified
      D                                     Template
-     Did                              1P 0
+     Did                              8P 0
      Dcontnumb                        6A
      Dstatus                          6A
      Dpstatus                         9A
@@ -256,7 +256,7 @@
       ************************************
      Dadded_by_userDS  DS                  Qualified
      D                                     Template
-     Did                              1P 0
+     Did                              8P 0
      Dfirst_name                      6A
      Dlast_name                       6A
 
@@ -265,7 +265,7 @@
       ************************************
      DAssignedUsersDS  DS                  Qualified
      D                                     Template
-     Did                              1P 0
+     Did                              8P 0
      Dfirst_name                      6A
      Dlast_name                       6A
 
@@ -275,8 +275,8 @@
      Dmatched_vessDS   DS                  Qualified
      D                                     Template
      Dname                            6A
-     Did                              1P 0
-     Dimo_number                      1P 0
+     Did                              8P 0
+     Dimo_number                      8P 0
 
       ************************************
       * ContainersDS data structure
@@ -338,9 +338,9 @@
 
       ************************************
       * ResDDGet data structure
-      * Record length: 1361
+      * Record length: 1424
       ************************************
-     DResDDGetLen      C                   1361
+     DResDDGetLen      C                   1424
      DResDDGet         DS                  Qualified
      D                                     Template
      Dunwatched_co...
@@ -352,5 +352,5 @@
       * Convert buffer to ResDDGet
       ************************************
      DBufToResDDGet    PR
-     DBuffer                       1361A
+     DBuffer                       1424A
      DDataStruct                           LikeDS(ResDDGet)
