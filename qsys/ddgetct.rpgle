@@ -45,7 +45,7 @@
      PBufToResDDGet    B                   Export
 
      DBufToResDDGet    PI
-     DBuffer                       1814A
+     DBuffer                       1823A
      DDataStruct                           LikeDS(ResDDGet)
 
       * Initialize to begining of buffer
@@ -121,8 +121,8 @@
        DataStruct.containers(i).impstat.holds(j) = %subst(CharBuf:1:14);
        BufPtr += 14;
        endfor;
-       DataStruct.containers(i).impstat.demurfee = %dec(%subst(CharBuf:1:3):1:0);
-       BufPtr += 3;
+       DataStruct.containers(i).impstat.demurfee = %dec(%subst(CharBuf:1:7):5:2);
+       BufPtr += 7;
        DataStruct.containers(i).impstat.apptrdy = %subst(CharBuf:1:1);
        BufPtr += 1;
        DataStruct.containers(i).impstat.pickrdy = %subst(CharBuf:1:1);
@@ -149,8 +149,8 @@
        endfor;
        DataStruct.containers(i).impstat.id = %dec(%subst(CharBuf:1:10):8:0);
        BufPtr += 10;
-       DataStruct.containers(i).impstat.cycle_id = %subst(CharBuf:1:5);
-       BufPtr += 5;
+       DataStruct.containers(i).impstat.cycle_id = %dec(%subst(CharBuf:1:9):7:0);
+       BufPtr += 9;
        DataStruct.containers(i).impstat.lstobs = %subst(CharBuf:1:26);
        BufPtr += 26;
        DataStruct.containers(i).impstat.lstchk = %subst(CharBuf:1:26);
@@ -210,8 +210,8 @@
        endfor;
        DataStruct.containers(i).impstats(j).id = %dec(%subst(CharBuf:1:9):7:0);
        BufPtr += 9;
-       DataStruct.containers(i).impstats(j).cycle_id = %subst(CharBuf:1:8);
-       BufPtr += 8;
+       DataStruct.containers(i).impstats(j).cycle_id = %dec(%subst(CharBuf:1:9):7:0);
+       BufPtr += 9;
        DataStruct.containers(i).impstats(j).lstobs = %subst(CharBuf:1:26);
        BufPtr += 26;
        DataStruct.containers(i).impstats(j).lstchk = %subst(CharBuf:1:26);
