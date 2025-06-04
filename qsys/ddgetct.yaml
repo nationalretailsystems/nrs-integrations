@@ -198,9 +198,8 @@ datastructures:
         precision: 0
         default: 0
       cycle_id:
-        type: Packed
-        length: 8
-        precision: 0
+        type: Character
+        length: 5
         default: 0
       last_observed:
         rpgName: lstobs
@@ -331,8 +330,8 @@ datastructures:
         length: 8
         default: 0
       cycle_id:
-        type: Packed
-        length: 8
+        type: Character
+        length: 5
         default: 0
       last_observed:
         rpgName: lstobs
