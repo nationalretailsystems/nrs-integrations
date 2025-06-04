@@ -193,13 +193,15 @@ datastructures:
         dsName: ParsedHoldsDS
         dim: 1
       id:
-        type: Character
-        length: 10
-        default: ""
+        type: Packed
+        length: 8
+        precision: 0
+        default: 0
       cycle_id:
-        type: Character
-        length: 10
-        default: ""
+        type: Packed
+        length: 8
+        precision: 0
+        default: 0
       last_observed:
         rpgName: lstobs
         type: Character
