@@ -22,7 +22,7 @@ datastructures:
       container_number:
         rpgName: contnumb
         type: Character
-        length: 6
+        length: 11
         default: ""
       claimed_by_other_company:
         rpgName: clmothcpy
@@ -36,7 +36,7 @@ datastructures:
         default: ""
       observed:
         type: Character
-        length: 20
+        length: 26
         default: ""
   clean_trk_feeDS:
     subfields:
@@ -48,7 +48,7 @@ datastructures:
       container_number:
         rpgName: contnumb
         type: Character
-        length: 6
+        length: 11
         default: ""
       claimed_by_other_company:
         rpgName: clmothcpy
@@ -62,7 +62,7 @@ datastructures:
         default: ""
       observed:
         type: Character
-        length: 20
+        length: 26
         default: ""
   raw_dataDS:
     subfields:
@@ -87,7 +87,7 @@ datastructures:
       container_number:
         rpgName: contnumb
         type: Character
-        length: 6
+        length: 11
         default: ""
       last_free_date:
         rpgName: lastfree
@@ -97,7 +97,7 @@ datastructures:
       master_bill_of_lading:
         rpgName: masterbl
         type: Character
-        length: 6
+        length: 20
         default: ""
       shipping_line:
         rpgName: shipline
@@ -111,7 +111,7 @@ datastructures:
         default: ""
       vessel:
         type: Character
-        length: 6
+        length: 15
         default: ""
       location:
         type: Character
@@ -120,7 +120,7 @@ datastructures:
       parsed_location:
         rpgName: plocat
         type: Character
-        length: 9
+        length: 20
         default: ""
       terminal_block:
         rpgName: termblok
@@ -175,7 +175,7 @@ datastructures:
         dsName: extra_dataDS
       observed:
         type: Character
-        length: 20
+        length: 26
         default: ""
       parsed_shipping_line:
         rpgName: pshipline
@@ -205,12 +205,12 @@ datastructures:
       last_observed:
         rpgName: lstobs
         type: Character
-        length: 20
+        length: 26
         default: ""
       last_initiated_check:
         rpgName: lstchk
         type: Character
-        length: 20
+        length: 26
         default: ""
   ImportStatsDS:
     subfields:
@@ -221,7 +221,7 @@ datastructures:
       container_number:
         rpgName: contnumb
         type: Character
-        length: 6
+        length: 11
         default: ""
       last_free_date:
         rpgName: lastfree
@@ -231,7 +231,7 @@ datastructures:
       master_bill_of_lading:
         rpgName: masterbl
         type: Character
-        length: 6
+        length: 20
         default: ""
       shipping_line:
         rpgName: shipline
@@ -245,7 +245,7 @@ datastructures:
         default: ""
       vessel:
         type: Character
-        length: 6
+        length: 15
         default: ""
       location:
         type: Character
@@ -254,7 +254,7 @@ datastructures:
       parsed_location:
         rpgName: plocat
         type: Character
-        length: 9
+        length: 20
         default: ""
       terminal_block:
         rpgName: termblok
@@ -309,7 +309,7 @@ datastructures:
         dsName: extra_dataDS
       observed:
         type: Character
-        length: 20
+        length: 26
         default: ""
       parsed_shipping_line:
         rpgName: pshipline
@@ -354,7 +354,7 @@ datastructures:
       container_number:
         rpgName: contnumb
         type: Character
-        length: 6
+        length: 11
         default: ""
   requested_byDS:
     subfields:
@@ -393,7 +393,7 @@ datastructures:
       container_number:
         rpgName: contnumb
         type: Character
-        length: 6
+        length: 11
         default: ""
       loaded:
         type: Boolean
@@ -404,16 +404,16 @@ datastructures:
         default: ""
       direction:
         type: Character
-        length: 7
+        length: 10
         default: ""
       window_start:
         rpgName: windstrt
         type: Character
-        length: 20
+        length: 26
         default: ""
       window_end:
         type: Character
-        length: 20
+        length: 26
         default: ""
       linked_appointments:
         rpgName: linkappts
@@ -432,12 +432,12 @@ datastructures:
       display_terminal_reference:
         rpgName: dsptrmref
         type: Character
-        length: 6
+        length: 15
         default: ""
       truck_license_plate_number:
         rpgName: trklicplt
         type: Character
-        length: 6
+        length: 10
         default: ""
       truck_id:
         type: Packed
@@ -458,17 +458,17 @@ datastructures:
         dsName: resched_byDS
       observed:
         type: Character
-        length: 20
+        length: 26
         default: ""
       last_observed:
         rpgName: lstobs
         type: Character
-        length: 20
+        length: 26
         default: ""
       created_at_terminal:
         rpgName: crtterm
         type: Character
-        length: 20
+        length: 26
         default: ""
       extra_data:
         type: DataStruct
@@ -492,7 +492,7 @@ datastructures:
       container_number:
         rpgName: contnumb
         type: Character
-        length: 6
+        length: 11
         default: ""
       status:
         type: Character
@@ -514,7 +514,7 @@ datastructures:
         default: ""
       observed:
         type: Character
-        length: 20
+        length: 26
         default: ""
       last_observed:
         rpgName: lstobs
@@ -540,7 +540,7 @@ datastructures:
       container_number:
         rpgName: contnumb
         type: Character
-        length: 6
+        length: 11
         default: ""
       chassis_number:
         rpgName: chasnum
@@ -556,7 +556,7 @@ datastructures:
         default: ""
       direction:
         type: Character
-        length: 7
+        length: 10
         default: ""
       drivers_license_number:
         rpgName: dlicnum
@@ -581,7 +581,7 @@ datastructures:
         dsName: raw_dataDS
       observed:
         type: Character
-        length: 20
+        length: 26
         default: ""
   out_gate_tranDS:
     subfields:
@@ -592,7 +592,7 @@ datastructures:
       container_number:
         rpgName: contnumb
         type: Character
-        length: 6
+        length: 11
         default: ""
       chassis_number:
         rpgName: chasnum
@@ -608,7 +608,7 @@ datastructures:
         default: ""
       direction:
         type: Character
-        length: 7
+        length: 10
         default: ""
       drivers_license_number:
         rpgName: dlicnum
@@ -644,7 +644,7 @@ datastructures:
         default: ""
       observed:
         type: Character
-        length: 20
+        length: 26
         default: ""
       has_availability:
         rpgName: hasavail
@@ -658,11 +658,11 @@ datastructures:
         default: 0
       first_name:
         type: Character
-        length: 6
+        length: 15
         default: ""
       last_name:
         type: Character
-        length: 6
+        length: 15
         default: ""
   AssignedUsersDS:
     subfields:
@@ -682,7 +682,7 @@ datastructures:
     subfields:
       name:
         type: Character
-        length: 6
+        length: 15
         default: ""
       id:
         type: Packed
@@ -697,7 +697,7 @@ datastructures:
       container_number:
         rpgName: contnumb
         type: Character
-        length: 6
+        length: 11
         default: ""
       shipping_line:
         rpgName: shipline
@@ -793,32 +793,32 @@ datastructures:
       watched_time:
         rpgName: watchtm
         type: Character
-        length: 20
+        length: 26
         default: ""
       discharged_time:
         rpgName: dischtm
         type: Character
-        length: 20
+        length: 26
         default: ""
       import_appointment_time:
         rpgName: impappttm
         type: Character
-        length: 20
+        length: 26
         default: ""
       import_out_gated_time:
         rpgName: impoutgtm
         type: Character
-        length: 20
+        length: 26
         default: ""
       empty_appointment_time: 
         rpgName: mtappttm
         type: Character
-        length: 20
+        length: 26
         default: ""
       empty_in_gated_time:
         rpgName: mtigtime
         type: Character
-        length: 20
+        length: 26
         default: ""
       last_free_date:
         rpgName: lastfree
@@ -832,7 +832,7 @@ datastructures:
         dim: 1
       vessel:
         type: Character
-        length: 6
+        length: 15
         default: ""
       matched_vessel:
         rpgName: matchvess
