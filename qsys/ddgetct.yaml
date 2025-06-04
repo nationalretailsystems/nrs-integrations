@@ -165,7 +165,7 @@ datastructures:
       discharged_time:
         rpgName: dischtm
         type: Character
-        length: 20
+        length: 26
         default: ""
       raw_data:
         type: DataStruct
@@ -299,7 +299,7 @@ datastructures:
       discharged_time:
         rpgName: dischtm
         type: Character
-        length: 20
+        length: 26
         default: ""
       raw_data:
         type: DataStruct
@@ -337,12 +337,12 @@ datastructures:
       last_observed:
         rpgName: lstobs
         type: Character
-        length: 20
+        length: 26
         default: ""
       last_initiated_check:
         rpgName: lstchk
         type: Character
-        length: 20
+        length: 26
         default: ""
   LinkedApptsDS:
     subfields:
@@ -364,11 +364,11 @@ datastructures:
         default: 0
       first_name:
         type: Character
-        length: 6
+        length: 15
         default: ""
       last_name:
         type: Character
-        length: 6
+        length: 15
         default: ""
   resched_byDS:
     subfields:
@@ -378,11 +378,11 @@ datastructures:
         default: 0
       first_name:
         type: Character
-        length: 6
+        length: 15
         default: ""
       last_name:
         type: Character
-        length: 6
+        length: 15
         default: ""
   latest_apptDS:
     subfields:
@@ -672,11 +672,11 @@ datastructures:
         default: 0
       first_name:
         type: Character
-        length: 6
+        length: 15
         default: ""
       last_name:
         type: Character
-        length: 6
+        length: 15
         default: ""
   matched_vessDS:
     subfields:

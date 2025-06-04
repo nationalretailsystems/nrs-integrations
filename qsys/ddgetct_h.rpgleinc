@@ -80,7 +80,7 @@
      Dwheeled                          N
      Dclosarea                         N
      Doutgttm                        20A
-     Ddischtm                        20A
+     Ddischtm                        26A
      Draw_data                             LikeDS(raw_dataDS)
      Dextra_data                           LikeDS(extra_dataDS)
      Dobserved                       26A
@@ -116,7 +116,7 @@
      Dwheeled                          N
      Dclosarea                         N
      Doutgttm                        20A
-     Ddischtm                        20A
+     Ddischtm                        26A
      Draw_data                             LikeDS(raw_dataDS)
      Dextra_data                           LikeDS(extra_dataDS)
      Dobserved                       26A
@@ -126,8 +126,8 @@
      D                                     Dim(1)
      Did                              8P 0
      Dcycle_id                        8P 0
-     Dlstobs                         20A
-     Dlstchk                         20A
+     Dlstobs                         26A
+     Dlstchk                         26A
 
       ************************************
       * LinkedApptsDS data structure
@@ -143,8 +143,8 @@
      Drequested_byDS   DS                  Qualified
      D                                     Template
      Did                              8P 0
-     Dfirst_name                      6A
-     Dlast_name                       6A
+     Dfirst_name                     15A
+     Dlast_name                      15A
 
       ************************************
       * resched_byDS data structure
@@ -152,8 +152,8 @@
      Dresched_byDS     DS                  Qualified
      D                                     Template
      Did                              8P 0
-     Dfirst_name                      6A
-     Dlast_name                       6A
+     Dfirst_name                     15A
+     Dlast_name                      15A
 
       ************************************
       * latest_apptDS data structure
@@ -266,8 +266,8 @@
      DAssignedUsersDS  DS                  Qualified
      D                                     Template
      Did                              8P 0
-     Dfirst_name                      6A
-     Dlast_name                       6A
+     Dfirst_name                     15A
+     Dlast_name                      15A
 
       ************************************
       * matched_vessDS data structure
@@ -338,9 +338,9 @@
 
       ************************************
       * ResDDGet data structure
-      * Record length: 1736
+      * Record length: 1814
       ************************************
-     DResDDGetLen      C                   1736
+     DResDDGetLen      C                   1814
      DResDDGet         DS                  Qualified
      D                                     Template
      Dunwatched_co...
@@ -352,5 +352,5 @@
       * Convert buffer to ResDDGet
       ************************************
      DBufToResDDGet    PR
-     DBuffer                       1736A
+     DBuffer                       1814A
      DDataStruct                           LikeDS(ResDDGet)
