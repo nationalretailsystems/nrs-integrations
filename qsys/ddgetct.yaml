@@ -10,7 +10,7 @@ datastructures:
         default: ""
       id:
         type: Packed
-        length: 1
+        length: 8
         default: 0
   pier_passDS:
     subfields:
@@ -388,7 +388,7 @@ datastructures:
     subfields:
       id:
         type: Packed
-        length: 1
+        length: 8
         default: 0
       container_number:
         rpgName: contnumb
