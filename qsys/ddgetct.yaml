@@ -10,7 +10,7 @@ datastructures:
         default: ""
       id:
         type: Packed
-        length: 3
+        length: 7
         default: 0
   pier_passDS:
     subfields:
@@ -327,11 +327,11 @@ datastructures:
         dim: 1
       id:
         type: Packed
-        length: 8
+        length: 7
         default: 0
       cycle_id:
         type: Character
-        length: 5
+        length: 8
         default: 0
       last_observed:
         rpgName: lstobs
@@ -348,7 +348,7 @@ datastructures:
       terminal_reference:
         rpgName: termref
         type: Character
-        length: 6
+        length: 8
         default: ""
       container_number:
         rpgName: contnumb
@@ -426,7 +426,7 @@ datastructures:
       terminal_reference:
         rpgName: termref
         type: Character
-        length: 6
+        length: 8
         default: ""
       display_terminal_reference:
         rpgName: dsptrmref
