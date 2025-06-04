@@ -19,11 +19,11 @@
      Dpier_passDS      DS                  Qualified
      D                                     Template
      Dterminals                       7A   Dim(1)
-     Dcontnumb                        6A
+     Dcontnumb                       11A
      Dclmothcpy                        N
      Dfee_paid                         N
      Dhas_hold                         N
-     Dobserved                       20A
+     Dobserved                       26A
 
       ************************************
       * clean_trk_feeDS data structure
@@ -31,11 +31,11 @@
      Dclean_trk_feeDS  DS                  Qualified
      D                                     Template
      Dterminals                       7A   Dim(1)
-     Dcontnumb                        6A
+     Dcontnumb                       11A
      Dclmothcpy                        N
      Dfee_paid                         N
      Dhas_hold                         N
-     Dobserved                       20A
+     Dobserved                       26A
 
       ************************************
       * raw_dataDS data structure
@@ -63,14 +63,14 @@
      Dimport_statusDS  DS                  Qualified
      D                                     Template
      Dterminal                        7A
-     Dcontnumb                        6A
+     Dcontnumb                       11A
      Dlastfree                       10A
-     Dmasterbl                        6A
+     Dmasterbl                       20A
      Dshipline                        3A
      Dconttype                       16A
-     Dvessel                          6A
+     Dvessel                         15A
      Dlocation                        7A
-     Dplocat                          9A
+     Dplocat                         20A
      Dtermblok                       10A
      Dtrmblkak                        3A
      Dholds                          14A   Dim(2)
@@ -83,15 +83,15 @@
      Ddischtm                        20A
      Draw_data                             LikeDS(raw_dataDS)
      Dextra_data                           LikeDS(extra_dataDS)
-     Dobserved                       20A
+     Dobserved                       26A
      Dpshipline                       4A
      Dpconttype                       5A
      Dprsdholds                            LikeDS(ParsedHoldsDS)
      D                                     Dim(1)
      Did                              8P 0
      Dcycle_id                        8P 0
-     Dlstobs                         20A
-     Dlstchk                         20A
+     Dlstobs                         26A
+     Dlstchk                         26A
 
       ************************************
       * ImportStatsDS data structure
@@ -99,14 +99,14 @@
      DImportStatsDS    DS                  Qualified
      D                                     Template
      Dterminal                        7A
-     Dcontnumb                        6A
+     Dcontnumb                       11A
      Dlastfree                       10A
-     Dmasterbl                        6A
+     Dmasterbl                       20A
      Dshipline                        3A
      Dconttype                       16A
-     Dvessel                          6A
+     Dvessel                         15A
      Dlocation                        7A
-     Dplocat                          9A
+     Dplocat                         20A
      Dtermblok                       10A
      Dtrmblkak                        3A
      Dholds                          14A   Dim(2)
@@ -119,7 +119,7 @@
      Ddischtm                        20A
      Draw_data                             LikeDS(raw_dataDS)
      Dextra_data                           LikeDS(extra_dataDS)
-     Dobserved                       20A
+     Dobserved                       26A
      Dpshipline                       4A
      Dpconttype                       5A
      Dprsdholds                            LikeDS(ParsedHoldsDS)
@@ -135,7 +135,7 @@
      DLinkedApptsDS    DS                  Qualified
      D                                     Template
      Dtermref                         6A
-     Dcontnumb                        6A
+     Dcontnumb                       11A
 
       ************************************
       * requested_byDS data structure
@@ -161,25 +161,25 @@
      Dlatest_apptDS    DS                  Qualified
      D                                     Template
      Did                              8P 0
-     Dcontnumb                        6A
+     Dcontnumb                       11A
      Dloaded                           N
      Dstatus                         16A
-     Ddirection                       7A
-     Dwindstrt                       20A
-     Dwindow_end                     20A
+     Ddirection                      10A
+     Dwindstrt                       26A
+     Dwindow_end                     26A
      Dlinkappts                            LikeDS(LinkedApptsDS)
      D                                     Dim(1)
      Dterminal                        7A
      Dtermref                         6A
-     Ddsptrmref                       6A
-     Dtrklicplt                       6A
+     Ddsptrmref                      15A
+     Dtrklicplt                      10A
      Dtruck_id                        8P 0
      Dtermblok                        6A
      Dreqby                                LikeDS(requested_byDS)
      Dreschby                              LikeDS(resched_byDS)
-     Dobserved                       20A
-     Dlstobs                         20A
-     Dcrtterm                        20A
+     Dobserved                       26A
+     Dlstobs                         26A
+     Dcrtterm                        26A
      Dextra_data                           LikeDS(extra_dataDS)
 
       ************************************
@@ -196,12 +196,12 @@
      Dline_imp_statDS  DS                  Qualified
      D                                     Template
      Did                              8P 0
-     Dcontnumb                        6A
+     Dcontnumb                       11A
      Dstatus                          6A
      Dpstatus                         9A
      Dterminal                        7A
      Dlastfree                       10A
-     Dobserved                       20A
+     Dobserved                       26A
      Dlstobs                         20A
      Dpshipline                       4A
      Dpconttype                       5A
@@ -212,17 +212,17 @@
      Din_gate_tranDS   DS                  Qualified
      D                                     Template
      Dterminal                        7A
-     Dcontnumb                        6A
+     Dcontnumb                       11A
      Dchasnum                         6A
      Dtime                           20A
      Dloaded                           N
-     Ddirection                       7A
+     Ddirection                      10A
      Ddlicnum                         6A
      Dtrefnum                         6A
      Dtrklicplt                       6A
      Dextra_data                           LikeDS(extra_dataDS)
      Draw_data                             LikeDS(raw_dataDS)
-     Dobserved                       20A
+     Dobserved                       26A
 
       ************************************
       * out_gate_tranDS data structure
@@ -230,11 +230,11 @@
      Dout_gate_tranDS  DS                  Qualified
      D                                     Template
      Dterminal                        7A
-     Dcontnumb                        6A
+     Dcontnumb                       11A
      Dchasnum                         6A
      Dtime                           20A
      Dloaded                           N
-     Ddirection                       7A
+     Ddirection                      10A
      Ddlicnum                         6A
      Dtrefnum                         6A
      Dtrklicplt                       6A
@@ -248,7 +248,7 @@
      Dnext_apptDS      DS                  Qualified
      D                                     Template
      Dwindstrt                       20A
-     Dobserved                       20A
+     Dobserved                       26A
      Dhasavail                         N
 
       ************************************
@@ -257,8 +257,8 @@
      Dadded_by_userDS  DS                  Qualified
      D                                     Template
      Did                              8P 0
-     Dfirst_name                      6A
-     Dlast_name                       6A
+     Dfirst_name                     15A
+     Dlast_name                      15A
 
       ************************************
       * AssignedUsersDS data structure
@@ -274,7 +274,7 @@
       ************************************
      Dmatched_vessDS   DS                  Qualified
      D                                     Template
-     Dname                            6A
+     Dname                           15A
      Did                              8P 0
      Dimo_number                      8P 0
 
@@ -283,7 +283,7 @@
       ************************************
      DContainersDS     DS                  Qualified
      D                                     Template
-     Dcontnumb                        6A
+     Dcontnumb                       11A
      Dshipline                        4A
      Dconttype                        5A
      Dcustomer                             LikeDS(customerDS)
@@ -308,15 +308,15 @@
      Dautobook                         N
      Dautobookst                      9A
      Dlstreltrm                       7A
-     Dwatchtm                        20A
-     Ddischtm                        20A
-     Dimpappttm                      20A
-     Dimpoutgtm                      20A
-     Dmtappttm                       20A
-     Dmtigtime                       20A
+     Dwatchtm                        26A
+     Ddischtm                        26A
+     Dimpappttm                      26A
+     Dimpoutgtm                      26A
+     Dmtappttm                       26A
+     Dmtigtime                       26A
      Dlastfree                       10A
      Dtags                            6A   Dim(1)
-     Dvessel                          6A
+     Dvessel                         15A
      Dmatchvess                            LikeDS(matched_vessDS)
 
       ************************************
@@ -338,9 +338,9 @@
 
       ************************************
       * ResDDGet data structure
-      * Record length: 1440
+      * Record length: 1736
       ************************************
-     DResDDGetLen      C                   1440
+     DResDDGetLen      C                   1736
      DResDDGet         DS                  Qualified
      D                                     Template
      Dunwatched_co...
@@ -352,5 +352,5 @@
       * Convert buffer to ResDDGet
       ************************************
      DBufToResDDGet    PR
-     DBuffer                       1440A
+     DBuffer                       1736A
      DDataStruct                           LikeDS(ResDDGet)
