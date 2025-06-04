@@ -173,7 +173,7 @@
      Dtermref                         6A
      Ddsptrmref                       6A
      Dtrklicplt                       6A
-     Dtruck_id                        1P 0
+     Dtruck_id                        8P 0
      Dtermblok                        6A
      Dreqby                                LikeDS(requested_byDS)
      Dreschby                              LikeDS(resched_byDS)
@@ -338,9 +338,9 @@
 
       ************************************
       * ResDDGet data structure
-      * Record length: 1433
+      * Record length: 1440
       ************************************
-     DResDDGetLen      C                   1433
+     DResDDGetLen      C                   1440
      DResDDGet         DS                  Qualified
      D                                     Template
      Dunwatched_co...
@@ -352,5 +352,5 @@
       * Convert buffer to ResDDGet
       ************************************
      DBufToResDDGet    PR
-     DBuffer                       1433A
+     DBuffer                       1440A
      DDataStruct                           LikeDS(ResDDGet)

@@ -441,7 +441,7 @@ datastructures:
         default: ""
       truck_id:
         type: Packed
-        length: 1
+        length: 8
         default: 0
       terminal_block:
         rpgName: termblok

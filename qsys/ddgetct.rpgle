@@ -45,7 +45,7 @@
      PBufToResDDGet    B                   Export
 
      DBufToResDDGet    PI
-     DBuffer                       1433A
+     DBuffer                       1440A
      DDataStruct                           LikeDS(ResDDGet)
 
       * Initialize to begining of buffer
@@ -245,8 +245,8 @@
        BufPtr += 6;
        DataStruct.containers(i).lateappt.trklicplt = %subst(CharBuf:1:6);
        BufPtr += 6;
-       DataStruct.containers(i).lateappt.truck_id = %dec(%subst(CharBuf:1:3):1:0);
-       BufPtr += 3;
+       DataStruct.containers(i).lateappt.truck_id = %dec(%subst(CharBuf:1:10):8:0);
+       BufPtr += 10;
        DataStruct.containers(i).lateappt.termblok = %subst(CharBuf:1:6);
        BufPtr += 6;
        DataStruct.containers(i).lateappt.reqby.id = %dec(%subst(CharBuf:1:10):8:0);
