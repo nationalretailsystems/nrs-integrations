@@ -852,10 +852,14 @@ formats:
       containers:
         type: DataStruct
         dsName: ContainersDS
-        dim: 100
+        dim: 15
   ReqDDGet:
     recordType: request
     subfields:
       container:
         type: Character
         length: 11
+      pagenum:
+        type: Packed
+        length: 5
+        precision: 0

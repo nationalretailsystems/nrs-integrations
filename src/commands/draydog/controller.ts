@@ -103,8 +103,9 @@ export const getDrayDogCT: ECCHandlerFunction = async (reqkey, data, ecc) => {
                 Authorization: 'Bearer WzE4MTgsMTY0LDUsIm5TRno0ZiJd.e-Spq1VINsYk-0qGO7WDwEhc-ZA'
             },
             params: {
-                page_size: '100',
-                container_cycle_state: 'import_appt_booking'
+                'page_size': '100',
+                'container_cycle_state': 'import_appt_booking',
+                'page': reqFields.pagenum
             }
         });
     } catch (err) {
