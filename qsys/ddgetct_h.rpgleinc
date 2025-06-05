@@ -338,19 +338,19 @@
 
       ************************************
       * ResDDGet data structure
-      * Record length: 1823
+      * Record length: 181706
       ************************************
-     DResDDGetLen      C                   1823
+     DResDDGetLen      C                   181706
      DResDDGet         DS                  Qualified
      D                                     Template
      Dunwatched_co...
      Dntainers                        6A   Dim(1)
      Dcontainers                           LikeDS(ContainersDS)
-     D                                     Dim(1)
+     D                                     Dim(100)
 
       ************************************
       * Convert buffer to ResDDGet
       ************************************
      DBufToResDDGet    PR
-     DBuffer                       1823A
+     DBuffer                     181706A
      DDataStruct                           LikeDS(ResDDGet)
