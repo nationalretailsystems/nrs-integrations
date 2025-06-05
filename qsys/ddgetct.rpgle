@@ -26,7 +26,7 @@
      DReqDDGetToBuf    PI
      DDataStruct                           LikeDS(ReqDDGet)
      D                                     Const
-     DBuffer                         11A
+     DBuffer                         18A
 
       * Initialize to beginning of buffer
        BufPtr = %addr(Buffer);
@@ -34,6 +34,8 @@
       * Write fields from DS to buffer
        %subst(CharBuf:1:11) = DataStruct.container;
        BufPtr += 11;
+       %subst(CharBuf:1:7) = %char(DataStruct.pagenum);
+       BufPtr += 7;
 
        return ;
 
@@ -45,7 +47,7 @@
      PBufToResDDGet    B                   Export
 
      DBufToResDDGet    PI
-     DBuffer                     181706A
+     DBuffer                      27261A
      DDataStruct                           LikeDS(ResDDGet)
 
       * Initialize to begining of buffer
@@ -56,7 +58,7 @@
        DataStruct.unwatched_containers(i) = %subst(CharBuf:1:6);
        BufPtr += 6;
        endfor;
-       for i = 1 to 100;
+       for i = 1 to 15;
        DataStruct.containers(i).contnumb = %subst(CharBuf:1:11);
        BufPtr += 11;
        DataStruct.containers(i).shipline = %subst(CharBuf:1:4);

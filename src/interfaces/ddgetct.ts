@@ -23,7 +23,7 @@ export interface customerDS {
      */
     name: string,
     /**
-     * @size 1 digits
+     * @size 7 digits
      * @precision 0 decimals
      * @default `0`
      */
@@ -40,7 +40,7 @@ export interface pier_passDS {
      */
     terminals: Array<string>,
     /**
-     * @size 6 characters
+     * @size 11 characters
      * @default ``
      */
     container_number: string,
@@ -57,7 +57,7 @@ export interface pier_passDS {
      */
     has_hold: boolean,
     /**
-     * @size 20 characters
+     * @size 26 characters
      * @default ``
      */
     observed: string
@@ -73,7 +73,7 @@ export interface clean_trk_feeDS {
      */
     terminals: Array<string>,
     /**
-     * @size 6 characters
+     * @size 11 characters
      * @default ``
      */
     container_number: string,
@@ -90,7 +90,7 @@ export interface clean_trk_feeDS {
      */
     has_hold: boolean,
     /**
-     * @size 20 characters
+     * @size 26 characters
      * @default ``
      */
     observed: string
@@ -136,7 +136,7 @@ export interface import_statusDS {
      */
     terminal: string,
     /**
-     * @size 6 characters
+     * @size 11 characters
      * @default ``
      */
     container_number: string,
@@ -146,7 +146,7 @@ export interface import_statusDS {
      */
     last_free_date: string,
     /**
-     * @size 6 characters
+     * @size 20 characters
      * @default ``
      */
     master_bill_of_lading: string,
@@ -161,7 +161,7 @@ export interface import_statusDS {
      */
     container_type: string,
     /**
-     * @size 6 characters
+     * @size 15 characters
      * @default ``
      */
     vessel: string,
@@ -171,7 +171,7 @@ export interface import_statusDS {
      */
     location: string,
     /**
-     * @size 9 characters
+     * @size 20 characters
      * @default ``
      */
     parsed_location: string,
@@ -191,8 +191,8 @@ export interface import_statusDS {
      */
     holds: Array<string>,
     /**
-     * @size 1 digits
-     * @precision 0 decimals
+     * @size 5 digits
+     * @precision 2 decimals
      * @default `0`
      */
     demurrage_fees: number,
@@ -218,7 +218,7 @@ export interface import_statusDS {
      */
     out_gated_time: string,
     /**
-     * @size 20 characters
+     * @size 26 characters
      * @default ``
      */
     discharged_time: string,
@@ -229,7 +229,7 @@ export interface import_statusDS {
      */
     extra_data: extra_dataDS,
     /**
-     * @size 20 characters
+     * @size 26 characters
      * @default ``
      */
     observed: string,
@@ -247,22 +247,24 @@ export interface import_statusDS {
      */
     parsed_holds: Array<ParsedHoldsDS>,
     /**
-     * @size 1 characters
-     * @default ``
+     * @size 8 digits
+     * @precision 0 decimals
+     * @default `0`
      */
-    id: string,
+    id: number,
     /**
-     * @size 1 characters
-     * @default ``
+     * @size 7 digits
+     * @precision 0 decimals
+     * @default `0`
      */
-    cycle_id: string,
+    cycle_id: number,
     /**
-     * @size 20 characters
+     * @size 26 characters
      * @default ``
      */
     last_observed: string,
     /**
-     * @size 20 characters
+     * @size 26 characters
      * @default ``
      */
     last_initiated_check: string
@@ -278,7 +280,7 @@ export interface ImportStatsDS {
      */
     terminal: string,
     /**
-     * @size 6 characters
+     * @size 11 characters
      * @default ``
      */
     container_number: string,
@@ -288,7 +290,7 @@ export interface ImportStatsDS {
      */
     last_free_date: string,
     /**
-     * @size 6 characters
+     * @size 20 characters
      * @default ``
      */
     master_bill_of_lading: string,
@@ -303,7 +305,7 @@ export interface ImportStatsDS {
      */
     container_type: string,
     /**
-     * @size 6 characters
+     * @size 15 characters
      * @default ``
      */
     vessel: string,
@@ -313,7 +315,7 @@ export interface ImportStatsDS {
      */
     location: string,
     /**
-     * @size 9 characters
+     * @size 20 characters
      * @default ``
      */
     parsed_location: string,
@@ -360,7 +362,7 @@ export interface ImportStatsDS {
      */
     out_gated_time: string,
     /**
-     * @size 20 characters
+     * @size 26 characters
      * @default ``
      */
     discharged_time: string,
@@ -371,7 +373,7 @@ export interface ImportStatsDS {
      */
     extra_data: extra_dataDS,
     /**
-     * @size 20 characters
+     * @size 26 characters
      * @default ``
      */
     observed: string,
@@ -389,24 +391,24 @@ export interface ImportStatsDS {
      */
     parsed_holds: Array<ParsedHoldsDS>,
     /**
-     * @size 1 digits
+     * @size 7 digits
      * @precision 0 decimals
      * @default `0`
      */
     id: number,
     /**
-     * @size 1 digits
+     * @size 7 digits
      * @precision 0 decimals
      * @default `0`
      */
     cycle_id: number,
     /**
-     * @size 20 characters
+     * @size 26 characters
      * @default ``
      */
     last_observed: string,
     /**
-     * @size 20 characters
+     * @size 26 characters
      * @default ``
      */
     last_initiated_check: string
@@ -417,12 +419,12 @@ export interface ImportStatsDS {
  */
 export interface LinkedApptsDS {
     /**
-     * @size 6 characters
+     * @size 8 characters
      * @default ``
      */
     terminal_reference: string,
     /**
-     * @size 6 characters
+     * @size 11 characters
      * @default ``
      */
     container_number: string
@@ -433,18 +435,18 @@ export interface LinkedApptsDS {
  */
 export interface requested_byDS {
     /**
-     * @size 1 digits
+     * @size 8 digits
      * @precision 0 decimals
      * @default `0`
      */
     id: number,
     /**
-     * @size 6 characters
+     * @size 15 characters
      * @default ``
      */
     first_name: string,
     /**
-     * @size 6 characters
+     * @size 15 characters
      * @default ``
      */
     last_name: string
@@ -455,18 +457,18 @@ export interface requested_byDS {
  */
 export interface resched_byDS {
     /**
-     * @size 1 digits
+     * @size 8 digits
      * @precision 0 decimals
      * @default `0`
      */
     id: number,
     /**
-     * @size 6 characters
+     * @size 15 characters
      * @default ``
      */
     first_name: string,
     /**
-     * @size 6 characters
+     * @size 15 characters
      * @default ``
      */
     last_name: string
@@ -477,13 +479,13 @@ export interface resched_byDS {
  */
 export interface latest_apptDS {
     /**
-     * @size 1 digits
+     * @size 8 digits
      * @precision 0 decimals
      * @default `0`
      */
     id: number,
     /**
-     * @size 6 characters
+     * @size 11 characters
      * @default ``
      */
     container_number: string,
@@ -497,17 +499,17 @@ export interface latest_apptDS {
      */
     status: string,
     /**
-     * @size 7 characters
+     * @size 10 characters
      * @default ``
      */
     direction: string,
     /**
-     * @size 20 characters
+     * @size 26 characters
      * @default ``
      */
     window_start: string,
     /**
-     * @size 20 characters
+     * @size 26 characters
      * @default ``
      */
     window_end: string,
@@ -520,22 +522,22 @@ export interface latest_apptDS {
      */
     terminal: string,
     /**
-     * @size 6 characters
+     * @size 8 characters
      * @default ``
      */
     terminal_reference: string,
     /**
-     * @size 6 characters
+     * @size 15 characters
      * @default ``
      */
     display_terminal_reference: string,
     /**
-     * @size 6 characters
+     * @size 10 characters
      * @default ``
      */
     truck_license_plate_number: string,
     /**
-     * @size 1 digits
+     * @size 8 digits
      * @precision 0 decimals
      * @default `0`
      */
@@ -552,17 +554,17 @@ export interface latest_apptDS {
      */
     rescheduled_by: resched_byDS,
     /**
-     * @size 20 characters
+     * @size 26 characters
      * @default ``
      */
     observed: string,
     /**
-     * @size 20 characters
+     * @size 26 characters
      * @default ``
      */
     last_observed: string,
     /**
-     * @size 20 characters
+     * @size 26 characters
      * @default ``
      */
     created_at_terminal: string,
@@ -593,13 +595,13 @@ export interface OtherApptCtsDS {
  */
 export interface line_imp_statDS {
     /**
-     * @size 1 digits
+     * @size 8 digits
      * @precision 0 decimals
      * @default `0`
      */
     id: number,
     /**
-     * @size 6 characters
+     * @size 11 characters
      * @default ``
      */
     container_number: string,
@@ -624,7 +626,7 @@ export interface line_imp_statDS {
      */
     last_free_date: string,
     /**
-     * @size 20 characters
+     * @size 26 characters
      * @default ``
      */
     observed: string,
@@ -655,7 +657,7 @@ export interface in_gate_tranDS {
      */
     terminal: string,
     /**
-     * @size 6 characters
+     * @size 11 characters
      * @default ``
      */
     container_number: string,
@@ -674,7 +676,7 @@ export interface in_gate_tranDS {
      */
     loaded: boolean,
     /**
-     * @size 7 characters
+     * @size 10 characters
      * @default ``
      */
     direction: string,
@@ -700,7 +702,7 @@ export interface in_gate_tranDS {
      */
     raw_data: raw_dataDS,
     /**
-     * @size 20 characters
+     * @size 26 characters
      * @default ``
      */
     observed: string
@@ -716,7 +718,7 @@ export interface out_gate_tranDS {
      */
     terminal: string,
     /**
-     * @size 6 characters
+     * @size 11 characters
      * @default ``
      */
     container_number: string,
@@ -735,7 +737,7 @@ export interface out_gate_tranDS {
      */
     loaded: boolean,
     /**
-     * @size 7 characters
+     * @size 10 characters
      * @default ``
      */
     direction: string,
@@ -777,7 +779,7 @@ export interface next_apptDS {
      */
     window_start: string,
     /**
-     * @size 20 characters
+     * @size 26 characters
      * @default ``
      */
     observed: string,
@@ -792,18 +794,18 @@ export interface next_apptDS {
  */
 export interface added_by_userDS {
     /**
-     * @size 1 digits
+     * @size 8 digits
      * @precision 0 decimals
      * @default `0`
      */
     id: number,
     /**
-     * @size 6 characters
+     * @size 15 characters
      * @default ``
      */
     first_name: string,
     /**
-     * @size 6 characters
+     * @size 15 characters
      * @default ``
      */
     last_name: string
@@ -814,18 +816,18 @@ export interface added_by_userDS {
  */
 export interface AssignedUsersDS {
     /**
-     * @size 1 digits
+     * @size 8 digits
      * @precision 0 decimals
      * @default `0`
      */
     id: number,
     /**
-     * @size 6 characters
+     * @size 15 characters
      * @default ``
      */
     first_name: string,
     /**
-     * @size 6 characters
+     * @size 15 characters
      * @default ``
      */
     last_name: string
@@ -836,18 +838,18 @@ export interface AssignedUsersDS {
  */
 export interface matched_vessDS {
     /**
-     * @size 6 characters
+     * @size 15 characters
      * @default ``
      */
     name: string,
     /**
-     * @size 1 digits
+     * @size 8 digits
      * @precision 0 decimals
      * @default `0`
      */
     id: number,
     /**
-     * @size 1 digits
+     * @size 8 digits
      * @precision 0 decimals
      * @default `0`
      */
@@ -859,7 +861,7 @@ export interface matched_vessDS {
  */
 export interface ContainersDS {
     /**
-     * @size 6 characters
+     * @size 11 characters
      * @default ``
      */
     container_number: string,
@@ -942,32 +944,32 @@ export interface ContainersDS {
      */
     last_related_terminal: string,
     /**
-     * @size 20 characters
+     * @size 26 characters
      * @default ``
      */
     watched_time: string,
     /**
-     * @size 20 characters
+     * @size 26 characters
      * @default ``
      */
     discharged_time: string,
     /**
-     * @size 20 characters
+     * @size 26 characters
      * @default ``
      */
     import_appointment_time: string,
     /**
-     * @size 20 characters
+     * @size 26 characters
      * @default ``
      */
     import_out_gated_time: string,
     /**
-     * @size 20 characters
+     * @size 26 characters
      * @default ``
      */
     empty_appointment_time: string,
     /**
-     * @size 20 characters
+     * @size 26 characters
      * @default ``
      */
     empty_in_gated_time: string,
@@ -982,7 +984,7 @@ export interface ContainersDS {
      */
     tags: Array<string>,
     /**
-     * @size 6 characters
+     * @size 15 characters
      * @default ``
      */
     vessel: string,
@@ -998,7 +1000,12 @@ export interface ReqDDGet {
     /**
      * @size 11 characters
      */
-    container: string
+    container: string,
+    /**
+     * @size 5 digits
+     * @precision 0 decimals
+     */
+    pagenum: number
 }
 
 /**
@@ -1012,6 +1019,8 @@ export function convertReqDDGetToObject(dataIn: string): ReqDDGet {
 
   dataOut.container = dataIn.substring(pos, pos + 11).trimEnd();
   pos += 11;
+  dataOut.pagenum = Number(dataIn.substring(pos, pos + 7).trimEnd());
+  pos += 7;
 
   return dataOut;
 }
@@ -1039,70 +1048,70 @@ export function convertObjectToResDDGet(dataIn: ResDDGet): string {
   for (let i: number = 0; i < 1; ++i) {
   dataOut += dataIn?.unwatched_containers[i]?.substring(0, 6)?.padEnd(6) ?? "".substring(0, 6).padEnd(6);
   }
-  for (let i: number = 0; i < 1; ++i) {
-  dataOut += dataIn?.containers[i]?.container_number?.substring(0, 6)?.padEnd(6) ?? "".substring(0, 6).padEnd(6);
+  for (let i: number = 0; i < 15; ++i) {
+  dataOut += dataIn?.containers[i]?.container_number?.substring(0, 11)?.padEnd(11) ?? "".substring(0, 11).padEnd(11);
   dataOut += dataIn?.containers[i]?.shipping_line?.substring(0, 4)?.padEnd(4) ?? "".substring(0, 4).padEnd(4);
   dataOut += dataIn?.containers[i]?.container_type?.substring(0, 5)?.padEnd(5) ?? "".substring(0, 5).padEnd(5);
   dataOut += dataIn?.containers[i]?.customer?.name?.substring(0, 6)?.padEnd(6) ?? "".substring(0, 6).padEnd(6);
-  dataOut += dataIn?.containers[i]?.customer?.id?.toFixed(0)?.substring(0, 3)?.padEnd(3) ?? "0".substring(0, 3).padEnd(3);
+  dataOut += dataIn?.containers[i]?.customer?.id?.toFixed(0)?.substring(0, 9)?.padEnd(9) ?? "0".substring(0, 9).padEnd(9);
   for (let l: number = 0; l < 1; ++l) {
   dataOut += dataIn?.containers[i]?.pier_pass?.terminals[l]?.substring(0, 7)?.padEnd(7) ?? "".substring(0, 7).padEnd(7);
   }
-  dataOut += dataIn?.containers[i]?.pier_pass?.container_number?.substring(0, 6)?.padEnd(6) ?? "".substring(0, 6).padEnd(6);
+  dataOut += dataIn?.containers[i]?.pier_pass?.container_number?.substring(0, 11)?.padEnd(11) ?? "".substring(0, 11).padEnd(11);
   dataOut += (dataIn?.containers[i]?.pier_pass?.claimed_by_other_company !== undefined ? (dataIn?.containers[i]?.pier_pass?.claimed_by_other_company ? "1" : "0") : "0");
   dataOut += (dataIn?.containers[i]?.pier_pass?.fee_paid !== undefined ? (dataIn?.containers[i]?.pier_pass?.fee_paid ? "1" : "0") : "0");
   dataOut += (dataIn?.containers[i]?.pier_pass?.has_hold !== undefined ? (dataIn?.containers[i]?.pier_pass?.has_hold ? "1" : "0") : "0");
-  dataOut += dataIn?.containers[i]?.pier_pass?.observed?.substring(0, 20)?.padEnd(20) ?? "".substring(0, 20).padEnd(20);
+  dataOut += dataIn?.containers[i]?.pier_pass?.observed?.substring(0, 26)?.padEnd(26) ?? "".substring(0, 26).padEnd(26);
   for (let l: number = 0; l < 1; ++l) {
   dataOut += dataIn?.containers[i]?.clean_truck_fee?.terminals[l]?.substring(0, 7)?.padEnd(7) ?? "".substring(0, 7).padEnd(7);
   }
-  dataOut += dataIn?.containers[i]?.clean_truck_fee?.container_number?.substring(0, 6)?.padEnd(6) ?? "".substring(0, 6).padEnd(6);
+  dataOut += dataIn?.containers[i]?.clean_truck_fee?.container_number?.substring(0, 11)?.padEnd(11) ?? "".substring(0, 11).padEnd(11);
   dataOut += (dataIn?.containers[i]?.clean_truck_fee?.claimed_by_other_company !== undefined ? (dataIn?.containers[i]?.clean_truck_fee?.claimed_by_other_company ? "1" : "0") : "0");
   dataOut += (dataIn?.containers[i]?.clean_truck_fee?.fee_paid !== undefined ? (dataIn?.containers[i]?.clean_truck_fee?.fee_paid ? "1" : "0") : "0");
   dataOut += (dataIn?.containers[i]?.clean_truck_fee?.has_hold !== undefined ? (dataIn?.containers[i]?.clean_truck_fee?.has_hold ? "1" : "0") : "0");
-  dataOut += dataIn?.containers[i]?.clean_truck_fee?.observed?.substring(0, 20)?.padEnd(20) ?? "".substring(0, 20).padEnd(20);
+  dataOut += dataIn?.containers[i]?.clean_truck_fee?.observed?.substring(0, 26)?.padEnd(26) ?? "".substring(0, 26).padEnd(26);
   dataOut += dataIn?.containers[i]?.import_status?.terminal?.substring(0, 7)?.padEnd(7) ?? "".substring(0, 7).padEnd(7);
-  dataOut += dataIn?.containers[i]?.import_status?.container_number?.substring(0, 6)?.padEnd(6) ?? "".substring(0, 6).padEnd(6);
+  dataOut += dataIn?.containers[i]?.import_status?.container_number?.substring(0, 11)?.padEnd(11) ?? "".substring(0, 11).padEnd(11);
   dataOut += dataIn?.containers[i]?.import_status?.last_free_date?.substring(0, 10)?.padEnd(10) ?? "".substring(0, 10).padEnd(10);
-  dataOut += dataIn?.containers[i]?.import_status?.master_bill_of_lading?.substring(0, 6)?.padEnd(6) ?? "".substring(0, 6).padEnd(6);
+  dataOut += dataIn?.containers[i]?.import_status?.master_bill_of_lading?.substring(0, 20)?.padEnd(20) ?? "".substring(0, 20).padEnd(20);
   dataOut += dataIn?.containers[i]?.import_status?.shipping_line?.substring(0, 3)?.padEnd(3) ?? "".substring(0, 3).padEnd(3);
   dataOut += dataIn?.containers[i]?.import_status?.container_type?.substring(0, 16)?.padEnd(16) ?? "".substring(0, 16).padEnd(16);
-  dataOut += dataIn?.containers[i]?.import_status?.vessel?.substring(0, 6)?.padEnd(6) ?? "".substring(0, 6).padEnd(6);
+  dataOut += dataIn?.containers[i]?.import_status?.vessel?.substring(0, 15)?.padEnd(15) ?? "".substring(0, 15).padEnd(15);
   dataOut += dataIn?.containers[i]?.import_status?.location?.substring(0, 7)?.padEnd(7) ?? "".substring(0, 7).padEnd(7);
-  dataOut += dataIn?.containers[i]?.import_status?.parsed_location?.substring(0, 9)?.padEnd(9) ?? "".substring(0, 9).padEnd(9);
+  dataOut += dataIn?.containers[i]?.import_status?.parsed_location?.substring(0, 20)?.padEnd(20) ?? "".substring(0, 20).padEnd(20);
   dataOut += dataIn?.containers[i]?.import_status?.terminal_block?.substring(0, 10)?.padEnd(10) ?? "".substring(0, 10).padEnd(10);
   dataOut += dataIn?.containers[i]?.import_status?.terminal_block_availability_key?.substring(0, 3)?.padEnd(3) ?? "".substring(0, 3).padEnd(3);
   for (let l: number = 0; l < 2; ++l) {
   dataOut += dataIn?.containers[i]?.import_status?.holds[l]?.substring(0, 14)?.padEnd(14) ?? "".substring(0, 14).padEnd(14);
   }
-  dataOut += dataIn?.containers[i]?.import_status?.demurrage_fees?.toFixed(0)?.substring(0, 3)?.padEnd(3) ?? "0".substring(0, 3).padEnd(3);
+  dataOut += dataIn?.containers[i]?.import_status?.demurrage_fees?.toFixed(2)?.substring(0, 7)?.padEnd(7) ?? "0".substring(0, 7).padEnd(7);
   dataOut += (dataIn?.containers[i]?.import_status?.ready_for_appointment !== undefined ? (dataIn?.containers[i]?.import_status?.ready_for_appointment ? "1" : "0") : "0");
   dataOut += (dataIn?.containers[i]?.import_status?.available_for_pickup !== undefined ? (dataIn?.containers[i]?.import_status?.available_for_pickup ? "1" : "0") : "0");
   dataOut += (dataIn?.containers[i]?.import_status?.wheeled !== undefined ? (dataIn?.containers[i]?.import_status?.wheeled ? "1" : "0") : "0");
   dataOut += (dataIn?.containers[i]?.import_status?.closed_area !== undefined ? (dataIn?.containers[i]?.import_status?.closed_area ? "1" : "0") : "0");
   dataOut += dataIn?.containers[i]?.import_status?.out_gated_time?.substring(0, 20)?.padEnd(20) ?? "".substring(0, 20).padEnd(20);
-  dataOut += dataIn?.containers[i]?.import_status?.discharged_time?.substring(0, 20)?.padEnd(20) ?? "".substring(0, 20).padEnd(20);
-  dataOut += dataIn?.containers[i]?.import_status?.observed?.substring(0, 20)?.padEnd(20) ?? "".substring(0, 20).padEnd(20);
+  dataOut += dataIn?.containers[i]?.import_status?.discharged_time?.substring(0, 26)?.padEnd(26) ?? "".substring(0, 26).padEnd(26);
+  dataOut += dataIn?.containers[i]?.import_status?.observed?.substring(0, 26)?.padEnd(26) ?? "".substring(0, 26).padEnd(26);
   dataOut += dataIn?.containers[i]?.import_status?.parsed_shipping_line?.substring(0, 4)?.padEnd(4) ?? "".substring(0, 4).padEnd(4);
   dataOut += dataIn?.containers[i]?.import_status?.parsed_container_type?.substring(0, 5)?.padEnd(5) ?? "".substring(0, 5).padEnd(5);
   for (let l: number = 0; l < 1; ++l) {
   dataOut += dataIn?.containers[i]?.import_status?.parsed_holds[l]?.type?.substring(0, 9)?.padEnd(9) ?? "".substring(0, 9).padEnd(9);
   dataOut += dataIn?.containers[i]?.import_status?.parsed_holds[l]?.raw_type?.substring(0, 6)?.padEnd(6) ?? "".substring(0, 6).padEnd(6);
   }
-  dataOut += dataIn?.containers[i]?.import_status?.id?.substring(0, 1)?.padEnd(1) ?? "".substring(0, 1).padEnd(1);
-  dataOut += dataIn?.containers[i]?.import_status?.cycle_id?.substring(0, 1)?.padEnd(1) ?? "".substring(0, 1).padEnd(1);
-  dataOut += dataIn?.containers[i]?.import_status?.last_observed?.substring(0, 20)?.padEnd(20) ?? "".substring(0, 20).padEnd(20);
-  dataOut += dataIn?.containers[i]?.import_status?.last_initiated_check?.substring(0, 20)?.padEnd(20) ?? "".substring(0, 20).padEnd(20);
+  dataOut += dataIn?.containers[i]?.import_status?.id?.toFixed(0)?.substring(0, 10)?.padEnd(10) ?? "0".substring(0, 10).padEnd(10);
+  dataOut += dataIn?.containers[i]?.import_status?.cycle_id?.toFixed(0)?.substring(0, 9)?.padEnd(9) ?? "0".substring(0, 9).padEnd(9);
+  dataOut += dataIn?.containers[i]?.import_status?.last_observed?.substring(0, 26)?.padEnd(26) ?? "".substring(0, 26).padEnd(26);
+  dataOut += dataIn?.containers[i]?.import_status?.last_initiated_check?.substring(0, 26)?.padEnd(26) ?? "".substring(0, 26).padEnd(26);
   for (let k: number = 0; k < 1; ++k) {
   dataOut += dataIn?.containers[i]?.import_statuses[k]?.terminal?.substring(0, 7)?.padEnd(7) ?? "".substring(0, 7).padEnd(7);
-  dataOut += dataIn?.containers[i]?.import_statuses[k]?.container_number?.substring(0, 6)?.padEnd(6) ?? "".substring(0, 6).padEnd(6);
+  dataOut += dataIn?.containers[i]?.import_statuses[k]?.container_number?.substring(0, 11)?.padEnd(11) ?? "".substring(0, 11).padEnd(11);
   dataOut += dataIn?.containers[i]?.import_statuses[k]?.last_free_date?.substring(0, 10)?.padEnd(10) ?? "".substring(0, 10).padEnd(10);
-  dataOut += dataIn?.containers[i]?.import_statuses[k]?.master_bill_of_lading?.substring(0, 6)?.padEnd(6) ?? "".substring(0, 6).padEnd(6);
+  dataOut += dataIn?.containers[i]?.import_statuses[k]?.master_bill_of_lading?.substring(0, 20)?.padEnd(20) ?? "".substring(0, 20).padEnd(20);
   dataOut += dataIn?.containers[i]?.import_statuses[k]?.shipping_line?.substring(0, 3)?.padEnd(3) ?? "".substring(0, 3).padEnd(3);
   dataOut += dataIn?.containers[i]?.import_statuses[k]?.container_type?.substring(0, 16)?.padEnd(16) ?? "".substring(0, 16).padEnd(16);
-  dataOut += dataIn?.containers[i]?.import_statuses[k]?.vessel?.substring(0, 6)?.padEnd(6) ?? "".substring(0, 6).padEnd(6);
+  dataOut += dataIn?.containers[i]?.import_statuses[k]?.vessel?.substring(0, 15)?.padEnd(15) ?? "".substring(0, 15).padEnd(15);
   dataOut += dataIn?.containers[i]?.import_statuses[k]?.location?.substring(0, 7)?.padEnd(7) ?? "".substring(0, 7).padEnd(7);
-  dataOut += dataIn?.containers[i]?.import_statuses[k]?.parsed_location?.substring(0, 9)?.padEnd(9) ?? "".substring(0, 9).padEnd(9);
+  dataOut += dataIn?.containers[i]?.import_statuses[k]?.parsed_location?.substring(0, 20)?.padEnd(20) ?? "".substring(0, 20).padEnd(20);
   dataOut += dataIn?.containers[i]?.import_statuses[k]?.terminal_block?.substring(0, 10)?.padEnd(10) ?? "".substring(0, 10).padEnd(10);
   dataOut += dataIn?.containers[i]?.import_statuses[k]?.terminal_block_availability_key?.substring(0, 3)?.padEnd(3) ?? "".substring(0, 3).padEnd(3);
   for (let m: number = 0; m < 2; ++m) {
@@ -1114,110 +1123,110 @@ export function convertObjectToResDDGet(dataIn: ResDDGet): string {
   dataOut += (dataIn?.containers[i]?.import_statuses[k]?.wheeled !== undefined ? (dataIn?.containers[i]?.import_statuses[k]?.wheeled ? "1" : "0") : "0");
   dataOut += (dataIn?.containers[i]?.import_statuses[k]?.closed_area !== undefined ? (dataIn?.containers[i]?.import_statuses[k]?.closed_area ? "1" : "0") : "0");
   dataOut += dataIn?.containers[i]?.import_statuses[k]?.out_gated_time?.substring(0, 20)?.padEnd(20) ?? "".substring(0, 20).padEnd(20);
-  dataOut += dataIn?.containers[i]?.import_statuses[k]?.discharged_time?.substring(0, 20)?.padEnd(20) ?? "".substring(0, 20).padEnd(20);
-  dataOut += dataIn?.containers[i]?.import_statuses[k]?.observed?.substring(0, 20)?.padEnd(20) ?? "".substring(0, 20).padEnd(20);
+  dataOut += dataIn?.containers[i]?.import_statuses[k]?.discharged_time?.substring(0, 26)?.padEnd(26) ?? "".substring(0, 26).padEnd(26);
+  dataOut += dataIn?.containers[i]?.import_statuses[k]?.observed?.substring(0, 26)?.padEnd(26) ?? "".substring(0, 26).padEnd(26);
   dataOut += dataIn?.containers[i]?.import_statuses[k]?.parsed_shipping_line?.substring(0, 4)?.padEnd(4) ?? "".substring(0, 4).padEnd(4);
   dataOut += dataIn?.containers[i]?.import_statuses[k]?.parsed_container_type?.substring(0, 5)?.padEnd(5) ?? "".substring(0, 5).padEnd(5);
   for (let m: number = 0; m < 1; ++m) {
   dataOut += dataIn?.containers[i]?.import_statuses[k]?.parsed_holds[m]?.type?.substring(0, 9)?.padEnd(9) ?? "".substring(0, 9).padEnd(9);
   dataOut += dataIn?.containers[i]?.import_statuses[k]?.parsed_holds[m]?.raw_type?.substring(0, 6)?.padEnd(6) ?? "".substring(0, 6).padEnd(6);
   }
-  dataOut += dataIn?.containers[i]?.import_statuses[k]?.id?.toFixed(0)?.substring(0, 3)?.padEnd(3) ?? "0".substring(0, 3).padEnd(3);
-  dataOut += dataIn?.containers[i]?.import_statuses[k]?.cycle_id?.toFixed(0)?.substring(0, 3)?.padEnd(3) ?? "0".substring(0, 3).padEnd(3);
-  dataOut += dataIn?.containers[i]?.import_statuses[k]?.last_observed?.substring(0, 20)?.padEnd(20) ?? "".substring(0, 20).padEnd(20);
-  dataOut += dataIn?.containers[i]?.import_statuses[k]?.last_initiated_check?.substring(0, 20)?.padEnd(20) ?? "".substring(0, 20).padEnd(20);
+  dataOut += dataIn?.containers[i]?.import_statuses[k]?.id?.toFixed(0)?.substring(0, 9)?.padEnd(9) ?? "0".substring(0, 9).padEnd(9);
+  dataOut += dataIn?.containers[i]?.import_statuses[k]?.cycle_id?.toFixed(0)?.substring(0, 9)?.padEnd(9) ?? "0".substring(0, 9).padEnd(9);
+  dataOut += dataIn?.containers[i]?.import_statuses[k]?.last_observed?.substring(0, 26)?.padEnd(26) ?? "".substring(0, 26).padEnd(26);
+  dataOut += dataIn?.containers[i]?.import_statuses[k]?.last_initiated_check?.substring(0, 26)?.padEnd(26) ?? "".substring(0, 26).padEnd(26);
   }
-  dataOut += dataIn?.containers[i]?.latest_appointment?.id?.toFixed(0)?.substring(0, 3)?.padEnd(3) ?? "0".substring(0, 3).padEnd(3);
-  dataOut += dataIn?.containers[i]?.latest_appointment?.container_number?.substring(0, 6)?.padEnd(6) ?? "".substring(0, 6).padEnd(6);
+  dataOut += dataIn?.containers[i]?.latest_appointment?.id?.toFixed(0)?.substring(0, 10)?.padEnd(10) ?? "0".substring(0, 10).padEnd(10);
+  dataOut += dataIn?.containers[i]?.latest_appointment?.container_number?.substring(0, 11)?.padEnd(11) ?? "".substring(0, 11).padEnd(11);
   dataOut += (dataIn?.containers[i]?.latest_appointment?.loaded !== undefined ? (dataIn?.containers[i]?.latest_appointment?.loaded ? "1" : "0") : "0");
   dataOut += dataIn?.containers[i]?.latest_appointment?.status?.substring(0, 16)?.padEnd(16) ?? "".substring(0, 16).padEnd(16);
-  dataOut += dataIn?.containers[i]?.latest_appointment?.direction?.substring(0, 7)?.padEnd(7) ?? "".substring(0, 7).padEnd(7);
-  dataOut += dataIn?.containers[i]?.latest_appointment?.window_start?.substring(0, 20)?.padEnd(20) ?? "".substring(0, 20).padEnd(20);
-  dataOut += dataIn?.containers[i]?.latest_appointment?.window_end?.substring(0, 20)?.padEnd(20) ?? "".substring(0, 20).padEnd(20);
+  dataOut += dataIn?.containers[i]?.latest_appointment?.direction?.substring(0, 10)?.padEnd(10) ?? "".substring(0, 10).padEnd(10);
+  dataOut += dataIn?.containers[i]?.latest_appointment?.window_start?.substring(0, 26)?.padEnd(26) ?? "".substring(0, 26).padEnd(26);
+  dataOut += dataIn?.containers[i]?.latest_appointment?.window_end?.substring(0, 26)?.padEnd(26) ?? "".substring(0, 26).padEnd(26);
   for (let l: number = 0; l < 1; ++l) {
-  dataOut += dataIn?.containers[i]?.latest_appointment?.linked_appointments[l]?.terminal_reference?.substring(0, 6)?.padEnd(6) ?? "".substring(0, 6).padEnd(6);
-  dataOut += dataIn?.containers[i]?.latest_appointment?.linked_appointments[l]?.container_number?.substring(0, 6)?.padEnd(6) ?? "".substring(0, 6).padEnd(6);
+  dataOut += dataIn?.containers[i]?.latest_appointment?.linked_appointments[l]?.terminal_reference?.substring(0, 8)?.padEnd(8) ?? "".substring(0, 8).padEnd(8);
+  dataOut += dataIn?.containers[i]?.latest_appointment?.linked_appointments[l]?.container_number?.substring(0, 11)?.padEnd(11) ?? "".substring(0, 11).padEnd(11);
   }
   dataOut += dataIn?.containers[i]?.latest_appointment?.terminal?.substring(0, 7)?.padEnd(7) ?? "".substring(0, 7).padEnd(7);
-  dataOut += dataIn?.containers[i]?.latest_appointment?.terminal_reference?.substring(0, 6)?.padEnd(6) ?? "".substring(0, 6).padEnd(6);
-  dataOut += dataIn?.containers[i]?.latest_appointment?.display_terminal_reference?.substring(0, 6)?.padEnd(6) ?? "".substring(0, 6).padEnd(6);
-  dataOut += dataIn?.containers[i]?.latest_appointment?.truck_license_plate_number?.substring(0, 6)?.padEnd(6) ?? "".substring(0, 6).padEnd(6);
-  dataOut += dataIn?.containers[i]?.latest_appointment?.truck_id?.toFixed(0)?.substring(0, 3)?.padEnd(3) ?? "0".substring(0, 3).padEnd(3);
+  dataOut += dataIn?.containers[i]?.latest_appointment?.terminal_reference?.substring(0, 8)?.padEnd(8) ?? "".substring(0, 8).padEnd(8);
+  dataOut += dataIn?.containers[i]?.latest_appointment?.display_terminal_reference?.substring(0, 15)?.padEnd(15) ?? "".substring(0, 15).padEnd(15);
+  dataOut += dataIn?.containers[i]?.latest_appointment?.truck_license_plate_number?.substring(0, 10)?.padEnd(10) ?? "".substring(0, 10).padEnd(10);
+  dataOut += dataIn?.containers[i]?.latest_appointment?.truck_id?.toFixed(0)?.substring(0, 10)?.padEnd(10) ?? "0".substring(0, 10).padEnd(10);
   dataOut += dataIn?.containers[i]?.latest_appointment?.terminal_block?.substring(0, 6)?.padEnd(6) ?? "".substring(0, 6).padEnd(6);
-  dataOut += dataIn?.containers[i]?.latest_appointment?.requested_by?.id?.toFixed(0)?.substring(0, 3)?.padEnd(3) ?? "0".substring(0, 3).padEnd(3);
-  dataOut += dataIn?.containers[i]?.latest_appointment?.requested_by?.first_name?.substring(0, 6)?.padEnd(6) ?? "".substring(0, 6).padEnd(6);
-  dataOut += dataIn?.containers[i]?.latest_appointment?.requested_by?.last_name?.substring(0, 6)?.padEnd(6) ?? "".substring(0, 6).padEnd(6);
-  dataOut += dataIn?.containers[i]?.latest_appointment?.rescheduled_by?.id?.toFixed(0)?.substring(0, 3)?.padEnd(3) ?? "0".substring(0, 3).padEnd(3);
-  dataOut += dataIn?.containers[i]?.latest_appointment?.rescheduled_by?.first_name?.substring(0, 6)?.padEnd(6) ?? "".substring(0, 6).padEnd(6);
-  dataOut += dataIn?.containers[i]?.latest_appointment?.rescheduled_by?.last_name?.substring(0, 6)?.padEnd(6) ?? "".substring(0, 6).padEnd(6);
-  dataOut += dataIn?.containers[i]?.latest_appointment?.observed?.substring(0, 20)?.padEnd(20) ?? "".substring(0, 20).padEnd(20);
-  dataOut += dataIn?.containers[i]?.latest_appointment?.last_observed?.substring(0, 20)?.padEnd(20) ?? "".substring(0, 20).padEnd(20);
-  dataOut += dataIn?.containers[i]?.latest_appointment?.created_at_terminal?.substring(0, 20)?.padEnd(20) ?? "".substring(0, 20).padEnd(20);
+  dataOut += dataIn?.containers[i]?.latest_appointment?.requested_by?.id?.toFixed(0)?.substring(0, 10)?.padEnd(10) ?? "0".substring(0, 10).padEnd(10);
+  dataOut += dataIn?.containers[i]?.latest_appointment?.requested_by?.first_name?.substring(0, 15)?.padEnd(15) ?? "".substring(0, 15).padEnd(15);
+  dataOut += dataIn?.containers[i]?.latest_appointment?.requested_by?.last_name?.substring(0, 15)?.padEnd(15) ?? "".substring(0, 15).padEnd(15);
+  dataOut += dataIn?.containers[i]?.latest_appointment?.rescheduled_by?.id?.toFixed(0)?.substring(0, 10)?.padEnd(10) ?? "0".substring(0, 10).padEnd(10);
+  dataOut += dataIn?.containers[i]?.latest_appointment?.rescheduled_by?.first_name?.substring(0, 15)?.padEnd(15) ?? "".substring(0, 15).padEnd(15);
+  dataOut += dataIn?.containers[i]?.latest_appointment?.rescheduled_by?.last_name?.substring(0, 15)?.padEnd(15) ?? "".substring(0, 15).padEnd(15);
+  dataOut += dataIn?.containers[i]?.latest_appointment?.observed?.substring(0, 26)?.padEnd(26) ?? "".substring(0, 26).padEnd(26);
+  dataOut += dataIn?.containers[i]?.latest_appointment?.last_observed?.substring(0, 26)?.padEnd(26) ?? "".substring(0, 26).padEnd(26);
+  dataOut += dataIn?.containers[i]?.latest_appointment?.created_at_terminal?.substring(0, 26)?.padEnd(26) ?? "".substring(0, 26).padEnd(26);
   for (let k: number = 0; k < 1; ++k) {
   dataOut += dataIn?.containers[i]?.other_appointment_counts[k]?.status?.substring(0, 16)?.padEnd(16) ?? "".substring(0, 16).padEnd(16);
   dataOut += dataIn?.containers[i]?.other_appointment_counts[k]?.count?.toFixed(0)?.substring(0, 3)?.padEnd(3) ?? "0".substring(0, 3).padEnd(3);
   }
-  dataOut += dataIn?.containers[i]?.line_import_status?.id?.toFixed(0)?.substring(0, 3)?.padEnd(3) ?? "0".substring(0, 3).padEnd(3);
-  dataOut += dataIn?.containers[i]?.line_import_status?.container_number?.substring(0, 6)?.padEnd(6) ?? "".substring(0, 6).padEnd(6);
+  dataOut += dataIn?.containers[i]?.line_import_status?.id?.toFixed(0)?.substring(0, 10)?.padEnd(10) ?? "0".substring(0, 10).padEnd(10);
+  dataOut += dataIn?.containers[i]?.line_import_status?.container_number?.substring(0, 11)?.padEnd(11) ?? "".substring(0, 11).padEnd(11);
   dataOut += dataIn?.containers[i]?.line_import_status?.status?.substring(0, 6)?.padEnd(6) ?? "".substring(0, 6).padEnd(6);
   dataOut += dataIn?.containers[i]?.line_import_status?.parsed_status?.substring(0, 9)?.padEnd(9) ?? "".substring(0, 9).padEnd(9);
   dataOut += dataIn?.containers[i]?.line_import_status?.terminal?.substring(0, 7)?.padEnd(7) ?? "".substring(0, 7).padEnd(7);
   dataOut += dataIn?.containers[i]?.line_import_status?.last_free_date?.substring(0, 10)?.padEnd(10) ?? "".substring(0, 10).padEnd(10);
-  dataOut += dataIn?.containers[i]?.line_import_status?.observed?.substring(0, 20)?.padEnd(20) ?? "".substring(0, 20).padEnd(20);
+  dataOut += dataIn?.containers[i]?.line_import_status?.observed?.substring(0, 26)?.padEnd(26) ?? "".substring(0, 26).padEnd(26);
   dataOut += dataIn?.containers[i]?.line_import_status?.last_observed?.substring(0, 20)?.padEnd(20) ?? "".substring(0, 20).padEnd(20);
   dataOut += dataIn?.containers[i]?.line_import_status?.parsed_shipping_line?.substring(0, 4)?.padEnd(4) ?? "".substring(0, 4).padEnd(4);
   dataOut += dataIn?.containers[i]?.line_import_status?.parsed_container_type?.substring(0, 5)?.padEnd(5) ?? "".substring(0, 5).padEnd(5);
   dataOut += dataIn?.containers[i]?.inbound_gate_transaction?.terminal?.substring(0, 7)?.padEnd(7) ?? "".substring(0, 7).padEnd(7);
-  dataOut += dataIn?.containers[i]?.inbound_gate_transaction?.container_number?.substring(0, 6)?.padEnd(6) ?? "".substring(0, 6).padEnd(6);
+  dataOut += dataIn?.containers[i]?.inbound_gate_transaction?.container_number?.substring(0, 11)?.padEnd(11) ?? "".substring(0, 11).padEnd(11);
   dataOut += dataIn?.containers[i]?.inbound_gate_transaction?.chassis_number?.substring(0, 6)?.padEnd(6) ?? "".substring(0, 6).padEnd(6);
   dataOut += dataIn?.containers[i]?.inbound_gate_transaction?.time?.substring(0, 20)?.padEnd(20) ?? "".substring(0, 20).padEnd(20);
   dataOut += (dataIn?.containers[i]?.inbound_gate_transaction?.loaded !== undefined ? (dataIn?.containers[i]?.inbound_gate_transaction?.loaded ? "1" : "0") : "0");
-  dataOut += dataIn?.containers[i]?.inbound_gate_transaction?.direction?.substring(0, 7)?.padEnd(7) ?? "".substring(0, 7).padEnd(7);
+  dataOut += dataIn?.containers[i]?.inbound_gate_transaction?.direction?.substring(0, 10)?.padEnd(10) ?? "".substring(0, 10).padEnd(10);
   dataOut += dataIn?.containers[i]?.inbound_gate_transaction?.drivers_license_number?.substring(0, 6)?.padEnd(6) ?? "".substring(0, 6).padEnd(6);
   dataOut += dataIn?.containers[i]?.inbound_gate_transaction?.truck_rfid_number?.substring(0, 6)?.padEnd(6) ?? "".substring(0, 6).padEnd(6);
   dataOut += dataIn?.containers[i]?.inbound_gate_transaction?.truck_license_plate_number?.substring(0, 6)?.padEnd(6) ?? "".substring(0, 6).padEnd(6);
-  dataOut += dataIn?.containers[i]?.inbound_gate_transaction?.observed?.substring(0, 20)?.padEnd(20) ?? "".substring(0, 20).padEnd(20);
+  dataOut += dataIn?.containers[i]?.inbound_gate_transaction?.observed?.substring(0, 26)?.padEnd(26) ?? "".substring(0, 26).padEnd(26);
   dataOut += dataIn?.containers[i]?.outbound_gate_transaction?.terminal?.substring(0, 7)?.padEnd(7) ?? "".substring(0, 7).padEnd(7);
-  dataOut += dataIn?.containers[i]?.outbound_gate_transaction?.container_number?.substring(0, 6)?.padEnd(6) ?? "".substring(0, 6).padEnd(6);
+  dataOut += dataIn?.containers[i]?.outbound_gate_transaction?.container_number?.substring(0, 11)?.padEnd(11) ?? "".substring(0, 11).padEnd(11);
   dataOut += dataIn?.containers[i]?.outbound_gate_transaction?.chassis_number?.substring(0, 6)?.padEnd(6) ?? "".substring(0, 6).padEnd(6);
   dataOut += dataIn?.containers[i]?.outbound_gate_transaction?.time?.substring(0, 20)?.padEnd(20) ?? "".substring(0, 20).padEnd(20);
   dataOut += (dataIn?.containers[i]?.outbound_gate_transaction?.loaded !== undefined ? (dataIn?.containers[i]?.outbound_gate_transaction?.loaded ? "1" : "0") : "0");
-  dataOut += dataIn?.containers[i]?.outbound_gate_transaction?.direction?.substring(0, 7)?.padEnd(7) ?? "".substring(0, 7).padEnd(7);
+  dataOut += dataIn?.containers[i]?.outbound_gate_transaction?.direction?.substring(0, 10)?.padEnd(10) ?? "".substring(0, 10).padEnd(10);
   dataOut += dataIn?.containers[i]?.outbound_gate_transaction?.drivers_license_number?.substring(0, 6)?.padEnd(6) ?? "".substring(0, 6).padEnd(6);
   dataOut += dataIn?.containers[i]?.outbound_gate_transaction?.truck_rfid_number?.substring(0, 6)?.padEnd(6) ?? "".substring(0, 6).padEnd(6);
   dataOut += dataIn?.containers[i]?.outbound_gate_transaction?.truck_license_plate_number?.substring(0, 6)?.padEnd(6) ?? "".substring(0, 6).padEnd(6);
   dataOut += dataIn?.containers[i]?.outbound_gate_transaction?.observed?.substring(0, 20)?.padEnd(20) ?? "".substring(0, 20).padEnd(20);
   dataOut += dataIn?.containers[i]?.cycle_state?.substring(0, 7)?.padEnd(7) ?? "".substring(0, 7).padEnd(7);
   dataOut += dataIn?.containers[i]?.next_available_appointment?.window_start?.substring(0, 20)?.padEnd(20) ?? "".substring(0, 20).padEnd(20);
-  dataOut += dataIn?.containers[i]?.next_available_appointment?.observed?.substring(0, 20)?.padEnd(20) ?? "".substring(0, 20).padEnd(20);
+  dataOut += dataIn?.containers[i]?.next_available_appointment?.observed?.substring(0, 26)?.padEnd(26) ?? "".substring(0, 26).padEnd(26);
   dataOut += (dataIn?.containers[i]?.next_available_appointment?.has_availability !== undefined ? (dataIn?.containers[i]?.next_available_appointment?.has_availability ? "1" : "0") : "0");
   dataOut += dataIn?.containers[i]?.master_bl?.substring(0, 6)?.padEnd(6) ?? "".substring(0, 6).padEnd(6);
   dataOut += dataIn?.containers[i]?.tms_reference?.substring(0, 6)?.padEnd(6) ?? "".substring(0, 6).padEnd(6);
-  dataOut += dataIn?.containers[i]?.added_by_user?.id?.toFixed(0)?.substring(0, 3)?.padEnd(3) ?? "0".substring(0, 3).padEnd(3);
-  dataOut += dataIn?.containers[i]?.added_by_user?.first_name?.substring(0, 6)?.padEnd(6) ?? "".substring(0, 6).padEnd(6);
-  dataOut += dataIn?.containers[i]?.added_by_user?.last_name?.substring(0, 6)?.padEnd(6) ?? "".substring(0, 6).padEnd(6);
+  dataOut += dataIn?.containers[i]?.added_by_user?.id?.toFixed(0)?.substring(0, 10)?.padEnd(10) ?? "0".substring(0, 10).padEnd(10);
+  dataOut += dataIn?.containers[i]?.added_by_user?.first_name?.substring(0, 15)?.padEnd(15) ?? "".substring(0, 15).padEnd(15);
+  dataOut += dataIn?.containers[i]?.added_by_user?.last_name?.substring(0, 15)?.padEnd(15) ?? "".substring(0, 15).padEnd(15);
   for (let k: number = 0; k < 1; ++k) {
-  dataOut += dataIn?.containers[i]?.assigned_users[k]?.id?.toFixed(0)?.substring(0, 3)?.padEnd(3) ?? "0".substring(0, 3).padEnd(3);
-  dataOut += dataIn?.containers[i]?.assigned_users[k]?.first_name?.substring(0, 6)?.padEnd(6) ?? "".substring(0, 6).padEnd(6);
-  dataOut += dataIn?.containers[i]?.assigned_users[k]?.last_name?.substring(0, 6)?.padEnd(6) ?? "".substring(0, 6).padEnd(6);
+  dataOut += dataIn?.containers[i]?.assigned_users[k]?.id?.toFixed(0)?.substring(0, 10)?.padEnd(10) ?? "0".substring(0, 10).padEnd(10);
+  dataOut += dataIn?.containers[i]?.assigned_users[k]?.first_name?.substring(0, 15)?.padEnd(15) ?? "".substring(0, 15).padEnd(15);
+  dataOut += dataIn?.containers[i]?.assigned_users[k]?.last_name?.substring(0, 15)?.padEnd(15) ?? "".substring(0, 15).padEnd(15);
   }
   dataOut += (dataIn?.containers[i]?.auto_book_on !== undefined ? (dataIn?.containers[i]?.auto_book_on ? "1" : "0") : "0");
   dataOut += dataIn?.containers[i]?.auto_book_request_status?.substring(0, 9)?.padEnd(9) ?? "".substring(0, 9).padEnd(9);
   dataOut += dataIn?.containers[i]?.last_related_terminal?.substring(0, 7)?.padEnd(7) ?? "".substring(0, 7).padEnd(7);
-  dataOut += dataIn?.containers[i]?.watched_time?.substring(0, 20)?.padEnd(20) ?? "".substring(0, 20).padEnd(20);
-  dataOut += dataIn?.containers[i]?.discharged_time?.substring(0, 20)?.padEnd(20) ?? "".substring(0, 20).padEnd(20);
-  dataOut += dataIn?.containers[i]?.import_appointment_time?.substring(0, 20)?.padEnd(20) ?? "".substring(0, 20).padEnd(20);
-  dataOut += dataIn?.containers[i]?.import_out_gated_time?.substring(0, 20)?.padEnd(20) ?? "".substring(0, 20).padEnd(20);
-  dataOut += dataIn?.containers[i]?.empty_appointment_time?.substring(0, 20)?.padEnd(20) ?? "".substring(0, 20).padEnd(20);
-  dataOut += dataIn?.containers[i]?.empty_in_gated_time?.substring(0, 20)?.padEnd(20) ?? "".substring(0, 20).padEnd(20);
+  dataOut += dataIn?.containers[i]?.watched_time?.substring(0, 26)?.padEnd(26) ?? "".substring(0, 26).padEnd(26);
+  dataOut += dataIn?.containers[i]?.discharged_time?.substring(0, 26)?.padEnd(26) ?? "".substring(0, 26).padEnd(26);
+  dataOut += dataIn?.containers[i]?.import_appointment_time?.substring(0, 26)?.padEnd(26) ?? "".substring(0, 26).padEnd(26);
+  dataOut += dataIn?.containers[i]?.import_out_gated_time?.substring(0, 26)?.padEnd(26) ?? "".substring(0, 26).padEnd(26);
+  dataOut += dataIn?.containers[i]?.empty_appointment_time?.substring(0, 26)?.padEnd(26) ?? "".substring(0, 26).padEnd(26);
+  dataOut += dataIn?.containers[i]?.empty_in_gated_time?.substring(0, 26)?.padEnd(26) ?? "".substring(0, 26).padEnd(26);
   dataOut += dataIn?.containers[i]?.last_free_date?.substring(0, 10)?.padEnd(10) ?? "".substring(0, 10).padEnd(10);
   for (let k: number = 0; k < 1; ++k) {
   dataOut += dataIn?.containers[i]?.tags[k]?.substring(0, 6)?.padEnd(6) ?? "".substring(0, 6).padEnd(6);
   }
-  dataOut += dataIn?.containers[i]?.vessel?.substring(0, 6)?.padEnd(6) ?? "".substring(0, 6).padEnd(6);
-  dataOut += dataIn?.containers[i]?.matched_vessel?.name?.substring(0, 6)?.padEnd(6) ?? "".substring(0, 6).padEnd(6);
-  dataOut += dataIn?.containers[i]?.matched_vessel?.id?.toFixed(0)?.substring(0, 3)?.padEnd(3) ?? "0".substring(0, 3).padEnd(3);
-  dataOut += dataIn?.containers[i]?.matched_vessel?.imo_number?.toFixed(0)?.substring(0, 3)?.padEnd(3) ?? "0".substring(0, 3).padEnd(3);
+  dataOut += dataIn?.containers[i]?.vessel?.substring(0, 15)?.padEnd(15) ?? "".substring(0, 15).padEnd(15);
+  dataOut += dataIn?.containers[i]?.matched_vessel?.name?.substring(0, 15)?.padEnd(15) ?? "".substring(0, 15).padEnd(15);
+  dataOut += dataIn?.containers[i]?.matched_vessel?.id?.toFixed(0)?.substring(0, 10)?.padEnd(10) ?? "0".substring(0, 10).padEnd(10);
+  dataOut += dataIn?.containers[i]?.matched_vessel?.imo_number?.toFixed(0)?.substring(0, 10)?.padEnd(10) ?? "0".substring(0, 10).padEnd(10);
   }
 
   return dataOut;

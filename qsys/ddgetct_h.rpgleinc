@@ -321,12 +321,13 @@
 
       ************************************
       * ReqDDGet data structure
-      * Record length: 11
+      * Record length: 18
       ************************************
-     DReqDDGetLen      C                   11
+     DReqDDGetLen      C                   18
      DReqDDGet         DS                  Qualified
      D                                     Template
      Dcontainer                      11A
+     Dpagenum                         5P 0
 
       ************************************
       * Convert ReqDDGet to buffer
@@ -334,23 +335,23 @@
      DReqDDGetToBuf    PR
      DDataStruct                           LikeDS(ReqDDGet)
      D                                     Const
-     DBuffer                         11A
+     DBuffer                         18A
 
       ************************************
       * ResDDGet data structure
-      * Record length: 181706
+      * Record length: 27261
       ************************************
-     DResDDGetLen      C                   181706
+     DResDDGetLen      C                   27261
      DResDDGet         DS                  Qualified
      D                                     Template
      Dunwatched_co...
      Dntainers                        6A   Dim(1)
      Dcontainers                           LikeDS(ContainersDS)
-     D                                     Dim(100)
+     D                                     Dim(15)
 
       ************************************
       * Convert buffer to ResDDGet
       ************************************
      DBufToResDDGet    PR
-     DBuffer                     181706A
+     DBuffer                      27261A
      DDataStruct                           LikeDS(ResDDGet)
