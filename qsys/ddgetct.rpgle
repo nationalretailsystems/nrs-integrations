@@ -45,7 +45,7 @@
      PBufToResDDGet    B                   Export
 
      DBufToResDDGet    PI
-     DBuffer                       1823A
+     DBuffer                     181706A
      DDataStruct                           LikeDS(ResDDGet)
 
       * Initialize to begining of buffer
@@ -56,7 +56,7 @@
        DataStruct.unwatched_containers(i) = %subst(CharBuf:1:6);
        BufPtr += 6;
        endfor;
-       for i = 1 to 1;
+       for i = 1 to 100;
        DataStruct.containers(i).contnumb = %subst(CharBuf:1:11);
        BufPtr += 11;
        DataStruct.containers(i).shipline = %subst(CharBuf:1:4);

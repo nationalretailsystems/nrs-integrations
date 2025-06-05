@@ -852,7 +852,7 @@ formats:
       containers:
         type: DataStruct
         dsName: ContainersDS
-        dim: 1
+        dim: 100
   ReqDDGet:
     recordType: request
     subfields:
