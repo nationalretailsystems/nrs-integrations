@@ -191,7 +191,7 @@ export interface import_statusDS {
      */
     holds: Array<string>,
     /**
-     * @size 5 digits
+     * @size 7 digits
      * @precision 2 decimals
      * @default `0`
      */
@@ -335,8 +335,8 @@ export interface ImportStatsDS {
      */
     holds: Array<string>,
     /**
-     * @size 1 digits
-     * @precision 0 decimals
+     * @size 7 digits
+     * @precision 2 decimals
      * @default `0`
      */
     demurrage_fees: number,
@@ -1084,7 +1084,7 @@ export function convertObjectToResDDGet(dataIn: ResDDGet): string {
   for (let l: number = 0; l < 5; ++l) {
   dataOut += dataIn?.containers[i]?.import_status?.holds[l]?.substring(0, 14)?.padEnd(14) ?? "".substring(0, 14).padEnd(14);
   }
-  dataOut += dataIn?.containers[i]?.import_status?.demurrage_fees?.toFixed(2)?.substring(0, 7)?.padEnd(7) ?? "0".substring(0, 7).padEnd(7);
+  dataOut += dataIn?.containers[i]?.import_status?.demurrage_fees?.toFixed(2)?.substring(0, 9)?.padEnd(9) ?? "0".substring(0, 9).padEnd(9);
   dataOut += (dataIn?.containers[i]?.import_status?.ready_for_appointment !== undefined ? (dataIn?.containers[i]?.import_status?.ready_for_appointment ? "1" : "0") : "0");
   dataOut += (dataIn?.containers[i]?.import_status?.available_for_pickup !== undefined ? (dataIn?.containers[i]?.import_status?.available_for_pickup ? "1" : "0") : "0");
   dataOut += (dataIn?.containers[i]?.import_status?.wheeled !== undefined ? (dataIn?.containers[i]?.import_status?.wheeled ? "1" : "0") : "0");
@@ -1117,7 +1117,7 @@ export function convertObjectToResDDGet(dataIn: ResDDGet): string {
   for (let m: number = 0; m < 2; ++m) {
   dataOut += dataIn?.containers[i]?.import_statuses[k]?.holds[m]?.substring(0, 14)?.padEnd(14) ?? "".substring(0, 14).padEnd(14);
   }
-  dataOut += dataIn?.containers[i]?.import_statuses[k]?.demurrage_fees?.toFixed(0)?.substring(0, 3)?.padEnd(3) ?? "0".substring(0, 3).padEnd(3);
+  dataOut += dataIn?.containers[i]?.import_statuses[k]?.demurrage_fees?.toFixed(2)?.substring(0, 9)?.padEnd(9) ?? "0".substring(0, 9).padEnd(9);
   dataOut += (dataIn?.containers[i]?.import_statuses[k]?.ready_for_appointment !== undefined ? (dataIn?.containers[i]?.import_statuses[k]?.ready_for_appointment ? "1" : "0") : "0");
   dataOut += (dataIn?.containers[i]?.import_statuses[k]?.available_for_pickup !== undefined ? (dataIn?.containers[i]?.import_statuses[k]?.available_for_pickup ? "1" : "0") : "0");
   dataOut += (dataIn?.containers[i]?.import_statuses[k]?.wheeled !== undefined ? (dataIn?.containers[i]?.import_statuses[k]?.wheeled ? "1" : "0") : "0");

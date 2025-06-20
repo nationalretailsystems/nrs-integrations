@@ -47,7 +47,7 @@
      PBufToResDDGet    B                   Export
 
      DBufToResDDGet    PI
-     DBuffer                      28311A
+     DBuffer                      28401A
      DDataStruct                           LikeDS(ResDDGet)
 
       * Initialize to begining of buffer
@@ -184,8 +184,8 @@
        DataStruct.containers(i).impstats(j).holds(k) = %subst(CharBuf:1:14);
        BufPtr += 14;
        endfor;
-       DataStruct.containers(i).impstats(j).demurfee = %dec(%subst(CharBuf:1:3):1:0);
-       BufPtr += 3;
+       DataStruct.containers(i).impstats(j).demurfee = %dec(%subst(CharBuf:1:9):7:2);
+       BufPtr += 9;
        DataStruct.containers(i).impstats(j).apptrdy = %subst(CharBuf:1:1);
        BufPtr += 1;
        DataStruct.containers(i).impstats(j).pickrdy = %subst(CharBuf:1:1);
