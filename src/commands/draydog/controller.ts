@@ -98,7 +98,7 @@ export const getDrayDogCT: ECCHandlerFunction = async (reqkey, data, ecc) => {
     let nextReqKey = reqkey;
 
     try {
-        result = await axiosInstance.get('/containers/', {
+        result = await axiosInstance.get('/containers/?container_cycle_states=import_appt_booking&container_cycle_states=import_appt_booked', {
             headers: {
                 accept: 'application/json',
                 // Authorization: draydog.apikey
@@ -106,7 +106,7 @@ export const getDrayDogCT: ECCHandlerFunction = async (reqkey, data, ecc) => {
             },
             params: {
                 'page_size': '15',
-                'container_cycle_states': 'import_appt_booking&container_cycle_states=import_appt_booked',
+                // 'container_cycle_states': 'import_appt_booking&container_cycle_states=import_appt_booked',
                 page: reqFields.pagenum
             }
         });
