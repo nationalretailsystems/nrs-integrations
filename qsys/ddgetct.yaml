@@ -115,7 +115,7 @@ datastructures:
         default: ""
       location:
         type: Character
-        length: 7
+        length: 20
         default: ""
       parsed_location:
         rpgName: plocat
@@ -136,7 +136,7 @@ datastructures:
         type: Character
         length: 14
         default: ""
-        dim: 2
+        dim: 5
       demurrage_fees:
         rpgName: demurfee
         type: Packed
@@ -754,7 +754,7 @@ datastructures:
       cycle_state:
         rpgName: cyclestt
         type: Character
-        length: 7
+        length: 20
         default: ""
       next_available_appointment:
         rpgName: nextappt

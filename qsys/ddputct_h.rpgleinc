@@ -57,12 +57,11 @@
 
       ************************************
       * ResWatch data structure
-      * Record length: 3200
+      * Record length: 3100
       ************************************
-     DResWatchLen      C                   3200
+     DResWatchLen      C                   3100
      DResWatch         DS                  Qualified
      D                                     Template
-     Duserid                        100A
      Dcontnumb                             LikeDS(container2DS)
      D                                     Dim(100)
      Derrors                               LikeDS(errorsDS)
@@ -72,5 +71,5 @@
       * Convert buffer to ResWatch
       ************************************
      DBufToResWatch    PR
-     DBuffer                       3200A
+     DBuffer                       3100A
      DDataStruct                           LikeDS(ResWatch)

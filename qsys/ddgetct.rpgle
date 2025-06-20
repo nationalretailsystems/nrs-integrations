@@ -47,7 +47,7 @@
      PBufToResDDGet    B                   Export
 
      DBufToResDDGet    PI
-     DBuffer                      27261A
+     DBuffer                      28281A
      DDataStruct                           LikeDS(ResDDGet)
 
       * Initialize to begining of buffer
@@ -111,15 +111,15 @@
        BufPtr += 16;
        DataStruct.containers(i).impstat.vessel = %subst(CharBuf:1:15);
        BufPtr += 15;
-       DataStruct.containers(i).impstat.location = %subst(CharBuf:1:7);
-       BufPtr += 7;
+       DataStruct.containers(i).impstat.location = %subst(CharBuf:1:20);
+       BufPtr += 20;
        DataStruct.containers(i).impstat.plocat = %subst(CharBuf:1:20);
        BufPtr += 20;
        DataStruct.containers(i).impstat.termblok = %subst(CharBuf:1:10);
        BufPtr += 10;
        DataStruct.containers(i).impstat.trmblkak = %subst(CharBuf:1:3);
        BufPtr += 3;
-       for j = 1 to 2;
+       for j = 1 to 5;
        DataStruct.containers(i).impstat.holds(j) = %subst(CharBuf:1:14);
        BufPtr += 14;
        endfor;
@@ -335,8 +335,8 @@
        BufPtr += 6;
        DataStruct.containers(i).obgatetrn.observed = %subst(CharBuf:1:20);
        BufPtr += 20;
-       DataStruct.containers(i).cyclestt = %subst(CharBuf:1:7);
-       BufPtr += 7;
+       DataStruct.containers(i).cyclestt = %subst(CharBuf:1:20);
+       BufPtr += 20;
        DataStruct.containers(i).nextappt.windstrt = %subst(CharBuf:1:20);
        BufPtr += 20;
        DataStruct.containers(i).nextappt.observed = %subst(CharBuf:1:26);
