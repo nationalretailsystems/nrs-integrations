@@ -166,7 +166,7 @@ export interface import_statusDS {
      */
     vessel: string,
     /**
-     * @size 7 characters
+     * @size 20 characters
      * @default ``
      */
     location: string,
@@ -906,7 +906,7 @@ export interface ContainersDS {
      */
     outbound_gate_transaction: out_gate_tranDS,
     /**
-     * @size 7 characters
+     * @size 20 characters
      * @default ``
      */
     cycle_state: string,
@@ -1077,11 +1077,11 @@ export function convertObjectToResDDGet(dataIn: ResDDGet): string {
   dataOut += dataIn?.containers[i]?.import_status?.shipping_line?.substring(0, 3)?.padEnd(3) ?? "".substring(0, 3).padEnd(3);
   dataOut += dataIn?.containers[i]?.import_status?.container_type?.substring(0, 16)?.padEnd(16) ?? "".substring(0, 16).padEnd(16);
   dataOut += dataIn?.containers[i]?.import_status?.vessel?.substring(0, 15)?.padEnd(15) ?? "".substring(0, 15).padEnd(15);
-  dataOut += dataIn?.containers[i]?.import_status?.location?.substring(0, 7)?.padEnd(7) ?? "".substring(0, 7).padEnd(7);
+  dataOut += dataIn?.containers[i]?.import_status?.location?.substring(0, 20)?.padEnd(20) ?? "".substring(0, 20).padEnd(20);
   dataOut += dataIn?.containers[i]?.import_status?.parsed_location?.substring(0, 20)?.padEnd(20) ?? "".substring(0, 20).padEnd(20);
   dataOut += dataIn?.containers[i]?.import_status?.terminal_block?.substring(0, 10)?.padEnd(10) ?? "".substring(0, 10).padEnd(10);
   dataOut += dataIn?.containers[i]?.import_status?.terminal_block_availability_key?.substring(0, 3)?.padEnd(3) ?? "".substring(0, 3).padEnd(3);
-  for (let l: number = 0; l < 2; ++l) {
+  for (let l: number = 0; l < 5; ++l) {
   dataOut += dataIn?.containers[i]?.import_status?.holds[l]?.substring(0, 14)?.padEnd(14) ?? "".substring(0, 14).padEnd(14);
   }
   dataOut += dataIn?.containers[i]?.import_status?.demurrage_fees?.toFixed(2)?.substring(0, 7)?.padEnd(7) ?? "0".substring(0, 7).padEnd(7);
@@ -1196,7 +1196,7 @@ export function convertObjectToResDDGet(dataIn: ResDDGet): string {
   dataOut += dataIn?.containers[i]?.outbound_gate_transaction?.truck_rfid_number?.substring(0, 6)?.padEnd(6) ?? "".substring(0, 6).padEnd(6);
   dataOut += dataIn?.containers[i]?.outbound_gate_transaction?.truck_license_plate_number?.substring(0, 6)?.padEnd(6) ?? "".substring(0, 6).padEnd(6);
   dataOut += dataIn?.containers[i]?.outbound_gate_transaction?.observed?.substring(0, 20)?.padEnd(20) ?? "".substring(0, 20).padEnd(20);
-  dataOut += dataIn?.containers[i]?.cycle_state?.substring(0, 7)?.padEnd(7) ?? "".substring(0, 7).padEnd(7);
+  dataOut += dataIn?.containers[i]?.cycle_state?.substring(0, 20)?.padEnd(20) ?? "".substring(0, 20).padEnd(20);
   dataOut += dataIn?.containers[i]?.next_available_appointment?.window_start?.substring(0, 20)?.padEnd(20) ?? "".substring(0, 20).padEnd(20);
   dataOut += dataIn?.containers[i]?.next_available_appointment?.observed?.substring(0, 26)?.padEnd(26) ?? "".substring(0, 26).padEnd(26);
   dataOut += (dataIn?.containers[i]?.next_available_appointment?.has_availability !== undefined ? (dataIn?.containers[i]?.next_available_appointment?.has_availability ? "1" : "0") : "0");

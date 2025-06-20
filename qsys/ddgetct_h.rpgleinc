@@ -69,11 +69,11 @@
      Dshipline                        3A
      Dconttype                       16A
      Dvessel                         15A
-     Dlocation                        7A
+     Dlocation                       20A
      Dplocat                         20A
      Dtermblok                       10A
      Dtrmblkak                        3A
-     Dholds                          14A   Dim(2)
+     Dholds                          14A   Dim(5)
      Ddemurfee                        5P 2
      Dapptrdy                          N
      Dpickrdy                          N
@@ -298,7 +298,7 @@
      Dlinimpstat                           LikeDS(line_imp_statDS)
      Dibgatetrn                            LikeDS(in_gate_tranDS)
      Dobgatetrn                            LikeDS(out_gate_tranDS)
-     Dcyclestt                        7A
+     Dcyclestt                       20A
      Dnextappt                             LikeDS(next_apptDS)
      Dmaster_bl                       6A
      Dtmsref                          6A
@@ -339,9 +339,9 @@
 
       ************************************
       * ResDDGet data structure
-      * Record length: 27261
+      * Record length: 28281
       ************************************
-     DResDDGetLen      C                   27261
+     DResDDGetLen      C                   28281
      DResDDGet         DS                  Qualified
      D                                     Template
      Dunwatched_co...
@@ -353,5 +353,5 @@
       * Convert buffer to ResDDGet
       ************************************
      DBufToResDDGet    PR
-     DBuffer                      27261A
+     DBuffer                      28281A
      DDataStruct                           LikeDS(ResDDGet)

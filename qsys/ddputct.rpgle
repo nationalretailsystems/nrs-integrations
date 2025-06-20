@@ -57,15 +57,13 @@
      PBufToResWatch    B                   Export
 
      DBufToResWatch    PI
-     DBuffer                       3200A
+     DBuffer                       3100A
      DDataStruct                           LikeDS(ResWatch)
 
       * Initialize to begining of buffer
        BufPtr = %addr(Buffer);
 
       * Read fields from buffer into DS
-       DataStruct.userid = %subst(CharBuf:1:100);
-       BufPtr += 100;
        for i = 1 to 100;
        DataStruct.contnumb(i).contnumb = %subst(CharBuf:1:11);
        BufPtr += 11;

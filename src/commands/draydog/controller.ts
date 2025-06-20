@@ -37,19 +37,20 @@ export const putDrayDogCT: ECCHandlerFunction = async (reqkey, data, ecc) => {
     // Call web service
     let result;
     let nextReqKey = reqkey;
-    let containers = JSON.stringify(reqFields.containers);
+    let containers = reqFields.containers;
     // const token = await getTokenDD();
     try {
-        result = await axiosInstance.post('/containers/watch?assign_to_user_id=1730&assign_to_user_id=1726', containers, {
+        // result = await axiosInstance.post('/containers/watch?assign_to_user_id=1730&assign_to_user_id=1726', containers, {
+        result = await axiosInstance.post('/containers/watch/', containers, {
             headers: {
-                Authorization: 'Bearer WzE4MTgsMTY0LDUsImRZWmt6VCJd.n5AUKA4zmZUt41RPdj2ezUoamXo',  // draydog.apikey,
+                 'Authorization': 'Bearer WzE4MTgsMTY0LDUsIm5TRno0ZiJd.e-Spq1VINsYk-0qGO7WDwEhc-ZA', // draydog.apikey,
                 // Authorization: 'Bearer ' + token,
-                Accept: 'application/json',
-                'Content-Type': 'application/json'
-            } // ,
-            // params: {
-            //    'assign_to_user_id': 1730 // + '&assign_to_user_id=1726'
-            // }
+                'Accept': 'application/json',
+                'Content-Type': 'application/json',
+            },
+            params: {
+                assign_to_user_id: 1730 // + '&assign_to_user_id=1726'
+            }
         });
     } catch (err) {
         logger.debug('DD Err ' + err.request._header);
@@ -79,7 +80,7 @@ export const putDrayDogCT: ECCHandlerFunction = async (reqkey, data, ecc) => {
         let responseData = result.data;
         logger.debug('ECC0000', 'Success', nextReqKey);
         nextReqKey = await ecc.sendEccResult('ECC0000', 'Success', nextReqKey);
-        nextReqKey = await ecc.sendObjectsToCaller(responseData, ddputctcvt.convertObjectToResWatch, nextReqKey);
+        nextReqKey = await ecc.sendObjectToCaller(responseData, ddputctcvt.convertObjectToResWatch, nextReqKey);
         logger.debug('Sent data to RPG');
         return nextReqKey;
     } catch (err) {
@@ -105,8 +106,8 @@ export const getDrayDogCT: ECCHandlerFunction = async (reqkey, data, ecc) => {
             },
             params: {
                 'page_size': '15',
-                'container_cycle_state': 'import_appt_booking',
-                'page': reqFields.pagenum
+                'container_cycle_states': 'import_appt_booking&container_cycle_states=import_appt_booked',
+                page: reqFields.pagenum
             }
         });
     } catch (err) {
@@ -137,10 +138,10 @@ export const getDrayDogCT: ECCHandlerFunction = async (reqkey, data, ecc) => {
         nextReqKey = await ecc.sendObjectToCaller(responseData, ddgetctcvt.convertObjectToResDDGet, nextReqKey);
         logger.debug('Sending data to RPG');
         return nextReqKey;
-     } catch (err) {
-         logger.error('Call failed', err);
-         return ecc.sendEccResult('ECC9300', err.message, nextReqKey);
-     }
+    } catch (err) {
+        logger.error('Call failed', err);
+        return ecc.sendEccResult('ECC9300', err.message, nextReqKey);
+    }
 };
 export const getDrayDog1CT: ECCHandlerFunction = async (reqkey, data, ecc) => {
     logger.debug(`Received draydog get contaner request`, { reqkey, data });
