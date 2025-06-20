@@ -74,7 +74,7 @@
      Dtermblok                       10A
      Dtrmblkak                        3A
      Dholds                          14A   Dim(5)
-     Ddemurfee                        5P 2
+     Ddemurfee                        7P 2
      Dapptrdy                          N
      Dpickrdy                          N
      Dwheeled                          N
@@ -339,9 +339,9 @@
 
       ************************************
       * ResDDGet data structure
-      * Record length: 28281
+      * Record length: 28311
       ************************************
-     DResDDGetLen      C                   28281
+     DResDDGetLen      C                   28311
      DResDDGet         DS                  Qualified
      D                                     Template
      Dunwatched_co...
@@ -353,5 +353,5 @@
       * Convert buffer to ResDDGet
       ************************************
      DBufToResDDGet    PR
-     DBuffer                      28281A
+     DBuffer                      28311A
      DDataStruct                           LikeDS(ResDDGet)
