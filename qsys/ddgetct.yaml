@@ -275,7 +275,8 @@ datastructures:
       demurrage_fees:
         rpgName: demurfee
         type: Packed
-        length: 1
+        length: 7
+        precision: 2
         default: 0
       ready_for_appointment:
         rpgName: apptrdy
