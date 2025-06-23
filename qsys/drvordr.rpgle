@@ -6,7 +6,7 @@
       * Do not modify
       ************************************
 
-      /include drvordr
+      /include drvordr_h
 
       ************************************
       * Global variables

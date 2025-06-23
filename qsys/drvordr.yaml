@@ -1,10 +1,6 @@
 ---
 name: drvordr
-codeblocks:
-  typescript:
-    - ''
-    - // Manually entered import
-    - import config from 'config'
+rpgIncName: drvordr_h
 datastructures:
   ShipDocsDS:
     subfields:
