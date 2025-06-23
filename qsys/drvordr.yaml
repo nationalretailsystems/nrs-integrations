@@ -6,130 +6,31 @@ codeblocks:
     - // Manually entered import
     - import config from 'config'
 datastructures:
-  TotalDistDS:
-    subfields:
-      value:
-        type: Character
-        length: 1
-      unit_of_measure:
-        type: Character
-        length: 2
-  ShippingDocsDS:
+  ShipDocsDS:
     subfields:
       type:
         type: Character
         length: 14
       value:
         type: Character
-        length: 10
-  shipdetailsDS:
-    subfields:
-      hazmat:
-        type: Boolean
-      high_value:
-        type: Boolean
-      temperature_controlled:
-        type: Boolean
-      total_distance:
-        type: DataStruct
-        dsName: TotalDistDS
-      line_of_business:
-        type: Character
-        length: 4
-      master_bill_of_lading:
-        type: Character
-        length: 20
-      shipping_documents:
-        type: DataStruct
-        dsName: ShippingDocsDS
-        dim: 4
-      truck_profile:
-        type: Character
-        length: 5
-  RemarksDS:
-    subfields:
-      label:
-        type: Character
         length: 7
-      value:
-        type: Character
-        length: 29
-      order:
-        type: Packed
-        length: 1
-  promptsDS:
-    subfields:
-      eta:
-        type: Boolean
-      fuel:
-        type: Boolean
-      eta_change_available:
-        type: Boolean
-      update_fuel_available:
-        type: Boolean
-  assetDS:
-    subfields:
-      external_id:
-        type: Character
-        length: 6
-      type:
-        type: Character
-        length: 10
-      vin:
-        type: Character
-        length: 17
-  locationDS:
-    subfields:
-      latitude:
-        type: Packed
-        length: 9
-        precision: 7
-      longitude:
-        type: Packed
-        length: 17
-        precision: 14
-  MetaDS:
-    subfields:
-      asset:
-        type: DataStruct
-        dsName: assetDS
-      fuel_level:
-        type: Packed
-        length: 3
-        precision: 1
-      location:
-        type: DataStruct
-        dsName: locationDS
-      odometer:
-        type: Packed
-        length: 8
-        precision: 2
-      timestamp:
-        type: Character
-        length: 25
   LocationsDS:
     subfields:
-      id:
-        type: Packed
-        length: 16
       external_id:
         type: Character
-        length: 15
-      email:
-        type: Character
-        length: 50
+        length: 16
       type:
         type: Character
         length: 3
       name:
         type: Character
-        length: 12
+        length: 23
       address:
         type: Character
-        length: 18
+        length: 25
       city:
         type: Character
-        length: 12
+        length: 6
       state:
         type: Character
         length: 2
@@ -137,9 +38,6 @@ datastructures:
         type: Character
         length: 2
       postal_code:
-        type: Character
-        length: 5
-      postal_splc:
         type: Character
         length: 5
       latitude:
@@ -153,28 +51,19 @@ datastructures:
       time_zone:
         type: Character
         length: 10
-      open_hours:
-        type: Character
-        length: 5
-      external_data:
-        type: Character
-        length: 5
-      is_inventory_location:
-        type: Boolean
       created_at:
         type: Character
         length: 25
       updated_at:
         type: Character
         length: 25
-  ExternalDS:
+  ExtDataDS:
     subfields:
       label:
         type: Character
         length: 8
       value:
         type: Character
-        length: 5
       order:
         type: Packed
         length: 1
@@ -187,13 +76,10 @@ datastructures:
         length: 25
       ready_time:
         type: Character
-        length: 25
       late_time:
         type: Character
-        length: 25
       end_time:
         type: Character
-        length: 25
   centerDS:
     subfields:
       latitude:
@@ -230,12 +116,6 @@ datastructures:
         length: 17
   external_dataDS:
     subfields:
-      is_prompt_repeats:
-        type: Boolean
-      is_allow_repeats:
-        type: Boolean
-      is_required:
-        type: Boolean
       geofence:
         type: DataStruct
         dsName: geofenceDS
@@ -249,7 +129,7 @@ datastructures:
         length: 1
       PCS:
         type: Character
-        length: 4
+        length: 2
       WGT:
         type: Character
         length: 5
@@ -258,7 +138,6 @@ datastructures:
         length: 7
       Comment:
         type: Character
-        length: 25
       DSP:
         type: Character
         length: 1
@@ -267,19 +146,19 @@ datastructures:
         length: 6
       hiddenLatitude:
         type: Character
-        length: 10
+        length: 9
       hiddenLongitude:
         type: Character
-        length: 11
+        length: 9
       locname:
         type: Character
-        length: 15
+        length: 16
       address:
         type: Character
-        length: 18
+        length: 25
       city:
         type: Character
-        length: 12
+        length: 6
       state:
         type: Character
         length: 2
@@ -297,9 +176,6 @@ datastructures:
         length: 16
   TasksDS:
     subfields:
-      id:
-        type: Packed
-        length: 16
       external_id:
         type: Character
         length: 9
@@ -319,10 +195,10 @@ datastructures:
         length: 25
       completed_by:
         type: Character
-        length: 5
+        length: 4
       completion_type:
         type: Character
-        length: 18
+        length: 6
       created_at:
         type: Character
         length: 25
@@ -337,36 +213,12 @@ datastructures:
         dsName: fieldsDS
   StepsDS:
     subfields:
-      id:
-        type: Packed
-        length: 16
       external_id:
         type: Character
-        length: 17
+        length: 18
       name:
         type: Character
-        length: 12
-      is_disabled:
-        type: Boolean
-      is_skippable:
-        type: Boolean
-      is_skipped:
-        type: Boolean
-      skip_reason:
-        type: Character
-        length: 5
-      is_bypassable:
-        type: Boolean
-      is_bypassed:
-        type: Boolean
-      bypass_reason:
-        type: Character
-        length: 5
-      is_reorderable:
-        type: Boolean
-      reorder_reason:
-        type: Character
-        length: 5
+        length: 23
       completed:
         type: Boolean
       completed_at:
@@ -374,25 +226,18 @@ datastructures:
         length: 25
       type:
         type: Character
-        length: 4
+        length: 6
       order:
         type: Packed
         length: 1
       location_external_id:
         type: Character
-        length: 15
-      route_leg_external_id:
-        type: Character
-        length: 5
-      customer_external_id:
-        type: Character
-        length: 5
+        length: 16
       appointment:
         type: DataStruct
         dsName: appointmentDS
       eta:
         type: Character
-        length: 25
       created_at:
         type: Character
         length: 25
@@ -403,11 +248,13 @@ datastructures:
         type: DataStruct
         dsName: TasksDS
         dim: 3
-  OrderResDS:
+formats:
+  FormatName:
+    recordType: request
     subfields:
       drivers:
         type: Character
-        length: 5
+        length: 4
         dim: 1
       id:
         type: Packed
@@ -418,18 +265,16 @@ datastructures:
       external_id_alias:
         type: Character
         length: 7
-      preplan_external_id:
-        type: Character
-        length: 10
       status:
         type: Character
         length: 6
       sequence:
         type: Character
         length: 1
-      shipment_details:
+      shipping_documents:
         type: DataStruct
-        dsName: shipdetailsDS
+        dsName: ShipDocsDS
+        dim: 4
       received_at:
         type: Character
         length: 25
@@ -444,45 +289,15 @@ datastructures:
         length: 25
       modified_at:
         type: Character
-        length: 25
-      remarks:
-        type: DataStruct
-        dsName: RemarksDS
-        dim: 3
-      prompts:
-        type: DataStruct
-        dsName: promptsDS
-      meta:
-        type: DataStruct
-        dsName: MetaDS
-        dim: 9
       locations:
         type: DataStruct
         dsName: LocationsDS
         dim: 20
       external_data:
         type: DataStruct
-        dsName: ExternalDS
+        dsName: ExtDataDS
         dim: 4
       steps:
         type: DataStruct
         dsName: StepsDS
         dim: 20
-      is_declinable:
-        type: Boolean
-pgmmodels:
-  DVGETORDR:
-    library: \config.eradaniConnect.native.PSLib
-    mode: ile
-    procedures:
-      MainProc:
-        params:
-          order:
-            type: Character
-            length: 7
-          drivers:
-            type: Character
-            length: 6
-          OrderRes:
-            type: DataStruct
-            dsName: OrderResDS
