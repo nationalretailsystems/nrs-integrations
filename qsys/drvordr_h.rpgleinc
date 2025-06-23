@@ -154,13 +154,30 @@
      D                                     Dim(3)
 
       ************************************
-      * FormatName data structure
-      * Record length: 29868
+      * OrderReqDS data structure
+      * Record length: 6
       ************************************
-     DFormatNameLen    C                   29868
-     DFormatName       DS                  Qualified
+     DOrderReqDSLen    C                   6
+     DOrderReqDS       DS                  Qualified
      D                                     Template
-     Ddrivers                         4A   Dim(1)
+     Ddrivers                         6A
+
+      ************************************
+      * Convert OrderReqDS to buffer
+      ************************************
+     DOrderReqDSToBuf  PR
+     DDataStruct                           LikeDS(OrderReqDS)
+     D                                     Const
+     DBuffer                          6A
+
+      ************************************
+      * OrderResDS data structure
+      * Record length: 29870
+      ************************************
+     DOrderResDSLen    C                   29870
+     DOrderResDS       DS                  Qualified
+     D                                     Template
+     Ddrivers                         6A   Dim(1)
      Did                             16P 0
      Dexternal_id                     7A
      Dexternal_id_...
@@ -184,9 +201,8 @@
      D                                     Dim(20)
 
       ************************************
-      * Convert FormatName to buffer
+      * Convert buffer to OrderResDS
       ************************************
-     DFormatNameToBuf  PR
-     DDataStruct                           LikeDS(FormatName)
-     D                                     Const
-     DBuffer                      29868A
+     DBufToOrderResDS  PR
+     DBuffer                      29870A
+     DDataStruct                           LikeDS(OrderResDS)

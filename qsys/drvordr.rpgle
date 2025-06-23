@@ -19,190 +19,210 @@
      Dl                S             10U 0
 
       ************************************
-      * Convert FormatName to buffer
+      * Convert OrderReqDS to buffer
       ************************************
-     PFormatNameToBuf  B                   Export
+     POrderReqDSToBuf  B                   Export
 
-     DFormatNameToBuf  PI
-     DDataStruct                           LikeDS(FormatName)
+     DOrderReqDSToBuf  PI
+     DDataStruct                           LikeDS(OrderReqDS)
      D                                     Const
-     DBuffer                      29868A
+     DBuffer                          6A
 
       * Initialize to beginning of buffer
        BufPtr = %addr(Buffer);
 
       * Write fields from DS to buffer
+       %subst(CharBuf:1:6) = DataStruct.drivers;
+       BufPtr += 6;
+
+       return ;
+
+     POrderReqDSToBuf  E
+
+      ************************************
+      * Convert buffer to OrderResDS
+      ************************************
+     PBufToOrderResDS  B                   Export
+
+     DBufToOrderResDS  PI
+     DBuffer                      29870A
+     DDataStruct                           LikeDS(OrderResDS)
+
+      * Initialize to begining of buffer
+       BufPtr = %addr(Buffer);
+
+      * Read fields from buffer into DS
        for i = 1 to 1;
-       %subst(CharBuf:1:4) = DataStruct.drivers(i);
-       BufPtr += 4;
-       endfor;
-       %subst(CharBuf:1:18) = %char(DataStruct.id);
-       BufPtr += 18;
-       %subst(CharBuf:1:7) = DataStruct.external_id;
-       BufPtr += 7;
-       %subst(CharBuf:1:7) = DataStruct.external_id_alias;
-       BufPtr += 7;
-       %subst(CharBuf:1:6) = DataStruct.status;
+       DataStruct.drivers(i) = %subst(CharBuf:1:6);
        BufPtr += 6;
-       %subst(CharBuf:1:1) = DataStruct.sequence;
+       endfor;
+       DataStruct.id = %dec(%subst(CharBuf:1:18):16:0);
+       BufPtr += 18;
+       DataStruct.external_id = %subst(CharBuf:1:7);
+       BufPtr += 7;
+       DataStruct.external_id_alias = %subst(CharBuf:1:7);
+       BufPtr += 7;
+       DataStruct.status = %subst(CharBuf:1:6);
+       BufPtr += 6;
+       DataStruct.sequence = %subst(CharBuf:1:1);
        BufPtr += 1;
        for i = 1 to 4;
-       %subst(CharBuf:1:14) = DataStruct.shipping_documents(i).type;
+       DataStruct.shipping_documents(i).type = %subst(CharBuf:1:14);
        BufPtr += 14;
-       %subst(CharBuf:1:7) = DataStruct.shipping_documents(i).value;
+       DataStruct.shipping_documents(i).value = %subst(CharBuf:1:7);
        BufPtr += 7;
        endfor;
-       %subst(CharBuf:1:25) = DataStruct.received_at;
+       DataStruct.received_at = %subst(CharBuf:1:25);
        BufPtr += 25;
-       %subst(CharBuf:1:25) = DataStruct.reviewed_at;
+       DataStruct.reviewed_at = %subst(CharBuf:1:25);
        BufPtr += 25;
-       %subst(CharBuf:1:25) = DataStruct.created_at;
+       DataStruct.created_at = %subst(CharBuf:1:25);
        BufPtr += 25;
-       %subst(CharBuf:1:25) = DataStruct.updated_at;
+       DataStruct.updated_at = %subst(CharBuf:1:25);
        BufPtr += 25;
-       %subst(CharBuf:1:25) = DataStruct.modified_at;
+       DataStruct.modified_at = %subst(CharBuf:1:25);
        BufPtr += 25;
        for i = 1 to 20;
-       %subst(CharBuf:1:16) = DataStruct.locations(i).external_id;
+       DataStruct.locations(i).external_id = %subst(CharBuf:1:16);
        BufPtr += 16;
-       %subst(CharBuf:1:3) = DataStruct.locations(i).type;
+       DataStruct.locations(i).type = %subst(CharBuf:1:3);
        BufPtr += 3;
-       %subst(CharBuf:1:23) = DataStruct.locations(i).name;
+       DataStruct.locations(i).name = %subst(CharBuf:1:23);
        BufPtr += 23;
-       %subst(CharBuf:1:25) = DataStruct.locations(i).address;
+       DataStruct.locations(i).address = %subst(CharBuf:1:25);
        BufPtr += 25;
-       %subst(CharBuf:1:6) = DataStruct.locations(i).city;
+       DataStruct.locations(i).city = %subst(CharBuf:1:6);
        BufPtr += 6;
-       %subst(CharBuf:1:2) = DataStruct.locations(i).state;
+       DataStruct.locations(i).state = %subst(CharBuf:1:2);
        BufPtr += 2;
-       %subst(CharBuf:1:2) = DataStruct.locations(i).country_code;
+       DataStruct.locations(i).country_code = %subst(CharBuf:1:2);
        BufPtr += 2;
-       %subst(CharBuf:1:5) = DataStruct.locations(i).postal_code;
+       DataStruct.locations(i).postal_code = %subst(CharBuf:1:5);
        BufPtr += 5;
-       %subst(CharBuf:1:10) = %char(DataStruct.locations(i).latitude);
+       DataStruct.locations(i).latitude = %dec(%subst(CharBuf:1:10):8:6);
        BufPtr += 10;
-       %subst(CharBuf:1:11) = %char(DataStruct.locations(i).longitude);
+       DataStruct.locations(i).longitude = %dec(%subst(CharBuf:1:11):9:6);
        BufPtr += 11;
-       %subst(CharBuf:1:10) = DataStruct.locations(i).time_zone;
+       DataStruct.locations(i).time_zone = %subst(CharBuf:1:10);
        BufPtr += 10;
-       %subst(CharBuf:1:25) = DataStruct.locations(i).created_at;
+       DataStruct.locations(i).created_at = %subst(CharBuf:1:25);
        BufPtr += 25;
-       %subst(CharBuf:1:25) = DataStruct.locations(i).updated_at;
+       DataStruct.locations(i).updated_at = %subst(CharBuf:1:25);
        BufPtr += 25;
        endfor;
        for i = 1 to 4;
-       %subst(CharBuf:1:8) = DataStruct.external_data(i).label;
+       DataStruct.external_data(i).label = %subst(CharBuf:1:8);
        BufPtr += 8;
-       %subst(CharBuf:1:7) = DataStruct.external_data(i).value;
+       DataStruct.external_data(i).value = %subst(CharBuf:1:7);
        BufPtr += 7;
-       %subst(CharBuf:1:3) = %char(DataStruct.external_data(i).order);
+       DataStruct.external_data(i).order = %dec(%subst(CharBuf:1:3):1:0);
        BufPtr += 3;
-       %subst(CharBuf:1:1) = DataStruct.external_data(i).isLabel;
+       DataStruct.external_data(i).isLabel = %subst(CharBuf:1:1);
        BufPtr += 1;
        endfor;
        for i = 1 to 20;
-       %subst(CharBuf:1:18) = DataStruct.steps(i).external_id;
+       DataStruct.steps(i).external_id = %subst(CharBuf:1:18);
        BufPtr += 18;
-       %subst(CharBuf:1:23) = DataStruct.steps(i).name;
+       DataStruct.steps(i).name = %subst(CharBuf:1:23);
        BufPtr += 23;
-       %subst(CharBuf:1:1) = DataStruct.steps(i).completed;
+       DataStruct.steps(i).completed = %subst(CharBuf:1:1);
        BufPtr += 1;
-       %subst(CharBuf:1:25) = DataStruct.steps(i).completed_at;
+       DataStruct.steps(i).completed_at = %subst(CharBuf:1:25);
        BufPtr += 25;
-       %subst(CharBuf:1:6) = DataStruct.steps(i).type;
+       DataStruct.steps(i).type = %subst(CharBuf:1:6);
        BufPtr += 6;
-       %subst(CharBuf:1:3) = %char(DataStruct.steps(i).order);
+       DataStruct.steps(i).order = %dec(%subst(CharBuf:1:3):1:0);
        BufPtr += 3;
-       %subst(CharBuf:1:16) = DataStruct.steps(i).location_external_id;
+       DataStruct.steps(i).location_external_id = %subst(CharBuf:1:16);
        BufPtr += 16;
-       %subst(CharBuf:1:25) = DataStruct.steps(i).appointment.start_time;
+       DataStruct.steps(i).appointment.start_time = %subst(CharBuf:1:25);
        BufPtr += 25;
-       %subst(CharBuf:1:25) = DataStruct.steps(i).appointment.ready_time;
+       DataStruct.steps(i).appointment.ready_time = %subst(CharBuf:1:25);
        BufPtr += 25;
-       %subst(CharBuf:1:25) = DataStruct.steps(i).appointment.late_time;
+       DataStruct.steps(i).appointment.late_time = %subst(CharBuf:1:25);
        BufPtr += 25;
-       %subst(CharBuf:1:25) = DataStruct.steps(i).appointment.end_time;
+       DataStruct.steps(i).appointment.end_time = %subst(CharBuf:1:25);
        BufPtr += 25;
-       %subst(CharBuf:1:25) = DataStruct.steps(i).eta;
+       DataStruct.steps(i).eta = %subst(CharBuf:1:25);
        BufPtr += 25;
-       %subst(CharBuf:1:25) = DataStruct.steps(i).created_at;
+       DataStruct.steps(i).created_at = %subst(CharBuf:1:25);
        BufPtr += 25;
-       %subst(CharBuf:1:25) = DataStruct.steps(i).updated_at;
+       DataStruct.steps(i).updated_at = %subst(CharBuf:1:25);
        BufPtr += 25;
-       for k = 1 to 3;
-       %subst(CharBuf:1:9) = DataStruct.steps(i).tasks(k).external_id;
+       for j = 1 to 3;
+       DataStruct.steps(i).tasks(j).external_id = %subst(CharBuf:1:9);
        BufPtr += 9;
-       %subst(CharBuf:1:19) = DataStruct.steps(i).tasks(k).name;
+       DataStruct.steps(i).tasks(j).name = %subst(CharBuf:1:19);
        BufPtr += 19;
-       %subst(CharBuf:1:3) = %char(DataStruct.steps(i).tasks(k).order);
+       DataStruct.steps(i).tasks(j).order = %dec(%subst(CharBuf:1:3):1:0);
        BufPtr += 3;
-       %subst(CharBuf:1:19) = DataStruct.steps(i).tasks(k).type;
+       DataStruct.steps(i).tasks(j).type = %subst(CharBuf:1:19);
        BufPtr += 19;
-       %subst(CharBuf:1:1) = DataStruct.steps(i).tasks(k).completed;
+       DataStruct.steps(i).tasks(j).completed = %subst(CharBuf:1:1);
        BufPtr += 1;
-       %subst(CharBuf:1:25) = DataStruct.steps(i).tasks(k).completed_at;
+       DataStruct.steps(i).tasks(j).completed_at = %subst(CharBuf:1:25);
        BufPtr += 25;
-       %subst(CharBuf:1:4) = DataStruct.steps(i).tasks(k).completed_by;
+       DataStruct.steps(i).tasks(j).completed_by = %subst(CharBuf:1:4);
        BufPtr += 4;
-       %subst(CharBuf:1:6) = DataStruct.steps(i).tasks(k).completion_type;
+       DataStruct.steps(i).tasks(j).completion_type = %subst(CharBuf:1:6);
        BufPtr += 6;
-       %subst(CharBuf:1:25) = DataStruct.steps(i).tasks(k).created_at;
+       DataStruct.steps(i).tasks(j).created_at = %subst(CharBuf:1:25);
        BufPtr += 25;
-       %subst(CharBuf:1:25) = DataStruct.steps(i).tasks(k).updated_at;
+       DataStruct.steps(i).tasks(j).updated_at = %subst(CharBuf:1:25);
        BufPtr += 25;
-       %subst(CharBuf:1:10) = %char(DataStruct.steps(i).tasks(k).external_data.geofence.circle.center.latitude);
+       DataStruct.steps(i).tasks(j).external_data.geofence.circle.center.latitude = %dec(%subst(CharBuf:1:10):8:6);
        BufPtr += 10;
-       %subst(CharBuf:1:11) = %char(DataStruct.steps(i).tasks(k).external_data.geofence.circle.center.longitude);
+       DataStruct.steps(i).tasks(j).external_data.geofence.circle.center.longitude = %dec(%subst(CharBuf:1:11):9:6);
        BufPtr += 11;
-       %subst(CharBuf:1:5) = %char(DataStruct.steps(i).tasks(k).external_data.geofence.circle.radius);
+       DataStruct.steps(i).tasks(j).external_data.geofence.circle.radius = %dec(%subst(CharBuf:1:5):3:0);
        BufPtr += 5;
-       %subst(CharBuf:1:5) = %char(DataStruct.steps(i).tasks(k).external_data.geofence.delay);
+       DataStruct.steps(i).tasks(j).external_data.geofence.delay = %dec(%subst(CharBuf:1:5):3:0);
        BufPtr += 5;
-       %subst(CharBuf:1:1) = DataStruct.steps(i).tasks(k).external_data.geofence.auto_complete;
+       DataStruct.steps(i).tasks(j).external_data.geofence.auto_complete = %subst(CharBuf:1:1);
        BufPtr += 1;
-       %subst(CharBuf:1:5) = DataStruct.steps(i).tasks(k).external_data.geofence.trigger_by;
+       DataStruct.steps(i).tasks(j).external_data.geofence.trigger_by = %subst(CharBuf:1:5);
        BufPtr += 5;
-       %subst(CharBuf:1:17) = DataStruct.steps(i).tasks(k).external_data.geofence.message;
+       DataStruct.steps(i).tasks(j).external_data.geofence.message = %subst(CharBuf:1:17);
        BufPtr += 17;
-       %subst(CharBuf:1:7) = DataStruct.steps(i).tasks(k).fields.OrderNum;
+       DataStruct.steps(i).tasks(j).fields.OrderNum = %subst(CharBuf:1:7);
        BufPtr += 7;
-       %subst(CharBuf:1:1) = DataStruct.steps(i).tasks(k).fields.Tyepe;
+       DataStruct.steps(i).tasks(j).fields.Tyepe = %subst(CharBuf:1:1);
        BufPtr += 1;
-       %subst(CharBuf:1:2) = DataStruct.steps(i).tasks(k).fields.PCS;
+       DataStruct.steps(i).tasks(j).fields.PCS = %subst(CharBuf:1:2);
        BufPtr += 2;
-       %subst(CharBuf:1:5) = DataStruct.steps(i).tasks(k).fields.WGT;
+       DataStruct.steps(i).tasks(j).fields.WGT = %subst(CharBuf:1:5);
        BufPtr += 5;
-       %subst(CharBuf:1:7) = DataStruct.steps(i).tasks(k).fields.TRIP;
+       DataStruct.steps(i).tasks(j).fields.TRIP = %subst(CharBuf:1:7);
        BufPtr += 7;
-       %subst(CharBuf:1:30) = DataStruct.steps(i).tasks(k).fields.Comment;
+       DataStruct.steps(i).tasks(j).fields.Comment = %subst(CharBuf:1:30);
        BufPtr += 30;
-       %subst(CharBuf:1:1) = DataStruct.steps(i).tasks(k).fields.DSP;
+       DataStruct.steps(i).tasks(j).fields.DSP = %subst(CharBuf:1:1);
        BufPtr += 1;
-       %subst(CharBuf:1:6) = DataStruct.steps(i).tasks(k).fields.Unit;
+       DataStruct.steps(i).tasks(j).fields.Unit = %subst(CharBuf:1:6);
        BufPtr += 6;
-       %subst(CharBuf:1:9) = DataStruct.steps(i).tasks(k).fields.hiddenLatitude;
+       DataStruct.steps(i).tasks(j).fields.hiddenLatitude = %subst(CharBuf:1:9);
        BufPtr += 9;
-       %subst(CharBuf:1:9) = DataStruct.steps(i).tasks(k).fields.hiddenLongitude;
+       DataStruct.steps(i).tasks(j).fields.hiddenLongitude = %subst(CharBuf:1:9);
        BufPtr += 9;
-       %subst(CharBuf:1:16) = DataStruct.steps(i).tasks(k).fields.locname;
+       DataStruct.steps(i).tasks(j).fields.locname = %subst(CharBuf:1:16);
        BufPtr += 16;
-       %subst(CharBuf:1:25) = DataStruct.steps(i).tasks(k).fields.address;
+       DataStruct.steps(i).tasks(j).fields.address = %subst(CharBuf:1:25);
        BufPtr += 25;
-       %subst(CharBuf:1:6) = DataStruct.steps(i).tasks(k).fields.city;
+       DataStruct.steps(i).tasks(j).fields.city = %subst(CharBuf:1:6);
        BufPtr += 6;
-       %subst(CharBuf:1:2) = DataStruct.steps(i).tasks(k).fields.state;
+       DataStruct.steps(i).tasks(j).fields.state = %subst(CharBuf:1:2);
        BufPtr += 2;
-       %subst(CharBuf:1:5) = DataStruct.steps(i).tasks(k).fields.zipcode;
+       DataStruct.steps(i).tasks(j).fields.zipcode = %subst(CharBuf:1:5);
        BufPtr += 5;
-       %subst(CharBuf:1:8) = DataStruct.steps(i).tasks(k).fields.stopkey;
+       DataStruct.steps(i).tasks(j).fields.stopkey = %subst(CharBuf:1:8);
        BufPtr += 8;
-       %subst(CharBuf:1:2) = DataStruct.steps(i).tasks(k).fields.stopseq;
+       DataStruct.steps(i).tasks(j).fields.stopseq = %subst(CharBuf:1:2);
        BufPtr += 2;
-       %subst(CharBuf:1:18) = %char(DataStruct.steps(i).tasks(k).fields.user_id);
+       DataStruct.steps(i).tasks(j).fields.user_id = %dec(%subst(CharBuf:1:18):16:0);
        BufPtr += 18;
        endfor;
        endfor;
 
        return ;
 
-     PFormatNameToBuf  E
+     PBufToOrderResDS  E

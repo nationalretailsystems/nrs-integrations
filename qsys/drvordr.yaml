@@ -311,12 +311,19 @@ datastructures:
         dsName: TasksDS
         dim: 3
 formats:
-  FormatName:
+  OrderReqDS:
     recordType: request
     subfields:
       drivers:
         type: Character
-        length: 4
+        length: 6
+        default: ""
+  OrderResDS:
+    recordType: result
+    subfields:
+      drivers:
+        type: Character
+        length: 6
         default: ""
         dim: 1
       id:
