@@ -38,7 +38,7 @@
      DExtDataDS        DS                  Qualified
      D                                     Template
      Dlabel                           8A
-     Dvalue                           0A
+     Dvalue                           7A
      Dorder                           1P 0
      DisLabel                          N
 
@@ -48,9 +48,9 @@
      DappointmentDS    DS                  Qualified
      D                                     Template
      Dstart_time                     25A
-     Dready_time                      0A
-     Dlate_time                       0A
-     Dend_time                        0A
+     Dready_time                     25A
+     Dlate_time                      25A
+     Dend_time                       25A
 
       ************************************
       * centerDS data structure
@@ -97,7 +97,7 @@
      DPCS                             2A
      DWGT                             5A
      DTRIP                            7A
-     DComment                         0A
+     DComment                        30A
      DDSP                             1A
      DUnit                            6A
      DhiddenLatitu...
@@ -147,7 +147,7 @@
      Dlocation_ext...
      Dernal_id                       16A
      Dappointment                          LikeDS(appointmentDS)
-     Deta                             0A
+     Deta                            25A
      Dcreated_at                     25A
      Dupdated_at                     25A
      Dtasks                                LikeDS(TasksDS)
@@ -155,9 +155,9 @@
 
       ************************************
       * FormatName data structure
-      * Record length: 26015
+      * Record length: 29868
       ************************************
-     DFormatNameLen    C                   26015
+     DFormatNameLen    C                   29868
      DFormatName       DS                  Qualified
      D                                     Template
      Ddrivers                         4A   Dim(1)
@@ -174,7 +174,7 @@
      Dreviewed_at                    25A
      Dcreated_at                     25A
      Dupdated_at                     25A
-     Dmodified_at                     0A
+     Dmodified_at                    25A
      Dlocations                            LikeDS(LocationsDS)
      D                                     Dim(20)
      Dexternal_dat...
@@ -189,4 +189,4 @@
      DFormatNameToBuf  PR
      DDataStruct                           LikeDS(FormatName)
      D                                     Const
-     DBuffer                      26015A
+     DBuffer                      29868A

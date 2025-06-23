@@ -7,62 +7,81 @@ datastructures:
       type:
         type: Character
         length: 14
+        default: ""
       value:
         type: Character
         length: 7
+        default: ""
   LocationsDS:
     subfields:
       external_id:
         type: Character
         length: 16
+        default: ""
       type:
         type: Character
         length: 3
+        default: ""
       name:
         type: Character
         length: 23
+        default: ""
       address:
         type: Character
         length: 25
+        default: ""
       city:
         type: Character
         length: 6
+        default: ""
       state:
         type: Character
         length: 2
+        default: ""
       country_code:
         type: Character
         length: 2
+        default: ""
       postal_code:
         type: Character
         length: 5
+        default: ""
       latitude:
         type: Packed
         length: 8
         precision: 6
+        default: 0
       longitude:
         type: Packed
         length: 9
         precision: 6
+        default: 0
       time_zone:
         type: Character
         length: 10
+        default: ""
       created_at:
         type: Character
         length: 25
+        default: ""
       updated_at:
         type: Character
         length: 25
+        default: ""
   ExtDataDS:
     subfields:
       label:
         type: Character
         length: 8
+        default: ""
       value:
         type: Character
+        length: 7
+        default: ""
       order:
         type: Packed
         length: 1
+        default: 0
       isLabel:
         type: Boolean
   appointmentDS:
@@ -70,22 +89,31 @@ datastructures:
       start_time:
         type: Character
         length: 25
+        default: ""
       ready_time:
         type: Character
+        length: 25
+        default: ""
       late_time:
         type: Character
+        length: 25
+        default: ""
       end_time:
         type: Character
+        length: 25
+        default: ""
   centerDS:
     subfields:
       latitude:
         type: Packed
         length: 8
         precision: 6
+        default: 0
       longitude:
         type: Packed
         length: 9
         precision: 6
+        default: 0
   circleDS:
     subfields:
       center:
@@ -94,6 +122,7 @@ datastructures:
       radius:
         type: Packed
         length: 3
+        default: 0
   geofenceDS:
     subfields:
       circle:
@@ -102,14 +131,17 @@ datastructures:
       delay:
         type: Packed
         length: 3
+        default: 0
       auto_complete:
         type: Boolean
       trigger_by:
         type: Character
         length: 5
+        default: ""
       message:
         type: Character
         length: 17
+        default: ""
   external_dataDS:
     subfields:
       geofence:
@@ -120,81 +152,107 @@ datastructures:
       OrderNum:
         type: Character
         length: 7
+        default: ""
       Tyepe:
         type: Character
         length: 1
+        default: ""
       PCS:
         type: Character
         length: 2
+        default: ""
       WGT:
         type: Character
         length: 5
+        default: ""
       TRIP:
         type: Character
         length: 7
+        default: ""
       Comment:
         type: Character
+        length: 30
+        default: ""
       DSP:
         type: Character
         length: 1
+        default: ""
       Unit:
         type: Character
         length: 6
+        default: ""
       hiddenLatitude:
         type: Character
         length: 9
+        default: ""
       hiddenLongitude:
         type: Character
         length: 9
+        default: ""
       locname:
         type: Character
         length: 16
+        default: ""
       address:
         type: Character
         length: 25
+        default: ""
       city:
         type: Character
         length: 6
+        default: ""
       state:
         type: Character
         length: 2
+        default: ""
       zipcode:
         type: Character
         length: 5
+        default: ""
       stopkey:
         type: Character
         length: 8
+        default: ""
       stopseq:
         type: Character
         length: 2
+        default: ""
       user_id:
         type: Packed
         length: 16
+        default: 0
   TasksDS:
     subfields:
       external_id:
         type: Character
         length: 9
+        default: ""
       name:
         type: Character
         length: 19
+        default: ""
       order:
         type: Packed
         length: 1
+        default: 0
       type:
         type: Character
         length: 19
+        default: ""
       completed:
         type: Boolean
       completed_at:
         type: Character
         length: 25
+        default: ""
       completed_by:
         type: Character
         length: 4
+        default: ""
       completion_type:
         type: Character
         length: 6
+        default: ""
       created_at:
         type: Character
         length: 25
@@ -220,26 +278,34 @@ datastructures:
       completed_at:
         type: Character
         length: 25
+        default: ""
       type:
         type: Character
         length: 6
+        default: ""
       order:
         type: Packed
         length: 1
+        default: 0
       location_external_id:
         type: Character
         length: 16
+        default: ""
       appointment:
         type: DataStruct
         dsName: appointmentDS
       eta:
         type: Character
+        length: 25
+        default: ""
       created_at:
         type: Character
         length: 25
+        default: ""
       updated_at:
         type: Character
         length: 25
+        default: ""
       tasks:
         type: DataStruct
         dsName: TasksDS
@@ -251,22 +317,28 @@ formats:
       drivers:
         type: Character
         length: 4
+        default: ""
         dim: 1
       id:
         type: Packed
         length: 16
+        default: 0
       external_id:
         type: Character
         length: 7
+        default: ""
       external_id_alias:
         type: Character
         length: 7
+        default: ""
       status:
         type: Character
         length: 6
+        default: ""
       sequence:
         type: Character
         length: 1
+        default: ""
       shipping_documents:
         type: DataStruct
         dsName: ShipDocsDS
@@ -274,17 +346,23 @@ formats:
       received_at:
         type: Character
         length: 25
+        default: ""
       reviewed_at:
         type: Character
         length: 25
+        default: ""
       created_at:
         type: Character
         length: 25
+        default: ""
       updated_at:
         type: Character
         length: 25
+        default: ""
       modified_at:
         type: Character
+        length: 25
+        default: ""
       locations:
         type: DataStruct
         dsName: LocationsDS
