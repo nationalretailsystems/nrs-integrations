@@ -87,7 +87,7 @@ GENMODS = icndbapi \
 		  ddgetct \
 		  ddputct \
 		  ukgdtard \
-		  drvordr2 \
+		  drvordr \
 		  lytxass1 \
 		  lytxveh1 \
 		  lytxdrvs
@@ -150,7 +150,7 @@ GENHDRS = icndbapi_h \
 		  ddgetc_h \
 		  ddputct_h \
 		  ukgdtard_h \
-		  drvordr2_h \
+		  drvordr_h \
 		  lytxass1_h \
 		  lytxveh1_h \
 		  lytxdrvs_h
@@ -749,11 +749,11 @@ $(libdir)/qrpglesrc.file/ukgdtard.mbr $(libdir)/qrpglesrc.file/ukgdtard_h.mbr ..
 	system "CPYFRMSTMF FROMSTMF('ukgdtard.rpgle') TOMBR('$(libdir)/qrpglesrc.file/ukgdtard.mbr') MBROPT(*REPLACE)"
 	system "CPYFRMSTMF FROMSTMF('ukgdtard_h.rpgleinc') TOMBR('$(libdir)/qrpglesrc.file/ukgdtard_h.mbr') MBROPT(*REPLACE)"	
 
-$(libdir)/qrpglesrc.file/drvordr2.mbr $(libdir)/qrpglesrc.file/drvordr2_h.mbr ../src/interfaces/drvordr2.ts: drvordr2.yaml
+$(libdir)/qrpglesrc.file/drvordr.mbr $(libdir)/qrpglesrc.file/drvordr_h.mbr ../src/interfaces/drvordr.ts: drvordr.yaml
 	npx ec-generate -f $<
-	cp drvordr2.ts ../src/interfaces/drvordr2.ts
-	system "CPYFRMSTMF FROMSTMF('drvordr2.rpgle') TOMBR('$(libdir)/qrpglesrc.file/drvordr2.mbr') MBROPT(*REPLACE)"
-	system "CPYFRMSTMF FROMSTMF('drvordr2_h.rpgleinc') TOMBR('$(libdir)/qrpglesrc.file/drvordr2_h.mbr') MBROPT(*REPLACE)"	
+	cp drvordr.ts ../src/interfaces/drvordr.ts
+	system "CPYFRMSTMF FROMSTMF('drvordr.rpgle') TOMBR('$(libdir)/qrpglesrc.file/drvordr.mbr') MBROPT(*REPLACE)"
+	system "CPYFRMSTMF FROMSTMF('drvordr_h.rpgleinc') TOMBR('$(libdir)/qrpglesrc.file/drvordr_h.mbr') MBROPT(*REPLACE)"	
 
 $(libdir)/qrpglesrc.file/hygetchg.mbr $(libdir)/qrpglesrc.file/hygetchg_h.mbr ../src/interfaces/hygetchg.ts: hygetchg.yaml
 	npx ec-generate -f $<
