@@ -13,20 +13,18 @@ const {
   toIbmiTimestamp
 } = ibmiConversions;
 
-''
-// Manually entered import
-import config from 'config'
-
 /**
  * Output interface
  */
 export interface ShipDocsDS {
     /**
      * @size 14 characters
+     * @default ``
      */
     type: string,
     /**
      * @size 7 characters
+     * @default ``
      */
     value: string
 }
@@ -37,56 +35,69 @@ export interface ShipDocsDS {
 export interface LocationsDS {
     /**
      * @size 16 characters
+     * @default ``
      */
     external_id: string,
     /**
      * @size 3 characters
+     * @default ``
      */
     type: string,
     /**
      * @size 23 characters
+     * @default ``
      */
     name: string,
     /**
      * @size 25 characters
+     * @default ``
      */
     address: string,
     /**
      * @size 6 characters
+     * @default ``
      */
     city: string,
     /**
      * @size 2 characters
+     * @default ``
      */
     state: string,
     /**
      * @size 2 characters
+     * @default ``
      */
     country_code: string,
     /**
      * @size 5 characters
+     * @default ``
      */
     postal_code: string,
     /**
      * @size 8 digits
      * @precision 6 decimals
+     * @default `0`
      */
     latitude: number,
     /**
      * @size 9 digits
      * @precision 6 decimals
+     * @default `0`
      */
     longitude: number,
     /**
      * @size 10 characters
+     * @default ``
      */
     time_zone: string,
     /**
      * @size 25 characters
+     * @default ``
      */
     created_at: string,
     /**
      * @size 25 characters
+     * @default ``
      */
     updated_at: string
 }
@@ -97,15 +108,18 @@ export interface LocationsDS {
 export interface ExtDataDS {
     /**
      * @size 8 characters
+     * @default ``
      */
     label: string,
     /**
-     * @size 0 characters
+     * @size 7 characters
+     * @default ``
      */
     value: string,
     /**
      * @size 1 digits
      * @precision 0 decimals
+     * @default `0`
      */
     order: number,
     /**
@@ -119,18 +133,22 @@ export interface ExtDataDS {
 export interface appointmentDS {
     /**
      * @size 25 characters
+     * @default ``
      */
     start_time: string,
     /**
-     * @size 0 characters
+     * @size 25 characters
+     * @default ``
      */
     ready_time: string,
     /**
-     * @size 0 characters
+     * @size 25 characters
+     * @default ``
      */
     late_time: string,
     /**
-     * @size 0 characters
+     * @size 25 characters
+     * @default ``
      */
     end_time: string
 }
@@ -142,11 +160,13 @@ export interface centerDS {
     /**
      * @size 8 digits
      * @precision 6 decimals
+     * @default `0`
      */
     latitude: number,
     /**
      * @size 9 digits
      * @precision 6 decimals
+     * @default `0`
      */
     longitude: number
 }
@@ -161,6 +181,7 @@ export interface circleDS {
     /**
      * @size 3 digits
      * @precision 0 decimals
+     * @default `0`
      */
     radius: number
 }
@@ -175,6 +196,7 @@ export interface geofenceDS {
     /**
      * @size 3 digits
      * @precision 0 decimals
+     * @default `0`
      */
     delay: number,
     /**
@@ -182,10 +204,12 @@ export interface geofenceDS {
     auto_complete: boolean,
     /**
      * @size 5 characters
+     * @default ``
      */
     trigger_by: string,
     /**
      * @size 17 characters
+     * @default ``
      */
     message: string
 }
@@ -205,75 +229,93 @@ export interface external_dataDS {
 export interface fieldsDS {
     /**
      * @size 7 characters
+     * @default ``
      */
     OrderNum: string,
     /**
      * @size 1 characters
+     * @default ``
      */
     Tyepe: string,
     /**
      * @size 2 characters
+     * @default ``
      */
     PCS: string,
     /**
      * @size 5 characters
+     * @default ``
      */
     WGT: string,
     /**
      * @size 7 characters
+     * @default ``
      */
     TRIP: string,
     /**
-     * @size 0 characters
+     * @size 30 characters
+     * @default ``
      */
     Comment: string,
     /**
      * @size 1 characters
+     * @default ``
      */
     DSP: string,
     /**
      * @size 6 characters
+     * @default ``
      */
     Unit: string,
     /**
      * @size 9 characters
+     * @default ``
      */
     hiddenLatitude: string,
     /**
      * @size 9 characters
+     * @default ``
      */
     hiddenLongitude: string,
     /**
      * @size 16 characters
+     * @default ``
      */
     locname: string,
     /**
      * @size 25 characters
+     * @default ``
      */
     address: string,
     /**
      * @size 6 characters
+     * @default ``
      */
     city: string,
     /**
      * @size 2 characters
+     * @default ``
      */
     state: string,
     /**
      * @size 5 characters
+     * @default ``
      */
     zipcode: string,
     /**
      * @size 8 characters
+     * @default ``
      */
     stopkey: string,
     /**
      * @size 2 characters
+     * @default ``
      */
     stopseq: string,
     /**
      * @size 16 digits
      * @precision 0 decimals
+     * @default `0`
      */
     user_id: number
 }
@@ -284,19 +326,23 @@ export interface fieldsDS {
 export interface TasksDS {
     /**
      * @size 9 characters
+     * @default ``
      */
     external_id: string,
     /**
      * @size 19 characters
+     * @default ``
      */
     name: string,
     /**
      * @size 1 digits
      * @precision 0 decimals
+     * @default `0`
      */
     order: number,
     /**
      * @size 19 characters
+     * @default ``
      */
     type: string,
     /**
@@ -304,14 +350,17 @@ export interface TasksDS {
     completed: boolean,
     /**
      * @size 25 characters
+     * @default ``
      */
     completed_at: string,
     /**
      * @size 4 characters
+     * @default ``
      */
     completed_by: string,
     /**
      * @size 6 characters
+     * @default ``
      */
     completion_type: string,
     /**
@@ -347,34 +396,41 @@ export interface StepsDS {
     completed: boolean,
     /**
      * @size 25 characters
+     * @default ``
      */
     completed_at: string,
     /**
      * @size 6 characters
+     * @default ``
      */
     type: string,
     /**
      * @size 1 digits
      * @precision 0 decimals
+     * @default `0`
      */
     order: number,
     /**
      * @size 16 characters
+     * @default ``
      */
     location_external_id: string,
     /**
      */
     appointment: appointmentDS,
     /**
-     * @size 0 characters
+     * @size 25 characters
+     * @default ``
      */
     eta: string,
     /**
      * @size 25 characters
+     * @default ``
      */
     created_at: string,
     /**
      * @size 25 characters
+     * @default ``
      */
     updated_at: string,
     /**
@@ -388,27 +444,33 @@ export interface StepsDS {
 export interface FormatName {
     /**
      * @size 4 characters
+     * @default ``
      */
     drivers: Array<string>,
     /**
      * @size 16 digits
      * @precision 0 decimals
+     * @default `0`
      */
     id: number,
     /**
      * @size 7 characters
+     * @default ``
      */
     external_id: string,
     /**
      * @size 7 characters
+     * @default ``
      */
     external_id_alias: string,
     /**
      * @size 6 characters
+     * @default ``
      */
     status: string,
     /**
      * @size 1 characters
+     * @default ``
      */
     sequence: string,
     /**
@@ -416,22 +478,27 @@ export interface FormatName {
     shipping_documents: Array<ShipDocsDS>,
     /**
      * @size 25 characters
+     * @default ``
      */
     received_at: string,
     /**
      * @size 25 characters
+     * @default ``
      */
     reviewed_at: string,
     /**
      * @size 25 characters
+     * @default ``
      */
     created_at: string,
     /**
      * @size 25 characters
+     * @default ``
      */
     updated_at: string,
     /**
-     * @size 0 characters
+     * @size 25 characters
+     * @default ``
      */
     modified_at: string,
     /**
@@ -491,8 +558,8 @@ export function convertFormatNameToObject(dataIn: string): FormatName {
   pos += 25;
   dataOut.updated_at = dataIn.substring(pos, pos + 25).trimEnd();
   pos += 25;
-  dataOut.modified_at = dataIn.substring(pos, pos + 0).trimEnd();
-  pos += 0;
+  dataOut.modified_at = dataIn.substring(pos, pos + 25).trimEnd();
+  pos += 25;
   dataOut.locations = [
     
   ];
@@ -536,8 +603,8 @@ export function convertFormatNameToObject(dataIn: string): FormatName {
     };
   dataOut.external_data[i].label = dataIn.substring(pos, pos + 8).trimEnd();
   pos += 8;
-  dataOut.external_data[i].value = dataIn.substring(pos, pos + 0).trimEnd();
-  pos += 0;
+  dataOut.external_data[i].value = dataIn.substring(pos, pos + 7).trimEnd();
+  pos += 7;
   dataOut.external_data[i].order = Number(dataIn.substring(pos, pos + 3).trimEnd());
   pos += 3;
   dataOut.external_data[i].isLabel = dataIn.substring(pos, pos + 1).trimEnd() === "1";
@@ -569,14 +636,14 @@ export function convertFormatNameToObject(dataIn: string): FormatName {
     };
   dataOut.steps[i].appointment.start_time = dataIn.substring(pos, pos + 25).trimEnd();
   pos += 25;
-  dataOut.steps[i].appointment.ready_time = dataIn.substring(pos, pos + 0).trimEnd();
-  pos += 0;
-  dataOut.steps[i].appointment.late_time = dataIn.substring(pos, pos + 0).trimEnd();
-  pos += 0;
-  dataOut.steps[i].appointment.end_time = dataIn.substring(pos, pos + 0).trimEnd();
-  pos += 0;
-  dataOut.steps[i].eta = dataIn.substring(pos, pos + 0).trimEnd();
-  pos += 0;
+  dataOut.steps[i].appointment.ready_time = dataIn.substring(pos, pos + 25).trimEnd();
+  pos += 25;
+  dataOut.steps[i].appointment.late_time = dataIn.substring(pos, pos + 25).trimEnd();
+  pos += 25;
+  dataOut.steps[i].appointment.end_time = dataIn.substring(pos, pos + 25).trimEnd();
+  pos += 25;
+  dataOut.steps[i].eta = dataIn.substring(pos, pos + 25).trimEnd();
+  pos += 25;
   dataOut.steps[i].created_at = dataIn.substring(pos, pos + 25).trimEnd();
   pos += 25;
   dataOut.steps[i].updated_at = dataIn.substring(pos, pos + 25).trimEnd();
@@ -647,8 +714,8 @@ export function convertFormatNameToObject(dataIn: string): FormatName {
   pos += 5;
   dataOut.steps[i].tasks[j].fields.TRIP = dataIn.substring(pos, pos + 7).trimEnd();
   pos += 7;
-  dataOut.steps[i].tasks[j].fields.Comment = dataIn.substring(pos, pos + 0).trimEnd();
-  pos += 0;
+  dataOut.steps[i].tasks[j].fields.Comment = dataIn.substring(pos, pos + 30).trimEnd();
+  pos += 30;
   dataOut.steps[i].tasks[j].fields.DSP = dataIn.substring(pos, pos + 1).trimEnd();
   pos += 1;
   dataOut.steps[i].tasks[j].fields.Unit = dataIn.substring(pos, pos + 6).trimEnd();

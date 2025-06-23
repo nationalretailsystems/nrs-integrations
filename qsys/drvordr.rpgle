@@ -26,7 +26,7 @@
      DFormatNameToBuf  PI
      DDataStruct                           LikeDS(FormatName)
      D                                     Const
-     DBuffer                      26015A
+     DBuffer                      29868A
 
       * Initialize to beginning of buffer
        BufPtr = %addr(Buffer);
@@ -60,8 +60,8 @@
        BufPtr += 25;
        %subst(CharBuf:1:25) = DataStruct.updated_at;
        BufPtr += 25;
-       %subst(CharBuf:1:0) = DataStruct.modified_at;
-       BufPtr += 0;
+       %subst(CharBuf:1:25) = DataStruct.modified_at;
+       BufPtr += 25;
        for i = 1 to 20;
        %subst(CharBuf:1:16) = DataStruct.locations(i).external_id;
        BufPtr += 16;
@@ -93,8 +93,8 @@
        for i = 1 to 4;
        %subst(CharBuf:1:8) = DataStruct.external_data(i).label;
        BufPtr += 8;
-       %subst(CharBuf:1:0) = DataStruct.external_data(i).value;
-       BufPtr += 0;
+       %subst(CharBuf:1:7) = DataStruct.external_data(i).value;
+       BufPtr += 7;
        %subst(CharBuf:1:3) = %char(DataStruct.external_data(i).order);
        BufPtr += 3;
        %subst(CharBuf:1:1) = DataStruct.external_data(i).isLabel;
@@ -117,14 +117,14 @@
        BufPtr += 16;
        %subst(CharBuf:1:25) = DataStruct.steps(i).appointment.start_time;
        BufPtr += 25;
-       %subst(CharBuf:1:0) = DataStruct.steps(i).appointment.ready_time;
-       BufPtr += 0;
-       %subst(CharBuf:1:0) = DataStruct.steps(i).appointment.late_time;
-       BufPtr += 0;
-       %subst(CharBuf:1:0) = DataStruct.steps(i).appointment.end_time;
-       BufPtr += 0;
-       %subst(CharBuf:1:0) = DataStruct.steps(i).eta;
-       BufPtr += 0;
+       %subst(CharBuf:1:25) = DataStruct.steps(i).appointment.ready_time;
+       BufPtr += 25;
+       %subst(CharBuf:1:25) = DataStruct.steps(i).appointment.late_time;
+       BufPtr += 25;
+       %subst(CharBuf:1:25) = DataStruct.steps(i).appointment.end_time;
+       BufPtr += 25;
+       %subst(CharBuf:1:25) = DataStruct.steps(i).eta;
+       BufPtr += 25;
        %subst(CharBuf:1:25) = DataStruct.steps(i).created_at;
        BufPtr += 25;
        %subst(CharBuf:1:25) = DataStruct.steps(i).updated_at;
@@ -174,8 +174,8 @@
        BufPtr += 5;
        %subst(CharBuf:1:7) = DataStruct.steps(i).tasks(k).fields.TRIP;
        BufPtr += 7;
-       %subst(CharBuf:1:0) = DataStruct.steps(i).tasks(k).fields.Comment;
-       BufPtr += 0;
+       %subst(CharBuf:1:30) = DataStruct.steps(i).tasks(k).fields.Comment;
+       BufPtr += 30;
        %subst(CharBuf:1:1) = DataStruct.steps(i).tasks(k).fields.DSP;
        BufPtr += 1;
        %subst(CharBuf:1:6) = DataStruct.steps(i).tasks(k).fields.Unit;
