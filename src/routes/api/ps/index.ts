@@ -5,9 +5,9 @@ import { Router } from 'express';
         import * as validators from './validators';
         export default function mountPs(router: Router) {
             router.get(
-                        '/getorder',
-                        validate(validators.drvordr),
-                        respond((req: any) => psController.drvordr(Object.assign({}, req.params, req.body, req.query)))
+                        '/drvordin',
+                        validate(validators.drvordin),
+                        respond((req: any) => psController.drvordin(Object.assign({}, req.params, req.body, req.query)))
                     );
           
         }

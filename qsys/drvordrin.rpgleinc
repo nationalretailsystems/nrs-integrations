@@ -1,0 +1,180 @@
+      ************************************
+      * Module: drvordrin
+      * Generated RPG data structures
+      * and prototypes
+      * Do not modify
+      ************************************
+
+      ************************************
+      * ShipDocsDS data structure
+      ************************************
+     DShipDocsDS       DS                  Qualified
+     D                                     Template
+     Dtype                           14A
+     Dvalue                           7A
+
+      ************************************
+      * LocationsDS data structure
+      ************************************
+     DLocationsDS      DS                  Qualified
+     D                                     Template
+     Dexternal_id                    16A
+     Dtype                            3A
+     Dname                           23A
+     Daddress                        25A
+     Dcity                            6A
+     Dstate                           2A
+     Dcountry_code                    2A
+     Dpostal_code                     5A
+     Dlatitude                        8P 6
+     Dlongitude                       9P 6
+     Dtime_zone                      10A
+     Dcreated_at                     25A
+     Dupdated_at                     25A
+
+      ************************************
+      * ExtDataDS data structure
+      ************************************
+     DExtDataDS        DS                  Qualified
+     D                                     Template
+     Dlabel                           8A
+     Dvalue                           7A
+     Dorder                           1P 0
+     DisLabel                          N
+
+      ************************************
+      * appointmentDS data structure
+      ************************************
+     DappointmentDS    DS                  Qualified
+     D                                     Template
+     Dstart_time                     25A
+     Dready_time                     25A
+     Dlate_time                      25A
+     Dend_time                       25A
+
+      ************************************
+      * centerDS data structure
+      ************************************
+     DcenterDS         DS                  Qualified
+     D                                     Template
+     Dlatitude                        8P 6
+     Dlongitude                       9P 6
+
+      ************************************
+      * circleDS data structure
+      ************************************
+     DcircleDS         DS                  Qualified
+     D                                     Template
+     Dcenter                               LikeDS(centerDS)
+     Dradius                          3P 0
+
+      ************************************
+      * geofenceDS data structure
+      ************************************
+     DgeofenceDS       DS                  Qualified
+     D                                     Template
+     Dcircle                               LikeDS(circleDS)
+     Ddelay                           3P 0
+     Dauto_complet...
+     De                                N
+     Dtrigger_by                      5A
+     Dmessage                        17A
+
+      ************************************
+      * external_dataDS data structure
+      ************************************
+     Dexternal_dataDS  DS                  Qualified
+     D                                     Template
+     Dgeofence                             LikeDS(geofenceDS)
+
+      ************************************
+      * fieldsDS data structure
+      ************************************
+     DfieldsDS         DS                  Qualified
+     D                                     Template
+     DOrderNum                        7A
+     DTyepe                           1A
+     DPCS                             2A
+     DWGT                             5A
+     DTRIP                            7A
+     DComment                        30A
+     DDSP                             1A
+     DUnit                            6A
+     DhiddenLatitu...
+     Dde                              9A
+     DhiddenLongit...
+     Dude                             9A
+     Dlocname                        16A
+     Daddress                        25A
+     Dcity                            6A
+     Dstate                           2A
+     Dzipcode                         5A
+     Dstopkey                         8A
+     Dstopseq                         2A
+     Duser_id                        16P 0
+
+      ************************************
+      * TasksDS data structure
+      ************************************
+     DTasksDS          DS                  Qualified
+     D                                     Template
+     Dexternal_id                     9A
+     Dname                           19A
+     Dorder                           1P 0
+     Dtype                           19A
+     Dcompleted                        N
+     Dcompleted_at                   25A
+     Dcompleted_by                    4A
+     Dcompletion_t...
+     Dype                             6A
+     Dcreated_at                     25A
+     Dupdated_at                     25A
+     Dexternal_dat...
+     Da                                    LikeDS(external_dataDS)
+     Dfields                               LikeDS(fieldsDS)
+
+      ************************************
+      * StepsDS data structure
+      ************************************
+     DStepsDS          DS                  Qualified
+     D                                     Template
+     Dexternal_id                    18A
+     Dname                           23A
+     Dcompleted                        N
+     Dcompleted_at                   25A
+     Dtype                            6A
+     Dorder                           1P 0
+     Dlocation_ext...
+     Dernal_id                       16A
+     Dappointment                          LikeDS(appointmentDS)
+     Deta                            25A
+     Dcreated_at                     25A
+     Dupdated_at                     25A
+     Dtasks                                LikeDS(TasksDS)
+     D                                     Dim(3)
+
+      ************************************
+      * Program prototype
+      ************************************
+     DDRVORDRIN        PR
+     Ddriverin                        6A
+     Dordtype                         1A
+     Ddrivers                         6A   Dim(1)
+     Did                             16P 0
+     Dexternal_id                     7A
+     Dexternal_id_alias                 7A
+     Dstatus                          6A
+     Dsequence                        1A
+     Dshipping_documents                      LikeDS(ShipDocsDS)
+     D                                     Dim(4)
+     Dreceived_at                    25A
+     Dreviewed_at                    25A
+     Dcreated_at                     25A
+     Dupdated_at                     25A
+     Dmodified_at                    25A
+     Dlocations                            LikeDS(LocationsDS)
+     D                                     Dim(20)
+     Dexternal_data                        LikeDS(ExtDataDS)
+     D                                     Dim(4)
+     Dsteps                                LikeDS(StepsDS)
+     D                                     Dim(20)
