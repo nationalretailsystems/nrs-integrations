@@ -22,6 +22,7 @@ import registerHRSD from './hrsd';
 import registerPlatsci from './platsci';
 import registerDrayDog from './draydog';
 import registerLytx from './lytx';
+import registerPS from './ps';
 import { Route53RecoveryCluster } from 'aws-sdk';
 
 export default async function registerCommands(router: ECCRouter) {
@@ -116,6 +117,10 @@ export default async function registerCommands(router: ECCRouter) {
     const lytx = new ECCRouter.Router();
     registerLytx(lytx);
     router.use('lytx', lytx);
-    
+
+    const ps = new ECCRouter.Router();
+    registerPS(ps);
+    router.use('ps', ps);    
+
     return router;
 }
