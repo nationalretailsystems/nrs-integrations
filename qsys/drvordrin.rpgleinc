@@ -22,11 +22,11 @@
      Dtype                            3A
      Dname                           23A
      Daddress                        25A
-     Dcity                            6A
+     Dcity                           25A
      Dstate                           2A
      Dcountry_code                    2A
      Dpostal_code                     5A
-     Dlatitude                        8P 6
+     Dlatitude                        9P 6
      Dlongitude                       9P 6
      Dtime_zone                      10A
      Dcreated_at                     25A
@@ -37,10 +37,10 @@
       ************************************
      DExtDataDS        DS                  Qualified
      D                                     Template
-     Dlabel                           8A
+     Dlabel                          20A
      Dvalue                           7A
      Dorder                           1P 0
-     DisLabel                          N
+     DisLabel                         5A
 
       ************************************
       * appointmentDS data structure
@@ -57,7 +57,7 @@
       ************************************
      DcenterDS         DS                  Qualified
      D                                     Template
-     Dlatitude                        8P 6
+     Dlatitude                        9P 6
      Dlongitude                       9P 6
 
       ************************************
@@ -76,9 +76,9 @@
      Dcircle                               LikeDS(circleDS)
      Ddelay                           3P 0
      Dauto_complet...
-     De                                N
+     De                               5A
      Dtrigger_by                      5A
-     Dmessage                        17A
+     Dmessage                        40A
 
       ************************************
       * external_dataDS data structure
@@ -94,19 +94,19 @@
      D                                     Template
      DOrderNum                        7A
      DTyepe                           1A
-     DPCS                             2A
-     DWGT                             5A
+     DPCS                             6A
+     DWGT                             6A
      DTRIP                            7A
      DComment                        30A
      DDSP                             1A
      DUnit                            6A
      DhiddenLatitu...
-     Dde                              9A
+     Dde                             12A
      DhiddenLongit...
-     Dude                             9A
+     Dude                            12A
      Dlocname                        16A
      Daddress                        25A
-     Dcity                            6A
+     Dcity                           25A
      Dstate                           2A
      Dzipcode                         5A
      Dstopkey                         8A
@@ -119,14 +119,14 @@
      DTasksDS          DS                  Qualified
      D                                     Template
      Dexternal_id                     9A
-     Dname                           19A
+     Dname                           30A
      Dorder                           1P 0
-     Dtype                           19A
-     Dcompleted                        N
+     Dtype                           30A
+     Dcompleted                       5A
      Dcompleted_at                   25A
-     Dcompleted_by                    4A
+     Dcompleted_by                    6A
      Dcompletion_t...
-     Dype                             6A
+     Dype                            20A
      Dcreated_at                     25A
      Dupdated_at                     25A
      Dexternal_dat...
@@ -140,7 +140,7 @@
      D                                     Template
      Dexternal_id                    18A
      Dname                           23A
-     Dcompleted                        N
+     Dcompleted                       5A
      Dcompleted_at                   25A
      Dtype                            6A
      Dorder                           1P 0
@@ -159,6 +159,7 @@
      DDRVORDRIN        PR
      Ddriverin                        6A
      Dordtype                         1A
+     Derror_message                  50A
      Ddrivers                         6A   Dim(1)
      Did                             16P 0
      Dexternal_id                     7A

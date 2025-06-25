@@ -36,7 +36,7 @@ datastructures:
         default: ""
       city:
         type: Character
-        length: 6
+        length: 25
         default: ""
       state:
         type: Character
@@ -52,7 +52,7 @@ datastructures:
         default: ""
       latitude:
         type: Packed
-        length: 8
+        length: 9
         precision: 6
         default: 0
       longitude:
@@ -76,7 +76,7 @@ datastructures:
     subfields:
       label:
         type: Character
-        length: 8
+        length: 20
         default: ""
       value:
         type: Character
@@ -87,7 +87,9 @@ datastructures:
         length: 1
         default: 0
       isLabel:
-        type: Boolean
+        type: Character
+        length: 5
+        default: ""
   appointmentDS:
     subfields:
       start_time:
@@ -110,7 +112,7 @@ datastructures:
     subfields:
       latitude:
         type: Packed
-        length: 8
+        length: 9
         precision: 6
         default: 0
       longitude:
@@ -137,14 +139,16 @@ datastructures:
         length: 3
         default: 0
       auto_complete:
-        type: Boolean
+        type: Character
+        length: 5
+        default: ""
       trigger_by:
         type: Character
         length: 5
         default: ""
       message:
         type: Character
-        length: 17
+        length: 40
         default: ""
   external_dataDS:
     subfields:
@@ -163,11 +167,11 @@ datastructures:
         default: ""
       PCS:
         type: Character
-        length: 2
+        length: 6
         default: ""
       WGT:
         type: Character
-        length: 5
+        length: 6
         default: ""
       TRIP:
         type: Character
@@ -187,11 +191,11 @@ datastructures:
         default: ""
       hiddenLatitude:
         type: Character
-        length: 9
+        length: 12
         default: ""
       hiddenLongitude:
         type: Character
-        length: 9
+        length: 12
         default: ""
       locname:
         type: Character
@@ -203,7 +207,7 @@ datastructures:
         default: ""
       city:
         type: Character
-        length: 6
+        length: 25
         default: ""
       state:
         type: Character
@@ -233,7 +237,7 @@ datastructures:
         default: ""
       name:
         type: Character
-        length: 19
+        length: 30
         default: ""
       order:
         type: Packed
@@ -241,28 +245,32 @@ datastructures:
         default: 0
       type:
         type: Character
-        length: 19
+        length: 30
         default: ""
       completed:
-        type: Boolean
+        type: Character
+        length: 5
+        default: ""
       completed_at:
         type: Character
         length: 25
         default: ""
       completed_by:
         type: Character
-        length: 4
+        length: 6
         default: ""
       completion_type:
         type: Character
-        length: 6
+        length: 20
         default: ""
       created_at:
         type: Character
         length: 25
+        default: ""
       updated_at:
         type: Character
         length: 25
+        default: ""
       external_data:
         type: DataStruct
         dsName: external_dataDS
@@ -274,11 +282,15 @@ datastructures:
       external_id:
         type: Character
         length: 18
+        default: ""
       name:
         type: Character
         length: 23
+        default: ""
       completed:
-        type: Boolean
+        type: Character
+        length: 5
+        default: ""
       completed_at:
         type: Character
         length: 25
@@ -328,6 +340,10 @@ pgmmodels:
           ordtype:
             type: Character
             length: 1
+            default: ""
+          error_message:
+            type: Character
+            length: 50
             default: ""
           drivers:
             type: Character

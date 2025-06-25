@@ -84,7 +84,7 @@ export interface ShipDocsDS {
     },
       {
       name: "city",
-      type: new dataTypes.Char(6),
+      type: new dataTypes.Char(25),
       defaultValue: ""
     },
       {
@@ -104,7 +104,7 @@ export interface ShipDocsDS {
     },
       {
       name: "latitude",
-      type: new dataTypes.PackedDecimal(8, 6),
+      type: new dataTypes.PackedDecimal(9, 6),
       defaultValue: 0.0
     },
       {
@@ -154,7 +154,7 @@ export interface LocationsDSInput {
      */
     address?: string,
     /**
-     * @size 6 characters
+     * @size 25 characters
      * @default ``
      */
     city?: string,
@@ -174,7 +174,7 @@ export interface LocationsDSInput {
      */
     postal_code?: string,
     /**
-     * @size 8 digits
+     * @size 9 digits
      * @precision 6 decimals
      * @default `0`
      */
@@ -227,7 +227,7 @@ export interface LocationsDS {
      */
     address: string,
     /**
-     * @size 6 characters
+     * @size 25 characters
      * @default ``
      */
     city: string,
@@ -247,7 +247,7 @@ export interface LocationsDS {
      */
     postal_code: string,
     /**
-     * @size 8 digits
+     * @size 9 digits
      * @precision 6 decimals
      * @default `0`
      */
@@ -281,7 +281,7 @@ export interface LocationsDS {
   let ExtDataDSFields: any = [
       {
       name: "label",
-      type: new dataTypes.Char(8),
+      type: new dataTypes.Char(20),
       defaultValue: ""
     },
       {
@@ -296,7 +296,8 @@ export interface LocationsDS {
     },
       {
       name: "isLabel",
-      type: new dataTypes.Bool()
+      type: new dataTypes.Char(5),
+      defaultValue: ""
     }
   ];
 
@@ -305,7 +306,7 @@ export interface LocationsDS {
  */
 export interface ExtDataDSInput {
     /**
-     * @size 8 characters
+     * @size 20 characters
      * @default ``
      */
     label?: string,
@@ -321,8 +322,10 @@ export interface ExtDataDSInput {
      */
     order?: number | string,
     /**
+     * @size 5 characters
+     * @default ``
      */
-    isLabel: boolean
+    isLabel?: string
 }
 
 /**
@@ -330,7 +333,7 @@ export interface ExtDataDSInput {
  */
 export interface ExtDataDS {
     /**
-     * @size 8 characters
+     * @size 20 characters
      * @default ``
      */
     label: string,
@@ -346,8 +349,10 @@ export interface ExtDataDS {
      */
     order: number,
     /**
+     * @size 5 characters
+     * @default ``
      */
-    isLabel: boolean
+    isLabel: string
 }
 
 /**
@@ -434,7 +439,7 @@ export interface appointmentDS {
   let centerDSFields: any = [
       {
       name: "latitude",
-      type: new dataTypes.PackedDecimal(8, 6),
+      type: new dataTypes.PackedDecimal(9, 6),
       defaultValue: 0.0
     },
       {
@@ -449,7 +454,7 @@ export interface appointmentDS {
  */
 export interface centerDSInput {
     /**
-     * @size 8 digits
+     * @size 9 digits
      * @precision 6 decimals
      * @default `0`
      */
@@ -467,7 +472,7 @@ export interface centerDSInput {
  */
 export interface centerDS {
     /**
-     * @size 8 digits
+     * @size 9 digits
      * @precision 6 decimals
      * @default `0`
      */
@@ -540,7 +545,8 @@ export interface circleDS {
     },
       {
       name: "auto_complete",
-      type: new dataTypes.Bool()
+      type: new dataTypes.Char(5),
+      defaultValue: ""
     },
       {
       name: "trigger_by",
@@ -549,7 +555,7 @@ export interface circleDS {
     },
       {
       name: "message",
-      type: new dataTypes.Char(17),
+      type: new dataTypes.Char(40),
       defaultValue: ""
     }
   ];
@@ -568,15 +574,17 @@ export interface geofenceDSInput {
      */
     delay?: number | string,
     /**
+     * @size 5 characters
+     * @default ``
      */
-    auto_complete: boolean,
+    auto_complete?: string,
     /**
      * @size 5 characters
      * @default ``
      */
     trigger_by?: string,
     /**
-     * @size 17 characters
+     * @size 40 characters
      * @default ``
      */
     message?: string
@@ -596,15 +604,17 @@ export interface geofenceDS {
      */
     delay: number,
     /**
+     * @size 5 characters
+     * @default ``
      */
-    auto_complete: boolean,
+    auto_complete: string,
     /**
      * @size 5 characters
      * @default ``
      */
     trigger_by: string,
     /**
-     * @size 17 characters
+     * @size 40 characters
      * @default ``
      */
     message: string
@@ -654,12 +664,12 @@ export interface external_dataDS {
     },
       {
       name: "PCS",
-      type: new dataTypes.Char(2),
+      type: new dataTypes.Char(6),
       defaultValue: ""
     },
       {
       name: "WGT",
-      type: new dataTypes.Char(5),
+      type: new dataTypes.Char(6),
       defaultValue: ""
     },
       {
@@ -684,12 +694,12 @@ export interface external_dataDS {
     },
       {
       name: "hiddenLatitude",
-      type: new dataTypes.Char(9),
+      type: new dataTypes.Char(12),
       defaultValue: ""
     },
       {
       name: "hiddenLongitude",
-      type: new dataTypes.Char(9),
+      type: new dataTypes.Char(12),
       defaultValue: ""
     },
       {
@@ -704,7 +714,7 @@ export interface external_dataDS {
     },
       {
       name: "city",
-      type: new dataTypes.Char(6),
+      type: new dataTypes.Char(25),
       defaultValue: ""
     },
       {
@@ -749,12 +759,12 @@ export interface fieldsDSInput {
      */
     Tyepe?: string,
     /**
-     * @size 2 characters
+     * @size 6 characters
      * @default ``
      */
     PCS?: string,
     /**
-     * @size 5 characters
+     * @size 6 characters
      * @default ``
      */
     WGT?: string,
@@ -779,12 +789,12 @@ export interface fieldsDSInput {
      */
     Unit?: string,
     /**
-     * @size 9 characters
+     * @size 12 characters
      * @default ``
      */
     hiddenLatitude?: string,
     /**
-     * @size 9 characters
+     * @size 12 characters
      * @default ``
      */
     hiddenLongitude?: string,
@@ -799,7 +809,7 @@ export interface fieldsDSInput {
      */
     address?: string,
     /**
-     * @size 6 characters
+     * @size 25 characters
      * @default ``
      */
     city?: string,
@@ -846,12 +856,12 @@ export interface fieldsDS {
      */
     Tyepe: string,
     /**
-     * @size 2 characters
+     * @size 6 characters
      * @default ``
      */
     PCS: string,
     /**
-     * @size 5 characters
+     * @size 6 characters
      * @default ``
      */
     WGT: string,
@@ -876,12 +886,12 @@ export interface fieldsDS {
      */
     Unit: string,
     /**
-     * @size 9 characters
+     * @size 12 characters
      * @default ``
      */
     hiddenLatitude: string,
     /**
-     * @size 9 characters
+     * @size 12 characters
      * @default ``
      */
     hiddenLongitude: string,
@@ -896,7 +906,7 @@ export interface fieldsDS {
      */
     address: string,
     /**
-     * @size 6 characters
+     * @size 25 characters
      * @default ``
      */
     city: string,
@@ -939,7 +949,7 @@ export interface fieldsDS {
     },
       {
       name: "name",
-      type: new dataTypes.Char(19),
+      type: new dataTypes.Char(30),
       defaultValue: ""
     },
       {
@@ -949,12 +959,13 @@ export interface fieldsDS {
     },
       {
       name: "type",
-      type: new dataTypes.Char(19),
+      type: new dataTypes.Char(30),
       defaultValue: ""
     },
       {
       name: "completed",
-      type: new dataTypes.Bool()
+      type: new dataTypes.Char(5),
+      defaultValue: ""
     },
       {
       name: "completed_at",
@@ -963,21 +974,23 @@ export interface fieldsDS {
     },
       {
       name: "completed_by",
-      type: new dataTypes.Char(4),
-      defaultValue: ""
-    },
-      {
-      name: "completion_type",
       type: new dataTypes.Char(6),
       defaultValue: ""
     },
       {
+      name: "completion_type",
+      type: new dataTypes.Char(20),
+      defaultValue: ""
+    },
+      {
       name: "created_at",
-      type: new dataTypes.Char(25)
+      type: new dataTypes.Char(25),
+      defaultValue: ""
     },
       {
       name: "updated_at",
-      type: new dataTypes.Char(25)
+      type: new dataTypes.Char(25),
+      defaultValue: ""
     },
       {
       name: "external_data",
@@ -999,7 +1012,7 @@ export interface TasksDSInput {
      */
     external_id?: string,
     /**
-     * @size 19 characters
+     * @size 30 characters
      * @default ``
      */
     name?: string,
@@ -1010,36 +1023,40 @@ export interface TasksDSInput {
      */
     order?: number | string,
     /**
-     * @size 19 characters
+     * @size 30 characters
      * @default ``
      */
     type?: string,
     /**
+     * @size 5 characters
+     * @default ``
      */
-    completed: boolean,
+    completed?: string,
     /**
      * @size 25 characters
      * @default ``
      */
     completed_at?: string,
     /**
-     * @size 4 characters
+     * @size 6 characters
      * @default ``
      */
     completed_by?: string,
     /**
-     * @size 6 characters
+     * @size 20 characters
      * @default ``
      */
     completion_type?: string,
     /**
      * @size 25 characters
+     * @default ``
      */
-    created_at: string,
+    created_at?: string,
     /**
      * @size 25 characters
+     * @default ``
      */
-    updated_at: string,
+    updated_at?: string,
     /**
      */
     external_data: external_dataDSInput,
@@ -1058,7 +1075,7 @@ export interface TasksDS {
      */
     external_id: string,
     /**
-     * @size 19 characters
+     * @size 30 characters
      * @default ``
      */
     name: string,
@@ -1069,34 +1086,38 @@ export interface TasksDS {
      */
     order: number,
     /**
-     * @size 19 characters
+     * @size 30 characters
      * @default ``
      */
     type: string,
     /**
+     * @size 5 characters
+     * @default ``
      */
-    completed: boolean,
+    completed: string,
     /**
      * @size 25 characters
      * @default ``
      */
     completed_at: string,
     /**
-     * @size 4 characters
+     * @size 6 characters
      * @default ``
      */
     completed_by: string,
     /**
-     * @size 6 characters
+     * @size 20 characters
      * @default ``
      */
     completion_type: string,
     /**
      * @size 25 characters
+     * @default ``
      */
     created_at: string,
     /**
      * @size 25 characters
+     * @default ``
      */
     updated_at: string,
     /**
@@ -1113,15 +1134,18 @@ export interface TasksDS {
   let StepsDSFields: any = [
       {
       name: "external_id",
-      type: new dataTypes.Char(18)
+      type: new dataTypes.Char(18),
+      defaultValue: ""
     },
       {
       name: "name",
-      type: new dataTypes.Char(23)
+      type: new dataTypes.Char(23),
+      defaultValue: ""
     },
       {
       name: "completed",
-      type: new dataTypes.Bool()
+      type: new dataTypes.Char(5),
+      defaultValue: ""
     },
       {
       name: "completed_at",
@@ -1175,15 +1199,19 @@ export interface TasksDS {
 export interface StepsDSInput {
     /**
      * @size 18 characters
+     * @default ``
      */
-    external_id: string,
+    external_id?: string,
     /**
      * @size 23 characters
+     * @default ``
      */
-    name: string,
+    name?: string,
     /**
+     * @size 5 characters
+     * @default ``
      */
-    completed: boolean,
+    completed?: string,
     /**
      * @size 25 characters
      * @default ``
@@ -1234,15 +1262,19 @@ export interface StepsDSInput {
 export interface StepsDS {
     /**
      * @size 18 characters
+     * @default ``
      */
     external_id: string,
     /**
      * @size 23 characters
+     * @default ``
      */
     name: string,
     /**
+     * @size 5 characters
+     * @default ``
      */
-    completed: boolean,
+    completed: string,
     /**
      * @size 25 characters
      * @default ``
@@ -1302,6 +1334,11 @@ export const DRVORDRINModel =   new eradaniConnect.run.Pgm("DRVORDRIN",   {
       {
       name: "ordtype",
       type: new dataTypes.Char(1),
+      defaultValue: ""
+    },
+      {
+      name: "error_message",
+      type: new dataTypes.Char(50),
       defaultValue: ""
     },
       {
@@ -1398,6 +1435,11 @@ export interface DRVORDRINInput {
      */
     ordtype?: string,
     /**
+     * @size 50 characters
+     * @default ``
+     */
+    error_message?: string,
+    /**
      * @size 6 characters
      * @default ``
      */
@@ -1481,6 +1523,11 @@ export interface DRVORDRINOutput {
      * @default ``
      */
     ordtype: string,
+    /**
+     * @size 50 characters
+     * @default ``
+     */
+    error_message: string,
     /**
      * @size 6 characters
      * @default ``
