@@ -128,7 +128,7 @@ export const getQueryPosition: ECCHandlerFunction = async (reqkey, data, ecc) =>
     let date;
     const now  = new Date();
     const formattedDate = formatDateWithoutDelimiters(now);
-    let filename = 'SKY_' + formattedDate + '.xml';
+    let filename = '/skybitz/SKY_' + formattedDate + '.xml';
 
     try {
         result = await axiosInstance.get('/QueryPositions', {
