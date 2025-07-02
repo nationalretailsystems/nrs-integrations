@@ -8,6 +8,7 @@ import * as converter3 from 'src/interfaces/skybtzqp';
 import { promises as fs } from 'fs';
 import { parseStringPromise } from 'xml2js';
 import { sanitizeValues } from 'src/services/safe-values';
+import { dateFormats } from '@eradani-inc/eradani-connect/datatypes/date';
 // import { resolve } from 'path';
 const safeValues: any = {
     skybitz: {
@@ -124,6 +125,10 @@ export const getQueryPosition: ECCHandlerFunction = async (reqkey, data, ecc) =>
     // Call web service
     let result;
     let nextReqKey = reqkey;
+    let date;
+    const now  = new Date();
+    const formattedDate = formatDateWithoutDelimiters(now);
+    let filename = 'SKY_' + formattedDate + '.xml';
 
     try {
         result = await axiosInstance.get('/QueryPositions', {
@@ -158,14 +163,20 @@ export const getQueryPosition: ECCHandlerFunction = async (reqkey, data, ecc) =>
         return ecc.sendEccResult('ECC9900', 'Error 2 received', nextReqKey);
     } else {
         const groupname = [];
-        if (!Array.isArray(jsonData.skybitz.gls.asset.groups.groupname)) {
-            groupname.push(jsonData.skybitz.gls.asset.groups.groupname);
-            jsonData.skybitz.gls.asset.groups.groupname = groupname;
-        }
+        // if (!Array.isArray(jsonData.skybitz.gls.asset.groups.groupname)) {
+        //     groupname.push(jsonData.skybitz.gls.asset.groups.groupname);
+        //     jsonData.skybitz.gls.asset.groups.groupname = groupname;
+        // }
 
-        let safeResponse = sanitizeValues(jsonData, safeValues);
-        console.log(safeResponse);
-        return ecc.sendObjectToCaller(safeResponse, converter3.convertObjectToTrlRtnDta, nextReqKey);
+        // let safeResponse = sanitizeValues(jsonData, safeValues);
+        // console.log(jsonData);
+    try {
+        await fs.writeFile( filename, result.data, 'utf-8');
+    } catch (err) {
+        return ecc.sendEccResult('ECC9200', err.message, nextReqKey);
+    }   
+         return ecc.sendEccResult('ECC0000', 'Success', nextReqKey);     
+        // return ecc.sendObjectToCaller(jsonData, converter3.convertObjectToTrlRtnDta, nextReqKey);
         // return ecc.sendFieldToCaller(JSON.stringify(jsonData),nextReqKey);
     }
 };
@@ -186,4 +197,14 @@ function timestamp(d: any) {
 // Convert string/XML to JSON
 function toJson(xmlData: string) {
     return parseStringPromise(xmlData, { explicitArray: false });
+}
+function formatDateWithoutDelimiters(date: Date) {
+  const year = date.getFullYear();
+  const month = (date.getMonth() + 1).toString().padStart(2, '0'); // Months are 0-indexed
+  const day = date.getDate().toString().padStart(2, '0');
+  const hours = date.getHours().toString().padStart(2, '0');
+  const minutes = date.getMinutes().toString().padStart(2, '0');
+  const seconds = date.getSeconds().toString().padStart(2, '0');
+
+  return `${year}${month}${day}${hours}${minutes}${seconds}`;
 }
